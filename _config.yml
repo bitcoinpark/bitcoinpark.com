@@ -1,3 +1,4 @@
 include:
 - .well-known
 - _redirects
+- _headers
