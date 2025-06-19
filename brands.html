@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands - Bitcoin Park</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f8f9fa;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #00d632 0%, #00b327 100%);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .brands-section {
+            padding: 80px 0;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .brand-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .brand-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #00d632 0%, #00b327 100%);
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .brand-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .brands-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .brand-card {
+                padding: 24px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .header {
+                padding: 40px 0 30px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .back-link {
+                top: 16px;
+                left: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="back-link">
+            ← Back to Bitcoin Park
+        </a>
+        <div class="container">
+            <h1>Our Brands</h1>
+            <p>Discover the ecosystem of Bitcoin Park brands and initiatives driving grassroots freedom tech adoption</p>
+        </div>
+    </div>
+
+    <div class="brands-section">
+        <div class="container">
+            <h2 class="section-title">Bitcoin Park Ecosystem</h2>
+            <p class="section-subtitle">From physical spaces to digital platforms, our brands work together to build a stronger Bitcoin community</p>
+            
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <div class="brand-icon">NP</div>
+                    <h3 class="brand-name">Bitcoin Park Nashville</h3>
+                    <p class="brand-description">Our flagship campus in Nashville, TN serving as a hub for Bitcoin meetups, workshops, and community events.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">AP</div>
+                    <h3 class="brand-name">Bitcoin Park Austin</h3>
+                    <p class="brand-description">Our Austin campus fostering Bitcoin innovation and community building in the Texas capital.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">ST</div>
+                    <h3 class="brand-name">Stream</h3>
+                    <p class="brand-description">Digital platform for Bitcoin content, education, and community engagement across our ecosystem.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">OP</div>
+                    <h3 class="brand-name">OP Daily</h3>
+                    <p class="brand-description">Daily Bitcoin news and information delivered to your inbox, keeping you informed and connected.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">AL</div>
+                    <h3 class="brand-name">Almanac</h3>
+                    <p class="brand-description">Comprehensive resource and guide for Bitcoin knowledge, events, and community resources.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">NE</div>
+                    <h3 class="brand-name">Nashville Energy & Mining Summit</h3>
+                    <p class="brand-description">Premier event bringing together Bitcoin mining and energy professionals in Nashville.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">TE</div>
+                    <h3 class="brand-name">Texas Energy & Mining Summit</h3>
+                    <p class="brand-description">Leading conference for Bitcoin mining and energy innovation in the Texas market.</p>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-icon">IF</div>
+                    <h3 class="brand-name">Imagine IF</h3>
+                    <p class="brand-description">Innovation forum exploring the future of Bitcoin technology and its impact on society.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
