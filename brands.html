@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brands - Bitcoin Park</title>
     <style>
+        :root {
+            --bp-orange: #F89C6B;
+            --bp-dark: #1A3321;
+            --bp-light: #FFF8F3;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -12,9 +17,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f8f9fa;
-            color: #1a1a1a;
+            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bp-light);
+            color: var(--bp-dark);
             line-height: 1.6;
         }
 
@@ -25,7 +30,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #00d632 0%, #00b327 100%);
+            background: var(--bp-orange);
             color: white;
             padding: 60px 0 40px;
             text-align: center;
@@ -36,13 +41,15 @@
             font-weight: 700;
             margin-bottom: 16px;
             letter-spacing: -0.02em;
+            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
 
         .header p {
             font-size: 1.25rem;
-            opacity: 0.9;
+            opacity: 0.95;
             max-width: 600px;
             margin: 0 auto;
+            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
 
         .back-link {
@@ -81,18 +88,19 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 2px solid var(--bp-orange);
         }
 
         .brand-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 40px rgba(248, 156, 107, 0.18);
+            border-color: var(--bp-dark);
         }
 
         .brand-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #00d632 0%, #00b327 100%);
+            background: var(--bp-orange);
             border-radius: 20px;
             margin: 0 auto 24px;
             display: flex;
@@ -101,19 +109,22 @@
             font-size: 2rem;
             color: white;
             font-weight: bold;
+            box-shadow: 0 2px 8px rgba(248, 156, 107, 0.10);
         }
 
         .brand-name {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 12px;
-            color: #1a1a1a;
+            color: var(--bp-dark);
+            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
 
         .brand-description {
-            color: #666;
-            font-size: 0.95rem;
+            color: #6B4F3F;
+            font-size: 1rem;
             line-height: 1.5;
+            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         }
 
         .section-title {
