@@ -1,24 +1,482 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>imagineIF - Coming Soon</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f5;
-        }
-        .coming-soon {
-            font-size: 2em;
-            color: #333;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagine IF – Bitcoin Park</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --if-purple: #7B5CFA;
+      --if-dark: #232323;
+      --if-light: #F5F5F5;
+      --if-white: #fff;
+      --if-gray: #444;
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #7B5CFA 0%, #FF8C6B 100%);
+      color: var(--if-white);
+      margin: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 64px 16px;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .hero-video {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .hero-video video {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      background: #000;
+    }
+    .main-title {
+      font-size: 4rem;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      letter-spacing: -0.02em;
+      color: var(--if-white);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+    .subtitle-header {
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--if-white);
+      opacity: 0.92;
+      text-align: center;
+      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .subtitle-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+    .subtitle-divider {
+      font-size: 1.5rem;
+      color: var(--if-white);
+      opacity: 0.7;
+      font-weight: 300;
+    }
+    .subtitle-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+    }
+    .hero-img {
+      max-width: 800px;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      background: var(--if-dark);
+      padding: 0;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.02em;
+      color: var(--if-white);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--if-white);
+      opacity: 0.92;
+    }
+    .section {
+      background: rgba(35,35,35,0.92);
+      border-radius: 18px;
+      padding: 36px 28px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+    .section h2 {
+      color: var(--if-purple);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 0;
+    }
+    .section ul {
+      margin: 0 0 0 20px;
+      padding: 0;
+    }
+    .section li {
+      margin-bottom: 10px;
+      font-size: 1.08rem;
+    }
+    .tracks {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto 1fr auto;
+      gap: 16px;
+      margin-top: 24px;
+      position: relative;
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tracks::before,
+    .tracks::after,
+    .tracks .track-col3::before {
+      content: none;
+    }
+    .tracks .fade-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, var(--if-purple) 70%, rgba(123,92,250,0) 100%);
+      border-radius: 2px;
+    }
+    .tracks .fade-divider.div1 { left: 25%; }
+    .tracks .fade-divider.div2 { left: 50%; }
+    .tracks .fade-divider.div3 { left: 75%; }
+    .tracks { position: relative; }
+    .tracks > div[class^='track-'] {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .track-title h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      color: var(--if-purple);
+      font-size: 1.05rem;
+      line-height: 1.13;
+      font-weight: 700;
+    }
+    .track-subheading p {
+      margin: 0 0 6px 0;
+      font-style: italic;
+      color: #fff;
+    }
+    .track-bullets li {
+      margin-bottom: 6px;
+      font-size: 1.08rem;
+      color: #fff;
+    }
+    .track-bottom p {
+      margin: 16px 0 0 0;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .footer {
+      text-align: center;
+      color: var(--if-white);
+      opacity: 0.7;
+      font-size: 1rem;
+      margin-top: 48px;
+      margin-bottom: 32px;
+    }
+    .vision-section p,
+    .format-section p,
+    .nashville-section p {
+      line-height: 1.8;
+      margin-bottom: 18px;
+      margin-top: 12px;
+      letter-spacing: 0.01em;
+    }
+    .small-title h3 {
+      font-size: 1.05rem;
+      line-height: 1.13;
+      font-weight: 700;
+      color: var(--if-purple);
+    }
+    .stakes-section {
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .container {
+        padding: 18px 4vw 48px 4vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-title {
+        font-size: 2.5rem;
+      }
+      .subtitle-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        font-size: 0.85rem;
+      }
+      .subtitle-divider {
+        display: none;
+      }
+      .section {
+        padding: 18px 8px;
+      }
+    }
+    .right-navbar {
+      background: #fff;
+      color: var(--if-purple);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 36px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .right-navbar .navbar-left {
+      flex: 0 0 auto;
+    }
+    .right-navbar .navbar-right-group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    .tracks-section-bg {
+      background: #181818;
+      border-radius: 24px;
+      padding: 48px 0 40px 0;
+      margin: 48px 0;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    }
+    .vision-section, .format-section, .tracks-section-bg, .nashville-section, .stakes-section {
+      background: #2f2f2f;
+      border-radius: 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 36px 24px;
+    }
+    .navbar-btn-gradient {
+      background: linear-gradient(90deg, #7B5CFA 0%, #5a3fdc 100%);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 9px 24px 9px 18px;
+      border-radius: 28px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(123,92,250,0.10);
+      transition: background 0.2s, color 0.2s;
+      border: none;
+      margin-left: 8px;
+      letter-spacing: 0.01em;
+      position: relative;
+    }
+    .navbar-btn-gradient .arrow-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 12px;
+      width: 24px;
+      height: 24px;
+    }
+    .navbar-btn-gradient:hover {
+      background: linear-gradient(90deg, #5a3fdc 0%, #7B5CFA 100%);
+      color: #fff;
+    }
+    .navbar-btn-gradient .arrow-circle svg circle {
+      fill: #fff;
+    }
+    .navbar-btn-gradient .arrow-circle svg path {
+      stroke: #7B5CFA;
+    }
+  </style>
 </head>
-<body>
-    <div class="coming-soon">Coming soon</div>
+<body id="top">
+  <nav class="navbar new-navbar right-navbar">
+    <div class="navbar-left">
+      <a href="#top" class="navbar-logo" style="text-decoration:none;">Imagine IF</a>
+    </div>
+    <div class="navbar-right-group">
+      <a href="#vision" class="navbar-link">Vision</a>
+      <a href="#format" class="navbar-link">Format</a>
+      <a href="#nashville" class="navbar-link">Why Nashville?</a>
+      <a href="#tracks" class="navbar-link">Programming Tracks</a>
+      <a href="#stakes" class="navbar-link">Summit with Stakes</a>
+      <a href="schedule.html" class="navbar-link" target="_blank">Schedule</a>
+      <a class="navbar-btn-gradient" href="BuyTix.html" target="_blank">
+        Attend Imagine If
+        <span class="arrow-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="#fff"/>
+            <path d="M10 8l4 4-4 4" stroke="#E13FA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="main-title">Imagine IF</h1>
+    <div class="subtitle-header">
+      <div class="subtitle-grid">
+        <div class="subtitle-col">
+          <div>A two-day convergence of dreamers and doers</div>
+        </div>
+        <div class="subtitle-divider">|</div>
+        <div class="subtitle-col">
+          <div>September 19–20<br>Fisher Center for Performing Arts, Nashville, TN</div>
+        </div>
+        <div class="subtitle-divider">|</div>
+        <div class="subtitle-col">
+          <div>100% of proceeds support Bitcoin Park</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero">
+      <div class="hero-video">
+        <video controls poster="Imagine IF Poster_cursor.png">
+          <source src="https://app.frame.io/reviews/d37f0783-f956-4b99-9c94-54c70df77086/1efd037c-69d9-4083-b1b4-878af2931300" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <img src="Imagine IF Poster_cursor.png" alt="Imagine IF Poster" class="hero-img" />
+    </div>
+
+    <div class="section vision-section" id="vision">
+      <h2>The Vision</h2>
+      <p>Imagine IF is not a tech conference. It’s a high-conviction summit for big-thinkers and bold-doers—those building the future in Bitcoin, AI, energy, and freedom tech.<br>
+      We’re gathering ~500+ of the most curious and capable minds for a focused, intimate experience that blends the narrative power of TED with the serendipity of Allen & Co.</p>
+    </div>
+
+    <div class="section format-section" id="format">
+      <h2>The Format</h2>
+      <ul>
+        <li>TED-style keynotes that start with one question: "Imagine IF..."</li>
+        <li>Candid fireside chats with visionaries turning ideas into infrastructure.</li>
+        <li>Natural collisions with investors, engineers, policymakers, and entrepreneurs.</li>
+        <li>Three distinct programming stages: the Imagine IF theatre stage; a stage co-curated by Ten31 and OpenSats; and a third stage led by Bitcoin Park and 256 Foundation.</li>
+      </ul>
+      <p>Our aim is for every talk to entertain, inform, and inspire.<br>And every moment will remind us: the future isn’t inherited—it’s imagined, then built.</p>
+    </div>
+
+    <div class="section nashville-section" id="nashville">
+      <h2>Why Nashville?</h2>
+      <p>Nashville is a city of rebirth, creativity, and grit. It’s a place where ideas are allowed to stretch out and sing.<br>
+      The Fisher Center, walking distance from Bitcoin Park, brings world-class acoustics and theatrical flair to the conversation—setting the tone for big visions and unforgettable moments.</p>
+    </div>
+
+    <div class="tracks-section-bg">
+      <h2 id="tracks" style="text-align:center; margin-top: 48px;">Programming Tracks: From “Imagine IF…” to Impact</h2>
+      <div class="tracks">
+        <div class="fade-divider div1"></div>
+        <div class="fade-divider div2"></div>
+        <div class="fade-divider div3"></div>
+        <div class="track-title track-col1"><h3>1. Bitcoin & The Monetary Layer</h3></div>
+        <div class="track-title track-col2"><h3>2. AI & Intelligence Unbound</h3></div>
+        <div class="track-title track-col3"><h3>3. Energy & the Path to Abundance</h3></div>
+        <div class="track-title track-col4 small-title"><h3>4. Freedom Tech & Tools of Self-Defense</h3></div>
+
+        <div class="track-subheading track-col1"><p><em>Imagine IF Bitcoin became the monetary network for 8 billion people.</em></p></div>
+        <div class="track-subheading track-col2"><p><em>Imagine IF artificial intelligence wasn’t just smarter—but wiser.</em></p></div>
+        <div class="track-subheading track-col3"><p><em>Imagine IF energy was too cheap to meter—and too clean to fear.</em></p></div>
+        <div class="track-subheading track-col4"><p><em>Imagine IF the next great leap in human freedom came from code—not constitutions.</em></p></div>
+
+        <div class="track-bullets track-col1">
+          <ul>
+            <li>Global financial sovereignty</li>
+            <li>The end of currency debasement</li>
+            <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
+            <li>Capital formation without central banks</li>
+          </ul>
+        </div>
+        <div class="track-bullets track-col2">
+          <ul>
+            <li>Human-AI symbiosis and “second brain” tooling</li>
+            <li>Autonomous agents that serve—not subvert—human goals</li>
+            <li>Knowledge networks as public infrastructure</li>
+            <li>AI for governance, forecasting, and education</li>
+            <li>Alignment strategies to preserve agency and values</li>
+          </ul>
+        </div>
+        <div class="track-bullets track-col3">
+          <ul>
+            <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
+            <li>Building energy-resilient cities and sovereign grids</li>
+            <li>Infrastructure for a high-power civilization</li>
+            <li>Permacomputing and sustainable computation</li>
+            <li>Thermodynamic freedom as the foundation of prosperity</li>
+          </ul>
+        </div>
+        <div class="track-bullets track-col4">
+          <ul>
+            <li>Open-source defense systems</li>
+            <li>Censorship-resistant speech and publishing</li>
+            <li>Personal privacy infrastructure</li>
+            <li>Borderless identity and access control</li>
+            <li>Cryptography as civil liberties tech</li>
+          </ul>
+        </div>
+
+        <div class="track-bottom track-col1"><p>This track explores Bitcoin not just as a currency, but as a civilizational foundation: resilient, trustless, and borderless.</p></div>
+        <div class="track-bottom track-col2"><p>This track will probe how intelligence—when paired with intention—can unlock potential across every domain.</p></div>
+        <div class="track-bottom track-col3"><p>This track is about moving from scarcity to surplus, from fragile supply to antifragile design.</p></div>
+        <div class="track-bottom track-col4"><p>This track explores the technologies that protect freedom in the digital and physical world—where sovereignty meets security.</p></div>
+      </div>
+      <div class="track-includes" style="text-align:center; margin-top:24px;">
+        <strong style="display:block; margin-bottom: 12px;">Each track includes:</strong>
+        <ul style="display:block; text-align:left; margin: 0 auto; max-width: 520px;">
+          <li>"Imagine IF..." presentations</li>
+          <li>Panel + fireside combos</li>
+          <li>Breakout discussions on the Ten31/OpenSats side stage and the Bitcoin Park/256 Foundation side stage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="stakes-section-wrapper" style="max-width:1100px; margin: 0 auto;">
+    <div class="section stakes-section" id="stakes" style="text-align:center;">
+      <h2>A Summit with Stakes</h2>
+      <p>This isn’t a conference. It’s a catalyst.</p>
+      <p>You're not just attending—you’re contributing.</p>
+      <p>You're not just hearing the future—you’re helping write it.</p>
+      <p style="font-weight:bold; margin-top: 24px;">Imagine IF you were in the room when the next chapter of human flourishing began.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Bitcoin Park. Imagine IF. All rights reserved.
+  </div>
 </body>
 </html> 
