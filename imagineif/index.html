@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -466,7 +467,7 @@
     
     .hero-content {
       text-align: center;
-      max-width: 1200px;
+      max-width: 1600px;
       padding: 80px 32px 0 32px;
       z-index: 1;
       width: 100%;
@@ -530,20 +531,27 @@
     }
     
     .hero-video {
-      width: 100%;
-      max-width: 900px;
+      width: 80vw;
+      max-width: 1200px;
+      height: 40vw;
+      max-height: 600px;
       display: flex;
       justify-content: center;
       margin-bottom: 32px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .hero-video video {
       width: 100%;
-      max-width: 900px;
+      height: 100%;
       border-radius: 20px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.4);
       background: #000;
       transition: transform 0.3s ease;
+      object-fit: cover;
+      display: block;
+      position: relative;
     }
     
     .hero-video video:hover {
@@ -1033,6 +1041,14 @@
         padding-top: 30px;
       }
       
+      /* Tablet video sizing */
+      .hero-video {
+        width: 90vw;
+        max-width: 800px;
+        height: 45vw;
+        max-height: 450px;
+      }
+      
       .tracks {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1110,6 +1126,14 @@
       /* First section after hero - reduced top padding on small mobile */
       .section:first-of-type {
         padding-top: 20px;
+      }
+      
+      /* Mobile video sizing */
+      .hero-video {
+        width: 95vw;
+        max-width: 400px;
+        height: 47.5vw;
+        max-height: 300px;
       }
       
       .section h2 {
@@ -1910,42 +1934,42 @@
 
   <div class="hero-section">
     <div class="hero-background">
-      <video autoplay muted loop playsinline>
-        <source src="../ImagineIF_Background.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="main-title">Imagine IF</h1>
-      <div class="subtitle-header">
-        <div class="subtitle-grid">
-          <div class="subtitle-col">
-            <div>A two-day convergence of dreamers and doers</div>
-          </div>
-          <div class="subtitle-divider">|</div>
-          <div class="subtitle-col">
-            <div>Friday, September 19<br>Saturday, September 20</div>
-          </div>
-          <div class="subtitle-divider">|</div>
-          <div class="subtitle-col">
-            <div>Fisher Center for Performing Arts, Nashville, TN</div>
-          </div>
-          <div class="subtitle-divider">|</div>
-          <div class="subtitle-col">
-            <div>100% of proceeds support Bitcoin Park</div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-media">
-        <div class="hero-video">
-          <video controls poster="../ImagineIf-brandmark-blue@2x.png">
-            <source src="../BIT001_ImagineIF_v01.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+        <video autoplay muted loop playsinline>
+            <source src="../ImagineIF_Background.mp4" type="video/mp4">
           </video>
         </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="main-title">Imagine IF</h1>
+          <div class="subtitle-header">
+            <div class="subtitle-grid">
+              <div class="subtitle-col">
+                <div>A two-day convergence of dreamers and doers</div>
+              </div>
+              <div class="subtitle-divider">|</div>
+              <div class="subtitle-col">
+                <div>Friday, September 19<br>Saturday, September 20</div>
+              </div>
+              <div class="subtitle-divider">|</div>
+              <div class="subtitle-col">
+                <div>Fisher Center for Performing Arts, Nashville, TN</div>
+              </div>
+              <div class="subtitle-divider">|</div>
+              <div class="subtitle-col">
+                <div>100% of proceeds support Bitcoin Park</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <div class="hero-video">
+              <video controls poster="Imagine IF Poster_cursor.png">
+                <source src="../BIT001_ImagineIF_v01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
   <div class="container">
     <div class="section vision-section zoom-up" id="vision">
@@ -2330,6 +2354,38 @@
           closeTrackPopup();
         }
       });
+      
+      // Ensure video maintains responsive dimensions when playing
+      const heroVideo = document.querySelector('.hero-video video');
+      if (heroVideo) {
+        heroVideo.addEventListener('play', function() {
+          // Force the video to maintain responsive dimensions
+          this.style.width = '100%';
+          this.style.height = '100%';
+          this.style.objectFit = 'cover';
+          this.style.display = 'block';
+          this.style.position = 'relative';
+          
+          // Prevent any size changes
+          this.style.transform = 'none';
+        });
+        
+        heroVideo.addEventListener('loadedmetadata', function() {
+          // Ensure consistent responsive sizing when video metadata loads
+          this.style.width = '100%';
+          this.style.height = '100%';
+          this.style.objectFit = 'cover';
+          this.style.display = 'block';
+          this.style.position = 'relative';
+        });
+        
+        // Also prevent size changes on other video events
+        heroVideo.addEventListener('canplay', function() {
+          this.style.width = '100%';
+          this.style.height = '100%';
+          this.style.objectFit = 'cover';
+        });
+      }
     });
   </script>
 </body>
