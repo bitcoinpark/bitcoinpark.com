@@ -2,30 +2,30 @@
 /custody    /custody.html    200
 
 # Case-insensitive redirects for imagineif variations
-/imagineif / 301
-/imagineIF / 301
-/ImagineIF / 301
-/Imagineif / 301
-/IMAGINEIF / 301
-/imaginEIF / 301
-/ImAgInEiF / 301
+/imagineif /imagineif 301
+/imagineIF /imagineif 301
+/ImagineIF /imagineif 301
+/Imagineif /imagineif 301
+/IMAGINEIF /imagineif 301
+/imaginEIF /imagineif 301
+/ImAgInEiF /imagineif 301
 
 # Catch common variations with trailing slashes and extensions
-/imagineif/ / 301
-/imagineIF/ / 301
-/ImagineIF/ / 301
-/Imagineif/ / 301
-/IMAGINEIF/ / 301
+/imagineif/ /imagineif 301
+/imagineIF/ /imagineif 301
+/ImagineIF/ /imagineif 301
+/Imagineif/ /imagineif 301
+/IMAGINEIF/ /imagineif 301
 
 # Catch variations with .html extension
-/imagineif.html / 301
-/imagineIF.html / 301
-/ImagineIF.html / 301
-/Imagineif.html / 301
-/IMAGINEIF.html / 301
+/imagineif.html /imagineif 301
+/imagineIF.html /imagineif 301
+/ImagineIF.html /imagineif 301
+/Imagineif.html /imagineif 301
+/IMAGINEIF.html /imagineif 301
 
 # Catch hyphenated and underscore variations
-/imagine-if / 301
-/imagine_if / 301
-/Imagine-IF / 301
-/Imagine_IF / 301 
+/imagine-if /imagineif 301
+/imagine_if /imagineif 301
+/Imagine-IF /imagineif 301
+/Imagine_IF /imagineif 301 
