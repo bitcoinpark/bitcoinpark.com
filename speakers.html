@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speakers - Bitcoin Custody & Treasury Summit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Bitcoin Custody & Treasury Summit Brand Colors */
+      --burnt-orange: #E68158;
+      --deep-midnight-blue: #070C70;
+      --bitcoin-gold: #FFC65C;
+      --dark-green: #0A2B07;
+      --accent-purple: #7958ED;
+      --dark-gray: #212121;
+      --white: #FFFFFF;
+      --light-gray: #F5F5F5;
+      --poster-blue: #070C70;
+      --poster-orange: #E68158;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      font-weight: 400;
+      font-size: clamp(1rem, 1.2vw + 0.8rem, 1.2rem);
+      background: url('CTSBackgroundPhoto.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--dark-gray);
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Optima', 'Georgia', serif;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+      letter-spacing: -0.02em;
+    }
+    
+    h2 {
+      font-size: clamp(2rem, 3vw + 0.8rem, 3rem);
+      letter-spacing: -0.01em;
+    }
+    
+    h3 {
+      font-size: clamp(1.5rem, 2.5vw + 0.6rem, 2.2rem);
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-size: clamp(1rem, 1.2vw + 0.8rem, 1.2rem);
+    }
+    
+    /* Animation keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    
+    .fade-in-left {
+      opacity: 0;
+      animation: fadeInLeft 1s ease-out forwards;
+    }
+    
+    .fade-in-right {
+      opacity: 0;
+      animation: fadeInRight 1s ease-out forwards;
+    }
+    
+    .fade-in.visible,
+    .fade-in-left.visible,
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateY(0) translateX(0);
+    }
+    
+    /* Navigation */
+    .navbar {
+      background: rgba(32, 34, 82, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .navbar-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: brightness(1.1) contrast(1.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      transform: scale(1.1);
+    }
+    
+    .navbar-brand {
+      font-family: 'Optima', 'Georgia', serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .navbar-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--burnt-orange);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .hamburger span {
+      width: 100%;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    /* Hero Section */
+    .hero {
+      padding: 120px 2rem 4rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      margin-top: 80px;
+    }
+    
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .hero-title {
+      font-size: clamp(3rem, 5vw + 1rem, 5rem);
+      font-weight: 800;
+      color: var(--deep-midnight-blue);
+      margin-bottom: 1rem;
+    }
+    
+    .hero-description {
+      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.4rem);
+      line-height: 1.6;
+      color: var(--dark-gray);
+      opacity: 0.9;
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    .filter-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .search-container {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Source Sans Pro', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--burnt-orange);
+      box-shadow: 0 0 0 3px rgba(230, 129, 88, 0.1);
+    }
+    
+    .filter-dropdown {
+      padding: 12px 16px;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Source Sans Pro', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }
+    
+    .filter-dropdown:focus {
+      outline: none;
+      border-color: var(--burnt-orange);
+      box-shadow: 0 0 0 3px rgba(230, 129, 88, 0.1);
+    }
+    
+    .clear-filters {
+      padding: 12px 20px;
+      background: var(--deep-midnight-blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .clear-filters:hover {
+      background: var(--burnt-orange);
+      transform: translateY(-1px);
+    }
+    
+    /* Speakers Grid */
+    .speakers-section {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 4rem 2rem;
+    }
+    
+    .speakers-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .speaker-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .speaker-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--burnt-orange);
+      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.2);
+    }
+    
+    .speaker-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--deep-midnight-blue), var(--dark-green));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 2.5rem;
+      font-weight: bold;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .speaker-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .speaker-name {
+      font-family: 'Optima', 'Georgia', serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--deep-midnight-blue);
+      margin-bottom: 0.5rem;
+    }
+    
+    .speaker-role {
+      font-size: 1rem;
+      color: var(--dark-gray);
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+    }
+    
+    .speaker-company {
+      font-size: 0.9rem;
+      color: var(--burnt-orange);
+      font-weight: 600;
+    }
+    
+    /* Footer */
+    .footer {
+      background: rgba(33, 33, 33, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-branding {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .footer-logo {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      filter: brightness(1.2) contrast(1.1);
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+    
+    .footer-logo:hover {
+      opacity: 1;
+    }
+    
+    .footer-brand-text {
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+    
+    .footer-separator {
+      opacity: 0.5;
+    }
+    
+    .footer-supported {
+      font-weight: 300;
+      opacity: 0.7;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-link {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      opacity: 1;
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: var(--burnt-orange);
+      transform: translateY(-2px);
+    }
+    
+    .footer-text {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        display: none;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .search-container {
+        min-width: auto;
+      }
+      
+      .speakers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 100px 1rem 3rem;
+      }
+      
+      .filter-section {
+        padding: 1.5rem 1rem;
+      }
+      
+      .speakers-section {
+        padding: 3rem 1rem;
+      }
+      
+      .speakers-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .speaker-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-brand-container">
+      <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="navbar-logo">
+      <a href="custody-summit.html" class="navbar-brand">Bitcoin Custody & Treasury Summit</a>
+    </div>
+    <div class="navbar-nav">
+      <a href="custody-summit.html#about" class="navbar-link">About</a>
+      <a href="custody-summit.html#themes" class="navbar-link">Themes</a>
+      <a href="custody-summit.html#schedule" class="navbar-link">Agenda</a>
+      <a href="custody-summit.html#venue" class="navbar-link">Bitcoin Park</a>
+      <a href="speakers.html" class="navbar-link">Speakers</a>
+    </div>
+    <button class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-title fade-in-left">Speakers</div>
+      <div class="hero-description fade-in-right">
+        A curated lineup of institutional leaders, innovators, and builders advancing Bitcoin custody and treasury infrastructure.
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="filter-container">
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search speakers..." id="speakerSearch">
+      </div>
+      <select class="filter-dropdown" id="roleFilter">
+        <option value="">All Roles</option>
+        <option value="custodian">Custodian</option>
+        <option value="cfo">CFO</option>
+        <option value="founder">Founder</option>
+        <option value="executive">Executive</option>
+        <option value="regulator">Regulator</option>
+      </select>
+      <select class="filter-dropdown" id="organizationFilter">
+        <option value="">All Organizations</option>
+        <option value="bitcoin-park">Bitcoin Park</option>
+        <option value="custody-provider">Custody Provider</option>
+        <option value="institution">Financial Institution</option>
+        <option value="startup">Bitcoin Startup</option>
+        <option value="government">Government</option>
+      </select>
+      <select class="filter-dropdown" id="regionFilter">
+        <option value="">All Regions</option>
+        <option value="north-america">North America</option>
+        <option value="europe">Europe</option>
+        <option value="asia">Asia</option>
+        <option value="latin-america">Latin America</option>
+      </select>
+      <button class="clear-filters" id="clearFilters">Clear All</button>
+    </div>
+  </section>
+
+  <!-- Speakers Grid -->
+  <section class="speakers-section">
+    <div class="speakers-container">
+      <div class="speakers-grid" id="speakersGrid">
+        <!-- Speaker 1 -->
+        <div class="speaker-card fade-in" data-role="cfo" data-organization="institution" data-region="north-america">
+          <div class="speaker-image">JD</div>
+          <div class="speaker-name">Jane Doe</div>
+          <div class="speaker-role">Chief Financial Officer</div>
+          <div class="speaker-company">Global Treasury Corp</div>
+        </div>
+        
+        <!-- Speaker 2 -->
+        <div class="speaker-card fade-in" data-role="founder" data-organization="startup" data-region="north-america">
+          <div class="speaker-image">JS</div>
+          <div class="speaker-name">John Smith</div>
+          <div class="speaker-role">Founder & CEO</div>
+          <div class="speaker-company">Bitcoin Custody Solutions</div>
+        </div>
+        
+        <!-- Speaker 3 -->
+        <div class="speaker-card fade-in" data-role="custodian" data-organization="custody-provider" data-region="europe">
+          <div class="speaker-image">MS</div>
+          <div class="speaker-name">Maria Santos</div>
+          <div class="speaker-role">Head of Digital Assets</div>
+          <div class="speaker-company">European Custody Bank</div>
+        </div>
+        
+        <!-- Speaker 4 -->
+        <div class="speaker-card fade-in" data-role="executive" data-organization="bitcoin-park" data-region="north-america">
+          <div class="speaker-image">RJ</div>
+          <div class="speaker-name">Robert Johnson</div>
+          <div class="speaker-role">Executive Director</div>
+          <div class="speaker-company">Bitcoin Park</div>
+        </div>
+        
+        <!-- Speaker 5 -->
+        <div class="speaker-card fade-in" data-role="regulator" data-organization="government" data-region="north-america">
+          <div class="speaker-image">LW</div>
+          <div class="speaker-name">Lisa Wang</div>
+          <div class="speaker-role">Senior Policy Advisor</div>
+          <div class="speaker-company">Financial Services Commission</div>
+        </div>
+        
+        <!-- Speaker 6 -->
+        <div class="speaker-card fade-in" data-role="founder" data-organization="startup" data-region="asia">
+          <div class="speaker-image">AK</div>
+          <div class="speaker-name">Akira Kimura</div>
+          <div class="speaker-role">Founder & CTO</div>
+          <div class="speaker-company">SecureBit Technologies</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-branding">
+        <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="footer-logo">
+        <span class="footer-brand-text">bitcoin park</span>
+        <span class="footer-separator">|</span>
+        <span class="footer-supported">Supported by:</span>
+      </div>
+      
+      <div class="footer-links">
+        <a href="https://bitcoinpark.com" class="footer-link">Bitcoin Park</a>
+        <a href="https://bitcoinpark.com/nashville" class="footer-link">Nashville Location</a>
+        <a href="https://bitcoinpark.com/email" class="footer-link">Newsletter</a>
+        <a href="mailto:info@bitcoinpark.com" class="footer-link">Contact</a>
+      </div>
+      
+      <div class="footer-social">
+        <a href="https://twitter.com/bitcoinpark_" class="social-icon">𝕏</a>
+        <a href="https://primal.net/park" class="social-icon">📱</a>
+        <a href="https://discord.gg/RBgZndpAM2" class="social-icon">💬</a>
+      </div>
+      
+      <p class="footer-text">
+        A community supported campus focused on grassroots freedom tech adoption
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Filter functionality (placeholder)
+    const speakerCards = document.querySelectorAll('.speaker-card');
+    const searchInput = document.getElementById('speakerSearch');
+    const roleFilter = document.getElementById('roleFilter');
+    const organizationFilter = document.getElementById('organizationFilter');
+    const regionFilter = document.getElementById('regionFilter');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+
+    function filterSpeakers() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedRole = roleFilter.value;
+      const selectedOrganization = organizationFilter.value;
+      const selectedRegion = regionFilter.value;
+
+      speakerCards.forEach(card => {
+        const name = card.querySelector('.speaker-name').textContent.toLowerCase();
+        const role = card.getAttribute('data-role');
+        const organization = card.getAttribute('data-organization');
+        const region = card.getAttribute('data-region');
+
+        const matchesSearch = name.includes(searchTerm);
+        const matchesRole = !selectedRole || role === selectedRole;
+        const matchesOrganization = !selectedOrganization || organization === selectedOrganization;
+        const matchesRegion = !selectedRegion || region === selectedRegion;
+
+        if (matchesSearch && matchesRole && matchesOrganization && matchesRegion) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Event listeners for filtering
+    searchInput.addEventListener('input', filterSpeakers);
+    roleFilter.addEventListener('change', filterSpeakers);
+    organizationFilter.addEventListener('change', filterSpeakers);
+    regionFilter.addEventListener('change', filterSpeakers);
+
+    clearFiltersBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      roleFilter.value = '';
+      organizationFilter.value = '';
+      regionFilter.value = '';
+      filterSpeakers();
+    });
+
+    // Speaker card click handler (placeholder for modal/page)
+    speakerCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const speakerName = card.querySelector('.speaker-name').textContent;
+        console.log(`Speaker clicked: ${speakerName}`);
+        // TODO: Implement modal or dedicated speaker page
+      });
+    });
+  </script>
+</body>
+</html> 

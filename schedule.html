@@ -1,11 +1,509 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Nashville Energy and Mining Summit Schedule at Bitcoin Park</title>
-    <meta http-equiv="refresh" content="0; url=https://pretalx.com/nems24/schedule/" />
-  </head>
-  <body>
-    <p>Nashville Energy and Mining Summit Schedule at Bitcoin Park</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule – Imagine IF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Imagine IF Brand Colors */
+      --orange: #F5823F;
+      --lavender: #B784FF;
+      --white: #FFFFFF;
+      --dark-bg: #0B0B0C;
+      --card-bg: #151517;
+      --gradient-orange-purple: linear-gradient(135deg, #F5823F 0%, #B784FF 100%);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Hero Section with Video Background */
+    .hero-section {
+      position: relative;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .hero-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 11, 12, 0.7);
+      z-index: 2;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1200px;
+      width: 100%;
+    }
+    
+    .hero-title {
+      font-size: clamp(3rem, 8vw + 2rem, 5rem);
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 2vw + 1rem, 1.5rem);
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+    
+    .cta-button {
+      background: var(--gradient-orange-purple);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(245, 130, 63, 0.3);
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      padding: 3rem 2rem;
+      background: var(--dark-bg);
+    }
+    
+    .filter-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .filter-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .filter-tab {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--orange);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .filter-tab.active {
+      background: var(--orange);
+      color: var(--white);
+    }
+    
+    .filter-tab:hover {
+      background: var(--orange);
+      color: var(--white);
+    }
+    
+    .filter-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .filter-dropdown {
+      background: var(--card-bg);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      min-width: 150px;
+    }
+    
+    .search-input {
+      background: var(--card-bg);
+      color: var(--white);
+      border: 2px solid transparent;
+      background-image: var(--gradient-orange-purple);
+      background-clip: padding-box;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      min-width: 250px;
+    }
+    
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    /* Schedule Section */
+    .schedule-section {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .timeline {
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 2rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gradient-orange-purple);
+    }
+    
+    .session-block {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      margin-left: 5rem;
+    }
+    
+    .session-time {
+      position: absolute;
+      left: -2.5rem;
+      top: 50%;
+      background: var(--orange);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+    
+    .session-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      gap: 1rem;
+      padding-left: 1rem;
+    }
+    
+    .session-info {
+      flex: 1;
+    }
+    
+    .session-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    
+    .session-speaker {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .speaker-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gradient-orange-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+    
+    .speaker-info {
+      flex: 1;
+    }
+    
+    .speaker-name {
+      font-weight: 600;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+    
+    .speaker-role {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8rem;
+    }
+    
+    .session-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .session-badge {
+      background: var(--lavender);
+      color: var(--white);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .stage-badge {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .calendar-button {
+      background: var(--gradient-orange-purple);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .calendar-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(245, 130, 63, 0.3);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 4rem 1rem 2rem;
+      }
+      
+      .filter-section {
+        padding: 2rem 1rem;
+      }
+      
+      .filter-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+      }
+      
+      .filter-controls {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .filter-dropdown,
+      .search-input {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .schedule-section {
+        padding: 1rem;
+      }
+      
+      .timeline::before {
+        left: 1rem;
+      }
+      
+      .session-block {
+        margin-left: 3rem;
+        padding: 1rem;
+      }
+      
+      .session-time {
+        left: -1.25rem;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.75rem;
+        transform: translate(-50%, -50%);
+      }
+      
+      .session-header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .session-meta {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-background">
+      <video autoplay muted loop playsinline>
+        <source src="ImagineIF_Background.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Schedule</h1>
+      <p class="hero-subtitle">
+        Experience two days of high-conviction conversations, candid fireside chats, and natural collisions with the most curious and capable minds in Bitcoin, AI, energy, and freedom tech.
+      </p>
+      <a href="https://bitcoinpark.typeform.com/application" class="cta-button">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="filter-container">
+      <!-- Day Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active">Day 1 - September 19</button>
+        <button class="filter-tab">Day 2 - September 20</button>
+      </div>
+      
+      <!-- Filter Controls -->
+      <div class="filter-controls">
+        <select class="filter-dropdown">
+          <option>All Stages</option>
+          <option>Imagine IF Theatre</option>
+          <option>Ten31 & OpenSats Stage</option>
+          <option>Bitcoin Park & 256 Foundation Stage</option>
+        </select>
+        
+        <select class="filter-dropdown">
+          <option>All Session Types</option>
+          <option>Keynote</option>
+          <option>Fireside Chat</option>
+          <option>Panel Discussion</option>
+          <option>Breakout Session</option>
+        </select>
+        
+        <input type="text" class="search-input" placeholder="Search sessions...">
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="schedule-section">
+    <div class="timeline">
+      <!-- Session 1 -->
+      <div class="session-block">
+        <div class="session-time">12:30</div>
+        <div class="session-header">
+          <div class="session-info">
+            <h3 class="session-title">Imagine IF Bitcoin Became the Monetary Network for 8 Billion People</h3>
+            <div class="session-speaker">
+              <div class="speaker-avatar">JS</div>
+              <div class="speaker-info">
+                <div class="speaker-name">John Smith</div>
+                <div class="speaker-role">Bitcoin Core Developer</div>
+              </div>
+            </div>
+          </div>
+          <div class="session-meta">
+            <span class="session-badge">Keynote</span>
+            <span class="stage-badge">Imagine IF Theatre</span>
+            <button class="calendar-button">+ Calendar</button>
+          </div>
+        </div>
+      </div>
+
+             <!-- Session 2 -->
+       <div class="session-block">
+         <div class="session-time">13:00</div>
+         <div class="session-header">
+           <div class="session-info">
+             <h3 class="session-title">Human-AI Symbiosis: Building the Second Brain</h3>
+             <div class="session-speaker">
+               <div class="speaker-avatar">MJ</div>
+               <div class="speaker-info">
+                 <div class="speaker-name">Maria Johnson</div>
+                 <div class="speaker-role">AI Research Director</div>
+               </div>
+             </div>
+           </div>
+           <div class="session-meta">
+             <span class="session-badge">Fireside Chat</span>
+             <span class="stage-badge">Ten31 & OpenSats Stage</span>
+             <button class="calendar-button">+ Calendar</button>
+           </div>
+         </div>
+       </div>
+
+       <!-- Session 3 -->
+       <div class="session-block">
+         <div class="session-time">13:30</div>
+         <div class="session-header">
+           <div class="session-info">
+             <h3 class="session-title">AI and Robots in National Defense: The Future of Autonomous Warfare</h3>
+             <div class="session-speaker">
+               <div class="speaker-avatar">DR</div>
+               <div class="speaker-info">
+                 <div class="speaker-name">Dr. Robert Chen</div>
+                 <div class="speaker-role">Defense Technology Strategist</div>
+               </div>
+             </div>
+           </div>
+           <div class="session-meta">
+             <span class="session-badge">Panel Discussion</span>
+             <span class="stage-badge">Bitcoin Park & 256 Foundation Stage</span>
+             <button class="calendar-button">+ Calendar</button>
+           </div>
+         </div>
+       </div>
+     </div>
+   </section>
+</body>
 </html>
