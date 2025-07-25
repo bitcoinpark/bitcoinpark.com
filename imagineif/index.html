@@ -1,2412 +1,2336 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagine IF – Bitcoin Park</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/ImagineIf-brandmark-blue@2x.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/ImagineIf-brandmark-blue@2x.png">
-    <link rel="shortcut icon" href="/ImagineIf-brandmark-blue@2x.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/ImagineIf-brandmark-blue@2x.png">
-
-    <!-- Theme colors -->
-    <meta name="theme-color" content="#070c70">
-    <meta name="msapplication-TileColor" content="#070c70">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Imagine IF Brand Colors - Exact from Brand Sheet */
-            --midnight-blue: #070c70;
-            --royal-purple: #7958ed;
-            --sunrise-orange: #e68158;
-            --light-purple: #b683ed;
-            --coral: #ffc6c2;
-            --if-white: #fff;
-            --if-light: #F5F5F5;
-            --dark-bg: #070c70;
-            --section-bg: #0a0f3a;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        /* Enhanced smooth scrolling for better flow */
-        body {
-            font-family: 'Rethink Sans', Arial, sans-serif;
-            font-weight: 400;
-            font-size: clamp(1.2rem, 1.5vw + 0.8rem, 1.6rem);
-            background: var(--midnight-blue);
-            color: var(--if-white);
-            margin: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
-        /* Animation keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Enhanced animations for brand voice */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes zoomUp {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        @keyframes softGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 8px 30px rgba(230, 129, 88, 0.5);
-            }
-        }
-
-        /* Intersection Observer animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .zoom-up {
-            opacity: 0;
-            transform: scale(0.9) translateY(20px);
-            transition: all 0.8s ease-out;
-        }
-
-        .zoom-up.visible {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
-
-        /* Enhanced navbar */
-        .right-navbar {
-            background: rgba(7, 12, 112, 0.95);
-            backdrop-filter: blur(10px);
-            color: var(--if-white);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 0 36px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .right-navbar .navbar-left {
-            flex: 0 0 auto;
-        }
-
-        .right-navbar .navbar-left a {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--if-white);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .right-navbar .navbar-right-group {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            margin-left: auto;
-            justify-content: flex-end;
-        }
-
-        .navbar-link {
-            color: var(--if-white);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: clamp(0.8rem, 1.2vw + 0.6rem, 0.9rem);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .navbar-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--royal-purple);
-            transition: width 0.3s ease;
-        }
-
-        .navbar-link:hover::after {
-            width: 100%;
-        }
-
-        .navbar-btn-gradient {
-            background: var(--sunrise-orange);
-            color: #fff;
-            font-weight: 700;
-            text-decoration: none;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-size: clamp(0.8rem, 1.5vw + 0.5rem, 1rem);
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
-            transition: all 0.3s ease;
-            border: none;
-            margin-left: 8px;
-            letter-spacing: 0.01em;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .navbar-btn-gradient:hover {
-            background: #d6734a;
-            transform: translateY(-2px);
-            animation: softGlow 2s ease-in-out infinite;
-        }
-
-        .navbar-btn-gradient .arrow-circle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 12px;
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar-btn-gradient:hover .arrow-circle {
-            transform: translateX(4px);
-        }
-
-        /* Hamburger Menu Styles */
-        .hamburger-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            margin-left: 20px;
-            z-index: 1001;
-            position: relative;
-        }
-
-        .hamburger-menu span {
-            width: 100%;
-            height: 3px;
-            background: var(--if-white);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-
-        .hamburger-menu.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger-menu.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Mobile Dropdown Styles */
-        .mobile-dropdown {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(7, 12, 112, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-100%);
-            transition: all 0.3s ease;
-            padding-top: 80px;
-        }
-
-        .mobile-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .mobile-dropdown-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 32px 24px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .mobile-nav-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-
-        .mobile-nav-list li {
-            margin: 0;
-            padding: 0;
-        }
-
-        .mobile-nav-link {
-            color: var(--if-white);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            transition: all 0.3s ease;
-            padding: 16px 0;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            width: 100%;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-nav-link:hover,
-        .mobile-nav-link:focus {
-            color: var(--sunrise-orange);
-            transform: translateY(-2px);
-            outline: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1023px) {
-            .navbar-right-group .navbar-link {
-                display: none;
-            }
-
-            .hamburger-menu {
-                display: flex;
-            }
-
-            .mobile-dropdown {
-                display: block;
-            }
-
-            .navbar-left {
-                display: flex;
-                align-items: center;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .mobile-dropdown {
-                display: none;
-            }
-        }
-
-        /* Hero section with video background */
-        .hero-section {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        .hero-background video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(123, 92, 250, 0.3) 100%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 1200px;
-            padding: 80px 32px 0 32px;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .main-title {
-            font-size: clamp(3rem, 8vw + 2rem, 5rem);
-            font-weight: 800;
-            margin: 0 0 24px 0;
-            letter-spacing: -0.03em;
-            color: var(--if-white);
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .subtitle-header {
-            margin-bottom: 48px;
-            font-size: clamp(0.8rem, 1.3vw + 0.5rem, 1.1rem);
-            font-weight: 400;
-            color: var(--if-white);
-            opacity: 0.95;
-            text-align: center;
-            animation: fadeInUp 1.2s ease-out 0.2s both;
-        }
-
-        .subtitle-grid {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
-            gap: 24px;
-            text-align: center;
-            align-items: center;
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-
-        .subtitle-divider {
-            font-size: 2rem;
-            color: var(--accent-pink);
-            opacity: 0.9;
-            font-weight: 300;
-            line-height: 1;
-            padding: 0 8px;
-        }
-
-        .subtitle-col {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Hero video and image */
-        .hero-media {
-            margin-top: 48px;
-            animation: fadeInUp 1.2s ease-out 0.4s both;
-        }
-
-        .hero-video {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .hero-video video {
-            width: 100%;
-            max-width: 900px;
-            border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            background: #000;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-video video:hover {
-            transform: scale(1.02);
-        }
-
-        .hero-img {
-            max-width: 900px;
-            width: 100%;
-            display: block;
-            margin: 0 auto;
-            border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .hero-img:hover {
-            transform: scale(1.02);
-        }
-
-        /* Container and sections */
-        .container {
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        .section {
-            background: rgba(10, 15, 58, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 0;
-            padding: 80px 60px;
-            margin-bottom: 0;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-        }
-
-        /* First section after hero - reduced top padding */
-        .section:first-of-type {
-            padding-top: 40px;
-        }
-
-        .section:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .section h2 {
-            color: var(--sunrise-orange);
-            font-size: clamp(2rem, 4vw + 1.5rem, 3rem);
-            font-weight: 700;
-            margin: 0 0 24px 0;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .section p {
-            line-height: 1.8;
-            margin: 0 0 20px 0;
-            letter-spacing: 0.01em;
-            font-size: clamp(1.2rem, 1.8vw + 1rem, 1.8rem);
-            font-weight: 400;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section ul {
-            margin: 0 0 0 24px;
-            padding: 0;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .section li {
-            margin-bottom: 12px;
-            font-size: clamp(1.2rem, 1.8vw + 1rem, 1.8rem);
-            line-height: 1.6;
-            font-weight: 400;
-        }
-
-        /* Tracks section */
-        .tracks-section-bg {
-            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
-            border-radius: 32px;
-            padding: 64px 40px;
-            margin: 64px 0;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .tracks-section-bg h2 {
-            text-align: center;
-            margin-bottom: 48px;
-            font-size: clamp(2rem, 4vw + 1.5rem, 2.6rem);
-            font-weight: 700;
-            color: var(--sunrise-orange);
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-        }
-
-        .tracks {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: auto auto 1fr auto;
-            gap: 24px;
-            margin-top: 32px;
-            position: relative;
-            max-width: 1800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .tracks .fade-divider {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            z-index: 1;
-            pointer-events: none;
-            background: linear-gradient(to bottom, var(--sunrise-orange) 70%, rgba(230, 129, 88, 0) 100%);
-            border-radius: 2px;
-        }
-
-        .tracks .fade-divider.div1 {
-            left: 25%;
-        }
-
-        .tracks .fade-divider.div2 {
-            left: 50%;
-        }
-
-        .tracks .fade-divider.div3 {
-            left: 75%;
-        }
-
-        .tracks>div[class^='track-'] {
-            padding-left: 24px;
-            padding-right: 24px;
-        }
-
-        .track-title {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .track-title:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .track-title h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            color: var(--light-purple);
-            font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
-            line-height: 1.2;
-            font-weight: 700;
-            pointer-events: none;
-        }
-
-        .track-subheading p {
-            margin: 0 0 8px 0;
-            font-style: italic;
-            color: #fff;
-            font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
-            font-weight: 400;
-        }
-
-        .track-bullets li {
-            margin-bottom: 8px;
-            font-size: clamp(1.1rem, 1.8vw + 0.8rem, 1.3rem);
-            color: #fff;
-            font-weight: 400;
-        }
-
-        .track-bottom p {
-            margin: 20px 0 0 0;
-            font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
-            color: #fff;
-            opacity: 0.9;
-            font-weight: 400;
-        }
-
-        .track-includes {
-            text-align: center;
-            margin-top: 32px;
-        }
-
-        .track-includes strong {
-            display: block;
-            margin-bottom: 16px;
-            color: var(--light-purple);
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .track-includes ul {
-            display: block;
-            text-align: left;
-            margin: 0 auto;
-            max-width: 600px;
-        }
-
-        .track-includes li {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            color: #fff;
-            font-weight: 400;
-        }
-
-        /* Responsive design for tracks section */
-        @media (max-width: 1023px) {
-            .tracks {
-                display: flex;
-                flex-direction: column;
-                gap: 0;
-                margin-top: 32px;
-                position: relative;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .tracks .fade-divider {
-                display: none;
-            }
-
-            /* Hide track details on mobile/tablet */
-            .track-subheading,
-            .track-bullets,
-            .track-bottom {
-                display: none;
-            }
-
-            /* Show only track titles */
-            .track-title {
-                width: 100%;
-                padding: 1rem 0;
-                border-bottom: 1px solid #FF8855;
-                text-align: center;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .track-title:hover {
-                background: rgba(255, 255, 255, 0.05);
-            }
-
-            .track-title h3 {
-                color: #B88EFF;
-                font-size: clamp(1.2rem, 3vw + 1rem, 1.6rem);
-                font-weight: bold;
-                margin: 0;
-                pointer-events: none;
-            }
-
-            /* Hide track includes section on mobile */
-            .track-includes {
-                display: none;
-            }
-        }
-
-        /* Track Popup Styles */
-        .track-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(7, 12, 112, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .track-popup.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .track-popup-content {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            max-width: 600px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-
-        .track-popup-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .track-popup-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .track-popup-title {
-            color: #B88EFF;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            padding-right: 2rem;
-        }
-
-        .track-popup-subheading {
-            color: var(--white);
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .track-popup-bullets {
-            margin-bottom: 1.5rem;
-        }
-
-        .track-popup-bullets li {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-
-        .track-popup-description {
-            color: var(--white);
-            opacity: 0.8;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Desktop view (min-width: 1024px) */
-        @media (min-width: 1024px) {
-            .tracks {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: auto auto 1fr auto;
-                gap: 24px;
-                margin-top: 32px;
-                position: relative;
-                max-width: 1800px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .tracks .fade-divider {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 3px;
-                z-index: 1;
-                pointer-events: none;
-                background: linear-gradient(to bottom, var(--sunrise-orange) 70%, rgba(230, 129, 88, 0) 100%);
-                border-radius: 2px;
-            }
-
-            .tracks .fade-divider.div1 {
-                left: 25%;
-            }
-
-            .tracks .fade-divider.div2 {
-                left: 50%;
-            }
-
-            .tracks .fade-divider.div3 {
-                left: 75%;
-            }
-
-            .tracks>div[class^='track-'] {
-                padding-left: 24px;
-                padding-right: 24px;
-            }
-
-            .track-title h3 {
-                margin-top: 0;
-                margin-bottom: 8px;
-                color: #B88EFF;
-                font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
-                line-height: 1.2;
-                font-weight: bold;
-            }
-
-            .track-subheading p {
-                margin: 0 0 8px 0;
-                font-style: italic;
-                color: #fff;
-                font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
-                font-weight: 400;
-            }
-
-            .track-bullets li {
-                margin-bottom: 8px;
-                font-size: clamp(1.1rem, 1.8vw + 0.8rem, 1.3rem);
-                color: #fff;
-                font-weight: 400;
-            }
-
-            .track-bottom p {
-                margin: 20px 0 0 0;
-                font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
-                color: #fff;
-                opacity: 0.9;
-                font-weight: 400;
-            }
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            color: var(--if-white);
-            opacity: 0.7;
-            font-size: 1rem;
-            margin-top: 64px;
-            margin-bottom: 48px;
-            padding: 32px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 1200px) {
-            .main-title {
-                font-size: 4rem;
-            }
-
-            .tracks {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-            }
-
-            .tracks .fade-divider.div2 {
-                display: none;
-            }
-
-            .tracks-section-bg h2 {
-                font-size: 2.4rem;
-            }
-
-            .track-title h3 {
-                font-size: 1.3rem;
-            }
-
-            .track-subheading p {
-                font-size: 1.1rem;
-            }
-
-            .track-bullets li {
-                font-size: 1.2rem;
-            }
-
-            .track-bottom p {
-                font-size: 1.1rem;
-            }
-
-            .track-includes strong {
-                font-size: 1.3rem;
-            }
-
-            .track-includes li {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                padding: 0;
-            }
-
-            .section {
-                padding: 60px 40px;
-                min-height: 100vh;
-            }
-
-            /* First section after hero - reduced top padding on mobile */
-            .section:first-of-type {
-                padding-top: 30px;
-            }
-
-            .tracks {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .tracks .fade-divider {
-                display: none;
-            }
-
-            .right-navbar {
-                padding: 0 24px;
-            }
-
-            .navbar-right-group {
-                gap: 20px;
-            }
-
-            .subtitle-header {
-                font-size: 1.3rem;
-            }
-
-            /* Tablet subtitle - show only "A two-day convergence of dreamers and doers" */
-            .subtitle-grid {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 0;
-            }
-
-            .subtitle-col:not(:first-child),
-            .subtitle-divider {
-                display: none;
-            }
-
-            .subtitle-col:first-child {
-                text-align: center;
-                font-size: 1.4rem;
-                font-weight: 500;
-            }
-
-            .tracks-section-bg h2 {
-                font-size: 2.4rem;
-            }
-
-            .track-title h3 {
-                font-size: 1.3rem;
-            }
-
-            .track-subheading p {
-                font-size: 1.1rem;
-            }
-
-            .track-bullets li {
-                font-size: 1.2rem;
-            }
-
-            .track-bottom p {
-                font-size: 1.1rem;
-            }
-
-            .track-includes strong {
-                font-size: 1.3rem;
-            }
-
-            .track-includes li {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .section {
-                padding: 40px 24px;
-            }
-
-            /* First section after hero - reduced top padding on small mobile */
-            .section:first-of-type {
-                padding-top: 20px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-                margin-bottom: 16px;
-            }
-
-            .subtitle-header {
-                font-size: 1.2rem;
-            }
-
-            /* Mobile subtitle - show only "A two-day convergence of dreamers and doers" */
-            .subtitle-grid {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 0;
-            }
-
-            .subtitle-col:not(:first-child),
-            .subtitle-divider {
-                display: none;
-            }
-
-            .subtitle-col:first-child {
-                text-align: center;
-                font-size: 1.3rem;
-                font-weight: 500;
-            }
-
-            .tracks-section-bg h2 {
-                font-size: 2rem;
-            }
-
-            .right-navbar {
-                height: 70px;
-                padding: 0 16px;
-            }
-
-            .navbar-right-group {
-                gap: 16px;
-            }
-
-            .navbar-link {
-                font-size: 0.8rem;
-            }
-
-            .navbar-btn-gradient {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
-
-            .track-title h3 {
-                font-size: 1.2rem;
-            }
-
-            .track-subheading p {
-                font-size: 1rem;
-            }
-
-            .track-bullets li {
-                font-size: 1.1rem;
-            }
-
-            .track-bottom p {
-                font-size: 1rem;
-            }
-
-            .track-includes strong {
-                font-size: 1.2rem;
-            }
-
-            .track-includes li {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Brand video container */
-        .brand-video-container {
-            background: var(--midnight-blue);
-            background-image: url('Imagine IF Poster_cursor.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--royal-purple);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-in-out;
-            margin-bottom: 0;
-        }
-
-        .brand-video-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .brand-video-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 32px;
-            text-align: center;
-            max-width: 600px;
-            padding: 0 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .brand-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(7, 12, 112, 0.8) 0%, rgba(121, 88, 237, 0.4) 100%);
-            z-index: 1;
-        }
-
-        .brand-logo {
-            margin-bottom: 24px;
-        }
-
-        .brand-logo svg {
-            width: 80px;
-            height: 80px;
-            filter: drop-shadow(0 4px 12px rgba(182, 131, 237, 0.4));
-        }
-
-        .brand-title {
-            font-family: 'Rethink Sans', Arial, sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--light-purple);
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-        }
-
-        .brand-description {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--if-white);
-            margin-bottom: 32px;
-            opacity: 0.9;
-        }
-
-        .brand-presented-by {
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--if-white);
-            margin-bottom: 24px;
-        }
-
-        .brand-partners {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .brand-partner {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--if-white);
-        }
-
-        .partner-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--if-white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .brand-partnership {
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--if-white);
-            margin-top: 32px;
-            margin-bottom: 16px;
-        }
-
-        /* Geometric shapes and motifs */
-        .geometric-shape {
-            position: absolute;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-
-        .upward-arrow {
-            width: 40px;
-            height: 40px;
-            background: var(--light-purple);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-
-        .radial-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
-        }
-
-        .mountain-shape {
-            width: 80px;
-            height: 40px;
-            background: var(--royal-purple);
-            clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-        }
-
-        /* Background motifs for sections */
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
-            opacity: 0.05;
-            pointer-events: none;
-        }
-
-        .section::after {
-            content: '';
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--light-purple);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            opacity: 0.05;
-            pointer-events: none;
-        }
-
-        .section-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            gap: 60px;
-            align-items: flex-end;
-            justify-content: center;
-            min-height: 400px;
-        }
-
-        .section-text {
-            flex: 1;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            text-align: center;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .section-media {
-            flex: 1;
-            max-width: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 16px;
-            height: 100%;
-        }
-
-        .section-media img,
-        .section-media video {
-            max-width: 100%;
-            width: 100%;
-            height: calc(50% - 8px);
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            object-fit: cover;
-        }
-
-        .section-media img:hover,
-        .section-media video:hover {
-            transform: scale(1.02);
-        }
-
-        /* Responsive design for section layout */
-        @media (max-width: 900px) {
-            .section-content {
-                flex-direction: column;
-                gap: 40px;
-                text-align: center;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .section-text {
-                text-align: center;
-                align-items: center;
-            }
-
-            .section h2 {
-                font-size: 2.2rem;
-                margin-bottom: 20px;
-            }
-
-            .section p {
-                font-size: 1.6rem;
-                max-width: 100%;
-            }
-
-            .section ul {
-                max-width: 100%;
-            }
-
-            .section li {
-                font-size: 1.6rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .section h2 {
-                font-size: 2rem;
-                margin-bottom: 16px;
-            }
-
-            .section p {
-                font-size: 1.4rem;
-            }
-
-            .section li {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Vision section with background image */
-        .vision-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .vision-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .vision-bg-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .vision-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(7, 12, 112, 0.4);
-            backdrop-filter: blur(4px);
-            padding: 60px;
-            border-radius: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            text-align: center;
-            padding-bottom: 120px;
-        }
-
-        .vision-content h2 {
-            color: var(--sunrise-orange);
-            font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
-            font-weight: 700;
-            margin: 0 0 24px 0;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            text-align: center;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        .vision-content p {
-            line-height: 1.8;
-            margin: 0 0 20px 0;
-            letter-spacing: 0.01em;
-            font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
-            font-weight: 400;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--if-white);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Responsive design for vision section */
-        @media (max-width: 900px) {
-            .vision-content {
-                padding: 40px;
-                padding-bottom: 80px;
-            }
-
-            .vision-content h2 {
-                font-size: 2.6rem;
-                margin-bottom: 20px;
-            }
-
-            .vision-content p {
-                font-size: 1.6rem;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .vision-content {
-                padding: 30px 20px;
-                padding-bottom: 60px;
-            }
-
-            .vision-content h2 {
-                font-size: 2.4rem;
-                margin-bottom: 16px;
-            }
-
-            .vision-content p {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Nashville section with background image */
-        .nashville-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nashville-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .nashville-bg-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .nashville-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(7, 12, 112, 0.4);
-            backdrop-filter: blur(4px);
-            padding: 60px;
-            border-radius: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            text-align: center;
-            padding-bottom: 120px;
-        }
-
-        .nashville-content h2 {
-            color: var(--sunrise-orange);
-            font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
-            font-weight: 700;
-            margin: 0 0 24px 0;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            text-align: center;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        .nashville-content p {
-            line-height: 1.8;
-            margin: 0 0 20px 0;
-            letter-spacing: 0.01em;
-            font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
-            font-weight: 400;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--if-white);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Responsive design for nashville section */
-        @media (max-width: 900px) {
-            .nashville-content {
-                padding: 40px;
-                padding-bottom: 80px;
-            }
-
-            .nashville-content h2 {
-                font-size: 2.6rem;
-                margin-bottom: 20px;
-            }
-
-            .nashville-content p {
-                font-size: 1.6rem;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .nashville-content {
-                padding: 30px 20px;
-                padding-bottom: 60px;
-            }
-
-            .nashville-content h2 {
-                font-size: 2.4rem;
-                margin-bottom: 16px;
-            }
-
-            .nashville-content p {
-                font-size: 1.4rem;
-            }
-        }
-
-        /* Stakes section with background image */
-        .stakes-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stakes-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .stakes-bg-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        .stakes-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(7, 12, 112, 0.4);
-            backdrop-filter: blur(4px);
-            padding: 40px;
-            border-radius: 0;
-            margin: 0;
-            width: 80%;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-bottom: 60px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .stakes-content h2 {
-            color: var(--sunrise-orange);
-            font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
-            font-weight: 700;
-            margin: 0 0 24px 0;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-            text-align: center;
-            text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        .stakes-content p {
-            line-height: 1.8;
-            margin: 0 0 20px 0;
-            letter-spacing: 0.01em;
-            font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
-            font-weight: 400;
-            text-align: center;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--if-white);
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Responsive design for stakes section */
-        @media (max-width: 900px) {
-            .stakes-content {
-                padding: 30px;
-                padding-bottom: 50px;
-                width: 85%;
-            }
-
-            .stakes-content h2 {
-                font-size: 2.6rem;
-                margin-bottom: 20px;
-            }
-
-            .stakes-content p {
-                font-size: 1.6rem;
-                max-width: 100%;
-            }
-
-            .stakes-btn {
-                font-size: 1.3rem;
-                padding: 16px 32px;
-                min-height: 52px;
-                margin-top: 28px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .stakes-content {
-                padding: 25px 20px;
-                padding-bottom: 40px;
-                width: 90%;
-            }
-
-            .stakes-content h2 {
-                font-size: 2.4rem;
-                margin-bottom: 16px;
-            }
-
-            .stakes-content p {
-                font-size: 1.4rem;
-            }
-
-            .stakes-btn {
-                font-size: 1.2rem;
-                padding: 14px 28px;
-                min-height: 48px;
-                margin-top: 24px;
-            }
-        }
-
-        .stakes-btn {
-            background: linear-gradient(90deg, var(--royal-purple) 0%, var(--sunrise-orange) 100%);
-            color: #fff;
-            font-weight: 700;
-            text-decoration: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
-            display: inline-block;
-            margin-top: 32px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 6px 24px rgba(121, 88, 237, 0.3);
-            font-family: 'Rethink Sans', Arial, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            position: relative;
-            overflow: hidden;
-            min-height: 56px;
-        }
-
-        .stakes-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .stakes-btn:hover {
-            background: linear-gradient(90deg, #6a4fd8 0%, #d6734a 100%);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 35px rgba(121, 88, 237, 0.4);
-            text-decoration: none;
-        }
-
-        .stakes-btn:hover::before {
-            left: 100%;
-        }
-
-        .format-list {
-            margin: 0 0 24px 0;
-            padding: 0;
-            width: 100%;
-            text-align: center;
-        }
-
-        .format-item {
-            margin-bottom: 16px;
-            font-size: clamp(1.2rem, 1.8vw + 1rem, 1.8rem);
-            line-height: 1.6;
-            font-weight: 400;
-            color: var(--if-white);
-            text-align: center;
-        }
-
-        /* Ensure all text in format section is center-aligned */
-        .format-section .section-text h2 {
-            text-align: center;
-        }
-
-        .format-section .section-text p {
-            text-align: center;
-        }
-
-        .format-section .section-text .cormorant-text {
-            text-align: center;
-        }
-
-        .cormorant-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-style: italic;
-            font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
-            color: var(--if-white);
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagine IF – Bitcoin Park</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/ImagineIf-brandmark-blue@2x.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ImagineIf-brandmark-blue@2x.png">
+  <link rel="shortcut icon" href="/ImagineIf-brandmark-blue@2x.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/ImagineIf-brandmark-blue@2x.png">
+  
+  <!-- Theme colors -->
+  <meta name="theme-color" content="#070c70">
+  <meta name="msapplication-TileColor" content="#070c70">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Imagine IF Brand Colors - Exact from Brand Sheet */
+      --midnight-blue: #070c70;
+      --royal-purple: #7958ed;
+      --sunrise-orange: #e68158;
+      --light-purple: #b683ed;
+      --coral: #ffc6c2;
+      --if-white: #fff;
+      --if-light: #F5F5F5;
+      --dark-bg: #070c70;
+      --section-bg: #0a0f3a;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    
+    /* Enhanced smooth scrolling for better flow */
+    body {
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: clamp(1.2rem, 1.5vw + 0.8rem, 1.6rem);
+      background: var(--midnight-blue);
+      color: var(--if-white);
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    
+    /* Animation keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    /* Enhanced animations for brand voice */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes zoomUp {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+    
+    @keyframes softGlow {
+      0%, 100% {
+        box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
+      }
+      50% {
+        box-shadow: 0 8px 30px rgba(230, 129, 88, 0.5);
+      }
+    }
+    
+    /* Intersection Observer animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .zoom-up {
+      opacity: 0;
+      transform: scale(0.9) translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .zoom-up.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    
+    /* Enhanced navbar */
+    .right-navbar {
+      background: rgba(7, 12, 112, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--if-white);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 36px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .right-navbar .navbar-left {
+      flex: 0 0 auto;
+    }
+    
+    .right-navbar .navbar-left a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--if-white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    
+    .right-navbar .navbar-right-group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+    
+    .navbar-link {
+      color: var(--if-white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(0.8rem, 1.2vw + 0.6rem, 0.9rem);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--royal-purple);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-link:hover::after {
+      width: 100%;
+    }
+    
+    .navbar-btn-gradient {
+      background: var(--sunrise-orange);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: clamp(0.8rem, 1.5vw + 0.5rem, 1rem);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      margin-left: 8px;
+      letter-spacing: 0.01em;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .navbar-btn-gradient:hover {
+      background: #d6734a;
+      transform: translateY(-2px);
+      animation: softGlow 2s ease-in-out infinite;
+    }
+    
+    .navbar-btn-gradient .arrow-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 12px;
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+    }
+    
+    .navbar-btn-gradient:hover .arrow-circle {
+      transform: translateX(4px);
+    }
+    
+    /* Hamburger Menu Styles */
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-left: 20px;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .hamburger-menu span {
+      width: 100%;
+      height: 3px;
+      background: var(--if-white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+    
+    .hamburger-menu.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .hamburger-menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger-menu.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* Mobile Dropdown Styles */
+    .mobile-dropdown {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(7, 12, 112, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-100%);
+      transition: all 0.3s ease;
+      padding-top: 80px;
+    }
+    
+    .mobile-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .mobile-dropdown-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+    
+    .mobile-nav-list li {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .mobile-nav-link {
+      color: var(--if-white);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      transition: all 0.3s ease;
+      padding: 16px 0;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-nav-link:hover,
+    .mobile-nav-link:focus {
+      color: var(--sunrise-orange);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1023px) {
+      .navbar-right-group .navbar-link {
+        display: none;
+      }
+      
+      .hamburger-menu {
+        display: flex;
+      }
+      
+      .mobile-dropdown {
+        display: block;
+      }
+      
+      .navbar-left {
+        display: flex;
+        align-items: center;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .mobile-dropdown {
+        display: none;
+      }
+    }
+    
+    /* Hero section with video background */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+    
+    .hero-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(123, 92, 250, 0.3) 100%);
+      z-index: -1;
+    }
+    
+    .hero-content {
+      text-align: center;
+      max-width: 1200px;
+      padding: 80px 32px 0 32px;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    
+    .main-title {
+      font-size: clamp(3rem, 8vw + 2rem, 5rem);
+      font-weight: 800;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.03em;
+      color: var(--if-white);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      animation: fadeInUp 1.2s ease-out;
+    }
+    
+    .subtitle-header {
+      margin-bottom: 48px;
+      font-size: clamp(0.8rem, 1.3vw + 0.5rem, 1.1rem);
+      font-weight: 400;
+      color: var(--if-white);
+      opacity: 0.95;
+      text-align: center;
+      animation: fadeInUp 1.2s ease-out 0.2s both;
+    }
+    
+    .subtitle-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    
+    .subtitle-divider {
+      font-size: 2rem;
+      color: var(--accent-pink);
+      opacity: 0.9;
+      font-weight: 300;
+      line-height: 1;
+      padding: 0 8px;
+    }
+    
+    .subtitle-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    /* Hero video and image */
+    .hero-media {
+      margin-top: 48px;
+      animation: fadeInUp 1.2s ease-out 0.4s both;
+    }
+    
+    .hero-video {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    
+    .hero-video video {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      background: #000;
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-video video:hover {
+      transform: scale(1.02);
+    }
+    
+    .hero-img {
+      max-width: 900px;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    
+    .hero-img:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Container and sections */
+    .container {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .section {
+      background: rgba(10, 15, 58, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 0;
+      padding: 80px 60px;
+      margin-bottom: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+    }
+    
+    /* First section after hero - reduced top padding */
+    .section:first-of-type {
+      padding-top: 40px;
+    }
+    
+    .section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    
+    .section h2 {
+      color: var(--sunrise-orange);
+      font-size: clamp(2rem, 4vw + 1.5rem, 3rem);
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    
+    .section p {
+      line-height: 1.8;
+      margin: 0 0 20px 0;
+      letter-spacing: 0.01em;
+      font-size: clamp(1.2rem, 1.8vw + 1rem, 1.8rem);
+      font-weight: 400;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .section ul {
+      margin: 0 0 0 24px;
+      padding: 0;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .section li {
+      margin-bottom: 12px;
+      font-size: clamp(1.2rem, 1.8vw + 1rem, 1.8rem);
+      line-height: 1.6;
+      font-weight: 400;
+    }
+    
+    /* Tracks section */
+    .tracks-section-bg {
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+      border-radius: 32px;
+      padding: 64px 40px;
+      margin: 64px 0;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .tracks-section-bg h2 {
+      text-align: center;
+      margin-bottom: 48px;
+      font-size: clamp(2rem, 4vw + 1.5rem, 2.6rem);
+      font-weight: 700;
+      color: var(--sunrise-orange);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    
+    .tracks {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto 1fr auto;
+      gap: 24px;
+      margin-top: 32px;
+      position: relative;
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .tracks .fade-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, var(--sunrise-orange) 70%, rgba(230, 129, 88, 0) 100%);
+      border-radius: 2px;
+    }
+    
+    .tracks .fade-divider.div1 { left: 25%; }
+    .tracks .fade-divider.div2 { left: 50%; }
+    .tracks .fade-divider.div3 { left: 75%; }
+    
+    .tracks > div[class^='track-'] {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    
+    .track-title {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .track-title:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .track-title h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: var(--light-purple);
+      font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
+      line-height: 1.2;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    
+    .track-subheading p {
+      margin: 0 0 8px 0;
+      font-style: italic;
+      color: #fff;
+      font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
+      font-weight: 400;
+    }
+    
+    .track-bullets li {
+      margin-bottom: 8px;
+      font-size: clamp(1.1rem, 1.8vw + 0.8rem, 1.3rem);
+      color: #fff;
+      font-weight: 400;
+    }
+    
+    .track-bottom p {
+      margin: 20px 0 0 0;
+      font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
+      color: #fff;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+    
+    .track-includes {
+      text-align: center;
+      margin-top: 32px;
+    }
+    
+    .track-includes strong {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--light-purple);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    
+    .track-includes ul {
+      display: block;
+      text-align: left;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    
+    .track-includes li {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #fff;
+      font-weight: 400;
+    }
+    
+    /* Responsive design for tracks section */
+    @media (max-width: 1023px) {
+      .tracks {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 32px;
+        position: relative;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .tracks .fade-divider {
+        display: none;
+      }
+      
+      /* Hide track details on mobile/tablet */
+      .track-subheading,
+      .track-bullets,
+      .track-bottom {
+        display: none;
+      }
+      
+      /* Show only track titles */
+      .track-title {
+        width: 100%;
+        padding: 1rem 0;
+        border-bottom: 1px solid #FF8855;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .track-title:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      
+      .track-title h3 {
+        color: #B88EFF;
+        font-size: clamp(1.2rem, 3vw + 1rem, 1.6rem);
+        font-weight: bold;
+        margin: 0;
+        pointer-events: none;
+      }
+      
+      /* Hide track includes section on mobile */
+      .track-includes {
+        display: none;
+      }
+    }
+    
+    /* Track Popup Styles */
+    .track-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(7, 12, 112, 0.98);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .track-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .track-popup-content {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .track-popup-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .track-popup-close:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .track-popup-title {
+      color: #B88EFF;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      padding-right: 2rem;
+    }
+    
+    .track-popup-subheading {
+      color: var(--white);
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+    
+    .track-popup-bullets {
+      margin-bottom: 1.5rem;
+    }
+    
+    .track-popup-bullets li {
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    
+    .track-popup-description {
+      color: var(--white);
+      opacity: 0.8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    /* Desktop view (min-width: 1024px) */
+    @media (min-width: 1024px) {
+      .tracks {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto auto 1fr auto;
+        gap: 24px;
+        margin-top: 32px;
+        position: relative;
+        max-width: 1800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .tracks .fade-divider {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(to bottom, var(--sunrise-orange) 70%, rgba(230, 129, 88, 0) 100%);
+        border-radius: 2px;
+      }
+      
+      .tracks .fade-divider.div1 { left: 25%; }
+      .tracks .fade-divider.div2 { left: 50%; }
+      .tracks .fade-divider.div3 { left: 75%; }
+      
+      .tracks > div[class^='track-'] {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      
+      .track-title h3 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #B88EFF;
+        font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
+        line-height: 1.2;
+        font-weight: bold;
+      }
+      
+      .track-subheading p {
+        margin: 0 0 8px 0;
+        font-style: italic;
+        color: #fff;
+        font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
+        font-weight: 400;
+      }
+      
+      .track-bullets li {
+        margin-bottom: 8px;
+        font-size: clamp(1.1rem, 1.8vw + 0.8rem, 1.3rem);
+        color: #fff;
+        font-weight: 400;
+      }
+      
+      .track-bottom p {
+        margin: 20px 0 0 0;
+        font-size: clamp(1rem, 1.5vw + 0.8rem, 1.2rem);
+        color: #fff;
+        opacity: 0.9;
+        font-weight: 400;
+      }
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: var(--if-white);
+      opacity: 0.7;
+      font-size: 1rem;
+      margin-top: 64px;
+      margin-bottom: 48px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    @media (max-width: 1200px) {
+      .main-title {
+        font-size: 4rem;
+      }
+      
+      .tracks {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+      
+      .tracks .fade-divider.div2 {
+        display: none;
+      }
+      
+      .tracks-section-bg h2 {
+        font-size: 2.4rem;
+      }
+      
+      .track-title h3 {
+        font-size: 1.3rem;
+      }
+      
+      .track-subheading p {
+        font-size: 1.1rem;
+      }
+      
+      .track-bullets li {
+        font-size: 1.2rem;
+      }
+      
+      .track-bottom p {
+        font-size: 1.1rem;
+      }
+      
+      .track-includes strong {
+        font-size: 1.3rem;
+      }
+      
+      .track-includes li {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .container {
+        padding: 0;
+      }
+      
+      .section {
+        padding: 60px 40px;
+        min-height: 100vh;
+      }
+      
+      /* First section after hero - reduced top padding on mobile */
+      .section:first-of-type {
+        padding-top: 30px;
+      }
+      
+      .tracks {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      
+      .tracks .fade-divider {
+        display: none;
+      }
+      
+      .right-navbar {
+        padding: 0 24px;
+      }
+      
+      .navbar-right-group {
+        gap: 20px;
+      }
+      
+      .subtitle-header {
+        font-size: 1.3rem;
+      }
+      
+      /* Tablet subtitle - show only "A two-day convergence of dreamers and doers" */
+      .subtitle-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+      }
+      
+      .subtitle-col:not(:first-child),
+      .subtitle-divider {
+        display: none;
+      }
+      
+      .subtitle-col:first-child {
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+      
+      .tracks-section-bg h2 {
+        font-size: 2.4rem;
+      }
+      
+      .track-title h3 {
+        font-size: 1.3rem;
+      }
+      
+      .track-subheading p {
+        font-size: 1.1rem;
+      }
+      
+      .track-bullets li {
+        font-size: 1.2rem;
+      }
+      
+      .track-bottom p {
+        font-size: 1.1rem;
+      }
+      
+      .track-includes strong {
+        font-size: 1.3rem;
+      }
+      
+      .track-includes li {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .section {
+        padding: 40px 24px;
+      }
+      
+      /* First section after hero - reduced top padding on small mobile */
+      .section:first-of-type {
+        padding-top: 20px;
+      }
+      
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+      
+      .subtitle-header {
+        font-size: 1.2rem;
+      }
+      
+      /* Mobile subtitle - show only "A two-day convergence of dreamers and doers" */
+      .subtitle-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+      }
+      
+      .subtitle-col:not(:first-child),
+      .subtitle-divider {
+        display: none;
+      }
+      
+      .subtitle-col:first-child {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 500;
+      }
+      
+      .tracks-section-bg h2 {
+        font-size: 2rem;
+      }
+      
+      .right-navbar {
+        height: 70px;
+        padding: 0 16px;
+      }
+      
+      .navbar-right-group {
+        gap: 16px;
+      }
+      
+      .navbar-link {
+        font-size: 0.8rem;
+      }
+      
+      .navbar-btn-gradient {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+      }
+      
+      .track-title h3 {
+        font-size: 1.2rem;
+      }
+      
+      .track-subheading p {
+        font-size: 1rem;
+      }
+      
+      .track-bullets li {
+        font-size: 1.1rem;
+      }
+      
+      .track-bottom p {
+        font-size: 1rem;
+      }
+      
+      .track-includes strong {
+        font-size: 1.2rem;
+      }
+      
+      .track-includes li {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Brand video container */
+    .brand-video-container {
+      background: var(--midnight-blue);
+      background-image: url('Imagine IF Poster_cursor.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--royal-purple);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-in-out;
+      margin-bottom: 0;
+    }
+    
+    .brand-video-container.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .brand-video-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+      max-width: 600px;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .brand-video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(7, 12, 112, 0.8) 0%, rgba(121, 88, 237, 0.4) 100%);
+      z-index: 1;
+    }
+    
+    .brand-logo {
+      margin-bottom: 24px;
+    }
+    
+    .brand-logo svg {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 4px 12px rgba(182, 131, 237, 0.4));
+    }
+    
+    .brand-title {
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--light-purple);
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    
+    .brand-description {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--if-white);
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+    
+    .brand-presented-by {
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--if-white);
+      margin-bottom: 24px;
+    }
+    
+    .brand-partners {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .brand-partner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--if-white);
+    }
+    
+    .partner-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--if-white);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .brand-partnership {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--if-white);
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    /* Geometric shapes and motifs */
+    .geometric-shape {
+      position: absolute;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    
+    .upward-arrow {
+      width: 40px;
+      height: 40px;
+      background: var(--light-purple);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .radial-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
+    }
+    
+    .mountain-shape {
+      width: 80px;
+      height: 40px;
+      background: var(--royal-purple);
+      clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    }
+    
+    /* Background motifs for sections */
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    
+    .section::after {
+      content: '';
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--light-purple);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      opacity: 0.05;
+      pointer-events: none;
+    }
+
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 60px;
+      align-items: flex-end;
+      justify-content: center;
+      min-height: 400px;
+    }
+    
+    .section-text {
+      flex: 1;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    
+    .section-media {
+      flex: 1;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      height: 100%;
+    }
+    
+    .section-media img,
+    .section-media video {
+      max-width: 100%;
+      width: 100%;
+      height: calc(50% - 8px);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      object-fit: cover;
+    }
+    
+    .section-media img:hover,
+    .section-media video:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Responsive design for section layout */
+    @media (max-width: 900px) {
+      .section-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .section-text {
+        text-align: center;
+        align-items: center;
+      }
+      
+      .section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+      
+      .section p {
+        font-size: 1.6rem;
+        max-width: 100%;
+      }
+      
+      .section ul {
+        max-width: 100%;
+      }
+      
+      .section li {
+        font-size: 1.6rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .section h2 {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+      
+      .section p {
+        font-size: 1.4rem;
+      }
+      
+      .section li {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Vision section with background image */
+    .vision-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .vision-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .vision-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .vision-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(7, 12, 112, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 60px;
+      border-radius: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 120px;
+    }
+    
+    .vision-content h2 {
+      color: var(--sunrise-orange);
+      font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+    }
+    
+    .vision-content p {
+      line-height: 1.8;
+      margin: 0 0 20px 0;
+      letter-spacing: 0.01em;
+      font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
+      font-weight: 400;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--if-white);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive design for vision section */
+    @media (max-width: 900px) {
+      .vision-content {
+        padding: 40px;
+        padding-bottom: 80px;
+      }
+      
+      .vision-content h2 {
+        font-size: 2.6rem;
+        margin-bottom: 20px;
+      }
+      
+      .vision-content p {
+        font-size: 1.6rem;
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .vision-content {
+        padding: 30px 20px;
+        padding-bottom: 60px;
+      }
+      
+      .vision-content h2 {
+        font-size: 2.4rem;
+        margin-bottom: 16px;
+      }
+      
+      .vision-content p {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Nashville section with background image */
+    .nashville-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nashville-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .nashville-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .nashville-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(7, 12, 112, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 60px;
+      border-radius: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 120px;
+    }
+    
+    .nashville-content h2 {
+      color: var(--sunrise-orange);
+      font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+    }
+    
+    .nashville-content p {
+      line-height: 1.8;
+      margin: 0 0 20px 0;
+      letter-spacing: 0.01em;
+      font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
+      font-weight: 400;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--if-white);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive design for nashville section */
+    @media (max-width: 900px) {
+      .nashville-content {
+        padding: 40px;
+        padding-bottom: 80px;
+      }
+      
+      .nashville-content h2 {
+        font-size: 2.6rem;
+        margin-bottom: 20px;
+      }
+      
+      .nashville-content p {
+        font-size: 1.6rem;
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .nashville-content {
+        padding: 30px 20px;
+        padding-bottom: 60px;
+      }
+      
+      .nashville-content h2 {
+        font-size: 2.4rem;
+        margin-bottom: 16px;
+      }
+      
+      .nashville-content p {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Stakes section with background image */
+    .stakes-section {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stakes-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .stakes-bg-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .stakes-content {
+      position: relative;
+      z-index: 2;
+      background: rgba(7, 12, 112, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 40px;
+      border-radius: 0;
+      margin: 0;
+      width: 80%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 60px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .stakes-content h2 {
+      color: var(--sunrise-orange);
+      font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.5);
+    }
+    
+    .stakes-content p {
+      line-height: 1.8;
+      margin: 0 0 20px 0;
+      letter-spacing: 0.01em;
+      font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
+      font-weight: 400;
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--if-white);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* Responsive design for stakes section */
+    @media (max-width: 900px) {
+      .stakes-content {
+        padding: 30px;
+        padding-bottom: 50px;
+        width: 85%;
+      }
+      
+      .stakes-content h2 {
+        font-size: 2.6rem;
+        margin-bottom: 20px;
+      }
+      
+      .stakes-content p {
+        font-size: 1.6rem;
+        max-width: 100%;
+      }
+      
+      .stakes-btn {
+        font-size: 1.3rem;
+        padding: 16px 32px;
+        min-height: 52px;
+        margin-top: 28px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .stakes-content {
+        padding: 25px 20px;
+        padding-bottom: 40px;
+        width: 90%;
+      }
+      
+      .stakes-content h2 {
+        font-size: 2.4rem;
+        margin-bottom: 16px;
+      }
+      
+      .stakes-content p {
+        font-size: 1.4rem;
+      }
+      
+      .stakes-btn {
+        font-size: 1.2rem;
+        padding: 14px 28px;
+        min-height: 48px;
+        margin-top: 24px;
+      }
+    }
+
+    .stakes-btn {
+      background: linear-gradient(90deg, var(--royal-purple) 0%, var(--sunrise-orange) 100%);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
+      display: inline-block;
+      margin-top: 32px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(121, 88, 237, 0.3);
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      position: relative;
+      overflow: hidden;
+      min-height: 56px;
+    }
+    
+    .stakes-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .stakes-btn:hover {
+      background: linear-gradient(90deg, #6a4fd8 0%, #d6734a 100%);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(121, 88, 237, 0.4);
+      text-decoration: none;
+    }
+    
+    .stakes-btn:hover::before {
+      left: 100%;
+    }
+
+    .format-list {
+      margin: 0 0 24px 0;
+      padding: 0;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .format-item {
+      margin-bottom: 16px;
+      font-size: clamp(1.2rem, 1.8vw + 1rem, 1.8rem);
+      line-height: 1.6;
+      font-weight: 400;
+      color: var(--if-white);
+      text-align: center;
+    }
+    
+    /* Ensure all text in format section is center-aligned */
+    .format-section .section-text h2 {
+      text-align: center;
+    }
+    
+    .format-section .section-text p {
+      text-align: center;
+    }
+    
+    .format-section .section-text .cormorant-text {
+      text-align: center;
+    }
+
+    .cormorant-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
+      color: var(--if-white);
+      line-height: 1.6;
+    }
+  </style>
 </head>
-
 <body id="top">
-    <nav class="navbar new-navbar right-navbar">
-        <div class="navbar-left">
-            <a href="#top" class="navbar-logo">Imagine IF</a>
-            <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        <div class="navbar-right-group">
-            <a href="#vision" class="navbar-link">Vision</a>
-            <a href="#format" class="navbar-link">Format</a>
-            <a href="#nashville" class="navbar-link">Why Nashville?</a>
-            <a href="#tracks" class="navbar-link">Programming Tracks</a>
-            <a href="#stakes" class="navbar-link">Summit with Stakes</a>
-            <a href="schedule.html" class="navbar-link" target="_blank">Schedule</a>
-            <a class="navbar-btn-gradient" href="BuyTix.html" target="_blank">
-                Attend Imagine IF
-                <span class="arrow-circle">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="12" fill="#fff" />
-                        <path d="M10 8l4 4-4 4" stroke="#E13FA4" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </span>
-            </a>
-        </div>
-    </nav>
+  <nav class="navbar new-navbar right-navbar">
+    <div class="navbar-left">
+      <a href="#top" class="navbar-logo">Imagine IF</a>
+      <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-right-group">
+      <a href="#vision" class="navbar-link">Vision</a>
+      <a href="#format" class="navbar-link">Format</a>
+      <a href="#nashville" class="navbar-link">Why Nashville?</a>
+      <a href="#tracks" class="navbar-link">Programming Tracks</a>
+      <a href="#stakes" class="navbar-link">Summit with Stakes</a>
+      <a href="schedule.html" class="navbar-link" target="_blank">Schedule</a>
+      <a class="navbar-btn-gradient" href="BuyTix.html" target="_blank">
+        Attend Imagine IF
+        <span class="arrow-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="#fff"/>
+            <path d="M10 8l4 4-4 4" stroke="#E13FA4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </nav>
 
-    <!-- Mobile Dropdown Menu -->
-    <div class="mobile-dropdown" id="mobile-dropdown">
-        <div class="mobile-dropdown-content">
-            <ul class="mobile-nav-list">
-                <li><a href="#vision" class="mobile-nav-link">Vision</a></li>
-                <li><a href="#format" class="mobile-nav-link">Format</a></li>
-                <li><a href="#nashville" class="mobile-nav-link">Why Nashville?</a></li>
-                <li><a href="#tracks" class="mobile-nav-link">Programming Tracks</a></li>
-                <li><a href="#stakes" class="mobile-nav-link">Summit with Stakes</a></li>
-                <li><a href="schedule.html" class="mobile-nav-link" target="_blank">Schedule</a></li>
-            </ul>
+  <!-- Mobile Dropdown Menu -->
+  <div class="mobile-dropdown" id="mobile-dropdown">
+    <div class="mobile-dropdown-content">
+      <ul class="mobile-nav-list">
+        <li><a href="#vision" class="mobile-nav-link">Vision</a></li>
+        <li><a href="#format" class="mobile-nav-link">Format</a></li>
+        <li><a href="#nashville" class="mobile-nav-link">Why Nashville?</a></li>
+        <li><a href="#tracks" class="mobile-nav-link">Programming Tracks</a></li>
+        <li><a href="#stakes" class="mobile-nav-link">Summit with Stakes</a></li>
+        <li><a href="schedule.html" class="mobile-nav-link" target="_blank">Schedule</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="hero-section">
+    <div class="hero-background">
+      <video autoplay muted loop playsinline>
+        <source src="../ImagineIF_Background.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="main-title">Imagine IF</h1>
+      <div class="subtitle-header">
+        <div class="subtitle-grid">
+          <div class="subtitle-col">
+            <div>A two-day convergence of dreamers and doers</div>
+          </div>
+          <div class="subtitle-divider">|</div>
+          <div class="subtitle-col">
+            <div>Friday, September 19<br>Saturday, September 20</div>
+          </div>
+          <div class="subtitle-divider">|</div>
+          <div class="subtitle-col">
+            <div>Fisher Center for Performing Arts, Nashville, TN</div>
+          </div>
+          <div class="subtitle-divider">|</div>
+          <div class="subtitle-col">
+            <div>100% of proceeds support Bitcoin Park</div>
+          </div>
         </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-video">
+          <video controls poster="../ImagineIf-brandmark-blue@2x.png">
+            <source src="../BIT001_ImagineIF_v01.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section vision-section zoom-up" id="vision">
+      <div class="vision-background">
+        <img src="../FishersCenter_Entrance.jpg" alt="Fisher Center Entrance" class="vision-bg-image" />
+      </div>
+      <div class="vision-content">
+        <h2>The Vision</h2>
+        <p>Welcome to the high-conviction summit for dreamers and doers; those shaping what's possible in Bitcoin, AI, energy, and freedom tech.<br>
+        Join 500 of the most curious and capable minds for an intimate experience that blends the narrative power of human storytelling with the serendipity of summer camp.</p>
+      </div>
     </div>
 
-    <div class="hero-section">
-        <div class="hero-background">
-            <video autoplay muted loop playsinline>
-                <source src="../ImagineIF_Background.mp4" type="video/mp4">
-            </video>
+    <div class="section format-section zoom-up" id="format">
+      <div class="section-content">
+        <div class="section-text">
+          <h2>The Format</h2>
+          <div class="format-list">
+            <div class="format-item">Human centered keynotes begin with one question: "Imagine IF..."</div>
+            <div class="format-item">Candid fireside chats with visionaries turning ideas into infrastructure.</div>
+            <div class="format-item">Natural collisions with investors, engineers, policymakers, and entrepreneurs.</div>
+            <div class="format-item">Three distinct programming stages: the Imagine IF theatre stage; a stage co-curated by Ten31 and OpenSats; and a third stage led by Bitcoin Park and 256 Foundation.</div>
+          </div>
+          <p>Every moment entertains, informs, and inspires.<br><span class="cormorant-text">The future isn't inherited.<br>We imagine, then we build.</span></p>
         </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="main-title">Imagine IF</h1>
-            <div class="subtitle-header">
-                <div class="subtitle-grid">
-                    <div class="subtitle-col">
-                        <div>A two-day convergence of dreamers and doers</div>
-                    </div>
-                    <div class="subtitle-divider">|</div>
-                    <div class="subtitle-col">
-                        <div>Friday, September 19<br>Saturday, September 20</div>
-                    </div>
-                    <div class="subtitle-divider">|</div>
-                    <div class="subtitle-col">
-                        <div>Fisher Center for Performing Arts, Nashville, TN</div>
-                    </div>
-                    <div class="subtitle-divider">|</div>
-                    <div class="subtitle-col">
-                        <div>100% of proceeds support Bitcoin Park</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-media">
-                <div class="hero-video">
-                    <video controls poster="../Imagine IF Poster_cursor.png">
-                        <source src="../BIT001_ImagineIF_v01.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+        <div class="section-media">
+          <img src="../inline-fisher-4.jpg" alt="Fisher Center" />
+          <img src="../Fisher-Center-2.jpeg" alt="Fisher Center Interior" />
         </div>
+      </div>
     </div>
 
-    <div class="container">
-        <div class="section vision-section zoom-up" id="vision">
-            <div class="vision-background">
-                <img src="../FishersCenter_Entrance.jpg" alt="Fisher Center Entrance" class="vision-bg-image" />
-            </div>
-            <div class="vision-content">
-                <h2>The Vision</h2>
-                <p>Welcome to the high-conviction summit for dreamers and doers; those shaping what's possible in
-                    Bitcoin, AI, energy, and freedom tech.<br>
-                    Join 500 of the most curious and capable minds for an intimate experience that blends the narrative
-                    power of human storytelling with the serendipity of summer camp.</p>
-            </div>
-        </div>
-
-        <div class="section format-section zoom-up" id="format">
-            <div class="section-content">
-                <div class="section-text">
-                    <h2>The Format</h2>
-                    <div class="format-list">
-                        <div class="format-item">Human centered keynotes begin with one question: "Imagine IF..."</div>
-                        <div class="format-item">Candid fireside chats with visionaries turning ideas into
-                            infrastructure.</div>
-                        <div class="format-item">Natural collisions with investors, engineers, policymakers, and
-                            entrepreneurs.</div>
-                        <div class="format-item">Three distinct programming stages: the Imagine IF theatre stage; a
-                            stage co-curated by Ten31 and OpenSats; and a third stage led by Bitcoin Park and 256
-                            Foundation.</div>
-                    </div>
-                    <p>Every moment entertains, informs, and inspires.<br><span class="cormorant-text">The future isn't
-                            inherited.<br>We imagine, then we build.</span></p>
-                </div>
-                <div class="section-media">
-                    <img src="../inline-fisher-4.jpg" alt="Fisher Center" />
-                    <img src="../Fisher-Center-2.jpeg" alt="Fisher Center Interior" />
-                </div>
-            </div>
-        </div>
-
-        <div class="section nashville-section zoom-up" id="nashville">
-            <div class="nashville-background">
-                <img src="../Nashville_imagine.jpg" alt="Nashville" class="nashville-bg-image" />
-            </div>
-            <div class="nashville-content">
-                <h2>Why Nashville?</h2>
-                <p>Nashville is a city of rebirth, grit and creativity. The Athens of the South is where ideas stretch
-                    out and sing.<br>
-                    The Fisher Center, a European style opera house, encapsulates big visions and unforgettable moments
-                    mere steps from Bitcoin Park.</p>
-            </div>
-        </div>
-
-        <div class="tracks-section-bg fade-in" id="tracks">
-            <h2>Programming Tracks: From "Imagine IF…" to Impact</h2>
-            <div class="tracks">
-                <div class="fade-divider div1"></div>
-                <div class="fade-divider div2"></div>
-                <div class="fade-divider div3"></div>
-                <div class="track-title track-col1">
-                    <h3>1. Bitcoin & The Monetary Layer</h3>
-                </div>
-                <div class="track-title track-col2">
-                    <h3>2. AI & Intelligence Unbound</h3>
-                </div>
-                <div class="track-title track-col3">
-                    <h3>3. Energy & the Path to Abundance</h3>
-                </div>
-                <div class="track-title track-col4 small-title">
-                    <h3>4. Freedom Tech & Tools of Self-Defense</h3>
-                </div>
-
-                <div class="track-subheading track-col1">
-                    <p><em>Imagine IF… Bitcoin became the monetary network for 8 billion people.</em></p>
-                </div>
-                <div class="track-subheading track-col2">
-                    <p><em>Imagine IF… artificial intelligence was wise.</em></p>
-                </div>
-                <div class="track-subheading track-col3">
-                    <p><em>Imagine IF…. energy was too cheap to meter, and too clean to fear.</em></p>
-                </div>
-                <div class="track-subheading track-col4">
-                    <p><em>Imagine IF… the next great leap in human freedom came from open source code.</em></p>
-                </div>
-
-                <div class="track-bullets track-col1">
-                    <ul>
-                        <li>Global financial sovereignty</li>
-                        <li>The end of currency debasement</li>
-                        <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
-                        <li>Capital formation without central banks</li>
-                    </ul>
-                </div>
-                <div class="track-bullets track-col2">
-                    <ul>
-                        <li>Human-AI symbiosis and "second brain" tooling</li>
-                        <li>Autonomous agents that serve—not subvert—human goals</li>
-                        <li>Knowledge networks as public infrastructure</li>
-                        <li>AI for governance, forecasting, and education</li>
-                        <li>Alignment strategies to preserve agency and values</li>
-                    </ul>
-                </div>
-                <div class="track-bullets track-col3">
-                    <ul>
-                        <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
-                        <li>Building energy-resilient cities and sovereign grids</li>
-                        <li>Infrastructure for a high-power civilization</li>
-                        <li>Permacomputing and sustainable computation</li>
-                        <li>Thermodynamic freedom as the foundation of prosperity</li>
-                    </ul>
-                </div>
-                <div class="track-bullets track-col4">
-                    <ul>
-                        <li>Open-source defense systems</li>
-                        <li>Censorship-resistant speech and publishing</li>
-                        <li>Personal privacy infrastructure</li>
-                        <li>Borderless identity and access control</li>
-                        <li>Cryptography as civil liberties tech</li>
-                    </ul>
-                </div>
-
-                <div class="track-bottom track-col1">
-                    <p>This track explores Bitcoin as a civilizational foundation: resilient, trustless, and borderless.
-                    </p>
-                </div>
-                <div class="track-bottom track-col2">
-                    <p>This track probes how intelligence and intention unlock universal abundance.</p>
-                </div>
-                <div class="track-bottom track-col3">
-                    <p>This track moves us from scarcity to surplus, from fragile supply to antifragile design.</p>
-                </div>
-                <div class="track-bottom track-col4">
-                    <p>This track unpacks technologies that guard freedom in the digital and physical world.</p>
-                </div>
-            </div>
-            <div class="track-includes">
-                <strong>Each track includes:</strong>
-                <ul>
-                    <li>"Imagine IF..." presentations</li>
-                    <li>Panel + fireside combos</li>
-                    <li>Breakout discussions on the Ten31/OpenSats side stage and the Bitcoin Park/256 Foundation side
-                        stage</li>
-                </ul>
-            </div>
-        </div>
+    <div class="section nashville-section zoom-up" id="nashville">
+      <div class="nashville-background">
+        <img src="../Nashville_imagine.jpg" alt="Nashville" class="nashville-bg-image" />
+      </div>
+      <div class="nashville-content">
+        <h2>Why Nashville?</h2>
+        <p>Nashville is a city of rebirth, grit and creativity. The Athens of the South is where ideas stretch out and sing.<br>
+        The Fisher Center, a European style opera house, encapsulates big visions and unforgettable moments mere steps from Bitcoin Park.</p>
+      </div>
     </div>
 
-    <!-- Track Popups -->
-    <div class="track-popup" id="track-popup-1">
-        <div class="track-popup-content">
-            <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-            <h3 class="track-popup-title">1. Bitcoin & The Monetary Layer</h3>
-            <p class="track-popup-subheading">Imagine IF… Bitcoin became the monetary network for 8 billion people.</p>
-            <ul class="track-popup-bullets">
-                <li>Global financial sovereignty</li>
-                <li>The end of currency debasement</li>
-                <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
-                <li>Capital formation without central banks</li>
-            </ul>
-            <p class="track-popup-description">This track explores Bitcoin as a civilizational foundation: resilient,
-                trustless, and borderless.</p>
+    <div class="tracks-section-bg fade-in" id="tracks">
+      <h2>Programming Tracks: From "Imagine IF…" to Impact</h2>
+      <div class="tracks">
+        <div class="fade-divider div1"></div>
+        <div class="fade-divider div2"></div>
+        <div class="fade-divider div3"></div>
+        <div class="track-title track-col1"><h3>1. Bitcoin & The Monetary Layer</h3></div>
+        <div class="track-title track-col2"><h3>2. AI & Intelligence Unbound</h3></div>
+        <div class="track-title track-col3"><h3>3. Energy & the Path to Abundance</h3></div>
+        <div class="track-title track-col4 small-title"><h3>4. Freedom Tech & Tools of Self-Defense</h3></div>
+
+        <div class="track-subheading track-col1"><p><em>Imagine IF… Bitcoin became the monetary network for 8 billion people.</em></p></div>
+        <div class="track-subheading track-col2"><p><em>Imagine IF… artificial intelligence was wise.</em></p></div>
+        <div class="track-subheading track-col3"><p><em>Imagine IF…. energy was too cheap to meter, and too clean to fear.</em></p></div>
+        <div class="track-subheading track-col4"><p><em>Imagine IF… the next great leap in human freedom came from open source code.</em></p></div>
+
+        <div class="track-bullets track-col1">
+          <ul>
+            <li>Global financial sovereignty</li>
+            <li>The end of currency debasement</li>
+            <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
+            <li>Capital formation without central banks</li>
+          </ul>
         </div>
-    </div>
-
-    <div class="track-popup" id="track-popup-2">
-        <div class="track-popup-content">
-            <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-            <h3 class="track-popup-title">2. AI & Intelligence Unbound</h3>
-            <p class="track-popup-subheading">Imagine IF… artificial intelligence was wise.</p>
-            <ul class="track-popup-bullets">
-                <li>Human-AI symbiosis and "second brain" tooling</li>
-                <li>Autonomous agents that serve—not subvert—human goals</li>
-                <li>Knowledge networks as public infrastructure</li>
-                <li>AI for governance, forecasting, and education</li>
-                <li>Alignment strategies to preserve agency and values</li>
-            </ul>
-            <p class="track-popup-description">This track probes how intelligence and intention unlock universal
-                abundance.</p>
+        <div class="track-bullets track-col2">
+          <ul>
+            <li>Human-AI symbiosis and "second brain" tooling</li>
+            <li>Autonomous agents that serve—not subvert—human goals</li>
+            <li>Knowledge networks as public infrastructure</li>
+            <li>AI for governance, forecasting, and education</li>
+            <li>Alignment strategies to preserve agency and values</li>
+          </ul>
         </div>
-    </div>
-
-    <div class="track-popup" id="track-popup-3">
-        <div class="track-popup-content">
-            <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-            <h3 class="track-popup-title">3. Energy & the Path to Abundance</h3>
-            <p class="track-popup-subheading">Imagine IF…. energy was too cheap to meter, and too clean to fear.</p>
-            <ul class="track-popup-bullets">
-                <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
-                <li>Building energy-resilient cities and sovereign grids</li>
-                <li>Infrastructure for a high-power civilization</li>
-                <li>Permacomputing and sustainable computation</li>
-                <li>Thermodynamic freedom as the foundation of prosperity</li>
-            </ul>
-            <p class="track-popup-description">This track moves us from scarcity to surplus, from fragile supply to
-                antifragile design.</p>
+        <div class="track-bullets track-col3">
+          <ul>
+            <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
+            <li>Building energy-resilient cities and sovereign grids</li>
+            <li>Infrastructure for a high-power civilization</li>
+            <li>Permacomputing and sustainable computation</li>
+            <li>Thermodynamic freedom as the foundation of prosperity</li>
+          </ul>
         </div>
-    </div>
-
-    <div class="track-popup" id="track-popup-4">
-        <div class="track-popup-content">
-            <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-            <h3 class="track-popup-title">4. Freedom Tech & Tools of Self-Defense</h3>
-            <p class="track-popup-subheading">Imagine IF… the next great leap in human freedom came from open source
-                code.</p>
-            <ul class="track-popup-bullets">
-                <li>Open-source defense systems</li>
-                <li>Censorship-resistant speech and publishing</li>
-                <li>Personal privacy infrastructure</li>
-                <li>Borderless identity and access control</li>
-                <li>Cryptography as civil liberties tech</li>
-            </ul>
-            <p class="track-popup-description">This track unpacks technologies that guard freedom in the digital and
-                physical world.</p>
+        <div class="track-bullets track-col4">
+          <ul>
+            <li>Open-source defense systems</li>
+            <li>Censorship-resistant speech and publishing</li>
+            <li>Personal privacy infrastructure</li>
+            <li>Borderless identity and access control</li>
+            <li>Cryptography as civil liberties tech</li>
+          </ul>
         </div>
+
+        <div class="track-bottom track-col1"><p>This track explores Bitcoin as a civilizational foundation: resilient, trustless, and borderless.</p></div>
+        <div class="track-bottom track-col2"><p>This track probes how intelligence and intention unlock universal abundance.</p></div>
+        <div class="track-bottom track-col3"><p>This track moves us from scarcity to surplus, from fragile supply to antifragile design.</p></div>
+        <div class="track-bottom track-col4"><p>This track unpacks technologies that guard freedom in the digital and physical world.</p></div>
+      </div>
+      <div class="track-includes">
+        <strong>Each track includes:</strong>
+        <ul>
+          <li>"Imagine IF..." presentations</li>
+          <li>Panel + fireside combos</li>
+          <li>Breakout discussions on the Ten31/OpenSats side stage and the Bitcoin Park/256 Foundation side stage</li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <div class="stakes-section-wrapper" style="max-width:1200px; margin: 0 auto;">
-        <div class="section stakes-section fade-in" id="stakes" style="text-align:center;">
-            <div class="stakes-background">
-                <img src="../fisher-center-seating.jpg" alt="Fisher Center Seating" class="stakes-bg-image" />
-            </div>
-            <div class="stakes-content">
-                <h2>A Summit with Stakes</h2>
-                <p>The next chapter of human flourishing has begun.</p>
-                <p>You are more than an attendee.</p>
-                <p>We are writing the future.</p>
-                <p>Imagine IF is the catalyst.</p>
-                <a href="BuyTix.html" class="stakes-btn">ATTEND IMAGINE IF</a>
-            </div>
-        </div>
+  <!-- Track Popups -->
+  <div class="track-popup" id="track-popup-1">
+    <div class="track-popup-content">
+      <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
+      <h3 class="track-popup-title">1. Bitcoin & The Monetary Layer</h3>
+      <p class="track-popup-subheading">Imagine IF… Bitcoin became the monetary network for 8 billion people.</p>
+      <ul class="track-popup-bullets">
+        <li>Global financial sovereignty</li>
+        <li>The end of currency debasement</li>
+        <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
+        <li>Capital formation without central banks</li>
+      </ul>
+      <p class="track-popup-description">This track explores Bitcoin as a civilizational foundation: resilient, trustless, and borderless.</p>
     </div>
+  </div>
 
-    <div class="footer">
-        &copy; 2025 Bitcoin Park. Imagine IF. All rights reserved.
+  <div class="track-popup" id="track-popup-2">
+    <div class="track-popup-content">
+      <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
+      <h3 class="track-popup-title">2. AI & Intelligence Unbound</h3>
+      <p class="track-popup-subheading">Imagine IF… artificial intelligence was wise.</p>
+      <ul class="track-popup-bullets">
+        <li>Human-AI symbiosis and "second brain" tooling</li>
+        <li>Autonomous agents that serve—not subvert—human goals</li>
+        <li>Knowledge networks as public infrastructure</li>
+        <li>AI for governance, forecasting, and education</li>
+        <li>Alignment strategies to preserve agency and values</li>
+      </ul>
+      <p class="track-popup-description">This track probes how intelligence and intention unlock universal abundance.</p>
     </div>
+  </div>
 
-    <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  <div class="track-popup" id="track-popup-3">
+    <div class="track-popup-content">
+      <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
+      <h3 class="track-popup-title">3. Energy & the Path to Abundance</h3>
+      <p class="track-popup-subheading">Imagine IF…. energy was too cheap to meter, and too clean to fear.</p>
+      <ul class="track-popup-bullets">
+        <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
+        <li>Building energy-resilient cities and sovereign grids</li>
+        <li>Infrastructure for a high-power civilization</li>
+        <li>Permacomputing and sustainable computation</li>
+        <li>Thermodynamic freedom as the foundation of prosperity</li>
+      </ul>
+      <p class="track-popup-description">This track moves us from scarcity to surplus, from fragile supply to antifragile design.</p>
+    </div>
+  </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+  <div class="track-popup" id="track-popup-4">
+    <div class="track-popup-content">
+      <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
+      <h3 class="track-popup-title">4. Freedom Tech & Tools of Self-Defense</h3>
+      <p class="track-popup-subheading">Imagine IF… the next great leap in human freedom came from open source code.</p>
+      <ul class="track-popup-bullets">
+        <li>Open-source defense systems</li>
+        <li>Censorship-resistant speech and publishing</li>
+        <li>Personal privacy infrastructure</li>
+        <li>Borderless identity and access control</li>
+        <li>Cryptography as civil liberties tech</li>
+      </ul>
+      <p class="track-popup-description">This track unpacks technologies that guard freedom in the digital and physical world.</p>
+    </div>
+  </div>
 
-        // Observe all elements with animation classes
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-up');
-            animatedElements.forEach(el => observer.observe(el));
-        });
+  <div class="stakes-section-wrapper" style="max-width:1200px; margin: 0 auto;">
+    <div class="section stakes-section fade-in" id="stakes" style="text-align:center;">
+      <div class="stakes-background">
+        <img src="../fisher-center-seating.jpg" alt="Fisher Center Seating" class="stakes-bg-image" />
+      </div>
+      <div class="stakes-content">
+        <h2>A Summit with Stakes</h2>
+        <p>The next chapter of human flourishing has begun.</p>
+        <p>You are more than an attendee.</p>
+        <p>We are writing the future.</p>
+        <p>Imagine IF is the catalyst.</p>
+        <a href="BuyTix.html" class="stakes-btn">ATTEND IMAGINE IF</a>
+      </div>
+    </div>
+  </div>
 
-        // Smooth navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.right-navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(7, 12, 112, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(7, 12, 112, 0.95)';
-            }
-        });
+  <div class="footer">
+    &copy; 2025 Bitcoin Park. Imagine IF. All rights reserved.
+  </div>
 
-        // Video takeover specific observer
-        const videoObserverOptions = {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
-        };
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const videoTakeover = entry.target;
-                    const video = videoTakeover.querySelector('video');
-                    const overlay = videoTakeover.querySelector('.video-overlay');
-                    const subtitle = videoTakeover.querySelector('.video-subtitle');
-                    const presentedBy = videoTakeover.querySelector('.video-presented-by');
-                    const partners = videoTakeover.querySelector('.video-partners');
-                    const playButton = videoTakeover.querySelector('.play-button');
-
-                    // Show video and overlay
-                    video.classList.add('visible');
-                    overlay.classList.add('visible');
-
-                    // Animate content elements
-                    setTimeout(() => subtitle.classList.add('visible'), 500);
-                    setTimeout(() => presentedBy.classList.add('visible'), 700);
-                    setTimeout(() => partners.classList.add('visible'), 900);
-
-                    // Handle autoplay
-                    const playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            // Autoplay started successfully
-                            playButton.style.display = 'none';
-                        }).catch(() => {
-                            // Autoplay was prevented, show play button
-                            playButton.classList.add('visible');
-                        });
-                    }
-                }
-            });
-        }, videoObserverOptions);
-
-        // Brand video container observer
-        const brandVideoObserverOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const brandVideoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, brandVideoObserverOptions);
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroSection = document.querySelector('.hero-section');
-            if (heroSection) {
-                const rate = scrolled * -0.5;
-                heroSection.style.transform = `translateY(${rate}px)`;
-            }
-        });
-
-        // Hamburger menu functionality
-        const hamburgerMenu = document.getElementById('hamburger-menu');
-        const mobileDropdown = document.getElementById('mobile-dropdown');
-        const body = document.body;
-
-        hamburgerMenu.addEventListener('click', function () {
-            hamburgerMenu.classList.toggle('active');
-            mobileDropdown.classList.toggle('active');
-            body.style.overflow = mobileDropdown.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Close mobile dropdown when clicking on a link
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', function () {
-                hamburgerMenu.classList.remove('active');
-                mobileDropdown.classList.remove('active');
-                body.style.overflow = '';
-            });
-        });
-
-        // Close mobile dropdown when clicking outside
-        mobileDropdown.addEventListener('click', function (e) {
-            if (e.target === mobileDropdown) {
-                hamburgerMenu.classList.remove('active');
-                mobileDropdown.classList.remove('active');
-                body.style.overflow = '';
-            }
-        });
-
-        // Close mobile dropdown on escape key
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && mobileDropdown.classList.contains('active')) {
-                hamburgerMenu.classList.remove('active');
-                mobileDropdown.classList.remove('active');
-                body.style.overflow = '';
-            }
-        });
-
-        // Smooth scrolling for mobile nav links
-        document.querySelectorAll('.mobile-nav-link[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Function to close track popups
-        function closeTrackPopup() {
-            document.querySelectorAll('.track-popup').forEach(popup => {
-                popup.classList.remove('active');
-            });
-            document.body.style.overflow = '';
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
+      });
+    }, observerOptions);
 
-        // Function to open track popup
-        function openTrackPopup(trackNumber) {
-            const popup = document.getElementById(`track-popup-${trackNumber}`);
-            if (popup) {
-                popup.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+    // Observe all elements with animation classes
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-up');
+      animatedElements.forEach(el => observer.observe(el));
+    });
+
+    // Smooth navbar background on scroll
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.right-navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(7, 12, 112, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(7, 12, 112, 0.95)';
+      }
+    });
+
+    // Video takeover specific observer
+    const videoObserverOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const videoTakeover = entry.target;
+          const video = videoTakeover.querySelector('video');
+          const overlay = videoTakeover.querySelector('.video-overlay');
+          const subtitle = videoTakeover.querySelector('.video-subtitle');
+          const presentedBy = videoTakeover.querySelector('.video-presented-by');
+          const partners = videoTakeover.querySelector('.video-partners');
+          const playButton = videoTakeover.querySelector('.play-button');
+
+          // Show video and overlay
+          video.classList.add('visible');
+          overlay.classList.add('visible');
+
+          // Animate content elements
+          setTimeout(() => subtitle.classList.add('visible'), 500);
+          setTimeout(() => presentedBy.classList.add('visible'), 700);
+          setTimeout(() => partners.classList.add('visible'), 900);
+
+          // Handle autoplay
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              // Autoplay started successfully
+              playButton.style.display = 'none';
+            }).catch(() => {
+              // Autoplay was prevented, show play button
+              playButton.classList.add('visible');
+            });
+          }
         }
+      });
+    }, videoObserverOptions);
 
-        // Add click event listeners to track titles on all screen sizes
-        document.addEventListener('DOMContentLoaded', function () {
-            const trackTitles = document.querySelectorAll('.track-title');
-            trackTitles.forEach((title, index) => {
-                title.addEventListener('click', function () {
-                    openTrackPopup(index + 1);
-                });
-            });
+    // Brand video container observer
+    const brandVideoObserverOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-            // Close popup when clicking outside
-            document.querySelectorAll('.track-popup').forEach(popup => {
-                popup.addEventListener('click', function (e) {
-                    if (e.target === popup) {
-                        closeTrackPopup();
-                    }
-                });
-            });
+    const brandVideoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, brandVideoObserverOptions);
 
-            // Close popup on escape key
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    closeTrackPopup();
-                }
-            });
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const heroSection = document.querySelector('.hero-section');
+      if (heroSection) {
+        const rate = scrolled * -0.5;
+        heroSection.style.transform = `translateY(${rate}px)`;
+      }
+    });
+    
+    // Hamburger menu functionality
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    const body = document.body;
+    
+    hamburgerMenu.addEventListener('click', function() {
+      hamburgerMenu.classList.toggle('active');
+      mobileDropdown.classList.toggle('active');
+      body.style.overflow = mobileDropdown.classList.contains('active') ? 'hidden' : '';
+    });
+    
+    // Close mobile dropdown when clicking on a link
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        hamburgerMenu.classList.remove('active');
+        mobileDropdown.classList.remove('active');
+        body.style.overflow = '';
+      });
+    });
+    
+    // Close mobile dropdown when clicking outside
+    mobileDropdown.addEventListener('click', function(e) {
+      if (e.target === mobileDropdown) {
+        hamburgerMenu.classList.remove('active');
+        mobileDropdown.classList.remove('active');
+        body.style.overflow = '';
+      }
+    });
+    
+    // Close mobile dropdown on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileDropdown.classList.contains('active')) {
+        hamburgerMenu.classList.remove('active');
+        mobileDropdown.classList.remove('active');
+        body.style.overflow = '';
+      }
+    });
+    
+    // Smooth scrolling for mobile nav links
+    document.querySelectorAll('.mobile-nav-link[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Function to close track popups
+    function closeTrackPopup() {
+      document.querySelectorAll('.track-popup').forEach(popup => {
+        popup.classList.remove('active');
+      });
+      document.body.style.overflow = '';
+    }
+    
+    // Function to open track popup
+    function openTrackPopup(trackNumber) {
+      const popup = document.getElementById(`track-popup-${trackNumber}`);
+      if (popup) {
+        popup.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    // Add click event listeners to track titles on all screen sizes
+    document.addEventListener('DOMContentLoaded', function() {
+      const trackTitles = document.querySelectorAll('.track-title');
+      trackTitles.forEach((title, index) => {
+        title.addEventListener('click', function() {
+          openTrackPopup(index + 1);
         });
-    </script>
+      });
+      
+      // Close popup when clicking outside
+      document.querySelectorAll('.track-popup').forEach(popup => {
+        popup.addEventListener('click', function(e) {
+          if (e.target === popup) {
+            closeTrackPopup();
+          }
+        });
+      });
+      
+      // Close popup on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeTrackPopup();
+        }
+      });
+    });
+  </script>
 </body>
-
-</html>
+</html> 
