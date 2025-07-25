@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // Get the current pathname
+        const currentPath = window.location.pathname.toLowerCase();
+        
+        // Define redirects
+        const redirects = {
+            '/imagineif': '/imagineif/',
+            '/imagineif/': '/imagineif/',
+            '/imagineif.html': '/imagineif/',
+            '/imagineif/index.html': '/imagineif/',
+            '/opdaily': '/opdaily.html',
+            '/custody': '/custody.html'
+        };
+        
+        // Check if we have a redirect for this path
+        if (redirects[currentPath]) {
+            window.location.href = redirects[currentPath];
+            return;
+        }
+        
+        // Handle case-insensitive imagineif variations
+        if (currentPath.includes('imagineif')) {
+            window.location.href = '/imagineif/';
+            return;
+        }
+        
+        // If no redirect found, go to home page
+        window.location.href = '/';
+    </script>
+    <meta http-equiv="refresh" content="0; url=/">
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html> 
