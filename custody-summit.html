@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitcoin Custody & Treasury Summit - Bitcoin Park</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Bitcoin Custody & Treasury Summit Brand Colors - Matched to Poster */
+      --burnt-orange: #E68158;
+      --deep-midnight-blue: #070C70;
+      --bitcoin-gold: #FFC65C;
+      --dark-green: #0A2B07;
+      --accent-purple: #7958ED;
+      --dark-gray: #212121;
+      --white: #FFFFFF;
+      --light-gray: #F5F5F5;
+      --poster-blue: #070C70;
+      --poster-orange: #E68158;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+    
+      html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 1.4vw + 0.9rem, 1.4rem);
+    background: url('CTSBackgroundPhoto.png') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--dark-gray);
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Optima', 'Georgia', serif;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+      letter-spacing: -0.02em;
+    }
+    
+    h2 {
+      font-size: clamp(2rem, 3vw + 0.8rem, 3rem);
+      letter-spacing: -0.01em;
+    }
+    
+    h3 {
+      font-size: clamp(1.5rem, 2.5vw + 0.6rem, 2.2rem);
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      font-size: clamp(1rem, 1.2vw + 0.8rem, 1.2rem);
+    }
+    
+    /* Animation keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    /* Intersection Observer animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.8s ease-out;
+    }
+    
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Navigation */
+    .navbar {
+      background: rgba(32, 34, 82, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .navbar-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: brightness(1.1) contrast(1.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .navbar-logo:hover {
+      transform: scale(1.1);
+    }
+    
+    .navbar-brand {
+      font-family: 'Optima', 'Georgia', serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      opacity: 0.8;
+    }
+    
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin: 0 auto;
+    }
+    
+    .navbar-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--burnt-orange);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-link:hover::after {
+      width: 100%;
+    }
+    
+    .navbar-cta {
+      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(255, 153, 116, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      letter-spacing: 0.01em;
+    }
+    
+    .navbar-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 153, 116, 0.5);
+    }
+    
+    .navbar-btn {
+      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(255, 153, 116, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      letter-spacing: 0.01em;
+    }
+    
+    .navbar-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 153, 116, 0.5);
+    }
+    
+    /* Hero Video Container */
+    .hero-video-container {
+      max-width: 900px;
+      margin: 2rem auto 0;
+      text-align: center;
+    }
+    
+    .hero-video {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      background: #000;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+    
+    /* Video controls styling */
+    .hero-video::-webkit-media-controls {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 0 0 15px 15px;
+    }
+    
+    .hero-video::-webkit-media-controls-panel {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .hamburger span {
+      width: 100%;
+      height: 3px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hamburger animation when active */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Mobile menu - hidden by default */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      z-index: 999;
+    }
+
+    .mobile-menu.active {
+      display: block;
+      animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+
+    .mobile-nav-links li {
+      margin-bottom: 1rem;
+    }
+
+    .mobile-nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: block;
+      padding: 0.75rem 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    .mobile-attend-btn {
+      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 1rem;
+      display: inline-block;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(255, 153, 116, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-attend-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 153, 116, 0.5);
+    }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px; /* Account for fixed navbar height */
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(7, 12, 112, 0.8) 0%, rgba(10, 43, 7, 0.7) 50%, rgba(230, 129, 88, 0.6) 100%);
+      z-index: 1;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M0 7.5h15M7.5 0v15" stroke="rgba(255,255,255,0.1)" stroke-width="0.3" fill="none"/><circle cx="7.5" cy="7.5" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+      opacity: 0.3;
+      z-index: 2;
+    }
+    
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 3;
+      min-height: calc(100vh - 80px); /* Exact height accounting for navbar */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem; /* Tighter gap to fit everything */
+      transform: translateY(-10%); /* Move content up closer to nav */
+    }
+    
+    .hero-title {
+      font-size: clamp(2rem, 4vw + 0.8rem, 3.5rem);
+      font-weight: 800;
+      margin: 0;
+      margin-bottom: 0.5rem; /* Small gap between title and subtitle */
+      letter-spacing: -0.02em;
+      animation: fadeInUp 1s ease-out;
+      color: var(--bitcoin-gold);
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(0.8rem, 1.3vw + 0.5rem, 1.1rem);
+      font-weight: 300;
+      margin-bottom: 0.5rem; /* Small gap between subtitle and date */
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.2s both;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-date {
+      font-size: clamp(1.2rem, 2vw + 0.8rem, 2rem);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--bitcoin-gold);
+      animation: fadeInUp 1s ease-out 0.4s both;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      margin-top: 0.25rem; /* Small gap above date */
+    }
+    
+    .hero-location {
+      font-size: clamp(1.2rem, 2vw + 0.8rem, 1.6rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      color: var(--bitcoin-gold);
+      animation: fadeInUp 1s ease-out 0.5s both;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-cta {
+      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+      border: none;
+      letter-spacing: 0.01em;
+      animation: fadeInUp 1s ease-out 0.6s both;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+    
+    /* Hero Graphic - Custody Logo */
+    .hero-icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem; /* Reduced gap */
+      padding: 4px;
+      z-index: 3;
+    }
+    
+    .hero-icon {
+      width: 350px;
+      height: 350px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+      transition: transform 0.3s ease;
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    .hero-icon:hover {
+      transform: scale(1.05);
+    }
+    
+    .binary-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.3;
+      font-family: monospace;
+      font-size: 1.2rem;
+      color: var(--bitcoin-gold);
+      z-index: 1;
+    }
+    
+    .binary-background span {
+      margin: 0 2px;
+      animation: fadeInUp 2s ease-out infinite;
+    }
+    
+    .binary-background span:nth-child(1) { animation-delay: 0s; }
+    .binary-background span:nth-child(2) { animation-delay: 0.2s; }
+    .binary-background span:nth-child(3) { animation-delay: 0.4s; }
+    .binary-background span:nth-child(4) { animation-delay: 0.6s; }
+    .binary-background span:nth-child(5) { animation-delay: 0.8s; }
+    .binary-background span:nth-child(6) { animation-delay: 1s; }
+
+    /* Video Section */
+    .video-section {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    .video-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .video-container video {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      height: auto;
+      min-height: 400px;
+      object-fit: contain;
+    }
+
+    /* Video controls styling */
+    .video-container video::-webkit-media-controls {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 0 0 20px 20px;
+    }
+
+    .video-container video::-webkit-media-controls-panel {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Ensure video is visible */
+    .video-container video:not([src]) {
+      display: none;
+    }
+    .binary-background span:nth-child(7) { animation-delay: 1.2s; }
+    .binary-background span:nth-child(8) { animation-delay: 1.4s; }
+    .binary-background span:nth-child(9) { animation-delay: 1.6s; }
+    .binary-background span:nth-child(10) { animation-delay: 1.8s; }
+    .binary-background span:nth-child(11) { animation-delay: 2s; }
+    .binary-background span:nth-child(12) { animation-delay: 2.2s; }
+    
+    /* Sections */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+      color: var(--deep-midnight-blue);
+      font-size: clamp(2.5rem, 4vw + 1.5rem, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--dark-gray);
+      margin-bottom: 4rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* About Section */
+    .about {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    
+    .about-text {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .audience-item {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    
+    .audience-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    
+    .audience-item h4 {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+    
+    .audience-item p {
+      text-align: left;
+      font-size: 1.1rem;
+    }
+    
+    .audience-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.8rem;
+    }
+    
+    /* Themes Section */
+    .themes {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .theme-card {
+      background: rgba(7, 12, 112, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit2" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M0 7.5h15M7.5 0v15" stroke="rgba(255,255,255,0.1)" stroke-width="0.3" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit2)"/></svg>');
+      opacity: 0.2;
+    }
+    
+    .theme-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(32, 34, 82, 0.3);
+    }
+    
+    .theme-card h3 {
+      color: var(--bitcoin-gold);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+      font-size: 1.5rem;
+    }
+    
+    .theme-card p {
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+      font-size: 1.1rem;
+    }
+    
+    /* Schedule Section */
+    .schedule {
+      background: var(--light-gray);
+    }
+    
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .day-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .day-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
+    }
+    
+    .day-title {
+      color: var(--deep-midnight-blue);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    
+    .day-date {
+      color: var(--burnt-orange);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+    }
+    
+    .schedule-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: var(--light-gray);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .schedule-item:hover {
+      background: var(--accent-purple);
+      transform: translateX(5px);
+    }
+    
+    .schedule-time {
+      font-weight: 700;
+      color: var(--deep-midnight-blue);
+      min-width: 80px;
+      margin-right: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .schedule-content h4 {
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    
+    .schedule-content p {
+      color: var(--dark-gray);
+      opacity: 0.8;
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+    
+    /* Venue Section */
+    .venue {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+    }
+    
+    .venue-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .venue-text {
+      font-size: 1.3rem;
+      line-height: 1.8;
+    }
+    
+    .venue-video {
+      width: 100%;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .venue-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+    
+    /* Footer */
+    .footer {
+      background: rgba(33, 33, 33, 0.95);
+      backdrop-filter: blur(10px);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-branding {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    
+    .footer-logo {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      filter: brightness(1.2) contrast(1.1);
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+    
+    .footer-logo:hover {
+      opacity: 1;
+    }
+    
+    .footer-brand-text {
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+    
+    .footer-separator {
+      opacity: 0.5;
+    }
+    
+    .footer-supported {
+      font-weight: 300;
+      opacity: 0.7;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-link {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .footer-link:hover {
+      opacity: 1;
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background: var(--burnt-orange);
+      transform: translateY(-2px);
+    }
+    
+    .footer-text {
+      opacity: 0.7;
+      font-size: 1.1rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-video-container {
+        max-width: 100%;
+        margin: 1.5rem auto 0;
+        padding: 0 1rem;
+      }
+      
+      .hero-video {
+        max-width: 100%;
+      }
+      
+      .navbar-nav {
+        display: none;
+      }
+      
+      .navbar-cta {
+        display: none;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .mobile-menu {
+        display: none;
+      }
+      
+      .hero {
+        padding-top: 80px; /* Ensure consistent padding on mobile */
+      }
+      
+      .hero-content {
+        padding: 0 1rem;
+        min-height: calc(100vh - 80px);
+        gap: 1rem; /* Tighter gap on tablet */
+        transform: translateY(-8%); /* Slightly less offset on tablet */
+      }
+      
+      .hero-icon {
+        width: 280px;
+        height: 280px;
+      }
+      
+      .logo-container {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .custody-logo {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      
+      .hero-title {
+        font-size: clamp(1.8rem, 3.5vw + 0.6rem, 2.8rem);
+        margin-bottom: 0.25rem; /* Smaller gap on tablet */
+      }
+      
+      .hero-subtitle {
+        font-size: clamp(0.7rem, 1.2vw + 0.4rem, 0.9rem);
+        margin-bottom: 0.25rem; /* Smaller gap on tablet */
+      }
+      
+      .section {
+        padding: 4rem 1rem;
+      }
+      
+      .video-section {
+        padding: 3rem 0;
+      }
+      
+      .video-container {
+        padding: 0 1rem;
+      }
+      
+      .video-container video {
+        min-height: 350px;
+      }
+      
+      .about-content {
+        gap: 2rem;
+      }
+      
+      .venue-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .schedule-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .themes-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-video-container {
+        max-width: 100%;
+        margin: 1rem auto 0;
+        padding: 0 1rem;
+      }
+      
+      .hero-content {
+        gap: 0.75rem; /* Even tighter gap on mobile */
+        transform: translateY(-6%); /* Less offset on small mobile */
+      }
+      
+      .hero-icon {
+        width: 220px;
+        height: 220px;
+      }
+      
+      .logo-container {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .custody-logo {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      
+      .hero-title {
+        font-size: clamp(1.5rem, 3vw + 0.5rem, 2.2rem);
+        margin-bottom: 0.125rem; /* Minimal gap on mobile */
+      }
+      
+      .hero-subtitle {
+        font-size: clamp(0.6rem, 1vw + 0.3rem, 0.8rem);
+        margin-bottom: 0.125rem; /* Minimal gap on mobile */
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-date {
+        font-size: 1.8rem;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .video-section {
+        padding: 2rem 0;
+      }
+      
+      .video-container {
+        padding: 0 1rem;
+      }
+      
+      .video-container video {
+        min-height: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-brand-container">
+      <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="navbar-logo">
+      <a href="#top" class="navbar-brand">Bitcoin Custody & Treasury Summit</a>
+    </div>
+    
+    <!-- Desktop Navigation -->
+    <div class="navbar-nav">
+      <a href="#about" class="navbar-link">About</a>
+      <a href="#themes" class="navbar-link">Themes</a>
+      <a href="#schedule" class="navbar-link">Schedule</a>
+      <a href="#venue" class="navbar-link">The Park</a>
+      <a href="speakers.html" class="navbar-link">Speakers</a>
+    </div>
+    
+    <!-- Desktop Attend Button -->
+    <a href="#contact" class="navbar-cta">Attend CTS →</a>
+    
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#themes" onclick="closeMenu()">Themes</a></li>
+      <li><a href="#schedule" onclick="closeMenu()">Schedule</a></li>
+      <li><a href="#venue" onclick="closeMenu()">The Park</a></li>
+      <li><a href="speakers.html" onclick="closeMenu()">Speakers</a></li>
+    </ul>
+    <a href="#contact" class="mobile-attend-btn" onclick="closeMenu()">
+      Attend CTS →
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-icon-container">
+        <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="hero-icon">
+      </div>
+      <h1 class="hero-title fade-in">Bitcoin Custody & Treasury Summit</h1>
+      <p class="hero-subtitle fade-in">A curated, two-day gathering for institutional and corporate treasurers, custody providers, and Bitcoin infrastructure builders.</p>
+      <div class="hero-date fade-in">September 17th & 18th</div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section">
+    <div class="video-container">
+      <video 
+        src="/Custody_and_Treasury_2.mp4"
+        muted
+        controls
+        playsinline
+        preload="auto"
+        class="hero-video"
+        id="scroll-video"
+        aria-label="Bitcoin Custody & Treasury Summit promotional video"
+      >
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title fade-in">Purpose and Mission</h2>
+      <p class="section-subtitle fade-in">Join us for a curated, two-day gathering focused on institutional-grade Bitcoin custody, treasury management, and the future of digital asset infrastructure.</p>
+      
+      <div class="about-content">
+        <div class="about-text fade-in">
+          <p>The Bitcoin Custody & Treasury Summit brings together the world's leading institutional and corporate treasurers, Bitcoin-native and traditional asset managers, custody providers, and infrastructure builders for focused discussions on security, resilience, and institutional-grade Bitcoin adoption.</p>
+        </div>
+        
+        <div class="audience-grid fade-in">
+          <div class="audience-item">
+            <div class="audience-icon">🏛️</div>
+            <h4>Institutional Treasurers</h4>
+            <p>Corporate and institutional treasury professionals exploring Bitcoin allocation strategies</p>
+          </div>
+          <div class="audience-item">
+            <div class="audience-icon">🔒</div>
+            <h4>Custody Providers</h4>
+            <p>Infrastructure builders and custody solution providers</p>
+          </div>
+          <div class="audience-item">
+            <div class="audience-icon">⚖️</div>
+            <h4>Legal & Policy</h4>
+            <p>Security, legal, and policy professionals</p>
+          </div>
+                      <div class="audience-item">
+              <div class="audience-icon">🚀</div>
+              <h4>Bitcoin Entrepreneurs</h4>
+              <p>Technical innovators and Bitcoin ecosystem builders</p>
+            </div>
+          </div>
+          
+          <div class="about-text fade-in" style="margin-top: 3rem;">
+            <p>This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss regulatory frameworks, and build the networks necessary for widespread institutional Bitcoin adoption.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- Themes Section -->
+  <section id="themes" class="section themes">
+    <div class="container">
+      <h2 class="section-title fade-in">Themes & Topics</h2>
+      <p class="section-subtitle fade-in">Explore the critical topics shaping the future of institutional Bitcoin custody and treasury management.</p>
+      
+      <div class="themes-grid">
+        <div class="theme-card fade-in">
+          <h3>Cold vs Warm vs MPC Custody</h3>
+          <p>Deep dive into the technical and operational differences between custody approaches, their security trade-offs, and implementation strategies for institutional environments.</p>
+        </div>
+        
+        <div class="theme-card fade-in">
+          <h3>Collaborative Custody</h3>
+          <p>Explore emerging models of shared custody arrangements, multi-signature setups, and distributed trust mechanisms for institutional Bitcoin holdings.</p>
+        </div>
+        
+        <div class="theme-card fade-in">
+          <h3>BTC on Corporate Balance Sheets</h3>
+          <p>Strategic considerations for corporate Bitcoin allocation, accounting treatment, regulatory compliance, and integration with existing treasury operations.</p>
+        </div>
+        
+        <div class="theme-card fade-in">
+          <h3>Estate Planning & Succession</h3>
+          <p>Critical discussions on Bitcoin inheritance, key management, and ensuring long-term access to digital assets across generations and organizational changes.</p>
+        </div>
+        
+        <div class="theme-card fade-in">
+          <h3>Internal Controls & Governance</h3>
+          <p>Best practices for establishing robust internal controls, audit procedures, and governance frameworks for institutional Bitcoin custody operations.</p>
+        </div>
+        
+        <div class="theme-card fade-in">
+          <h3>Regulatory Dialogue</h3>
+          <p>Engage with regulators and policymakers on the evolving landscape of digital asset custody regulations and compliance requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section id="schedule" class="section schedule">
+    <div class="container">
+      <h2 class="section-title fade-in">Agenda</h2>
+      <p class="section-subtitle fade-in">Two days of curated conversations, networking, and focused discussions on institutional Bitcoin custody.</p>
+      
+      <div class="schedule-grid">
+        <div class="day-card fade-in-left">
+          <h3 class="day-title">Day 1</h3>
+          <div class="day-date">Wednesday, September 17, 2025</div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">9:00 AM</div>
+            <div class="schedule-content">
+              <h4>Welcome & Opening Remarks</h4>
+              <p>Summit overview and participant introductions</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">10:00 AM</div>
+            <div class="schedule-content">
+              <h4>Cold vs Warm vs MPC Custody</h4>
+              <p>Technical deep dive and institutional considerations</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">12:00 PM</div>
+            <div class="schedule-content">
+              <h4>Networking Lunch</h4>
+              <p>Curated conversations and relationship building</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">2:00 PM</div>
+            <div class="schedule-content">
+              <h4>Corporate Balance Sheet Strategies</h4>
+              <p>Real-world implementation case studies</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">4:00 PM</div>
+            <div class="schedule-content">
+              <h4>Evening Reception</h4>
+              <p>Networking and informal discussions</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="day-card fade-in-right">
+          <h3 class="day-title">Day 2</h3>
+          <div class="day-date">Thursday, September 18, 2025</div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">9:00 AM</div>
+            <div class="schedule-content">
+              <h4>Collaborative Custody Models</h4>
+              <p>Emerging approaches and institutional applications</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">11:00 AM</div>
+            <div class="schedule-content">
+              <h4>Estate Planning & Succession</h4>
+              <p>Long-term access and inheritance strategies</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">1:00 PM</div>
+            <div class="schedule-content">
+              <h4>Networking Lunch</h4>
+              <p>Continued relationship building and discussions</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">3:00 PM</div>
+            <div class="schedule-content">
+              <h4>Regulatory Dialogue</h4>
+              <p>Compliance frameworks and policy discussions</p>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-time">5:00 PM</div>
+            <div class="schedule-content">
+              <h4>Closing Remarks</h4>
+              <p>Key takeaways and next steps</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue Section -->
+  <section id="venue" class="section venue">
+    <div class="container">
+      <h2 class="section-title fade-in">Bitcoin Park</h2>
+      <p class="section-subtitle fade-in">Join us at Bitcoin Park, the premier destination for Bitcoin innovation and community building.</p>
+      
+      <div class="venue-content">
+        <div class="venue-text fade-in-left">
+                      <h3>Nashville, TN</h3>
+          <p>Bitcoin Park serves as the ideal setting for this intimate gathering, providing a professional yet collaborative environment for focused discussions on institutional Bitcoin custody and treasury management.</p>
+          <p>Located in the heart of Nashville, Bitcoin Park offers state-of-the-art facilities, comfortable meeting spaces, and the perfect backdrop for building lasting relationships within the Bitcoin ecosystem.</p>
+          <p>Our venue combines the professional atmosphere required for institutional discussions with the innovative spirit that drives Bitcoin adoption and development.</p>
+        </div>
+        
+        <div class="venue-video fade-in-right">
+          <video 
+            src="/Custody_and_Treasury_V1.mp4"
+            autoplay
+            muted
+            controls
+            playsinline
+            preload="auto"
+            aria-label="Bitcoin Park venue video"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-branding">
+        <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="footer-logo">
+        <span class="footer-brand-text">bitcoin park</span>
+        <span class="footer-separator">|</span>
+        <span class="footer-supported">Supported by:</span>
+      </div>
+      
+      <div class="footer-links">
+        <a href="https://bitcoinpark.com" class="footer-link">Bitcoin Park</a>
+        <a href="https://bitcoinpark.com/nashville" class="footer-link">Nashville Location</a>
+        <a href="https://bitcoinpark.com/email" class="footer-link">Newsletter</a>
+        <a href="mailto:info@bitcoinpark.com" class="footer-link">Contact</a>
+      </div>
+      
+      <div class="footer-social">
+        <a href="https://twitter.com/bitcoinpark_" class="social-icon">𝕏</a>
+        <a href="https://primal.net/park" class="social-icon">📱</a>
+        <a href="https://discord.gg/RBgZndpAM2" class="social-icon">💬</a>
+      </div>
+      
+      <p class="footer-text">
+        A community supported campus focused on grassroots freedom tech adoption
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navbarNav = document.querySelector('.navbar-nav');
+    
+    if (hamburger && navbarNav) {
+      hamburger.addEventListener('click', () => {
+        navbarNav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+    }
+
+    // Scroll-triggered video autoplay
+    const scrollVideo = document.getElementById('scroll-video');
+    const videoSection = document.querySelector('.video-section');
+    
+    if (scrollVideo && videoSection) {
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Start playing the video when it comes into view
+            scrollVideo.play().catch(e => {
+              console.log('Video autoplay prevented:', e);
+            });
+          } else {
+            // Pause the video when it goes out of view
+            scrollVideo.pause();
+          }
+        });
+      }, {
+        threshold: 0.5, // Trigger when 50% of the video section is visible
+        rootMargin: '0px 0px -100px 0px'
+      });
+      
+      videoObserver.observe(videoSection);
+    }
+
+    // Enhanced scroll to top functionality
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Add click handler to navbar brand
+    const navbarBrand = document.querySelector('.navbar-brand');
+    if (navbarBrand) {
+      navbarBrand.addEventListener('click', function(e) {
+        e.preventDefault();
+        scrollToTop();
+      });
+    }
+
+    // Toggle mobile menu
+    function toggleMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    }
+
+    // Close mobile menu
+    function closeMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    // Form submission handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData);
+        
+        // Here you would typically send the data to your server
+        console.log('Form submitted:', data);
+        
+        // Show success message
+        alert('Thank you for your interest! We will review your request and contact you soon.');
+        
+        // Reset form
+        this.reset();
+      });
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(32, 34, 82, 0.98)';
+      } else {
+        navbar.style.background = 'rgba(32, 34, 82, 0.95)';
+      }
+    });
+  </script>
+</body>
+</html> 

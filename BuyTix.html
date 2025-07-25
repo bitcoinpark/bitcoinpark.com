@@ -9,18 +9,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --if-purple: #7B5CFA;
-      --if-dark: #232323;
-      --if-light: #F5F5F5;
+      /* Imagine IF Brand Colors - Exact from Brand Sheet */
+      --midnight-blue: #070c70;
+      --royal-purple: #7958ed;
+      --sunrise-orange: #e68158;
+      --light-purple: #b683ed;
+      --coral: #ffc6c2;
       --if-white: #fff;
-      --if-gray: #444;
+      --if-light: #F5F5F5;
+      --dark-bg: #070c70;
+      --section-bg: #0a0f3a;
     }
+    
     body {
-      background: var(--if-dark);
+      background: var(--midnight-blue);
       color: var(--if-white);
-      font-family: 'Montserrat', Arial, sans-serif;
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 1.2rem;
       margin: 0;
       min-height: 100vh;
+      line-height: 1.6;
     }
     .tickets-container {
       max-width: 1100px;
@@ -32,9 +41,9 @@
       padding: 0 16px;
     }
     .ticket-card {
-      background: #2f2f2f;
+      background: rgba(7, 12, 112, 0.85);
       border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
       flex: 1 1 340px;
       padding: 40px 36px 36px 36px;
       display: flex;
@@ -42,6 +51,14 @@
       align-items: flex-start;
       min-width: 280px;
       max-width: 420px;
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .ticket-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
     }
     .ticket-title {
       font-size: 1.35rem;
@@ -49,17 +66,23 @@
       margin-bottom: 8px;
       color: var(--if-white);
       letter-spacing: 0.01em;
+      font-family: 'Rethink Sans', Arial, sans-serif;
     }
+    
     .ticket-price {
       font-size: 2.2rem;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 18px;
-      color: var(--if-white);
+      color: var(--sunrise-orange);
+      font-family: 'Rethink Sans', Arial, sans-serif;
     }
+    
     .ticket-desc {
-      font-size: 1.08rem;
+      font-size: 1.2rem;
       margin-bottom: 18px;
       color: var(--if-white);
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      font-weight: 400;
     }
     .ticket-benefits {
       margin: 0 0 24px 0;
@@ -67,48 +90,103 @@
       list-style: none;
       width: 100%;
     }
+    
     .ticket-benefits li {
       margin-bottom: 12px;
       padding-left: 28px;
       position: relative;
       color: var(--if-white);
-      font-size: 1.05rem;
+      font-size: 1.2rem;
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
     }
+    
     .ticket-benefits li:before {
       content: '\2713';
-      color: var(--if-purple);
+      color: var(--light-purple);
       font-size: 1.1em;
       position: absolute;
       left: 0;
       top: 0;
+      font-weight: 700;
     }
     .ticket-btn {
-      background: linear-gradient(90deg, var(--if-purple) 0%, #ff8c6b 100%);
+      background: linear-gradient(90deg, var(--royal-purple) 0%, var(--sunrise-orange) 100%);
       color: #fff;
       font-weight: 700;
       text-decoration: none;
-      padding: 12px 32px;
+      padding: 16px 32px;
       border-radius: 32px;
-      font-size: 1.08rem;
+      font-size: 1.1rem;
       display: inline-block;
       margin-top: auto;
-      transition: background 0.2s, color 0.2s;
+      transition: all 0.3s ease;
       border: none;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(123,92,250,0.10);
+      box-shadow: 0 4px 20px rgba(121, 88, 237, 0.3);
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
     }
+    
     .ticket-btn:hover {
-      background: linear-gradient(90deg, #5a3fdc 0%, #ff8c6b 100%);
+      background: linear-gradient(90deg, #6a4fd8 0%, #d6734a 100%);
       color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(121, 88, 237, 0.4);
     }
     @media (max-width: 900px) {
       .tickets-container {
         flex-direction: column;
         gap: 32px;
         align-items: stretch;
+        margin: 32px auto;
       }
       .ticket-card {
         max-width: 100%;
+      }
+      .ticket-title {
+        font-size: 1.3rem;
+      }
+      .ticket-price {
+        font-size: 2rem;
+      }
+      .ticket-desc {
+        font-size: 1.1rem;
+      }
+      .ticket-benefits li {
+        font-size: 1.1rem;
+      }
+      .ticket-btn {
+        font-size: 1rem;
+        padding: 14px 28px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .tickets-container {
+        margin: 24px auto;
+        padding: 0 12px;
+      }
+      .ticket-card {
+        padding: 32px 24px 28px 24px;
+      }
+      .ticket-title {
+        font-size: 1.2rem;
+      }
+      .ticket-price {
+        font-size: 1.8rem;
+      }
+      .ticket-desc {
+        font-size: 1rem;
+      }
+      .ticket-benefits li {
+        font-size: 1rem;
+      }
+      .ticket-btn {
+        font-size: 0.95rem;
+        padding: 12px 24px;
       }
     }
   </style>
@@ -125,7 +203,7 @@
         <li>Workshops and panels</li>
         <li>Networking events</li>
       </ul>
-      <a href="#" class="ticket-btn">Claim Member Pass</a>
+      <a href="https://bitcoinpark.typeform.com/application" class="ticket-btn">CLAIM MEMBER PASS</a>
     </div>
     <div class="ticket-card">
       <div class="ticket-title">Summit Pass</div>
@@ -137,7 +215,7 @@
         <li>Networking events</li>
         <li>Exclusive summit experiences</li>
       </ul>
-      <a href="#" class="ticket-btn">Buy Summit Pass</a>
+      <a href="https://bitcoinpark.typeform.com/application" class="ticket-btn">BUY SUMMIT PASS</a>
     </div>
   </div>
   <div style="text-align:center; margin: 48px 0 0 0;">
