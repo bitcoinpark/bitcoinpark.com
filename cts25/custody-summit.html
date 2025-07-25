@@ -41,7 +41,7 @@
     font-family: 'Source Sans Pro', Arial, sans-serif;
     font-weight: 400;
     font-size: clamp(1.1rem, 1.4vw + 0.9rem, 1.4rem);
-    background: url('CTSBackgroundPhoto.png') no-repeat center center fixed;
+    background: url('./CTSBackgroundPhoto.png') no-repeat center center fixed;
     background-size: cover;
     color: var(--dark-gray);
     margin: 0;
@@ -638,14 +638,14 @@
     
     /* Sections */
     .section {
-      padding: 6rem 2rem;
+      padding: 4rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
     
     .section-title {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       color: var(--deep-midnight-blue);
       font-size: clamp(2.5rem, 4vw + 1.5rem, 4rem);
       font-weight: 800;
@@ -656,7 +656,7 @@
       text-align: center;
       font-size: 1.5rem;
       color: var(--dark-gray);
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
@@ -671,7 +671,7 @@
     .about-content {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      gap: 2rem;
     }
     
     .about-text {
@@ -886,7 +886,8 @@
     
     .venue-video {
       width: 100%;
-      height: 400px;
+      max-width: 1000px;
+      margin: 0 auto;
       border-radius: 20px;
       overflow: hidden;
       position: relative;
@@ -895,8 +896,9 @@
     
     .venue-video video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      aspect-ratio: 16/9;
+      object-fit: contain;
       border-radius: 20px;
       display: block;
     }
@@ -1002,7 +1004,7 @@
     }
     
     /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
       .hero-video-container {
         max-width: 100%;
         margin: 1.5rem auto 0;
@@ -1066,7 +1068,7 @@
       }
       
       .section {
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
       }
       
       .video-section {
@@ -1079,6 +1081,16 @@
       
       .video-container video {
         min-height: 350px;
+      }
+      
+      .venue-video {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+      
+      .venue-video video {
+        aspect-ratio: 16/9;
+        min-height: 300px;
       }
       
       .about-content {
@@ -1159,6 +1171,10 @@
         padding: 3rem 1rem;
       }
       
+      .section {
+        padding: 2rem 1rem;
+      }
+      
       .video-section {
         padding: 2rem 0;
       }
@@ -1170,6 +1186,16 @@
       .video-container video {
         min-height: 300px;
       }
+      
+      .venue-video {
+        max-width: 95%;
+        margin: 0 auto;
+      }
+      
+      .venue-video video {
+        aspect-ratio: 16/9;
+        min-height: 250px;
+      }
     }
   </style>
 </head>
@@ -1178,7 +1204,7 @@
   <!-- Navigation -->
   <nav class="navbar">
     <div class="navbar-brand-container">
-      <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="navbar-logo">
+                    <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="navbar-logo">
       <a href="#top" class="navbar-brand">Bitcoin Custody & Treasury Summit</a>
     </div>
     
@@ -1220,7 +1246,7 @@
   <section class="hero">
     <div class="hero-content">
       <div class="hero-icon-container">
-        <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="hero-icon">
+                    <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="hero-icon">
       </div>
       <h1 class="hero-title fade-in">Bitcoin Custody & Treasury Summit</h1>
       <p class="hero-subtitle fade-in">A curated, two-day gathering for institutional and corporate treasurers, custody providers, and Bitcoin infrastructure builders.</p>
@@ -1230,16 +1256,15 @@
 
   <!-- Video Section -->
   <section class="video-section">
-    <div class="video-container">
+    <div class="venue-video">
       <video 
-        src="/Custody_and_Treasury_2.mp4"
-        muted
-        controls
-        playsinline
-        preload="auto"
-        class="hero-video"
-        id="scroll-video"
-        aria-label="Bitcoin Custody & Treasury Summit promotional video"
+                        src="./Custody_and_Treasury_2.mp4"
+                        autoplay
+                        muted
+                        controls
+                        playsinline
+                        preload="auto"
+                        aria-label="Bitcoin Park venue video"
       >
         Your browser does not support the video tag.
       </video>
@@ -1250,12 +1275,12 @@
   <section id="about" class="section about">
     <div class="container">
       <h2 class="section-title fade-in">Purpose and Mission</h2>
-      <p class="section-subtitle fade-in">Join us for a curated, two-day gathering focused on institutional-grade Bitcoin custody, treasury management, and the future of digital asset infrastructure.</p>
+                  <p class="section-subtitle fade-in">The Bitcoin Custody & Treasury Summit brings together the world's leading institutional and corporate treasurers, Bitcoin-native and traditional asset managers, custody providers, and infrastructure builders for focused discussions on security, resilience, and institutional-grade Bitcoin adoption.</p>
+      
+      <p class="section-subtitle fade-in" style="margin-top: 1rem; font-size: 1.4rem; opacity: 0.9; font-style: italic; font-weight: 400;">This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss regulatory frameworks, and build the networks necessary for widespread institutional Bitcoin adoption.</p>
       
       <div class="about-content">
-        <div class="about-text fade-in">
-          <p>The Bitcoin Custody & Treasury Summit brings together the world's leading institutional and corporate treasurers, Bitcoin-native and traditional asset managers, custody providers, and infrastructure builders for focused discussions on security, resilience, and institutional-grade Bitcoin adoption.</p>
-        </div>
+
         
         <div class="audience-grid fade-in">
           <div class="audience-item">
@@ -1275,14 +1300,12 @@
           </div>
                       <div class="audience-item">
               <div class="audience-icon">🚀</div>
-              <h4>Bitcoin Entrepreneurs</h4>
+              <h4>Entrepreneurs</h4>
               <p>Technical innovators and Bitcoin ecosystem builders</p>
             </div>
           </div>
           
-          <div class="about-text fade-in" style="margin-top: 3rem;">
-            <p>This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss regulatory frameworks, and build the networks necessary for widespread institutional Bitcoin adoption.</p>
-          </div>
+
         </div>
       </div>
     </section>
@@ -1290,8 +1313,8 @@
   <!-- Themes Section -->
   <section id="themes" class="section themes">
     <div class="container">
-      <h2 class="section-title fade-in">Themes & Topics</h2>
-      <p class="section-subtitle fade-in">Explore the critical topics shaping the future of institutional Bitcoin custody and treasury management.</p>
+      <h2 class="section-title fade-in">Themes and Topics</h2>
+      <p class="section-subtitle fade-in">Topics shaping the future of institutional Bitcoin custody and treasury management.</p>
       
       <div class="themes-grid">
         <div class="theme-card fade-in">
@@ -1331,7 +1354,7 @@
   <section id="schedule" class="section schedule">
     <div class="container">
       <h2 class="section-title fade-in">Agenda</h2>
-      <p class="section-subtitle fade-in">Two days of curated conversations, networking, and focused discussions on institutional Bitcoin custody.</p>
+
       
       <div class="schedule-grid">
         <div class="day-card fade-in-left">
@@ -1431,19 +1454,19 @@
   <section id="venue" class="section venue">
     <div class="container">
       <h2 class="section-title fade-in">Bitcoin Park</h2>
-      <p class="section-subtitle fade-in">Join us at Bitcoin Park, the premier destination for Bitcoin innovation and community building.</p>
+      <p class="section-subtitle fade-in">The premier destination for Bitcoin innovation and community building.</p>
       
       <div class="venue-content">
         <div class="venue-text fade-in-left">
                       <h3>Nashville, TN</h3>
           <p>Bitcoin Park serves as the ideal setting for this intimate gathering, providing a professional yet collaborative environment for focused discussions on institutional Bitcoin custody and treasury management.</p>
           <p>Located in the heart of Nashville, Bitcoin Park offers state-of-the-art facilities, comfortable meeting spaces, and the perfect backdrop for building lasting relationships within the Bitcoin ecosystem.</p>
-          <p>Our venue combines the professional atmosphere required for institutional discussions with the innovative spirit that drives Bitcoin adoption and development.</p>
+          <p>Our venue combines the professional atmosphere required for meaningful discussions with the innovative spirit that drives Bitcoin adoption and development.</p>
         </div>
         
         <div class="venue-video fade-in-right">
           <video 
-            src="/Custody_and_Treasury_V1.mp4"
+                            src="./Custody_and_Treasury_V1.mp4"
             autoplay
             muted
             controls
@@ -1462,7 +1485,7 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-branding">
-        <img src="LogoCTS.svg" alt="Bitcoin folder and key icon" class="footer-logo">
+                    <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="footer-logo">
         <span class="footer-brand-text">bitcoin park</span>
         <span class="footer-separator">|</span>
         <span class="footer-supported">Supported by:</span>
@@ -1470,9 +1493,8 @@
       
       <div class="footer-links">
         <a href="https://bitcoinpark.com" class="footer-link">Bitcoin Park</a>
-        <a href="https://bitcoinpark.com/nashville" class="footer-link">Nashville Location</a>
-        <a href="https://bitcoinpark.com/email" class="footer-link">Newsletter</a>
-        <a href="mailto:info@bitcoinpark.com" class="footer-link">Contact</a>
+        <a href="https://bitcoinpark.com/nashville" class="footer-link">Join us for a meetup</a>
+        <a href="https://bitcoinpark.com/opdaily" class="footer-link">OP_Daily</a>
       </div>
       
       <div class="footer-social">
