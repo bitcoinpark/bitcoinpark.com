@@ -1,4 +1,31 @@
 /opdaily    /opdaily.html    200 
 /custody    /custody.html    200
-/imagineif  /imagineIF.html 200
-/imagineIF  /imagineIF.html 200 
+
+# Case-insensitive redirects for imagineif variations
+/imagineif https://bitcoinpark.com/imagineIF.html 301
+/imagineIF https://bitcoinpark.com/imagineIF.html 301
+/ImagineIF https://bitcoinpark.com/imagineIF.html 301
+/Imagineif https://bitcoinpark.com/imagineIF.html 301
+/IMAGINEIF https://bitcoinpark.com/imagineIF.html 301
+/imaginEIF https://bitcoinpark.com/imagineIF.html 301
+/ImAgInEiF https://bitcoinpark.com/imagineIF.html 301
+
+# Catch common variations with trailing slashes and extensions
+/imagineif/ https://bitcoinpark.com/imagineIF.html 301
+/imagineIF/ https://bitcoinpark.com/imagineIF.html 301
+/ImagineIF/ https://bitcoinpark.com/imagineIF.html 301
+/Imagineif/ https://bitcoinpark.com/imagineIF.html 301
+/IMAGINEIF/ https://bitcoinpark.com/imagineIF.html 301
+
+# Catch variations with .html extension
+/imagineif.html https://bitcoinpark.com/imagineIF.html 301
+/imagineIF.html https://bitcoinpark.com/imagineIF.html 301
+/ImagineIF.html https://bitcoinpark.com/imagineIF.html 301
+/Imagineif.html https://bitcoinpark.com/imagineIF.html 301
+/IMAGINEIF.html https://bitcoinpark.com/imagineIF.html 301
+
+# Catch hyphenated and underscore variations
+/imagine-if https://bitcoinpark.com/imagineIF.html 301
+/imagine_if https://bitcoinpark.com/imagineIF.html 301
+/Imagine-IF https://bitcoinpark.com/imagineIF.html 301
+/Imagine_IF https://bitcoinpark.com/imagineIF.html 301 
