@@ -193,6 +193,39 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
+    /* Announcement Container */
+    .announcement-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+      text-align: center;
+    }
+
+    .announcement-message {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(245, 130, 63, 0.2);
+      max-width: 600px;
+    }
+
+    .announcement-message h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .announcement-message p {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.8;
+      line-height: 1.6;
+    }
     
     .timeline {
       position: relative;
@@ -437,73 +470,12 @@
 
   <!-- Schedule Section -->
   <section class="schedule-section">
-    <div class="timeline">
-      <!-- Session 1 -->
-      <div class="session-block">
-        <div class="session-time">12:30</div>
-        <div class="session-header">
-          <div class="session-info">
-            <h3 class="session-title">Imagine IF Bitcoin Became the Monetary Network for 8 Billion People</h3>
-            <div class="session-speaker">
-              <div class="speaker-avatar">JS</div>
-              <div class="speaker-info">
-                <div class="speaker-name">John Smith</div>
-                <div class="speaker-role">Bitcoin Core Developer</div>
-              </div>
-            </div>
-          </div>
-          <div class="session-meta">
-            <span class="session-badge">Keynote</span>
-            <span class="stage-badge">Imagine IF Theatre</span>
-            <button class="calendar-button">+ Calendar</button>
-          </div>
-        </div>
+    <div class="announcement-container">
+      <div class="announcement-message">
+        <h2>Schedule will be announced closer to the summit</h2>
+        <p>Stay tuned for updates on speakers, sessions, and the full agenda.</p>
       </div>
-
-             <!-- Session 2 -->
-       <div class="session-block">
-         <div class="session-time">13:00</div>
-         <div class="session-header">
-           <div class="session-info">
-             <h3 class="session-title">Human-AI Symbiosis: Building the Second Brain</h3>
-             <div class="session-speaker">
-               <div class="speaker-avatar">MJ</div>
-               <div class="speaker-info">
-                 <div class="speaker-name">Maria Johnson</div>
-                 <div class="speaker-role">AI Research Director</div>
-               </div>
-             </div>
-           </div>
-           <div class="session-meta">
-             <span class="session-badge">Fireside Chat</span>
-             <span class="stage-badge">Ten31 & OpenSats Stage</span>
-             <button class="calendar-button">+ Calendar</button>
-           </div>
-         </div>
-       </div>
-
-       <!-- Session 3 -->
-       <div class="session-block">
-         <div class="session-time">13:30</div>
-         <div class="session-header">
-           <div class="session-info">
-             <h3 class="session-title">AI and Robots in National Defense: The Future of Autonomous Warfare</h3>
-             <div class="session-speaker">
-               <div class="speaker-avatar">DR</div>
-               <div class="speaker-info">
-                 <div class="speaker-name">Dr. Robert Chen</div>
-                 <div class="speaker-role">Defense Technology Strategist</div>
-               </div>
-             </div>
-           </div>
-           <div class="session-meta">
-             <span class="session-badge">Panel Discussion</span>
-             <span class="stage-badge">Bitcoin Park & 256 Foundation Stage</span>
-             <button class="calendar-button">+ Calendar</button>
-           </div>
-         </div>
-       </div>
-     </div>
-   </section>
+    </div>
+  </section>
 </body>
 </html>
