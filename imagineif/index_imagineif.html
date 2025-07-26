@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1802,11 +1801,14 @@
     }
     
     .speakers-content h2 {
-      color: var(--if-white);
-      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
-      font-weight: 800;
+      color: var(--sunrise-orange);
+      font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
+      font-weight: 700;
       margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.5);
     }
     
     .speakers-content p {
@@ -1820,74 +1822,92 @@
     
     .speakers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
       margin-bottom: 3rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .speaker-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 2rem;
+      background: rgba(10, 15, 58, 0.8);
+      border: 1px solid rgba(230, 129, 88, 0.3);
+      border-radius: 12px;
+      padding: 2.5rem;
       text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
-      border: 2px solid transparent;
       backdrop-filter: blur(10px);
-    }
-    
-    .speaker-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--sunrise-orange);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.3);
-    }
-    
-    .speaker-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, var(--royal-purple), var(--sunrise-orange));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--if-white);
-      font-size: 2.5rem;
-      font-weight: bold;
       position: relative;
       overflow: hidden;
     }
     
-    .speaker-image::before {
+    .speaker-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
-      opacity: 0.3;
+      background: linear-gradient(135deg, rgba(230, 129, 88, 0.1) 0%, rgba(121, 88, 237, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .speaker-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--sunrise-orange);
+      box-shadow: 0 12px 40px rgba(230, 129, 88, 0.4);
+    }
+    
+    .speaker-card:hover::before {
+      opacity: 1;
+    }
+    
+    .speaker-image {
+      width: 280px;
+      height: 280px;
+      border-radius: 12px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid var(--sunrise-orange);
+      box-shadow: 0 4px 15px rgba(230, 129, 88, 0.3);
+    }
+    
+    .speaker-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
     }
     
     .speaker-name {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       color: var(--if-white);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 2;
     }
     
     .speaker-role {
-      font-size: 1rem;
-      color: var(--if-white);
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--light-purple);
+      opacity: 0.9;
+      margin-bottom: 0.3rem;
+      position: relative;
+      z-index: 2;
     }
     
     .speaker-company {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: var(--sunrise-orange);
       font-weight: 600;
+      position: relative;
+      z-index: 2;
     }
     
     .speakers-cta {
@@ -1916,11 +1936,185 @@
       box-shadow: 0 6px 25px rgba(230, 129, 88, 0.4);
     }
     
+    /* Speaker Popup Styles */
+    .speaker-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(7, 12, 112, 0.95);
+      backdrop-filter: blur(15px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .speaker-popup.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .speaker-popup-content {
+      background: linear-gradient(135deg, rgba(10, 15, 58, 0.95) 0%, rgba(7, 12, 112, 0.95) 100%);
+      border: 2px solid var(--sunrise-orange);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    
+    .speaker-popup-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--sunrise-orange);
+      border: none;
+      color: var(--if-white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .speaker-popup-close:hover {
+      background: #d6734a;
+      transform: scale(1.1);
+    }
+    
+    .speaker-popup-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 16px;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--sunrise-orange);
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.4);
+    }
+    
+    .speaker-popup-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+    
+    .speaker-popup-name {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--if-white);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .speaker-popup-name a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 2px solid var(--sunrise-orange);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .speaker-popup-name a:hover {
+      color: var(--sunrise-orange);
+      border-bottom-color: var(--if-white);
+    }
+    
+    .speaker-popup-title {
+      color: var(--light-purple);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .speaker-popup-company {
+      color: var(--sunrise-orange);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+    
+    .speaker-popup-bio {
+      color: var(--if-white);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    
+    .speaker-popup-achievements {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    
+    .speaker-popup-achievements h4 {
+      color: var(--sunrise-orange);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .speaker-popup-achievements ul {
+      color: var(--if-white);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      padding-left: 1.2rem;
+    }
+    
+    .speaker-popup-achievements li {
+      margin-bottom: 0.5rem;
+    }
+    
     /* Responsive design for speakers section */
+    @media (max-width: 1024px) {
+      .speakers-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       .speakers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .speaker-image {
+        width: 240px;
+        height: 240px;
+        margin: 0 auto 1.2rem;
+        border-radius: 10px;
+      }
+      
+      .speaker-image img {
+        border-radius: 10px;
+      }
+      
+      .speaker-popup-content {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      .speaker-popup-name {
+        font-size: 1.7rem;
       }
     }
     
@@ -1931,30 +2125,37 @@
       
       .speakers-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1rem;
       }
       
       .speaker-card {
         padding: 1.5rem;
       }
+      
+      .speaker-image {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 1rem;
+        border-radius: 8px;
+      }
+      
+      .speaker-image img {
+        border-radius: 8px;
+      }
+      
+      .speaker-popup-content {
+        padding: 1.5rem;
+        margin: 0.5rem;
+      }
+      
+      .speaker-popup-name {
+        font-size: 1.5rem;
+      }
+      
+      .speaker-popup-bio {
+        font-size: 0.9rem;
+      }
     }
-      
-      .stakes-content h2 {
-        font-size: 2.4rem;
-        margin-bottom: 16px;
-      }
-      
-      .stakes-content p {
-        font-size: 1.4rem;
-      }
-      
-      .stakes-btn {
-        font-size: 1.2rem;
-        padding: 14px 28px;
-        min-height: 48px;
-        margin-top: 24px;
-      }
-
 
     .format-list {
       margin: 0 0 24px 0;
@@ -1992,156 +2193,6 @@
       font-size: clamp(1.3rem, 2vw + 1.2rem, 1.8rem);
       color: var(--if-white);
       line-height: 1.6;
-    }
-
-    /* Speakers section */
-    .speakers-section {
-      background: var(--section-bg);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    
-    .speakers-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .speakers-content h2 {
-      color: var(--if-white);
-      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .speakers-content p {
-      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.4rem);
-      line-height: 1.6;
-      color: var(--if-white);
-      opacity: 0.9;
-      max-width: 800px;
-      margin: 0 auto 3rem;
-    }
-    
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .speaker-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: 2px solid transparent;
-      backdrop-filter: blur(10px);
-    }
-    
-    .speaker-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--sunrise-orange);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.3);
-    }
-    
-    .speaker-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, var(--royal-purple), var(--sunrise-orange));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--if-white);
-      font-size: 2.5rem;
-      font-weight: bold;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .speaker-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
-      opacity: 0.3;
-    }
-    
-    .speaker-name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--if-white);
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-role {
-      font-size: 1rem;
-      color: var(--if-white);
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-company {
-      font-size: 0.9rem;
-      color: var(--sunrise-orange);
-      font-weight: 600;
-    }
-    
-    .speakers-cta {
-      margin-top: 2rem;
-    }
-    
-    .speakers-btn {
-      background: var(--sunrise-orange);
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-size: clamp(0.9rem, 1.2vw + 0.6rem, 1.1rem);
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-      letter-spacing: 0.01em;
-    }
-    
-    .speakers-btn:hover {
-      background: #d6734a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(230, 129, 88, 0.4);
-    }
-    
-    /* Responsive design for speakers section */
-    @media (max-width: 768px) {
-      .speakers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .speakers-section {
-        padding: 3rem 1rem;
-      }
-      
-      .speakers-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .speaker-card {
-        padding: 1.5rem;
-      }
     }
 
     /* Stakes button styling */
@@ -2364,9 +2415,7 @@
       </div>
       <div class="vision-content">
         <h2>The Vision</h2>
-        <p>Welcome to the high-conviction summit for dreamers and doers.<br>
-        Those shaping what's possible in Bitcoin, AI, energy, and freedom tech.<br>
-        Join approximately 500 of the most curious and capable minds for an intimate experience that blends the narrative power of human storytelling with the serendipity of natural connections.</p>
+        <p>Join approximately 500 of the most curious and capable minds shaping what's possible in Bitcoin, AI, energy, and freedom tech for an intimate experience that blends the narrative power of human storytelling with the serendipity of natural connection.</p>
       </div>
     </div>
 
@@ -2553,126 +2602,117 @@
         <p>A curated lineup of visionaries, innovators, and builders exploring the "Imagine IF..." questions that will shape our future.</p>
         
         <div class="speakers-grid main-speakers-grid">
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('cathie-wood')">
             <div class="speaker-image">
-              <img src="Cathie_Wood.png" alt="Cathie Wood" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Cathie_Wood.png" alt="Cathie Wood">
             </div>
             <div class="speaker-name">Cathie Wood</div>
             <div class="speaker-role">Chief Investment Officer</div>
-            <div class="speaker-company">ARK Invests</div>
+            <div class="speaker-company">ARK Invest</div>
           </div>
           
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('arthur-laffer')">
             <div class="speaker-image">
-              <img src="Art-Laffer-portrait-web.png" alt="Dr. Arthur B. Laffer" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Art-Laffer-portrait-web.png" alt="Dr. Arthur B. Laffer">
             </div>
             <div class="speaker-name">Dr. Arthur B. Laffer</div>
             <div class="speaker-role">Founder and Chairman</div>
             <div class="speaker-company">Laffer Associates</div>
           </div>
           
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('adam-back')">
             <div class="speaker-image">
-              <img src="adam-back.png" alt="Adam Back" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="adam-back.png" alt="Adam Back">
             </div>
             <div class="speaker-name">Adam Back</div>
             <div class="speaker-role">CEO</div>
             <div class="speaker-company">Blockstream</div>
           </div>
           
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('alex-karp')">
             <div class="speaker-image">
-              <img src="Alex-Karp.png" alt="Alex Karp" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Alex-Karp.png" alt="Alex Karp">
             </div>
             <div class="speaker-name">Alex Karp</div>
             <div class="speaker-role">CEO and Co-Founder</div>
             <div class="speaker-company">Palantir Technologies</div>
           </div>
           
-          <!-- Speaker 5 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('r0ckstar-dev')">
             <div class="speaker-image">
-              <img src="r0ckstar-dev.png" alt="R0ckstar Dev" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="r0ckstar-dev.png" alt="R0ckstar Dev">
             </div>
             <div class="speaker-name">R0ckstar Dev</div>
             <div class="speaker-role">Core Contributor</div>
             <div class="speaker-company">BTCPay Server</div>
           </div>
           
-          <!-- Speaker 6 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('matt-odell')">
             <div class="speaker-image">
-              <img src="Matt-Odell.jpg" alt="Matt Odell" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Matt-Odell.jpg" alt="Matt Odell">
             </div>
             <div class="speaker-name">Matt Odell</div>
             <div class="speaker-role">Partner</div>
             <div class="speaker-company">Ten31</div>
           </div>
           
-          <!-- Speaker 7 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('econoalchemist')">
             <div class="speaker-image">
-              <img src="Eco.png" alt="Econoalchemist" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Eco.png" alt="Econoalchemist">
             </div>
             <div class="speaker-name">Econoalchemist</div>
             <div class="speaker-role">Co-Founder</div>
             <div class="speaker-company">The 256 Foundation</div>
           </div>
           
-          <!-- Speaker 8 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('jose-rios')">
             <div class="speaker-image">
-              <img src="Jose-Rios.png" alt="Jose Rios" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Jose-Rios.png" alt="Jose Rios">
             </div>
             <div class="speaker-name">Jose Rios</div>
             <div class="speaker-role">Founder</div>
             <div class="speaker-company">BTLabs</div>
           </div>
           
-          <!-- Speaker 9 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('harry-sudock')">
             <div class="speaker-image">
-              <img src="Harry-Sudock.png" alt="Harry Sudock" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Harry-Sudock.png" alt="Harry Sudock">
             </div>
             <div class="speaker-name">Harry Sudock</div>
             <div class="speaker-role">SVP</div>
             <div class="speaker-company">CleanSpark</div>
           </div>
           
-          <!-- Speaker 10 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('lisa-neigut')">
             <div class="speaker-image">
-              <img src="Nifty-Nei.png" alt="Lisa Neigut" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Nifty-Nei.png" alt="Lisa Neigut">
             </div>
             <div class="speaker-name">Lisa Neigut</div>
             <div class="speaker-role">Founder</div>
             <div class="speaker-company">bitcoin++</div>
           </div>
           
-          <!-- Speaker 11 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('matthew-pines')">
             <div class="speaker-image">
-              <img src="Matthew-Pines.png" alt="Matthew Pines" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Matthew-Pines.png" alt="Matthew Pines">
             </div>
             <div class="speaker-name">Matthew Pines</div>
             <div class="speaker-role">Executive Director</div>
             <div class="speaker-company">Bitcoin Policy Institute</div>
           </div>
           
-          <!-- Speaker 12 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('dan-lawrence')">
             <div class="speaker-image">
-              <img src="Dan-Lawrence.png" alt="Dan Lawrence" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Dan-Lawrence.png" alt="Dan Lawrence">
             </div>
             <div class="speaker-name">Dan Lawrence</div>
             <div class="speaker-role">CEO and Co-Founder</div>
             <div class="speaker-company">OBM Inc.</div>
           </div>
           
-          <!-- Speaker 13 -->
-          <div class="speaker-card fade-in">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('skot9000')">
             <div class="speaker-image">
-              <img src="Skot.png" alt="Skot9000" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+              <img src="Skot.png" alt="Skot9000">
             </div>
             <div class="speaker-name">Skot9000</div>
             <div class="speaker-role">Electrical Engineer</div>
@@ -2680,6 +2720,21 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Speaker Popups -->
+  <div class="speaker-popup" id="speaker-popup">
+    <div class="speaker-popup-content">
+      <button class="speaker-popup-close" onclick="closeSpeakerPopup()">&times;</button>
+      <div class="speaker-popup-image">
+        <img id="popup-speaker-image" src="" alt="">
+      </div>
+      <div class="speaker-popup-name" id="popup-speaker-name"></div>
+      <div class="speaker-popup-title" id="popup-speaker-title"></div>
+      <div class="speaker-popup-company" id="popup-speaker-company"></div>
+      <div class="speaker-popup-bio" id="popup-speaker-bio"></div>
+      <div class="speaker-popup-achievements" id="popup-speaker-achievements"></div>
     </div>
   </div>
 
@@ -2925,6 +2980,253 @@
         });
       }
     });
+
+    // Speaker popup functionality
+    const speakerData = {
+      'cathie-wood': {
+        name: 'Cathie Wood',
+        title: 'Chief Investment Officer',
+        company: 'ARK Invest',
+        image: 'Cathie_Wood.png',
+        socialLink: 'https://www.linkedin.com/in/catherinedwood/',
+        bio: 'Cathie Wood is the CEO and Chief Investment Officer of ARK Invest, an investment management firm focused on disruptive innovation. She is known for her bold investment strategies and deep understanding of transformative technologies including artificial intelligence, robotics, energy storage, blockchain technology, and genomics.',
+        achievements: [
+          'Named by Bloomberg as one of the 50 people who defined global business in 2020',
+          'Founded ARK Invest in 2014, managing over $24 billion in assets',
+          'Pioneer in identifying and investing in disruptive technologies',
+          'Regular CNBC contributor and thought leader on innovation investing'
+        ]
+      },
+      'arthur-laffer': {
+        name: 'Dr. Arthur B. Laffer',
+        title: 'Founder and Chairman',
+        company: 'Laffer Associates',
+        image: 'Art-Laffer-portrait-web.png',
+        socialLink: 'https://laffercenter.org/about/arthur-laffer/',
+        bio: 'Dr. Arthur Laffer is the founder and chairman of Laffer Associates and originator of the famous "Laffer Curve," one of the main theoretical constructs behind supply-side economics. He served as a member of President Reagan\'s Economic Policy Advisory Board and has advised numerous world leaders on economic policy.',
+        achievements: [
+          'Creator of the Laffer Curve, fundamental to supply-side economics',
+          'Former member of President Reagan\'s Economic Policy Advisory Board',
+          'Advised numerous world leaders and governments on economic policy',
+          'Author of multiple bestselling books on economics and policy'
+        ]
+      },
+      'adam-back': {
+        name: 'Adam Back',
+        title: 'CEO',
+        company: 'Blockstream',
+        image: 'adam-back.png',
+        socialLink: 'https://x.com/adam3us',
+        bio: 'Dr. Adam Back is the CEO of Blockstream and a world-renowned cryptographer and cypherpunk. He is the inventor of Hashcash, the proof-of-work system used by Bitcoin, and has been involved in the development of Bitcoin since its early days. Adam is a leading expert on Bitcoin scaling, privacy, and security technologies.',
+        achievements: [
+          'Inventor of hashcash, a precursor to Bitcoin\'s proof-of-work',
+          'Cited in the Bitcoin whitepaper by Satoshi Nakamoto',
+          'Leading figure in Bitcoin development and cryptography',
+          'CEO of Blockstream, advancing Bitcoin scaling solutions'
+        ]
+      },
+      'alex-karp': {
+        name: 'Alex Karp',
+        title: 'CEO and Co-Founder',
+        company: 'Palantir Technologies',
+        image: 'Alex-Karp.png',
+        socialLink: 'https://www.linkedin.com/company/palantir-technologies/',
+        bio: 'Alex Karp is the CEO and co-founder of Palantir Technologies, a public American software company that specializes in big data analytics. He has led the company since its inception, focusing on data-driven solutions for governments and large enterprises.',
+        achievements: [
+          'Co-founded Palantir Technologies in 2003',
+          'Led company to successful IPO in 2020',
+          'Pioneered enterprise-scale data analytics platforms',
+          'Advocate for responsible AI and data governance'
+        ]
+      },
+      'r0ckstar-dev': {
+        name: 'R0ckstar Dev',
+        title: 'Core Contributor',
+        company: 'BTCPay Server',
+        image: 'r0ckstar-dev.png',
+        socialLink: 'https://x.com/r0ckstardev',
+        bio: 'R0ckstar Dev is a core contributor to BTCPay Server, an open-source Bitcoin payment processor. They are dedicated to building tools that enhance Bitcoin\'s usability and accessibility for merchants and individuals worldwide.',
+        achievements: [
+          'Core contributor to BTCPay Server open-source project',
+          'Developer focused on Bitcoin payment infrastructure',
+          'Active in the Bitcoin development community',
+          'Advocate for self-sovereign payment solutions'
+        ]
+      },
+      'matt-odell': {
+        name: 'Matt Odell',
+        title: 'Partner',
+        company: 'Ten31',
+        image: 'Matt-Odell.jpg',
+        socialLink: 'https://primal.net/odell',
+        bio: 'Matt Odell is a Partner at Ten31, a Bitcoin-focused venture capital firm. He is also the host of multiple Bitcoin podcasts and a prominent voice in the Bitcoin community, advocating for privacy, self-custody, and Bitcoin adoption.',
+        achievements: [
+          'Partner at Ten31, leading Bitcoin venture capital firm',
+          'Host of popular Bitcoin podcasts including CITADEL DISPATCH',
+          'Prominent Bitcoin educator and privacy advocate',
+          'Active contributor to Bitcoin open-source projects'
+        ]
+      },
+      'econoalchemist': {
+        name: 'Econoalchemist',
+        title: 'Co-Founder',
+        company: 'The 256 Foundation',
+        image: 'Eco.png',
+        socialLink: 'https://x.com/econoalchemist',
+        bio: 'Econoalchemist is the co-founder of The 256 Foundation, focused on Bitcoin education and development. They are passionate about promoting Bitcoin understanding and creating educational resources for the community.',
+        achievements: [
+          'Co-founder of The 256 Foundation',
+          'Bitcoin educator and content creator',
+          'Advocate for Bitcoin self-custody and privacy',
+          'Active in Bitcoin educational initiatives'
+        ]
+      },
+      'jose-rios': {
+        name: 'Jose Rios',
+        title: 'Founder',
+        company: 'BTLabs',
+        image: 'Jose-Rios.png',
+        socialLink: 'https://www.linkedin.com/in/siliconjose/',
+        bio: 'Jose Rios is the founder of BTLabs, focused on Bitcoin development and infrastructure. He works on building tools and services that enhance the Bitcoin ecosystem and improve user experience.',
+        achievements: [
+          'Founder of BTLabs',
+          'Bitcoin developer and entrepreneur',
+          'Focus on Bitcoin infrastructure development',
+          'Active in the Bitcoin developer community'
+        ]
+      },
+      'harry-sudock': {
+        name: 'Harry Sudock',
+        title: 'SVP',
+        company: 'CleanSpark',
+        image: 'Harry-Sudock.png',
+        socialLink: 'https://www.linkedin.com/in/harrysudock/',
+        bio: 'Harry Sudock is the Senior Vice President at CleanSpark, a leading Bitcoin mining company focused on sustainable energy solutions. He brings expertise in energy markets and Bitcoin mining operations.',
+        achievements: [
+          'Senior Vice President at CleanSpark',
+          'Expert in sustainable Bitcoin mining operations',
+          'Leader in clean energy and Bitcoin intersection',
+          'Advocate for environmentally conscious mining practices'
+        ]
+      },
+      'lisa-neigut': {
+        name: 'Lisa Neigut',
+        title: 'Founder',
+        company: 'bitcoin++',
+        image: 'Nifty-Nei.png',
+        socialLink: 'https://www.linkedin.com/in/lisaneigut/',
+        bio: 'Lisa Neigut is the founder of bitcoin++, a developer-focused conference series. She is also a core Lightning Network developer and has made significant contributions to Bitcoin\'s Layer 2 scaling solutions.',
+        achievements: [
+          'Founder of bitcoin++ developer conference series',
+          'Core Lightning Network developer',
+          'Contributor to Bitcoin scaling solutions',
+          'Advocate for developer education and community building'
+        ]
+      },
+      'matthew-pines': {
+        name: 'Matthew Pines',
+        title: 'Executive Director',
+        company: 'Bitcoin Policy Institute',
+        image: 'Matthew-Pines.png',
+        socialLink: 'https://www.linkedin.com/in/matthew-pines-46377a8/',
+        bio: 'Matthew Pines is the Executive Director of the Bitcoin Policy Institute, working to advance sound Bitcoin policy and regulation. He focuses on educating policymakers and advocating for sensible cryptocurrency regulations.',
+        achievements: [
+          'Executive Director of Bitcoin Policy Institute',
+          'Expert in cryptocurrency policy and regulation',
+          'Advocate for sensible Bitcoin legislation',
+          'Regular contributor to policy discussions and research'
+        ]
+      },
+      'dan-lawrence': {
+        name: 'Dan Lawrence',
+        title: 'CEO and Co-Founder',
+        company: 'OBM Inc.',
+        image: 'Dan-Lawrence.png',
+        socialLink: 'https://www.linkedin.com/in/foreman-dan/',
+        bio: 'Dan Lawrence is the CEO and co-founder of OBM Inc., a company focused on Bitcoin infrastructure and enterprise solutions. He brings extensive experience in business development and Bitcoin adoption strategies.',
+        achievements: [
+          'CEO and co-founder of OBM Inc.',
+          'Expert in Bitcoin enterprise solutions',
+          'Focus on Bitcoin infrastructure development',
+          'Leader in Bitcoin business adoption strategies'
+        ]
+      },
+      'skot9000': {
+        name: 'Skot9000',
+        title: 'Electrical Engineer',
+        company: 'Bitaxe Miner',
+        image: 'Skot.png',
+        socialLink: 'https://x.com/skot9000',
+        bio: 'Skot9000 is an electrical engineer and the creator of the Bitaxe open-source Bitcoin miner. He is passionate about democratizing Bitcoin mining and making it accessible to individuals through innovative hardware design.',
+        achievements: [
+          'Creator of Bitaxe open-source Bitcoin miner',
+          'Electrical engineer focused on mining hardware',
+          'Advocate for decentralized Bitcoin mining',
+          'Pioneer in accessible mining technology'
+        ]
+      }
+    };
+
+    // Function to open speaker popup
+    function openSpeakerPopup(speakerId) {
+      const speaker = speakerData[speakerId];
+      if (!speaker) return;
+
+      const popup = document.getElementById('speaker-popup');
+      const image = document.getElementById('popup-speaker-image');
+      const name = document.getElementById('popup-speaker-name');
+      const title = document.getElementById('popup-speaker-title');
+      const company = document.getElementById('popup-speaker-company');
+      const bio = document.getElementById('popup-speaker-bio');
+      const achievements = document.getElementById('popup-speaker-achievements');
+
+      // Populate popup content
+      image.src = speaker.image;
+      image.alt = speaker.name;
+      
+      // Make name clickable if social link exists
+      if (speaker.socialLink) {
+        name.innerHTML = `<a href="${speaker.socialLink}" target="_blank" rel="noopener noreferrer">${speaker.name}</a>`;
+      } else {
+        name.textContent = speaker.name;
+      }
+      
+      title.textContent = speaker.title;
+      company.textContent = speaker.company;
+      bio.textContent = speaker.bio;
+
+      // Populate achievements
+      achievements.innerHTML = '';
+
+      // Show popup
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close speaker popup
+    function closeSpeakerPopup() {
+      const popup = document.getElementById('speaker-popup');
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close popup when clicking outside
+    document.getElementById('speaker-popup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeSpeakerPopup();
+      }
+    });
+
+    // Close popup on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeSpeakerPopup();
+      }
+    });
+
+    // Make speaker popup functions globally available
+    window.openSpeakerPopup = openSpeakerPopup;
+    window.closeSpeakerPopup = closeSpeakerPopup;
   </script>
 </body>
 </html> 
