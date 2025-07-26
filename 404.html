@@ -9,10 +9,10 @@
         
         // Define redirects
         const redirects = {
-            '/imagineif': '/imagineif/',
-            '/imagineif/': '/imagineif/',
-            '/imagineif.html': '/imagineif/',
-            '/imagineif/index_imagineif.html': '/imagineif/',
+            '/imagineif': '/imagineif/index_imagineif.html',
+            '/imagineif/': '/imagineif/index_imagineif.html',
+            '/imagineif.html': '/imagineif/index_imagineif.html',
+            '/imagineif/index_imagineif.html': '/imagineif/index_imagineif.html',
             '/opdaily': '/opdaily.html',
             '/custody': '/custody.html'
         };
@@ -25,7 +25,7 @@
         
         // Handle case-insensitive imagineif variations
         if (currentPath.includes('imagineif')) {
-            window.location.href = '/imagineif/';
+            window.location.href = '/imagineif/index_imagineif.html';
             return;
         }
         
