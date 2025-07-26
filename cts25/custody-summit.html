@@ -535,24 +535,6 @@
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
     }
     
-    .hero-cta {
-      background: linear-gradient(135deg, var(--burnt-orange), var(--bitcoin-gold));
-      color: var(--white);
-      font-weight: 700;
-      text-decoration: none;
-      padding: 18px 40px;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-      transition: all 0.3s ease;
-      border: none;
-      letter-spacing: 0.01em;
-      animation: fadeInUp 1s ease-out 0.6s both;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    }
-    
     /* Hero Graphic - Custody Logo */
     .hero-icon-container {
       display: flex;
@@ -884,83 +866,6 @@
       font-size: 1.1rem;
     }
     
-    /* Featured Speakers Section */
-    .speakers {
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(10px);
-    }
-    
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .speaker-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: 2px solid transparent;
-    }
-    
-    .speaker-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--burnt-orange);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.2);
-    }
-    
-    .speaker-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, var(--deep-midnight-blue), var(--dark-green));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 2.5rem;
-      font-weight: bold;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .speaker-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
-      opacity: 0.3;
-    }
-    
-    .speaker-name {
-      font-family: 'Optima', 'Georgia', serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--deep-midnight-blue);
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-role {
-      font-size: 1rem;
-      color: var(--dark-gray);
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-company {
-      font-size: 0.9rem;
-      color: var(--burnt-orange);
-      font-weight: 600;
-    }
-    
     /* Venue Section */
     .venue {
       background: rgba(255, 255, 255, 0.5);
@@ -1206,11 +1111,6 @@
         grid-template-columns: 1fr;
       }
       
-      .speakers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-      }
-      
       .audience-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1296,15 +1196,6 @@
         aspect-ratio: 16/9;
         min-height: 250px;
       }
-      
-      .speakers-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .speaker-card {
-        padding: 1.5rem;
-      }
     }
   </style>
 </head>
@@ -1319,15 +1210,15 @@
     
     <!-- Desktop Navigation -->
     <div class="navbar-nav">
-      <a href="#about" class="navbar-link">Purpose</a>
+      <a href="#about" class="navbar-link">About</a>
       <a href="#themes" class="navbar-link">Themes</a>
-      <a href="#speakers" class="navbar-link">Speakers</a>
-      <a href="#schedule" class="navbar-link">Agenda</a>
+      <a href="#schedule" class="navbar-link">Schedule</a>
       <a href="#venue" class="navbar-link">The Park</a>
+      <a href="speakers.html" class="navbar-link">Speakers</a>
     </div>
     
     <!-- Desktop Attend Button -->
-    <a href="https://bitcoinpark.typeform.com/cts25" class="navbar-cta" target="_blank" rel="noopener noreferrer">Attend CTS →</a>
+    <a href="#contact" class="navbar-cta">Attend CTS →</a>
     
     <!-- Hamburger Icon -->
     <div class="hamburger" onclick="toggleMenu()">
@@ -1340,13 +1231,13 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
-      <li><a href="#about" onclick="closeMenu()">Purpose</a></li>
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
       <li><a href="#themes" onclick="closeMenu()">Themes</a></li>
-      <li><a href="#speakers" onclick="closeMenu()">Speakers</a></li>
-      <li><a href="#schedule" onclick="closeMenu()">Agenda</a></li>
+      <li><a href="#schedule" onclick="closeMenu()">Schedule</a></li>
       <li><a href="#venue" onclick="closeMenu()">The Park</a></li>
+      <li><a href="speakers.html" onclick="closeMenu()">Speakers</a></li>
     </ul>
-    <a href="https://bitcoinpark.typeform.com/cts25" class="mobile-attend-btn" onclick="closeMenu()" target="_blank" rel="noopener noreferrer">
+    <a href="#contact" class="mobile-attend-btn" onclick="closeMenu()">
       Attend CTS →
     </a>
   </div>
@@ -1360,7 +1251,6 @@
       <h1 class="hero-title fade-in">Bitcoin Custody & Treasury Summit</h1>
       <p class="hero-subtitle fade-in">A curated, two-day gathering for institutional and corporate treasurers, custody providers, and Bitcoin infrastructure builders.</p>
       <div class="hero-date fade-in">September 17th & 18th</div>
-      <a href="https://bitcoinpark.typeform.com/cts25" class="hero-cta fade-in" target="_blank" rel="noopener noreferrer">Attend CTS →</a>
     </div>
   </section>
 
@@ -1460,106 +1350,6 @@
     </div>
   </section>
 
-  <!-- Featured Speakers Section -->
-  <section id="speakers" class="section speakers">
-    <div class="container">
-      <h2 class="section-title fade-in">Featured Speakers</h2>
-      <p class="section-subtitle fade-in">Leading voices in institutional Bitcoin custody and treasury management.</p>
-      
-      <div class="speakers-grid">
-        <!-- Speaker 1 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Parker-Lewis.png" alt="Parker Lewis" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Parker Lewis</div>
-          <div class="speaker-role">Business Development</div>
-          <div class="speaker-company">Zaprite</div>
-        </div>
-        
-        <!-- Speaker 2 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Max-Keidun.png" alt="Max Keidun" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Max Keidun</div>
-          <div class="speaker-role">CEO</div>
-          <div class="speaker-company">Debifi</div>
-        </div>
-        
-        <!-- Speaker 3 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./adam-back.png" alt="Adam Back" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Adam Back</div>
-          <div class="speaker-role">CEO</div>
-          <div class="speaker-company">Blockstream</div>
-        </div>
-        
-        <!-- Speaker 4 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Preston-Pysh.png" alt="Preston Pysh" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Preston Pysh</div>
-          <div class="speaker-role">Co-Founder</div>
-          <div class="speaker-company">The Investor Podcast</div>
-        </div>
-        
-        <!-- Speaker 5 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Joe-Wood.png" alt="Joe Wood" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Joe Wood</div>
-          <div class="speaker-role">CPA</div>
-          <div class="speaker-company">Satoshi Pacioli</div>
-        </div>
-        
-        <!-- Speaker 6 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Sean-Bill.png" alt="Sean Bill" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Sean Bill</div>
-          <div class="speaker-role">Chief Investment Officer</div>
-          <div class="speaker-company">Blockstream</div>
-        </div>
-        
-        <!-- Speaker 7 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Matt-Odell.jpg" alt="Matt Odell" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Matt Odell</div>
-          <div class="speaker-role">Partner</div>
-          <div class="speaker-company">Ten31</div>
-        </div>
-        
-        <!-- Speaker 8 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Steve-Myers.png" alt="Steve Myers" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Steve Myers</div>
-          <div class="speaker-role">Board Member</div>
-          <div class="speaker-company">Bitcoin Dev Kit</div>
-        </div>
-        
-        <!-- Speaker 9 -->
-        <div class="speaker-card fade-in">
-          <div class="speaker-image">
-            <img src="./Rob-Hamilton.png" alt="Rob Hamilton" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-          </div>
-          <div class="speaker-name">Rob Hamilton</div>
-          <div class="speaker-role">CEO and Co-Founder</div>
-          <div class="speaker-company">Anchorwatch</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Schedule Section -->
   <section id="schedule" class="section schedule">
     <div class="container">
@@ -1572,34 +1362,18 @@
           <div class="day-date">Wednesday, September 17, 2025</div>
           
           <div class="schedule-item">
-            <div class="schedule-time">9:50 AM</div>
+            <div class="schedule-time">9:00 AM</div>
             <div class="schedule-content">
-              <h4>Welcome & Announcements</h4>
-              <p>Summit kickoff and logistics update.</p>
+              <h4>Welcome & Opening Remarks</h4>
+              <p>Summit overview and participant introductions</p>
             </div>
           </div>
           
           <div class="schedule-item">
             <div class="schedule-time">10:00 AM</div>
             <div class="schedule-content">
-              <h4>Custody Research Report</h4>
-              <p>Presentation of research on institutional custody frameworks, risk models, and allocation strategies.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">10:20 AM</div>
-            <div class="schedule-content">
-              <h4>Volatility Strategies for Bitcoin-Native Treasury Teams</h4>
-              <p>Discussion on hedging tools, yield options, and operational treasury management under volatility.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">11:00 AM</div>
-            <div class="schedule-content">
-              <h4>How Family Offices Embrace a Bitcoin Paradigm</h4>
-              <p>Exploration of governance, wealth continuity, and multi-generational Bitcoin integration.</p>
+              <h4>Cold vs Warm vs MPC Custody</h4>
+              <p>Technical deep dive and institutional considerations</p>
             </div>
           </div>
           
@@ -1607,47 +1381,23 @@
             <div class="schedule-time">12:00 PM</div>
             <div class="schedule-content">
               <h4>Networking Lunch</h4>
-              <p>Curated conversations and relationship building.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">1:20 PM</div>
-            <div class="schedule-content">
-              <h4>Cold, Warm, or MPC? Choosing Enterprise Custody</h4>
-              <p>Deep dive into custody models and trade-offs in security, compliance, and access.</p>
+              <p>Curated conversations and relationship building</p>
             </div>
           </div>
           
           <div class="schedule-item">
             <div class="schedule-time">2:00 PM</div>
             <div class="schedule-content">
-              <h4>Risk Off: Bitcoin Custody Through the Eyes of Insurers</h4>
-              <p>How insurers evaluate and underwrite custody risk across various architectures.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">2:40 PM</div>
-            <div class="schedule-content">
-              <h4>Allocator Due Diligence</h4>
-              <p>What institutional allocators look for in evaluating custody infrastructure and counterparty trust.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">3:20 PM</div>
-            <div class="schedule-content">
-              <h4>Inside Corporate Bitcoin Treasuries: Real-World Case Studies</h4>
-              <p>Practical lessons on governance, accounting, and compliance for companies holding Bitcoin.</p>
+              <h4>Corporate Balance Sheet Strategies</h4>
+              <p>Real-world implementation case studies</p>
             </div>
           </div>
           
           <div class="schedule-item">
             <div class="schedule-time">4:00 PM</div>
             <div class="schedule-content">
-              <h4>Networking & Cocktail Reception</h4>
-              <p>Wrap up the day with informal conversation and refreshments.</p>
+              <h4>Evening Reception</h4>
+              <p>Networking and informal discussions</p>
             </div>
           </div>
         </div>
@@ -1657,58 +1407,42 @@
           <div class="day-date">Thursday, September 18, 2025</div>
           
           <div class="schedule-item">
-            <div class="schedule-time">9:50 AM</div>
+            <div class="schedule-time">9:00 AM</div>
             <div class="schedule-content">
-              <h4>Welcome Back & Announcements</h4>
-              <p>Day two overview and housekeeping notes.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">10:00 AM</div>
-            <div class="schedule-content">
-              <h4>Shared Keys, Shared Trust: Community Bitcoin Custody</h4>
-              <p>Design and governance of collaborative custody models for aligned communities and organizations.</p>
-            </div>
-          </div>
-          
-          <div class="schedule-item">
-            <div class="schedule-time">10:20 AM</div>
-            <div class="schedule-content">
-              <h4>Custody as Resilience: Lessons from Geopolitical Instability</h4>
-              <p>Case studies on protecting Bitcoin in high-risk and unstable environments.</p>
+              <h4>Collaborative Custody Models</h4>
+              <p>Emerging approaches and institutional applications</p>
             </div>
           </div>
           
           <div class="schedule-item">
             <div class="schedule-time">11:00 AM</div>
             <div class="schedule-content">
-              <h4>Ensuring Bitcoin Continuity Across Generations</h4>
-              <p>Strategies for long-term inheritance, legal protection, and operational handoff of Bitcoin holdings.</p>
+              <h4>Estate Planning & Succession</h4>
+              <p>Long-term access and inheritance strategies</p>
             </div>
           </div>
           
           <div class="schedule-item">
-            <div class="schedule-time">12:00 PM</div>
+            <div class="schedule-time">1:00 PM</div>
             <div class="schedule-content">
               <h4>Networking Lunch</h4>
-              <p>Continued relationship building and discussions.</p>
+              <p>Continued relationship building and discussions</p>
             </div>
           </div>
           
           <div class="schedule-item">
-            <div class="schedule-time">1:20 PM</div>
+            <div class="schedule-time">3:00 PM</div>
             <div class="schedule-content">
-              <h4>When Custody Fails: Hard Lessons from the Field</h4>
-              <p>Analysis of real-world custody failures and how to build more resilient systems.</p>
+              <h4>Regulatory Dialogue</h4>
+              <p>Compliance frameworks and policy discussions</p>
             </div>
           </div>
           
           <div class="schedule-item">
-            <div class="schedule-time">2:00 PM</div>
+            <div class="schedule-time">5:00 PM</div>
             <div class="schedule-content">
-              <h4>Closing Keynote: Insider Risk Audits and Key Strategies</h4>
-              <p>Final insights on security governance and key management in institutional custody.</p>
+              <h4>Closing Remarks</h4>
+              <p>Key takeaways and next steps</p>
             </div>
           </div>
         </div>
