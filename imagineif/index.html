@@ -1787,157 +1787,6 @@
         padding-bottom: 40px;
         width: 90%;
       }
-    }
-
-    /* Speakers section */
-    .speakers-section {
-      background: var(--section-bg);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    
-    .speakers-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .speakers-content h2 {
-      color: var(--if-white);
-      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .speakers-content p {
-      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.4rem);
-      line-height: 1.6;
-      color: var(--if-white);
-      opacity: 0.9;
-      max-width: 800px;
-      margin: 0 auto 3rem;
-    }
-    
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .speaker-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: 2px solid transparent;
-      backdrop-filter: blur(10px);
-    }
-    
-    .speaker-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--sunrise-orange);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.3);
-    }
-    
-    .speaker-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, var(--royal-purple), var(--sunrise-orange));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--if-white);
-      font-size: 2.5rem;
-      font-weight: bold;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .speaker-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
-      opacity: 0.3;
-    }
-    
-    .speaker-name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--if-white);
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-role {
-      font-size: 1rem;
-      color: var(--if-white);
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-company {
-      font-size: 0.9rem;
-      color: var(--sunrise-orange);
-      font-weight: 600;
-    }
-    
-    .speakers-cta {
-      margin-top: 2rem;
-    }
-    
-    .speakers-btn {
-      background: var(--sunrise-orange);
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-size: clamp(0.9rem, 1.2vw + 0.6rem, 1.1rem);
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-      letter-spacing: 0.01em;
-    }
-    
-    .speakers-btn:hover {
-      background: #d6734a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(230, 129, 88, 0.4);
-    }
-    
-    /* Responsive design for speakers section */
-    @media (max-width: 768px) {
-      .speakers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .speakers-section {
-        padding: 3rem 1rem;
-      }
-      
-      .speakers-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .speaker-card {
-        padding: 1.5rem;
-      }
-    }
       
       .stakes-content h2 {
         font-size: 2.4rem;
@@ -1954,7 +1803,52 @@
         min-height: 48px;
         margin-top: 24px;
       }
+    }
 
+    .stakes-btn {
+      background: linear-gradient(90deg, var(--royal-purple) 0%, var(--sunrise-orange) 100%);
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-size: clamp(1.1rem, 2vw + 0.8rem, 1.4rem);
+      display: inline-block;
+      margin-top: 32px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(121, 88, 237, 0.3);
+      font-family: 'Rethink Sans', Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      position: relative;
+      overflow: hidden;
+      min-height: 56px;
+    }
+    
+    .stakes-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .stakes-btn:hover {
+      background: linear-gradient(90deg, #6a4fd8 0%, #d6734a 100%);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 35px rgba(121, 88, 237, 0.4);
+      text-decoration: none;
+    }
+    
+    .stakes-btn:hover::before {
+      left: 100%;
+    }
 
     .format-list {
       margin: 0 0 24px 0;
@@ -1993,284 +1887,6 @@
       color: var(--if-white);
       line-height: 1.6;
     }
-
-    /* Speakers section */
-    .speakers-section {
-      background: var(--section-bg);
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    
-    .speakers-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .speakers-content h2 {
-      color: var(--if-white);
-      font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.02em;
-    }
-    
-    .speakers-content p {
-      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.4rem);
-      line-height: 1.6;
-      color: var(--if-white);
-      opacity: 0.9;
-      max-width: 800px;
-      margin: 0 auto 3rem;
-    }
-    
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    
-    .speaker-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: 2px solid transparent;
-      backdrop-filter: blur(10px);
-    }
-    
-    .speaker-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--sunrise-orange);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.3);
-    }
-    
-    .speaker-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, var(--royal-purple), var(--sunrise-orange));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--if-white);
-      font-size: 2.5rem;
-      font-weight: bold;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .speaker-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
-      opacity: 0.3;
-    }
-    
-    .speaker-name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--if-white);
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-role {
-      font-size: 1rem;
-      color: var(--if-white);
-      opacity: 0.8;
-      margin-bottom: 0.5rem;
-    }
-    
-    .speaker-company {
-      font-size: 0.9rem;
-      color: var(--sunrise-orange);
-      font-weight: 600;
-    }
-    
-    .speakers-cta {
-      margin-top: 2rem;
-    }
-    
-    .speakers-btn {
-      background: var(--sunrise-orange);
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 12px 28px;
-      border-radius: 50px;
-      font-size: clamp(0.9rem, 1.2vw + 0.6rem, 1.1rem);
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(230, 129, 88, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-      letter-spacing: 0.01em;
-    }
-    
-    .speakers-btn:hover {
-      background: #d6734a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(230, 129, 88, 0.4);
-    }
-    
-    /* Responsive design for speakers section */
-    @media (max-width: 768px) {
-      .speakers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .speakers-section {
-        padding: 3rem 1rem;
-      }
-      
-      .speakers-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .speaker-card {
-        padding: 1.5rem;
-      }
-    }
-
-    /* Stakes button styling */
-    .stakes-btn {
-      background: var(--sunrise-orange);
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-size: clamp(1rem, 1.5vw + 0.8rem, 1.3rem);
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 6px 24px rgba(230, 129, 88, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-      margin-top: 2rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      font-family: 'Montserrat', sans-serif;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .stakes-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-    
-    .stakes-btn:hover {
-      background: #d6734a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.4);
-      text-decoration: none;
-    }
-    
-    .stakes-btn:hover::before {
-      left: 100%;
-    }
-    
-    /* Main page speakers - 3 per row */
-    .speakers-section .speakers-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 1.5rem !important;
-      max-width: 1000px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    
-    .speakers-section .speaker-card {
-      padding: 1.5rem !important;
-    }
-    
-    .speakers-section .speaker-image {
-      width: 100px !important;
-      height: 100px !important;
-      margin-bottom: 1rem !important;
-    }
-    
-    .speakers-content h2 {
-      color: var(--sunrise-orange) !important;
-      font-size: clamp(2.5rem, 5vw + 2rem, 3rem) !important;
-      font-weight: 700 !important;
-      margin-bottom: 1.5rem !important;
-      letter-spacing: -0.02em !important;
-      text-transform: uppercase !important;
-      text-align: center !important;
-      text-shadow: 0 3px 12px rgba(0,0,0,0.5) !important;
-    }
-    
-    .format-section .section-text h2 {
-      text-align: center !important;
-    }
-    
-    .format-section .section-text {
-      text-align: center !important;
-    }
-    
-    .format-section .section-content {
-      text-align: center !important;
-    }
-    
-    .vision-content p {
-      margin-left: 10% !important;
-      margin-right: 10% !important;
-      max-width: 80% !important;
-    }
-    
-    .track-description p,
-    .track-sessions ul,
-    .track-sessions li {
-      font-size: 1.3rem !important;
-      font-weight: 400 !important;
-    }
-    
-    .main-speakers-grid {
-      grid-template-columns: repeat(4, 1fr) !important;
-      display: grid !important;
-    }
-    
-    .speakers-section .main-speakers-grid {
-      grid-template-columns: repeat(4, 1fr) !important;
-    }
-    
-    @media (max-width: 768px) {
-      .main-speakers-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-      
-      .speakers-section .main-speakers-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .main-speakers-grid {
-        grid-template-columns: 1fr !important;
-      }
-      
-      .speakers-section .main-speakers-grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
   </style>
 </head>
 <body id="top">
@@ -2288,10 +1904,9 @@
       <a href="#format" class="navbar-link">Format</a>
       <a href="#nashville" class="navbar-link">Why Nashville?</a>
       <a href="#tracks" class="navbar-link">Programming Tracks</a>
-      <a href="#speakers" class="navbar-link">Speakers</a>
       <a href="#stakes" class="navbar-link">Summit with Stakes</a>
-      <a href="schedule.html" class="navbar-link">Schedule</a>
-      <a class="navbar-btn-gradient" href="tickets.html" target="_blank">
+      <a href="schedule.html" class="navbar-link" target="_blank">Schedule</a>
+      <a class="navbar-btn-gradient" href="BuyTix.html" target="_blank">
         Attend Imagine IF
         <span class="arrow-circle">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2311,9 +1926,8 @@
         <li><a href="#format" class="mobile-nav-link">Format</a></li>
         <li><a href="#nashville" class="mobile-nav-link">Why Nashville?</a></li>
         <li><a href="#tracks" class="mobile-nav-link">Programming Tracks</a></li>
-        <li><a href="#speakers" class="mobile-nav-link">Speakers</a></li>
         <li><a href="#stakes" class="mobile-nav-link">Summit with Stakes</a></li>
-        <li><a href="schedule.html" class="mobile-nav-link">Schedule</a></li>
+        <li><a href="schedule.html" class="mobile-nav-link" target="_blank">Schedule</a></li>
       </ul>
     </div>
   </div>
@@ -2364,9 +1978,8 @@
       </div>
       <div class="vision-content">
         <h2>The Vision</h2>
-        <p>Welcome to the high-conviction summit for dreamers and doers.<br>
-        Those shaping what's possible in Bitcoin, AI, energy, and freedom tech.<br>
-        Join approximately 500 of the most curious and capable minds for an intimate experience that blends the narrative power of human storytelling with the serendipity of natural connections.</p>
+        <p>Welcome to the high-conviction summit for dreamers and doers; those shaping what's possible in Bitcoin, AI, energy, and freedom tech.<br>
+        Join 500 of the most curious and capable minds for an intimate experience that blends the narrative power of human storytelling with the serendipity of summer camp.</p>
       </div>
     </div>
 
@@ -2378,9 +1991,9 @@
             <div class="format-item">Human centered keynotes begin with one question: "Imagine IF..."</div>
             <div class="format-item">Candid fireside chats with visionaries turning ideas into infrastructure.</div>
             <div class="format-item">Natural collisions with investors, engineers, policymakers, and entrepreneurs.</div>
-            <div class="format-item">Two distinct programming stages: a stage co-curated by Ten31 and OpenSats and a stage led by Bitcoin Park and 256 Foundation.</div>
+            <div class="format-item">Three distinct programming stages: the Imagine IF theatre stage; a stage co-curated by Ten31 and OpenSats; and a third stage led by Bitcoin Park and 256 Foundation.</div>
           </div>
-          <p>Our aim is to entertain, inform, and inspire.<br><span class="cormorant-text">The future isn't inherited.<br>We imagine, then we build.</span></p>
+          <p>Every moment entertains, informs, and inspires.<br><span class="cormorant-text">The future isn't inherited.<br>We imagine, then we build.</span></p>
         </div>
         <div class="section-media">
           <img src="../inline-fisher-4.jpg" alt="Fisher Center" />
@@ -2395,82 +2008,75 @@
       </div>
       <div class="nashville-content">
         <h2>Why Nashville?</h2>
-        <p>Nashville is a city of rebirth, grit and creativity.<br>
-        The Athens of the South is where ideas stretch out and sing.<br>
+        <p>Nashville is a city of rebirth, grit and creativity. The Athens of the South is where ideas stretch out and sing.<br>
         The Fisher Center, a European style opera house, encapsulates big visions and unforgettable moments mere steps from Bitcoin Park.</p>
       </div>
     </div>
 
     <div class="tracks-section-bg fade-in" id="tracks">
-      <h2>PROGRAMMING TRACKS: FROM "IMAGINE IF..." TO IMPACT</h2>
+      <h2>Programming Tracks: From "Imagine IF…" to Impact</h2>
       <div class="tracks">
         <div class="fade-divider div1"></div>
         <div class="fade-divider div2"></div>
         <div class="fade-divider div3"></div>
-        <div class="track-title track-col1"><h3>Track 1: Bitcoin & The Monetary Layer</h3></div>
-        <div class="track-title track-col2"><h3>Track 2: AI & Intelligence Unbound</h3></div>
-        <div class="track-title track-col3"><h3>Track 3: Energy & the Path to Abundance</h3></div>
-        <div class="track-title track-col4 small-title"><h3>Track 4: Freedom Tech & Tools of Self-Defense</h3></div>
+        <div class="track-title track-col1"><h3>1. Bitcoin & The Monetary Layer</h3></div>
+        <div class="track-title track-col2"><h3>2. AI & Intelligence Unbound</h3></div>
+        <div class="track-title track-col3"><h3>3. Energy & the Path to Abundance</h3></div>
+        <div class="track-title track-col4 small-title"><h3>4. Freedom Tech & Tools of Self-Defense</h3></div>
 
         <div class="track-subheading track-col1"><p><em>Imagine IF… Bitcoin became the monetary network for 8 billion people.</em></p></div>
         <div class="track-subheading track-col2"><p><em>Imagine IF… artificial intelligence was wise.</em></p></div>
-        <div class="track-subheading track-col3"><p><em>Imagine IF… energy was too cheap to meter and too clean to fear.</em></p></div>
+        <div class="track-subheading track-col3"><p><em>Imagine IF…. energy was too cheap to meter, and too clean to fear.</em></p></div>
         <div class="track-subheading track-col4"><p><em>Imagine IF… the next great leap in human freedom came from open source code.</em></p></div>
 
-        <div class="track-description track-col1">
-          <p>This track explores how Bitcoin reshapes global finance, from individual sovereignty to institutional infrastructure.</p>
+        <div class="track-bullets track-col1">
+          <ul>
+            <li>Global financial sovereignty</li>
+            <li>The end of currency debasement</li>
+            <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
+            <li>Capital formation without central banks</li>
+          </ul>
         </div>
-        <div class="track-description track-col2">
-          <p>This track navigates the intersection of artificial intelligence and human dignity.</p>
+        <div class="track-bullets track-col2">
+          <ul>
+            <li>Human-AI symbiosis and "second brain" tooling</li>
+            <li>Autonomous agents that serve—not subvert—human goals</li>
+            <li>Knowledge networks as public infrastructure</li>
+            <li>AI for governance, forecasting, and education</li>
+            <li>Alignment strategies to preserve agency and values</li>
+          </ul>
         </div>
-        <div class="track-description track-col3">
-          <p>This track covers the critical infrastructure of energy—nuclear, Bitcoin mining, grid sovereignty—and how energy abundance can power freedom and innovation.</p>
+        <div class="track-bullets track-col3">
+          <ul>
+            <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
+            <li>Building energy-resilient cities and sovereign grids</li>
+            <li>Infrastructure for a high-power civilization</li>
+            <li>Permacomputing and sustainable computation</li>
+            <li>Thermodynamic freedom as the foundation of prosperity</li>
+          </ul>
         </div>
-        <div class="track-description track-col4">
-          <p>This track champions digital autonomy, censorship resistance, open-source infrastructure, and the tools that empower individuals to resist surveillance and control.</p>
+        <div class="track-bullets track-col4">
+          <ul>
+            <li>Open-source defense systems</li>
+            <li>Censorship-resistant speech and publishing</li>
+            <li>Personal privacy infrastructure</li>
+            <li>Borderless identity and access control</li>
+            <li>Cryptography as civil liberties tech</li>
+          </ul>
         </div>
 
-        <div class="track-sessions track-col1">
-          <ul>
-            <li>How do you Hold the Revolution?</li>
-            <li>Coding a Multi-Century Protocol</li>
-            <li>Do not Kill the Golden Goose</li>
-            <li>Moral Maximalism & 'True Bitcoiners'</li>
-            <li>HODLing is the Political Tool</li>
-            <li>The Death of the Global Treasury Standard</li>
-            <li>Does Everything Have to Break First?</li>
-            <li>Building Satoshi: 1,000 Contributing Threads</li>
-            <li>Payments to the People in a Fiatless Future</li>
-          </ul>
-        </div>
-        <div class="track-sessions track-col2">
-          <ul>
-            <li>Will AI Work for You or Will You Work for It?</li>
-            <li>The Revolution of Thematic Investing</li>
-            <li>Are We Free?</li>
-            <li>Jargon, Aggression, and Culture in the 21st Century</li>
-            <li>The Next 250 Years of American Innovation</li>
-            <li>The Supply Side Economy</li>
-          </ul>
-        </div>
-        <div class="track-sessions track-col3">
-          <ul>
-            <li>We Need the Isotope—Nuclear</li>
-            <li>Power is a Gordian Knot</li>
-            <li>The Frontier Playbook for Ambition</li>
-            <li>The Biggest Bets See the Future</li>
-          </ul>
-        </div>
-        <div class="track-sessions track-col4">
-          <ul>
-            <li>Is Privacy Even Worth It?</li>
-            <li>No Innovation is an Island</li>
-            <li>Are We Free?</li>
-            <li>Aliens or AI: Who Uses Bitcoin First?</li>
-            <li>Legacy Institutions Must Change for American Freedom</li>
-            <li>Building Rome: The Next Century of Entrepreneurship</li>
-          </ul>
-        </div>
+        <div class="track-bottom track-col1"><p>This track explores Bitcoin as a civilizational foundation: resilient, trustless, and borderless.</p></div>
+        <div class="track-bottom track-col2"><p>This track probes how intelligence and intention unlock universal abundance.</p></div>
+        <div class="track-bottom track-col3"><p>This track moves us from scarcity to surplus, from fragile supply to antifragile design.</p></div>
+        <div class="track-bottom track-col4"><p>This track unpacks technologies that guard freedom in the digital and physical world.</p></div>
+      </div>
+      <div class="track-includes">
+        <strong>Each track includes:</strong>
+        <ul>
+          <li>"Imagine IF..." presentations</li>
+          <li>Panel + fireside combos</li>
+          <li>Breakout discussions on the Ten31/OpenSats side stage and the Bitcoin Park/256 Foundation side stage</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -2479,207 +2085,63 @@
   <div class="track-popup" id="track-popup-1">
     <div class="track-popup-content">
       <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-      <h3 class="track-popup-title">Track 1: Bitcoin & The Monetary Layer</h3>
+      <h3 class="track-popup-title">1. Bitcoin & The Monetary Layer</h3>
       <p class="track-popup-subheading">Imagine IF… Bitcoin became the monetary network for 8 billion people.</p>
-      <p class="track-popup-description">This track explores how Bitcoin reshapes global finance, from individual sovereignty to institutional infrastructure.</p>
       <ul class="track-popup-bullets">
-        <li>How do you Hold the Revolution?</li>
-        <li>Coding a Multi-Century Protocol</li>
-        <li>Do not Kill the Golden Goose</li>
-        <li>Moral Maximalism & 'True Bitcoiners'</li>
-        <li>HODLing is the Political Tool</li>
-        <li>The Death of the Global Treasury Standard</li>
-        <li>Does Everything Have to Break First?</li>
-        <li>Building Satoshi: 1,000 Contributing Threads</li>
-        <li>Payments to the People in a Fiatless Future</li>
+        <li>Global financial sovereignty</li>
+        <li>The end of currency debasement</li>
+        <li>Programmable money built atop Bitcoin layers (e.g., Lightning, Fedimint, Ark, Liquid)</li>
+        <li>Capital formation without central banks</li>
       </ul>
+      <p class="track-popup-description">This track explores Bitcoin as a civilizational foundation: resilient, trustless, and borderless.</p>
     </div>
   </div>
 
   <div class="track-popup" id="track-popup-2">
     <div class="track-popup-content">
       <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-      <h3 class="track-popup-title">Track 2: AI & Intelligence Unbound</h3>
+      <h3 class="track-popup-title">2. AI & Intelligence Unbound</h3>
       <p class="track-popup-subheading">Imagine IF… artificial intelligence was wise.</p>
-      <p class="track-popup-description">This track navigates the intersection of artificial intelligence and human dignity.</p>
       <ul class="track-popup-bullets">
-        <li>Will AI Work for You or Will You Work for It?</li>
-        <li>The Revolution of Thematic Investing</li>
-        <li>Are We Free?</li>
-        <li>Jargon, Aggression, and Culture in the 21st Century</li>
-        <li>The Next 250 Years of American Innovation</li>
-        <li>The Supply Side Economy</li>
+        <li>Human-AI symbiosis and "second brain" tooling</li>
+        <li>Autonomous agents that serve—not subvert—human goals</li>
+        <li>Knowledge networks as public infrastructure</li>
+        <li>AI for governance, forecasting, and education</li>
+        <li>Alignment strategies to preserve agency and values</li>
       </ul>
+      <p class="track-popup-description">This track probes how intelligence and intention unlock universal abundance.</p>
     </div>
   </div>
 
   <div class="track-popup" id="track-popup-3">
     <div class="track-popup-content">
       <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-      <h3 class="track-popup-title">Track 3: Energy & the Path to Abundance</h3>
-      <p class="track-popup-subheading">Imagine IF… energy was too cheap to meter and too clean to fear.</p>
-      <p class="track-popup-description">This track covers the critical infrastructure of energy—nuclear, Bitcoin mining, grid sovereignty—and how energy abundance can power freedom and innovation.</p>
+      <h3 class="track-popup-title">3. Energy & the Path to Abundance</h3>
+      <p class="track-popup-subheading">Imagine IF…. energy was too cheap to meter, and too clean to fear.</p>
       <ul class="track-popup-bullets">
-        <li>We Need the Isotope—Nuclear</li>
-        <li>Power is a Gordian Knot</li>
-        <li>The Frontier Playbook for Ambition</li>
-        <li>The Biggest Bets See the Future</li>
+        <li>The new industrial stack: nuclear, solar, Bitcoin mining</li>
+        <li>Building energy-resilient cities and sovereign grids</li>
+        <li>Infrastructure for a high-power civilization</li>
+        <li>Permacomputing and sustainable computation</li>
+        <li>Thermodynamic freedom as the foundation of prosperity</li>
       </ul>
+      <p class="track-popup-description">This track moves us from scarcity to surplus, from fragile supply to antifragile design.</p>
     </div>
   </div>
 
   <div class="track-popup" id="track-popup-4">
     <div class="track-popup-content">
       <button class="track-popup-close" onclick="closeTrackPopup()">&times;</button>
-      <h3 class="track-popup-title">Track 4: Freedom Tech & Tools of Self-Defense</h3>
+      <h3 class="track-popup-title">4. Freedom Tech & Tools of Self-Defense</h3>
       <p class="track-popup-subheading">Imagine IF… the next great leap in human freedom came from open source code.</p>
-      <p class="track-popup-description">This track champions digital autonomy, censorship resistance, open-source infrastructure, and the tools that empower individuals to resist surveillance and control.</p>
       <ul class="track-popup-bullets">
-        <li>Is Privacy Even Worth It?</li>
-        <li>No Innovation is an Island</li>
-        <li>Are We Free?</li>
-        <li>Aliens or AI: Who Uses Bitcoin First?</li>
-        <li>Legacy Institutions Must Change for American Freedom</li>
-        <li>Building Rome: The Next Century of Entrepreneurship</li>
+        <li>Open-source defense systems</li>
+        <li>Censorship-resistant speech and publishing</li>
+        <li>Personal privacy infrastructure</li>
+        <li>Borderless identity and access control</li>
+        <li>Cryptography as civil liberties tech</li>
       </ul>
-    </div>
-  </div>
-
-  <!-- Speakers Section -->
-  <div class="speakers-section-wrapper" style="max-width:1200px; margin: 0 auto;">
-    <div class="section speakers-section fade-in" id="speakers" style="text-align:center;">
-      <div class="speakers-content">
-        <h2>Featured Speakers</h2>
-        <p>A curated lineup of visionaries, innovators, and builders exploring the "Imagine IF..." questions that will shape our future.</p>
-        
-        <div class="speakers-grid main-speakers-grid">
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Cathie_Wood.png" alt="Cathie Wood" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Cathie Wood</div>
-            <div class="speaker-role">Chief Investment Officer</div>
-            <div class="speaker-company">ARK Invests</div>
-          </div>
-          
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Art-Laffer-portrait-web.png" alt="Dr. Arthur B. Laffer" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Dr. Arthur B. Laffer</div>
-            <div class="speaker-role">Founder and Chairman</div>
-            <div class="speaker-company">Laffer Associates</div>
-          </div>
-          
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="adam-back.png" alt="Adam Back" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Adam Back</div>
-            <div class="speaker-role">CEO</div>
-            <div class="speaker-company">Blockstream</div>
-          </div>
-          
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Alex-Karp.png" alt="Alex Karp" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Alex Karp</div>
-            <div class="speaker-role">CEO and Co-Founder</div>
-            <div class="speaker-company">Palantir Technologies</div>
-          </div>
-          
-          <!-- Speaker 5 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="r0ckstar-dev.png" alt="R0ckstar Dev" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">R0ckstar Dev</div>
-            <div class="speaker-role">Core Contributor</div>
-            <div class="speaker-company">BTCPay Server</div>
-          </div>
-          
-          <!-- Speaker 6 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Matt-Odell.jpg" alt="Matt Odell" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Matt Odell</div>
-            <div class="speaker-role">Partner</div>
-            <div class="speaker-company">Ten31</div>
-          </div>
-          
-          <!-- Speaker 7 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Eco.png" alt="Econoalchemist" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Econoalchemist</div>
-            <div class="speaker-role">Co-Founder</div>
-            <div class="speaker-company">The 256 Foundation</div>
-          </div>
-          
-          <!-- Speaker 8 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Jose-Rios.png" alt="Jose Rios" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Jose Rios</div>
-            <div class="speaker-role">Founder</div>
-            <div class="speaker-company">BTLabs</div>
-          </div>
-          
-          <!-- Speaker 9 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Harry-Sudock.png" alt="Harry Sudock" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Harry Sudock</div>
-            <div class="speaker-role">SVP</div>
-            <div class="speaker-company">CleanSpark</div>
-          </div>
-          
-          <!-- Speaker 10 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Nifty-Nei.png" alt="Lisa Neigut" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Lisa Neigut</div>
-            <div class="speaker-role">Founder</div>
-            <div class="speaker-company">bitcoin++</div>
-          </div>
-          
-          <!-- Speaker 11 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Matthew-Pines.png" alt="Matthew Pines" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Matthew Pines</div>
-            <div class="speaker-role">Executive Director</div>
-            <div class="speaker-company">Bitcoin Policy Institute</div>
-          </div>
-          
-          <!-- Speaker 12 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Dan-Lawrence.png" alt="Dan Lawrence" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Dan Lawrence</div>
-            <div class="speaker-role">CEO and Co-Founder</div>
-            <div class="speaker-company">OBM Inc.</div>
-          </div>
-          
-          <!-- Speaker 13 -->
-          <div class="speaker-card fade-in">
-            <div class="speaker-image">
-              <img src="Skot.png" alt="Skot9000" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <div class="speaker-name">Skot9000</div>
-            <div class="speaker-role">Electrical Engineer</div>
-            <div class="speaker-company">Bitaxe Miner</div>
-          </div>
-        </div>
-      </div>
+      <p class="track-popup-description">This track unpacks technologies that guard freedom in the digital and physical world.</p>
     </div>
   </div>
 
@@ -2694,7 +2156,7 @@
         <p>You are more than an attendee.</p>
         <p>We are writing the future.</p>
         <p>Imagine IF is the catalyst.</p>
-        <a href="tickets.html" class="stakes-btn">ATTEND IMAGINE IF</a>
+        <a href="BuyTix.html" class="stakes-btn">ATTEND IMAGINE IF</a>
       </div>
     </div>
   </div>
@@ -2928,4 +2390,3 @@
   </script>
 </body>
 </html> 
-
