@@ -13,7 +13,7 @@
             '/imagineif/': '/imagineif/',
             '/imagineif.html': '/imagineif/',
             '/imagineif/index_imagineif.html': '/imagineif/',
-            '/custody-summit': '/cts25/',
+            '/custody-summit': '/cts25/custody-summit.html',
             '/opdaily': '/opdaily.html',
             '/custody': '/custody.html'
         };
@@ -27,6 +27,12 @@
         // Handle case-insensitive imagineif variations
         if (currentPath.includes('imagineif')) {
             window.location.href = '/imagineif/';
+            return;
+        }
+        
+        // Handle case-insensitive custody-summit variations
+        if (currentPath.includes('custody-summit')) {
+            window.location.href = '/cts25/custody-summit.html';
             return;
         }
         
