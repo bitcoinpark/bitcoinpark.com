@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitcoin Custody & Treasury Summit - Bitcoin Park</title>
+  <link rel="icon" type="image/svg+xml" href="./LogoCTS.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -192,8 +193,8 @@
     }
     
     .navbar-logo {
-      width: 40px;
-      height: 40px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
       filter: brightness(1.1) contrast(1.1);
       transition: transform 0.3s ease;
@@ -485,7 +486,7 @@
     }
     
     .hero-subtitle {
-      font-size: clamp(0.8rem, 1.3vw + 0.5rem, 1.1rem);
+      font-size: clamp(1.1rem, 1.8vw + 0.7rem, 1.5rem);
       font-weight: 300;
       margin-bottom: 0.5rem; /* Small gap between subtitle and date */
       opacity: 0.9;
@@ -558,7 +559,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 0.5rem; /* Reduced gap */
+      margin-bottom: 0.2rem; /* Further reduced gap */
       padding: 4px;
       z-index: 3;
     }
@@ -892,73 +893,205 @@
     
     .speakers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
       margin-top: 3rem;
     }
     
     .speaker-card {
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
       text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
-      border: 2px solid transparent;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     
     .speaker-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
       border-color: var(--burnt-orange);
-      box-shadow: 0 8px 30px rgba(230, 129, 88, 0.2);
     }
     
     .speaker-image {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 180px;
+      height: 200px;
       margin: 0 auto 1.5rem;
-      background: linear-gradient(135deg, var(--deep-midnight-blue), var(--dark-green));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 2.5rem;
-      font-weight: bold;
-      position: relative;
       overflow: hidden;
+      border-radius: 6px;
+      background: #f8f8f8;
     }
     
-    .speaker-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke="rgba(255,255,255,0.1)" stroke-width="0.5" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
-      opacity: 0.3;
+    .speaker-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px !important;
     }
     
     .speaker-name {
-      font-family: 'Optima', 'Georgia', serif;
+      font-family: 'Source Sans Pro', sans-serif;
       font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--deep-midnight-blue);
+      font-size: 1.4rem;
+      color: #333;
       margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
     
     .speaker-role {
       font-size: 1rem;
-      color: var(--dark-gray);
-      opacity: 0.8;
+      color: #666;
       margin-bottom: 0.5rem;
+      font-weight: 500;
     }
     
     .speaker-company {
-      font-size: 0.9rem;
-      color: var(--burnt-orange);
+      font-size: 1rem;
+      color: #2563eb;
       font-weight: 600;
+    }
+
+    /* Speaker Modal Styles */
+    .speaker-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .speaker-modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideIn 0.3s ease;
+    }
+
+    .speaker-modal-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .speaker-modal-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      margin-right: 1.5rem;
+      overflow: hidden;
+    }
+
+    .speaker-modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .speaker-modal-info h3 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .speaker-modal-info h3 a {
+      color: #2563eb;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .speaker-modal-info h3 a:hover {
+      color: #1d4ed8;
+      text-decoration: underline;
+    }
+
+    .speaker-modal-info .role {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .speaker-modal-info .company {
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .speaker-modal-bio {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .close-modal:hover {
+      color: #000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 1200px) {
+      .speakers-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .speakers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .speakers-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .speaker-modal-content {
+        margin: 10% auto;
+        padding: 1.5rem;
+      }
+      
+      .speaker-modal-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .speaker-modal-image {
+        margin: 0 0 1rem 0;
+      }
     }
     
     /* Venue Section */
@@ -1314,7 +1447,7 @@
   <nav class="navbar">
     <div class="navbar-brand-container">
                     <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="navbar-logo">
-      <a href="#top" class="navbar-brand">Bitcoin Custody & Treasury Summit</a>
+      <a href="#top" class="navbar-brand">Bitcoin Custody & Treasury Summit 2025</a>
     </div>
     
     <!-- Desktop Navigation -->
@@ -1327,7 +1460,7 @@
     </div>
     
     <!-- Desktop Attend Button -->
-    <a href="https://bitcoinpark.typeform.com/cts25" class="navbar-cta" target="_blank" rel="noopener noreferrer">Attend CTS →</a>
+    <a href="https://bitcoinpark.typeform.com/CTSapplication" class="navbar-cta" target="_blank" rel="noopener noreferrer">Attend CTS →</a>
     
     <!-- Hamburger Icon -->
     <div class="hamburger" onclick="toggleMenu()">
@@ -1346,7 +1479,7 @@
       <li><a href="#schedule" onclick="closeMenu()">Agenda</a></li>
       <li><a href="#venue" onclick="closeMenu()">The Park</a></li>
     </ul>
-    <a href="https://bitcoinpark.typeform.com/cts25" class="mobile-attend-btn" onclick="closeMenu()" target="_blank" rel="noopener noreferrer">
+    <a href="https://bitcoinpark.typeform.com/CTSapplication" class="mobile-attend-btn" onclick="closeMenu()" target="_blank" rel="noopener noreferrer">
       Attend CTS →
     </a>
   </div>
@@ -1358,9 +1491,12 @@
                     <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="hero-icon">
       </div>
       <h1 class="hero-title fade-in">Bitcoin Custody & Treasury Summit</h1>
-      <p class="hero-subtitle fade-in">A curated, two-day gathering for institutional and corporate treasurers, custody providers, and Bitcoin infrastructure builders.</p>
+      <p class="hero-subtitle fade-in">A gathering of capital allocators, policymakers, entrepreneurs, bitcoin developers, and institutional operators.</p>
       <div class="hero-date fade-in">September 17th & 18th</div>
-      <a href="https://bitcoinpark.typeform.com/cts25" class="hero-cta fade-in" target="_blank" rel="noopener noreferrer">Attend CTS →</a>
+      <div class="hero-hosted fade-in" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 2rem;">
+        <span style="color: var(--white); font-size: 1.2rem; font-weight: 500;">Hosted at</span>
+        <img src="./bitcoinpark_primarylogo_white.png" alt="Bitcoin Park Logo" style="height: 40px; width: auto;">
+      </div>
     </div>
   </section>
 
@@ -1385,7 +1521,7 @@
   <section id="about" class="section about">
     <div class="container">
       <h2 class="section-title fade-in">Purpose and Mission</h2>
-                  <p class="section-subtitle fade-in">The Bitcoin Custody & Treasury Summit brings together the world's leading institutional and corporate treasurers, Bitcoin-native and traditional asset managers, custody providers, and infrastructure builders for focused discussions on security, resilience, and institutional-grade Bitcoin adoption.</p>
+                  <p class="section-subtitle fade-in">The inaugural Bitcoin Custody & Treasury Summit is a gathering of capital allocators, policymakers, entrepreneurs, bitcoin developers, and institutional operators focused on advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.</p>
       
       <p class="section-subtitle fade-in" style="margin-top: 1rem; font-size: 1.4rem; opacity: 0.9; font-style: italic; font-weight: 400;">This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss regulatory frameworks, and build the networks necessary for widespread institutional Bitcoin adoption.</p>
       
@@ -1394,22 +1530,18 @@
         
         <div class="audience-grid fade-in">
           <div class="audience-item">
-            <div class="audience-icon">🏛️</div>
             <h4>Institutional Treasurers</h4>
             <p>Corporate and institutional treasury professionals exploring Bitcoin allocation strategies</p>
           </div>
           <div class="audience-item">
-            <div class="audience-icon">🔒</div>
             <h4>Custody Providers</h4>
             <p>Infrastructure builders and custody solution providers</p>
           </div>
           <div class="audience-item">
-            <div class="audience-icon">⚖️</div>
             <h4>Legal & Policy</h4>
             <p>Security, legal, and policy professionals</p>
           </div>
                       <div class="audience-item">
-              <div class="audience-icon">🚀</div>
               <h4>Entrepreneurs</h4>
               <p>Technical innovators and Bitcoin ecosystem builders</p>
             </div>
@@ -1468,19 +1600,19 @@
       
       <div class="speakers-grid">
         <!-- Speaker 1 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('parker-lewis')">
           <div class="speaker-image">
-            <img src="./Parker-Lewis.png" alt="Parker Lewis" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Parker-Lewis.png" alt="Parker Lewis">
           </div>
           <div class="speaker-name">Parker Lewis</div>
-          <div class="speaker-role">Business Development</div>
-          <div class="speaker-company">Zaprite</div>
+          <div class="speaker-role">Author</div>
+          <div class="speaker-company">Gradually Then Suddenly</div>
         </div>
         
         <!-- Speaker 2 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('max-keidun')">
           <div class="speaker-image">
-            <img src="./Max-Keidun.png" alt="Max Keidun" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Max-Keidun.png" alt="Max Keidun">
           </div>
           <div class="speaker-name">Max Keidun</div>
           <div class="speaker-role">CEO</div>
@@ -1488,9 +1620,9 @@
         </div>
         
         <!-- Speaker 3 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('adam-back')">
           <div class="speaker-image">
-            <img src="./adam-back.png" alt="Adam Back" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./adam-back.png" alt="Adam Back">
           </div>
           <div class="speaker-name">Adam Back</div>
           <div class="speaker-role">CEO</div>
@@ -1498,9 +1630,9 @@
         </div>
         
         <!-- Speaker 4 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('preston-pysh')">
           <div class="speaker-image">
-            <img src="./Preston-Pysh.png" alt="Preston Pysh" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Preston-Pysh.png" alt="Preston Pysh">
           </div>
           <div class="speaker-name">Preston Pysh</div>
           <div class="speaker-role">Co-Founder</div>
@@ -1508,19 +1640,19 @@
         </div>
         
         <!-- Speaker 5 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('joe-wood')">
           <div class="speaker-image">
-            <img src="./Joe-Wood.png" alt="Joe Wood" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Joe-Wood.png" alt="Joe Wood">
           </div>
           <div class="speaker-name">Joe Wood</div>
-          <div class="speaker-role">CPA</div>
+          <div class="speaker-role">Founder</div>
           <div class="speaker-company">Satoshi Pacioli</div>
         </div>
         
         <!-- Speaker 6 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('sean-bill')">
           <div class="speaker-image">
-            <img src="./Sean-Bill.png" alt="Sean Bill" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Sean-Bill.png" alt="Sean Bill">
           </div>
           <div class="speaker-name">Sean Bill</div>
           <div class="speaker-role">Chief Investment Officer</div>
@@ -1528,9 +1660,9 @@
         </div>
         
         <!-- Speaker 7 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('matt-odell')">
           <div class="speaker-image">
-            <img src="./Matt-Odell.jpg" alt="Matt Odell" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Matt-Odell.jpg" alt="Matt Odell">
           </div>
           <div class="speaker-name">Matt Odell</div>
           <div class="speaker-role">Partner</div>
@@ -1538,9 +1670,9 @@
         </div>
         
         <!-- Speaker 8 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('steve-myers')">
           <div class="speaker-image">
-            <img src="./Steve-Myers.png" alt="Steve Myers" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Steve-Myers.png" alt="Steve Myers">
           </div>
           <div class="speaker-name">Steve Myers</div>
           <div class="speaker-role">Board Member</div>
@@ -1548,9 +1680,9 @@
         </div>
         
         <!-- Speaker 9 -->
-        <div class="speaker-card fade-in">
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('rob-hamilton')">
           <div class="speaker-image">
-            <img src="./Rob-Hamilton.png" alt="Rob Hamilton" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            <img src="./Rob-Hamilton.png" alt="Rob Hamilton">
           </div>
           <div class="speaker-name">Rob Hamilton</div>
           <div class="speaker-role">CEO and Co-Founder</div>
@@ -1607,7 +1739,7 @@
             <div class="schedule-time">12:00 PM</div>
             <div class="schedule-content">
               <h4>Networking Lunch</h4>
-              <p>Curated conversations and relationship building.</p>
+              <p>Natural collisions and continued conversations.</p>
             </div>
           </div>
           
@@ -1692,7 +1824,7 @@
             <div class="schedule-time">12:00 PM</div>
             <div class="schedule-content">
               <h4>Networking Lunch</h4>
-              <p>Continued relationship building and discussions.</p>
+              <p>Natural collisions and continued conversations.</p>
             </div>
           </div>
           
@@ -1720,14 +1852,13 @@
   <section id="venue" class="section venue">
     <div class="container">
       <h2 class="section-title fade-in">Bitcoin Park</h2>
-      <p class="section-subtitle fade-in">The premier destination for Bitcoin innovation and community building.</p>
+      <p class="section-subtitle fade-in">A community supported campus focused on grassroots freedom tech adoption</p>
       
       <div class="venue-content">
         <div class="venue-text fade-in-left">
                       <h3>Nashville, TN</h3>
-          <p>Bitcoin Park serves as the ideal setting for this intimate gathering, providing a professional yet collaborative environment for focused discussions on institutional Bitcoin custody and treasury management.</p>
-          <p>Located in the heart of Nashville, Bitcoin Park offers state-of-the-art facilities, comfortable meeting spaces, and the perfect backdrop for building lasting relationships within the Bitcoin ecosystem.</p>
-          <p>Our venue combines the professional atmosphere required for meaningful discussions with the innovative spirit that drives Bitcoin adoption and development.</p>
+          <p>Bitcoin Park is a place for bitcoiners from around the world to come together, work together, collaborate, and build.</p>
+          <p>Hosted in the spirit of Bitcoin Park's signature summits, this immersive two-day experience offers intentional programming, collaborative dialogue, and deeper connections in a Bitcoin-native environment.</p>
         </div>
         
         <div class="venue-video fade-in-right">
@@ -1758,20 +1889,21 @@
       </div>
       
       <div class="footer-links">
-        <a href="https://bitcoinpark.com" class="footer-link">Bitcoin Park</a>
-        <a href="https://bitcoinpark.com/nashville" class="footer-link">Join us for a meetup</a>
-        <a href="https://bitcoinpark.com/opdaily" class="footer-link">OP_Daily</a>
+        <a href="https://bitcoinpark.com" class="footer-link" target="_blank" rel="noopener noreferrer">Bitcoin Park</a>
+        <a href="https://bitcoinpark.com/nashville" class="footer-link" target="_blank" rel="noopener noreferrer">Join us for a meetup</a>
+        <a href="https://bitcoinpark.com/opdaily" class="footer-link" target="_blank" rel="noopener noreferrer">OP_Daily</a>
       </div>
       
       <div class="footer-social">
-        <a href="https://twitter.com/bitcoinpark_" class="social-icon">𝕏</a>
-        <a href="https://primal.net/park" class="social-icon">📱</a>
-        <a href="https://discord.gg/RBgZndpAM2" class="social-icon">💬</a>
+        <a href="https://primal.net/park" class="social-icon" target="_blank" rel="noopener noreferrer">
+          <img src="./nostr.png" alt="Nostr" style="width: 24px; height: 24px; object-fit: contain;">
+        </a>
+        <a href="https://www.linkedin.com/company/bitcoinpark" class="social-icon" target="_blank" rel="noopener noreferrer">
+          <img src="./LinkedIn_icon.svg.png" alt="LinkedIn" style="width: 24px; height: 24px; object-fit: contain;">
+        </a>
+        <a href="https://twitter.com/bitcoinpark_" class="social-icon" target="_blank" rel="noopener noreferrer">𝕏</a>
       </div>
-      
-      <p class="footer-text">
-        A community supported campus focused on grassroots freedom tech adoption
-      </p>
+
     </div>
   </footer>
 
@@ -1920,6 +2052,150 @@
         navbar.style.background = 'rgba(32, 34, 82, 0.95)';
       }
     });
+
+    // Speaker Modal Functionality
+    const speakerData = {
+      'parker-lewis': {
+        name: 'Parker Lewis',
+        role: 'Author',
+        company: 'Gradually Then Suddenly',
+        image: './Parker-Lewis.png',
+        linkedin: 'https://www.linkedin.com/in/parker-lewis-ab904669/',
+        bio: 'Parker Lewis is the author of "Gradually Then Suddenly," a comprehensive exploration of Bitcoin and its implications for the global financial system. His work provides deep insights into Bitcoin\'s monetary properties, its role in treasury management, and the inevitable transition from traditional currency systems to Bitcoin-based infrastructure.'
+      },
+      'max-keidun': {
+        name: 'Max Keidun',
+        role: 'CEO',
+        company: 'Debifi',
+        image: './Max-Keidun.png',
+        linkedin: 'https://www.linkedin.com/in/mkei/',
+        bio: 'Max Keidun is the Chief Executive Officer of Debifi, where he leads innovative solutions in decentralized finance infrastructure. With a background in financial technology and institutional finance, Max has been at the forefront of building Bitcoin-native financial products and custody solutions for institutional clients.'
+      },
+      'adam-back': {
+        name: 'Adam Back',
+        role: 'CEO',
+        company: 'Blockstream',
+        image: './adam-back.png',
+        linkedin: 'https://x.com/adam3us',
+        bio: 'Dr. Adam Back is the CEO of Blockstream and a world-renowned cryptographer and cypherpunk. He is the inventor of Hashcash, the proof-of-work system used by Bitcoin, and has been involved in the development of Bitcoin since its early days. Adam is a leading expert on Bitcoin scaling, privacy, and security technologies.'
+      },
+      'preston-pysh': {
+        name: 'Preston Pysh',
+        role: 'Co-Founder',
+        company: 'The Investor Podcast',
+        image: './Preston-Pysh.png',
+        linkedin: 'https://www.linkedin.com/in/prestonpysh/',
+        bio: 'Preston Pysh is the Co-Founder of The Investor Podcast Network, where he hosts the popular Bitcoin Fundamentals podcast. He brings a unique perspective on Bitcoin from traditional finance and value investing, helping institutional investors understand Bitcoin\'s role in modern portfolio theory and treasury management.'
+      },
+      'joe-wood': {
+        name: 'Joe Wood',
+        role: 'Founder',
+        company: 'Satoshi Pacioli',
+        image: './Joe-Wood.png',
+        linkedin: 'https://www.linkedin.com/in/joseph-wood-9217a529/',
+        bio: 'Joe Wood is the Founder of Satoshi Pacioli, a specialized accounting firm focused on Bitcoin and digital asset compliance for businesses and institutions. As a Certified Public Accountant, Joe has extensive experience helping companies navigate the complex accounting and regulatory requirements of holding Bitcoin on corporate balance sheets.'
+      },
+      'sean-bill': {
+        name: 'Sean Bill',
+        role: 'Chief Investment Officer',
+        company: 'Blockstream',
+        image: './Sean-Bill.png',
+        linkedin: 'https://www.linkedin.com/in/seanbill/',
+        bio: 'Sean Bill serves as Chief Investment Officer at Blockstream, where he oversees investment strategies and treasury operations. With deep expertise in both traditional finance and Bitcoin, Sean helps institutional clients develop comprehensive Bitcoin investment and custody strategies.'
+      },
+      'matt-odell': {
+        name: 'Matt Odell',
+        role: 'Partner',
+        company: 'Ten31',
+        image: './Matt-Odell.jpg',
+        linkedin: 'https://primal.net/odell',
+        bio: 'Matt Odell is a Partner at Ten31, a Bitcoin-focused venture capital firm. He is also the host of the popular TFTC and Citadel Dispatch podcasts. Matt has been a prominent voice in the Bitcoin community, focusing on privacy, security, and the importance of self-sovereignty in Bitcoin custody and usage.'
+      },
+      'steve-myers': {
+        name: 'Steve Myers',
+        role: 'Board Member',
+        company: 'Bitcoin Dev Kit',
+        image: './Steve-Myers.png',
+        linkedin: 'https://x.com/notmandatory',
+        bio: 'Steve Myers is a Board Member of Bitcoin Dev Kit (BDK), contributing to the development of Bitcoin wallet infrastructure and developer tools. With extensive experience in software development and Bitcoin technology, Steve helps bridge the gap between technical Bitcoin development and institutional adoption.'
+      },
+      'rob-hamilton': {
+        name: 'Rob Hamilton',
+        role: 'CEO and Co-Founder',
+        company: 'Anchorwatch',
+        image: './Rob-Hamilton.png',
+        linkedin: 'https://www.linkedin.com/in/anchorwatch-rob/',
+        bio: 'Rob Hamilton is the CEO and Co-Founder of Anchorwatch, a company focused on Bitcoin custody and security solutions for institutions. With a background in cybersecurity and financial services, Rob leads the development of enterprise-grade Bitcoin custody infrastructure and risk management tools.'
+      }
+    };
+
+    function openSpeakerModal(speakerId) {
+      const speaker = speakerData[speakerId];
+      if (!speaker) return;
+
+      const modal = document.getElementById('speaker-modal');
+      const modalImage = document.getElementById('modal-speaker-image');
+      const modalName = document.getElementById('modal-speaker-name');
+      const modalRole = document.getElementById('modal-speaker-role');
+      const modalCompany = document.getElementById('modal-speaker-company');
+      const modalBio = document.getElementById('modal-speaker-bio');
+
+      modalImage.src = speaker.image;
+      modalImage.alt = speaker.name;
+      
+      // Make name a clickable LinkedIn link
+      if (speaker.linkedin) {
+        modalName.innerHTML = `<a href="${speaker.linkedin}" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: none;">${speaker.name}</a>`;
+      } else {
+        modalName.textContent = speaker.name;
+      }
+      
+      modalRole.textContent = speaker.role;
+      modalCompany.textContent = speaker.company;
+      modalBio.textContent = speaker.bio;
+
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSpeakerModal() {
+      const modal = document.getElementById('speaker-modal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('speaker-modal');
+      if (event.target === modal) {
+        closeSpeakerModal();
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeSpeakerModal();
+      }
+    });
   </script>
+
+  <!-- Speaker Modal -->
+  <div id="speaker-modal" class="speaker-modal">
+    <div class="speaker-modal-content">
+      <button class="close-modal" onclick="closeSpeakerModal()">&times;</button>
+      <div class="speaker-modal-header">
+        <div class="speaker-modal-image">
+          <img id="modal-speaker-image" src="" alt="">
+        </div>
+        <div class="speaker-modal-info">
+          <h3 id="modal-speaker-name"></h3>
+          <div class="role" id="modal-speaker-role"></div>
+          <div class="company" id="modal-speaker-company"></div>
+        </div>
+      </div>
+      <div class="speaker-modal-bio" id="modal-speaker-bio"></div>
+    </div>
+  </div>
 </body>
 </html> 
