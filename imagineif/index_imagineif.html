@@ -2323,12 +2323,14 @@
       }
     }
     
-    /* Supported By Footer Section Styles */
-    .supported-by-footer {
+    /* Supported By Section Styles */
+    .supported-by-section {
       background: var(--section-bg);
       padding: 60px 40px;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-top: 0;
     }
     
     .supported-by-container {
@@ -2357,13 +2359,21 @@
     }
     
     .supported-logo {
-      height: 50px;
+      height: 60px;
       width: auto;
-      max-width: 180px;
+      max-width: 200px;
       filter: brightness(0) invert(1);
       opacity: 0.9;
       transition: all 0.3s ease;
       object-fit: contain;
+    }
+    
+    .supported-logo[src*="Unchained"] {
+      filter: invert(1);
+    }
+    
+    .cholla-logo {
+      filter: invert(1);
     }
     
     .supported-logo:hover {
@@ -2371,9 +2381,9 @@
       transform: scale(1.05);
     }
     
-    /* Responsive design for supported by footer */
+    /* Responsive design for supported by section */
     @media (max-width: 768px) {
-      .supported-by-footer {
+      .supported-by-section {
         padding: 40px 20px;
       }
       
@@ -2382,13 +2392,13 @@
       }
       
       .supported-logo {
-        height: 40px;
-        max-width: 140px;
+        height: 45px;
+        max-width: 160px;
       }
     }
     
     @media (max-width: 480px) {
-      .supported-by-footer {
+      .supported-by-section {
         padding: 30px 16px;
       }
       
@@ -2402,8 +2412,8 @@
       }
       
       .supported-logo {
-        height: 35px;
-        max-width: 120px;
+        height: 40px;
+        max-width: 140px;
       }
     }
   </style>
@@ -2491,6 +2501,33 @@
           </div>
         </div>
       </div>
+
+  <!-- Supported By Section -->
+  <div class="supported-by-section">
+    <div class="supported-by-container">
+      <h3 class="supported-by-title">SUPPORTED BY:</h3>
+      <div class="supported-by-logos">
+        <a href="https://blockstream.com/" target="_blank" rel="noopener noreferrer">
+          <img src="Blockstream_logo.png" alt="Blockstream" class="supported-logo">
+        </a>
+        <a href="https://chollainc.com/" target="_blank" rel="noopener noreferrer">
+          <img src="ChollaInc.png" alt="Cholla Inc" class="supported-logo cholla-logo">
+        </a>
+        <a href="https://www.cleanspark.com/" target="_blank" rel="noopener noreferrer">
+          <img src="Cleanspark.png" alt="CleanSpark" class="supported-logo">
+        </a>
+        <a href="https://foundrydigital.com/" target="_blank" rel="noopener noreferrer">
+          <img src="Foundry-horz.png" alt="Foundry" class="supported-logo">
+        </a>
+        <a href="https://www.ten31.vc/" target="_blank" rel="noopener noreferrer">
+          <img src="Ten31.png" alt="Ten31" class="supported-logo">
+        </a>
+        <a href="https://www.unchained.com/" target="_blank" rel="noopener noreferrer">
+          <img src="Unchained.png" alt="Unchained" class="supported-logo">
+        </a>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
     <div class="section vision-section zoom-up" id="vision">
@@ -2882,20 +2919,7 @@
     </div>
   </div>
 
-  <!-- Supported By Footer Section -->
-  <div class="supported-by-footer">
-    <div class="supported-by-container">
-      <h3 class="supported-by-title">SUPPORTED BY:</h3>
-      <div class="supported-by-logos">
-        <img src="Blockstream_logo.png" alt="Blockstream" class="supported-logo">
-        <img src="ChollaInc.png" alt="Cholla Inc" class="supported-logo">
-        <img src="Cleanspark.png" alt="CleanSpark" class="supported-logo">
-        <img src="Foundry-horz.png" alt="Foundry" class="supported-logo">
-        <img src="Ten31.png" alt="Ten31" class="supported-logo">
-        <img src="Unchained.svg" alt="Unchained" class="supported-logo">
-      </div>
-    </div>
-  </div>
+
 
   <div class="footer">
     &copy; 2025 Bitcoin Park. Imagine IF. All rights reserved.
