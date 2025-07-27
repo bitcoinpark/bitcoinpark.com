@@ -2322,6 +2322,90 @@
         grid-template-columns: 1fr !important;
       }
     }
+    
+    /* Supported By Footer Section Styles */
+    .supported-by-footer {
+      background: var(--section-bg);
+      padding: 60px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .supported-by-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .supported-by-title {
+      color: var(--if-white);
+      font-size: clamp(1.2rem, 2vw + 1rem, 1.6rem);
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    
+    .supported-by-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .supported-logo {
+      height: 50px;
+      width: auto;
+      max-width: 180px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      object-fit: contain;
+    }
+    
+    .supported-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    /* Responsive design for supported by footer */
+    @media (max-width: 768px) {
+      .supported-by-footer {
+        padding: 40px 20px;
+      }
+      
+      .supported-by-logos {
+        gap: 24px;
+      }
+      
+      .supported-logo {
+        height: 40px;
+        max-width: 140px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .supported-by-footer {
+        padding: 30px 16px;
+      }
+      
+      .supported-by-title {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+      }
+      
+      .supported-by-logos {
+        gap: 20px;
+      }
+      
+      .supported-logo {
+        height: 35px;
+        max-width: 120px;
+      }
+    }
   </style>
 </head>
 <body id="top">
@@ -2599,7 +2683,6 @@
     <div class="section speakers-section fade-in" id="speakers" style="text-align:center;">
       <div class="speakers-content">
         <h2>Featured Speakers</h2>
-        <p>A curated lineup of visionaries, innovators, and builders exploring the "Imagine IF..." questions that will shape our future.</p>
         
         <div class="speakers-grid main-speakers-grid">
           <div class="speaker-card fade-in" onclick="openSpeakerPopup('cathie-wood')">
@@ -2629,13 +2712,13 @@
             <div class="speaker-company">Blockstream</div>
           </div>
           
-          <div class="speaker-card fade-in" onclick="openSpeakerPopup('alex-karp')">
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('matt-odell')">
             <div class="speaker-image">
-              <img src="Alex-Karp.png" alt="Alex Karp">
+              <img src="Matt-Odell.jpg" alt="Matt Odell">
             </div>
-            <div class="speaker-name">Alex Karp</div>
-            <div class="speaker-role">CEO and Co-Founder</div>
-            <div class="speaker-company">Palantir Technologies</div>
+            <div class="speaker-name">Matt Odell</div>
+            <div class="speaker-role">Partner</div>
+            <div class="speaker-company">Ten31</div>
           </div>
           
           <div class="speaker-card fade-in" onclick="openSpeakerPopup('r0ckstar-dev')">
@@ -2645,15 +2728,6 @@
             <div class="speaker-name">R0ckstar Dev</div>
             <div class="speaker-role">Core Contributor</div>
             <div class="speaker-company">BTCPay Server</div>
-          </div>
-          
-          <div class="speaker-card fade-in" onclick="openSpeakerPopup('matt-odell')">
-            <div class="speaker-image">
-              <img src="Matt-Odell.jpg" alt="Matt Odell">
-            </div>
-            <div class="speaker-name">Matt Odell</div>
-            <div class="speaker-role">Partner</div>
-            <div class="speaker-company">Ten31</div>
           </div>
           
           <div class="speaker-card fade-in" onclick="openSpeakerPopup('econoalchemist')">
@@ -2715,8 +2789,62 @@
               <img src="Skot.png" alt="Skot9000">
             </div>
             <div class="speaker-name">Skot9000</div>
-            <div class="speaker-role">Electrical Engineer</div>
-            <div class="speaker-company">Bitaxe Miner</div>
+            <div class="speaker-role">Instigator</div>
+            <div class="speaker-company">Bitaxe</div>
+          </div>
+          
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('sean-bill')">
+            <div class="speaker-image">
+              <img src="Sean-Bill.png" alt="Sean Bill">
+            </div>
+            <div class="speaker-name">Sean Bill</div>
+            <div class="speaker-role">Chief Investment Officer</div>
+            <div class="speaker-company">Blockstream</div>
+          </div>
+          
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('mike-colyer')">
+            <div class="speaker-image">
+              <img src="Mike-Colyer.png" alt="Mike Colyer">
+            </div>
+            <div class="speaker-name">Mike Colyer</div>
+            <div class="speaker-role">CEO</div>
+            <div class="speaker-company">Foundry</div>
+          </div>
+          
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('parker-lewis')">
+            <div class="speaker-image">
+              <img src="Parker-Lewis.png" alt="Parker Lewis">
+            </div>
+            <div class="speaker-name">Parker Lewis</div>
+            <div class="speaker-role">Author</div>
+            <div class="speaker-company">Gradually Then Suddenly</div>
+          </div>
+          
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('brian-domitrovic')">
+            <div class="speaker-image">
+              <img src="Brian-Dom.png" alt="Brian Domitrovic">
+            </div>
+            <div class="speaker-name">Brian Domitrovic</div>
+            <div class="speaker-role">Richard S. Strong Scholar</div>
+            <div class="speaker-company">Laffer Center</div>
+          </div>
+          
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('marks')">
+            <div class="speaker-image">
+              <img src="Marks.png" alt="Marks">
+            </div>
+            <div class="speaker-name">Marks</div>
+            <div class="speaker-role">CEO and Co-Founder</div>
+            <div class="speaker-company">Open Secret</div>
+          </div>
+          
+          <div class="speaker-card fade-in" onclick="openSpeakerPopup('robert-warren')">
+            <div class="speaker-image">
+              <img src="Rob-Warren.png" alt="Robert Warren">
+            </div>
+            <div class="speaker-name">Robert Warren</div>
+            <div class="speaker-role">Research and Education</div>
+            <div class="speaker-company">Bitcoin Park</div>
           </div>
         </div>
       </div>
@@ -2750,6 +2878,21 @@
         <p>We are writing the future.</p>
         <p>Imagine IF is the catalyst.</p>
         <a href="tickets.html" class="stakes-btn">ATTEND IMAGINE IF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supported By Footer Section -->
+  <div class="supported-by-footer">
+    <div class="supported-by-container">
+      <h3 class="supported-by-title">SUPPORTED BY:</h3>
+      <div class="supported-by-logos">
+        <img src="Blockstream_logo.png" alt="Blockstream" class="supported-logo">
+        <img src="ChollaInc.png" alt="Cholla Inc" class="supported-logo">
+        <img src="Cleanspark.png" alt="CleanSpark" class="supported-logo">
+        <img src="Foundry-horz.png" alt="Foundry" class="supported-logo">
+        <img src="Ten31.png" alt="Ten31" class="supported-logo">
+        <img src="Unchained.svg" alt="Unchained" class="supported-logo">
       </div>
     </div>
   </div>
@@ -3153,8 +3296,8 @@
       },
       'skot9000': {
         name: 'Skot9000',
-        title: 'Electrical Engineer',
-        company: 'Bitaxe Miner',
+        title: 'Instigator',
+        company: 'Bitaxe',
         image: 'Skot.png',
         socialLink: 'https://x.com/skot9000',
         bio: 'Skot9000 is an electrical engineer and the creator of the Bitaxe open-source Bitcoin miner. He is passionate about democratizing Bitcoin mining and making it accessible to individuals through innovative hardware design.',
@@ -3163,6 +3306,90 @@
           'Electrical engineer focused on mining hardware',
           'Advocate for decentralized Bitcoin mining',
           'Pioneer in accessible mining technology'
+        ]
+      },
+      'sean-bill': {
+        name: 'Sean Bill',
+        title: 'Chief Investment Officer',
+        company: 'Blockstream',
+        image: 'Sean-Bill.png',
+        socialLink: 'https://www.linkedin.com/in/seanbill/',
+        bio: 'Sean Bill serves as Chief Investment Officer at Blockstream, where he oversees investment strategies and treasury operations. With deep expertise in both traditional finance and Bitcoin, Sean helps institutional clients develop comprehensive Bitcoin investment and custody strategies.',
+        achievements: [
+          'Chief Investment Officer at Blockstream',
+          'Expert in institutional Bitcoin investment strategies',
+          'Specialist in Bitcoin treasury operations',
+          'Advisor to institutional clients on Bitcoin custody'
+        ]
+      },
+      'mike-colyer': {
+        name: 'Mike Colyer',
+        title: 'CEO',
+        company: 'Foundry',
+        image: 'Mike-Colyer.png',
+        socialLink: 'https://www.linkedin.com/in/colyermike/',
+        bio: 'Mike Colyer is the CEO of Foundry, a Digital Currency Group company and leading provider of Bitcoin mining and staking services. With extensive experience in cryptocurrency infrastructure and institutional mining operations, Mike leads Foundry\'s mission to provide comprehensive Bitcoin mining and staking solutions to institutional clients worldwide.',
+        achievements: [
+          'CEO of Foundry, a Digital Currency Group company',
+          'Leader in institutional Bitcoin mining services',
+          'Expert in cryptocurrency infrastructure and operations',
+          'Pioneer in institutional-grade Bitcoin staking solutions'
+        ]
+      },
+      'parker-lewis': {
+        name: 'Parker Lewis',
+        title: 'Author',
+        company: 'Gradually Then Suddenly',
+        image: 'Parker-Lewis.png',
+        socialLink: 'https://www.linkedin.com/in/parker-lewis-ab904669/',
+        bio: 'Parker Lewis is the author of "Gradually Then Suddenly," a comprehensive exploration of Bitcoin and its implications for the global financial system. His work provides deep insights into Bitcoin\'s monetary properties, its role in treasury management, and the inevitable transition from traditional currency systems to Bitcoin-based infrastructure.',
+        achievements: [
+          'Author of "Gradually Then Suddenly"',
+          'Expert in Bitcoin monetary theory and properties',
+          'Thought leader on Bitcoin treasury management',
+          'Analyst of global financial system transitions'
+        ]
+      },
+      'brian-domitrovic': {
+        name: 'Brian Domitrovic',
+        title: 'Richard S. Strong Scholar',
+        company: 'Laffer Center',
+        image: 'Brian-Dom.png',
+        socialLink: 'https://www.linkedin.com/in/brian-domitrovic-4586066/',
+        bio: 'Brian Domitrovic serves as the Richard S. Strong Scholar at the Laffer Center, where he conducts research on economic policy and monetary theory. His work focuses on the intersection of traditional economic principles and emerging digital currency systems, providing insights into the future of monetary policy and financial markets.',
+        achievements: [
+          'Richard S. Strong Scholar at the Laffer Center',
+          'Expert in economic policy and monetary theory',
+          'Researcher on digital currency systems',
+          'Analyst of monetary policy and financial markets'
+        ]
+      },
+      'marks': {
+        name: 'Marks',
+        title: 'CEO and Co-Founder',
+        company: 'Open Secret',
+        image: 'Marks.png',
+        socialLink: 'https://x.com/marks_ftw',
+        bio: 'Marks is the CEO and Co-Founder of Open Secret, a company focused on innovative solutions in the cryptocurrency and blockchain space. With extensive experience in entrepreneurship and technology, Marks leads Open Secret\'s mission to develop cutting-edge products and services that advance the adoption and understanding of digital assets.',
+        achievements: [
+          'CEO and Co-Founder of Open Secret',
+          'Entrepreneur in cryptocurrency and blockchain space',
+          'Technology innovator and business leader',
+          'Advocate for digital asset adoption and education'
+        ]
+      },
+      'robert-warren': {
+        name: 'Robert Warren',
+        title: 'Research and Education',
+        company: 'Bitcoin Park',
+        image: 'Rob-Warren.png',
+        socialLink: 'https://www.linkedin.com/in/robert-warren-bitcoin/',
+        bio: 'Robert Warren leads Research and Education initiatives at Bitcoin Park, where he focuses on advancing Bitcoin knowledge and understanding through comprehensive research and educational programs. His work encompasses Bitcoin economics, policy analysis, and educational content development to support the broader Bitcoin ecosystem.',
+        achievements: [
+          'Research and Education lead at Bitcoin Park',
+          'Expert in Bitcoin economics and policy analysis',
+          'Educational content developer and thought leader',
+          'Advocate for Bitcoin knowledge and understanding'
         ]
       }
     };
