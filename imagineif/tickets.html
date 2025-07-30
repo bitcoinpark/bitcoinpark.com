@@ -47,7 +47,7 @@
       display: flex;
       gap: 48px;
       justify-content: center;
-      align-items: flex-start;
+      align-items: stretch;
       padding: 0 16px;
     }
     .ticket-card {
@@ -58,12 +58,18 @@
       padding: 40px 36px 36px 36px;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
       align-items: flex-start;
       min-width: 280px;
       max-width: 420px;
       border: 1px solid rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .card-body {
+      flex-grow: 1;
     }
     
     .ticket-card:hover {
@@ -138,6 +144,7 @@
       font-family: 'Rethink Sans', Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.02em;
+      align-self: center;
     }
     
     .ticket-btn:hover {
@@ -204,34 +211,50 @@
 <body>
   <div class="tickets-container">
     <div class="ticket-card">
-      <div class="ticket-title">I am a Bitcoin Park Member</div>
-      <div class="ticket-price">Free</div>
-      <div class="ticket-desc">Complimentary for Bitcoin Park members.</div>
-      <ul class="ticket-benefits">
-        <li>Full summit access</li>
-        <li>All main stage talks</li>
-        <li>Panels</li>
-        <li>Networking events</li>
-        <li>Food & beverage</li>
-      </ul>
+      <div class="card-body">
+        <div class="ticket-title">I am a Bitcoin Park Member</div>
+        <div class="ticket-price">Free</div>
+        <div class="ticket-desc">Complimentary for Bitcoin Park members.</div>
+        <ul class="ticket-benefits">
+          <li>All-Access to Two Day Summit</li>
+          <li>Main Theatre Stage Presentations & Panels</li>
+          <li>Ten31/OpenSats Stage Presentations & Panels</li>
+          <li>Connect: Natural Collisions With Investors, Engineers, Policymakers, and Entrepreneurs</li>
+          <li>Full Hospitality: Breakfast, Lunch, Coffee & Drinks While Onsite</li>
+        </ul>
+        <div style="text-align:center; margin: 12px 0 16px 0; color: var(--if-white); font-size: 1rem; font-weight: 400; font-style: italic;">
+          &nbsp;
+        </div>
+      </div>
       <a href="https://bitcoinpark.typeform.com/application" class="ticket-btn">CLAIM MEMBER PASS</a>
     </div>
     <div class="ticket-card">
-      <div class="ticket-title">Summit Pass</div>
-      <div class="ticket-price">$2,500</div>
-      <div class="ticket-desc">Full access ticket to the summit.</div>
-      <ul class="ticket-benefits">
-        <li>Full summit access</li>
-        <li>All main stage talks</li>
-        <li>Panels</li>
-        <li>Networking events</li>
-        <li>Food & beverage</li>
-      </ul>
+      <div class="card-body">
+        <div class="ticket-title">Summit Pass</div>
+        <div class="ticket-price">$2,500</div>
+        <div class="ticket-desc">Full access ticket to the summit.</div>
+        <ul class="ticket-benefits">
+          <li>All-Access to Two Day Summit</li>
+          <li>Main Theatre Stage Presentations & Panels</li>
+          <li>Ten31/OpenSats Stage Presentations & Panels</li>
+          <li>Connect: Natural Collisions With Investors, Engineers, Policymakers, and Entrepreneurs</li>
+          <li>Full Hospitality: Breakfast, Lunch, Coffee & Drinks While Onsite</li>
+        </ul>
+        <div style="text-align:center; margin: 12px 0 16px 0; color: var(--if-white); font-size: 1rem; font-weight: 400; font-style: italic;">
+          100% of Proceeds Support Bitcoin Park
+        </div>
+      </div>
       <a href="https://bitcoinpark.typeform.com/application" class="ticket-btn">Request an Invitation</a>
     </div>
   </div>
   <div style="text-align:center; margin: 48px 0 0 0;">
     <img src="Imagine IF Poster_cursor.png" alt="Imagine IF Poster" style="max-width: 800px; width: 100%; border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); background: #232323;" />
+  </div>
+  <div style="text-align:center; margin: 32px 0 0 0; color: var(--if-white); font-size: 1.1rem; font-weight: 400;">
+    Interested in volunteering with Bitcoin Park? <a href="https://bitcoinpark.typeform.com/september" target="_blank" rel="noopener noreferrer" style="color: var(--sunrise-orange); text-decoration: none; font-weight: 600;">Fill out an application here.</a>
+  </div>
+  <div style="text-align:center; margin: 48px 0 32px 0; color: var(--if-white); font-size: 1rem; font-weight: 400; opacity: 0.8;">
+    © 2025 Bitcoin Park. Imagine IF. All rights reserved.
   </div>
 </body>
 </html> 
