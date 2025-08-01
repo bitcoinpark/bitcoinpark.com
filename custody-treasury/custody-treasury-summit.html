@@ -1439,6 +1439,112 @@
         padding: 1.5rem;
       }
     }
+    
+    /* Supported By Section Styles */
+    .supported-by-section {
+      background: #D65A2A;
+      padding: 60px 40px;
+      text-align: center;
+      border-top: none;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-top: 0;
+    }
+    
+    .supported-by-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .supported-by-title {
+      color: var(--white);
+      font-size: clamp(1.2rem, 2vw + 1rem, 1.6rem);
+      font-weight: 600;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    
+    .supported-by-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+    
+    .supported-logo {
+      height: 120px;
+      width: auto;
+      max-width: 350px;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      object-fit: contain;
+    }
+    
+    .supported-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    /* Make Ten31 logo bigger for better balance */
+    .supported-logo[alt="Ten31"] {
+      height: 140px;
+      max-width: 400px;
+    }
+    
+    /* Invert Blockstream logo colors to make text white */
+    .supported-logo[alt="Blockstream"] {
+      filter: brightness(0) invert(1);
+    }
+    
+    /* Responsive design for supported by section */
+    @media (max-width: 768px) {
+      .supported-by-section {
+        padding: 40px 20px;
+      }
+      
+      .supported-by-logos {
+        gap: 50px;
+      }
+      
+      .supported-logo {
+        height: 90px;
+        max-width: 280px;
+      }
+      
+      .supported-logo[alt="Ten31"] {
+        height: 105px;
+        max-width: 330px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .supported-by-section {
+        padding: 30px 16px;
+      }
+      
+      .supported-by-title {
+        font-size: 1.4rem;
+        margin-bottom: 30px;
+      }
+      
+      .supported-by-logos {
+        gap: 40px;
+      }
+      
+      .supported-logo {
+        height: 80px;
+        max-width: 240px;
+      }
+      
+      .supported-logo[alt="Ten31"] {
+        height: 90px;
+        max-width: 280px;
+      }
+    }
   </style>
 </head>
 
@@ -1514,6 +1620,27 @@
       >
         Your browser does not support the video tag.
       </video>
+    </div>
+  </section>
+
+  <!-- Supported By Section -->
+  <section class="supported-by-section">
+    <div class="supported-by-container">
+      <h3 class="supported-by-title">SUPPORTED BY:</h3>
+      <div class="supported-by-logos">
+        <a href="https://anchorwatch.com/" target="_blank" rel="noopener noreferrer">
+          <img src="./Anchorwatch.png" alt="Anchorwatch" class="supported-logo">
+        </a>
+        <a href="https://blockstream.com/" target="_blank" rel="noopener noreferrer">
+          <img src="./Blockstream_logo.png" alt="Blockstream" class="supported-logo">
+        </a>
+        <a href="https://www.ten31.vc/" target="_blank" rel="noopener noreferrer">
+          <img src="./Ten31.png" alt="Ten31" class="supported-logo">
+        </a>
+        <a href="https://www.unchained.com/" target="_blank" rel="noopener noreferrer">
+          <img src="./Unchained.png" alt="Unchained" class="supported-logo">
+        </a>
+      </div>
     </div>
   </section>
 
