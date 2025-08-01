@@ -214,9 +214,28 @@
       cursor: pointer;
       transition: opacity 0.3s ease;
     }
-
+    
     .navbar-brand:hover {
       opacity: 0.8;
+    }
+    
+    /* Mobile navigation brand text */
+    .mobile-brand {
+      display: none;
+    }
+    
+    @media (max-width: 480px) {
+      .desktop-brand {
+        display: none;
+      }
+      
+      .mobile-brand {
+        display: inline;
+      }
+      
+      .navbar-brand {
+        font-size: 1.4rem;
+      }
     }
     
     .navbar-nav {
@@ -1475,6 +1494,16 @@
       margin: 0 auto;
     }
     
+    /* Mobile grid layout for logos */
+    @media (max-width: 480px) {
+      .supported-by-logos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 100%;
+      }
+    }
+    
     .supported-logo {
       height: 120px;
       width: auto;
@@ -1553,7 +1582,10 @@
   <nav class="navbar">
     <div class="navbar-brand-container">
                     <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="navbar-logo">
-      <a href="#top" class="navbar-brand">Bitcoin Custody & Treasury Summit 2025</a>
+      <a href="#top" class="navbar-brand">
+        <span class="desktop-brand">Bitcoin Custody & Treasury Summit 2025</span>
+        <span class="mobile-brand">CTS '25</span>
+      </a>
     </div>
     
     <!-- Desktop Navigation -->
