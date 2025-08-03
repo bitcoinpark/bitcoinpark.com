@@ -1201,6 +1201,28 @@
       opacity: 0.7;
     }
     
+    .footer-supported-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .supported-logo {
+      height: 5px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      filter: brightness(1.2) contrast(1.1);
+    }
+    
+    .supported-logo:hover {
+      opacity: 1;
+    }
+    
     .footer-links {
       display: flex;
       justify-content: center;
@@ -1230,19 +1252,36 @@
     .social-icon {
       width: 40px;
       height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--white);
       text-decoration: none;
       transition: all 0.3s ease;
+      filter: grayscale(100%) brightness(1.2);
     }
     
     .social-icon:hover {
       background: var(--burnt-orange);
       transform: translateY(-2px);
+    }
+    
+    .social-link {
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .social-link:hover {
+      opacity: 1;
+    }
+    
+    .social-separator {
+      color: var(--white);
+      opacity: 0.5;
+      margin: 0 0.5rem;
     }
     
     .footer-text {
@@ -1680,29 +1719,29 @@
   <section id="about" class="section about">
     <div class="container">
       <h2 class="section-title fade-in">Purpose and Mission</h2>
-                  <p class="section-subtitle fade-in">The inaugural Bitcoin Custody & Treasury Summit is a gathering of capital allocators, policymakers, entrepreneurs, bitcoin developers, and institutional operators focused on advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.</p>
+                  <p class="section-subtitle fade-in">The inaugural Bitcoin Custody & Treasury Summit is a gathering of capital allocators, policymakers, entrepreneurs, bitcoin developers, and operators focused on advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.</p>
       
-      <p class="section-subtitle fade-in" style="margin-top: 1rem; font-size: 1.4rem; opacity: 0.9; font-style: italic; font-weight: 400;">This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss regulatory frameworks, and build the networks necessary for widespread institutional Bitcoin adoption.</p>
+              <p class="section-subtitle fade-in" style="margin-top: 1rem; font-size: 1.4rem; opacity: 0.9; font-weight: 400;">This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss frameworks, and build the networks necessary for widespread Bitcoin adoption.</p>
       
       <div class="about-content">
 
         
         <div class="audience-grid fade-in">
           <div class="audience-item">
-            <h4>Institutional Treasurers</h4>
-            <p>Corporate and institutional treasury professionals exploring Bitcoin allocation strategies</p>
+            <h4>Treasurers</h4>
+            <p style="text-align: center;">Corporate and institutional treasury professionals exploring Bitcoin allocation strategies</p>
           </div>
           <div class="audience-item">
             <h4>Custody Providers</h4>
-            <p>Infrastructure builders and custody solution providers</p>
+            <p style="text-align: center;">Infrastructure builders and custody solution providers</p>
           </div>
           <div class="audience-item">
             <h4>Legal & Policy</h4>
-            <p>Security, legal, and policy professionals</p>
+            <p style="text-align: center;">Security, legal, and policy professionals</p>
           </div>
                       <div class="audience-item">
               <h4>Entrepreneurs</h4>
-              <p>Technical innovators and Bitcoin ecosystem builders</p>
+              <p style="text-align: center;">Technical innovators and Bitcoin ecosystem builders</p>
             </div>
           </div>
           
@@ -1715,7 +1754,7 @@
   <section id="themes" class="section themes">
     <div class="container">
       <h2 class="section-title fade-in">Themes and Topics</h2>
-      <p class="section-subtitle fade-in">Topics shaping the future of institutional Bitcoin custody and treasury management.</p>
+      <p class="section-subtitle fade-in" style="text-align: center;">Topics shaping the future of institutional Bitcoin custody and treasury management.</p>
       
       <div class="themes-grid">
         <div class="theme-card fade-in">
@@ -2076,20 +2115,25 @@
         <span class="footer-supported">Supported by:</span>
       </div>
       
+      <div class="footer-supported-logos">
+        <img src="./Anchorwatch.png" alt="Anchorwatch" class="supported-logo">
+        <img src="./Blockstream_logo.png" alt="Blockstream" class="supported-logo">
+        <img src="./Ten31.png" alt="Ten31" class="supported-logo">
+        <img src="./Unchained.png" alt="Unchained" class="supported-logo">
+      </div>
+      
       <div class="footer-links">
         <a href="https://bitcoinpark.com" class="footer-link" target="_blank" rel="noopener noreferrer">Bitcoin Park</a>
-        <a href="https://bitcoinpark.com/nashville" class="footer-link" target="_blank" rel="noopener noreferrer">Join us for a meetup</a>
+        <a href="https://bitcoinpark.com/nashville" class="footer-link" target="_blank" rel="noopener noreferrer">Join Us for a Meetup</a>
         <a href="https://bitcoinpark.com/opdaily" class="footer-link" target="_blank" rel="noopener noreferrer">OP_Daily</a>
       </div>
       
       <div class="footer-social">
-        <a href="https://primal.net/park" class="social-icon" target="_blank" rel="noopener noreferrer">
-          <img src="./nostr.png" alt="Nostr" style="width: 24px; height: 24px; object-fit: contain;">
-        </a>
-        <a href="https://www.linkedin.com/company/bitcoinpark" class="social-icon" target="_blank" rel="noopener noreferrer">
-          <img src="./LinkedIn_icon.svg.png" alt="LinkedIn" style="width: 24px; height: 24px; object-fit: contain;">
-        </a>
-        <a href="https://twitter.com/bitcoinpark_" class="social-icon" target="_blank" rel="noopener noreferrer">𝕏</a>
+        <a href="https://primal.net/park" class="social-link" target="_blank" rel="noopener noreferrer">NOSTR</a>
+        <span class="social-separator">|</span>
+        <a href="https://www.linkedin.com/company/bitcoinpark" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span class="social-separator">|</span>
+        <a href="https://twitter.com/bitcoinpark_" class="social-link" target="_blank" rel="noopener noreferrer">X</a>
       </div>
 
     </div>
