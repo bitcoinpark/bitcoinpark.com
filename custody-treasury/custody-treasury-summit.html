@@ -754,8 +754,14 @@
     }
     
     .audience-item p {
-      text-align: left;
-      font-size: 1.1rem;
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 1.4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      margin: 0;
     }
     
     .audience-icon {
@@ -1668,7 +1674,7 @@
                     <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="hero-icon">
       </div>
       <h1 class="hero-title fade-in">Bitcoin Custody & Treasury Summit</h1>
-              <p class="hero-subtitle fade-in">A gathering of capital allocators, policymakers, entrepreneurs, bitcoin developers, and operators.</p>
+              <p class="hero-subtitle fade-in">A gathering of capital allocators, entrepreneurs, policymakers, and developers.</p>
       <div class="hero-date fade-in">September 17th & 18th</div>
       <div class="hero-hosted fade-in" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 2rem;">
         <span style="color: var(--white); font-size: 1.2rem; font-weight: 500;">Hosted at</span>
@@ -1719,7 +1725,7 @@
   <section id="about" class="section about">
     <div class="container">
       <h2 class="section-title fade-in">Purpose and Mission</h2>
-                  <p class="section-subtitle fade-in">The inaugural Bitcoin Custody & Treasury Summit is a gathering of capital allocators, policymakers, entrepreneurs, bitcoin developers, and operators focused on advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.</p>
+                  <p class="section-subtitle fade-in">The inaugural Bitcoin Custody & Treasury Summit is focused on advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.</p>
       
               <p class="section-subtitle fade-in" style="margin-top: 1rem; font-size: 1.4rem; opacity: 0.9; font-weight: 400;">This intimate gathering provides a unique opportunity to explore cutting-edge custody solutions, discuss frameworks, and build the networks necessary for widespread Bitcoin adoption.</p>
       
@@ -1729,7 +1735,7 @@
         <div class="audience-grid fade-in">
           <div class="audience-item">
             <h4>Treasurers</h4>
-            <p style="text-align: center;">Corporate and institutional treasury professionals exploring Bitcoin allocation strategies</p>
+            <p style="text-align: center;">Institutional treasury professionals exploring Bitcoin allocation strategies</p>
           </div>
           <div class="audience-item">
             <h4>Custody Providers</h4>
@@ -1754,7 +1760,6 @@
   <section id="themes" class="section themes">
     <div class="container">
       <h2 class="section-title fade-in">Themes and Topics</h2>
-      <p class="section-subtitle fade-in" style="text-align: center;">Topics shaping the future of institutional Bitcoin custody and treasury management.</p>
       
       <div class="themes-grid">
         <div class="theme-card fade-in">
@@ -1907,7 +1912,17 @@
           <div class="speaker-company">Stephan Livera Podcast</div>
         </div>
         
-        <!-- Speaker 12 - Placeholder -->
+        <!-- Speaker 12 -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('matt-mcclintock')">
+          <div class="speaker-image">
+            <img src="./Matt-McClintock.png" alt="Matt McClintock">
+          </div>
+          <div class="speaker-name">Matt McClintock</div>
+          <div class="speaker-role">Founder</div>
+          <div class="speaker-company">Bespoke Group</div>
+        </div>
+        
+        <!-- Speaker 13 - Placeholder -->
         <div class="speaker-card fade-in">
           <div class="speaker-image">
             <img src="./Satoshi.png" alt="More Speakers TBA">
@@ -2084,8 +2099,8 @@
       <div class="venue-content">
         <div class="venue-text fade-in-left">
                       <h3>Nashville, TN</h3>
-          <p>Bitcoin Park is a place for bitcoiners from around the world to come together, work together, collaborate, and build.</p>
-          <p>Hosted in the spirit of Bitcoin Park's signature summits, this immersive two-day experience offers intentional programming, collaborative dialogue, and deeper connections in a Bitcoin-native environment.</p>
+          <p>Bitcoin Park is a place for bitcoiners from around the world to come together, work, collaborate, and build.</p>
+          <p>Hosted in the spirit of Bitcoin Park's signature summits, this immersive two-day experience offers intentional programming, collaborative dialogue, and deep connections in a Bitcoin-native environment.</p>
         </div>
         
         <div class="venue-video fade-in-right">
@@ -2374,6 +2389,14 @@
         image: './Stephan-Livera.png',
         linkedin: 'https://x.com/stephanlivera',
         bio: 'Stephan Livera is the host of the Stephan Livera Podcast, one of the most respected and influential Bitcoin podcasts in the ecosystem. Through his platform, he has interviewed hundreds of Bitcoin thought leaders, developers, and industry experts, providing deep insights into Bitcoin technology, economics, and institutional adoption.'
+      },
+      'matt-mcclintock': {
+        name: 'Matt McClintock',
+        role: 'Founder',
+        company: 'Bespoke Group',
+        image: './Matt-McClintock.png',
+        linkedin: 'https://www.linkedin.com/in/mattmcclintock/',
+        bio: 'Matt McClintock is the Founder and Executive Managing Director of The Bespoke Group, a specialized law firm focused on estate planning, tax law, and family office services. With extensive experience in wealth management and Bitcoin adoption, Matt helps high-net-worth individuals and institutions navigate the complex legal and regulatory landscape of Bitcoin custody and treasury management.'
       }
     };
 
