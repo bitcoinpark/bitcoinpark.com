@@ -1626,11 +1626,11 @@
     
     .supported-by-logos {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: center;
       align-items: center;
-      gap: 60px;
-      max-width: 1600px;
+      gap: 20px;
+      max-width: 2400px;
       margin: 0 auto;
     }
     
@@ -1645,9 +1645,9 @@
     }
     
     .supported-logo {
-      height: 120px;
-      width: auto;
-      max-width: 350px;
+      height: 200px;
+      width: 200px;
+      max-width: 200px;
       opacity: 0.9;
       transition: all 0.3s ease;
       object-fit: contain;
@@ -1658,14 +1658,13 @@
       transform: scale(1.05);
     }
     
-    /* Make Ten31 logo bigger for better balance */
-    .supported-logo[alt="Ten31"] {
-      height: 180px;
-      max-width: 500px;
-    }
-    
     /* Invert Blockstream logo colors to make text white */
     .supported-logo[alt="Blockstream"] {
+      filter: brightness(0) invert(1);
+    }
+    
+    /* Make Satoshi Pacioli logo white to match other logos */
+    .supported-logo[alt="Satoshi Pacioli"] {
       filter: brightness(0) invert(1);
     }
     
@@ -1676,17 +1675,15 @@
       }
       
       .supported-by-logos {
-        gap: 50px;
+        gap: 15px;
+        max-width: 1800px;
+        flex-wrap: nowrap;
       }
       
       .supported-logo {
-        height: 90px;
-        max-width: 280px;
-      }
-      
-      .supported-logo[alt="Ten31"] {
-        height: 140px;
-        max-width: 420px;
+        height: 160px;
+        width: 160px;
+        max-width: 160px;
       }
     }
     
@@ -1814,6 +1811,9 @@
         </a>
         <a href="https://www.unchained.com/" target="_blank" rel="noopener noreferrer">
           <img src="./Unchained.png" alt="Unchained" class="supported-logo">
+        </a>
+        <a href="https://satoshipacioli.com/" target="_blank" rel="noopener noreferrer">
+          <img src="./S-P.png" alt="Satoshi Pacioli" class="supported-logo">
         </a>
       </div>
     </div>
