@@ -2400,11 +2400,31 @@
     
     @media (max-width: 480px) {
       .main-speakers-grid {
-        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        gap: 1rem !important;
+        padding: 0 1rem !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        grid-template-columns: none !important;
       }
       
       .speakers-section .main-speakers-grid {
-        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        gap: 1rem !important;
+        padding: 0 1rem !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        grid-template-columns: none !important;
+      }
+      
+      .speaker-card {
+        flex: 0 0 auto !important;
+        width: 280px !important;
+        scroll-snap-align: start !important;
       }
     }
     
