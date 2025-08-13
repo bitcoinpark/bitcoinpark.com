@@ -1275,7 +1275,7 @@
       opacity: 0.8;
     }
     
-    .footer-logo {
+    .footer-brand-logo {
       width: 30px;
       height: 30px;
       object-fit: contain;
@@ -1284,7 +1284,7 @@
       transition: opacity 0.3s ease;
     }
     
-    .footer-logo:hover {
+    .footer-brand-logo:hover {
       opacity: 1;
     }
     
@@ -1308,21 +1308,37 @@
       align-items: center;
       gap: 2rem;
       margin-bottom: 2rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      max-width: 2400px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
-    .supported-logo {
-      height: 5px;
-      width: auto;
+    .footer-logo {
+      height: 200px;
+      width: 200px;
+      max-width: 200px;
       object-fit: contain;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-      filter: brightness(1.2) contrast(1.1);
+      opacity: 0.9;
+      transition: all 0.3s ease;
     }
     
-    .supported-logo:hover {
+    .footer-logo:hover {
       opacity: 1;
+      transform: scale(1.05);
     }
+    
+    /* Make Blockstream logo white in footer */
+    .footer-logo[alt="Blockstream"] {
+      filter: brightness(0) invert(1);
+    }
+    
+    /* Make Satoshi Pacioli logo white in footer */
+    .footer-logo[alt="Satoshi Pacioli"] {
+      filter: brightness(0) invert(1);
+    }
+    
+
     
     .footer-links {
       display: flex;
@@ -1388,6 +1404,35 @@
     .footer-text {
       opacity: 0.7;
       font-size: 1.1rem;
+    }
+    
+    /* Footer responsive design */
+    @media (max-width: 768px) {
+      .footer-supported-logos {
+        gap: 1rem;
+        max-width: 1800px;
+        flex-wrap: nowrap;
+      }
+      
+      .footer-logo {
+        height: 160px;
+        width: 160px;
+        max-width: 160px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .footer-supported-logos {
+        gap: 0.5rem;
+        max-width: 1400px;
+        flex-wrap: wrap;
+      }
+      
+      .footer-logo {
+        height: 120px;
+        width: 120px;
+        max-width: 120px;
+      }
     }
     
     /* Responsive Design */
@@ -2227,17 +2272,18 @@
   <footer class="footer" role="contentinfo">
     <div class="footer-content">
       <div class="footer-branding">
-        <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="footer-logo">
+        <img src="./LogoCTS.svg" alt="Bitcoin folder and key icon" class="footer-brand-logo">
         <span class="footer-brand-text">bitcoin park</span>
         <span class="footer-separator">|</span>
         <span class="footer-supported">Supported by:</span>
       </div>
       
       <div class="footer-supported-logos">
-        <img src="./Anchorwatch.png" alt="Anchorwatch" class="supported-logo">
-        <img src="./Blockstream_logo.png" alt="Blockstream" class="supported-logo">
-        <img src="./Ten31.png" alt="Ten31" class="supported-logo">
-        <img src="./Unchained.png" alt="Unchained" class="supported-logo">
+        <img src="./Anchorwatch.png" alt="Anchorwatch" class="footer-logo">
+        <img src="./Blockstream_logo.png" alt="Blockstream" class="footer-logo">
+        <img src="./Ten31.png" alt="Ten31" class="footer-logo">
+        <img src="./Unchained.png" alt="Unchained" class="footer-logo">
+        <img src="./S-P.png" alt="Satoshi Pacioli" class="footer-logo">
       </div>
       
       <nav class="footer-links" role="navigation" aria-label="Footer navigation">
