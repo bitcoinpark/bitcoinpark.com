@@ -2071,20 +2071,23 @@
         padding: 3rem 1rem;
       }
       
-      .speakers-grid {
+      .speakers-grid,
+      .main-speakers-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
+        padding: 0 1rem;
       }
       
       .speaker-card {
         padding: 1.5rem;
         width: 100%;
         max-width: 100%;
+        margin: 0 auto;
       }
       
       .speaker-image {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
         margin: 0 auto 1rem;
         border-radius: 8px;
       }
@@ -2105,8 +2108,6 @@
       .speaker-popup-bio {
         font-size: 0.9rem;
       }
-      
-
     }
 
     .format-list {
@@ -2191,11 +2192,11 @@
       left: 100%;
     }
     
-    /* Main page speakers - 3 per row */
+    /* Main page speakers - 4 per row */
     .speakers-section .speakers-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
+      grid-template-columns: repeat(4, 1fr) !important;
       gap: 1.5rem !important;
-      max-width: 1000px !important;
+      max-width: 1200px !important;
       margin-left: auto !important;
       margin-right: auto !important;
     }
@@ -2294,11 +2295,12 @@
       .speaker-card {
         padding: 1.5rem;
         width: 100%;
+        margin: 0 auto;
       }
       
       .speaker-image {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
         margin: 0 auto 1rem;
       }
       
