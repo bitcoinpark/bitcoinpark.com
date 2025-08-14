@@ -181,38 +181,9 @@
       }
     }
     
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+
     
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-    
-    /* Enhanced animations for brand voice */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+
     
     @keyframes zoomUp {
       from {
@@ -1322,158 +1293,9 @@
       }
     }
 
-    /* Brand video container */
-    .brand-video-container {
-      background: var(--midnight-blue);
-      background-image: url('Imagine IF Poster_cursor.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid var(--royal-purple);
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease-in-out;
-      margin-bottom: 0;
-    }
-    
-    .brand-video-container.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .brand-video-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-      text-align: center;
-      max-width: 600px;
-      padding: 0 40px;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .brand-video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(7, 12, 112, 0.8) 0%, rgba(121, 88, 237, 0.4) 100%);
-      z-index: 1;
-    }
-    
-    .brand-logo {
-      margin-bottom: 24px;
-    }
-    
-    .brand-logo svg {
-      width: 80px;
-      height: 80px;
-      filter: drop-shadow(0 4px 12px rgba(182, 131, 237, 0.4));
-    }
-    
-    .brand-title {
-      font-family: 'Rethink Sans', Arial, sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
-      color: var(--light-purple);
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      text-transform: uppercase;
-    }
-    
-    .brand-description {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--if-white);
-      margin-bottom: 32px;
-      opacity: 0.9;
-    }
-    
-    .brand-presented-by {
-      font-size: 1rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--if-white);
-      margin-bottom: 24px;
-    }
-    
-    .brand-partners {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-    }
-    
-    .brand-partner {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--if-white);
-    }
-    
-    .partner-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--if-white);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .brand-partnership {
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--if-white);
-      margin-top: 32px;
-      margin-bottom: 16px;
-    }
 
-    /* Geometric shapes and motifs */
-    .geometric-shape {
-      position: absolute;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-    
-    .upward-arrow {
-      width: 40px;
-      height: 40px;
-      background: var(--light-purple);
-      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    }
-    
-    .radial-circle {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
-    }
-    
-    .mountain-shape {
-      width: 80px;
-      height: 40px;
-      background: var(--royal-purple);
-      clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
-    }
+
+
     
     /* Background motifs for sections */
     .section::before {
@@ -1800,9 +1622,15 @@
     }
 
     /* Stakes section with background image */
+    .stakes-section-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
     .stakes-section {
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
     
     .stakes-background {
@@ -1901,6 +1729,11 @@
     }
 
     /* Speakers section */
+    .speakers-section-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
     .speakers-section {
       background: var(--section-bg);
       padding: 4rem 2rem;
@@ -2273,20 +2106,7 @@
         font-size: 0.9rem;
       }
       
-      /* Ensure main speakers grid stacks vertically on mobile */
-      .main-speakers-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        padding: 0 1rem !important;
-      }
-      
-      .speakers-section .main-speakers-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1rem !important;
-        padding: 0 1rem !important;
-      }
+
     }
 
     .format-list {
@@ -2427,134 +2247,73 @@
     }
     
     .main-speakers-grid {
-      grid-template-columns: repeat(4, 1fr) !important;
-      display: grid !important;
-    }
-    
-    .speakers-section .main-speakers-grid {
-      grid-template-columns: repeat(4, 1fr) !important;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
     }
     
     @media (max-width: 768px) {
       .main-speakers-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-      
-      .speakers-section .main-speakers-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     
     @media (max-width: 480px) {
       .speakers-section-wrapper {
-        max-width: 100% !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important;
-        visibility: visible !important;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
       }
       
       .speakers-section {
-        padding: 2rem 1rem !important;
-        min-height: auto !important;
-        overflow: visible !important;
-        display: block !important;
-        visibility: visible !important;
-        background: var(--section-bg) !important;
-        width: 100% !important;
-        margin: 0 !important;
+        padding: 2rem 1rem;
+        min-height: auto;
+        overflow: visible;
+        width: 100%;
+        margin: 0;
       }
       
       .speakers-content {
-        max-width: 100% !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-        padding: 0 !important;
-        display: block !important;
-        visibility: visible !important;
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
       }
       
       .speakers-content h2 {
-        display: block !important;
-        visibility: visible !important;
-        color: var(--sunrise-orange) !important;
-        font-size: 2rem !important;
-        margin-bottom: 2rem !important;
-        text-align: center !important;
+        font-size: 2rem;
+        margin-bottom: 2rem;
       }
       
       .main-speakers-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-        margin: 0 auto !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        visibility: visible !important;
-      }
-      
-      .speakers-section .main-speakers-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-        margin: 0 auto !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        visibility: visible !important;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
       }
       
       .speaker-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1.5rem !important;
-        margin: 0 auto !important;
-        display: block !important;
-        visibility: visible !important;
-        cursor: pointer !important;
-        background: rgba(10, 15, 58, 0.8) !important;
-        border: 1px solid rgba(230, 129, 88, 0.3) !important;
-        border-radius: 12px !important;
+        padding: 1.5rem;
+        width: 100%;
       }
       
       .speaker-image {
-        width: 150px !important;
-        height: 150px !important;
-        margin: 0 auto 1rem !important;
-        display: block !important;
-        visibility: visible !important;
-      }
-      
-      .speaker-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        border-radius: 12px !important;
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1rem;
       }
       
       .speaker-name {
-        font-size: 1.1rem !important;
-        margin-bottom: 0.5rem !important;
-        color: var(--if-white) !important;
-        display: block !important;
-        visibility: visible !important;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
       }
       
       .speaker-role {
-        font-size: 0.9rem !important;
-        margin-bottom: 0.3rem !important;
-        color: var(--light-purple) !important;
-        display: block !important;
-        visibility: visible !important;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
       }
       
       .speaker-company {
-        font-size: 0.8rem !important;
-        color: var(--sunrise-orange) !important;
-        display: block !important;
-        visibility: visible !important;
+        font-size: 0.8rem;
       }
     }
     
@@ -2947,8 +2706,8 @@
   </div>
 
   <!-- Speakers Section -->
-  <div class="speakers-section-wrapper" style="max-width:1200px; margin: 0 auto;">
-    <div class="section speakers-section fade-in" id="speakers" style="text-align:center;">
+  <div class="speakers-section-wrapper">
+    <div class="section speakers-section fade-in" id="speakers">
       <div class="speakers-content">
         <h2>Featured Speakers</h2>
         
@@ -3262,8 +3021,8 @@
     </div>
   </div>
 
-  <div class="stakes-section-wrapper" style="max-width:1200px; margin: 0 auto;">
-    <div class="section stakes-section fade-in" id="stakes" style="text-align:center;">
+  <div class="stakes-section-wrapper">
+    <div class="section stakes-section fade-in" id="stakes">
       <div class="stakes-background">
         <img src="../fisher-center-seating.jpg" alt="Fisher Center Seating" class="stakes-bg-image" />
       </div>
@@ -3319,60 +3078,7 @@
       }
     });
 
-    // Video takeover specific observer
-    const videoObserverOptions = {
-      threshold: 0.3,
-      rootMargin: '0px 0px -100px 0px'
-    };
 
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const videoTakeover = entry.target;
-          const video = videoTakeover.querySelector('video');
-          const overlay = videoTakeover.querySelector('.video-overlay');
-          const subtitle = videoTakeover.querySelector('.video-subtitle');
-          const presentedBy = videoTakeover.querySelector('.video-presented-by');
-          const partners = videoTakeover.querySelector('.video-partners');
-          const playButton = videoTakeover.querySelector('.play-button');
-
-          // Show video and overlay
-          video.classList.add('visible');
-          overlay.classList.add('visible');
-
-          // Animate content elements
-          setTimeout(() => subtitle.classList.add('visible'), 500);
-          setTimeout(() => presentedBy.classList.add('visible'), 700);
-          setTimeout(() => partners.classList.add('visible'), 900);
-
-          // Handle autoplay
-          const playPromise = video.play();
-          if (playPromise !== undefined) {
-            playPromise.then(() => {
-              // Autoplay started successfully
-              playButton.style.display = 'none';
-            }).catch(() => {
-              // Autoplay was prevented, show play button
-              playButton.classList.add('visible');
-            });
-          }
-        }
-      });
-    }, videoObserverOptions);
-
-    // Brand video container observer
-    const brandVideoObserverOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const brandVideoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, brandVideoObserverOptions);
 
     // Parallax effect for hero section
     window.addEventListener('scroll', () => {
@@ -3478,36 +3184,18 @@
         }
       });
       
-      // Ensure video maintains responsive dimensions when playing
+      // Ensure video maintains responsive dimensions
       const heroVideo = document.querySelector('.hero-video video');
       if (heroVideo) {
-        heroVideo.addEventListener('play', function() {
-          // Force the video to maintain responsive dimensions
+        const maintainVideoSize = function() {
           this.style.width = '100%';
           this.style.height = '100%';
           this.style.objectFit = 'cover';
-          this.style.display = 'block';
-          this.style.position = 'relative';
-          
-          // Prevent any size changes
-          this.style.transform = 'none';
-        });
+        };
         
-        heroVideo.addEventListener('loadedmetadata', function() {
-          // Ensure consistent responsive sizing when video metadata loads
-          this.style.width = '100%';
-          this.style.height = '100%';
-          this.style.objectFit = 'cover';
-          this.style.display = 'block';
-          this.style.position = 'relative';
-        });
-        
-        // Also prevent size changes on other video events
-        heroVideo.addEventListener('canplay', function() {
-          this.style.width = '100%';
-          this.style.height = '100%';
-          this.style.objectFit = 'cover';
-        });
+        heroVideo.addEventListener('play', maintainVideoSize);
+        heroVideo.addEventListener('loadedmetadata', maintainVideoSize);
+        heroVideo.addEventListener('canplay', maintainVideoSize);
       }
     });
 
