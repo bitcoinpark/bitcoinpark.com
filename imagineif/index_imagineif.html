@@ -434,6 +434,23 @@
       padding-top: 80px;
     }
     
+    /* Ensure mobile dropdown doesn't interfere with content when closed */
+    @media (max-width: 480px) {
+      .mobile-dropdown:not(.active) {
+        display: none !important;
+        z-index: -1 !important;
+      }
+      
+      body {
+        position: relative !important;
+      }
+      
+      main {
+        position: relative !important;
+        z-index: 1 !important;
+      }
+    }
+    
     .mobile-dropdown.active {
       opacity: 1;
       visibility: visible;
@@ -675,6 +692,16 @@
       align-items: center;
       position: relative;
       width: 100%;
+    }
+    
+    /* Override section height for speakers on mobile */
+    @media (max-width: 480px) {
+      .speakers-section.section {
+        min-height: auto !important;
+        height: auto !important;
+        display: block !important;
+        padding: 2rem 1rem !important;
+      }
     }
     
     /* First section after hero - reduced top padding */
@@ -2419,30 +2446,64 @@
     }
     
     @media (max-width: 480px) {
+      .speakers-section-wrapper {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+      }
+      
       .speakers-section {
         padding: 2rem 1rem !important;
         min-height: auto !important;
         overflow: visible !important;
+        display: block !important;
+        visibility: visible !important;
+        background: var(--section-bg) !important;
+        width: 100% !important;
+        margin: 0 !important;
+      }
+      
+      .speakers-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .speakers-content h2 {
+        display: block !important;
+        visibility: visible !important;
+        color: var(--sunrise-orange) !important;
+        font-size: 2rem !important;
+        margin-bottom: 2rem !important;
+        text-align: center !important;
       }
       
       .main-speakers-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
-        padding: 0 !important;
+        padding: 0 1rem !important;
         margin: 0 auto !important;
         max-width: 100% !important;
         width: 100% !important;
+        visibility: visible !important;
       }
       
       .speakers-section .main-speakers-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
-        padding: 0 !important;
+        padding: 0 1rem !important;
         margin: 0 auto !important;
         max-width: 100% !important;
         width: 100% !important;
+        visibility: visible !important;
       }
       
       .speaker-card {
@@ -2451,27 +2512,49 @@
         padding: 1.5rem !important;
         margin: 0 auto !important;
         display: block !important;
+        visibility: visible !important;
         cursor: pointer !important;
+        background: rgba(10, 15, 58, 0.8) !important;
+        border: 1px solid rgba(230, 129, 88, 0.3) !important;
+        border-radius: 12px !important;
       }
       
       .speaker-image {
         width: 150px !important;
         height: 150px !important;
         margin: 0 auto 1rem !important;
+        display: block !important;
+        visibility: visible !important;
+      }
+      
+      .speaker-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 12px !important;
       }
       
       .speaker-name {
         font-size: 1.1rem !important;
         margin-bottom: 0.5rem !important;
+        color: var(--if-white) !important;
+        display: block !important;
+        visibility: visible !important;
       }
       
       .speaker-role {
         font-size: 0.9rem !important;
         margin-bottom: 0.3rem !important;
+        color: var(--light-purple) !important;
+        display: block !important;
+        visibility: visible !important;
       }
       
       .speaker-company {
         font-size: 0.8rem !important;
+        color: var(--sunrise-orange) !important;
+        display: block !important;
+        visibility: visible !important;
       }
     }
     
