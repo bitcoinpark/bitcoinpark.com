@@ -1728,19 +1728,29 @@
       }
     }
 
-    /* Speakers section */
+    /* ========== Speakers (scoped) ========== */
     .speakers-section-wrapper {
+      /* Ensure the section is visible and participates in layout */
+      display: block;
+      position: relative;
+      /* Guardrails in case prior CSS hid it on mobile */
+      opacity: 1;
+      visibility: visible;
       max-width: 1200px;
       margin: 0 auto;
     }
     
     .speakers-section {
       background: var(--section-bg);
-      padding: 4rem 2rem;
+      padding: 48px 20px;
       text-align: center;
+      /* Ensure visible on mobile */
+      display: block;
+      position: relative;
+      opacity: 1;
+      visibility: visible;
       min-height: auto;
       overflow: visible;
-      display: block;
     }
     
     .speakers-content {
@@ -1752,43 +1762,46 @@
       color: var(--sunrise-orange);
       font-size: clamp(2.5rem, 5vw + 2rem, 3rem);
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin: 0 0 24px;
       letter-spacing: -0.02em;
       text-transform: uppercase;
       text-align: center;
       text-shadow: 0 3px 12px rgba(0,0,0,0.5);
-    }
-    
-    .speakers-content p {
-      font-size: clamp(1.1rem, 1.5vw + 0.8rem, 1.4rem);
-      line-height: 1.6;
-      color: var(--if-white);
-      opacity: 0.9;
-      max-width: 800px;
-      margin: 0 auto 3rem;
+      line-height: 1.15;
     }
     
     .speakers-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
-      margin-bottom: 3rem;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      /* Mobile first: 1 per row */
+      grid-template-columns: 1fr;
+      /* Nice vertical snapping on mobile */
+      scroll-snap-type: y proximity;
+      /* Ensure all cards have equal height */
+      align-items: stretch;
     }
     
     .speaker-card {
       background: rgba(10, 15, 58, 0.8);
       border: 1px solid rgba(230, 129, 88, 0.3);
-      border-radius: 12px;
-      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
       text-align: center;
       transition: all 0.3s ease;
       cursor: pointer;
       backdrop-filter: blur(10px);
       position: relative;
-      overflow: hidden;
+      /* Each card snaps into view when scrolling on mobile */
+      scroll-snap-align: start;
+      /* Ensure all cards have equal height */
+      height: 100%;
+      min-height: 350px;
     }
     
     .speaker-card::before {
@@ -1814,21 +1827,37 @@
     }
     
     .speaker-image {
-      width: 280px;
-      height: 280px;
-      border-radius: 12px;
-      margin: 0 auto 1.5rem;
+      margin: 1.5rem auto 2rem auto;
       position: relative;
       overflow: hidden;
+      width: 200px;
+      height: 200px;
+      flex-shrink: 0;
+      border-radius: 12px;
       border: 3px solid var(--sunrise-orange);
       box-shadow: 0 4px 15px rgba(230, 129, 88, 0.3);
     }
     
     .speaker-image img {
+      display: block;
       width: 100%;
       height: 100%;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
       border-radius: 12px;
+    }
+    
+    .speaker-card__body {
+      padding: 0 2rem 2rem 2rem;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+      min-height: 120px;
     }
     
     .speaker-name {
@@ -1837,6 +1866,7 @@
       font-size: 1.1rem;
       color: var(--if-white);
       margin-bottom: 0.3rem;
+      line-height: 1.2;
       position: relative;
       z-index: 2;
     }
@@ -1854,8 +1884,23 @@
       font-size: 0.8rem;
       color: var(--sunrise-orange);
       font-weight: 600;
+      margin: 0;
       position: relative;
       z-index: 2;
+    }
+    
+    /* ≥768px: 2 per row */
+    @media (min-width: 768px) {
+      .speakers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    
+    /* ≥1024px: 4 per row */
+    @media (min-width: 1024px) {
+      .speakers-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
     }
     
     .speakers-cta {
@@ -2031,85 +2076,9 @@
       margin-bottom: 0.5rem;
     }
     
-    /* Responsive design for speakers section */
-    @media (max-width: 1024px) {
-      .speakers-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.2rem;
-      }
-    }
+
     
-    @media (max-width: 768px) {
-      .speakers-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-      
-      .speaker-image {
-        width: 240px;
-        height: 240px;
-        margin: 0 auto 1.2rem;
-        border-radius: 10px;
-      }
-      
-      .speaker-image img {
-        border-radius: 10px;
-      }
-      
-      .speaker-popup-content {
-        padding: 2rem;
-        margin: 1rem;
-      }
-      
-      .speaker-popup-name {
-        font-size: 1.7rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .speakers-section {
-        padding: 3rem 1rem;
-      }
-      
-      .speakers-grid,
-      .main-speakers-grid,
-      .speakers-section .speakers-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-      }
-      
-      .speaker-card {
-        padding: 1.5rem;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-      }
-      
-      .speaker-image {
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 1rem;
-        border-radius: 8px;
-      }
-      
-      .speaker-image img {
-        border-radius: 8px;
-      }
-      
-      .speaker-popup-content {
-        padding: 1.5rem;
-        margin: 0.5rem;
-      }
-      
-      .speaker-popup-name {
-        font-size: 1.5rem;
-      }
-      
-      .speaker-popup-bio {
-        font-size: 0.9rem;
-      }
-    }
+
 
     .format-list {
       margin: 0 0 24px 0;
@@ -2193,35 +2162,7 @@
       left: 100%;
     }
     
-    /* Main page speakers - 4 per row */
-    .speakers-section .speakers-grid {
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 1.5rem !important;
-      max-width: 1200px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    
-    .speakers-section .speaker-card {
-      padding: 1.5rem !important;
-    }
-    
-    .speakers-section .speaker-image {
-      width: 100px !important;
-      height: 100px !important;
-      margin-bottom: 1rem !important;
-    }
-    
-    .speakers-content h2 {
-      color: var(--sunrise-orange) !important;
-      font-size: clamp(2.5rem, 5vw + 2rem, 3rem) !important;
-      font-weight: 700 !important;
-      margin-bottom: 1.5rem !important;
-      letter-spacing: -0.02em !important;
-      text-transform: uppercase !important;
-      text-align: center !important;
-      text-shadow: 0 3px 12px rgba(0,0,0,0.5) !important;
-    }
+
     
     .format-section .section-text h2 {
       text-align: center !important;
@@ -2248,78 +2189,9 @@
       font-weight: 400 !important;
     }
     
-    .main-speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
+
     
-    @media (max-width: 768px) {
-      .main-speakers-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .speakers-section-wrapper {
-        max-width: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      
-      .speakers-section {
-        padding: 2rem 1rem;
-        min-height: auto;
-        overflow: visible;
-        width: 100%;
-        margin: 0;
-      }
-      
-      .speakers-content {
-        max-width: 100%;
-        width: 100%;
-        margin: 0 auto;
-        padding: 0;
-      }
-      
-      .speakers-content h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
-      
-      .main-speakers-grid,
-      .speakers-section .speakers-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-        padding: 0 1rem !important;
-      }
-      
-      .speaker-card {
-        padding: 1.5rem;
-        width: 100%;
-        margin: 0 auto;
-      }
-      
-      .speaker-image {
-        width: 180px;
-        height: 180px;
-        margin: 0 auto 1rem;
-      }
-      
-      .speaker-name {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-      }
-      
-      .speaker-role {
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-      }
-      
-      .speaker-company {
-        font-size: 0.8rem;
-      }
-    }
+
     
     /* Supported By Section Styles */
     .supported-by-section {
@@ -2718,20 +2590,24 @@
         <div class="speakers-grid main-speakers-grid">
           <div class="speaker-card fade-in" onclick="openSpeakerPopup('cathie-wood')">
             <div class="speaker-image">
-                          <img src="Cathie-Wood.png" alt="Cathie Wood">
-          </div>
-          <div class="speaker-name">Cathie Wood</div>
-          <div class="speaker-role">Founder, CEO, and CIO</div>
-            <div class="speaker-company">ARK Invest</div>
+              <img src="Cathie-Wood.png" alt="Cathie Wood">
+            </div>
+            <div class="speaker-card__body">
+              <div class="speaker-name">Cathie Wood</div>
+              <div class="speaker-role">Founder, CEO, and CIO</div>
+              <div class="speaker-company">ARK Invest</div>
+            </div>
           </div>
           
           <div class="speaker-card fade-in" onclick="openSpeakerPopup('arthur-laffer')">
             <div class="speaker-image">
               <img src="Art-Laffer-portrait-web.png" alt="Dr. Arthur B. Laffer">
             </div>
-            <div class="speaker-name">Dr. Arthur B. Laffer</div>
-            <div class="speaker-role">Founder and Chairman</div>
-            <div class="speaker-company">Laffer Associates</div>
+            <div class="speaker-card__body">
+              <div class="speaker-name">Dr. Arthur B. Laffer</div>
+              <div class="speaker-role">Founder and Chairman</div>
+              <div class="speaker-company">Laffer Associates</div>
+            </div>
           </div>
           
           <div class="speaker-card fade-in" onclick="openSpeakerPopup('adam-back')">
