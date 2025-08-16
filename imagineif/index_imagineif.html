@@ -2206,6 +2206,10 @@
     .supported-by-container {
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     .supported-by-title {
@@ -2219,23 +2223,29 @@
     }
     
     .supported-by-logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      justify-items: center;
       align-items: center;
-      gap: 40px;
-      max-width: 1400px;
+      gap: clamp(16px, 2vw, 40px) clamp(24px, 3vw, 60px);
+      max-width: 1200px;
       margin: 0 auto;
     }
     
+    /* Make row 2 start at column 2 so 4 logos are centered under the 5 above */
+    .supported-by-logos .supported-logo:nth-child(6) {
+      grid-column: 2;
+    }
+    
     .supported-logo {
-      height: 60px;
+      max-height: 80px;
       width: auto;
-      max-width: 200px;
+      max-width: 180px;
+      object-fit: contain;
+      display: block;
       filter: brightness(0) invert(1);
       opacity: 0.9;
       transition: all 0.3s ease;
-      object-fit: contain;
     }
     
     .supported-logo[src*="Unchained"] {
@@ -2252,38 +2262,24 @@
     }
     
     /* Responsive design for supported by section */
-    @media (max-width: 768px) {
-      .supported-by-section {
-        padding: 40px 20px;
-      }
-      
+    @media (max-width: 1024px) {
       .supported-by-logos {
-        gap: 32px;
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
       }
-      
-      .supported-logo {
-        height: 45px;
-        max-width: 160px;
+      .supported-by-logos .supported-logo:nth-child(6) {
+        grid-column: auto;
+      }
+    }
+    
+    @media (max-width: 720px) {
+      .supported-by-logos {
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
       }
     }
     
     @media (max-width: 480px) {
-      .supported-by-section {
-        padding: 30px 16px;
-      }
-      
-      .supported-by-title {
-        font-size: 1.4rem;
-        margin-bottom: 30px;
-      }
-      
       .supported-by-logos {
-        gap: 28px;
-      }
-      
-      .supported-logo {
-        height: 40px;
-        max-width: 140px;
+        grid-template-columns: repeat(2, minmax(80px, 1fr));
       }
     }
   </style>
