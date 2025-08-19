@@ -2257,6 +2257,11 @@
       filter: invert(1);
     }
     
+    /* Ensure FEDI logo displays in white */
+    .supported-logo[alt="FEDI"] {
+      filter: brightness(0) invert(1) saturate(0) contrast(1000%);
+    }
+    
     .supported-logo:hover {
       opacity: 1;
       transform: scale(1.05);
