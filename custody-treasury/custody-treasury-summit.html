@@ -1418,29 +1418,45 @@
     /* Footer responsive design */
     @media (max-width: 768px) {
       .footer-supported-logos {
-        gap: 1rem;
+        gap: 1.5rem;
         max-width: 1800px;
         flex-wrap: nowrap;
       }
       
       .footer-logo {
-        height: 160px;
-        width: 160px;
-        max-width: 160px;
+        height: 180px;
+        width: 180px;
+        max-width: 180px;
+      }
+      
+      /* Ensure FEDI logo maintains size on tablet */
+      .footer-logo[alt="FEDI"] {
+        height: 220px;
+        width: 220px;
+        max-width: 220px;
       }
     }
     
     @media (max-width: 480px) {
       .footer-supported-logos {
-        gap: 0.5rem;
-        max-width: 1400px;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 30px;
+        max-width: 100%;
+        padding: 0 20px;
       }
       
       .footer-logo {
-        height: 120px;
-        width: 120px;
-        max-width: 120px;
+        height: 140px;
+        width: 140px;
+        max-width: 140px;
+      }
+      
+      /* Ensure FEDI logo maintains proportional size on mobile */
+      .footer-logo[alt="FEDI"] {
+        height: 160px;
+        width: 160px;
+        max-width: 160px;
       }
     }
     
@@ -1692,10 +1708,10 @@
     @media (max-width: 480px) {
       .supported-by-logos {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        gap: 30px;
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0 20px;
       }
     }
     
@@ -1739,22 +1755,22 @@
       }
       
       .supported-by-logos {
-        gap: 20px;
+        gap: 25px;
         max-width: 1800px;
         flex-wrap: nowrap;
       }
       
       .supported-logo {
-        height: 160px;
-        width: 160px;
-        max-width: 160px;
+        height: 180px;
+        width: 180px;
+        max-width: 180px;
       }
       
       /* Ensure FEDI logo maintains size on tablet */
       .supported-logo[alt="FEDI"] {
-        height: 200px;
-        width: 200px;
-        max-width: 200px;
+        height: 220px;
+        width: 220px;
+        max-width: 220px;
       }
     }
     
@@ -1769,25 +1785,26 @@
       }
       
       .supported-by-logos {
-        gap: 20px;
+        gap: 30px;
       }
       
       .supported-logo {
-        height: 100px;
-        width: 100px;
-        max-width: 100px;
+        height: 140px;
+        width: 140px;
+        max-width: 140px;
       }
       
       /* Ensure FEDI logo maintains proportional size on mobile */
       .supported-logo[alt="FEDI"] {
-        height: 120px;
-        width: 120px;
-        max-width: 120px;
+        height: 160px;
+        width: 160px;
+        max-width: 160px;
       }
       
       .supported-logo[alt="Ten31"] {
-        height: 120px;
-        max-width: 120px;
+        height: 140px;
+        width: 140px;
+        max-width: 140px;
       }
     }
   </style>
