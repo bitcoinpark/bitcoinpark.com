@@ -2225,7 +2225,7 @@
     
     .supported-by-logos {
       display: grid;
-      grid-template-columns: repeat(5, minmax(120px, 1fr));
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
       justify-items: center;
       align-items: center;
       gap: clamp(16px, 2vw, 40px) clamp(24px, 3vw, 60px);
@@ -2233,9 +2233,9 @@
       margin: 0 auto;
     }
     
-    /* Make row 2 start at column 2 so 4 logos are centered under the 5 above */
+    /* Center the logos by starting the second row at column 1 */
     .supported-by-logos .supported-logo:nth-child(6) {
-      grid-column: 2;
+      grid-column: 1;
     }
     
     .supported-logo {
@@ -2263,6 +2263,23 @@
       /* Make FEDI logo bigger to match other logos */
       max-height: 120px;
       max-width: 220px;
+    }
+    
+    /* Remove background from Best Day Brewing logo to show only text */
+    .supported-logo[alt="Best Day Brewing"] {
+      filter: brightness(0) invert(1) saturate(0) contrast(1000%);
+    }
+    
+    /* Remove background from Athena logo to show only text */
+    .supported-logo[alt="Athena"] {
+      filter: brightness(0) invert(1) saturate(0) contrast(1000%);
+    }
+    
+    /* Invert colors for Athena logo to show white text and make it bigger */
+    .supported-logo[src*="Athena (2).png"] {
+      filter: brightness(0) invert(1);
+      max-height: 200px;
+      max-width: 200px;
     }
     
     .supported-logo:hover {
@@ -2414,6 +2431,12 @@
         </a>
         <a href="https://fedi.xyz/" target="_blank" rel="noopener noreferrer">
           <img src="fedi.png" alt="FEDI" class="supported-logo">
+        </a>
+        <!-- <a href="https://athena.com/" target="_blank" rel="noopener noreferrer">
+          <img src="Athena (2).png" alt="Athena" class="supported-logo">
+        </a> -->
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <img src="Best-Day-Brewing.png" alt="Best Day Brewing" class="supported-logo">
         </a>
       </div>
     </div>
