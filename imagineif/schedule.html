@@ -23,6 +23,7 @@
       --orange: #F5823F;
       --lavender: #B784FF;
       --white: #FFFFFF;
+      --midnight-blue: #070c70;
       --dark-bg: #0B0B0C;
       --card-bg: #151517;
       --gradient-orange-purple: linear-gradient(135deg, #F5823F 0%, #B784FF 100%);
@@ -36,7 +37,7 @@
     
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--dark-bg);
+      background: var(--midnight-blue);
       color: var(--white);
       line-height: 1.6;
       overflow-x: hidden;
@@ -133,7 +134,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--dark-bg);
+      background: var(--midnight-blue);
     }
     
     .schedule-container {
@@ -146,7 +147,7 @@
     .schedule-title {
       font-size: clamp(2.5rem, 5vw + 2rem, 4rem);
       font-weight: 800;
-      color: var(--orange);
+      color: var(--lavender);
       margin-bottom: 1rem;
       letter-spacing: -0.02em;
       text-transform: uppercase;
@@ -182,7 +183,7 @@
     .day-header {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--orange);
+      color: var(--lavender);
       margin-bottom: 1.5rem;
       text-align: center;
       letter-spacing: -0.02em;
@@ -197,7 +198,7 @@
     .session-item {
       display: flex;
       gap: 1rem;
-      align-items: flex-start;
+      align-items: center;
       padding: 1rem;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
@@ -222,6 +223,7 @@
     
     .session-details {
       flex: 1;
+      text-align: center;
     }
     
     .session-title {
@@ -305,7 +307,7 @@
       <div class="schedule-grid">
         <!-- Day 1 -->
         <div class="day-section">
-          <h3 class="day-header">DAY 1</h3>
+          <h3 class="day-header">DAY 1 - SEPTEMBER 19TH</h3>
           <div class="day-content">
             <div class="session-item">
               <div class="session-time">8:00 AM</div>
@@ -346,7 +348,7 @@
         
         <!-- Day 2 -->
         <div class="day-section">
-          <h3 class="day-header">DAY 2</h3>
+          <h3 class="day-header">DAY 2 - SEPTEMBER 20TH</h3>
           <div class="day-content">
             <div class="session-item">
               <div class="session-time">8:00 AM</div>
