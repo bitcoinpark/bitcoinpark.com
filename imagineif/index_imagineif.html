@@ -1065,6 +1065,27 @@
       border-top: 1px solid rgba(255,255,255,0.1);
     }
     
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    
+    .footer-nav a {
+      color: var(--if-white);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .footer-nav a:hover {
+      opacity: 1;
+    }
+    
     @media (max-width: 1200px) {
       .main-title {
         font-size: 4rem;
@@ -2973,8 +2994,6 @@
       <p>&copy; 2025 Bitcoin Park. Imagine IF. All rights reserved.</p>
       <nav class="footer-nav" role="navigation" aria-label="Footer navigation">
         <a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a>
-        <a href="https://bitcoinpark.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="https://bitcoinpark.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>
       </nav>
     </div>
   </footer>
