@@ -2282,6 +2282,11 @@
       max-width: 200px;
     }
     
+    /* Remove background from 6.png logo to show only white text */
+    .supported-logo[src*="6.png"] {
+      filter: brightness(0) invert(1) saturate(0) contrast(1000%);
+    }
+    
     .supported-logo:hover {
       opacity: 1;
       transform: scale(1.05);
@@ -2421,7 +2426,7 @@
           <img src="Unchained.png" alt="Unchained" class="supported-logo">
         </a>
         <a href="https://www.s3protect.com/" target="_blank" rel="noopener noreferrer">
-          <img src="4.png" alt="S3 Protect" class="supported-logo">
+          <img src="6.png" alt="S3 Protect" class="supported-logo">
         </a>
         <a href="https://satoshipacioli.com/" target="_blank" rel="noopener noreferrer">
           <img src="S-P.png" alt="Satoshi Pacioli" class="supported-logo">
