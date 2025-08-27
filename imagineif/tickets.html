@@ -42,26 +42,26 @@
       line-height: 1.6;
     }
     .tickets-container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 48px auto;
       display: flex;
-      gap: 48px;
+      gap: 32px;
       justify-content: center;
       align-items: stretch;
-      padding: 0 16px;
+      padding: 0 24px;
     }
     .ticket-card {
       background: rgba(7, 12, 112, 0.85);
       border-radius: 18px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-      flex: 1 1 340px;
-      padding: 40px 36px 36px 36px;
+      flex: 1 1 0;
+      padding: 40px 32px 36px 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-      min-width: 280px;
-      max-width: 420px;
+      min-width: 300px;
+      max-width: none;
       border: 1px solid rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
@@ -70,6 +70,9 @@
     
     .card-body {
       flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     
     .ticket-card:hover {
@@ -77,7 +80,7 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.3);
     }
     .ticket-title {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 8px;
       color: var(--if-white);
@@ -86,7 +89,7 @@
     }
     
     .ticket-price {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
       margin-bottom: 18px;
       color: var(--sunrise-orange);
@@ -94,7 +97,7 @@
     }
     
     .ticket-desc {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 18px;
       color: var(--if-white);
       font-family: 'Rethink Sans', Arial, sans-serif;
@@ -112,7 +115,7 @@
       padding-left: 28px;
       position: relative;
       color: var(--if-white);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-family: 'Rethink Sans', Arial, sans-serif;
       font-weight: 400;
       line-height: 1.6;
@@ -136,7 +139,7 @@
       border-radius: 32px;
       font-size: 1.1rem;
       display: inline-block;
-      margin-top: auto;
+      margin-top: 24px;
       transition: all 0.3s ease;
       border: none;
       cursor: pointer;
@@ -214,7 +217,7 @@
       <div class="card-body">
         <div class="ticket-title">I am a Bitcoin Park Member</div>
         <div class="ticket-price">Free</div>
-        <div class="ticket-desc">Complimentary for Bitcoin Park members.</div>
+        <div class="ticket-desc">Complimentary for Park members.</div>
         <ul class="ticket-benefits">
           <li>All-Access to Two Day Summit</li>
           <li>Main Theatre Stage Presentations & Panels</li>
@@ -227,6 +230,24 @@
         </div>
       </div>
       <a href="https://bitcoinpark.typeform.com/invitation" class="ticket-btn">CLAIM MEMBER PASS</a>
+    </div>
+    <div class="ticket-card">
+      <div class="card-body">
+        <div class="ticket-title">Student Pass</div>
+        <div class="ticket-price">Discounted</div>
+        <div class="ticket-desc">Discounted pass for students.</div>
+        <ul class="ticket-benefits">
+          <li>All-Access to Two Day Summit</li>
+          <li>Main Theatre Stage Presentations & Panels</li>
+          <li>Ten31/OpenSats Stage Presentations & Panels</li>
+          <li>Connect: Natural Collisions With Investors, Engineers, Policymakers, and Entrepreneurs</li>
+          <li>Full Hospitality: Breakfast, Lunch, Coffee & Drinks While Onsite</li>
+        </ul>
+        <div style="text-align:center; margin: 12px 0 16px 0; color: var(--if-white); font-size: 1rem; font-weight: 400; font-style: italic;">
+          &nbsp;
+        </div>
+      </div>
+      <a href="https://bitcoinpark.typeform.com/invitation" class="ticket-btn">Apply here</a>
     </div>
     <div class="ticket-card">
       <div class="card-body">
