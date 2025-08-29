@@ -1086,6 +1086,167 @@
       animation: fadeIn 0.3s ease;
     }
 
+    /* Schedule Session Popup Styles */
+    .schedule-popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .schedule-popup-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 85vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideIn 0.3s ease;
+    }
+
+    .schedule-popup-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--burnt-orange);
+    }
+
+    .schedule-popup-title {
+      color: var(--deep-midnight-blue);
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.2;
+    }
+
+    .schedule-popup-time {
+      color: var(--burnt-orange);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+    }
+
+    .schedule-popup-abstract {
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .schedule-popup-speakers {
+      margin-top: 2rem;
+    }
+
+    .schedule-popup-speakers h3 {
+      color: var(--deep-midnight-blue);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .schedule-popup-speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .schedule-popup-speaker-card {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .schedule-popup-speaker-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      border-color: var(--burnt-orange);
+    }
+
+    .schedule-popup-speaker-image {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #f8f8f8;
+    }
+
+    .schedule-popup-speaker-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .schedule-popup-speaker-name {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .schedule-popup-speaker-role {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .schedule-popup-speaker-company {
+      font-size: 0.9rem;
+      color: #2563eb;
+      font-weight: 600;
+    }
+
+    .schedule-popup-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .schedule-popup-close:hover {
+      color: #000;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Make schedule items clickable */
+    .schedule-item {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .schedule-item:hover {
+      background: rgba(230, 129, 88, 0.1);
+      transform: translateX(5px);
+    }
+
     .speaker-modal-content {
       background-color: white;
       margin: 5% auto;
@@ -2279,7 +2440,17 @@
           <div class="speaker-company">Amboss</div>
         </div>
         
-        <!-- Speaker 29 - Placeholder -->
+        <!-- Speaker 29 - Rod Roudi -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('rod-roudi')">
+          <div class="speaker-image">
+            <img src="./Rod-Roudi.png" alt="Rod Roudi">
+          </div>
+          <div class="speaker-name">Rod Roudi</div>
+          <div class="speaker-role">Co-Founder</div>
+          <div class="speaker-company">Bitcoin Park</div>
+        </div>
+        
+        <!-- Speaker 30 - Placeholder -->
         <div class="speaker-card fade-in">
           <div class="speaker-image">
             <img src="./Satoshi.png" alt="More Speakers TBA">
@@ -2907,6 +3078,54 @@
         image: './Jesse-Shrader.png',
         linkedin: 'https://www.linkedin.com/in/shraderjesse/',
         bio: 'Jesse Shrader is the CEO & Co-Founder of Amboss, where he leads innovative solutions in the Bitcoin Lightning Network space. With extensive experience in entrepreneurship and technology, Jesse brings valuable insights into building scalable infrastructure and advancing Bitcoin adoption through innovative business models and strategic partnerships.'
+      },
+      'rod-roudi': {
+        name: 'Rod Roudi',
+        role: 'Co-Founder',
+        company: 'Bitcoin Park',
+        image: './Rod-Roudi.png',
+        linkedin: 'https://www.linkedin.com/in/rodroudi/',
+        bio: 'Rod Roudi is the Co-Founder of Bitcoin Park, a community-supported campus focused on grassroots freedom tech adoption. With a passion for Bitcoin and community building, Rod has created a space where bitcoiners from around the world can come together, work, collaborate, and build.'
+      },
+      'myles-snider': {
+        name: 'Myles Snider',
+        role: 'CEO',
+        company: 'Lava',
+        image: './Myles-Snider.png',
+        linkedin: 'https://www.linkedin.com/in/mylessnider/',
+        bio: 'Myles Snider is the CEO of Lava, where he leads innovative solutions in the Bitcoin and digital asset space. With extensive experience in entrepreneurship and technology, Myles brings valuable insights into building scalable infrastructure and advancing Bitcoin adoption.'
+      },
+      'becca-rubenfeld': {
+        name: 'Becca Rubenfeld',
+        role: 'CTO',
+        company: 'AnchorWatch',
+        image: './Becca-Rubenfeld.png',
+        linkedin: 'https://www.linkedin.com/in/beccarubenfeld/',
+        bio: 'Becca Rubenfeld is the CTO at AnchorWatch, where she leads technological innovation in Bitcoin custody and security solutions. With deep expertise in cybersecurity and financial technology, Becca brings valuable insights into building secure, scalable custody infrastructure.'
+      },
+      'ryan-gentry': {
+        name: 'Ryan Gentry',
+        role: 'Product Manager',
+        company: 'Lightning Labs',
+        image: './Ryan-Gentry.png',
+        linkedin: 'https://www.linkedin.com/in/ryangentry/',
+        bio: 'Ryan Gentry is a Product Manager at Lightning Labs, where he focuses on Bitcoin Lightning Network development and institutional solutions. With expertise in product management and Bitcoin technology, Ryan brings valuable insights into building user-friendly, scalable Bitcoin infrastructure.'
+      },
+      'michael-sullivan': {
+        name: 'Michael Sullivan',
+        role: 'Policy Advisor',
+        company: 'Senator Hagerty',
+        image: './Michael-Sullivan.png',
+        linkedin: 'https://www.linkedin.com/in/michael-sullivan/',
+        bio: 'Michael Sullivan serves as a Policy Advisor to Senator Hagerty, where he focuses on technology policy and digital asset regulation. With deep expertise in policy development and regulatory frameworks, Michael brings valuable insights into the evolving landscape of cryptocurrency policy and compliance.'
+      },
+      'bitstein': {
+        name: 'Bitstein',
+        role: 'President',
+        company: 'Satoshi Nakamoto Institute',
+        image: './Bitstein.png',
+        linkedin: 'https://x.com/bitstein',
+        bio: 'Bitstein is the President of the Satoshi Nakamoto Institute, a 501(c)(3) nonprofit organization dedicated to advancing Bitcoin education, research, and adoption. As a leading voice in the Bitcoin community, Bitstein brings deep insights into Bitcoin\'s philosophical foundations and economic principles.'
       }
     };
 
@@ -2957,6 +3176,207 @@
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Escape') {
         closeSpeakerModal();
+        closeSchedulePopup();
+      }
+    });
+
+    // Schedule Session Popup Functionality
+    const scheduleData = {
+      'welcome-day1': {
+        title: 'Welcome & Announcements',
+        time: '9:50 AM',
+        abstract: 'Summit kickoff and context-setting for the day ahead.',
+        speakers: ['rod-roudi']
+      },
+      'custody-2025': {
+        title: 'Custody in 2025: Navigating Risk and Responsibility',
+        time: '10:05 AM',
+        abstract: 'A research-driven overview of security frameworks, operational risk, regulation, and allocation strategies for modern Bitcoin custody.',
+        speakers: ['robert-warren']
+      },
+      'family-offices': {
+        title: 'How Family Offices Embrace a Bitcoin Paradigm',
+        time: '10:20 AM',
+        abstract: 'Family-office leaders share how they approach custody, governance, multi-generational planning, and allocation in a Bitcoin-native framework.',
+        speakers: ['stephan-livera', 'matt-mcclintock', 'eric-kalnins']
+      },
+      'shared-keys': {
+        title: 'Shared Keys, Shared Trust: Community Bitcoin Custody',
+        time: '11:00 AM',
+        abstract: 'How multi-sig and collaborative custody models distribute risk, strengthen resilience, and align incentives for values-driven organizations.',
+        speakers: ['trey-sellers', 'frank-hinek', 'john-arnold']
+      },
+      'networking-lunch-day1': {
+        title: 'Networking Lunch',
+        time: '12:00 PM',
+        abstract: 'Midday break with opportunity for informal discussion and connection.',
+        speakers: []
+      },
+      'accounting-business': {
+        title: 'Accounting and Business Structure — The Treasury Backbone',
+        time: '1:20 PM',
+        abstract: 'Legal entity design and accounting treatments that minimize exposure, ensure compliance, and optimize operations for Bitcoin treasuries.',
+        speakers: ['rod-roudi', 'steve-myers', 'joe-wood', 'r0ckstar-dev']
+      },
+      'risk-off': {
+        title: 'Risk Off: Bitcoin Custody Through the Eyes of Insurers',
+        time: '2:00 PM',
+        abstract: 'Insurers unpack underwriting criteria, policy design, and emerging coverage frameworks across custody models for institutional clients.',
+        speakers: ['rob-hamilton', 'dave-schwab', 'danny-baer', 'ben-davis']
+      },
+      'yield-framework': {
+        title: 'Where Does the Yield Come From?',
+        time: '2:40 PM',
+        abstract: 'A clear framework separating sustainable from illusory yield across lending and derivatives while preserving custody security.',
+        speakers: ['max-keidun', 'myles-snider', 'jesse-shrader']
+      },
+      'corporate-treasuries': {
+        title: 'Inside Corporate Bitcoin Treasuries: Real-World Case Studies',
+        time: '3:20 PM',
+        abstract: 'Practitioners detail accounting, governance, legal risk, and stakeholder management from live corporate treasury implementations.',
+        speakers: ['preston-pysh', 'sean-bill']
+      },
+      'cocktail-reception': {
+        title: 'Cocktail Reception',
+        time: '4:00 PM',
+        abstract: 'End Day 1 with drinks and networking among peers.',
+        speakers: []
+      },
+      'welcome-day2': {
+        title: 'Welcome Back & Announcements',
+        time: '9:50 AM',
+        abstract: 'Opening remarks and day-two highlights focused on execution in custody and treasury.',
+        speakers: ['rod-roudi']
+      },
+      'enterprise-custody': {
+        title: 'Cold, Warm, or MPC? Choosing Enterprise Custody',
+        time: '10:00 AM',
+        abstract: 'A comparative discussion of cold storage, warm wallets, and MPC trade-offs in security, accessibility, compliance, and operations.',
+        speakers: ['will-cole', 'becca-rubenfeld', 'jesse-posner']
+      },
+      'volatility-strategies': {
+        title: 'Volatility Strategies for Bitcoin-Native Treasury Teams',
+        time: '10:20 AM',
+        abstract: 'Practical playbooks for reserve allocation, hedging tools, liquidity planning, and stablecoin usage to manage treasury risk.',
+        speakers: ['stephan-livera', 'rory-murray', 'drew-dagostino']
+      },
+      'allocator-due-diligence': {
+        title: 'Allocator Due Diligence',
+        time: '11:00 AM',
+        abstract: 'How allocators evaluate custody architecture, counterparty risk, regulatory posture, and operational security with fiduciary rigor.',
+        speakers: ['ryan-gentry', 'andrew-hohns', 'sam-abassi']
+      },
+      'networking-lunch-day2': {
+        title: 'Networking Lunch',
+        time: '12:00 PM',
+        abstract: 'Midday break with opportunity for informal discussion and connection.',
+        speakers: []
+      },
+      'geopolitical-resilience': {
+        title: 'Custody as Resilience: Lessons from Geopolitical Instability',
+        time: '1:20 PM',
+        abstract: 'Policy, history, and practice perspectives on safeguarding assets against systemic shocks and capital controls.',
+        speakers: ['michael-sullivan', 'brian-domitrovic']
+      },
+      'generational-continuity': {
+        title: 'Ensuring Bitcoin Continuity Across Generations',
+        time: '2:00 PM',
+        abstract: 'Actionable guidance on inheritance planning and secure handoff of long-term Bitcoin holdings without sacrificing sovereignty.',
+        speakers: ['preston-pysh', 'parker-lewis', 'bitstein']
+      },
+      'closing-fireside': {
+        title: 'Closing Fireside Chat: The Endgame of Custody — Bitcoin\'s Final Defense',
+        time: '2:40 PM',
+        abstract: 'A candid dialogue on custody as Bitcoin\'s ultimate defense against systemic risk, state overreach, and institutional failure.',
+        speakers: ['matt-odell', 'adam-back']
+      }
+    };
+
+    // Add click handlers to all schedule items
+    document.addEventListener('DOMContentLoaded', function() {
+      const scheduleItems = document.querySelectorAll('.schedule-item');
+      scheduleItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+          // Generate session ID based on content
+          const title = this.querySelector('h4').textContent;
+          const time = this.querySelector('.schedule-time').textContent;
+          
+          // Find matching session data
+          let sessionId = null;
+          for (const [id, data] of Object.entries(scheduleData)) {
+            if (data.title === title && data.time === time) {
+              sessionId = id;
+              break;
+            }
+          }
+          
+          if (sessionId) {
+            openSchedulePopup(sessionId);
+          }
+        });
+      });
+    });
+
+    function openSchedulePopup(sessionId) {
+      const session = scheduleData[sessionId];
+      if (!session) return;
+
+      const popup = document.getElementById('schedule-popup');
+      const title = document.getElementById('popup-session-title');
+      const time = document.getElementById('popup-session-time');
+      const abstract = document.getElementById('popup-session-abstract');
+      const speakersContainer = document.getElementById('popup-session-speakers');
+
+      // Populate popup content
+      title.textContent = session.title;
+      time.textContent = session.time;
+      abstract.textContent = session.abstract;
+
+      // Clear and populate speakers
+      speakersContainer.innerHTML = '';
+      
+      if (session.speakers.length === 0) {
+        speakersContainer.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">No speakers for this session</p>';
+      } else {
+        session.speakers.forEach(speakerId => {
+          const speaker = speakerData[speakerId];
+          if (speaker) {
+            const speakerCard = document.createElement('div');
+            speakerCard.className = 'schedule-popup-speaker-card';
+            speakerCard.onclick = () => {
+              closeSchedulePopup();
+              openSpeakerModal(speakerId);
+            };
+            
+            speakerCard.innerHTML = `
+              <div class="schedule-popup-speaker-image">
+                <img src="${speaker.image}" alt="${speaker.name}">
+              </div>
+              <div class="schedule-popup-speaker-name">${speaker.name}</div>
+              <div class="schedule-popup-speaker-role">${speaker.role}</div>
+              <div class="schedule-popup-speaker-company">${speaker.company}</div>
+            `;
+            
+            speakersContainer.appendChild(speakerCard);
+          }
+        });
+      }
+
+      // Show popup
+      popup.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSchedulePopup() {
+      const popup = document.getElementById('schedule-popup');
+      popup.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close schedule popup when clicking outside
+    document.getElementById('schedule-popup').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeSchedulePopup();
       }
     });
   </script>
@@ -2976,6 +3396,22 @@
         </div>
       </div>
       <div class="speaker-modal-bio" id="modal-speaker-bio"></div>
+    </div>
+  </div>
+
+  <!-- Schedule Session Popup Modal -->
+  <div id="schedule-popup" class="schedule-popup">
+    <div class="schedule-popup-content">
+      <button class="schedule-popup-close" onclick="closeSchedulePopup()">&times;</button>
+      <div class="schedule-popup-header">
+        <h2 class="schedule-popup-title" id="popup-session-title"></h2>
+        <div class="schedule-popup-time" id="popup-session-time"></div>
+      </div>
+      <div class="schedule-popup-abstract" id="popup-session-abstract"></div>
+      <div class="schedule-popup-speakers">
+        <h3>Speakers</h3>
+        <div class="schedule-popup-speakers-grid" id="popup-session-speakers"></div>
+      </div>
     </div>
   </div>
 </body>
