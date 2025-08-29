@@ -1101,15 +1101,18 @@
 
     .schedule-popup-content {
       background-color: white;
-      margin: 5% auto;
-      padding: 2rem;
+      margin: 3% auto;
+      padding: 2.5rem;
       border-radius: 12px;
-      width: 90%;
-      max-width: 800px;
-      max-height: 85vh;
+      width: 95%;
+      max-width: 1200px;
+      max-height: 90vh;
       overflow-y: auto;
       position: relative;
       animation: slideIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .schedule-popup-header {
@@ -1156,9 +1159,12 @@
 
     .schedule-popup-speakers-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
     }
 
     .schedule-popup-speaker-card {
@@ -1170,6 +1176,9 @@
       transition: all 0.3s ease;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
     }
 
     .schedule-popup-speaker-card:hover {
@@ -1234,6 +1243,36 @@
     .schedule-popup-close:hover {
       color: #000;
       background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Desktop-specific popup sizing */
+    @media (min-width: 1200px) {
+      .schedule-popup-content {
+        margin: 2% auto;
+        max-width: 1400px;
+        padding: 3rem;
+      }
+      
+      .schedule-popup-speakers-grid {
+        gap: 2.5rem;
+        max-width: 100%;
+      }
+      
+      .schedule-popup-speaker-card {
+        min-width: 280px;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .schedule-popup-content {
+        margin: 1.5% auto;
+        max-width: 1600px;
+        padding: 3.5rem;
+      }
+      
+      .schedule-popup-speakers-grid {
+        gap: 3rem;
+      }
     }
 
     /* Make schedule items clickable */
@@ -2450,7 +2489,67 @@
           <div class="speaker-company">Bitcoin Park</div>
         </div>
         
-        <!-- Speaker 30 - Placeholder -->
+        <!-- Speaker 30 - Becca Rubenfeld -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('becca-rubenfeld')">
+          <div class="speaker-image">
+            <img src="./Becca-Rubenfeld.jpeg" alt="Becca Rubenfeld">
+          </div>
+          <div class="speaker-name">Becca Rubenfeld</div>
+          <div class="speaker-role">Co-Founder</div>
+          <div class="speaker-company">AnchorWatch</div>
+        </div>
+        
+        <!-- Speaker 31 - Michael Goldstein -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('michael-goldstein')">
+          <div class="speaker-image">
+            <img src="./Michael-Goldstein.png" alt="Michael Goldstein">
+          </div>
+          <div class="speaker-name">Michael Goldstein</div>
+          <div class="speaker-role">President</div>
+          <div class="speaker-company">Satoshi Nakamoto Institute</div>
+        </div>
+        
+        <!-- Speaker 32 - Miles Snider -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('miles-snider')">
+          <div class="speaker-image">
+            <img src="./Miles-Snider.jpeg" alt="Miles Snider">
+          </div>
+          <div class="speaker-name">Miles Snider</div>
+          <div class="speaker-role">Head of Growth</div>
+          <div class="speaker-company">Lava</div>
+        </div>
+        
+        <!-- Speaker 33 - Ryan Gentry -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('ryan-gentry')">
+          <div class="speaker-image">
+            <img src="./Ryan-Gentry.jpeg" alt="Ryan Gentry">
+          </div>
+          <div class="speaker-name">Ryan Gentry</div>
+          <div class="speaker-role">Head of Business Development</div>
+          <div class="speaker-company">Lightning Labs</div>
+        </div>
+        
+        <!-- Speaker 34 - Michael Sullivan -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('michael-sullivan')">
+          <div class="speaker-image">
+            <img src="./Michael-Sullivan.png" alt="Michael Sullivan">
+          </div>
+          <div class="speaker-name">Michael Sullivan</div>
+          <div class="speaker-role">Senior Advisor to Senator Bill Hagerty</div>
+          <div class="speaker-company">State of Tennessee</div>
+        </div>
+        
+        <!-- Speaker 35 - Brian Domitrovic -->
+        <div class="speaker-card fade-in" onclick="openSpeakerModal('brian-domitrovic')">
+          <div class="speaker-image">
+            <img src="./Brian-Dom.png" alt="Brian Domitrovic">
+          </div>
+          <div class="speaker-name">Brian Domitrovic</div>
+          <div class="speaker-role">Richard S. Strong Scholar</div>
+          <div class="speaker-company">Laffer Center</div>
+        </div>
+        
+        <!-- Speaker 36 - Placeholder -->
         <div class="speaker-card fade-in">
           <div class="speaker-image">
             <img src="./Satoshi.png" alt="More Speakers TBA">
@@ -3087,45 +3186,53 @@
         linkedin: 'https://www.linkedin.com/in/rodroudi/',
         bio: 'Rod Roudi is the Co-Founder of Bitcoin Park, a community-supported campus focused on grassroots freedom tech adoption. With a passion for Bitcoin and community building, Rod has created a space where bitcoiners from around the world can come together, work, collaborate, and build.'
       },
-      'myles-snider': {
-        name: 'Myles Snider',
-        role: 'CEO',
+      'miles-snider': {
+        name: 'Miles Snider',
+        role: 'Head of Growth',
         company: 'Lava',
-        image: './Myles-Snider.png',
-        linkedin: 'https://www.linkedin.com/in/mylessnider/',
-        bio: 'Myles Snider is the CEO of Lava, where he leads innovative solutions in the Bitcoin and digital asset space. With extensive experience in entrepreneurship and technology, Myles brings valuable insights into building scalable infrastructure and advancing Bitcoin adoption.'
+        image: './Miles-Snider.jpeg',
+        linkedin: 'https://x.com/myles_snider',
+        bio: 'Miles Snider is the Head of Growth at Lava, where he leads growth strategies and business development in the Bitcoin and digital asset space. With extensive experience in entrepreneurship and technology, Miles brings valuable insights into building scalable infrastructure and advancing Bitcoin adoption.'
       },
       'becca-rubenfeld': {
         name: 'Becca Rubenfeld',
-        role: 'CTO',
+        role: 'Co-Founder',
         company: 'AnchorWatch',
-        image: './Becca-Rubenfeld.png',
+        image: './Becca-Rubenfeld.jpeg',
         linkedin: 'https://www.linkedin.com/in/beccarubenfeld/',
-        bio: 'Becca Rubenfeld is the CTO at AnchorWatch, where she leads technological innovation in Bitcoin custody and security solutions. With deep expertise in cybersecurity and financial technology, Becca brings valuable insights into building secure, scalable custody infrastructure.'
+        bio: 'Becca Rubenfeld is the Co-Founder of AnchorWatch, where she leads technological innovation in Bitcoin custody and security solutions. With deep expertise in cybersecurity and financial technology, Becca brings valuable insights into building secure, scalable custody infrastructure.'
       },
       'ryan-gentry': {
         name: 'Ryan Gentry',
-        role: 'Product Manager',
+        role: 'Head of Business Development',
         company: 'Lightning Labs',
-        image: './Ryan-Gentry.png',
-        linkedin: 'https://www.linkedin.com/in/ryangentry/',
-        bio: 'Ryan Gentry is a Product Manager at Lightning Labs, where he focuses on Bitcoin Lightning Network development and institutional solutions. With expertise in product management and Bitcoin technology, Ryan brings valuable insights into building user-friendly, scalable Bitcoin infrastructure.'
+        image: './Ryan-Gentry.jpeg',
+        linkedin: 'https://x.com/ryanthegentry',
+        bio: 'Ryan Gentry is the Head of Business Development at Lightning Labs, where he leads strategic partnerships and business development initiatives for Bitcoin Lightning Network solutions. With expertise in business development and Bitcoin technology, Ryan brings valuable insights into building scalable business relationships and advancing Bitcoin adoption through strategic partnerships.'
       },
       'michael-sullivan': {
         name: 'Michael Sullivan',
-        role: 'Policy Advisor',
-        company: 'Senator Hagerty',
+        role: 'Senior Advisor to Senator Bill Hagerty',
+        company: 'State of Tennessee',
         image: './Michael-Sullivan.png',
-        linkedin: 'https://www.linkedin.com/in/michael-sullivan/',
-        bio: 'Michael Sullivan serves as a Policy Advisor to Senator Hagerty, where he focuses on technology policy and digital asset regulation. With deep expertise in policy development and regulatory frameworks, Michael brings valuable insights into the evolving landscape of cryptocurrency policy and compliance.'
+        linkedin: 'https://www.linkedin.com/in/michael-sullivan-02a3446/',
+        bio: 'Michael Sullivan serves as Senior Advisor to Senator Bill Hagerty from the State of Tennessee, where he focuses on technology policy and digital asset regulation. With deep expertise in policy development and regulatory frameworks, Michael brings valuable insights into the evolving landscape of cryptocurrency policy and compliance.'
       },
-      'bitstein': {
-        name: 'Bitstein',
+      'michael-goldstein': {
+        name: 'Michael Goldstein',
         role: 'President',
         company: 'Satoshi Nakamoto Institute',
-        image: './Bitstein.png',
+        image: './Michael-Goldstein.png',
         linkedin: 'https://x.com/bitstein',
-        bio: 'Bitstein is the President of the Satoshi Nakamoto Institute, a 501(c)(3) nonprofit organization dedicated to advancing Bitcoin education, research, and adoption. As a leading voice in the Bitcoin community, Bitstein brings deep insights into Bitcoin\'s philosophical foundations and economic principles.'
+        bio: 'Michael Goldstein is the President of the Satoshi Nakamoto Institute, a 501(c)(3) nonprofit organization dedicated to advancing Bitcoin education, research, and adoption. As a leading voice in the Bitcoin community, Michael brings deep insights into Bitcoin\'s philosophical foundations and economic principles.'
+      },
+      'brian-domitrovic': {
+        name: 'Brian Domitrovic',
+        role: 'Richard S. Strong Scholar',
+        company: 'Laffer Center',
+        image: './Brian-Dom.png',
+        linkedin: 'https://www.linkedin.com/in/brian-domitrovic-4586066/',
+        bio: 'Brian Domitrovic is the Richard S. Strong Scholar at the Laffer Center, where he focuses on economic research and policy analysis. With deep expertise in economic history and monetary policy, Brian brings valuable insights into the economic foundations of Bitcoin and its role in modern financial systems.'
       }
     };
 
@@ -3228,7 +3335,7 @@
         title: 'Where Does the Yield Come From?',
         time: '2:40 PM',
         abstract: 'A clear framework separating sustainable from illusory yield across lending and derivatives while preserving custody security.',
-        speakers: ['max-keidun', 'myles-snider', 'jesse-shrader']
+        speakers: ['max-keidun', 'miles-snider', 'jesse-shrader']
       },
       'corporate-treasuries': {
         title: 'Inside Corporate Bitcoin Treasuries: Real-World Case Studies',
@@ -3282,7 +3389,7 @@
         title: 'Ensuring Bitcoin Continuity Across Generations',
         time: '2:00 PM',
         abstract: 'Actionable guidance on inheritance planning and secure handoff of long-term Bitcoin holdings without sacrificing sovereignty.',
-        speakers: ['preston-pysh', 'parker-lewis', 'bitstein']
+        speakers: ['preston-pysh', 'parker-lewis', 'michael-goldstein']
       },
       'closing-fireside': {
         title: 'Closing Fireside Chat: The Endgame of Custody — Bitcoin\'s Final Defense',
@@ -3326,6 +3433,7 @@
       const time = document.getElementById('popup-session-time');
       const abstract = document.getElementById('popup-session-abstract');
       const speakersContainer = document.getElementById('popup-session-speakers');
+      const popupContent = document.querySelector('.schedule-popup-content');
 
       // Populate popup content
       title.textContent = session.title;
@@ -3337,7 +3445,27 @@
       
       if (session.speakers.length === 0) {
         speakersContainer.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">No speakers for this session</p>';
+        // Reset popup size for no speakers
+        popupContent.style.maxWidth = '600px';
+        speakersContainer.style.gridTemplateColumns = '1fr';
       } else {
+        // Dynamically adjust popup size and grid layout based on speaker count
+        const speakerCount = session.speakers.length;
+        
+        if (speakerCount === 1) {
+          popupContent.style.maxWidth = '600px';
+          speakersContainer.style.gridTemplateColumns = '1fr';
+        } else if (speakerCount === 2) {
+          popupContent.style.maxWidth = '800px';
+          speakersContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        } else if (speakerCount === 3) {
+          popupContent.style.maxWidth = '1000px';
+          speakersContainer.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        } else if (speakerCount >= 4) {
+          popupContent.style.maxWidth = '1200px';
+          speakersContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+        }
+        
         session.speakers.forEach(speakerId => {
           const speaker = speakerData[speakerId];
           if (speaker) {
