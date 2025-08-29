@@ -40,6 +40,7 @@
       margin: 0;
       min-height: 100vh;
       line-height: 1.6;
+      padding-top: 80px; /* Add padding to prevent navbar from covering content */
     }
     .tickets-container {
       max-width: 1200px;
@@ -102,6 +103,39 @@
       color: var(--if-white);
       font-family: 'Rethink Sans', Arial, sans-serif;
       font-weight: 400;
+    }
+    
+    /* ImagineIF Navigation Bar */
+    .imagineif-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(7, 12, 112, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      height: 80px;
+      display: flex;
+      align-items: center;
+      padding: 0 36px;
+    }
+    
+    .imagineif-navbar .navbar-left {
+      flex: 0 0 auto;
+    }
+    
+    .imagineif-navbar .navbar-left a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--if-white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .imagineif-navbar .navbar-left a:hover {
+      opacity: 0.9;
     }
     .ticket-benefits {
       margin: 0 0 24px 0;
@@ -212,6 +246,13 @@
   </style>
 </head>
 <body>
+  <!-- ImagineIF Navigation Bar -->
+  <nav class="imagineif-navbar">
+    <div class="navbar-left">
+      <a href="index_imagineif.html">Imagine IF</a>
+    </div>
+  </nav>
+  
   <div class="tickets-container">
     <div class="ticket-card">
       <div class="card-body">
