@@ -332,10 +332,26 @@
 
     function openModal(session) {
       $title.textContent = session.title || 'Session';
-      $meta.textContent = [
+      
+      // Determine stage based on time slot color logic, but exclude "Doors Open" sessions
+      const isDoors = session.title && session.title.toLowerCase().includes('doors open');
+      const isPurple = (
+        (session.day === 1 && ['12:00 PM', '12:35 PM', '4:00 PM'].includes(session.start)) ||
+        (session.day === 2 && ['12:35 PM', '1:00 PM', '1:25 PM'].includes(session.start))
+      );
+      
+      const metaParts = [
         `Day ${session.day || 'TBD'}`,
         [session.start, session.end].filter(Boolean).join(' – ')
-      ].filter(Boolean).join(' • ');
+      ];
+      
+      // Only add stage info if it's not a "Doors Open" session
+      if (!isDoors) {
+        const stage = isPurple ? 'Paisley Ballroom - Ten31 Stage' : 'Main Theater Stage';
+        metaParts.push(stage);
+      }
+      
+      $meta.textContent = metaParts.filter(Boolean).join(' • ');
       
       $abstract.textContent = session.abstract || 'Details coming soon.';
       $speakers.innerHTML = '';
@@ -446,7 +462,7 @@
         time.className = 'session-time';
         // Add purple class for specific times based on day and time
         const isPurple = (
-          (dayNumber === 1 && ['12:00 PM', '12:35 PM'].includes(s.start)) ||
+          (dayNumber === 1 && ['12:00 PM', '12:35 PM', '4:00 PM'].includes(s.start)) ||
           (dayNumber === 2 && ['12:35 PM', '1:00 PM', '1:25 PM'].includes(s.start))
         );
         if (isPurple) {
