@@ -311,7 +311,7 @@
       "Econoalchemist": "Eco.png",
       "Stephan Livera": "Stephan-Livera.png",
       "Joe Kelly": "Joe-Kelly.jpg",
-      "John Arnold": "John-Arnold.png",
+      "John Arnold": "John-Arnold.jpg",
       "Max Kei": "Max-Keidun.png",
       "Rory Murray": "Rory-Murray.png"
     };
@@ -375,6 +375,10 @@
         const img = document.createElement('img');
         img.alt = p.name || 'Speaker';
         img.src = headshotsMap[p.name] || placeholder(p.name);
+        img.onerror = function() {
+          console.log('Image failed to load:', this.src, 'for speaker:', p.name);
+          this.src = placeholder(p.name);
+        };
         const info = document.createElement('div');
         info.className = 'speaker-info';
         const name = document.createElement('div');
