@@ -178,7 +178,7 @@
             { "start": "2:40 PM", "end": "3:10 PM", "title": "Imagine IF America Leads", "abstract": "Imagine if America seizes the mantle of leadership in Bitcoin, AI, energy, and freedom technologies. Senator Hagerty and Rod Roudi explore how innovation aligned with liberty can ensure America remains the world's beacon of strength and opportunity. This talk highlights the risks of ceding ground to authoritarian regimes and the transformative potential of building resilient, open systems at home. It's a vision of national renewal powered by free markets, individual choice, and technological ingenuity.", "speakers": ["Senator Bill Hagerty (TN)", "Rod Roudi (Bitcoin Park)"] },
             { "start": "3:10 PM", "end": "3:45 PM", "track": "4", "title": "Master to Student, the Supply Side Economy", "abstract": "Are academic 'truths' obsoleted in the era of AI and Innovation? In this powerful dialogue, legendary economist Dr. Art Laffer and visionary investor Cathie Wood explore the resurgence of supply-side thinking for the 21st century. From tax policy to technological breakthroughs, unleashing production can drive sustainable growth, lower inequality, and ignite the next wave of human prosperity. This is a rare, intergenerational synthesis of economic insight for builders shaping the future of abundance and freedom.", "speakers": ["Cathie Wood (ARK Invest)", "Dr. Art Laffer"] },
             { "start": "4:00 PM", "end": "5:00 PM", "title": "Brainstorm: Recap Day 1", "abstract": "Recapping day one.", "speakers": ["Cathie Wood (ARK Invest)", "Lorenzo Valente (ARK Invest)", "Rod Roudi (Bitcoin Park)", "And Guests"] },
-            { "start": "5:00 PM", "end": "6:00 PM", "title": "Cocktail Reception", "abstract": "Join us for cocktails and networking." },
+            { "start": "4:00 PM", "end": "6:00 PM", "title": "Cocktail Reception", "abstract": "Join us for cocktails and networking." },
             { "start": "9:00 PM", "end": "", "title": "Evening Party", "abstract": "Join us for evening celebrations." }
           ]
         },
@@ -341,7 +341,7 @@
       const isCocktail = session.title && session.title.toLowerCase().includes('cocktail reception');
       const isEvening = session.title && (session.title.toLowerCase().includes('evening festivities') || session.title.toLowerCase().includes('evening party'));
       const isPurple = (
-        (session.day === 1 && ['12:00 PM', '12:35 PM', '4:00 PM', '5:00 PM'].includes(session.start)) ||
+        (session.day === 1 && ['12:00 PM', '12:35 PM', '3:45 PM', '4:00 PM'].includes(session.start)) ||
         (session.day === 2 && ['12:35 PM', '1:00 PM', '1:25 PM'].includes(session.start))
       );
       
@@ -471,7 +471,7 @@
         time.className = 'session-time';
         // Add purple class for specific times based on day and time
         const isPurple = (
-          (dayNumber === 1 && ['12:00 PM', '12:35 PM', '4:00 PM', '5:00 PM'].includes(s.start)) ||
+          (dayNumber === 1 && ['12:00 PM', '12:35 PM', '3:45 PM', '4:00 PM'].includes(s.start)) ||
           (dayNumber === 2 && ['12:35 PM', '1:00 PM', '1:25 PM'].includes(s.start))
         );
         if (isPurple) {
