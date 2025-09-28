@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Collections - Bitcoin Park</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bp-dark-green: #0A2B07;
+            --bp-peachy-orange: #FF9974;
+            --bp-lavender-purple: #DABDFF;
+            --bp-dark-grey: #212121;
+            --bp-white: #FFFFFF;
+            --bp-desaturated-red: #F27979;
+            --bp-muted-orange: #FFC69C;
+            --bp-pale-yellow: #FFF0A5;
+            --bp-soft-green: #9BCE9C;
+            --bp-light-bg: #FAFAFA;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bp-white);
+            color: var(--bp-dark-grey);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .header {
+            background: var(--bp-white);
+            padding: 40px 0;
+            position: relative;
+            border-bottom: 3px solid var(--bp-dark-green);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--bp-dark-grey);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--bp-peachy-orange);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-actions a {
+            color: var(--bp-dark-grey);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .apply-btn {
+            background: var(--bp-dark-green);
+            color: var(--bp-white);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-dark-green);
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Optima', 'Avenir Next', 'Segoe UI', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--bp-dark-green);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--bp-dark-grey);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            color: var(--bp-dark-grey);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.8;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+            color: var(--bp-peachy-orange);
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(10, 43, 7, 0.8), rgba(33, 33, 33, 0.9)), url('front.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--bp-white);
+            max-width: 900px;
+            padding: 0 40px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Optima', 'Avenir Next', 'Segoe UI', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 50px;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        .hero-cta {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-dark-green);
+            padding: 18px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero-cta:hover {
+            background: var(--bp-lavender-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(218, 189, 255, 0.3);
+        }
+
+        .collections-section {
+            padding: 100px 0;
+            background: var(--bp-light-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Optima', 'Avenir Next', 'Segoe UI', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--bp-dark-green);
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--bp-dark-grey);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .collection-card {
+            background: var(--bp-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(10, 43, 7, 0.08);
+            transition: all 0.4s ease;
+            border: 2px solid var(--bp-soft-green);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(10, 43, 7, 0.15);
+            border-color: var(--bp-peachy-orange);
+        }
+
+        .collection-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .collection-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 153, 116, 0.1), rgba(10, 43, 7, 0.1));
+        }
+
+        .collection-content {
+            padding: 40px;
+        }
+
+        .collection-name {
+            font-family: 'Optima', 'Avenir Next', 'Segoe UI', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bp-dark-green);
+            margin-bottom: 15px;
+        }
+
+        .collection-description {
+            color: var(--bp-dark-grey);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .collection-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .collection-features li {
+            color: var(--bp-dark-grey);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .collection-features li::before {
+            content: '•';
+            color: var(--bp-peachy-orange);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .collection-cta {
+            background: var(--bp-dark-green);
+            color: var(--bp-white);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .collection-cta:hover {
+            background: var(--bp-lavender-purple);
+            color: var(--bp-dark-green);
+        }
+
+        .membership-section {
+            background: var(--bp-white);
+            padding: 100px 0;
+            text-align: center;
+            border-top: 3px solid var(--bp-soft-green);
+        }
+
+        .membership-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .membership-content h2 {
+            font-family: 'Optima', 'Avenir Next', 'Segoe UI', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--bp-dark-green);
+            margin-bottom: 30px;
+        }
+
+        .membership-content p {
+            font-size: 1.2rem;
+            color: var(--bp-dark-grey);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+
+        .membership-cta {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-dark-green);
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .membership-cta:hover {
+            background: var(--bp-lavender-purple);
+            color: var(--bp-dark-green);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .nav-links {
+                gap: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .collection-content {
+                padding: 30px;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .membership-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            
+            .back-link {
+                top: 20px;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/" class="back-link">
+            ← Back to Bitcoin Park
+        </a>
+        <div class="container">
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/join">Join</a></li>
+                    <li><a href="/collections">Collections</a></li>
+                    <li><a href="/events">Events</a></li>
+                    <li><a href="/wellness">Wellness</a></li>
+                    <li><a href="/book">Book</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/shop">Shop</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="/signin">Sign In</a>
+                    <a href="/membership" class="apply-btn">Membership</a>
+                </div>
+            </nav>
+            <div class="hero">
+                <h1>Discover the Park</h1>
+                <p>The Park provides a home away from home for members to eat, drink, relax and have fun in our club spaces, spas, gyms, pools, and bedrooms</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-bg">
+        <div class="hero-content">
+            <h1>A home for the world's<br>creatives to come together and<br>belong</h1>
+            <p>Every membership provides unlimited access to more than 40 locations, health clubs, events, and screenings</p>
+            <a href="/apply" class="hero-cta">Apply for membership</a>
+        </div>
+    </div>
+
+    <div class="collections-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Collections</h2>
+                <p>Discover our exclusive locations where Bitcoin innovators, entrepreneurs, and thought leaders gather to build the future</p>
+            </div>
+            
+            <div class="collections-grid">
+                <div class="collection-card">
+                    <div class="collection-image" style="background-image: url('BP-Nashville-Banner_1920x1080px (1).jpg')"></div>
+                    <div class="collection-content">
+                        <h3 class="collection-name">Bitcoin Park Nashville</h3>
+                        <p class="collection-description">Our flagship campus in Nashville, TN serving as a hub for Bitcoin meetups, workshops, and community events.</p>
+                        <ul class="collection-features">
+                            <li>Premium event spaces</li>
+                            <li>State-of-the-art conference rooms</li>
+                            <li>Networking lounges</li>
+                            <li>Exclusive member events</li>
+                        </ul>
+                        <a href="/nashville" class="collection-cta">Explore Collection</a>
+                    </div>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-image" style="background-image: url('BitcoinParkAustin-Banner_1920x1080px (2).jpg')"></div>
+                    <div class="collection-content">
+                        <h3 class="collection-name">Bitcoin Park Austin</h3>
+                        <p class="collection-description">Our Austin campus fostering Bitcoin innovation and community building in the Texas capital.</p>
+                        <ul class="collection-features">
+                            <li>Innovation labs</li>
+                            <li>Co-working spaces</li>
+                            <li>Tech meetups</li>
+                            <li>Startup incubator programs</li>
+                        </ul>
+                        <a href="/austin" class="collection-cta">Explore Collection</a>
+                    </div>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-image" style="background: linear-gradient(135deg, var(--bp-peachy-orange), var(--bp-dark-green)); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">ST</div>
+                    <div class="collection-content">
+                        <h3 class="collection-name">Stream Collection</h3>
+                        <p class="collection-description">Digital platform for Bitcoin content, education, and community engagement across our ecosystem.</p>
+                        <ul class="collection-features">
+                            <li>Live streaming studios</li>
+                            <li>Content creation spaces</li>
+                            <li>Educational workshops</li>
+                            <li>Digital networking events</li>
+                        </ul>
+                        <a href="/stream" class="collection-cta">Explore Collection</a>
+                    </div>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-image" style="background: linear-gradient(135deg, var(--bp-dark-green), var(--bp-lavender-purple)); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">OP</div>
+                    <div class="collection-content">
+                        <h3 class="collection-name">OP Daily Collection</h3>
+                        <p class="collection-description">Daily Bitcoin news and information delivered to your inbox, keeping you informed and connected.</p>
+                        <ul class="collection-features">
+                            <li>News briefing rooms</li>
+                            <li>Research libraries</li>
+                            <li>Media production suites</li>
+                            <li>Journalist networking</li>
+                        </ul>
+                        <a href="/opdaily" class="collection-cta">Explore Collection</a>
+                    </div>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-image" style="background: linear-gradient(135deg, var(--bp-lavender-purple), var(--bp-peachy-orange)); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">AL</div>
+                    <div class="collection-content">
+                        <h3 class="collection-name">Almanac Collection</h3>
+                        <p class="collection-description">Comprehensive resource and guide for Bitcoin knowledge, events, and community resources.</p>
+                        <ul class="collection-features">
+                            <li>Research centers</li>
+                            <li>Knowledge libraries</li>
+                            <li>Educational seminars</li>
+                            <li>Resource databases</li>
+                        </ul>
+                        <a href="/almanac" class="collection-cta">Explore Collection</a>
+                    </div>
+                </div>
+
+                <div class="collection-card">
+                    <div class="collection-image" style="background: linear-gradient(135deg, var(--bp-soft-green), var(--bp-peachy-orange)); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">NE</div>
+                    <div class="collection-content">
+                        <h3 class="collection-name">Energy & Mining Collection</h3>
+                        <p class="collection-description">Premier event bringing together Bitcoin mining and energy professionals in Nashville.</p>
+                        <ul class="collection-features">
+                            <li>Mining facilities tours</li>
+                            <li>Energy innovation labs</li>
+                            <li>Industry conferences</li>
+                            <li>Technical workshops</li>
+                        </ul>
+                        <a href="/mining" class="collection-cta">Explore Collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="membership-section">
+        <div class="container">
+            <div class="membership-content">
+                <h2>Every membership</h2>
+                <p>Unlimited access to more than 40 locations and everything that they offer – including gyms, spas and screening rooms, plus daily events all around the world</p>
+                <a href="/apply" class="membership-cta">Apply for membership</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
