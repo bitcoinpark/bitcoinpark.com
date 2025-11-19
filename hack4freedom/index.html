@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack4Freedom - Bitcoin Park</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Orbitron:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-blue: #0066ff;
+            --neon-purple: #7b2ff7;
+            --electric-blue: #00d4ff;
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --section-bg: #0f0f1a;
+            --white: #ffffff;
+            --light-text: #e0e0e8;
+            --glow-cyan: rgba(0, 243, 255, 0.5);
+            --glow-blue: rgba(0, 102, 255, 0.4);
+            --glow-purple: rgba(123, 47, 247, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--dark-bg);
+            background-image: url('AI Hackathon.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.5) 0%, rgba(5, 5, 8, 0.6) 50%, rgba(15, 15, 26, 0.5) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sponsor-section {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            width: 100%;
+            max-width: 1400px;
+            padding: 0 30px;
+        }
+
+        .sponsor-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 1.1rem;
+            color: var(--light-text);
+            font-weight: 400;
+        }
+
+        .sponsor-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sponsor-item a {
+            text-decoration: none;
+            display: inline-block;
+            transition: opacity 0.3s ease;
+        }
+
+        .sponsor-item a:hover {
+            opacity: 0.8;
+        }
+
+        .sponsor-logo {
+            height: 50px;
+            width: auto;
+            opacity: 1;
+            filter: brightness(1);
+        }
+
+        .sponsor-text {
+            font-size: 1rem;
+            color: var(--light-text);
+            opacity: 1;
+            text-transform: lowercase;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+
+        .navbar a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--glow-cyan);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .hero {
+            background: transparent;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 243, 255, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px var(--glow-cyan), 0 0 40px var(--glow-cyan), 0 0 60px var(--glow-cyan);
+            }
+            50% {
+                text-shadow: 0 0 30px var(--glow-cyan), 0 0 60px var(--glow-cyan), 0 0 90px var(--glow-cyan);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 1200px;
+            width: 100%;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 50px;
+            font-weight: 400;
+            color: var(--light-text);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-cta {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
+            color: var(--darker-bg);
+            padding: 20px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid transparent;
+            box-shadow: 0 0 30px var(--glow-cyan), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 40px var(--glow-cyan), 0 0 80px var(--glow-cyan), inset 0 0 30px rgba(255, 255, 255, 0.2);
+            border-color: var(--neon-cyan);
+        }
+
+        .images-section {
+            padding: 60px 0;
+            background: rgba(15, 15, 26, 0.15);
+            position: relative;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .image-card {
+            background: rgba(15, 15, 26, 0.6);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .image-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(123, 47, 247, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .image-card:hover::before {
+            opacity: 1;
+        }
+
+        .image-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 20px 60px rgba(0, 243, 255, 0.3), 0 0 40px rgba(123, 47, 247, 0.2);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+            z-index: 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            max-width: 900px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .info-section {
+            background: rgba(10, 10, 15, 0.15);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .info-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .info-content h2 {
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .info-content p {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .how-it-works-card {
+            background: rgba(15, 15, 26, 0.4);
+            border-radius: 12px;
+            padding: 50px;
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .how-it-works-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 10px 40px rgba(0, 243, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .how-it-works-card h3 {
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            letter-spacing: -0.01em;
+        }
+
+        .how-it-works-card p {
+            font-size: 1.15rem;
+            color: var(--light-text);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .cta-section {
+            background: rgba(10, 10, 15, 0.15);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--electric-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
+            color: var(--darker-bg);
+            padding: 20px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+            box-shadow: 0 0 30px var(--glow-cyan), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', 'Montserrat', sans-serif;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 40px var(--glow-cyan), 0 0 80px var(--glow-cyan), inset 0 0 30px rgba(255, 255, 255, 0.2);
+            border-color: var(--neon-cyan);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hero-content {
+                padding: 0 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+                padding: 0 10px;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .images-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .info-content h2,
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .how-it-works-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .how-it-works-card {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .hero-content {
+                padding: 0 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+                padding: 0 10px;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero-cta {
+                display: block;
+                margin: 10px auto;
+                width: fit-content;
+            }
+
+            .sponsor-section {
+                bottom: 40px;
+                padding: 0 20px;
+            }
+
+            .sponsor-line {
+                font-size: 0.9rem;
+                gap: 15px;
+            }
+
+            .sponsor-logo {
+                height: 40px;
+            }
+
+            .sponsor-text {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#top">Home</a>
+            <a href="#info">Build the Future</a>
+            <a href="#expect">What to Expect</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#schedule">Schedule</a>
+            <a href="https://form.typeform.com/to/JpP6QSgD" target="_blank" rel="noopener noreferrer">Apply</a>
+        </div>
+    </nav>
+
+    <div class="hero" id="top">
+        <div class="hero-content">
+            <h1>HACK4FREEDOM</h1>
+            <p style="font-size: 2rem; margin-bottom: 20px; font-weight: 600;">Austin, TX</p>
+            <p style="font-size: 2rem; margin-bottom: 20px; font-weight: 600;">January 17 & 18, 2026</p>
+            <p style="font-size: 1.8rem; margin-bottom: 50px; font-weight: 600; color: var(--neon-cyan);">Total Prize Pool: 1 Bitcoin</p>
+            <div>
+                <a href="https://form.typeform.com/to/JpP6QSgD" target="_blank" rel="noopener noreferrer" class="hero-cta">APPLY NOW</a>
+            </div>
+        </div>
+        <div class="sponsor-section">
+            <div class="sponsor-line">
+                <span class="sponsor-text">sponsored by:</span>
+                <div class="sponsor-item">
+                    <a href="https://hrf.org" target="_blank" rel="noopener noreferrer">
+                        <img src="HRF logo.svg" alt="HRF" class="sponsor-logo">
+                    </a>
+                </div>
+                <span class="sponsor-text">hosted at:</span>
+                <div class="sponsor-item">
+                    <a href="https://bitcoinpark.com/austin" target="_blank" rel="noopener noreferrer">
+                        <img src="bitcoinpark_primarylogo_white.png" alt="Bitcoin Park" class="sponsor-logo">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="images-section" id="info">
+        <div class="container">
+            <div class="section-header">
+                <h2>BUILD THE FUTURE</h2>
+                <p>Join developers, activists, and innovators for an intensive weekend of building cutting-edge solutions that advance freedom, privacy, and decentralized technology.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section" id="expect">
+        <div class="container">
+            <div class="info-content">
+                <h2>WHAT TO EXPECT</h2>
+                <p>Hack4Freedom brings together the brightest minds in the Bitcoin and Freedom Tech community to collaborate, innovate, and build the future of decentralized technology.</p>
+                <p>Whether you're a developer or activist, this hackathon is the perfect opportunity to work on meaningful projects, network with like-minded individuals, and contribute to the Freedom Tech ecosystem.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section" id="how-it-works">
+        <div class="container">
+            <div class="info-content">
+                <h2>HOW IT WORKS</h2>
+                <div class="how-it-works-grid">
+                    <div class="how-it-works-card">
+                        <h3>Activist-Led Innovation</h3>
+                        <p>This hackathon takes a unique approach—every team is led by an activist "captain" with a real-world problem to solve. Developers apply to work on activist-proposed solutions, creating meaningful impact from day one.</p>
+                    </div>
+                    <div class="how-it-works-card">
+                        <h3>Team Structure</h3>
+                        <p>We're targeting 10 teams of 4 people each (40-50 total participants). Teams are carefully curated and formed 2 weeks before the event, matching activists with the strongest ideas to developer teams best suited to bring them to life.</p>
+                    </div>
+                    <div class="how-it-works-card">
+                        <h3>Prize Distribution</h3>
+                        <p>The 1 Bitcoin prize pool is distributed across multiple tracks. The grand prize winner receives 0.5 Bitcoin, with track prizes of 0.15-0.33 Bitcoin each, ensuring multiple teams are rewarded for exceptional work.</p>
+                    </div>
+                    <div class="how-it-works-card">
+                        <h3>Curated Participation</h3>
+                        <p>Through our application process, we carefully select participants from the HRF ecosystem, OpenSats grant recipients, B Trust, Vitrium, and other leading Freedom Tech organizations to ensure high-quality collaboration and meaningful outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-section" id="schedule">
+        <div class="container">
+            <div class="info-content">
+                <h2>WEEKEND SCHEDULE</h2>
+                <p>Join us for a Friday night social mixer, followed by intensive building sessions on Saturday and Sunday. Mentors will be available throughout the weekend to guide teams.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section" id="register">
+        <div class="container">
+            <div class="cta-content">
+                <h2>READY TO HACK?</h2>
+                <p>Don't miss out on this incredible opportunity to build the future of freedom technology.</p>
+                <a href="https://form.typeform.com/to/JpP6QSgD" target="_blank" rel="noopener noreferrer" class="cta-button">APPLY NOW</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
