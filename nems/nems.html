@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Energy & Mining Summit 2026 - Bitcoin Park</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #1a2332;
+            --navy-blue: #0f1620;
+            --orange: #ff6b35;
+            --white: #ffffff;
+            --light-gray: #b0b8c4;
+            --medium-gray: #8a94a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: var(--dark-blue);
+            padding-top: 80px;
+        }
+
+        .hero-header {
+            padding: 40px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: start;
+        }
+
+        .presented-by {
+            position: absolute;
+            bottom: 0;
+            left: 40px;
+            z-index: 20;
+            margin-bottom: calc(50vh + 120px);
+        }
+
+        .presented-by-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-cta-button {
+            position: absolute;
+            bottom: 60px;
+            right: 40px;
+            z-index: 25;
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 45px;
+            border: none;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .hero-cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.5);
+        }
+
+        .hero-title-section {
+            text-align: right;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-main-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-main-title .nashville {
+            color: var(--light-gray);
+        }
+
+        .hero-main-title .energy {
+            color: var(--white);
+        }
+
+        .hero-main-title .mining-summit {
+            color: var(--light-gray);
+        }
+
+        .hero-main-title .year {
+            color: var(--orange);
+        }
+
+        .hero-dates {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-gray);
+            letter-spacing: 0.05em;
+        }
+
+        /* Skyline Illustration */
+        .line-art-section {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .line-art-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: brightness(1.1) contrast(1.2);
+            mix-blend-mode: lighten;
+        }
+
+        .line-art-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, var(--dark-blue) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 5;
+            background: var(--dark-blue);
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Topics Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .topic-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin-bottom: 15px;
+        }
+
+        .topic-card p {
+            font-size: 1rem;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+
+        /* Speakers Section */
+        .speakers-section {
+            background: var(--navy-blue);
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .speaker-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .speaker-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0;
+        }
+
+        /* Audience Section */
+        .audience-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .audience-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--orange);
+            transition: all 0.3s ease;
+        }
+
+        .audience-item:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--navy-blue);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 25px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            background: var(--orange);
+            color: var(--white);
+            padding: 18px 45px;
+            border: none;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Video Carousel Section */
+        .videos-section {
+            background: var(--navy-blue);
+        }
+
+        .video-carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-carousel-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .video-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+        .video-item {
+            position: relative;
+            box-sizing: border-box;
+            min-width: 100%;
+            flex-shrink: 0;
+            padding: 40px;
+        }
+
+        .video-thumbnail-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-thumbnail-wrapper:hover {
+            transform: scale(1.02);
+        }
+
+        .video-thumbnail-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay-large {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .play-overlay-large::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 28px solid white;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            margin-left: 8px;
+        }
+
+        .video-thumbnail-wrapper:hover .play-overlay-large {
+            background: var(--orange);
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+
+        .video-title-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 20px;
+            color: var(--white);
+        }
+
+        .video-title-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .video-thumbnail-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .video-thumbnail-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .video-thumbnail-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            padding-bottom: 56.25%;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 53, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-overlay::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-thumbnail-card:hover .play-overlay {
+            background: var(--orange);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .thumbnail-info {
+            padding: 15px;
+        }
+
+        .thumbnail-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        .thumbnail-info p {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            margin: 0;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .carousel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 2rem;
+            font-weight: 300;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-btn-prev {
+            left: 20px;
+        }
+
+        .carousel-btn-next {
+            right: 20px;
+        }
+
+        .carousel-btn:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-btn:disabled:hover {
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--orange);
+            transform: scale(1.2);
+        }
+
+        .playlist-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .playlist-link a {
+            color: var(--orange);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .playlist-link a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--orange);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                padding-top: 100px;
+            }
+
+            .hero-header-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-title-section {
+                text-align: left;
+            }
+
+            .hero-main-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 100px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .hero-header-content {
+                padding: 0 20px;
+            }
+
+            .presented-by {
+                left: 20px;
+                margin-bottom: calc(50vh + 100px);
+            }
+
+            .hero-cta-button {
+                bottom: 40px;
+                right: 20px;
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
+            .hero-main-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-dates {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .speakers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .video-item {
+                padding: 20px;
+            }
+
+            .carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .carousel-btn-prev {
+                left: 10px;
+            }
+
+            .carousel-btn-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 110px;
+            }
+
+            .presented-by {
+                left: 20px;
+                margin-bottom: calc(50vh + 80px);
+            }
+
+            .presented-by-label {
+                font-size: 0.75rem;
+            }
+
+            .hero-cta-button {
+                bottom: 30px;
+                right: 20px;
+                padding: 14px 30px;
+                font-size: 0.9rem;
+            }
+
+            .hero-main-title {
+                font-size: 2rem;
+            }
+
+            .hero-dates {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .navbar-content {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#top">Home</a>
+            <a href="#about">About</a>
+            <a href="#videos">Videos</a>
+            <a href="#topics">Topics</a>
+            <a href="#speakers">Speakers</a>
+            <a href="#audience">Audience</a>
+            <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer">Join Waitlist</a>
+        </div>
+    </nav>
+
+    <div class="hero" id="top">
+        <div class="hero-header">
+            <div class="hero-header-content">
+                <div class="hero-title-section">
+                    <div class="hero-main-title">
+                        <span class="nashville">NASHVILLE </span>
+                        <span class="energy">ENERGY</span>
+                        <span class="mining-summit"> & MINING SUMMIT </span>
+                        <span class="year">2026</span>
+                    </div>
+                    <div class="hero-dates">JANUARY 22-23</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="presented-by">
+            <div class="presented-by-label">PRESENTED BY:</div>
+        </div>
+        
+        <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer" class="hero-cta-button">Join Waitlist</a>
+        
+        <div class="line-art-section">
+            <img src="nems-skyline (2).png" alt="Nashville Energy & Mining Skyline">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="section" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About the Summit</h2>
+                    <p>The Nashville Energy & Mining Summit 2026 brings together the brightest minds in Bitcoin mining, energy production, and infrastructure to explore the convergence of energy markets and computational power. Join us for two days of cutting-edge discussions, networking, and insights into the future of monetizing energy assets.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section videos-section" id="videos">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Catch Up on NEMS</h2>
+                    <p>Watch highlights from previous Nashille Energy & Mining Summits and explore key discussions on energy and mining.</p>
+                </div>
+                <div class="video-carousel-container">
+                    <div class="video-carousel-wrapper">
+                        <button class="carousel-btn carousel-btn-prev" id="prevBtn" aria-label="Previous video">‹</button>
+                        <div class="video-carousel" id="videoCarousel">
+                            <!-- Thumbnails will be loaded via JavaScript -->
+                        </div>
+                        <button class="carousel-btn carousel-btn-next" id="nextBtn" aria-label="Next video">›</button>
+                    </div>
+                    <div class="carousel-dots" id="carouselDots">
+                        <!-- Dots will be generated via JavaScript -->
+                    </div>
+                    <div class="playlist-link">
+                        <a href="https://youtube.com/playlist?list=PL2L0KLglmktmEwWpbbKSgRQKJc00hmS67" target="_blank" rel="noopener noreferrer">
+                            View Full Playlist on YouTube →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="topics">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Programming Tracks</h2>
+                    <p>Explore the critical topics shaping the future of energy and mining.</p>
+                </div>
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <h3>Generation</h3>
+                        <p>Exploring innovative approaches to energy generation and how Bitcoin mining creates new revenue streams for power producers.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Transmission</h3>
+                        <p>Understanding grid infrastructure, load management, and the technical challenges of energy distribution.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Load</h3>
+                        <p>Examining how flexible load management and Bitcoin mining can stabilize grids and optimize energy utilization.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Markets & Monetization</h3>
+                        <p>Diving deep into the financialization of energy assets and strategies for maximizing megawatt value.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Policy, Security, Governance</h3>
+                        <p>Navigating regulatory landscapes, security frameworks, and governance models for energy-mining operations.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>State of the Art</h3>
+                        <p>Showcasing cutting-edge technologies, AI integration, and the latest innovations in mining infrastructure.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Convergence & Managed Load</h3>
+                        <p>The future of managed load and how Bitcoin mining integrates with traditional energy systems.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Scaling AI & Lessons Learned</h3>
+                        <p>Real-world insights from scaling AI operations and their implications for large-scale mining.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Modularity & Infrastructure</h3>
+                        <p>Exploring modular solutions and infrastructure design for scalable mining operations.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Scale Meets Impact</h3>
+                        <p>Does all load matter? Examining where scale meets meaningful impact in energy markets.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Financialization of Energy</h3>
+                        <p>How energy assets are being financialized and what it means for producers and operators.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Technical Problems to Solve</h3>
+                        <p>Identifying remaining technical challenges and opportunities in free-to-mine environments.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Energy Strategies</h3>
+                        <p>Cultivating state and federal energy strategies that support Bitcoin mining and energy innovation.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>M&A & Public Miners</h3>
+                        <p>The state of mergers, acquisitions, and public mining companies in today's market.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>SMR & Nuclear</h3>
+                        <p>How Small Modular Reactors and nuclear power turn atoms into algorithms.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>The Future Grid</h3>
+                        <p>Horizons of high voltage and the evolution of grid infrastructure.</p>
+                    </div>
+                    <div class="topic-card">
+                        <h3>AI Integration</h3>
+                        <p>Does AI integrate with or replace megaminers? Exploring the relationship between AI and mining.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section speakers-section" id="speakers">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Previous Speakers</h2>
+                    <p>Join industry leaders, policymakers, and innovators who have shaped the conversation.</p>
+                </div>
+                <div class="speakers-grid" id="speakersGrid">
+                    <div class="speaker-card">
+                        <h4>Senator Hagerty</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Governor Lee</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Alex Brammer</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Alex Thorn</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Andrew Myers</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Barnminer</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Brandon Bailey</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Brian Morgenstern</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Carol Haines</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Dan Lawrence</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Dan Brouillette</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Drew Armstrong</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Econoalchemist</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Erik Hersman</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Grant Gilliam</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Harry Sudock</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Ilya Rekhter</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Jay Beddict</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Jeff Lyash</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>John Stefanopolous</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Jonathan Kirkwood</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Jose Rios</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Kristian Csepcsar</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Luke Dashjr</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Marty Bent</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Max Guise</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Mike Hamilton</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Mike Colyer</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Preston Pysh</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Rapha Zagury</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Rory Murray</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Schnitzel</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Skot9000</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Stephen Pollock</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Steve Barbour</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Tom Masiero</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Trey Kelly</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Will Cole</h4>
+                    </div>
+                    <div class="speaker-card">
+                        <h4>Wiz</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section audience-section" id="audience">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Who Attends</h2>
+                    <p>Join a diverse community of professionals shaping the future of energy and mining.</p>
+                </div>
+                <div class="audience-list">
+                    <div class="audience-item">Investors</div>
+                    <div class="audience-item">Policymakers</div>
+                    <div class="audience-item">Energy Producers</div>
+                    <div class="audience-item">Mining Operators</div>
+                    <div class="audience-item">Service Providers</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section" id="waitlist">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Join the Waitlist</h2>
+                    <p>Be among the first to secure your spot at the premier energy and mining summit of 2026. All attendees receive the whitepaper "Monetizing the Megawatt."</p>
+                    <a href="https://bitcoinpark.com/nems26" class="cta-button">Join the Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for fade-in
+        document.querySelectorAll('.topic-card, .speaker-card, .audience-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+
+        // Video Carousel functionality
+        let currentVideoIndex = 0;
+        let videos = [];
+        const playlistId = 'PL2L0KLglmktmEwWpbbKSgRQKJc00hmS67';
+
+        function updateCarousel() {
+            const carousel = document.getElementById('videoCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (!carousel || videos.length === 0) return;
+            
+            // Move carousel to current index
+            carousel.style.transform = `translateX(-${currentVideoIndex * 100}%)`;
+            
+            // Update button states
+            if (prevBtn) {
+                prevBtn.disabled = currentVideoIndex === 0;
+            }
+            if (nextBtn) {
+                nextBtn.disabled = currentVideoIndex === videos.length - 1;
+            }
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentVideoIndex);
+            });
+        }
+
+        function goToVideo(index) {
+            if (index >= 0 && index < videos.length) {
+                currentVideoIndex = index;
+                updateCarousel();
+            }
+        }
+
+        function nextVideo() {
+            if (currentVideoIndex < videos.length - 1) {
+                currentVideoIndex++;
+                updateCarousel();
+            }
+        }
+
+        function prevVideo() {
+            if (currentVideoIndex > 0) {
+                currentVideoIndex--;
+                updateCarousel();
+            }
+        }
+
+        function createDots() {
+            const dotsContainer = document.getElementById('carouselDots');
+            if (!dotsContainer || videos.length === 0) return;
+            
+            dotsContainer.innerHTML = '';
+            videos.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.setAttribute('aria-label', `Go to video ${index + 1}`);
+                dot.addEventListener('click', () => goToVideo(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        async function loadPlaylistThumbnails() {
+            const carousel = document.getElementById('videoCarousel');
+            
+            if (!carousel) {
+                console.error('Carousel element not found');
+                return;
+            }
+            
+            try {
+                // Use YouTube RSS feed - it's publicly accessible
+                const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+                
+                // Use a CORS proxy for the RSS feed
+                const proxyUrl = 'https://api.allorigins.win/raw?url=';
+                const response = await fetch(proxyUrl + encodeURIComponent(rssUrl));
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch RSS feed');
+                }
+                
+                const xmlText = await response.text();
+                
+                // Parse XML to extract video IDs and titles
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                const entries = xmlDoc.getElementsByTagName('entry');
+                
+                videos = [];
+                const maxVideos = 12;
+                
+                for (let i = 0; i < Math.min(entries.length, maxVideos); i++) {
+                    const entry = entries[i];
+                    const videoId = entry.getElementsByTagName('yt:videoId')[0]?.textContent;
+                    const title = entry.getElementsByTagName('title')[0]?.textContent || 'NEMS Video';
+                    
+                    if (videoId && videoId.length === 11) {
+                        videos.push({ id: videoId, title: title });
+                    }
+                }
+                
+                // Create thumbnail cards
+                if (videos.length > 0) {
+                    videos.forEach((video) => {
+                        const videoCard = document.createElement('div');
+                        videoCard.className = 'video-item';
+                        videoCard.innerHTML = `
+                            <a href="https://www.youtube.com/watch?v=${video.id}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                                <div class="video-thumbnail-wrapper">
+                                    <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                                         alt="${video.title.replace(/"/g, '&quot;')}" 
+                                         onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'"
+                                         loading="lazy">
+                                    <div class="play-overlay-large"></div>
+                                    <div class="video-title-overlay">
+                                        <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                        carousel.appendChild(videoCard);
+                    });
+                    
+                    // Initialize carousel
+                    createDots();
+                    updateCarousel();
+                    
+                    // Add event listeners for navigation buttons
+                    const prevBtn = document.getElementById('prevBtn');
+                    const nextBtn = document.getElementById('nextBtn');
+                    if (prevBtn) prevBtn.addEventListener('click', prevVideo);
+                    if (nextBtn) nextBtn.addEventListener('click', nextVideo);
+                    
+                    // Add keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        const videosSection = document.getElementById('videos');
+                        if (videosSection && videosSection.getBoundingClientRect().top < window.innerHeight && videosSection.getBoundingClientRect().bottom > 0) {
+                            if (e.key === 'ArrowLeft') {
+                                e.preventDefault();
+                                prevVideo();
+                            } else if (e.key === 'ArrowRight') {
+                                e.preventDefault();
+                                nextVideo();
+                            }
+                        }
+                    });
+                    
+                } else {
+                    throw new Error('No videos found in playlist');
+                }
+                
+            } catch (error) {
+                console.error('Error loading playlist thumbnails:', error);
+                // Fallback: Show a styled playlist card that links to the playlist
+                const fallbackCard = document.createElement('div');
+                fallbackCard.className = 'video-item';
+                fallbackCard.innerHTML = `
+                    <a href="https://youtube.com/playlist?list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                        <div class="video-thumbnail-wrapper" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.95) 0%, rgba(255, 107, 53, 0.4) 100%); display: flex; align-items: center; justify-content: center; min-height: 450px;">
+                            <div style="text-align: center; color: white; padding: 60px 40px;">
+                                <div class="play-overlay-large" style="position: relative; transform: none; margin: 0 auto 30px;"></div>
+                                <h3 style="color: white; margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 600;">NEMS Previous Conversations</h3>
+                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1.2rem;">Click to view the full playlist on YouTube</p>
+                            </div>
+                        </div>
+                    </a>
+                `;
+                carousel.appendChild(fallbackCard);
+            }
+        }
+        
+        // Load thumbnails when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadPlaylistThumbnails);
+        } else {
+            loadPlaylistThumbnails();
+        }
+    </script>
+</body>
+</html>
