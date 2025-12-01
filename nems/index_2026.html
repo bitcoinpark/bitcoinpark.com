@@ -62,22 +62,6 @@
             align-items: start;
         }
 
-        .presented-by {
-            position: absolute;
-            bottom: 0;
-            left: 40px;
-            z-index: 20;
-            margin-bottom: calc(50vh + 120px);
-        }
-
-        .presented-by-label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--orange);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
         .hero-cta-button {
             position: absolute;
             bottom: 60px;
@@ -657,6 +641,120 @@
             color: var(--orange);
         }
 
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            gap: 5px;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-gray);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger:hover span {
+            background-color: var(--orange);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-content {
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .navbar-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(26, 35, 50, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 80px 30px 30px;
+                gap: 25px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .navbar-menu.active {
+                right: 0;
+            }
+
+            .navbar-menu a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .navbar-menu a:last-child {
+                border-bottom: none;
+                margin-top: 10px;
+                padding: 12px 20px;
+                background: var(--orange);
+                color: var(--white);
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .navbar-menu a:last-child:hover {
+                background: var(--orange-hover);
+                color: var(--white);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .hero {
@@ -690,9 +788,13 @@
                 padding: 0 20px;
             }
 
-            .presented-by {
-                left: 20px;
-                margin-bottom: calc(50vh + 100px);
+            .hero-title-section {
+                text-align: center;
+            }
+
+            .hero-dates {
+                text-align: center;
+                font-size: 1.2rem;
             }
 
             .hero-cta-button {
@@ -704,10 +806,6 @@
 
             .hero-main-title {
                 font-size: 2.5rem;
-            }
-
-            .hero-dates {
-                font-size: 1.2rem;
             }
 
             .section {
@@ -751,31 +849,31 @@
 
         @media (max-width: 480px) {
             .hero {
-                padding-top: 110px;
-            }
-
-            .presented-by {
-                left: 20px;
-                margin-bottom: calc(50vh + 80px);
-            }
-
-            .presented-by-label {
-                font-size: 0.75rem;
+                padding-top: 100px;
             }
 
             .hero-cta-button {
-                bottom: 30px;
+                bottom: 20px;
                 right: 20px;
-                padding: 14px 30px;
-                font-size: 0.9rem;
+                padding: 12px 25px;
+                font-size: 0.85rem;
+            }
+            
+            .hero-header-content {
+                padding: 0 20px;
+            }
+            
+            .hero-title-section {
+                text-align: center;
+            }
+
+            .hero-dates {
+                text-align: center;
+                font-size: 1rem;
             }
 
             .hero-main-title {
                 font-size: 2rem;
-            }
-
-            .hero-dates {
-                font-size: 1rem;
             }
 
             .section-header h2 {
@@ -785,25 +883,29 @@
             .cta-content h2 {
                 font-size: 2rem;
             }
-
-            .navbar-content {
-                gap: 20px;
-            }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-content">
-            <a href="#top">Home</a>
-            <a href="#about">About</a>
-            <a href="#videos">Videos</a>
-            <a href="#topics">Topics</a>
-            <a href="#speakers">Speakers</a>
-            <a href="#audience">Audience</a>
-            <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer">Join Waitlist</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="#top">Home</a>
+                <a href="#about">About</a>
+                <a href="#videos">Videos</a>
+                <a href="#topics">Topics</a>
+                <a href="#speakers">Speakers</a>
+                <a href="#audience">Audience</a>
+                <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer">Join Waitlist</a>
+            </div>
         </div>
     </nav>
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <div class="hero" id="top">
         <div class="hero-header">
@@ -818,10 +920,6 @@
                     <div class="hero-dates">JANUARY 22-23</div>
                 </div>
             </div>
-        </div>
-        
-        <div class="presented-by">
-            <div class="presented-by-label">PRESENTED BY:</div>
         </div>
         
         <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer" class="hero-cta-button">Join Waitlist</a>
@@ -1102,6 +1200,35 @@
     </div>
 
     <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navbarMenu = document.getElementById('navbarMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navbarMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navbarMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        }
+
+        if (hamburger && navbarMenu && menuOverlay) {
+            hamburger.addEventListener('click', toggleMenu);
+
+            // Close menu when clicking on a link
+            navbarMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Close menu when clicking on overlay
+            menuOverlay.addEventListener('click', closeMenu);
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1214,91 +1341,113 @@
                 return;
             }
             
-            try {
-                // Use YouTube RSS feed - it's publicly accessible
-                const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
-                
-                // Use a CORS proxy for the RSS feed
-                const proxyUrl = 'https://api.allorigins.win/raw?url=';
-                const response = await fetch(proxyUrl + encodeURIComponent(rssUrl));
-                
-                if (!response.ok) {
-                    throw new Error('Failed to fetch RSS feed');
-                }
-                
-                const xmlText = await response.text();
-                
-                // Parse XML to extract video IDs and titles
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-                const entries = xmlDoc.getElementsByTagName('entry');
-                
-                videos = [];
-                const maxVideos = 12;
-                
-                for (let i = 0; i < Math.min(entries.length, maxVideos); i++) {
-                    const entry = entries[i];
-                    const videoId = entry.getElementsByTagName('yt:videoId')[0]?.textContent;
-                    const title = entry.getElementsByTagName('title')[0]?.textContent || 'NEMS Video';
-                    
-                    if (videoId && videoId.length === 11) {
-                        videos.push({ id: videoId, title: title });
-                    }
-                }
-                
-                // Create thumbnail cards
-                if (videos.length > 0) {
-                    videos.forEach((video) => {
-                        const videoCard = document.createElement('div');
-                        videoCard.className = 'video-item';
-                        videoCard.innerHTML = `
-                            <a href="https://www.youtube.com/watch?v=${video.id}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
-                                <div class="video-thumbnail-wrapper">
-                                    <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
-                                         alt="${video.title.replace(/"/g, '&quot;')}" 
-                                         onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'"
-                                         loading="lazy">
-                                    <div class="play-overlay-large"></div>
-                                    <div class="video-title-overlay">
-                                        <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
-                                    </div>
-                                </div>
-                            </a>
-                        `;
-                        carousel.appendChild(videoCard);
-                    });
-                    
-                    // Initialize carousel
-                    createDots();
-                    updateCarousel();
-                    
-                    // Add event listeners for navigation buttons
-                    const prevBtn = document.getElementById('prevBtn');
-                    const nextBtn = document.getElementById('nextBtn');
-                    if (prevBtn) prevBtn.addEventListener('click', prevVideo);
-                    if (nextBtn) nextBtn.addEventListener('click', nextVideo);
-                    
-                    // Add keyboard navigation
-                    document.addEventListener('keydown', (e) => {
-                        const videosSection = document.getElementById('videos');
-                        if (videosSection && videosSection.getBoundingClientRect().top < window.innerHeight && videosSection.getBoundingClientRect().bottom > 0) {
-                            if (e.key === 'ArrowLeft') {
-                                e.preventDefault();
-                                prevVideo();
-                            } else if (e.key === 'ArrowRight') {
-                                e.preventDefault();
-                                nextVideo();
-                            }
+            // Try multiple CORS proxies
+            const proxies = [
+                'https://api.allorigins.win/raw?url=',
+                'https://corsproxy.io/?',
+                'https://api.codetabs.com/v1/proxy?quest='
+            ];
+            
+            let fetchedVideos = [];
+            let success = false;
+            
+            // Try to fetch playlist data
+            for (const proxy of proxies) {
+                try {
+                    const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+                    const response = await fetch(proxy + encodeURIComponent(rssUrl), {
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/xml, text/xml'
                         }
                     });
                     
-                } else {
-                    throw new Error('No videos found in playlist');
+                    if (response.ok) {
+                        const xmlText = await response.text();
+                        
+                        // Parse XML to extract video IDs and titles
+                        const parser = new DOMParser();
+                        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                        const entries = xmlDoc.getElementsByTagName('entry');
+                        
+                        const maxVideos = 12;
+                        
+                        for (let i = 0; i < Math.min(entries.length, maxVideos); i++) {
+                            const entry = entries[i];
+                            const videoIdElement = entry.getElementsByTagName('yt:videoId')[0];
+                            const titleElement = entry.getElementsByTagName('title')[0];
+                            
+                            if (videoIdElement && titleElement) {
+                                const videoId = videoIdElement.textContent;
+                                const title = titleElement.textContent || 'NEMS Video';
+                                
+                                if (videoId && videoId.length === 11) {
+                                    fetchedVideos.push({ id: videoId, title: title });
+                                }
+                            }
+                        }
+                        
+                        if (fetchedVideos.length > 0) {
+                            success = true;
+                            break;
+                        }
+                    }
+                } catch (error) {
+                    console.log('Proxy failed, trying next...', error);
+                    continue;
                 }
+            }
+            
+            // Create thumbnail cards
+            if (success && fetchedVideos.length > 0) {
+                videos = fetchedVideos; // Assign to global videos array
+                videos.forEach((video) => {
+                    const videoCard = document.createElement('div');
+                    videoCard.className = 'video-item';
+                    videoCard.innerHTML = `
+                        <a href="https://www.youtube.com/watch?v=${video.id}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                            <div class="video-thumbnail-wrapper">
+                                <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                                     alt="${video.title.replace(/"/g, '&quot;')}" 
+                                     onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'"
+                                     loading="lazy">
+                                <div class="play-overlay-large"></div>
+                                <div class="video-title-overlay">
+                                    <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    carousel.appendChild(videoCard);
+                });
                 
-            } catch (error) {
-                console.error('Error loading playlist thumbnails:', error);
+                // Initialize carousel
+                createDots();
+                updateCarousel();
+                
+                // Add event listeners for navigation buttons
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                if (prevBtn) prevBtn.addEventListener('click', prevVideo);
+                if (nextBtn) nextBtn.addEventListener('click', nextVideo);
+                
+                // Add keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    const videosSection = document.getElementById('videos');
+                    if (videosSection && videosSection.getBoundingClientRect().top < window.innerHeight && videosSection.getBoundingClientRect().bottom > 0) {
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            prevVideo();
+                        } else if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            nextVideo();
+                        }
+                    }
+                });
+                
+            } else {
                 // Fallback: Show a styled playlist card that links to the playlist
+                console.warn('Could not load video thumbnails, showing fallback');
                 const fallbackCard = document.createElement('div');
                 fallbackCard.className = 'video-item';
                 fallbackCard.innerHTML = `
