@@ -254,10 +254,11 @@
 
         /* Audience Section */
         .audience-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .audience-item {
@@ -268,6 +269,7 @@
             font-weight: 600;
             color: var(--orange);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .audience-item:hover {
@@ -834,6 +836,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .audience-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .cta-content h2 {
                 font-size: 2.5rem;
             }
@@ -897,6 +903,10 @@
             .cta-content h2 {
                 font-size: 2rem;
             }
+
+            .audience-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -931,7 +941,7 @@
                         <span class="mining-summit"> & MINING SUMMIT </span>
                         <span class="year">2026</span>
                     </div>
-                    <div class="hero-dates">JANUARY 22-23</div>
+                    <div class="hero-dates">JANUARY 21-23</div>
                 </div>
             </div>
         </div>
@@ -948,7 +958,7 @@
             <div class="container">
                 <div class="section-header">
                     <h2>About the Summit</h2>
-                    <p>The Nashville Energy & Mining Summit brings together the brightest minds in Bitcoin mining, energy production, and infrastructure to explore the convergence of energy markets and computational power. Join us for two days of cutting-edge discussions, networking, and insights into the future of monetizing energy assets.</p>
+                    <p>The Nashville Energy and Mining Summit 2026 is a curated gathering of approximately 200 operators, engineers, policymakers, entrepreneurs, capital allocators, and institutional leaders who are shaping the future of energy, grids, and compute. United by a shared mission, we are pioneering new models for how power is generated, distributed, and monetized in the age of Bitcoin and beyond.</p>
                 </div>
             </div>
         </div>
@@ -987,72 +997,28 @@
                 </div>
                 <div class="topics-grid">
                     <div class="topic-card">
-                        <h3>Generation</h3>
-                        <p>Exploring innovative approaches to energy generation and how Bitcoin mining creates new revenue streams for power producers.</p>
+                        <h3>Generation: Powering the Future</h3>
+                        <p>Exploring innovations in energy production, from natural gas and renewables to nuclear and SMRs. This track highlights how diverse sources of generation can be harnessed, monetized, and integrated into a more resilient energy landscape that supports both local communities and global markets.</p>
                     </div>
                     <div class="topic-card">
-                        <h3>Transmission</h3>
-                        <p>Understanding grid infrastructure, load management, and the technical challenges of energy distribution.</p>
+                        <h3>Transmission: Building the Modern Grid</h3>
+                        <p>Focusing on the evolving role of transmission operators, utilities, and engineers in optimizing grid dynamics. Sessions cover grid flexibility, stability, and new business models that emerge when power is treated not only as a utility but also as an asset.</p>
                     </div>
                     <div class="topic-card">
-                        <h3>Load</h3>
-                        <p>Examining how flexible load management and Bitcoin mining can stabilize grids and optimize energy utilization.</p>
+                        <h3>Load: Bitcoin, AI, and Beyond</h3>
+                        <p>Dedicated to demand-side innovation, this track covers Bitcoin mining, AI, HPC, and other compute-intensive industries as flexible loads that stabilize grids, create economic opportunities, and open new pathways for monetizing the megawatt.</p>
                     </div>
                     <div class="topic-card">
                         <h3>Markets & Monetization</h3>
-                        <p>Diving deep into the financialization of energy assets and strategies for maximizing megawatt value.</p>
+                        <p>Zooming in on the economics of energy and compute. This includes energy trading, capital allocation, treasury strategy, and the mechanisms by which megawatts become monetized, from local power purchase agreements to global-scale markets.</p>
                     </div>
                     <div class="topic-card">
-                        <h3>Policy, Security, Governance</h3>
-                        <p>Navigating regulatory landscapes, security frameworks, and governance models for energy-mining operations.</p>
+                        <h3>Policy, Security & Governance</h3>
+                        <p>Addressing the governmental frameworks that shape the industry. Policymakers, regulators, legal experts, and security specialists will discuss enabling policies, grid sovereignty, energy independence, and how governance models can unlock domestic and international flourishing.</p>
                     </div>
                     <div class="topic-card">
-                        <h3>State of the Art</h3>
-                        <p>Showcasing cutting-edge technologies, AI integration, and the latest innovations in mining infrastructure.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Convergence & Managed Load</h3>
-                        <p>The future of managed load and how Bitcoin mining integrates with traditional energy systems.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Scaling AI & Lessons Learned</h3>
-                        <p>Real-world insights from scaling AI operations and their implications for large-scale mining.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Modularity & Infrastructure</h3>
-                        <p>Exploring modular solutions and infrastructure design for scalable mining operations.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Scale Meets Impact</h3>
-                        <p>Does all load matter? Examining where scale meets meaningful impact in energy markets.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Financialization of Energy</h3>
-                        <p>How energy assets are being financialized and what it means for producers and operators.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Technical Problems to Solve</h3>
-                        <p>Identifying remaining technical challenges and opportunities in free-to-mine environments.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>Energy Strategies</h3>
-                        <p>Cultivating state and federal energy strategies that support Bitcoin mining and energy innovation.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>M&A & Public Miners</h3>
-                        <p>The state of mergers, acquisitions, and public mining companies in today's market.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>SMR & Nuclear</h3>
-                        <p>How Small Modular Reactors and nuclear power turn atoms into algorithms.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>The Future Grid</h3>
-                        <p>Horizons of high voltage and the evolution of grid infrastructure.</p>
-                    </div>
-                    <div class="topic-card">
-                        <h3>AI Integration</h3>
-                        <p>Does AI integrate with or replace megaminers? Exploring the relationship between AI and mining.</p>
+                        <h3>The State of the Art</h3>
+                        <p>Exploring the technological innovations that enable Bitcoin mining and AI superclusters to happen all over the world. Connecting with the technical expertise as well as the operators experimenting and proving out these technologies in the field.</p>
                     </div>
                 </div>
             </div>
@@ -1193,11 +1159,10 @@
                     <p>Join a diverse community of professionals shaping the future of energy and mining.</p>
                 </div>
                 <div class="audience-list">
-                    <div class="audience-item">Investors</div>
-                    <div class="audience-item">Policymakers</div>
-                    <div class="audience-item">Energy Producers</div>
-                    <div class="audience-item">Mining Operators</div>
-                    <div class="audience-item">Service Providers</div>
+                    <div class="audience-item">Bitcoin Mining Entrepreneurs & Operators</div>
+                    <div class="audience-item">Energy Experts, Traders & Builders</div>
+                    <div class="audience-item">Policymakers, Legal & Security Experts</div>
+                    <div class="audience-item">Electrical Generation & Load</div>
                 </div>
             </div>
         </div>
