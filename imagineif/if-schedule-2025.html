@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schedule – Imagine IF</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/ImagineIf-brandmark-blue@2x.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/ImagineIf-brandmark-blue@2x.png" />
+  <link rel="shortcut icon" href="/ImagineIf-brandmark-blue@2x.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/ImagineIf-brandmark-blue@2x.png" />
+
+  <!-- Theme colors -->
+  <meta name="theme-color" content="#070c70" />
+  <meta name="msapplication-TileColor" content="#070c70" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --orange: #f5823f;
+      --lavender: #b784ff;
+      --white: #ffffff;
+      --midnight-blue: #070c70;
+      --dark-bg: #0b0b0c;
+      --card-bg: #151517;
+      --gradient-orange-purple: linear-gradient(135deg, #f5823f 0%, #b784ff 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--midnight-blue);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    /* Navigation */
+    .imagineif-navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(7, 12, 112, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); height: 80px; display: flex; align-items: center; padding: 0 36px; }
+    .imagineif-navbar .navbar-left { flex: 0 0 auto; }
+    .imagineif-navbar .navbar-left a { font-size: 1.5rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: -0.02em; font-family: 'Inter', sans-serif; }
+    .imagineif-navbar .navbar-left a:hover { opacity: 0.9; }
+
+    /* Schedule */
+    .schedule-section { padding: 0; max-width: 100%; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--midnight-blue); }
+    .schedule-container { text-align: center; padding: 2rem; max-width: 1200px; width: 100%; }
+    .schedule-title { font-size: clamp(2.5rem, 5vw + 2rem, 4rem); font-weight: 800; color: var(--lavender); margin-bottom: 1rem; letter-spacing: -0.02em; text-transform: uppercase; }
+    .schedule-note { font-size: 1.1rem; color: var(--white); opacity: 0.8; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .schedule-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; max-width: 1000px; margin: 0 auto; }
+    .day-section { background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 2rem; text-align: left; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+    .day-header { font-size: 1.8rem; font-weight: 700; color: var(--lavender); margin-bottom: 1.5rem; text-align: center; letter-spacing: -0.02em; }
+    .day-content { display: flex; flex-direction: column; gap: 1.5rem; }
+    .session-item { display: flex; gap: 1rem; align-items: center; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; transition: all 0.3s ease; cursor: pointer; }
+    .session-item:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+    .session-time { background: var(--orange); color: var(--white); padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; font-size: 0.9rem; white-space: nowrap; flex-shrink: 0; }
+    .session-time.purple { background: var(--lavender); color: var(--midnight-blue); }
+    .session-details { flex: 1; text-align: center; }
+    .session-title { font-size: 1.1rem; font-weight: 600; color: var(--white); margin: 0; line-height: 1.4; }
+    .session-subtitle { color: var(--white); opacity: 0.7; font-size: 0.9rem; margin-top: 0.5rem; }
+    .session-notes { color: var(--white); opacity: 0.8; font-size: 0.85rem; margin-top: 0.5rem; font-style: italic; }
+    .session-location { color: var(--orange); font-size: 0.9rem; margin-top: 0.5rem; font-weight: 500; }
+    .track-badge { background: var(--lavender); color: var(--midnight-blue); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem; }
+
+    /* Modal */
+    .modal-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.8); z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+    .modal-backdrop.show { opacity: 1; visibility: visible; }
+    .session-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--card-bg); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; z-index: 1001; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
+    .session-modal.show { opacity: 1; visibility: visible; }
+    .modal-content { padding: 2rem; }
+    .modal-header { margin-bottom: 1.5rem; }
+    .modal-title { font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; line-height: 1.3; }
+    .modal-meta { color: var(--lavender); font-size: 0.9rem; margin-bottom: 1rem; }
+    .modal-abstract { color: var(--white); line-height: 1.6; margin-bottom: 1.5rem; }
+    .modal-speakers { display: flex; flex-direction: column; gap: 1rem; }
+    .speaker { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 12px; }
+    .speaker img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+    .speaker-info { flex: 1; }
+    .speaker-name { font-weight: 600; color: var(--white); margin-bottom: 0.25rem; }
+    .speaker-org { color: var(--white); opacity: 0.7; font-size: 0.9rem; }
+    .close-modal { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; opacity: 0.7; transition: opacity 0.3s ease; }
+    .close-modal:hover { opacity: 1; }
+
+    /* Attend Button */
+    .attend-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .attend-button { background: var(--gradient-orange-purple); color: var(--white); font-weight: 700; font-size: 1.2rem; padding: 1rem 2.5rem; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; box-shadow: 0 4px 20px rgba(245, 130, 63, 0.3); }
+    .attend-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(245, 130, 63, 0.4); }
+
+    /* Footer */
+    .footer-section { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .copyright { color: var(--white); opacity: 0.7; font-size: 1rem; margin-bottom: 1rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--white); text-decoration: none; opacity: 0.7; transition: opacity 0.3s ease; }
+    .footer-links a:hover { opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .schedule-section { padding: 1rem; }
+      .schedule-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .day-section { padding: 1.5rem; }
+      .session-item { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .session-time { align-self: center; }
+      .session-modal { max-width: 95%; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="imagineif-navbar">
+    <div class="navbar-left">
+      <a href="index_imagineif.html">Imagine IF</a>
+    </div>
+  </nav>
+
+  <!-- Schedule Section -->
+  <section class="schedule-section">
+    <div class="schedule-container">
+      <h2 class="schedule-title">AGENDA</h2>
+      
+      <div id="schedule-grid" class="schedule-grid">
+        <!-- Content will be dynamically loaded here -->
+      </div>
+      
+      
+      <!-- Footer -->
+      <div class="footer-section">
+        <p class="copyright">© 2025 Bitcoin Park. Imagine IF. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal-backdrop" class="modal-backdrop" aria-hidden="true"></div>
+  <div id="session-modal" class="session-modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-header">
+        <h2 id="modal-title" class="modal-title">Session Title</h2>
+        <div id="modal-meta" class="modal-meta">Day • Time</div>
+      </div>
+      <div id="modal-abstract" class="modal-abstract">Session description will appear here.</div>
+      <div id="modal-speakers" class="modal-speakers">
+        <!-- Speakers will be dynamically loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Schedule data from JSON
+    const scheduleData = {
+      "timezone": "America/Chicago",
+      "days": [
+        {
+          "day": 1,
+          "sessions": [
+            { "start": "8:00 AM", "end": "9:30 AM", "title": "Doors Open to Guests", "abstract": "Register and grab breakfast and coffee plus networking." },
+            { "start": "9:30 AM", "end": "9:35 AM", "title": "Welcoming Remarks", "abstract": "Welcome to Imagine IF.", "speakers": ["Rod Roudi (Bitcoin Park)"] },
+            { "start": "9:35 AM", "end": "10:00 AM", "track": "4", "title": "Why First Principles Still Matter in the Digital World: Values, Family, and Innovation", "abstract": "With warmth and wisdom, Senator Marsha Blackburn joins Matt Schultz, CEO of CleanSpark, challenge today's innovators to anchor their disruption in timeless values. They contend that freedom technologies, Bitcoin, open energy networks, and AI governance, must be filtered through the moral clarity of valuable traditions. This presentation offers a regionally-informed, philosophically rooted appeal to defend not just what we build, but why we build it, and for whom.", "speakers": ["Matt Schultz (CleanSpark)", "Senator Marsha Blackburn (TN)"] },
+            { "start": "10:00 AM", "end": "10:10 AM", "track": "4", "title": "Imagine IF We Didn't Fear Innovation", "abstract": "Philosopher, Troy Cross challenges the instinct to reject or politicize disruptive technologies, whether Bitcoin, AI, or energy innovation. Drawing from fresh research on American attitudes toward Bitcoin, Cross explores how fear and division often cloud society's engagement with transformative tools. By highlighting Bitcoin's unique decentralization and misunderstood use cases, he builds a broader case for embracing innovation fearlessly. That progress requires courage across all domains, energy, AI, and freedom technology, rather than selective acceptance that undermines holistic advancement.", "speakers": ["Troy Cross (Reed College)"] },
+            { "start": "10:10 AM", "end": "10:20 AM", "track": "3", "title": "The Emergent Grid: Lessons From Africa for America's Energy Future", "abstract": "The U.S. throws away massive amounts of renewable energy; wind spilled in the Midwest, solar curtailed in California, hydro idled in the Northwest. What can a small company in Africa teach us about turning that waste into resilience? Imagine IF off grid energy innovation proves that Bitcoin miners and GPU clusters can turn stranded power into increased revenue and a stable grid. As curtailment grows and AI demand explodes, the message is clear: compute is the bridge from wasted energy to resilient, sovereign grids.", "speakers": ["Erik Hersman (Gridless Compute)"] },
+            { "start": "10:20 AM", "end": "10:30 AM", "track": "4", "title": "Winning the Race for Freedom: Geopolitics in the Age of Digital Disruption", "abstract": "We are living through the fastest technological acceleration in human history. AI is reshaping knowledge and power, and authoritarian regimes are fusing it with digital surveillance and programmable money to hard-wire control into the global economy. But disruption cuts both ways. Bitcoin—scarce, portable, and censorship-resistant—offers democracies a neutral foundation that resists capture. When paired with open AI systems and resilient energy, it becomes part of a freedom-tech arsenal built for speed and scale. Matt Pines argues that the future hinges on how we navigate this disruption: do we let acceleration lock us into closed, authoritarian systems, or do we harness it to expand human freedom?", "speakers": ["Matt Pines (The Bitcoin Policy Institute)"] },
+            { "start": "10:30 AM", "end": "10:55 AM", "track": "1", "title": "What Proof-of-Work Proves", "abstract": "Proof-of-Work (PoW) is more than a consensus mechanism, it is the ultimate expression of an economic truth. Parker Lewis, and Rapha Zagury, highlight how Bitcoin's PoW provides unforgeable costliness that anchors money outside state control. Bringing perspectives from energy markets, economics, and power generation, they show how PoW interplays with energy as a universal unit of account and tie computation to reliable, scalable baseload power. Together, they reveal how PoW proves scarcity, trust, and resilience—making it not just an esoteric, technical system, but civilization's monetary bedrock.", "speakers": ["Parker Lewis (Zaprite)", "Rapha Zagury (Elektron Energy)"] },
+            { "start": "10:55 AM", "end": "11:20 AM", "title": "Super Collateral for a Compute Based World: Bitcoin, AI, and Energy", "abstract": "Grant Gilliam sits down with Sean Bill to examine bitcoin as 'super collateral' powering the next wave of compute and energy build-outs. The conversation explores Bitcoin-backed financing, structured yield, and tokenized treasuries, and how these tools de-risk data centers, mining, and AI infrastructure. They'll map the path from institutional on-ramps to Bitcoin-denominated capital markets, translating cypherpunk roots into compliant products. Expect pragmatic guidance for builders and allocators funding AI and energy while preserving self-custody, censorship resistance, and freedom technology values.", "speakers": ["Grant Gilliam (Ten31)", "Sean Bill (Blockstream)"] },
+            { "start": "11:20 AM", "end": "11:55 AM", "track": "3", "title": "TBA", "abstract": "Details to be announced", "speakers": ["TBA"] },
+            { "start": "12:00 PM", "end": "12:35 PM", "track": "4", "title": "No Innovation is an Island", "abstract": "If no man is an island, then no innovation is either. Robert Warren moderates while Skot9000, Philip Walton, and Brad Cuddy reimagine creation as a collective act. We trace the arc of open source from code to culture, revealing how transparent collaboration unlocks breakthroughs across the Bitcoin ecosystem and beyond. Open ecosystems empower builders, disarm gatekeepers, and accelerate innovation. Is this the new normal? Let's shape the future in the open, together, and break the chains of proprietary production.", "moderator": "Rob Warren (Bitcoin Park)", "speakers": ["Skot9000 (Bitaxe)", "Philip Walton (CTO, Gridless)", "Brad Cuddy (Cholla Inc.)"] },
+            { "start": "12:35 PM", "end": "1:00 PM", "track": "1", "title": "Does Cypherpunk Scale? (Does it Have To?)", "abstract": "The challenge is keeping Bitcoin and freedom technologies decentralized, while scaling to meet institutional demand. Ryan Gentry helps us tackle this critical tension at the heart of the next phase of financial infrastructure with Jay Beddict, Rockstar Dev and D++. Drawing deep experience in building, delivering, and scaling accessibility tools, this panel explores how trustless systems and institutional standards can reinforce each other and resolve the tension between cypherpunk and UX requirements.", "moderator": "Ryan Gentry (Bitcoin Infrastructure Acquisition Corp)", "speakers": ["Jay Beddict (Foundry)", "Rockstar Dev (BTCPay Server)", "D++ (Independent Developer)"] },
+            { "start": "1:15 PM", "end": "1:20 PM", "title": "Welcome to Nashville + Partnership 2030", "abstract": "Nashville's Partnership 2030 strategy marks a bold new chapter in the region's growth. Building on 35 years of collaboration, the Partnership has attracted 1,100+ new companies, supported 2,150 expansions, and created over 560,000 jobs while driving 327% income growth. The next five years will advance community vitality, mobility, and character across a 10-county region. Led by civic and business partners, this initiative carries forward a legacy of innovation, ensuring Nashville's future as a global hub of opportunity.", "speakers": ["Stephanie Coleman (Nashville Area Chamber of Commerce)"] },
+            { "start": "1:20 PM", "end": "1:30 PM", "track": "4", "title": "The Frontier Playbook for Ambition", "abstract": "In an age of accelerating change, which leaders shape the future instead of merely reacting to it? Chief Business Officer at CleanSpark, Harry Sudock draws from the frontlines of Bitcoin, energy, policy and investment to unveil the new playbook for ambition. Charts a path to turn volatility into a stable vision, and build organizations where complexity becomes a catalyst for building the world we want to live in.", "speakers": ["Harry Sudock (CleanSpark)"] },
+            { "start": "1:30 PM", "end": "2:05 PM", "track": "3", "title": "Local Power, Global Fuel: Securing Energy Independence", "abstract": "How can a utility's day-to-day reliability, a supplier's fuel-cycle investments, and a manufacturer's grid hardware all reinforce U.S. energy security? Braden Stover, Matt Rasmussen, Jean-Luc Palayer, and Jason Neal share lessons from multi-site operations, U.S. enrichment leadership, and domestic high-voltage equipment supply. The discussion covers contracting models that weather political change, workforce pipelines, long-lead procurement for transformers and substation gear, waste and transport, grid interconnection and reliability, and practical steps to reduce reliance on adversarial sources.", "speakers": ["Braden Stover (TNECD)", "Matt Rasmussen (TVA)", "Jean-Luc Palayer (Orano)", "Jason Neal (Hyosung)"] },
+            { "start": "2:05 PM", "end": "2:40 PM", "track": "3", "title": "Imagine IF the American Nuclear Renaissance Isn't Just a Talking Point", "abstract": "America's nuclear revival is gaining traction, but how secure is its trajectory? This discussion tackles whether sustained progress requires Congressional buy-in or whether market and technological forces alone can carry it forward. Brandon Gibson, Chris Mowry, Patrick Brown, and Nikki Hashemian Sizemore explore the resilience of the movement in the face of political change, weighing the risks of a hostile administration. Together, we'll uncover what additional safeguards, partnerships, and policies are needed to ensure the nuclear renaissance becomes an unstoppable force shaping U.S. energy independence.", "speakers": ["Brandon Gibson (Chief Operating Officer, State of Tennessee)", "Chris Mowry (Type One Energy)", "Patrick Brown (Centrus Energy)", "Nikki Hashemian Sizemore (Kairos Power)"] },
+            { "start": "2:40 PM", "end": "3:10 PM", "title": "Imagine IF America Leads", "abstract": "Imagine if America seizes the mantle of leadership in Bitcoin, AI, energy, and freedom technologies. Jonathan Skrmetti and Rod Roudi explore how innovation aligned with liberty can ensure America remains the world's beacon of strength and opportunity. This talk highlights the risks of ceding ground to authoritarian regimes and the transformative potential of building resilient, open systems at home. It's a vision of national renewal powered by free markets, individual choice, and technological ingenuity.", "speakers": ["Jonathan Skrmetti (Attorney General, State of Tennessee)", "Rod Roudi (Bitcoin Park)"] },
+            { "start": "3:10 PM", "end": "3:45 PM", "track": "4", "title": "Master to Student, the Supply Side Economy", "abstract": "Are academic 'truths' obsoleted in the era of AI and Innovation? In this powerful dialogue, legendary economist Dr. Art Laffer and visionary investor Cathie Wood explore the resurgence of supply-side thinking for the 21st century. From tax policy to technological breakthroughs, unleashing production can drive sustainable growth, lower inequality, and ignite the next wave of human prosperity. This is a rare, intergenerational synthesis of economic insight for builders shaping the future of abundance and freedom.", "speakers": ["Cathie Wood (ARK Invest)", "Dr. Art Laffer"] },
+            { "start": "4:00 PM", "end": "5:00 PM", "title": "Brainstorm: Recap Day 1", "abstract": "Recapping day one.", "speakers": ["Cathie Wood (ARK Invest)", "Lorenzo Valente (ARK Invest)", "Rod Roudi (Bitcoin Park)", "And Guests"] },
+            { "start": "4:00 PM", "end": "6:00 PM", "title": "Cocktail Reception", "abstract": "Join us for cocktails and networking." },
+            { "start": "9:00 PM", "end": "", "title": "Evening Party", "abstract": "Join us for evening celebrations." }
+          ]
+        },
+        {
+          "day": 2,
+          "sessions": [
+            { "start": "8:00 AM", "end": "9:20 AM", "title": "Doors Open to Guests", "abstract": "Register and grab breakfast and coffee plus networking." },
+            { "start": "9:20 AM", "end": "9:30 AM", "title": "Day One in Review", "abstract": "Kicking Off Day 2.", "speakers": ["Cathie Wood", "Rod Roudi"] },
+            { "start": "9:30 AM", "end": "9:55 AM", "track": "2", "title": "Open Communities in the Age of Control", "abstract": "In an era of mass surveillance, opaque algorithms, and centralized data silos, today's dominant platforms thrive on control and extraction. The alternative is clear: the future of communication and AI rests on open, user-controlled communities. Matt Odell joins Derek Ross, and Shawn Yeager to explore how censorship-resistant protocols and decentralized infrastructure can empower individuals to own their digital identity, break free from platform lock-in, and cultivate new forms of collaboration and incentives. Drawing on Bitcoin's blueprint for financial sovereignty, this panel outlines a roadmap for reclaiming our voices, our networks, and our collective agency in the digital age.", "speakers": ["Matt Odell (Ten31)", "Derek Ross (Soapbox)", "Shawn Yeager (Trust Revolution)"] },
+            { "start": "9:55 AM", "end": "10:20 AM", "track": "4", "title": "Bitcoin as Constitutional Order: Stories that Become States", "abstract": "Before nations build structures, they tell stories that command consent. America began with Paine, Hamilton, and a shared vision; Bitcoin begins with code as constitution. This fireside explores Bitcoin as a 'federal union' of software states, where voluntary coordination replaces coercion. Jonathan Kirkwood and Brian Domitrovic discuss how narratives form durable institutions, why Bitcoin's rules resist decay into favors, and how access, bridges, and household adoption make the constitutional story of Bitcoin both legible and livable.", "speakers": ["Jonathan Kirkwood (Ten31)", "Brian Domitrovic (Author Free Money, Laffer Center)"] },
+            { "start": "10:20 AM", "end": "10:50 AM", "track": "1", "title": "The Sovereign Yield Curve: Bitcoin, Bonds, and a New Credit Paradigm", "abstract": "As central banks strain under debt loads and inflation, Bitcoin offers a parallel track for credit issuance. This conversation with Marty Bent and Andrew Hohns reveal how Bitcoin-collateralized bonds and structured credit products can stabilize corporate financial planning, attract a suite of global investors, and create a yield curve independent of fiat decay. The result: a durable, censorship-resistant capital market that strengthens both commercial entities and individual investors in the freedom-tech era.", "speakers": ["Marty Bent (Ten31 & TFTC)", "Andrew Hohns (Battery Finance)"] },
+            { "start": "10:50 AM", "end": "11:15 AM", "track": "3", "title": "Energy as a Balance Sheet", "abstract": "Scarcity is enforced not by policy but by energy. Robert Warren and Adam Sullivan explore how modern energy use maps directly to balance sheet strength, corporate resilience, and long-term strategy. Mining serves as a lens to see how electricity, treated as the core input, shapes both value creation and financial discipline. The discussion highlights how aligning capital allocation with energy realities avoids fiat distortions, restores honesty to accounting, and sharpens corporate strategy. Energy as a balance sheet is more than a metaphor; it's a practical framework for resilient growth in a Bitcoin world.", "speakers": ["Robert Warren (Bitcoin Park)", "Adam Sullivan (Core Scientific)"] },
+            { "start": "11:15 AM", "end": "11:40 AM", "track": "1", "title": "2140: What Changes? What Stays the Same?", "abstract": "The last new Bitcoin is mined in 2140. Blockstream CEO and cryptographic pioneer Adam Back peers into this far horizon to explore Bitcoin's endgame. In a fireside with Michael Goldstein, Back reflects on the technological, economic, and philosophical shifts that will reshape civilization over this time, while grounding us in the core principles of the protocol that will endure. What evolves, and what remains inviolable in a world built on the bitcoin standard?", "speakers": ["Michael Goldstein (Nakamoto Institute)", "Adam Back (Blockstream)"] },
+            { "start": "11:40 AM", "end": "11:50 AM", "track": "4", "title": "Making Freedom Profitable", "abstract": "Matt Odell explores how profit-seeking ventures can simultaneously advance technological liberty. Drawing on his work with Ten31 and OpenSats, he argues that Bitcoin startups, built on open protocols and lean operations, can rapidly attain profitability while reinforcing individual empowerment. Across a wide portfolio, Odell illustrates how open models offer resilient, value-aligned economies. As AI and energy converge with freedom tech and Bitcoin, the discussion centers on sustainable frameworks where innovation and autonomy thrive.", "speakers": ["Matt Odell (Ten31)"] },
+            { "start": "11:50 AM", "end": "12:00 PM", "track": "2", "title": "Freedom of Thought in the Age of AI", "abstract": "For centuries, freedom of speech has been a central struggle, but today, in the AI era, a deeper battle has emerged. Freedom of thought is at risk. With AI systems collecting, shaping, and even subtly rewriting our digital memories, human autonomy is at of an overwrite. Marks explores how platforms can exercise 'subconscious censorship' by altering what we see and recall, and why this matters for democracy and human rights. He outlines pathways to defend thought privacy, urging us to reclaim our minds through open, transparent, and privacy-preserving technologies before it's too late.", "speakers": ["Mark Suman (Maple AI)"] },
+            { "start": "12:00 PM", "end": "12:10 PM", "track": "1", "title": "Heat as Freedom Technology: Decentralizing Mining Through Energy Use", "abstract": "Heat is one of humanity's oldest needs—and Bitcoin mining can provide it more intelligently than ever before. Tyler Stevens argues that hash-rate heating is a Trojan horse for hyper-decentralization, putting miners back into homes, small businesses, and local communities. This talk connects Bitcoin, energy freedom, and national security, showing how mining embedded in heating systems transforms individuals into sovereign energy participants. Tyler paints a vision of a future where every furnace, water heater, and industrial boiler doubles as part of Bitcoin's global security layer.", "speakers": ["Tyler Stevens (Exergy)"] },
+            { "start": "12:10 PM", "end": "12:20 PM", "track": "4", "title": "Freedom Tech Is Fundamental to a Free Society", "abstract": "Your rights are unalienable; your government doesn't grant them to you. An historical trend has been an unfortunate slide towards tyranny, eroding your ability to exercise your rights. The technological conveniences that have enabled faster communication and transactions have also become weapons to monitor and profile users in a dragnet surveillance network that's always watching, always listening, and never forgets. Join Econoalchemist as he demystifies the dystopia and explores an optimistic future of censorship-resistance and privacy-preserving freedom tech you can equip yourself with now to keep defending your autonomy in a networked world.", "speakers": ["Econoalchemist (256 Foundation)"] },
+            { "start": "12:35 PM", "end": "1:00 PM", "track": "1", "title": "How Do You Hold the Revolution?", "abstract": "Holding a global monetary revolution requires atypical thinking. The way we hold and secure bitcoin must evolve. Bitcoin educator Stephan Livera and Unchained co-founder Joe Kelly illuminate the frontier of custody, where cryptographic integrity meets real-world responsibility. They unpack emerging models that balance sovereignty, trust, and usability and issue a blueprint for securing value in the age of freedom tech.", "speakers": ["Stephan Livera (The Stephan Livera Podcast)", "Joe Kelly (Unchained)"] },
+            { "start": "1:00 PM", "end": "1:25 PM", "track": "1", "title": "Trust Nobody, Ever Again -- Building a Modular Future", "abstract": "Imagine an internet of financial services that don't rely on walled gardens or centralized chokepoints. A panel with John Arnold, Max Kei, and Rory Murray break down how Bitcoin-native escrow architecture is unlocking secure, scalable, and programmable financial services, far beyond simple trading. The age of passive HODLing is over; it's time to build systems that compound without custody.", "speakers": ["John Arnold (Ten31)", "Max Kei (debifi)", "Rory Murray (CleanSpark)"] },
+            { "start": "1:25 PM", "end": "1:50 PM", "title": "Closing Panel", "abstract": "Reflection and thank you.", "speakers": ["Rod Roudi (Bitcoin Park)", "Rob Warren (Bitcoin Park)", "And Guests"] }
+          ]
+        }
+      ]
+    };
+
+    // Speaker social links mapping from ImagineIF speakers section
+    const speakerSocialLinks = {
+      "Rod Roudi": "https://www.linkedin.com/in/rodroudi/",
+      "Alex Karp": "https://www.linkedin.com/company/palantir-technologies/",
+      "R0ckstar Dev": "https://x.com/r0ckstardev",
+      "Rockstar Dev": "https://x.com/r0ckstardev",
+      "Matt Odell": "https://primal.net/odell",
+      "ODELL": "https://primal.net/odell",
+      "Marty Bent": "https://x.com/MartyBent",
+      "Econoalchemist": "https://x.com/econoalchemist",
+      "Harry Sudock": "https://www.linkedin.com/in/harrysudock/",
+      "Matthew Pines": "https://www.linkedin.com/in/matthew-pines-46377a8/",
+      "Matt Pines": "https://www.linkedin.com/in/matthew-pines-46377a8/",
+      "Dan Lawrence": "https://www.linkedin.com/in/foreman-dan/",
+      "Skot9000": "https://x.com/skot9000",
+      "Sean Bill": "https://www.linkedin.com/in/seanbill/",
+      "Mike Colyer": "https://www.linkedin.com/in/colyermike/",
+      "Parker Lewis": "https://www.linkedin.com/in/parker-lewis-ab904669/",
+      "Brian Domitrovic": "https://www.linkedin.com/in/brian-domitrovic-4586066/",
+      "Mark Suman": "https://x.com/marks_ftw",
+      "Robert Warren": "https://www.linkedin.com/in/robert-warren-bitcoin/",
+      "Rob Warren": "https://www.linkedin.com/in/robert-warren-bitcoin/",
+      "Max Kei": "https://www.linkedin.com/in/mkei/",
+      "Lorenzo Valente": "https://x.com/LorenzoARK",
+      "David Puell": "https://x.com/dpuellARK",
+      "Marsha Blackburn": "https://x.com/marshablackburn",
+      "Senator Marsha Blackburn": "https://x.com/marshablackburn",
+      "D++": "https://x.com/d_plus__plus",
+      "Shawn Yeager": "https://primal.net/shawn",
+      "Erik Hersman": "https://www.linkedin.com/in/erikhersman/",
+      "Stephan Livera": "https://x.com/stephanlivera",
+      "Matt McClintock": "https://www.linkedin.com/in/mattmcclintock/",
+      "Troy Cross": "https://www.linkedin.com/in/troy-cross-88315818/",
+      "Tyler Stevens": "https://x.com/tylerkstevens",
+      "Andrew Hohns": "https://www.linkedin.com/in/andrew-hohns-6901226/",
+      "Michael Goldstein": "https://x.com/bitstein",
+      "Stephanie Coleman": "https://www.linkedin.com/in/stephanie-coleman-1956775/",
+      "Matthew Rasmussen": "https://www.linkedin.com/in/matthew-rasmussen-0a10b384/",
+      "Matt Rasmussen": "https://www.linkedin.com/in/matthew-rasmussen-0a10b384/",
+      "Matt Schultz": "https://www.linkedin.com/in/s-matthew-schultz-19400447/",
+      "Adam Sullivan": "https://www.linkedin.com/in/adamtsullivan/",
+      "Grant Gilliam": "https://www.linkedin.com/in/grantgilliam/",
+      "Jean-Luc Palayer": "https://www.linkedin.com/in/jean-luc-palayer-159a6349/",
+      "Patrick Brown": "https://www.linkedin.com/in/patricksbrown/",
+      "Chris Mowry": "https://www.linkedin.com/in/chris-mowry-397108a/",
+      "Brandon Gibson": "https://www.linkedin.com/in/brandon-gibson-tn/",
+      "Nikki Hashemian Sizemore": "https://www.linkedin.com/in/nikki-hashemian-sizemore-19039258/",
+      "Joe Kelly": "https://x.com/josephkelly",
+      "Braden Stover": "https://www.linkedin.com/in/braden-stover-581a4996/",
+      "Jason Neal": "https://www.linkedin.com/in/jason-neal-52794613/",
+      "Kara Sutton": "https://www.linkedin.com/in/kasutton/",
+      "Adam Back": "https://x.com/adam3us",
+      "John Arnold": "https://www.linkedin.com/in/john-arnold-75013549/"
+    };
+
+    // Headshots mapping - Using same paths as speakers forEach panel
+    const headshotsMap = {
+      "Rod Roudi": "Rod-Roudi.png",
+      "Matt Schultz": "Matt-Schulz.png",
+      "Senator Marsha Blackburn": "Marsha-Blackburn.png",
+      "Troy Cross": "Troy-Cross.png",
+      "Erik Hersman": "Erik-Hersman.png",
+      "Matt Pines": "Matthew-Pines.png",
+      "Matthew Pines": "Matthew-Pines.png",
+      "Parker Lewis": "Parker-Lewis.png",
+      "Rapha Zagury": "Rapha-Zagury.jpeg",
+      "Grant Gilliam": "Grant-Gilliam.png",
+      "Sean Bill": "Sean-Bill.png",
+      "Harry Sudock": "Harry-Sudock.png",
+      "Brent Mayo": "Brent-Mayo.jpg",
+      "Adam Sullivan": "Adam-Sullivan.jpeg",
+      "Kara Sutton": "Kara-Sutton.png",
+      "Rob Warren": "Rob-Warren.png",
+      "Robert Warren": "Rob-Warren.png",
+      "Skot9000": "Skot.png",
+      "Philip Walton": "Philip-Walton.jpg",
+      "Brad Cuddy": "Brady-Cuddy.jpg",
+      "Ryan Gentry": "Ryan-Gentry.jpeg",
+      "Jay Beddict": "Jay-Beddict.jpg",
+      "Rockstar Dev": "r0ckstar-dev.png",
+      "D++": "dplusplus.png",
+      "Stephanie Coleman": "Stephanie-Coleman.png",
+      "Braden Stover": "Braden-Stover.jpg",
+      "Matt Rasmussen": "Photo - Rasmussen.jpg",
+      "Jean-Luc Palayer": "Jean-Luc-Payaler.jpg",
+      "Jason Neal": "Jason-Neal.jpg",
+      "Brandon Gibson": "Brandon-Gibson.jpg",
+      "Chris Mowry": "Chris-Mowry.jpg",
+      "Patrick Brown": "Profile pic_Patrick Brown.jpg",
+      "Nikki Hashemian Sizemore": "Nikki-Hashemian.jpeg",
+      "Jonathan Skrmetti": "Jonathan-Skrmetti.jpg",
+      "Cathie Wood": "Cathie-Wood.png",
+      "Dr. Art Laffer": "Art-Laffer-portrait-web.png",
+      "Lorenzo Valente": "Lorenzo-Valente.png",
+      "Matt Odell": "Odell.jpeg",
+      "ODELL": "Odell.jpeg",
+      "Derek Ross": "Derek-Ross.jpg",
+      "Shawn Yeager": "Shawn-Yeager.png",
+      "Jonathan Kirkwood": "Jonathan-Kirkwood.jpg",
+      "Brian Domitrovic": "Brian-Dom.png",
+      "Marty Bent": "Marty-Bent.jpeg",
+      "Andrew Hohns": "Andrew-Hohns.png",
+      "Michael Goldstein": "Michael-Goldstein.png",
+      "Adam Back": "adam-back.png",
+      "Mark Suman": "Marks.jpg",
+      "Tyler Stevens": "Tyler-Stevens.png",
+      "Econoalchemist": "Eco.png",
+      "Stephan Livera": "Stephan-Livera.png",
+      "Joe Kelly": "Joe-Kelly.jpg",
+      "John Arnold": "John-Arnold.jpg",
+      "Max Kei": "Max-Keidun.png",
+      "Rory Murray": "Rory-Murray.png"
+    };
+
+    const grid = document.getElementById('schedule-grid');
+    const modal = document.getElementById('session-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+
+    const $title = document.getElementById('modal-title');
+    const $meta = document.getElementById('modal-meta');
+    const $abstract = document.getElementById('modal-abstract');
+    const $speakers = document.getElementById('modal-speakers');
+
+    function parseNameOrg(s) {
+      if (!s) return null;
+      const m = String(s).match(/^(.*?)(?:\s*\(([^)]+)\))?\s*$/);
+      return { name: (m?.[1] || '').trim(), org: (m?.[2] || null) };
+    }
+
+    function openModal(session) {
+      $title.textContent = session.title || 'Session';
+      
+      // Determine stage based on time slot color logic, but exclude certain session types
+      const isDoors = session.title && session.title.toLowerCase().includes('doors open');
+      const isCocktail = session.title && session.title.toLowerCase().includes('cocktail reception');
+      const isEvening = session.title && (session.title.toLowerCase().includes('evening festivities') || session.title.toLowerCase().includes('evening party'));
+      const isPurple = (
+        (session.day === 1 && ['12:00 PM', '12:35 PM', '3:45 PM', '4:00 PM'].includes(session.start)) ||
+        (session.day === 2 && ['12:35 PM', '1:00 PM', '1:25 PM'].includes(session.start))
+      );
+      
+      const metaParts = [
+        `Day ${session.day || 'TBD'}`,
+        [session.start, session.end].filter(Boolean).join(' – ')
+      ];
+      
+      // Only add stage info for regular sessions (exclude doors open, cocktail, evening)
+      if (!isDoors && !isCocktail && !isEvening) {
+        const stage = isPurple ? 'Paisley Ballroom - Ten31 Stage' : 'Main Theater Stage';
+        metaParts.push(stage);
+      }
+      
+      $meta.textContent = metaParts.filter(Boolean).join(' • ');
+      
+      $abstract.textContent = session.abstract || 'Details coming soon.';
+      $speakers.innerHTML = '';
+      
+      const people = [];
+      if (session.moderator) {
+        const mod = parseNameOrg(session.moderator);
+        if (mod) people.push({ ...mod, isModerator: true });
+      }
+      if (session.speakers) {
+        session.speakers.forEach(s => {
+          const speaker = parseNameOrg(s);
+          if (speaker) people.push(speaker);
+        });
+      }
+
+      people.forEach(p => {
+        const wrap = document.createElement('div');
+        wrap.className = 'speaker';
+        const img = document.createElement('img');
+        img.alt = p.name || 'Speaker';
+        img.src = headshotsMap[p.name] || placeholder(p.name);
+        img.onerror = function() {
+          console.log('Image failed to load:', this.src, 'for speaker:', p.name);
+          this.src = placeholder(p.name);
+        };
+        const info = document.createElement('div');
+        info.className = 'speaker-info';
+        const name = document.createElement('div');
+        name.className = 'speaker-name';
+        
+        // Make speaker name clickable if social link exists
+        const socialLink = speakerSocialLinks[p.name];
+        if (socialLink) {
+          const link = document.createElement('a');
+          link.href = socialLink;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = p.name;
+          link.style.color = 'inherit';
+          link.style.textDecoration = 'none';
+          link.addEventListener('mouseenter', () => {
+            link.style.color = 'var(--orange)';
+            link.style.textDecoration = 'underline';
+          });
+          link.addEventListener('mouseleave', () => {
+            link.style.color = 'inherit';
+            link.style.textDecoration = 'none';
+          });
+          name.appendChild(link);
+        } else {
+          name.textContent = p.name;
+        }
+        
+        const org = document.createElement('small');
+        org.className = 'speaker-org';
+        org.textContent = p.org || '';
+        info.appendChild(name);
+        if (p.org) info.appendChild(org);
+        wrap.appendChild(img);
+        wrap.appendChild(info);
+        $speakers.appendChild(wrap);
+      });
+
+      modal.classList.add('show');
+      backdrop.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      backdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+      modal.classList.remove('show');
+      backdrop.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    window.closeModal = closeModal;
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    function placeholder(name) {
+      const initials = (name || '?').split(' ').map(s => s[0] || '').join('').slice(0, 2).toUpperCase();
+      const svg = `
+        <svg xmlns='http://www.w3.org/2000/svg' width='96' height='96'>
+          <rect width='100%' height='100%' fill='#222' />
+          <text x='50%' y='55%' text-anchor='middle' font-family='Inter, sans-serif' font-size='36' fill='#fff'>${initials}</text>
+        </svg>`;
+      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    function renderDay(dayLabel, sessions, dayNumber) {
+      const section = document.createElement('div');
+      section.className = 'day-section';
+
+      const h = document.createElement('h3');
+      h.className = 'day-header';
+      h.textContent = dayLabel;
+      section.appendChild(h);
+
+      const content = document.createElement('div');
+      content.className = 'day-content';
+
+      sessions.forEach(s => {
+        // Add day number to session object
+        const sessionWithDay = { ...s, day: dayNumber };
+        const item = document.createElement('div');
+        item.className = 'session-item';
+        item.addEventListener('click', () => openModal(sessionWithDay));
+
+        const time = document.createElement('div');
+        time.className = 'session-time';
+        // Add purple class for specific times based on day and time
+        const isPurple = (
+          (dayNumber === 1 && ['12:00 PM', '12:35 PM', '3:45 PM', '4:00 PM'].includes(s.start)) ||
+          (dayNumber === 2 && ['12:35 PM', '1:00 PM', '1:25 PM'].includes(s.start))
+        );
+        if (isPurple) {
+          time.classList.add('purple');
+        }
+        time.textContent = s.start || '';
+
+        const details = document.createElement('div');
+        details.className = 'session-details';
+
+        const title = document.createElement('h4');
+        title.className = 'session-title';
+        title.textContent = s.title || 'Session';
+
+        const names = [];
+        if (s.moderator) {
+          const mod = parseNameOrg(s.moderator);
+          if (mod && mod.name !== 'TBA') names.push(mod.name);
+        }
+        if (s.speakers) {
+          s.speakers.forEach(sp => {
+            const speaker = parseNameOrg(sp);
+            if (speaker && speaker.name !== 'TBA') names.push(speaker.name);
+          });
+        }
+        
+        if (names.length) {
+          const sub = document.createElement('div');
+          sub.className = 'session-subtitle';
+          sub.textContent = names.join(', ');
+          details.appendChild(title);
+          details.appendChild(sub);
+        } else {
+          details.appendChild(title);
+        }
+
+        if (s.notes) {
+          const notes = document.createElement('div');
+          notes.className = 'session-notes';
+          notes.textContent = s.notes;
+          details.appendChild(notes);
+        }
+
+        if (s.location) {
+          const location = document.createElement('div');
+          location.className = 'session-location';
+          location.textContent = s.location;
+          details.appendChild(location);
+        }
+
+
+        item.appendChild(time);
+        item.appendChild(details);
+        content.appendChild(item);
+      });
+
+      section.appendChild(content);
+      return section;
+    }
+
+    function init() {
+      const day1 = scheduleData.days[0].sessions;
+      const day2 = scheduleData.days[1].sessions;
+
+      grid.innerHTML = '';
+      grid.appendChild(renderDay('DAY 1 - SEPTEMBER 19TH', day1, 1));
+      grid.appendChild(renderDay('DAY 2 - SEPTEMBER 20TH', day2, 2));
+    }
+
+    init();
+  </script>
+</body>
+</html>
