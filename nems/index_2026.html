@@ -1381,18 +1381,29 @@
                 }
             }
             
-            // Create thumbnail cards
-            if (success && fetchedVideos.length > 0) {
-                videos = fetchedVideos; // Assign to global videos array
+            // Filter out the "Open Source Bitcoin Mining" video from the carousel
+            const targetVideoId = 'wem5YSthpzE';
+            const filteredVideos = fetchedVideos.filter(v => v.id !== targetVideoId);
+            
+            // Create thumbnail cards - show videos even if RSS feed partially failed
+            if (filteredVideos.length > 0) {
+                videos = filteredVideos; // Assign to global videos array
                 videos.forEach((video) => {
                     const videoCard = document.createElement('div');
                     videoCard.className = 'video-item';
+                    
+                    // Use the standard YouTube thumbnail URL pattern with fallback
+                    // This matches how other videos work
+                    const videoId = video.id;
+                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                    const fallbackUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    
                     videoCard.innerHTML = `
-                        <a href="https://www.youtube.com/watch?v=${video.id}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                        <a href="https://www.youtube.com/watch?v=${videoId}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
                             <div class="video-thumbnail-wrapper">
-                                <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                                <img src="${thumbnailUrl}" 
                                      alt="${video.title.replace(/"/g, '&quot;')}" 
-                                     onerror="this.onerror=null; this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'"
+                                     onerror="this.onerror=null; this.src='${fallbackUrl}'"
                                      loading="lazy">
                                 <div class="play-overlay-large"></div>
                                 <div class="video-title-overlay">
@@ -1401,6 +1412,7 @@
                             </div>
                         </a>
                     `;
+                    
                     carousel.appendChild(videoCard);
                 });
                 
