@@ -1324,6 +1324,9 @@
                 return;
             }
             
+            // Clear any existing content
+            carousel.innerHTML = '';
+            
             // Try multiple CORS proxies
             const proxies = [
                 'https://api.allorigins.win/raw?url=',
@@ -1333,6 +1336,7 @@
             
             let fetchedVideos = [];
             let success = false;
+            let lastError = null;
             
             // Try to fetch playlist data
             for (const proxy of proxies) {
@@ -1372,39 +1376,67 @@
                         
                         if (fetchedVideos.length > 0) {
                             success = true;
+                            console.log(`Successfully loaded ${fetchedVideos.length} videos from playlist`);
                             break;
                         }
+                    } else {
+                        lastError = `HTTP ${response.status}: ${response.statusText}`;
                     }
                 } catch (error) {
+                    lastError = error.message;
                     console.log('Proxy failed, trying next...', error);
                     continue;
                 }
             }
             
-            // Filter out the "Open Source Bitcoin Mining" video from the carousel
-            const targetVideoId = 'wem5YSthpzE';
-            const filteredVideos = fetchedVideos.filter(v => v.id !== targetVideoId);
+            if (!success) {
+                console.warn('Failed to load playlist from RSS feed:', lastError);
+            }
             
             // Create thumbnail cards - show videos even if RSS feed partially failed
-            if (filteredVideos.length > 0) {
-                videos = filteredVideos; // Assign to global videos array
+            if (fetchedVideos.length > 0) {
+                videos = fetchedVideos; // Assign to global videos array
+                
+                // Debug: Check if the specific video is in the list
+                const openSourceVideo = videos.find(v => v.id === 'wem5YSthpzE');
+                if (openSourceVideo) {
+                    console.log('Open Source video found in playlist:', openSourceVideo);
+                } else {
+                    console.warn('Open Source video (wem5YSthpzE) not found in fetched videos');
+                }
+                
+                // Create video cards
                 videos.forEach((video) => {
                     const videoCard = document.createElement('div');
                     videoCard.className = 'video-item';
-                    
-                    // Use the standard YouTube thumbnail URL pattern with fallback
-                    // This matches how other videos work
                     const videoId = video.id;
-                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-                    const fallbackUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    
+                    // Use i.ytimg.com first (more reliable) with cache-busting to ensure fresh thumbnails
+                    // This ensures the updated YouTube thumbnail is displayed
+                    const cacheBuster = Date.now();
+                    
+                    // Build comprehensive list of thumbnail URLs to try
+                    // hqdefault is more reliably available than maxresdefault for all videos
+                    const thumbnailUrls = [
+                        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`, // Try hqdefault early - it's more reliable
+                        `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+                    ];
+                    
+                    const initialThumbnailUrl = thumbnailUrls[0] + '?t=' + cacheBuster;
                     
                     videoCard.innerHTML = `
                         <a href="https://www.youtube.com/watch?v=${videoId}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
                             <div class="video-thumbnail-wrapper">
-                                <img src="${thumbnailUrl}" 
+                                <img src="${initialThumbnailUrl}" 
                                      alt="${video.title.replace(/"/g, '&quot;')}" 
-                                     onerror="this.onerror=null; this.src='${fallbackUrl}'"
-                                     loading="lazy">
+                                     loading="eager"
+                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
                                 <div class="play-overlay-large"></div>
                                 <div class="video-title-overlay">
                                     <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
@@ -1413,36 +1445,46 @@
                         </a>
                     `;
                     
+                    // Add comprehensive fallback handling for all videos
+                    const img = videoCard.querySelector('img');
+                    if (img) {
+                        let fallbackIndex = 1; // Start from index 1 since 0 is already loaded
+                        
+                        const handleError = function() {
+                            if (fallbackIndex < thumbnailUrls.length) {
+                                const nextUrl = thumbnailUrls[fallbackIndex] + '?t=' + cacheBuster;
+                                this.src = nextUrl;
+                                fallbackIndex++;
+                            } else {
+                                // All thumbnails failed - log for debugging
+                                if (videoId === 'wem5YSthpzE') {
+                                    console.warn(`Failed to load thumbnail for video ${videoId} (${video.title}) after trying all fallbacks`);
+                                }
+                                this.removeEventListener('error', handleError);
+                            }
+                        };
+                        
+                        img.addEventListener('error', handleError);
+                        
+                        // Also add load event to verify successful loading
+                        img.addEventListener('load', function() {
+                            if (videoId === 'wem5YSthpzE') {
+                                console.log(`Successfully loaded thumbnail for ${videoId} from: ${this.src}`);
+                            }
+                        });
+                    }
+                    
                     carousel.appendChild(videoCard);
                 });
                 
-                // Initialize carousel
+                // Initialize carousel controls
                 createDots();
                 updateCarousel();
-                
-                // Add event listeners for navigation buttons
-                const prevBtn = document.getElementById('prevBtn');
-                const nextBtn = document.getElementById('nextBtn');
-                if (prevBtn) prevBtn.addEventListener('click', prevVideo);
-                if (nextBtn) nextBtn.addEventListener('click', nextVideo);
-                
-                // Add keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    const videosSection = document.getElementById('videos');
-                    if (videosSection && videosSection.getBoundingClientRect().top < window.innerHeight && videosSection.getBoundingClientRect().bottom > 0) {
-                        if (e.key === 'ArrowLeft') {
-                            e.preventDefault();
-                            prevVideo();
-                        } else if (e.key === 'ArrowRight') {
-                            e.preventDefault();
-                            nextVideo();
-                        }
-                    }
-                });
                 
             } else {
                 // Fallback: Show a styled playlist card that links to the playlist
                 console.warn('Could not load video thumbnails, showing fallback');
+                videos = []; // Clear videos array
                 const fallbackCard = document.createElement('div');
                 fallbackCard.className = 'video-item';
                 fallbackCard.innerHTML = `
@@ -1457,14 +1499,76 @@
                     </a>
                 `;
                 carousel.appendChild(fallbackCard);
+                createDots();
+                updateCarousel();
             }
+            
+            // Always initialize navigation controls
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            if (prevBtn) {
+                prevBtn.removeEventListener('click', prevVideo); // Remove old listeners
+                prevBtn.addEventListener('click', prevVideo);
+            }
+            if (nextBtn) {
+                nextBtn.removeEventListener('click', nextVideo); // Remove old listeners
+                nextBtn.addEventListener('click', nextVideo);
+            }
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                const videosSection = document.getElementById('videos');
+                if (videosSection && videosSection.getBoundingClientRect().top < window.innerHeight && videosSection.getBoundingClientRect().bottom > 0) {
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        prevVideo();
+                    } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        nextVideo();
+                    }
+                }
+            });
         }
         
-        // Load thumbnails when page loads
+        // Load thumbnails when page loads with timeout fallback
+        const loadVideos = async () => {
+            // Set a timeout to show fallback if loading takes too long
+            const timeout = setTimeout(() => {
+                const carousel = document.getElementById('videoCarousel');
+                if (carousel && carousel.children.length === 0) {
+                    console.warn('Video loading timeout - showing fallback');
+                    const fallbackCard = document.createElement('div');
+                    fallbackCard.className = 'video-item';
+                    fallbackCard.innerHTML = `
+                        <a href="https://youtube.com/playlist?list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                            <div class="video-thumbnail-wrapper" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.95) 0%, rgba(255, 107, 53, 0.4) 100%); display: flex; align-items: center; justify-content: center; min-height: 450px;">
+                                <div style="text-align: center; color: white; padding: 60px 40px;">
+                                    <div class="play-overlay-large" style="position: relative; transform: none; margin: 0 auto 30px;"></div>
+                                    <h3 style="color: white; margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 600;">NEMS Previous Conversations</h3>
+                                    <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1.2rem;">Click to view the full playlist on YouTube</p>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    carousel.appendChild(fallbackCard);
+                    if (typeof createDots === 'function') createDots();
+                    if (typeof updateCarousel === 'function') updateCarousel();
+                }
+            }, 10000); // 10 second timeout
+            
+            try {
+                await loadPlaylistThumbnails();
+                clearTimeout(timeout);
+            } catch (error) {
+                clearTimeout(timeout);
+                console.error('Error loading playlist:', error);
+            }
+        };
+        
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadPlaylistThumbnails);
+            document.addEventListener('DOMContentLoaded', loadVideos);
         } else {
-            loadPlaylistThumbnails();
+            loadVideos();
         }
     </script>
 </body>
