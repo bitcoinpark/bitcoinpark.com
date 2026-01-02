@@ -1411,32 +1411,17 @@
                     videoCard.className = 'video-item';
                     const videoId = video.id;
                     
-                    // Use i.ytimg.com first (more reliable) with cache-busting to ensure fresh thumbnails
-                    // This ensures the updated YouTube thumbnail is displayed
-                    const cacheBuster = Date.now();
-                    
-                    // Build comprehensive list of thumbnail URLs to try
-                    // hqdefault is more reliably available than maxresdefault for all videos
-                    const thumbnailUrls = [
-                        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
-                        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`, // Try hqdefault early - it's more reliable
-                        `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
-                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-                        `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`,
-                        `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
-                        `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`,
-                        `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
-                    ];
-                    
-                    const initialThumbnailUrl = thumbnailUrls[0] + '?t=' + cacheBuster;
+                    // Use standard YouTube thumbnail URL format
+                    // Start with hqdefault as it's the most reliable format available for all videos
+                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                     
                     videoCard.innerHTML = `
                         <a href="https://www.youtube.com/watch?v=${videoId}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
                             <div class="video-thumbnail-wrapper">
-                                <img src="${initialThumbnailUrl}" 
+                                <img src="${thumbnailUrl}" 
                                      alt="${video.title.replace(/"/g, '&quot;')}" 
-                                     loading="eager"
-                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                     onerror="this.onerror=null; this.src='https://i.ytimg.com/vi/${videoId}/hqdefault.jpg'"
+                                     loading="eager">
                                 <div class="play-overlay-large"></div>
                                 <div class="video-title-overlay">
                                     <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
@@ -1445,37 +1430,21 @@
                         </a>
                     `;
                     
-                    // Add comprehensive fallback handling for all videos
+                    // Verify image loads
                     const img = videoCard.querySelector('img');
                     if (img) {
-                        let fallbackIndex = 1; // Start from index 1 since 0 is already loaded
-                        
-                        const handleError = function() {
-                            if (fallbackIndex < thumbnailUrls.length) {
-                                const nextUrl = thumbnailUrls[fallbackIndex] + '?t=' + cacheBuster;
-                                this.src = nextUrl;
-                                fallbackIndex++;
-                            } else {
-                                // All thumbnails failed - log for debugging
-                                if (videoId === 'wem5YSthpzE') {
-                                    console.warn(`Failed to load thumbnail for video ${videoId} (${video.title}) after trying all fallbacks`);
-                                }
-                                this.removeEventListener('error', handleError);
-                            }
-                        };
-                        
-                        img.addEventListener('error', handleError);
-                        
-                        // Also add load event to verify successful loading
-                        img.addEventListener('load', function() {
-                            if (videoId === 'wem5YSthpzE') {
-                                console.log(`Successfully loaded thumbnail for ${videoId} from: ${this.src}`);
-                            }
+                        img.addEventListener('load', () => {
+                            console.log(`Thumbnail loaded for: ${video.title}`);
+                        });
+                        img.addEventListener('error', () => {
+                            console.warn(`Thumbnail failed for: ${video.title} (${videoId})`);
                         });
                     }
                     
                     carousel.appendChild(videoCard);
                 });
+                
+                console.log(`Created ${videos.length} video cards in carousel`);
                 
                 // Initialize carousel controls
                 createDots();
