@@ -1358,7 +1358,10 @@
                         const entries = xmlDoc.getElementsByTagName('entry');
                         
                         const maxVideos = 12;
+                        const openSourceVideoId = 'wem5YSthpzE';
+                        let openSourceVideoFound = false;
                         
+                        // First, get the first 12 videos
                         for (let i = 0; i < Math.min(entries.length, maxVideos); i++) {
                             const entry = entries[i];
                             const videoIdElement = entry.getElementsByTagName('yt:videoId')[0];
@@ -1369,9 +1372,37 @@
                                 const title = titleElement.textContent || 'NEMS Video';
                                 
                                 if (videoId && videoId.length === 11) {
+                                    if (videoId === openSourceVideoId) {
+                                        openSourceVideoFound = true;
+                                    }
                                     fetchedVideos.push({ id: videoId, title: title });
                                 }
                             }
+                        }
+                        
+                        // If Open Source video not in first 12, search the rest of the playlist
+                        if (!openSourceVideoFound && entries.length > maxVideos) {
+                            for (let i = maxVideos; i < entries.length; i++) {
+                                const entry = entries[i];
+                                const videoIdElement = entry.getElementsByTagName('yt:videoId')[0];
+                                const titleElement = entry.getElementsByTagName('title')[0];
+                                
+                                if (videoIdElement && titleElement) {
+                                    const videoId = videoIdElement.textContent;
+                                    const title = titleElement.textContent || 'NEMS Video';
+                                    
+                                    if (videoId === openSourceVideoId && videoId.length === 11) {
+                                        fetchedVideos.push({ id: videoId, title: title });
+                                        openSourceVideoFound = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // If still not found, add it manually with the correct title
+                        if (!openSourceVideoFound) {
+                            fetchedVideos.push({ id: openSourceVideoId, title: 'Open Source Bitcoin Mining' });
                         }
                         
                         if (fetchedVideos.length > 0) {
@@ -1393,84 +1424,159 @@
                 console.warn('Failed to load playlist from RSS feed:', lastError);
             }
             
-            // Create thumbnail cards - show videos even if RSS feed partially failed
-            if (fetchedVideos.length > 0) {
-                videos = fetchedVideos; // Assign to global videos array
+            // Ensure we always have at least the Open Source video
+            if (fetchedVideos.length === 0) {
+                // If RSS feed completely failed, at least add the Open Source video
+                fetchedVideos.push({ id: 'wem5YSthpzE', title: 'Open Source Bitcoin Mining' });
+                console.warn('RSS feed failed, showing at least Open Source video');
+            }
+            
+            // Create thumbnail cards - always show videos
+            videos = fetchedVideos; // Assign to global videos array
+            
+            // Verify Open Source video is included
+            const openSourceVideo = videos.find(v => v.id === 'wem5YSthpzE');
+            if (openSourceVideo) {
+                console.log('✓ Open Source video included in carousel:', openSourceVideo.title);
+            } else {
+                console.warn('⚠ Open Source video (wem5YSthpzE) not found - adding it');
+                videos.push({ id: 'wem5YSthpzE', title: 'Open Source Bitcoin Mining' });
+            }
+            
+            // Find and move governor conversation to first position
+            // Search for videos with "governor" in the title (case insensitive)
+            const governorVideoIndex = videos.findIndex(v => 
+                v.title.toLowerCase().includes('governor') || 
+                v.title.toLowerCase().includes('governor lee')
+            );
+            
+            if (governorVideoIndex > 0) {
+                // Move governor video to first position
+                const governorVideo = videos.splice(governorVideoIndex, 1)[0];
+                videos.unshift(governorVideo);
+                console.log('✓ Governor conversation moved to first position:', governorVideo.title);
+            } else if (governorVideoIndex === -1) {
+                // Governor video not found, log for debugging
+                console.log('Governor conversation not found in playlist. Available videos:', videos.map(v => v.title));
+            }
+            
+            // Create video cards
+            videos.forEach((video) => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-item';
+                const videoId = video.id;
                 
-                // Debug: Check if the specific video is in the list
-                const openSourceVideo = videos.find(v => v.id === 'wem5YSthpzE');
-                if (openSourceVideo) {
-                    console.log('Open Source video found in playlist:', openSourceVideo);
+                // Try maxresdefault first (highest quality, especially for updated thumbnails)
+                // For Open Source video, start with hqdefault as it's more reliable
+                const isOpenSourceVideo = videoId === 'wem5YSthpzE';
+                let thumbnailUrls;
+                
+                if (isOpenSourceVideo) {
+                    // For Open Source video, prioritize hqdefault (most reliable)
+                    thumbnailUrls = [
+                        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`
+                    ];
                 } else {
-                    console.warn('Open Source video (wem5YSthpzE) not found in fetched videos');
+                    // For other videos, try maxresdefault first
+                    thumbnailUrls = [
+                        `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+                        `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`,
+                        `https://img.youtube.com/vi/${videoId}/sddefault.jpg`
+                    ];
                 }
                 
-                // Create video cards
-                videos.forEach((video) => {
-                    const videoCard = document.createElement('div');
-                    videoCard.className = 'video-item';
-                    const videoId = video.id;
-                    
-                    // Use standard YouTube thumbnail URL format
-                    // Start with hqdefault as it's the most reliable format available for all videos
-                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                    
-                    videoCard.innerHTML = `
-                        <a href="https://www.youtube.com/watch?v=${videoId}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
-                            <div class="video-thumbnail-wrapper">
-                                <img src="${thumbnailUrl}" 
-                                     alt="${video.title.replace(/"/g, '&quot;')}" 
-                                     onerror="this.onerror=null; this.src='https://i.ytimg.com/vi/${videoId}/hqdefault.jpg'"
-                                     loading="eager">
-                                <div class="play-overlay-large"></div>
-                                <div class="video-title-overlay">
-                                    <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                    
-                    // Verify image loads
-                    const img = videoCard.querySelector('img');
-                    if (img) {
-                        img.addEventListener('load', () => {
-                            console.log(`Thumbnail loaded for: ${video.title}`);
-                        });
-                        img.addEventListener('error', () => {
-                            console.warn(`Thumbnail failed for: ${video.title} (${videoId})`);
-                        });
-                    }
-                    
-                    carousel.appendChild(videoCard);
-                });
+                const initialThumbnailUrl = thumbnailUrls[0];
                 
-                console.log(`Created ${videos.length} video cards in carousel`);
-                
-                // Initialize carousel controls
-                createDots();
-                updateCarousel();
-                
-            } else {
-                // Fallback: Show a styled playlist card that links to the playlist
-                console.warn('Could not load video thumbnails, showing fallback');
-                videos = []; // Clear videos array
-                const fallbackCard = document.createElement('div');
-                fallbackCard.className = 'video-item';
-                fallbackCard.innerHTML = `
-                    <a href="https://youtube.com/playlist?list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
-                        <div class="video-thumbnail-wrapper" style="background: linear-gradient(135deg, rgba(26, 35, 50, 0.95) 0%, rgba(255, 107, 53, 0.4) 100%); display: flex; align-items: center; justify-content: center; min-height: 450px;">
-                            <div style="text-align: center; color: white; padding: 60px 40px;">
-                                <div class="play-overlay-large" style="position: relative; transform: none; margin: 0 auto 30px;"></div>
-                                <h3 style="color: white; margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 600;">NEMS Previous Conversations</h3>
-                                <p style="color: rgba(255,255,255,0.9); margin: 0; font-size: 1.2rem;">Click to view the full playlist on YouTube</p>
+                videoCard.innerHTML = `
+                    <a href="https://www.youtube.com/watch?v=${videoId}&list=${playlistId}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                        <div class="video-thumbnail-wrapper">
+                            <img src="${initialThumbnailUrl}" 
+                                 alt="${video.title.replace(/"/g, '&quot;')}" 
+                                 loading="eager"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; background-color: #1a2332;">
+                            <div class="play-overlay-large"></div>
+                            <div class="video-title-overlay">
+                                <h4>${video.title.substring(0, 80)}${video.title.length > 80 ? '...' : ''}</h4>
                             </div>
                         </div>
                     </a>
                 `;
-                carousel.appendChild(fallbackCard);
-                createDots();
-                updateCarousel();
-            }
+                
+                // Add comprehensive fallback handling
+                // Special handling for Open Source video
+                const img = videoCard.querySelector('img');
+                if (img) {
+                    let fallbackIndex = 1;
+                    
+                    const handleError = function() {
+                        if (fallbackIndex < thumbnailUrls.length) {
+                            // Try next thumbnail URL with cache busting
+                            const nextUrl = thumbnailUrls[fallbackIndex] + '?t=' + Date.now();
+                            if (videoId === 'wem5YSthpzE') {
+                                console.log(`Trying thumbnail ${fallbackIndex + 1}/${thumbnailUrls.length} for Open Source video: ${nextUrl}`);
+                            }
+                            this.src = nextUrl;
+                            fallbackIndex++;
+                        } else {
+                            // All attempts failed
+                            this.removeEventListener('error', handleError);
+                            console.warn(`All thumbnail attempts failed for: ${video.title} (${videoId})`);
+                            if (videoId === 'wem5YSthpzE') {
+                                console.error('Open Source video thumbnail failed - this may be a YouTube issue. Tried URLs:', thumbnailUrls);
+                                console.error('This could indicate:');
+                                console.error('1. YouTube hasn\'t fully propagated the new thumbnail yet');
+                                console.error('2. The video has privacy/restriction settings preventing thumbnail access');
+                                console.error('3. The video ID might be incorrect');
+                            }
+                            // Ensure background color is visible if image fails
+                            this.style.backgroundColor = '#1a2332';
+                        }
+                    };
+                    
+                    img.addEventListener('error', handleError);
+                    
+                    // Log successful loads
+                    img.addEventListener('load', function() {
+                        this.style.backgroundColor = 'transparent';
+                        if (videoId === 'wem5YSthpzE') {
+                            console.log(`✓✓✓ Open Source video thumbnail loaded successfully from: ${this.src}`);
+                        }
+                    });
+                    
+                    // Special preload check for Open Source video
+                    if (videoId === 'wem5YSthpzE') {
+                        console.log(`Preloading Open Source video thumbnail from: ${initialThumbnailUrl}`);
+                        // Try to preload and verify the thumbnail exists
+                        const testImg = new Image();
+                        testImg.onload = function() {
+                            console.log(`✓ Preload successful for Open Source video: ${this.src}`);
+                        };
+                        testImg.onerror = function() {
+                            console.warn(`✗ Preload failed for Open Source video: ${this.src} - will try fallbacks`);
+                        };
+                        // Try hqdefault first as it's most reliable
+                        testImg.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+                    }
+                }
+                
+                carousel.appendChild(videoCard);
+            });
+            
+            console.log(`Created ${videos.length} video cards in carousel`);
+            
+            // Initialize carousel controls
+            createDots();
+            updateCarousel();
             
             // Always initialize navigation controls
             const prevBtn = document.getElementById('prevBtn');
