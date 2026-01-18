@@ -1590,7 +1590,9 @@
                 }
                 const row = headers.map(header => {
                     const value = obj[header] !== undefined && obj[header] !== null ? obj[header] : '';
-                    return `"${String(value).replace(/"/g, '""')}"`;
+                    // Escape quotes AND replace newlines with spaces to prevent CSV parsing issues
+                    const escaped = String(value).replace(/"/g, '""').replace(/\n/g, ' ').replace(/\r/g, '');
+                    return `"${escaped}"`;
                 });
                 csvRows.push(row.join(','));
             });
@@ -1963,6 +1965,20 @@
             
             // Clean up the date string
             dateStr = dateStr.toString().trim();
+            
+            // Skip non-date values
+            if (dateStr.toLowerCase() === 'tbd' || dateStr === '') {
+                return null;
+            }
+            
+            // Format 0: Full JavaScript date string like "Sun Jan 18 2026 00:00:00 GMT-0600"
+            // This is what Apps Script returns for Date objects
+            if (dateStr.includes('GMT') || dateStr.match(/^\w{3}\s\w{3}\s\d{1,2}\s\d{4}/)) {
+                const parsed = new Date(dateStr);
+                if (!isNaN(parsed.getTime())) {
+                    return parsed;
+                }
+            }
             
             // Format 1: MM/DD/YYYY (4-digit year)
             let match = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
