@@ -1669,12 +1669,19 @@
             console.log('Number of headers:', headers.length);
             
             const events = [];
+            console.log(`Processing ${lines.length - 1} data rows...`);
+            
             for (let i = 1; i < lines.length; i++) {
-                if (!lines[i].trim()) continue;
+                if (!lines[i].trim()) {
+                    console.log(`Row ${i}: SKIPPED - empty line`);
+                    continue;
+                }
                 
                 const values = parseCSVLine(lines[i]);
+                console.log(`Row ${i}: Parsed ${values.length} values. First 3:`, values.slice(0, 3));
+                
                 if (values.length < headers.length) {
-                    console.warn(`Row ${i} has ${values.length} values but ${headers.length} headers`);
+                    console.warn(`Row ${i}: SKIPPED - has ${values.length} values but ${headers.length} headers`);
                     continue;
                 }
                 
@@ -1790,17 +1797,17 @@
                 }
                 
                 if (!dateValue || !titleValue) {
-                    // Only log first few to avoid console spam
-                    if (i <= 5) {
-                        console.warn(`Row ${i} missing required fields:`, { 
-                            hasDate: !!dateValue, 
-                            hasTitle: !!titleValue, 
-                            eventKeys: eventKeys,
-                            event: event
-                        });
-                    }
+                    console.warn(`Row ${i}: SKIPPED - missing required fields:`, { 
+                        hasDate: !!dateValue, 
+                        dateValue: dateValue,
+                        hasTitle: !!titleValue, 
+                        titleValue: titleValue,
+                        rawValues: values.slice(0, 5)
+                    });
                     continue;
                 }
+                
+                console.log(`Row ${i}: Found date="${dateValue}" title="${titleValue?.substring(0, 30)}..."`)
                 
                 if (event.date && event.title) {
                     // Normalize event type - check "Category" column (column H in the Google Sheet)
