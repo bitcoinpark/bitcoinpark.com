@@ -1954,29 +1954,48 @@
         function parseDate(dateStr) {
             if (!dateStr) return null;
             
-            const formats = [
-                /(\d{1,2})\/(\d{1,2})\/(\d{4})/,
-                /(\d{4})-(\d{1,2})-(\d{1,2})/,
-                /(\d{1,2})-(\d{1,2})-(\d{4})/,
-            ];
+            // Clean up the date string
+            dateStr = dateStr.toString().trim();
             
-            for (const format of formats) {
-                const match = dateStr.match(format);
-                if (match) {
-                    let month, day, year;
-                    if (format === formats[1]) {
-                        year = parseInt(match[1]);
-                        month = parseInt(match[2]) - 1;
-                        day = parseInt(match[3]);
-                    } else {
-                        month = parseInt(match[1]) - 1;
-                        day = parseInt(match[2]);
-                        year = parseInt(match[3]);
-                    }
-                    return new Date(year, month, day);
-                }
+            // Format 1: MM/DD/YYYY (4-digit year)
+            let match = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+            if (match) {
+                const month = parseInt(match[1]) - 1;
+                const day = parseInt(match[2]);
+                const year = parseInt(match[3]);
+                return new Date(year, month, day);
             }
             
+            // Format 2: MM/DD/YY (2-digit year) - assume 2000s
+            match = dateStr.match(/(\d{1,2})\/(\d{1,2})\/(\d{2})$/);
+            if (match) {
+                const month = parseInt(match[1]) - 1;
+                const day = parseInt(match[2]);
+                let year = parseInt(match[3]);
+                // Assume 2000s for 2-digit years (00-99 -> 2000-2099)
+                year = year + 2000;
+                return new Date(year, month, day);
+            }
+            
+            // Format 3: YYYY-MM-DD
+            match = dateStr.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+            if (match) {
+                const year = parseInt(match[1]);
+                const month = parseInt(match[2]) - 1;
+                const day = parseInt(match[3]);
+                return new Date(year, month, day);
+            }
+            
+            // Format 4: MM-DD-YYYY
+            match = dateStr.match(/(\d{1,2})-(\d{1,2})-(\d{4})/);
+            if (match) {
+                const month = parseInt(match[1]) - 1;
+                const day = parseInt(match[2]);
+                const year = parseInt(match[3]);
+                return new Date(year, month, day);
+            }
+            
+            // Fallback: try native Date.parse
             const parsed = Date.parse(dateStr);
             if (!isNaN(parsed)) {
                 return new Date(parsed);
