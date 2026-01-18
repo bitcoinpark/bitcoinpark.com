@@ -1,0 +1,2643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Bitcoin Park</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+        
+        :root {
+            /* Brand Colors */
+            --base-green: #0A2B07;
+            --austin-blue: #62B9E8;
+            --nashville-purple: #B290F4;
+            --accent-coral: #DD9974;
+            --accent-pink: #F27979;
+            --accent-yellow: #FFEDA5;
+            --white: #FFFFFF;
+            --black: #000000;
+            --gray-light: #F5F5F5;
+            --gray-medium: #CCCCCC;
+            --gray-dark: #666666;
+            
+            /* Current location (defaults to Austin) */
+            --location-accent: var(--austin-blue);
+            --location-name: 'Austin';
+        }
+        
+        /* Nashville theme */
+        body.nashville {
+            --location-accent: var(--nashville-purple);
+            --location-name: 'Nashville';
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8f0e8 25%, #f0f4f0 50%, #e8f0e8 75%, #f5f7fa 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--base-green);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(98, 185, 232, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(178, 144, 244, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(221, 153, 116, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Optima', 'Cochin', 'Palatino', serif;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 50%, var(--base-green) 100%);
+            padding: 20px 0;
+            border-bottom: 3px solid var(--location-accent);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(10, 43, 7, 0.2);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Optima', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--location-accent);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--base-green) 0%, var(--location-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 400;
+            text-shadow: 0 2px 10px rgba(10, 43, 7, 0.1);
+        }
+
+        .page-subtitle {
+            color: var(--gray-dark);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Top Controls Bar */
+        .top-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 247, 250, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 4px 20px rgba(10, 43, 7, 0.08);
+        }
+
+        /* Location Switcher */
+        .location-switcher {
+            display: flex;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            padding: 4px;
+            border-radius: 8px;
+            border: 2px solid var(--base-green);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.1);
+        }
+
+        .location-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: none;
+            color: var(--base-green);
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .location-btn.active {
+            background: linear-gradient(135deg, var(--location-accent) 0%, var(--location-accent) 100%);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(98, 185, 232, 0.3);
+        }
+
+        .location-btn.active[data-location="all"] {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.3);
+        }
+
+        .location-btn:hover:not(.active) {
+            background: var(--gray-light);
+        }
+
+        /* Search */
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 2px solid var(--base-green);
+            border-radius: 8px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            color: var(--base-green);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.08);
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--location-accent);
+            box-shadow: 0 4px 12px rgba(98, 185, 232, 0.2);
+            background: var(--white);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-dark);
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            border-radius: 8px;
+            padding: 4px;
+            gap: 4px;
+            border: 2px solid var(--base-green);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.1);
+        }
+
+        .view-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: var(--base-green);
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            font-family: 'Source Sans Pro', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .view-btn.active {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.3);
+        }
+
+        .view-btn:hover:not(.active) {
+            background: var(--gray-light);
+        }
+
+        /* Filters Panel */
+        .filters-panel {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: none;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 4px 20px rgba(10, 43, 7, 0.08);
+        }
+
+        .filters-panel.active {
+            display: block;
+        }
+
+        .filters-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filters-header h3 {
+            font-size: 1.3rem;
+            color: var(--base-green);
+            font-weight: 400;
+        }
+
+        .toggle-filters {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Source Sans Pro', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.2);
+        }
+
+        .toggle-filters:hover {
+            background: linear-gradient(135deg, var(--location-accent) 0%, var(--location-accent) 100%);
+            box-shadow: 0 4px 12px rgba(98, 185, 232, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--base-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-select,
+        .filter-input {
+            padding: 10px;
+            border: 2px solid var(--base-green);
+            border-radius: 6px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.95rem;
+            background: var(--white);
+            color: var(--base-green);
+        }
+
+        .filter-select:focus,
+        .filter-input:focus {
+            outline: none;
+            border-color: var(--location-accent);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-tag {
+            padding: 6px 12px;
+            background: var(--white);
+            border: 2px solid var(--base-green);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .filter-tag:hover {
+            background: var(--location-accent);
+            border-color: var(--location-accent);
+            color: var(--white);
+        }
+
+        .filter-tag.active {
+            background: var(--base-green);
+            border-color: var(--base-green);
+            color: var(--white);
+        }
+
+        /* Calendar Navigation */
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 247, 250, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 4px 20px rgba(10, 43, 7, 0.08);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            border: 2px solid var(--base-green);
+            color: var(--base-green);
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: 'Source Sans Pro', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.1);
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(10, 43, 7, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .current-date-display {
+            font-family: 'Optima', serif;
+            font-size: 1.5rem;
+            color: var(--base-green);
+            font-weight: 400;
+        }
+
+        .today-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--location-accent) 0%, var(--location-accent) 100%);
+            border: 2px solid var(--location-accent);
+            color: var(--white);
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: 'Source Sans Pro', sans-serif;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(98, 185, 232, 0.3);
+        }
+
+        .today-btn:hover {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            border-color: var(--base-green);
+            box-shadow: 0 4px 12px rgba(10, 43, 7, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Calendar Views */
+        .calendar-view {
+            display: none;
+        }
+
+        .calendar-view.active {
+            display: block;
+        }
+
+        /* Month View */
+        .month-view {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .month-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .day-header {
+            text-align: center;
+            font-weight: 700;
+            color: var(--base-green);
+            font-size: 0.9rem;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Source Sans Pro', sans-serif;
+            min-width: 0;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
+        }
+
+        .calendar-day {
+            min-height: 140px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(245, 247, 250, 0.6) 100%);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 10px;
+            position: relative;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .calendar-day:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            border-color: var(--location-accent);
+            box-shadow: 0 4px 12px rgba(98, 185, 232, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.4;
+            background: linear-gradient(135deg, rgba(245, 247, 250, 0.3) 0%, rgba(232, 240, 232, 0.3) 100%);
+        }
+
+        .calendar-day.today {
+            border-color: var(--location-accent);
+            background: linear-gradient(135deg, rgba(98, 185, 232, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+            box-shadow: 0 4px 12px rgba(98, 185, 232, 0.2);
+        }
+
+        .day-number {
+            font-family: 'Optima', serif;
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--base-green);
+        }
+
+        .day-events {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .event-dot {
+            width: 100%;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: 'Source Sans Pro', sans-serif;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .event-dot:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .event-dot.meetup {
+            background: linear-gradient(135deg, var(--austin-blue) 0%, #4a9dd4 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(98, 185, 232, 0.3);
+        }
+
+        .event-dot.workshop {
+            background: linear-gradient(135deg, var(--accent-coral) 0%, #c8875f 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(221, 153, 116, 0.3);
+        }
+
+        .event-dot.summit {
+            background: linear-gradient(135deg, var(--nashville-purple) 0%, #9a7dd4 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(178, 144, 244, 0.3);
+        }
+
+        .event-dot.hackathon {
+            background: linear-gradient(135deg, var(--accent-pink) 0%, #e06666 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(242, 121, 121, 0.3);
+        }
+
+        .event-dot.experience {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, #ffd966 100%);
+            color: var(--base-green);
+            box-shadow: 0 2px 6px rgba(255, 237, 165, 0.3);
+        }
+
+        /* Week View */
+        .week-view {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
+        }
+
+        .week-header {
+            display: grid;
+            grid-template-columns: 80px repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .week-day-header {
+            text-align: center;
+            font-weight: 700;
+            color: var(--base-green);
+            font-size: 0.9rem;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: 80px repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .time-slot {
+            padding: 10px;
+            text-align: right;
+            color: var(--gray-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .week-day {
+            min-height: 600px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(245, 247, 250, 0.6) 100%);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 10px;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .week-day.today {
+            border-color: var(--location-accent);
+            background: linear-gradient(135deg, rgba(98, 185, 232, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+            box-shadow: 0 4px 12px rgba(98, 185, 232, 0.2);
+        }
+
+        .week-event {
+            position: absolute;
+            left: 5px;
+            right: 5px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .week-event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .week-event.meetup {
+            background: rgba(98, 185, 232, 0.2);
+            border-left-color: var(--austin-blue);
+            color: var(--base-green);
+        }
+
+        .week-event.workshop {
+            background: rgba(221, 153, 116, 0.2);
+            border-left-color: var(--accent-coral);
+            color: var(--base-green);
+        }
+
+        .week-event.summit {
+            background: rgba(178, 144, 244, 0.2);
+            border-left-color: var(--nashville-purple);
+            color: var(--base-green);
+        }
+
+        .week-event.hackathon {
+            background: rgba(242, 121, 121, 0.2);
+            border-left-color: var(--accent-pink);
+            color: var(--base-green);
+        }
+
+        .week-event.experience {
+            background: rgba(255, 237, 165, 0.3);
+            border-left-color: var(--accent-yellow);
+            color: var(--base-green);
+        }
+
+        /* Day View */
+        .day-view {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
+        }
+
+        .day-view-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .day-view-header h2 {
+            font-size: 2rem;
+            color: var(--base-green);
+            font-weight: 400;
+        }
+
+        .day-events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Agenda View */
+        .agenda-view {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
+        }
+
+        .agenda-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Summit View */
+        .summit-view {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
+        }
+
+        .summit-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .summit-header h2 {
+            font-size: 2.5rem;
+            color: var(--base-green);
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .summit-tracks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .summit-track {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(245, 247, 250, 0.8) 100%);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 4px 16px rgba(10, 43, 7, 0.08);
+            transition: all 0.3s;
+        }
+
+        .summit-track:hover {
+            box-shadow: 0 6px 24px rgba(10, 43, 7, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .summit-track h3 {
+            font-size: 1.5rem;
+            color: var(--base-green);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .track-events {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Event Cards */
+        .event-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(10, 43, 7, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(10, 43, 7, 0.08);
+        }
+
+        .event-card:hover {
+            border-color: var(--location-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(98, 185, 232, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 247, 250, 1) 100%);
+        }
+
+        .event-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .event-time {
+            font-size: 0.9rem;
+            color: var(--location-accent);
+            font-weight: 700;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .event-type-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .event-type-badge.meetup {
+            background: linear-gradient(135deg, var(--austin-blue) 0%, #4a9dd4 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(98, 185, 232, 0.3);
+        }
+
+        .event-type-badge.workshop {
+            background: linear-gradient(135deg, var(--accent-coral) 0%, #c8875f 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(221, 153, 116, 0.3);
+        }
+
+        .event-type-badge.summit {
+            background: linear-gradient(135deg, var(--nashville-purple) 0%, #9a7dd4 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(178, 144, 244, 0.3);
+        }
+
+        .event-type-badge.hackathon {
+            background: linear-gradient(135deg, var(--accent-pink) 0%, #e06666 100%);
+            color: var(--white);
+            box-shadow: 0 2px 6px rgba(242, 121, 121, 0.3);
+        }
+
+        .event-type-badge.experience {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, #ffd966 100%);
+            color: var(--base-green);
+            box-shadow: 0 2px 6px rgba(255, 237, 165, 0.3);
+        }
+
+        .event-title {
+            font-family: 'Optima', serif;
+            font-size: 1.5rem;
+            color: var(--base-green);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 12px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .event-meta-date {
+            font-size: 0.95rem;
+            color: var(--base-green);
+            font-weight: 600;
+        }
+
+        .event-meta-location {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-cta {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-family: 'Source Sans Pro', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            border-color: var(--base-green);
+            color: var(--white);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--location-accent) 0%, var(--location-accent) 100%);
+            border-color: var(--location-accent);
+            box-shadow: 0 4px 12px rgba(98, 185, 232, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 247, 250, 0.9) 100%);
+            border-color: var(--base-green);
+            color: var(--base-green);
+            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--base-green) 0%, #0d3510 100%);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(10, 43, 7, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Event Detail Modal */
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .event-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .event-modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 247, 250, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(10, 43, 7, 0.2);
+            box-shadow: 0 12px 48px rgba(10, 43, 7, 0.2);
+        }
+
+        .event-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            color: var(--base-green);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .event-modal-close:hover {
+            background: var(--gray-light);
+        }
+
+        .event-detail-header {
+            margin-bottom: 30px;
+        }
+
+        .event-detail-title {
+            font-family: 'Optima', serif;
+            font-size: 2.5rem;
+            color: var(--base-green);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .event-detail-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .event-detail-meta .meta-date {
+            font-size: 1.1rem;
+            color: var(--base-green);
+            font-weight: 600;
+        }
+
+        .event-detail-meta .meta-location {
+            font-size: 1rem;
+            color: var(--gray-dark);
+        }
+
+        .event-detail-description {
+            margin-top: 30px;
+            line-height: 1.8;
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--base-green);
+        }
+
+        /* Loading & Error States */
+        .loading, .error {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-dark);
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .loading-spinner {
+            border: 3px solid var(--gray-light);
+            border-top: 3px solid var(--location-accent);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .top-controls {
+                flex-direction: column;
+            }
+
+            .location-switcher,
+            .view-toggle {
+                width: 100%;
+            }
+
+            .month-grid,
+            .week-grid {
+                gap: 5px;
+            }
+
+            .calendar-day {
+                min-height: 80px;
+                padding: 5px;
+            }
+
+            .week-grid {
+                grid-template-columns: 50px repeat(7, 1fr);
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">Bitcoin Park</a>
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/nashville" class="nav-link">Nashville</a>
+                <a href="/austin" class="nav-link">Austin</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Bitcoin Park Schedule</h1>
+            <p class="page-subtitle">Find meetups, workshops, and summits at Bitcoin Park</p>
+        </div>
+
+        <div class="top-controls">
+            <div class="location-switcher">
+                <button class="location-btn active" data-location="all">All</button>
+                <button class="location-btn" data-location="austin">Austin</button>
+                <button class="location-btn" data-location="nashville">Nashville</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search events...">
+                <span class="search-icon"></span>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="month">Month</button>
+                <button class="view-btn" data-view="week">Week</button>
+                <button class="view-btn" data-view="day">Day</button>
+                <button class="view-btn" data-view="summit">Summit</button>
+            </div>
+
+            <button class="toggle-filters" id="toggleFilters">Filters</button>
+        </div>
+
+        <div class="filters-panel" id="filtersPanel">
+            <div class="filters-header">
+                <h3>Filter Events</h3>
+                <button class="toggle-filters" id="closeFilters">Close</button>
+            </div>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label class="filter-label">Event Type</label>
+                    <div class="filter-tags">
+                        <span class="filter-tag active" data-filter="type" data-value="all">All</span>
+                        <span class="filter-tag" data-filter="type" data-value="meetup">Meetup</span>
+                        <span class="filter-tag" data-filter="type" data-value="workshop">Workshop</span>
+                        <span class="filter-tag" data-filter="type" data-value="summit">Summit</span>
+                        <span class="filter-tag" data-filter="type" data-value="hackathon">Hackathon</span>
+                        <span class="filter-tag" data-filter="type" data-value="experience">Experience</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Location</label>
+                    <select class="filter-select" id="filterLocation">
+                        <option value="all">All Locations</option>
+                        <option value="austin">Austin</option>
+                        <option value="nashville">Nashville</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Topic Tags</label>
+                    <div class="filter-tags" id="topicTags">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Audience Level</label>
+                    <select class="filter-select" id="filterAudience">
+                        <option value="all">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Format</label>
+                    <select class="filter-select" id="filterFormat">
+                        <option value="all">All Formats</option>
+                        <option value="in-person">In-Person</option>
+                        <option value="virtual">Virtual</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Cost</label>
+                    <select class="filter-select" id="filterCost">
+                        <option value="all">All</option>
+                        <option value="free">Free</option>
+                        <option value="paid">Paid</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Capacity</label>
+                    <input type="number" class="filter-input" id="filterCapacity" placeholder="Min capacity" min="0">
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Date Range</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="date" class="filter-input" id="filterDateStart">
+                        <input type="date" class="filter-input" id="filterDateEnd">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="calendar-nav">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="prevBtn">← Previous</button>
+                <div class="current-date-display" id="currentDate"></div>
+                <button class="nav-btn" id="nextBtn">Next →</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <button class="nav-btn" id="refreshBtn" title="Refresh events">Refresh</button>
+                <span id="refreshIndicator" style="font-size: 0.85rem; color: var(--gray-dark); font-family: 'Source Sans Pro', sans-serif;"></span>
+                <button class="today-btn" id="todayBtn">Today</button>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading events...</p>
+            </div>
+
+            <div class="error" id="error" style="display: none;">
+                <p>Error loading events. Please refresh the page.</p>
+            </div>
+
+            <!-- Month View -->
+            <div class="calendar-view month-view active" id="monthView">
+                <div class="month-header">
+                    <div class="day-header">Sun</div>
+                    <div class="day-header">Mon</div>
+                    <div class="day-header">Tue</div>
+                    <div class="day-header">Wed</div>
+                    <div class="day-header">Thu</div>
+                    <div class="day-header">Fri</div>
+                    <div class="day-header">Sat</div>
+                </div>
+                <div class="month-grid" id="monthGrid"></div>
+            </div>
+
+            <!-- Week View -->
+            <div class="calendar-view week-view" id="weekView">
+                <div class="week-header">
+                    <div class="week-day-header"></div>
+                    <div class="week-day-header" id="weekDay0"></div>
+                    <div class="week-day-header" id="weekDay1"></div>
+                    <div class="week-day-header" id="weekDay2"></div>
+                    <div class="week-day-header" id="weekDay3"></div>
+                    <div class="week-day-header" id="weekDay4"></div>
+                    <div class="week-day-header" id="weekDay5"></div>
+                    <div class="week-day-header" id="weekDay6"></div>
+                </div>
+                <div class="week-grid" id="weekGrid"></div>
+            </div>
+
+            <!-- Day View -->
+            <div class="calendar-view day-view" id="dayView">
+                <div class="day-view-header">
+                    <h2 id="dayViewDate"></h2>
+                </div>
+                <div class="day-events-list" id="dayEventsList"></div>
+            </div>
+
+            <!-- Agenda View -->
+            <div class="calendar-view agenda-view" id="agendaView">
+                <div class="agenda-list" id="agendaList"></div>
+            </div>
+
+            <!-- Summit View -->
+            <div class="calendar-view summit-view" id="summitView">
+                <div class="summit-header">
+                    <h2 id="summitTitle">Summit Schedule</h2>
+                </div>
+                <div class="summit-tracks" id="summitTracks"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div class="event-modal" id="eventModal">
+        <div class="event-modal-content">
+            <button class="event-modal-close" id="closeModal">&times;</button>
+            <div id="eventDetailContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CONFIGURATION - Choose your data source method
+        // ============================================
+        
+        // Method 1: Direct CSV Export (Current - Simple, requires public sheet)
+        const USE_CSV_EXPORT = false;
+        
+        // Method 2: Google Sheets API (More reliable, handles private sheets)
+        const USE_SHEETS_API = false;
+        const API_KEY = 'YOUR_GOOGLE_SHEETS_API_KEY'; // Get from Google Cloud Console
+        
+        // Method 3: Custom API Endpoint (Serverless function, Google Apps Script, etc.)
+        const USE_CUSTOM_API = false;
+        const CUSTOM_API_URL = 'https://your-api-endpoint.com/api/events';
+        
+        // Method 4: Google Apps Script Web App
+        const USE_APPS_SCRIPT = true;
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOrOe84ly3hnCGC-7OfzAmtiNd4OwpzLywLC0wA58piuws1CL0aeCHreQYkFtF3-83/exec';
+        
+        // Sheet Configuration
+        const SHEET_ID = '1wERSs7wIpd1yDban4eZ6MONwZuYwPFLH8oh5JJaos2g';
+        const SHEET_NAME = 'Sheet1'; // Or your sheet tab name
+        const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=0`;
+        
+        // Auto-refresh Configuration
+        const AUTO_REFRESH_ENABLED = true;
+        const AUTO_REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes in milliseconds
+        let refreshTimer = null;
+        let lastUpdateTime = null;
+
+        let events = [];
+        let currentDate = new Date();
+        let currentView = 'month';
+        let currentLocation = 'all';
+        let filters = {
+            type: 'all',
+            location: 'all',
+            topics: [],
+            audience: 'all',
+            format: 'all',
+            cost: 'all',
+            capacity: null,
+            dateStart: null,
+            dateEnd: null
+        };
+        let searchQuery = '';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadEvents();
+            setupEventListeners();
+            renderCalendar();
+            
+            // Start auto-refresh if enabled
+            if (AUTO_REFRESH_ENABLED) {
+                startAutoRefresh();
+            }
+        });
+
+        // ============================================
+        // DATA LOADING FUNCTIONS
+        // ============================================
+
+        // Main load events function - routes to appropriate method
+        async function loadEvents() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+                
+                let data;
+                
+                if (USE_CUSTOM_API) {
+                    data = await loadFromCustomAPI();
+                } else if (USE_APPS_SCRIPT) {
+                    data = await loadFromAppsScript();
+                } else if (USE_SHEETS_API) {
+                    data = await loadFromSheetsAPI();
+                } else {
+                    // Default: CSV Export
+                    data = await loadFromCSV();
+                }
+                
+                events = parseCSV(data);
+                console.log('Loaded events:', events.length, 'events');
+                if (events.length > 0) {
+                    console.log('Sample event:', events[0]);
+                } else {
+                    console.warn('No events found. Raw data:', data.substring(0, 500));
+                }
+                document.getElementById('loading').style.display = 'none';
+                populateTopicTags();
+                renderCalendar();
+                lastUpdateTime = new Date();
+                updateLastRefreshTime();
+            } catch (error) {
+                console.error('Error loading events:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').innerHTML = `
+                    <p>Error loading events. Please refresh the page.</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: var(--gray-dark);">${error.message}</p>
+                `;
+            }
+        }
+
+        // Method 1: Load from CSV Export (Current method)
+        async function loadFromCSV() {
+            const response = await fetch(CSV_URL);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+            }
+            return await response.text();
+        }
+
+        // Method 2: Load from Google Sheets API
+        async function loadFromSheetsAPI() {
+            const range = `${SHEET_NAME}!A1:Z1000`; // Adjust range as needed
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${API_KEY}`;
+            
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Google Sheets API error: ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            return convertSheetsDataToCSV(data.values);
+        }
+
+        // Method 3: Load from Custom API Endpoint
+        async function loadFromCustomAPI() {
+            const response = await fetch(CUSTOM_API_URL);
+            if (!response.ok) {
+                throw new Error(`API error: ${response.statusText}`);
+            }
+            const data = await response.json();
+            
+            // If API returns JSON, convert to CSV format
+            if (Array.isArray(data)) {
+                return convertJSONToCSV(data);
+            }
+            return data;
+        }
+
+        // Method 4: Load from Google Apps Script Web App
+        async function loadFromAppsScript() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL);
+                if (!response.ok) {
+                    throw new Error(`Apps Script error: ${response.statusText}`);
+                }
+                
+                // Try to parse as JSON first
+                let data;
+                const responseText = await response.text();
+                console.log('Apps Script raw response:', responseText.substring(0, 500));
+                
+                try {
+                    data = JSON.parse(responseText);
+                } catch (e) {
+                    // If not JSON, might be CSV already
+                    console.log('Response is not JSON, treating as CSV');
+                    return responseText;
+                }
+                
+                console.log('Apps Script parsed response:', data);
+                console.log('Data type:', typeof data, 'Is array:', Array.isArray(data));
+                
+                // Check if Apps Script returned an error
+                if (data && data.error) {
+                    throw new Error(`Apps Script error: ${data.message || data.error}`);
+                }
+                
+                // Apps Script returns JSON array - convert to CSV format
+                if (Array.isArray(data)) {
+                    if (data.length === 0) {
+                        console.warn('Apps Script returned empty array');
+                        return 'date,title\n'; // Return empty CSV with headers
+                    }
+                    console.log('Converting JSON array to CSV. Array length:', data.length);
+                    console.log('First row:', data[0]);
+                    const csv = convertJSONToCSV(data);
+                    console.log('CSV preview:', csv.substring(0, 500));
+                    if (!csv || csv.trim() === '') {
+                        throw new Error('CSV conversion resulted in empty string');
+                    }
+                    return csv;
+                }
+                
+                // If not an array, it might be a string (CSV) or error
+                if (typeof data === 'string') {
+                    return data;
+                }
+                
+                // If it's an object but not an array, try to convert it
+                if (data && typeof data === 'object') {
+                    console.warn('Apps Script returned object instead of array, attempting conversion');
+                    const csv = convertJSONToCSV([data]);
+                    return csv;
+                }
+                
+                throw new Error(`Apps Script returned unexpected data format: ${typeof data}. Data: ${JSON.stringify(data).substring(0, 200)}`);
+            } catch (error) {
+                console.error('Error in loadFromAppsScript:', error);
+                throw error;
+            }
+        }
+
+        // ============================================
+        // DATA CONVERSION HELPERS
+        // ============================================
+
+        // Convert Google Sheets API response to CSV format
+        function convertSheetsDataToCSV(values) {
+            if (!values || values.length === 0) return '';
+            return values.map(row => 
+                row.map(cell => `"${String(cell || '').replace(/"/g, '""')}"`).join(',')
+            ).join('\n');
+        }
+
+        // Convert JSON array to CSV format
+        function convertJSONToCSV(jsonArray) {
+            if (!jsonArray || !Array.isArray(jsonArray)) {
+                console.error('convertJSONToCSV: Invalid input, expected array:', jsonArray);
+                throw new Error('convertJSONToCSV: Input must be an array');
+            }
+            
+            if (jsonArray.length === 0) {
+                console.warn('convertJSONToCSV: Empty array provided');
+                return 'date,title\n'; // Return empty CSV with basic headers
+            }
+            
+            // Get headers from first object
+            const firstObj = jsonArray[0];
+            if (!firstObj || typeof firstObj !== 'object') {
+                console.error('convertJSONToCSV: First element is not an object:', firstObj);
+                throw new Error('convertJSONToCSV: First element must be an object');
+            }
+            
+            const headers = Object.keys(firstObj);
+            if (headers.length === 0) {
+                console.warn('convertJSONToCSV: First object has no keys');
+                return 'date,title\n';
+            }
+            
+            console.log('convertJSONToCSV: Headers found:', headers);
+            const csvRows = [headers.map(h => `"${String(h).replace(/"/g, '""')}"`).join(',')];
+            
+            // Convert each object to CSV row
+            jsonArray.forEach((obj, index) => {
+                if (!obj || typeof obj !== 'object') {
+                    console.warn(`convertJSONToCSV: Skipping invalid object at index ${index}:`, obj);
+                    return;
+                }
+                const row = headers.map(header => {
+                    const value = obj[header] !== undefined && obj[header] !== null ? obj[header] : '';
+                    return `"${String(value).replace(/"/g, '""')}"`;
+                });
+                csvRows.push(row.join(','));
+            });
+            
+            const csv = csvRows.join('\n');
+            console.log('convertJSONToCSV: Generated CSV with', csvRows.length - 1, 'data rows');
+            return csv;
+        }
+
+        // ============================================
+        // AUTO-REFRESH FUNCTIONALITY
+        // ============================================
+
+        function startAutoRefresh() {
+            // Clear any existing timer
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+            }
+            
+            // Set up interval refresh
+            refreshTimer = setInterval(() => {
+                console.log('Auto-refreshing events...');
+                loadEvents();
+            }, AUTO_REFRESH_INTERVAL);
+            
+            // Also refresh when page becomes visible (user returns to tab)
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden && AUTO_REFRESH_ENABLED) {
+                    console.log('Page visible, refreshing events...');
+                    loadEvents();
+                }
+            });
+        }
+
+        function stopAutoRefresh() {
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+                refreshTimer = null;
+            }
+        }
+
+        function updateLastRefreshTime() {
+            // Optional: Add a small indicator showing last update time
+            const refreshIndicator = document.getElementById('refreshIndicator');
+            if (refreshIndicator && lastUpdateTime) {
+                const timeStr = lastUpdateTime.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+                refreshIndicator.textContent = `Last updated: ${timeStr}`;
+            }
+        }
+
+        // Parse CSV data
+        function parseCSV(csv) {
+            if (!csv || typeof csv !== 'string') {
+                console.error('parseCSV received invalid data:', typeof csv, csv);
+                return [];
+            }
+            
+            const lines = csv.split('\n').filter(line => line.trim());
+            if (lines.length === 0) {
+                console.warn('No lines found in CSV data');
+                return [];
+            }
+            
+            const headers = lines[0].split(',').map((h, index) => {
+                const header = h.trim().toLowerCase().replace(/"/g, '');
+                // If header is empty or just a single character, create a meaningful name
+                if (!header || header === '' || header.length <= 1) {
+                    return `col_${index}`;
+                }
+                return header;
+            });
+            console.log('CSV Headers found:', headers);
+            console.log('Number of headers:', headers.length);
+            
+            const events = [];
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                
+                const values = parseCSVLine(lines[i]);
+                if (values.length < headers.length) {
+                    console.warn(`Row ${i} has ${values.length} values but ${headers.length} headers`);
+                    continue;
+                }
+                
+                const event = {};
+                headers.forEach((header, index) => {
+                    const value = values[index] ? values[index].trim().replace(/"/g, '') : '';
+                    event[header] = value;
+                    // Also store with original index for fallback
+                    event[`_col_${index}`] = value;
+                });
+                
+                // Get event keys for processing
+                const eventKeys = Object.keys(event);
+                
+                // Log first row to see FULL column structure and find Category
+                if (i === 2) {
+                    console.log('=== FULL COLUMN STRUCTURE ===');
+                    console.log(`Event: "${event.title}"`);
+                    console.log('Looking for "category" key directly:', event['category'] || event['Category'] || 'NOT FOUND');
+                    console.log('All columns (looking for Category):');
+                    eventKeys.forEach((key, idx) => {
+                        const letter = String.fromCharCode(65 + idx);
+                        const value = (event[key] || '').toString().substring(0, 40);
+                        const isCategory = key.toLowerCase().includes('category') || 
+                                          value.toLowerCase() === 'meetup' || value.toLowerCase() === 'summit' ||
+                                          value.toLowerCase() === 'workshop' || value.toLowerCase() === 'hackathon';
+                        console.log(`  ${letter} (${idx}): "${key}" = "${value}" ${isCategory ? '← POSSIBLE CATEGORY' : ''}`);
+                    });
+                    console.log('=== END ===');
+                }
+                
+                // Check if first row might be headers (contains "Listed on schedule.html" or similar)
+                if (i === 1) {
+                    const hasHeaderLikeValue = Object.values(event).some(val => 
+                        val && typeof val === 'string' && 
+                        (val.toLowerCase().includes('listed') || val.toLowerCase().includes('schedule'))
+                    );
+                    if (hasHeaderLikeValue) {
+                        console.log('First row appears to contain headers, skipping:', event);
+                        continue;
+                    }
+                }
+                
+                // Skip rows that are completely empty
+                const hasData = Object.values(event).some(val => val && val.toString().trim() !== '');
+                if (!hasData) {
+                    continue;
+                }
+                
+                // Only add events with date and title
+                // Check for common variations of title and date column names (case-insensitive)
+                const eventKeysLower = eventKeys.map(k => k.toLowerCase());
+                
+                // Find date field (check various possible names)
+                let dateValue = null;
+                const dateVariations = ['date', 'event date', 'start date', 'eventdate', 'startdate', 'when', 'day', 'eventday'];
+                for (const variation of dateVariations) {
+                    const keyIndex = eventKeysLower.indexOf(variation.toLowerCase());
+                    if (keyIndex !== -1 && event[eventKeys[keyIndex]]) {
+                        dateValue = event[eventKeys[keyIndex]];
+                        event.date = dateValue;
+                        break;
+                    }
+                }
+                
+                // If date not found by column name, try to find any value that looks like a date
+                if (!dateValue) {
+                    for (const key of eventKeys) {
+                        const value = event[key];
+                        if (value && typeof value === 'string' && value.trim()) {
+                            // Check if value looks like a date
+                            const datePattern = /\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}|\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/;
+                            if (datePattern.test(value)) {
+                                dateValue = value;
+                                event.date = dateValue;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                // Find title field (check various possible names)
+                let titleValue = null;
+                const titleVariations = ['title', 'name', 'event name', 'event title', 'event', 'eventname', 'eventtitle', 'what', 'description'];
+                for (const variation of titleVariations) {
+                    const keyIndex = eventKeysLower.indexOf(variation.toLowerCase());
+                    if (keyIndex !== -1 && event[eventKeys[keyIndex]]) {
+                        titleValue = event[eventKeys[keyIndex]];
+                        event.title = titleValue;
+                        break;
+                    }
+                }
+                
+                // If title not found by column name, use the first non-empty value that's not a date
+                if (!titleValue) {
+                    for (const key of eventKeys) {
+                        const value = event[key];
+                        if (value && typeof value === 'string' && value.trim()) {
+                            // Skip if it's a date, single letter (Y/N), or looks like a header
+                            const trimmed = value.trim();
+                            if (trimmed.length > 1 && 
+                                trimmed.toUpperCase() !== 'Y' && 
+                                trimmed.toUpperCase() !== 'N' &&
+                                !trimmed.toLowerCase().includes('listed') &&
+                                !trimmed.toLowerCase().includes('schedule') &&
+                                !/\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}/.test(trimmed)) {
+                                titleValue = trimmed;
+                                event.title = titleValue;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if (!dateValue || !titleValue) {
+                    // Only log first few to avoid console spam
+                    if (i <= 5) {
+                        console.warn(`Row ${i} missing required fields:`, { 
+                            hasDate: !!dateValue, 
+                            hasTitle: !!titleValue, 
+                            eventKeys: eventKeys,
+                            event: event
+                        });
+                    }
+                    continue;
+                }
+                
+                if (event.date && event.title) {
+                    // Normalize event type - check "Category" column (column H in the Google Sheet)
+                    let categoryValue = null;
+                    
+                    // Method 1: Direct lookup by "category" key (case-insensitive)
+                    // The Apps Script creates: "Category", "category", and "col_H"
+                    if (event['category']) {
+                        categoryValue = event['category'].toString().trim();
+                    } else if (event['Category']) {
+                        categoryValue = event['Category'].toString().trim();
+                    } else if (event['col_H']) {
+                        categoryValue = event['col_H'].toString().trim();
+                    }
+                    
+                    // Method 2: Try to find by column name variations
+                    if (!categoryValue) {
+                        const categoryVariations = ['category', 'type', 'event type', 'event category'];
+                        for (const key of eventKeys) {
+                            const keyLower = key.toLowerCase();
+                            if (categoryVariations.some(v => keyLower === v || keyLower.includes(v))) {
+                                categoryValue = (event[key] || '').toString().trim();
+                                if (categoryValue) break;
+                            }
+                        }
+                    }
+                    
+                    // Method 3: Check column H (index 7) directly - user said Category is in column H
+                    if (!categoryValue && eventKeys.length > 7) {
+                        const columnHValue = (event[eventKeys[7]] || '').toString().trim();
+                        // Only use if it looks like a category (not a title or URL)
+                        const valueLower = columnHValue.toLowerCase();
+                        if (!columnHValue.includes('http') && columnHValue.length < 30 &&
+                            (valueLower === 'meetup' || valueLower === 'workshop' || valueLower === 'summit' || 
+                             valueLower === 'hackathon' || valueLower === 'experience')) {
+                            categoryValue = columnHValue;
+                        }
+                    }
+                    
+                    // Method 4: Check ALL columns for exact category matches
+                    if (!categoryValue) {
+                        for (const key of eventKeys) {
+                            const value = (event[key] || '').toString().trim();
+                            const valueLower = value.toLowerCase();
+                            // Skip URLs and long strings
+                            if (value.includes('http') || value.includes('www.') || value.length > 30) {
+                                continue;
+                            }
+                            // Accept exact category matches only
+                            if (valueLower === 'meetup' || valueLower === 'workshop' || valueLower === 'summit' || 
+                                valueLower === 'hackathon' || valueLower === 'experience') {
+                                categoryValue = value;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Convert to lowercase for matching
+                    const categoryLower = categoryValue ? categoryValue.toLowerCase() : '';
+                    
+                    // Determine event type based on category value
+                    if (categoryLower.includes('summit')) {
+                        event.normalizedType = 'summit';
+                    } else if (categoryLower.includes('hackathon') || categoryLower.includes('hack')) {
+                        event.normalizedType = 'hackathon';
+                    } else if (categoryLower.includes('workshop')) {
+                        event.normalizedType = 'workshop';
+                    } else if (categoryLower.includes('experience') || categoryLower.includes('exp')) {
+                        event.normalizedType = 'experience';
+                    } else if (categoryLower.includes('meetup')) {
+                        event.normalizedType = 'meetup';
+                    } else {
+                        // Default to meetup only if no category found
+                        event.normalizedType = 'meetup';
+                    }
+                    
+                    // Log category detection for first 5 events
+                    if (i <= 5) {
+                        console.log(`Row ${i}: "${event.title}" → Type: ${event.normalizedType} (category: "${categoryValue || 'NONE'}")`);
+                    }
+                    
+                    // Normalize location
+                    const location = (event.location || '').toLowerCase();
+                    if (location.includes('austin')) event.normalizedLocation = 'austin';
+                    else if (location.includes('nashville')) event.normalizedLocation = 'nashville';
+                    else event.normalizedLocation = 'austin'; // default
+                    
+                    // Parse date
+                    const dateStr = event.date;
+                    const date = parseDate(dateStr);
+                    if (date) {
+                        event.dateObj = date;
+                        event.dateKey = formatDateKey(date);
+                        event.time = event.time || event['start time'] || '';
+                        event.description = event.description || event['event description'] || '';
+                        event.topics = (event.topics || event.tags || '').split(',').map(t => t.trim()).filter(t => t);
+                        event.audience = (event.audience || event['audience level'] || '').toLowerCase();
+                        event.format = (event.format || '').toLowerCase();
+                        event.cost = event.cost || 'free';
+                        event.capacity = parseInt(event.capacity) || null;
+                        
+                        // Get meetup link from column F (index 5) or various field names
+                        event.meetupLink = event['meetup link'] || event['Meetup Link'] || event['col_F'] || 
+                                          event.rsvp || event['rsvp link'] || '';
+                        // Also check column F directly
+                        if (!event.meetupLink && eventKeys.length > 5) {
+                            const columnFValue = (event[eventKeys[5]] || '').toString().trim();
+                            if (columnFValue.includes('http')) {
+                                event.meetupLink = columnFValue;
+                            }
+                        }
+                        
+                        event.rsvp = event.meetupLink || event.rsvp || event['rsvp link'] || '';
+                        event.tickets = event.tickets || event['ticket link'] || '';
+                        events.push(event);
+                    }
+                }
+            }
+            
+            console.log(`parseCSV: Processed ${lines.length - 1} rows, created ${events.length} events`);
+            if (events.length === 0 && lines.length > 1) {
+                console.warn('No events created! Check if date/title columns are being detected correctly.');
+                console.log('Sample row data:', lines[1]);
+            }
+            
+            return events;
+        }
+
+        // Parse CSV line handling quoted values
+        function parseCSVLine(line) {
+            const values = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    values.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            values.push(current);
+            return values;
+        }
+
+        // Parse various date formats
+        function parseDate(dateStr) {
+            if (!dateStr) return null;
+            
+            const formats = [
+                /(\d{1,2})\/(\d{1,2})\/(\d{4})/,
+                /(\d{4})-(\d{1,2})-(\d{1,2})/,
+                /(\d{1,2})-(\d{1,2})-(\d{4})/,
+            ];
+            
+            for (const format of formats) {
+                const match = dateStr.match(format);
+                if (match) {
+                    let month, day, year;
+                    if (format === formats[1]) {
+                        year = parseInt(match[1]);
+                        month = parseInt(match[2]) - 1;
+                        day = parseInt(match[3]);
+                    } else {
+                        month = parseInt(match[1]) - 1;
+                        day = parseInt(match[2]);
+                        year = parseInt(match[3]);
+                    }
+                    return new Date(year, month, day);
+                }
+            }
+            
+            const parsed = Date.parse(dateStr);
+            if (!isNaN(parsed)) {
+                return new Date(parsed);
+            }
+            
+            return null;
+        }
+
+        // Format date key for grouping
+        function formatDateKey(date) {
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        // Populate topic tags
+        function populateTopicTags() {
+            const allTopics = new Set();
+            events.forEach(event => {
+                if (event.topics) {
+                    event.topics.forEach(topic => allTopics.add(topic));
+                }
+            });
+            
+            const container = document.getElementById('topicTags');
+            container.innerHTML = '<span class="filter-tag active" data-filter="topic" data-value="all">All</span>';
+            allTopics.forEach(topic => {
+                const tag = document.createElement('span');
+                tag.className = 'filter-tag';
+                tag.dataset.filter = 'topic';
+                tag.dataset.value = topic.toLowerCase();
+                tag.textContent = topic;
+                container.appendChild(tag);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Location switcher
+            document.querySelectorAll('.location-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.location-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentLocation = btn.dataset.location;
+                    
+                    // Update filters.location to match
+                    filters.location = currentLocation;
+                    
+                    // Update body class and accent color only if not "all"
+                    if (currentLocation === 'all') {
+                        document.body.className = '';
+                        // Keep default accent (Austin blue) when showing all
+                        document.documentElement.style.setProperty('--location-accent', 'var(--austin-blue)');
+                    } else {
+                        document.body.className = currentLocation;
+                        // Update CSS variable
+                        document.documentElement.style.setProperty('--location-accent', 
+                            currentLocation === 'austin' ? 'var(--austin-blue)' : 'var(--nashville-purple)');
+                    }
+                    renderCalendar();
+                });
+            });
+
+            // View toggle
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentView = btn.dataset.view;
+                    document.querySelectorAll('.calendar-view').forEach(v => v.classList.remove('active'));
+                    document.getElementById(`${currentView}View`).classList.add('active');
+                    renderCalendar();
+                });
+            });
+
+            // Filter tags
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const filterType = tag.dataset.filter;
+                    const value = tag.dataset.value;
+                    
+                    if (filterType === 'type') {
+                        document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(t => t.classList.remove('active'));
+                        tag.classList.add('active');
+                        filters.type = value;
+                    } else if (filterType === 'topic') {
+                        if (value === 'all') {
+                            document.querySelectorAll(`[data-filter="${filterType}"]`).forEach(t => t.classList.remove('active'));
+                            tag.classList.add('active');
+                            filters.topics = [];
+                        } else {
+                            const allTag = document.querySelector(`[data-filter="${filterType}"][data-value="all"]`);
+                            if (allTag) allTag.classList.remove('active');
+                            tag.classList.toggle('active');
+                            if (tag.classList.contains('active')) {
+                                filters.topics.push(value);
+                            } else {
+                                filters.topics = filters.topics.filter(t => t !== value);
+                            }
+                        }
+                    }
+                    renderCalendar();
+                });
+            });
+
+            // Filter selects
+            document.getElementById('filterLocation').addEventListener('change', (e) => {
+                filters.location = e.target.value;
+                renderCalendar();
+            });
+
+            document.getElementById('filterAudience').addEventListener('change', (e) => {
+                filters.audience = e.target.value;
+                renderCalendar();
+            });
+
+            document.getElementById('filterFormat').addEventListener('change', (e) => {
+                filters.format = e.target.value;
+                renderCalendar();
+            });
+
+            document.getElementById('filterCost').addEventListener('change', (e) => {
+                filters.cost = e.target.value;
+                renderCalendar();
+            });
+
+            document.getElementById('filterCapacity').addEventListener('change', (e) => {
+                filters.capacity = e.target.value ? parseInt(e.target.value) : null;
+                renderCalendar();
+            });
+
+            document.getElementById('filterDateStart').addEventListener('change', (e) => {
+                filters.dateStart = e.target.value ? new Date(e.target.value) : null;
+                renderCalendar();
+            });
+
+            document.getElementById('filterDateEnd').addEventListener('change', (e) => {
+                filters.dateEnd = e.target.value ? new Date(e.target.value) : null;
+                renderCalendar();
+            });
+
+            // Search
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                renderCalendar();
+            });
+
+            // Toggle filters
+            document.getElementById('toggleFilters').addEventListener('click', () => {
+                document.getElementById('filtersPanel').classList.toggle('active');
+            });
+
+            document.getElementById('closeFilters').addEventListener('click', () => {
+                document.getElementById('filtersPanel').classList.remove('active');
+            });
+
+            // Navigation
+            document.getElementById('prevBtn').addEventListener('click', () => navigateDate(-1));
+            document.getElementById('nextBtn').addEventListener('click', () => navigateDate(1));
+            document.getElementById('todayBtn').addEventListener('click', () => {
+                currentDate = new Date();
+                renderCalendar();
+            });
+            
+            // Manual refresh button
+            document.getElementById('refreshBtn').addEventListener('click', () => {
+                loadEvents();
+            });
+
+            // Modal
+            document.getElementById('closeModal').addEventListener('click', () => {
+                document.getElementById('eventModal').classList.remove('active');
+            });
+
+            document.getElementById('eventModal').addEventListener('click', (e) => {
+                if (e.target.id === 'eventModal') {
+                    document.getElementById('eventModal').classList.remove('active');
+                }
+            });
+        }
+
+        // Navigate date
+        function navigateDate(direction) {
+            if (currentView === 'month') {
+                currentDate.setMonth(currentDate.getMonth() + direction);
+            } else if (currentView === 'week') {
+                currentDate.setDate(currentDate.getDate() + (direction * 7));
+            } else if (currentView === 'day') {
+                currentDate.setDate(currentDate.getDate() + direction);
+            } else if (currentView === 'agenda') {
+                currentDate.setDate(currentDate.getDate() + (direction * 7));
+            }
+            renderCalendar();
+        }
+
+        // Get filtered events
+        function getFilteredEvents() {
+            return events.filter(event => {
+                // Location filter
+                if (filters.location !== 'all' && event.normalizedLocation !== filters.location) {
+                    return false;
+                }
+
+                // Type filter
+                if (filters.type !== 'all' && event.normalizedType !== filters.type) {
+                    return false;
+                }
+
+                // Topics filter
+                if (filters.topics.length > 0) {
+                    const eventTopics = (event.topics || []).map(t => t.toLowerCase());
+                    if (!filters.topics.some(t => eventTopics.includes(t))) {
+                        return false;
+                    }
+                }
+
+                // Audience filter
+                if (filters.audience !== 'all' && event.audience !== filters.audience) {
+                    return false;
+                }
+
+                // Format filter
+                if (filters.format !== 'all' && event.format !== filters.format) {
+                    return false;
+                }
+
+                // Cost filter
+                if (filters.cost !== 'all') {
+                    const isFree = (event.cost || 'free').toLowerCase().includes('free') || event.cost === '0';
+                    if (filters.cost === 'free' && !isFree) return false;
+                    if (filters.cost === 'paid' && isFree) return false;
+                }
+
+                // Capacity filter
+                if (filters.capacity && event.capacity && event.capacity < filters.capacity) {
+                    return false;
+                }
+
+                // Date range filter
+                if (filters.dateStart && event.dateObj < filters.dateStart) {
+                    return false;
+                }
+                if (filters.dateEnd && event.dateObj > filters.dateEnd) {
+                    return false;
+                }
+
+                // Search query
+                if (searchQuery) {
+                    const searchable = [
+                        event.title,
+                        event.description,
+                        event.location,
+                        ...(event.topics || [])
+                    ].join(' ').toLowerCase();
+                    if (!searchable.includes(searchQuery)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+        }
+
+        // Render calendar
+        function renderCalendar() {
+            updateCurrentDateDisplay();
+            
+            if (currentView === 'month') {
+                renderMonthView();
+            } else if (currentView === 'week') {
+                renderWeekView();
+            } else if (currentView === 'day') {
+                renderDayView();
+            } else if (currentView === 'agenda') {
+                renderAgendaView();
+            } else if (currentView === 'summit') {
+                renderSummitView();
+            }
+        }
+
+        // Update current date display
+        function updateCurrentDateDisplay() {
+            const options = {
+                month: 'long',
+                year: 'numeric'
+            };
+            
+            if (currentView === 'day') {
+                options.day = 'numeric';
+                options.weekday = 'long';
+            }
+            
+            document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('en-US', options);
+        }
+
+        // Render month view
+        function renderMonthView() {
+            const grid = document.getElementById('monthGrid');
+            grid.innerHTML = '';
+            
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startDate = new Date(firstDay);
+            // Start week on Sunday (getDay() returns 0=Sunday, 1=Monday, etc.)
+            startDate.setDate(startDate.getDate() - firstDay.getDay());
+            
+            const filteredEvents = getFilteredEvents();
+            const eventsByDate = {};
+            filteredEvents.forEach(event => {
+                const key = event.dateKey;
+                if (!eventsByDate[key]) eventsByDate[key] = [];
+                eventsByDate[key].push(event);
+            });
+            
+            for (let i = 0; i < 42; i++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'calendar-day';
+                
+                if (date.getMonth() !== month) {
+                    dayDiv.classList.add('other-month');
+                }
+                
+                const today = new Date();
+                if (date.toDateString() === today.toDateString()) {
+                    dayDiv.classList.add('today');
+                }
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = date.getDate();
+                dayDiv.appendChild(dayNumber);
+                
+                const dateKey = formatDateKey(date);
+                const dayEvents = eventsByDate[dateKey] || [];
+                
+                const eventsDiv = document.createElement('div');
+                eventsDiv.className = 'day-events';
+                
+                dayEvents.slice(0, 3).forEach(event => {
+                    const eventDot = document.createElement('div');
+                    eventDot.className = `event-dot ${event.normalizedType}`;
+                    eventDot.textContent = event.title || 'Event';
+                    eventDot.title = `${event.title || 'Event'} - ${event.normalizedType}`;
+                    eventDot.addEventListener('click', () => showEventDetail(event));
+                    eventsDiv.appendChild(eventDot);
+                });
+                
+                if (dayEvents.length > 3) {
+                    const moreDot = document.createElement('div');
+                    moreDot.className = 'event-dot';
+                    moreDot.textContent = `+${dayEvents.length - 3} more`;
+                    moreDot.style.background = 'var(--gray-dark)';
+                    moreDot.style.color = 'var(--white)';
+                    eventsDiv.appendChild(moreDot);
+                }
+                
+                dayDiv.appendChild(eventsDiv);
+                grid.appendChild(dayDiv);
+            }
+        }
+
+        // Render week view
+        function renderWeekView() {
+            const startOfWeek = new Date(currentDate);
+            // Start week on Sunday (getDay() returns 0=Sunday, 1=Monday, etc.)
+            startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+            
+            const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startOfWeek);
+                date.setDate(startOfWeek.getDate() + i);
+                const header = document.getElementById(`weekDay${i}`);
+                header.textContent = `${dayNames[i]} ${date.getDate()}`;
+            }
+            
+            const grid = document.getElementById('weekGrid');
+            grid.innerHTML = '';
+            
+            // Time slots
+            for (let hour = 0; hour < 24; hour++) {
+                const timeSlot = document.createElement('div');
+                timeSlot.className = 'time-slot';
+                timeSlot.textContent = formatHour(hour);
+                grid.appendChild(timeSlot);
+                
+                for (let day = 0; day < 7; day++) {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'week-day';
+                    
+                    const date = new Date(startOfWeek);
+                    date.setDate(startOfWeek.getDate() + day);
+                    const today = new Date();
+                    if (date.toDateString() === today.toDateString()) {
+                        dayDiv.classList.add('today');
+                    }
+                    
+                    grid.appendChild(dayDiv);
+                }
+            }
+            
+            // Add events
+            const filteredEvents = getFilteredEvents();
+            filteredEvents.forEach(event => {
+                const eventDate = event.dateObj;
+                const weekStart = new Date(startOfWeek);
+                weekStart.setHours(0, 0, 0, 0);
+                const weekEnd = new Date(startOfWeek);
+                weekEnd.setDate(startOfWeek.getDate() + 7);
+                
+                if (eventDate >= weekStart && eventDate < weekEnd) {
+                    const dayIndex = eventDate.getDay(); // 0=Sunday, 1=Monday, etc.
+                    const hour = eventDate.getHours() || 12;
+                    const minute = eventDate.getMinutes() || 0;
+                    
+                    const top = (hour * 25) + (minute / 60 * 25);
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = `week-event ${event.normalizedType}`;
+                    eventDiv.style.top = `${top}px`;
+                    eventDiv.style.height = '60px';
+                    eventDiv.textContent = event.title || 'Event';
+                    eventDiv.title = `${event.title || 'Event'} - ${formatTime(eventDate)}`;
+                    eventDiv.addEventListener('click', () => showEventDetail(event));
+                    
+                    const dayCells = grid.querySelectorAll('.week-day');
+                    if (dayCells[dayIndex]) {
+                        dayCells[dayIndex].appendChild(eventDiv);
+                    }
+                }
+            });
+        }
+
+        // Render day view
+        function renderDayView() {
+            const dateHeader = document.getElementById('dayViewDate');
+            dateHeader.textContent = currentDate.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            const list = document.getElementById('dayEventsList');
+            list.innerHTML = '';
+            
+            const dateKey = formatDateKey(currentDate);
+            const filteredEvents = getFilteredEvents();
+            const dayEvents = filteredEvents.filter(event => event.dateKey === dateKey);
+            
+            if (dayEvents.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: var(--gray-dark); padding: 40px;">No events scheduled for this day.</p>';
+                return;
+            }
+            
+            dayEvents.sort((a, b) => {
+                const timeA = a.dateObj ? a.dateObj.getTime() : 0;
+                const timeB = b.dateObj ? b.dateObj.getTime() : 0;
+                return timeA - timeB;
+            });
+            
+            dayEvents.forEach(event => {
+                list.appendChild(createEventCard(event));
+            });
+        }
+
+        // Render agenda view
+        function renderAgendaView() {
+            const list = document.getElementById('agendaList');
+            list.innerHTML = '';
+            
+            const filteredEvents = getFilteredEvents();
+            filteredEvents.sort((a, b) => {
+                const timeA = a.dateObj ? a.dateObj.getTime() : 0;
+                const timeB = b.dateObj ? b.dateObj.getTime() : 0;
+                return timeA - timeB;
+            });
+            
+            if (filteredEvents.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: var(--gray-dark); padding: 40px;">No events match your filters.</p>';
+                return;
+            }
+            
+            filteredEvents.forEach(event => {
+                list.appendChild(createEventCard(event));
+            });
+        }
+
+        // Render summit view
+        function renderSummitView() {
+            const filteredEvents = getFilteredEvents().filter(e => e.normalizedType === 'summit');
+            
+            if (filteredEvents.length === 0) {
+                document.getElementById('summitTracks').innerHTML = '<p style="text-align: center; color: var(--gray-dark); padding: 40px;">No summit events found.</p>';
+                return;
+            }
+            
+            // Group by track (if track field exists) or by date
+            const tracks = {};
+            filteredEvents.forEach(event => {
+                const track = event.track || event['track name'] || 'Main Track';
+                if (!tracks[track]) tracks[track] = [];
+                tracks[track].push(event);
+            });
+            
+            const container = document.getElementById('summitTracks');
+            container.innerHTML = '';
+            
+            Object.keys(tracks).forEach(trackName => {
+                const trackDiv = document.createElement('div');
+                trackDiv.className = 'summit-track';
+                
+                const trackTitle = document.createElement('h3');
+                trackTitle.textContent = trackName;
+                trackDiv.appendChild(trackTitle);
+                
+                const trackEvents = document.createElement('div');
+                trackEvents.className = 'track-events';
+                
+                tracks[trackName].sort((a, b) => {
+                    const timeA = a.dateObj ? a.dateObj.getTime() : 0;
+                    const timeB = b.dateObj ? b.dateObj.getTime() : 0;
+                    return timeA - timeB;
+                });
+                
+                tracks[trackName].forEach(event => {
+                    trackEvents.appendChild(createEventCard(event));
+                });
+                
+                trackDiv.appendChild(trackEvents);
+                container.appendChild(trackDiv);
+            });
+        }
+
+        // Create event card
+        function createEventCard(event) {
+            const card = document.createElement('div');
+            card.className = 'event-card';
+            card.addEventListener('click', () => showEventDetail(event));
+            
+            const time = event.time || event['start time'] || '';
+            const location = event.location || '';
+            const description = event.description || event['event description'] || '';
+            
+            card.innerHTML = `
+                <div class="event-card-header">
+                    <span class="event-type-badge ${event.normalizedType}">${event.normalizedType}</span>
+                </div>
+                <h3 class="event-title">${event.title || 'Event'}</h3>
+                <div class="event-meta">
+                    <div class="event-meta-date">${event.dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}${time ? ` · ${time}` : ''}</div>
+                    ${location ? `<div class="event-meta-location">${location}</div>` : ''}
+                </div>
+                ${description ? `<p style="color: var(--gray-dark); margin-top: 10px; font-size: 0.9rem;">${description.substring(0, 100)}${description.length > 100 ? '...' : ''}</p>` : ''}
+                <div class="event-cta">
+                    ${event.rsvp ? `<a href="${event.rsvp}" target="_blank" class="btn btn-primary" onclick="event.stopPropagation()">RSVP</a>` : ''}
+                    ${event.tickets ? `<a href="${event.tickets}" target="_blank" class="btn btn-primary" onclick="event.stopPropagation()">Tickets</a>` : ''}
+                    <button class="btn btn-secondary add-to-cal-btn" data-event-id="${event.title}">Add to Calendar</button>
+                </div>
+            `;
+            
+            // Store event data for calendar button
+            const calBtn = card.querySelector('.add-to-cal-btn');
+            if (calBtn) {
+                calBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    addToCalendar(event);
+                });
+            }
+            
+            return card;
+        }
+
+        // Show event detail
+        function showEventDetail(event) {
+            const modal = document.getElementById('eventModal');
+            const content = document.getElementById('eventDetailContent');
+            
+            const time = event.time || event['start time'] || '';
+            const location = event.location || '';
+            const description = event.description || event['event description'] || '';
+            
+            // Get meetup link for RSVP
+            const meetupLink = event.meetupLink || event.rsvp || '';
+            
+            content.innerHTML = `
+                <div class="event-detail-header">
+                    <span class="event-type-badge ${event.normalizedType}">${event.normalizedType}</span>
+                    <h2 class="event-detail-title">${event.title || 'Event'}</h2>
+                    <div class="event-detail-meta">
+                        <div class="meta-date">${event.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}${time ? ` · ${time}` : ''}</div>
+                        ${location ? `<div class="meta-location">${location}</div>` : ''}
+                    </div>
+                </div>
+                ${description ? `<div class="event-detail-description">${description}</div>` : ''}
+                <div class="event-cta" style="margin-top: 30px; display: flex; flex-direction: column; gap: 12px;">
+                    ${meetupLink ? `<a href="${meetupLink}" target="_blank" class="btn btn-primary" style="text-align: center;">RSVP</a>` : ''}
+                    <button class="btn btn-secondary add-to-cal-btn-modal">Add to Calendar</button>
+                </div>
+            `;
+            
+            // Add event listener for calendar button
+            const calBtn = content.querySelector('.add-to-cal-btn-modal');
+            if (calBtn) {
+                calBtn.addEventListener('click', () => {
+                    addToCalendar(event);
+                });
+            }
+            
+            modal.classList.add('active');
+        }
+
+        // Add to calendar
+        function addToCalendar(event) {
+            // Create ICS file
+            const startDate = event.dateObj;
+            const endDate = new Date(startDate);
+            endDate.setHours(endDate.getHours() + 2); // Default 2 hour duration
+            
+            const formatICSDate = (date) => {
+                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+            
+            const icsContent = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'PRODID:-//Bitcoin Park//Event Calendar//EN',
+                'BEGIN:VEVENT',
+                `DTSTART:${formatICSDate(startDate)}`,
+                `DTEND:${formatICSDate(endDate)}`,
+                `SUMMARY:${event.title || 'Event'}`,
+                `DESCRIPTION:${event.description || ''}`,
+                `LOCATION:${event.location || ''}`,
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+            
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${event.title || 'event'}.ics`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Helper functions
+        function formatHour(hour) {
+            if (hour === 0) return '12 AM';
+            if (hour < 12) return `${hour} AM`;
+            if (hour === 12) return '12 PM';
+            return `${hour - 12} PM`;
+        }
+
+        function formatTime(date) {
+            return date.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit'
+            });
+        }
+    </script>
+</body>
+</html>
