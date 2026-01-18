@@ -615,6 +615,25 @@
             box-shadow: 0 2px 6px rgba(255, 237, 165, 0.3);
         }
 
+        /* Multi-day event styling */
+        .event-dot.multi-day {
+            position: relative;
+        }
+
+        .event-dot.multi-day.multi-day-start {
+            border-radius: 4px;
+        }
+
+        .event-dot.multi-day.multi-day-middle {
+            border-radius: 4px;
+            opacity: 0.85;
+        }
+
+        .event-dot.multi-day.multi-day-end {
+            border-radius: 4px;
+            opacity: 0.85;
+        }
+
         /* Week View */
         .week-view {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
@@ -1167,7 +1186,7 @@
                 <button class="view-btn active" data-view="month">Month</button>
                 <button class="view-btn" data-view="week">Week</button>
                 <button class="view-btn" data-view="day">Day</button>
-                <button class="view-btn" data-view="summit">Summit</button>
+                <button class="view-btn" data-view="summit">Summits</button>
             </div>
 
             <button class="toggle-filters" id="toggleFilters">Filters</button>
@@ -1897,12 +1916,33 @@
                     else if (location.includes('nashville')) event.normalizedLocation = 'nashville';
                     else event.normalizedLocation = 'austin'; // default
                     
-                    // Parse date
+                    // Parse start date
                     const dateStr = event.date;
                     const date = parseDate(dateStr);
                     if (date) {
                         event.dateObj = date;
                         event.dateKey = formatDateKey(date);
+                        
+                        // Parse end date for multi-day events
+                        const endDateStr = event['end date'] || event['End Date'] || event['end_date'] || event['enddate'] || '';
+                        const endDate = parseDate(endDateStr);
+                        if (endDate && endDate > date) {
+                            event.endDateObj = endDate;
+                            event.endDateKey = formatDateKey(endDate);
+                            event.isMultiDay = true;
+                            
+                            // Generate all date keys for this multi-day event
+                            event.allDateKeys = [];
+                            const currentDate = new Date(date);
+                            while (currentDate <= endDate) {
+                                event.allDateKeys.push(formatDateKey(currentDate));
+                                currentDate.setDate(currentDate.getDate() + 1);
+                            }
+                        } else {
+                            event.isMultiDay = false;
+                            event.allDateKeys = [event.dateKey];
+                        }
+                        
                         event.time = event.time || event['start time'] || '';
                         event.description = event.description || event['event description'] || '';
                         event.topics = (event.topics || event.tags || '').split(',').map(t => t.trim()).filter(t => t);
@@ -2328,9 +2368,15 @@
             const filteredEvents = getFilteredEvents();
             const eventsByDate = {};
             filteredEvents.forEach(event => {
-                const key = event.dateKey;
-                if (!eventsByDate[key]) eventsByDate[key] = [];
-                eventsByDate[key].push(event);
+                // Use allDateKeys for multi-day events, or just dateKey for single-day
+                const dateKeys = event.allDateKeys || [event.dateKey];
+                dateKeys.forEach(key => {
+                    if (!eventsByDate[key]) eventsByDate[key] = [];
+                    // Avoid duplicates
+                    if (!eventsByDate[key].some(e => e.title === event.title && e.dateKey === event.dateKey)) {
+                        eventsByDate[key].push(event);
+                    }
+                });
             });
             
             for (let i = 0; i < 42; i++) {
@@ -2362,10 +2408,36 @@
                 
                 dayEvents.slice(0, 3).forEach(event => {
                     const eventDot = document.createElement('div');
-                    eventDot.className = `event-dot ${event.normalizedType}`;
-                    eventDot.textContent = event.title || 'Event';
-                    eventDot.title = `${event.title || 'Event'} - ${event.normalizedType}`;
-                    eventDot.addEventListener('click', () => showEventDetail(event));
+                    let classes = `event-dot ${event.normalizedType}`;
+                    
+                    // Add multi-day styling
+                    if (event.isMultiDay) {
+                        classes += ' multi-day';
+                        if (dateKey === event.dateKey) {
+                            classes += ' multi-day-start';
+                        } else if (dateKey === event.endDateKey) {
+                            classes += ' multi-day-end';
+                        } else {
+                            classes += ' multi-day-middle';
+                        }
+                    }
+                    
+                    eventDot.className = classes;
+                    
+                    // Show title on all days, with day indicator for multi-day events
+                    if (event.isMultiDay && event.allDateKeys) {
+                        const dayNum = event.allDateKeys.indexOf(dateKey) + 1;
+                        const totalDays = event.allDateKeys.length;
+                        eventDot.textContent = `${event.title || 'Event'} (${dayNum}/${totalDays})`;
+                    } else {
+                        eventDot.textContent = event.title || 'Event';
+                    }
+                    
+                    eventDot.title = `${event.title || 'Event'} - ${event.normalizedType}${event.isMultiDay ? ' (Multi-day)' : ''}`;
+                    eventDot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showEventDetail(event);
+                    });
                     eventsDiv.appendChild(eventDot);
                 });
                 
@@ -2425,29 +2497,52 @@
             // Add events
             const filteredEvents = getFilteredEvents();
             filteredEvents.forEach(event => {
-                const eventDate = event.dateObj;
                 const weekStart = new Date(startOfWeek);
                 weekStart.setHours(0, 0, 0, 0);
                 const weekEnd = new Date(startOfWeek);
                 weekEnd.setDate(startOfWeek.getDate() + 7);
                 
-                if (eventDate >= weekStart && eventDate < weekEnd) {
-                    const dayIndex = eventDate.getDay(); // 0=Sunday, 1=Monday, etc.
-                    const hour = eventDate.getHours() || 12;
-                    const minute = eventDate.getMinutes() || 0;
+                // For multi-day events, show on each day within the week
+                const eventStart = event.dateObj;
+                const eventEnd = event.endDateObj || event.dateObj;
+                
+                // Check each day of the week
+                for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+                    const currentDay = new Date(startOfWeek);
+                    currentDay.setDate(startOfWeek.getDate() + dayOffset);
+                    currentDay.setHours(0, 0, 0, 0);
                     
-                    const top = (hour * 25) + (minute / 60 * 25);
-                    const eventDiv = document.createElement('div');
-                    eventDiv.className = `week-event ${event.normalizedType}`;
-                    eventDiv.style.top = `${top}px`;
-                    eventDiv.style.height = '60px';
-                    eventDiv.textContent = event.title || 'Event';
-                    eventDiv.title = `${event.title || 'Event'} - ${formatTime(eventDate)}`;
-                    eventDiv.addEventListener('click', () => showEventDetail(event));
+                    const nextDay = new Date(currentDay);
+                    nextDay.setDate(nextDay.getDate() + 1);
                     
-                    const dayCells = grid.querySelectorAll('.week-day');
-                    if (dayCells[dayIndex]) {
-                        dayCells[dayIndex].appendChild(eventDiv);
+                    // Check if event spans this day
+                    const eventStartNorm = new Date(eventStart);
+                    eventStartNorm.setHours(0, 0, 0, 0);
+                    const eventEndNorm = new Date(eventEnd);
+                    eventEndNorm.setHours(23, 59, 59, 999);
+                    
+                    if (currentDay >= eventStartNorm && currentDay <= eventEndNorm) {
+                        const hour = eventStart.getHours() || 12;
+                        const minute = eventStart.getMinutes() || 0;
+                        
+                        const top = (hour * 25) + (minute / 60 * 25);
+                        const eventDiv = document.createElement('div');
+                        eventDiv.className = `week-event ${event.normalizedType}`;
+                        eventDiv.style.top = `${top}px`;
+                        eventDiv.style.height = '60px';
+                        
+                        // Show if it's a multi-day event
+                        const displayTitle = event.isMultiDay ? 
+                            `${event.title || 'Event'} (Day ${dayOffset - Math.floor((eventStartNorm - weekStart) / (1000*60*60*24)) + 1})` :
+                            (event.title || 'Event');
+                        eventDiv.textContent = displayTitle;
+                        eventDiv.title = `${event.title || 'Event'}${event.isMultiDay ? ' (Multi-day)' : ''} - ${formatTime(eventStart)}`;
+                        eventDiv.addEventListener('click', () => showEventDetail(event));
+                        
+                        const dayCells = grid.querySelectorAll('.week-day');
+                        if (dayCells[dayOffset]) {
+                            dayCells[dayOffset].appendChild(eventDiv);
+                        }
                     }
                 }
             });
@@ -2468,7 +2563,11 @@
             
             const dateKey = formatDateKey(currentDate);
             const filteredEvents = getFilteredEvents();
-            const dayEvents = filteredEvents.filter(event => event.dateKey === dateKey);
+            // Include multi-day events that span this date
+            const dayEvents = filteredEvents.filter(event => {
+                const eventDateKeys = event.allDateKeys || [event.dateKey];
+                return eventDateKeys.includes(dateKey);
+            });
             
             if (dayEvents.length === 0) {
                 list.innerHTML = '<p style="text-align: center; color: var(--gray-dark); padding: 40px;">No events scheduled for this day.</p>';
@@ -2564,13 +2663,24 @@
             const location = event.location || '';
             const description = event.description || event['event description'] || '';
             
+            // Format date display for multi-day events
+            let dateDisplay;
+            if (event.isMultiDay && event.endDateObj) {
+                const startStr = event.dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                const endStr = event.endDateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                dateDisplay = `${startStr} - ${endStr}`;
+            } else {
+                dateDisplay = event.dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                if (time) dateDisplay += ` · ${time}`;
+            }
+            
             card.innerHTML = `
                 <div class="event-card-header">
                     <span class="event-type-badge ${event.normalizedType}">${event.normalizedType}</span>
                 </div>
                 <h3 class="event-title">${event.title || 'Event'}</h3>
                 <div class="event-meta">
-                    <div class="event-meta-date">${event.dateObj.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}${time ? ` · ${time}` : ''}</div>
+                    <div class="event-meta-date">${dateDisplay}</div>
                     ${location ? `<div class="event-meta-location">${location}</div>` : ''}
                 </div>
                 ${description ? `<p style="color: var(--gray-dark); margin-top: 10px; font-size: 0.9rem;">${description.substring(0, 100)}${description.length > 100 ? '...' : ''}</p>` : ''}
@@ -2605,12 +2715,23 @@
             // Get meetup link for RSVP
             const meetupLink = event.meetupLink || event.rsvp || '';
             
+            // Format date display for multi-day events
+            let dateDisplay;
+            if (event.isMultiDay && event.endDateObj) {
+                const startStr = event.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+                const endStr = event.endDateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+                dateDisplay = `${startStr} - ${endStr}`;
+            } else {
+                dateDisplay = event.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+                if (time) dateDisplay += ` · ${time}`;
+            }
+            
             content.innerHTML = `
                 <div class="event-detail-header">
                     <span class="event-type-badge ${event.normalizedType}">${event.normalizedType}</span>
                     <h2 class="event-detail-title">${event.title || 'Event'}</h2>
                     <div class="event-detail-meta">
-                        <div class="meta-date">${event.dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}${time ? ` · ${time}` : ''}</div>
+                        <div class="meta-date">${dateDisplay}</div>
                         ${location ? `<div class="meta-location">${location}</div>` : ''}
                     </div>
                 </div>
@@ -2636,8 +2757,16 @@
         function addToCalendar(event) {
             // Create ICS file
             const startDate = event.dateObj;
-            const endDate = new Date(startDate);
-            endDate.setHours(endDate.getHours() + 2); // Default 2 hour duration
+            let endDate;
+            
+            // Use actual end date for multi-day events, otherwise default 2 hour duration
+            if (event.isMultiDay && event.endDateObj) {
+                endDate = new Date(event.endDateObj);
+                endDate.setHours(23, 59, 59); // End of the last day
+            } else {
+                endDate = new Date(startDate);
+                endDate.setHours(endDate.getHours() + 2); // Default 2 hour duration
+            }
             
             const formatICSDate = (date) => {
                 return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
