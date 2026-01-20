@@ -65,18 +65,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Cypherpunk Color Palette */
+      /* Bitcoin Takeover Color Palette - from Bitcoin Takeover Poster */
       --cyber-black: #0a0a0a;
       --cyber-dark: #1a1a1a;
       --cyber-gray: #2a2a2a;
-      --terminal-green: #00a8ff;
-      --navy-blue: #001f5c;
-      --cyber-yellow: #ffd700;
-      --cyber-orange: #ff6b35;
-      --cyber-blue: #00d9ff;
+      --charcoal-bg: #2E2E2E;
+      --coral-orange: #F28F6B;
+      --coral-orange-hover: #E87A55;
+      --light-beige: #D7C7BD;
       --white: #ffffff;
       --text-gray: #b0b0b0;
-      --accent-purple: #9d4edd;
+      --text-light: #D7C7BD;
     }
     
     * {
@@ -87,21 +86,33 @@
     
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 70px;
+      scroll-padding-top: 50px;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
+    @media (max-width: 768px) {
+      html {
+        scroll-padding-top: 0;
+      }
     }
 
     body {
       font-family: 'Source Sans Pro', Arial, sans-serif;
-      background: var(--cyber-black);
+      background: var(--charcoal-bg);
       color: var(--white);
       margin: 0;
+      padding: 0;
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.6;
       position: relative;
+      width: 100%;
     }
     
-    /* Cypherpunk Background Effects */
+    /* Bitcoin Takeover Background Effects */
     body::before {
       content: '';
       position: fixed;
@@ -110,9 +121,9 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 50%, rgba(0, 168, 255, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(157, 78, 221, 0.02) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(242, 143, 107, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(242, 143, 107, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(215, 199, 189, 0.02) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
     }
@@ -172,7 +183,7 @@
     p {
       margin-bottom: 1.5rem;
       font-size: clamp(1rem, 1.2vw + 0.8rem, 1.2rem);
-      color: var(--text-gray);
+      color: var(--light-beige);
     }
     
     /* Glitch Effect */
@@ -191,13 +202,13 @@
     
     /* Navigation Bar - SXSW Style */
     .navbar {
-      background: var(--cyber-dark);
+      background: rgba(26, 26, 26, 0.85);
       border-bottom: 1px solid var(--cyber-gray);
-      height: 70px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
       position: fixed;
       top: 0;
       left: 0;
@@ -210,7 +221,7 @@
     .navbar-brand {
       font-family: 'Source Sans Pro', Arial, sans-serif;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--white);
       text-decoration: none;
       letter-spacing: 0.1em;
@@ -218,7 +229,7 @@
     }
     
     .navbar-brand:hover {
-      color: var(--terminal-green);
+      color: var(--coral-orange);
     }
     
     .navbar-nav {
@@ -231,7 +242,7 @@
       color: var(--white);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       position: relative;
@@ -246,7 +257,7 @@
     }
     
     .navbar-link:hover {
-      color: var(--terminal-green);
+      color: var(--coral-orange);
     }
     
     .navbar-actions {
@@ -256,12 +267,12 @@
     }
     
     .btn-primary {
-      background: var(--navy-blue);
+      background: var(--coral-orange);
       color: var(--white);
       font-weight: 700;
       text-decoration: none;
-      padding: 10px 24px;
-      font-size: 0.9rem;
+      padding: 8px 20px;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       border: none;
@@ -271,9 +282,9 @@
     }
     
     .btn-primary:hover {
-      background: #003d8f;
+      background: var(--coral-orange-hover);
       transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0, 31, 92, 0.5);
+      box-shadow: 0 4px 20px rgba(242, 143, 107, 0.5);
     }
     
     .btn-secondary {
@@ -281,8 +292,8 @@
       color: var(--white);
       font-weight: 600;
       text-decoration: none;
-      padding: 10px 24px;
-      font-size: 0.9rem;
+      padding: 8px 20px;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       border: 1px solid var(--white);
@@ -298,7 +309,7 @@
     
     .event-meta {
       position: absolute;
-      top: 70px;
+      top: 50px;
       right: 2rem;
       color: var(--text-gray);
       font-size: 0.85rem;
@@ -339,26 +350,27 @@
     }
 
     .mobile-menu {
-      display: none;
+      display: block;
       position: fixed;
-      top: 70px;
+      top: 50px;
       left: 0;
       right: 0;
       background: var(--cyber-dark);
       border-bottom: 1px solid var(--cyber-gray);
       padding: 2rem;
       z-index: 999;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+      opacity: 0;
+      pointer-events: none;
     }
-
+    
     .mobile-menu.active {
-      display: block;
-      animation: slideDown 0.3s ease-out;
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
     }
 
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     .mobile-nav-links {
       list-style: none;
@@ -383,28 +395,24 @@
     }
 
     .mobile-nav-links a:hover {
-      color: var(--terminal-green);
+      color: var(--coral-orange);
     }
 
     /* Hero Section - SXSW Split Layout */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      width: 100%;
       position: relative;
-      margin-top: 70px;
+      margin: 0;
+      padding: 0;
       z-index: 1;
-      align-items: stretch;
+      overflow: visible;
+      display: block;
+      background: var(--charcoal-bg);
+      min-height: 100vh;
     }
     
     .hero-content {
-      background: var(--cyber-black);
-      padding: 4rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
+      display: none;
     }
     
     /* Binary Background Effect */
@@ -417,7 +425,7 @@
       opacity: 0.05;
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.8rem;
-      color: var(--terminal-green);
+      color: var(--coral-orange);
       overflow: hidden;
       pointer-events: none;
     }
@@ -438,13 +446,13 @@
     }
     
     .hero-title {
-      color: var(--white);
+      color: var(--coral-orange);
       margin-bottom: 1rem;
-      text-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+      text-shadow: 0 0 20px rgba(242, 143, 107, 0.3);
     }
     
     .hero-date {
-      color: var(--terminal-green);
+      color: var(--coral-orange);
       font-family: 'JetBrains Mono', monospace;
       font-size: 1.2rem;
       margin-bottom: 2rem;
@@ -452,7 +460,7 @@
     }
     
     .hero-description {
-      color: var(--text-gray);
+      color: var(--light-beige);
       font-size: 1.1rem;
       line-height: 1.8;
       margin-bottom: 2rem;
@@ -460,7 +468,7 @@
     }
     
     .hero-cta {
-      background: var(--navy-blue);
+      background: var(--coral-orange);
       color: var(--white);
       font-weight: 700;
       text-decoration: none;
@@ -472,31 +480,39 @@
       border-radius: 4px;
       transition: all 0.3s ease;
       font-family: 'Source Sans Pro', sans-serif;
-      box-shadow: 0 4px 20px rgba(0, 31, 92, 0.5);
+      box-shadow: 0 4px 20px rgba(242, 143, 107, 0.5);
     }
     
     .hero-cta:hover {
-      background: #003d8f;
+      background: var(--coral-orange-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(0, 31, 92, 0.6);
+      box-shadow: 0 6px 30px rgba(242, 143, 107, 0.6);
     }
     
     .hero-image {
-      background: var(--cyber-dark);
+      background: var(--charcoal-bg);
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
     }
     
     .hero-image img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      opacity: 0.9;
-      filter: contrast(1.1) brightness(0.95);
+      max-width: 100%;
+      height: auto;
+      min-height: 100vh;
       display: block;
+      object-fit: cover;
+      object-position: center bottom;
+      margin: 0;
+      padding: 0;
     }
+    
     
     .hero-image::before {
       content: '';
@@ -505,7 +521,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 168, 255, 0.1) 0%, rgba(0, 217, 255, 0.1) 100%);
+      background: linear-gradient(135deg, rgba(242, 143, 107, 0.1) 0%, rgba(215, 199, 189, 0.05) 100%);
       z-index: 1;
     }
     
@@ -538,14 +554,14 @@
       transform: translateX(-50%);
       width: 100px;
       height: 3px;
-      background: var(--terminal-green);
-      box-shadow: 0 0 10px var(--terminal-green);
+      background: var(--coral-orange);
+      box-shadow: 0 0 10px var(--coral-orange);
     }
     
     .section-subtitle {
       text-align: center;
       font-size: 1.2rem;
-      color: var(--text-gray);
+      color: var(--light-beige);
       margin-bottom: 3rem;
       max-width: 800px;
       margin-left: auto;
@@ -568,7 +584,7 @@
     .day-card {
       background: var(--cyber-black);
       border: 1px solid var(--cyber-gray);
-      border-left: 4px solid var(--terminal-green);
+      border-left: 4px solid var(--coral-orange);
       padding: 2.5rem;
       transition: all 0.3s ease;
       position: relative;
@@ -582,14 +598,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0, 168, 255, 0.05) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(242, 143, 107, 0.05) 0%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     
     .day-card:hover {
-      border-color: var(--terminal-green);
-      box-shadow: 0 0 30px rgba(0, 168, 255, 0.2);
+      border-color: var(--coral-orange);
+      box-shadow: 0 0 30px rgba(242, 143, 107, 0.2);
       transform: translateY(-5px);
     }
     
@@ -608,8 +624,8 @@
     }
     
     .day-number {
-      background: var(--terminal-green);
-      color: var(--cyber-black);
+      background: var(--coral-orange);
+      color: var(--white);
       width: 50px;
       height: 50px;
       border-radius: 4px;
@@ -620,12 +636,12 @@
       font-weight: 700;
       font-family: 'JetBrains Mono', monospace;
       flex-shrink: 0;
-      box-shadow: 0 0 20px rgba(0, 168, 255, 0.5);
+      box-shadow: 0 0 20px rgba(242, 143, 107, 0.5);
     }
     
     .day-theme {
       font-size: clamp(1.2rem, 1.5vw + 0.6rem, 1.5rem);
-      color: var(--terminal-green);
+      color: var(--coral-orange);
       font-weight: 600;
       margin-bottom: 1rem;
       font-family: 'JetBrains Mono', monospace;
@@ -634,7 +650,7 @@
     }
     
     .day-description {
-      color: var(--text-gray);
+      color: var(--light-beige);
       line-height: 1.8;
       font-size: clamp(1rem, 1.2vw + 0.8rem, 1.2rem);
     }
@@ -670,7 +686,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 168, 255, 0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(242, 143, 107, 0.1), transparent);
       transition: left 0.5s ease;
     }
     
@@ -679,8 +695,8 @@
     }
     
     .speaker-card:hover {
-      border-color: var(--terminal-green);
-      box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+      border-color: var(--coral-orange);
+      box-shadow: 0 0 20px rgba(242, 143, 107, 0.3);
       transform: translateY(-5px);
     }
     
@@ -694,7 +710,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 2px solid var(--terminal-green);
+      border: 2px solid var(--coral-orange);
       position: relative;
     }
     
@@ -705,7 +721,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 168, 255, 0.2) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(242, 143, 107, 0.2) 0%, transparent 100%);
     }
     
     .speaker-image img {
@@ -725,7 +741,7 @@
     
     .speaker-role {
       font-size: 1rem;
-      color: var(--terminal-green);
+      color: var(--coral-orange);
       margin-bottom: 0.25rem;
       font-family: 'JetBrains Mono', monospace;
     }
@@ -751,7 +767,7 @@
     .schedule-day-card {
       background: var(--cyber-black);
       border: 1px solid var(--cyber-gray);
-      border-left: 4px solid var(--cyber-yellow);
+      border-left: 4px solid var(--coral-orange);
       border-radius: 4px;
       padding: 2rem;
     }
@@ -782,7 +798,7 @@
     .schedule-time {
       font-size: 0.9rem;
       font-weight: 600;
-      color: var(--cyber-yellow);
+      color: var(--coral-orange);
       margin-bottom: 0.5rem;
       font-family: 'JetBrains Mono', monospace;
       letter-spacing: 0.05em;
@@ -798,7 +814,7 @@
     
     .schedule-content p {
       font-size: 1rem;
-      color: var(--text-gray);
+      color: var(--light-beige);
       line-height: 1.6;
       margin-bottom: 0.5rem;
     }
@@ -830,22 +846,14 @@
     }
     
     .footer-links a:hover {
-      color: var(--terminal-green);
+      color: var(--coral-orange);
     }
     
     /* Responsive Design */
     @media (max-width: 968px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-image {
-        order: -1;
-        height: 50vh;
-      }
-      
       .hero-image img {
-        height: 100%;
+        width: 100%;
+        height: auto;
       }
       
       .event-meta {
@@ -899,7 +907,7 @@
       <a href="#schedule" class="navbar-link">Schedule</a>
     </div>
     <div class="navbar-actions">
-      <a href="https://bitcoinpark.com/takeover26ticket.html" class="btn-primary">BUY</a>
+      <a href="https://bitcoinpark.com/takeover26" class="btn-primary" target="_blank" rel="noopener noreferrer">JOIN WAITLIST</a>
       <a href="#schedule" class="btn-secondary">SCHEDULE</a>
     </div>
     <button class="hamburger" onclick="toggleMobileMenu()">
@@ -915,25 +923,14 @@
       <li><a href="#overview" onclick="toggleMobileMenu()">Overview</a></li>
       <li><a href="#speakers" onclick="toggleMobileMenu()">Speakers</a></li>
       <li><a href="#schedule" onclick="toggleMobileMenu()">Schedule</a></li>
-      <li><a href="https://bitcoinpark.com/takeover26ticket.html" class="btn-primary" style="display: inline-block; margin-top: 1rem;">BUY TICKETS</a></li>
+      <li><a href="https://bitcoinpark.com/takeover26" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 1rem;">JOIN WAITLIST</a></li>
     </ul>
   </div>
 
-  <!-- Hero Section - SXSW Split Layout -->
+  <!-- Hero Section - Full Width Poster -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="binary-bg" id="binaryBg"></div>
-      <div class="hero-text">
-        <h1 class="hero-title">BITCOIN PARK<br>TAKEOVER SUMMIT</h1>
-        <div class="hero-date mono">2026</div>
-        <p class="hero-description">
-          The Bitcoin Park Takeover Summit provides an opportunity for the global community of Bitcoiners to encounter cutting-edge ideas, discover new interests, and network with other professionals who share a similar appetite for forward-focused experiences in payments and proof of work.
-        </p>
-        <a href="https://bitcoinpark.com/takeover26ticket.html" class="hero-cta">2026 Schedule</a>
-      </div>
-    </div>
     <div class="hero-image">
-      <img src="./BITCOIN TAKEOVER 2026 (1).png" alt="Bitcoin Park Takeover Summit 2026">
+      <img src="./Bitcoin Takeover Meetup Poster.png" alt="Bitcoin Park Takeover Summit 2026">
     </div>
   </section>
 
@@ -948,7 +945,7 @@
           <div class="day-number">1</div>
           <div>Day One</div>
         </div>
-        <div class="day-theme mono">Payment Summit</div>
+        <div class="day-theme mono">Power of Payments</div>
         <div class="day-description">
           <p>Join us for a comprehensive exploration of Bitcoin payment infrastructure, Lightning Network innovations, and the future of digital payments. Day one focuses on how Bitcoin is revolutionizing the way we transact, from micro-payments to enterprise solutions.</p>
           <p>Topics include Lightning Network development, payment protocols, merchant adoption, and the technical foundations that make Bitcoin the superior payment system.</p>
@@ -978,7 +975,7 @@
       <!-- Speaker cards will be populated here -->
       <div class="speaker-card fade-in">
         <div class="speaker-image">
-          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 3rem; color: var(--terminal-green);">[ ]</div>
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 3rem; color: var(--coral-orange);">[ ]</div>
         </div>
         <div class="speaker-name">More Speakers TBA</div>
         <div class="speaker-role mono">COMING SOON</div>
@@ -994,7 +991,7 @@
     
     <div class="schedule-grid">
       <div class="schedule-day-card fade-in-left">
-        <h3 class="schedule-day-title">Day 1: Payment Summit</h3>
+        <h3 class="schedule-day-title">Day 1: Power of Payments</h3>
         <div class="schedule-item">
           <div class="schedule-time mono">TBA</div>
           <div class="schedule-content">
@@ -1155,6 +1152,7 @@
         }
       });
     });
+    
   </script>
 </body>
 </html>
