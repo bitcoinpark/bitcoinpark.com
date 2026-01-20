@@ -131,7 +131,7 @@
       z-index: 0;
     }
     
-    /* Scanline Effect */
+    /* Roots Pattern Background - Site Wide */
     body::after {
       content: '';
       position: fixed;
@@ -139,15 +139,33 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background-image: url('./roots-overlay.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.08;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: 1;
+      filter: grayscale(100%) contrast(1.1) brightness(0.9);
+    }
+    
+    /* Scanline Effect */
+    .scanline-effect {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.15),
-        rgba(0, 0, 0, 0.15) 1px,
+        rgba(0, 0, 0, 0.06),
+        rgba(0, 0, 0, 0.06) 1px,
         transparent 1px,
         transparent 2px
       );
       pointer-events: none;
-      z-index: 10000;
+      z-index: 10001;
       animation: scanline 8s linear infinite;
     }
     
@@ -520,6 +538,48 @@
       padding: 0;
     }
     
+    .hero-roots-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('./roots-overlay.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.25;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 2;
+      filter: grayscale(100%) contrast(1.3) brightness(0.85);
+    }
+    
+    /* Fallback if roots image doesn't exist - subtle pattern */
+    .hero-roots-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.05) 2px,
+          rgba(0, 0, 0, 0.05) 4px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.05) 2px,
+          rgba(0, 0, 0, 0.05) 4px
+        );
+      opacity: 0.4;
+    }
+    
     
     .hero-image::before {
       content: '';
@@ -693,7 +753,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(242, 143, 107, 0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.1), transparent);
       transition: left 0.5s ease;
     }
     
@@ -729,6 +789,25 @@
       right: 0;
       bottom: 0;
       background: linear-gradient(135deg, rgba(247, 147, 26, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
+    }
+    
+    .speaker-image-silhouette {
+      border-color: var(--concrete-gray);
+      background: var(--deep-black);
+    }
+    
+    .speaker-image-silhouette img {
+      filter: brightness(0) invert(1);
+      opacity: 0.2;
+      mix-blend-mode: screen;
+    }
+    
+    .speaker-image-silhouette:hover {
+      border-color: var(--bitcoin-orange);
+    }
+    
+    .speaker-image-silhouette:hover img {
+      opacity: 0.3;
     }
     
     .speaker-image img {
@@ -882,10 +961,15 @@
       background: var(--deep-black);
       border-top: 1px solid var(--cyber-gray);
       color: var(--text-gray);
-      padding: 2rem;
+      padding: 3rem 2rem;
       text-align: center;
       position: relative;
       z-index: 1;
+    }
+    
+    .footer-cta {
+      margin-bottom: 2rem;
+      display: inline-block;
     }
     
     .footer-links {
@@ -967,7 +1051,6 @@
     </div>
     <div class="navbar-actions">
       <a href="https://bitcoinpark.com/takeover26" class="btn-primary" target="_blank" rel="noopener noreferrer">JOIN WAITLIST</a>
-      <a href="#attendees" class="btn-secondary">ATTENDEES</a>
     </div>
     <button class="hamburger" onclick="toggleMobileMenu()">
       <span></span>
@@ -989,7 +1072,8 @@
   <!-- Hero Section - Full Width Poster -->
   <section class="hero">
     <div class="hero-image">
-      <img src="./Bitcoin Takeover Meetup Poster.png" alt="Bitcoin Park Takeover Summit 2026">
+      <img src="./Bitcoin Takeover Meetup Poster (1).png" alt="Bitcoin Park Takeover Summit 2026">
+      <div class="hero-roots-overlay"></div>
     </div>
   </section>
 
@@ -1031,14 +1115,58 @@
     <p class="section-subtitle fade-in">Leading voices in Bitcoin payments and proof of work</p>
     
     <div class="speakers-grid">
-      <!-- Speaker cards will be populated here -->
       <div class="speaker-card fade-in">
         <div class="speaker-image">
-          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 3rem; color: var(--bitcoin-orange);">[ ]</div>
+          <img src="./Parker-Lewis.png" alt="Parker Lewis">
         </div>
-        <div class="speaker-name">More Speakers TBA</div>
+        <div class="speaker-name">Parker Lewis</div>
+        <div class="speaker-role mono">Head of Business Development</div>
+        <div class="speaker-company">Zaprite</div>
+      </div>
+      
+      <div class="speaker-card fade-in">
+        <div class="speaker-image">
+          <img src="./Andre-Neves.png" alt="Andre Neves">
+        </div>
+        <div class="speaker-name">Andre Neves</div>
+        <div class="speaker-role mono">CTO & Co-Founder</div>
+        <div class="speaker-company">ZBD</div>
+      </div>
+      
+      <div class="speaker-card fade-in">
+        <div class="speaker-image">
+          <img src="./Stephan-Livera.png" alt="Stephan Livera">
+        </div>
+        <div class="speaker-name">Stephan Livera</div>
+        <div class="speaker-role mono">Podcaster</div>
+        <div class="speaker-company">Stephan Livera Podcast</div>
+      </div>
+      
+      <div class="speaker-card fade-in">
+        <div class="speaker-image">
+          <img src="./Will-Cole.png" alt="Will Cole">
+        </div>
+        <div class="speaker-name">Will Cole</div>
+        <div class="speaker-role mono">Head of Product</div>
+        <div class="speaker-company">Zaprite</div>
+      </div>
+      
+      <div class="speaker-card fade-in">
+        <div class="speaker-image">
+          <img src="./Rob-Warren.png" alt="Rob Warren">
+        </div>
+        <div class="speaker-name">Rob Warren</div>
+        <div class="speaker-role mono">Research & Education</div>
+        <div class="speaker-company">Bitcoin Park</div>
+      </div>
+      
+      <div class="speaker-card fade-in">
+        <div class="speaker-image speaker-image-silhouette">
+          <img src="./Satoshi.png" alt="More Speakers Coming Soon">
+        </div>
+        <div class="speaker-name">More Speakers</div>
         <div class="speaker-role mono">COMING SOON</div>
-        <div class="speaker-company">Bitcoin Park Takeover Summit 2026</div>
+        <div class="speaker-company">Bitcoin Park Takeover 2026</div>
       </div>
     </div>
   </section>
@@ -1054,22 +1182,13 @@
           <div class="attendee-number mono">01</div>
           <div class="attendee-line"></div>
         </div>
-        <h3 class="attendee-title">Entrepreneurs</h3>
-        <p class="attendee-description">Building Bitcoin-native businesses and payment infrastructure.</p>
+        <h3 class="attendee-title">Entrepreneurs &<br>Business Owners</h3>
+        <p class="attendee-description">Building Bitcoin-native businesses, payment infrastructure, and integrating Bitcoin payments and treasury strategies.</p>
       </div>
       
       <div class="attendee-card fade-in">
         <div class="attendee-visual">
           <div class="attendee-number mono">02</div>
-          <div class="attendee-line"></div>
-        </div>
-        <h3 class="attendee-title">Small Business Owners</h3>
-        <p class="attendee-description">Integrating Bitcoin payments and treasury strategies.</p>
-      </div>
-      
-      <div class="attendee-card fade-in">
-        <div class="attendee-visual">
-          <div class="attendee-number mono">03</div>
           <div class="attendee-line"></div>
         </div>
         <h3 class="attendee-title">Lightning Developers</h3>
@@ -1078,7 +1197,7 @@
       
       <div class="attendee-card fade-in">
         <div class="attendee-visual">
-          <div class="attendee-number mono">04</div>
+          <div class="attendee-number mono">03</div>
           <div class="attendee-line"></div>
         </div>
         <h3 class="attendee-title">Open Source Contributors</h3>
@@ -1087,7 +1206,7 @@
       
       <div class="attendee-card fade-in">
         <div class="attendee-visual">
-          <div class="attendee-number mono">05</div>
+          <div class="attendee-number mono">04</div>
           <div class="attendee-line"></div>
         </div>
         <h3 class="attendee-title">Policymakers</h3>
@@ -1096,7 +1215,7 @@
       
       <div class="attendee-card fade-in">
         <div class="attendee-visual">
-          <div class="attendee-number mono">06</div>
+          <div class="attendee-number mono">05</div>
           <div class="attendee-line"></div>
         </div>
         <h3 class="attendee-title">Capital Allocators</h3>
@@ -1105,7 +1224,7 @@
       
       <div class="attendee-card fade-in">
         <div class="attendee-visual">
-          <div class="attendee-number mono">07</div>
+          <div class="attendee-number mono">06</div>
           <div class="attendee-line"></div>
         </div>
         <h3 class="attendee-title">Educators</h3>
@@ -1116,6 +1235,7 @@
 
   <!-- Footer -->
   <footer class="footer">
+    <a href="https://bitcoinpark.com/takeover26" class="btn-primary footer-cta" target="_blank" rel="noopener noreferrer">JOIN WAITLIST</a>
     <p class="mono">&copy; 2026 BITCOIN PARK. ALL RIGHTS RESERVED.</p>
     <div class="footer-links">
       <a href="https://bitcoinpark.com">BITCOIN PARK</a>
@@ -1184,5 +1304,6 @@
     });
     
   </script>
+  <div class="scanline-effect"></div>
 </body>
 </html>
