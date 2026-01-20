@@ -538,6 +538,16 @@
       padding: 0;
     }
     
+    /* Mobile-specific hero image - hidden on desktop */
+    .hero-image .hero-image-mobile {
+      display: none;
+    }
+    
+    /* Desktop image - shown by default */
+    .hero-image .hero-image-desktop {
+      display: block;
+    }
+    
     .hero-roots-overlay {
       position: absolute;
       top: 0;
@@ -1027,7 +1037,17 @@
       }
       
       .speakers-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .speaker-card {
+        max-width: 100%;
+      }
+      
+      .speaker-image {
+        width: 200px;
+        height: 200px;
       }
       
       .section {
@@ -1036,6 +1056,41 @@
       
       .hero-content {
         padding: 2rem 1.5rem;
+      }
+      
+      /* Mobile hero image - switch to Bitcoin Takeover Poster (2).png */
+      .hero-image .hero-image-desktop {
+        display: none;
+      }
+      
+      .hero-image .hero-image-mobile {
+        display: block;
+      }
+      
+      .hero-image img {
+        min-height: auto;
+        height: auto;
+        object-fit: contain;
+        object-position: center top;
+      }
+      
+      .hero-image {
+        min-height: auto;
+      }
+      
+      .hero {
+        min-height: auto;
+      }
+      
+      /* Ensure all graphics are readable on mobile */
+      .overview-grid,
+      .attendees-grid {
+        gap: 2rem;
+      }
+      
+      .day-card,
+      .attendee-card {
+        padding: 1.5rem;
       }
     }
   </style>
@@ -1072,7 +1127,8 @@
   <!-- Hero Section - Full Width Poster -->
   <section class="hero">
     <div class="hero-image">
-      <img src="./Bitcoin Takeover Meetup Poster (1).png" alt="Bitcoin Park Takeover Summit 2026">
+      <img src="./Bitcoin Takeover Meetup Poster (1).png" alt="Bitcoin Park Takeover Summit 2026" class="hero-image-desktop">
+      <img src="./Bitcoin Takeover Poster (2).png" alt="Bitcoin Park Takeover Summit 2026" class="hero-image-mobile">
       <div class="hero-roots-overlay"></div>
     </div>
   </section>
