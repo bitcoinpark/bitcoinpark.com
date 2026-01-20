@@ -124,8 +124,9 @@
       height: 100%;
       background: 
         radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%);
+        radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
       pointer-events: none;
       z-index: 0;
     }
@@ -260,7 +261,8 @@
     }
     
     .navbar-link:hover {
-      color: var(--bitcoin-orange);
+      color: var(--electric-blue);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
     
     .navbar-actions {
@@ -306,8 +308,10 @@
     }
     
     .btn-secondary:hover {
-      background: var(--pure-white);
-      color: var(--deep-black);
+      background: transparent;
+      color: var(--electric-blue);
+      border-color: var(--electric-blue);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
     }
     
     .event-meta {
@@ -558,7 +562,7 @@
       width: 100px;
       height: 3px;
       background: var(--bitcoin-orange);
-      box-shadow: 0 0 10px var(--coral-orange);
+      box-shadow: 0 0 10px var(--bitcoin-orange);
     }
     
     .section-subtitle {
@@ -587,7 +591,7 @@
     .day-card {
       background: var(--deep-black);
       border: 1px solid var(--cyber-gray);
-      border-left: 4px solid var(--coral-orange);
+      border-left: 4px solid var(--bitcoin-orange);
       padding: 2.5rem;
       transition: all 0.3s ease;
       position: relative;
@@ -601,14 +605,14 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(242, 143, 107, 0.05) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(247, 147, 26, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
     
     .day-card:hover {
-      border-color: var(--coral-orange);
-      box-shadow: 0 0 30px rgba(242, 143, 107, 0.2);
+      border-color: var(--bitcoin-orange);
+      box-shadow: 0 0 30px rgba(247, 147, 26, 0.2), 0 0 20px rgba(0, 212, 255, 0.15);
       transform: translateY(-5px);
     }
     
@@ -698,8 +702,8 @@
     }
     
     .speaker-card:hover {
-      border-color: var(--coral-orange);
-      box-shadow: 0 0 20px rgba(242, 143, 107, 0.3);
+      border-color: var(--bitcoin-orange);
+      box-shadow: 0 0 20px rgba(247, 147, 26, 0.3), 0 0 15px rgba(0, 212, 255, 0.2);
       transform: translateY(-5px);
     }
     
@@ -713,7 +717,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 2px solid var(--coral-orange);
+      border: 2px solid var(--bitcoin-orange);
       position: relative;
     }
     
@@ -724,7 +728,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(242, 143, 107, 0.2) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(247, 147, 26, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
     }
     
     .speaker-image img {
@@ -796,7 +800,7 @@
     
     .attendee-card:hover {
       border-color: var(--bitcoin-orange);
-      box-shadow: 0 0 30px rgba(247, 147, 26, 0.2);
+      box-shadow: 0 0 30px rgba(247, 147, 26, 0.2), 0 0 20px rgba(0, 212, 255, 0.15);
       transform: translateY(-5px);
     }
     
@@ -806,11 +810,12 @@
     
     .attendee-card:hover .attendee-line {
       width: 100%;
-      background: var(--bitcoin-orange);
+      background: linear-gradient(90deg, var(--bitcoin-orange) 0%, var(--electric-blue) 100%);
     }
     
     .attendee-card:hover .attendee-number {
-      color: var(--bitcoin-orange);
+      color: var(--electric-blue);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
     }
     
     .attendee-visual {
@@ -899,7 +904,8 @@
     }
     
     .footer-links a:hover {
-      color: var(--bitcoin-orange);
+      color: var(--electric-blue);
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
     }
     
     /* Responsive Design */
