@@ -111,6 +111,7 @@
         body.dark-mode .event-modal-content .event-detail-description,
         body.dark-mode .event-modal-content .meta-date,
         body.dark-mode .event-modal-content .meta-location { color: #fff; }
+        body.dark-mode .event-modal-content .event-detail-image { border-color: rgba(180, 200, 180, 0.3); }
         body.dark-mode .event-modal-close { color: #fff; }
         body.dark-mode .event-modal-close:hover { background: rgba(60, 80, 60, 0.8); color: #fff; }
         body.dark-mode .event-modal-content .btn-secondary {
@@ -1192,6 +1193,21 @@
             color: var(--gray-dark);
         }
 
+        .event-detail-image-wrap {
+            margin-top: 16px;
+            margin-bottom: 4px;
+        }
+        .event-detail-image {
+            max-width: 100%;
+            max-height: 360px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block;
+            border: 1px solid rgba(10, 43, 7, 0.15);
+        }
+
         .event-detail-description {
             margin-top: 30px;
             line-height: 1.8;
@@ -1280,6 +1296,7 @@
             .event-detail-header { margin-bottom: 16px; }
             .event-detail-meta .meta-date { font-size: 0.95rem; }
             .event-detail-description { margin-top: 16px; font-size: 0.95rem; }
+            .event-detail-image { max-height: 260px; }
             .event-modal-close { top: 12px; right: 12px; font-size: 1.75rem; width: 36px; height: 36px; }
             .event-modal-content .btn { padding: 12px 16px; min-height: 44px; }
         }
@@ -1825,6 +1842,10 @@
                     continue;
                 }
                 
+                // Column J (index 9): "Listed on schedule" Y/N. Only Y = show on site; N, empty, or other = hide. If column J doesn't exist, show (backward compat).
+                const colJ = (event['_col_9'] || '').toString().trim().toUpperCase();
+                if (event.hasOwnProperty('_col_9') && colJ !== 'Y') continue;
+                
                 // Only add events with date and title
                 // Check for common variations of title and date column names (case-insensitive)
                 const eventKeysLower = eventKeys.map(k => k.toLowerCase());
@@ -2037,6 +2058,39 @@
                         
                         event.rsvp = event.meetupLink || event.rsvp || event['rsvp link'] || '';
                         event.tickets = event.tickets || event['ticket link'] || '';
+                        // Image URL for modal. Column "Image" (or "Poster", "Image URL", etc.) with raw URL. CSV is text-only. Drive /file/d/ID/view links are converted to thumbnail URL for <img> (uc?export=view often returns 403/HTML).
+                        let imageUrl = '';
+                        function extractImageUrl(val) {
+                            if (!val || typeof val !== 'string') return '';
+                            let s = ('' + val).trim().replace(/^["']|["']$/g, '');
+                            const m = s.match(/^(https?:\/\/[^\s<>]+)/i) || s.match(/(https?:\/\/[^\s<>)"']+)/i);
+                            if (m) s = m[1];
+                            if (!/^https?:\/\//i.test(s)) return '';
+                            const driveFile = s.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+                            const driveId = s.match(/(?:\?|&)id=([a-zA-Z0-9_-]+)/);
+                            const id = driveFile?.[1] || driveId?.[1];
+                            if (id && /drive\.google\.com/i.test(s)) s = 'https://drive.google.com/thumbnail?id=' + id + '&sz=w800';
+                            return s;
+                        }
+                        const imageKeywords = ['image', 'poster', 'photo', 'picture', 'graphic', 'banner', 'cover', 'thumbnail', 'share'];
+                        const imageExact = ['image', 'imageurl', 'imagelink', 'poster', 'posterurl', 'posterlink', 'photo', 'picture', 'cover', 'thumbnail', 'sharelink'];
+                        for (const k of eventKeys) {
+                            if (imageUrl) break;
+                            if (!k) continue;
+                            const keyLower = ('' + k).replace(/^\uFEFF/, '').toLowerCase();
+                            const keyNorm = keyLower.replace(/\s/g, '');
+                            const isExact = imageExact.indexOf(keyNorm) >= 0;
+                            const hasKeyword = imageKeywords.some(w => keyLower.includes(w));
+                            if ((isExact || hasKeyword) && event[k]) {
+                                imageUrl = extractImageUrl(event[k]);
+                            }
+                        }
+                        if (!imageUrl && (event.image || event['image'])) imageUrl = extractImageUrl(event.image || event['image']);
+                        event.imageUrl = imageUrl || null;
+                        if (events.length === 0 && !imageUrl && eventKeys.length) {
+                            const raw = (event.image || event['image'] || '').toString().replace(/\s+/g, ' ').trim();
+                            console.log('Schedule: first event has no image. Image column found. Raw value:', raw ? raw.substring(0, 120) + (raw.length > 120 ? '...' : '') : '(empty). Use the full https:// URL as the cell value—not Insert > Link with separate display text. Events in other rows with a URL will show images.');
+                        }
                         events.push(event);
                     }
                 }
@@ -2072,25 +2126,31 @@
             return values;
         }
 
-        // Parse various date formats
+        // Parse various date formats. All paths produce a Date at local midnight for the
+        // intended calendar date so getFullYear/getMonth/getDate are correct in any timezone.
         function parseDate(dateStr) {
             if (!dateStr) return null;
             
-            // Clean up the date string
             dateStr = dateStr.toString().trim();
+            if (dateStr.toLowerCase() === 'tbd' || dateStr === '') return null;
             
-            // Skip non-date values
-            if (dateStr.toLowerCase() === 'tbd' || dateStr === '') {
-                return null;
-            }
+            const MONTH_ABBR = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11 };
             
-            // Format 0: Full JavaScript date string like "Sun Jan 18 2026 00:00:00 GMT-0600"
-            // This is what Apps Script returns for Date objects
+            // Format 0: Full JS date string like "Sun Jan 18 2026 00:00:00 GMT-0600" (Apps Script).
+            // Parsing as-is uses the string's timezone, so getDate() shifts for users in other zones.
+            // Extract the calendar date (month, day, year) and build local-midnight so the day is
+            // correct for everyone.
             if (dateStr.includes('GMT') || dateStr.match(/^\w{3}\s\w{3}\s\d{1,2}\s\d{4}/)) {
-                const parsed = new Date(dateStr);
-                if (!isNaN(parsed.getTime())) {
-                    return parsed;
+                const m = dateStr.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})\s+(\d{4})/i);
+                if (m) {
+                    const mo = MONTH_ABBR[m[1].toLowerCase().slice(0,3)];
+                    if (mo !== undefined) {
+                        const d = new Date(parseInt(m[3], 10), mo, parseInt(m[2], 10));
+                        if (!isNaN(d.getTime())) return d;
+                    }
                 }
+                const parsed = new Date(dateStr);
+                if (!isNaN(parsed.getTime())) return parsed;
             }
             
             // Format 1: MM/DD/YYYY (4-digit year)
@@ -2131,12 +2191,16 @@
                 return new Date(year, month, day);
             }
             
-            // Fallback: try native Date.parse
-            const parsed = Date.parse(dateStr);
-            if (!isNaN(parsed)) {
-                return new Date(parsed);
+            // Fallback: ISO YYYY-MM-DD (with or without time) is parsed as UTC by Date.parse,
+            // which shifts the calendar day for users outside UTC. Extract date parts and build
+            // local-midnight so the day is correct in any timezone.
+            let iso = dateStr.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+            if (iso) {
+                const d = new Date(parseInt(iso[1], 10), parseInt(iso[2], 10) - 1, parseInt(iso[3], 10));
+                if (!isNaN(d.getTime())) return d;
             }
-            
+            const parsed = Date.parse(dateStr);
+            if (!isNaN(parsed)) return new Date(parsed);
             return null;
         }
 
@@ -2670,8 +2734,8 @@
             const location = event.location || '';
             const description = event.description || event['event description'] || '';
             
-            // Get meetup link for RSVP
             const meetupLink = event.meetupLink || event.rsvp || '';
+            const imageUrl = event.imageUrl || '';
             
             // Format date display for multi-day events
             let dateDisplay;
@@ -2693,11 +2757,10 @@
                         ${location ? `<div class="meta-location">${location}</div>` : ''}
                     </div>
                 </div>
+                ${imageUrl ? `<div class="event-cta" style="margin-top: 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 12px;">${meetupLink ? `<a href="${meetupLink}" target="_blank" class="btn btn-primary" style="text-align: center;">RSVP</a>` : ''}<button class="btn btn-secondary add-to-cal-btn-modal">Add to Calendar</button></div>` : ''}
+                ${imageUrl ? `<div class="event-detail-image-wrap"><img class="event-detail-image" src="${imageUrl}" alt="" loading="lazy"></div>` : ''}
                 ${description ? `<div class="event-detail-description">${description}</div>` : ''}
-                <div class="event-cta" style="margin-top: 30px; display: flex; flex-direction: column; gap: 12px;">
-                    ${meetupLink ? `<a href="${meetupLink}" target="_blank" class="btn btn-primary" style="text-align: center;">RSVP</a>` : ''}
-                    <button class="btn btn-secondary add-to-cal-btn-modal">Add to Calendar</button>
-                </div>
+                ${!imageUrl ? `<div class="event-cta" style="margin-top: 30px; display: flex; flex-direction: column; gap: 12px;">${meetupLink ? `<a href="${meetupLink}" target="_blank" class="btn btn-primary" style="text-align: center;">RSVP</a>` : ''}<button class="btn btn-secondary add-to-cal-btn-modal">Add to Calendar</button></div>` : ''}
             `;
             
             // Add event listener for calendar button
