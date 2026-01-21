@@ -61,14 +61,19 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+        body.dark-mode .month-header {
+            background: linear-gradient(135deg, rgba(35, 45, 35, 0.98) 0%, rgba(25, 35, 25, 0.98) 100%);
+        }
         body.dark-mode .page-subtitle,
         body.dark-mode .current-date-display,
         body.dark-mode .week-day-header,
         body.dark-mode .day-header,
         body.dark-mode .month-header .day-header { color: #fff; }
         body.dark-mode .calendar-day { background: rgba(40, 55, 40, 0.5); border-color: rgba(160, 180, 160, 0.2); color: #fff; }
+        body.dark-mode .calendar-day .day-number { color: #fff; }
         body.dark-mode .calendar-day.today { background: rgba(98, 185, 232, 0.15); border-color: var(--location-accent); }
         body.dark-mode .calendar-day.other-month { color: #bbb; }
+        body.dark-mode .calendar-day.other-month .day-number { color: #bbb; }
         body.dark-mode .week-day { background: rgba(40, 55, 40, 0.5); border-color: transparent; color: #fff; }
         body.dark-mode .week-day.today { background: rgba(98, 185, 232, 0.12); border-color: var(--location-accent); }
         body.dark-mode .week-event { color: #fff; }
@@ -589,7 +594,7 @@
             box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
             width: 100%;
             box-sizing: border-box;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .month-header {
@@ -598,6 +603,10 @@
             gap: 10px;
             margin-bottom: 15px;
             width: 100%;
+            position: sticky;
+            top: 70px;
+            z-index: 20;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 247, 250, 0.98) 100%);
         }
 
         .day-header {
@@ -1213,42 +1222,77 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        /* Responsive - Mobile */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
+            header { padding: 12px 0; }
+            .header-content { padding: 0 16px; }
+            .logo { font-size: 1.25rem; }
+            .nav-links { gap: 16px; }
+            .nav-link { font-size: 0.9rem; }
 
-            .page-header h1 {
-                font-size: 2rem;
-            }
+            .container { padding: 16px; }
 
-            .top-controls {
-                flex-direction: column;
-            }
+            .page-header { margin-bottom: 20px; }
+            .page-header h1 { font-size: 1.75rem; }
+            .page-subtitle { font-size: 0.95rem; margin-bottom: 16px; }
 
-            .location-switcher,
-            .view-toggle {
-                width: 100%;
-            }
+            .top-controls { flex-direction: column; gap: 12px; padding: 16px; margin-bottom: 16px; }
+            .location-switcher, .view-toggle { width: 100%; justify-content: center; }
+            .location-btn, .view-btn { padding: 10px 14px; min-height: 44px; font-size: 0.85rem; }
+            .search-box { min-width: 0; width: 100%; }
+            .search-input { font-size: 16px; }
+            .toggle-filters { width: 100%; min-height: 44px; }
 
-            .month-grid,
-            .week-grid {
-                gap: 5px;
-            }
+            .calendar-nav { flex-direction: column; gap: 12px; padding: 14px; margin-bottom: 16px; }
+            .calendar-nav .nav-buttons { flex-wrap: wrap; justify-content: center; gap: 8px; }
+            .calendar-nav .nav-tools { flex-wrap: wrap; justify-content: center; gap: 8px; }
+            .current-date-display { font-size: 1.1rem; text-align: center; }
+            .nav-btn, .today-btn { padding: 8px 14px; font-size: 0.85rem; min-height: 44px; }
+            .date-picker-input { padding: 8px 10px; font-size: 16px; min-height: 44px; }
+            .dark-mode-toggle { min-height: 44px; padding: 8px 12px; }
 
-            .calendar-day {
-                min-height: 80px;
-                padding: 5px;
-            }
+            .month-view { padding: 12px; }
+            .month-header { top: 56px; gap: 4px; margin-bottom: 8px; padding: 4px 0; }
+            .day-header { font-size: 0.65rem; padding: 6px 2px; letter-spacing: 0.02em; }
+            .month-grid { gap: 4px; }
+            .calendar-day { min-height: 72px; padding: 6px; }
+            .day-number { font-size: 0.95rem; margin-bottom: 4px; }
+            .event-dot { font-size: 0.65rem; padding: 3px 5px; min-height: 0; }
 
-            .week-grid {
-                grid-template-columns: repeat(7, 1fr);
-            }
+            .week-view { padding: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .week-header, .week-grid { min-width: 300px; }
+            .week-header { gap: 4px; margin-bottom: 8px; }
+            .week-day-header { font-size: 0.7rem; padding: 6px 2px; }
+            .week-grid { gap: 4px; max-height: calc(100vh - 420px); }
+            .week-day { padding: 6px; gap: 4px; }
+            .week-event { font-size: 0.7rem; padding: 6px; }
 
-            .filters-grid {
-                grid-template-columns: 1fr;
-            }
+            .day-view, .agenda-view, .summit-view { padding: 16px; }
+
+            .filters-panel { padding: 16px; margin-bottom: 16px; }
+            .filters-grid { grid-template-columns: 1fr; gap: 16px; }
+            .filter-select { font-size: 16px; }
+            .filter-tag { min-height: 44px; padding: 8px 12px; }
+
+            .event-modal { padding: 12px; align-items: flex-start; }
+            .event-modal-content { padding: 20px 16px; max-height: 85vh; }
+            .event-detail-title { font-size: 1.5rem; margin-bottom: 10px; }
+            .event-detail-header { margin-bottom: 16px; }
+            .event-detail-meta .meta-date { font-size: 0.95rem; }
+            .event-detail-description { margin-top: 16px; font-size: 0.95rem; }
+            .event-modal-close { top: 12px; right: 12px; font-size: 1.75rem; width: 36px; height: 36px; }
+            .event-modal-content .btn { padding: 12px 16px; min-height: 44px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 12px; }
+            .page-header h1 { font-size: 1.5rem; }
+            .day-header { font-size: 0.6rem; }
+            .calendar-day { min-height: 64px; padding: 4px; }
+            .event-dot { font-size: 0.6rem; }
+            .month-header { top: 52px; }
+            .nav-btn { padding: 8px 10px; }
+            .current-date-display { font-size: 1rem; }
         }
     </style>
 </head>
@@ -1266,7 +1310,7 @@
 
     <div class="container">
         <div class="page-header">
-            <h1>Bitcoin Park Schedule</h1>
+            <h1>The Park Schedule</h1>
             <p class="page-subtitle">Find meetups, workshops, and summits at Bitcoin Park</p>
         </div>
 
@@ -1327,7 +1371,7 @@
                 <div class="current-date-display" id="currentDate"></div>
                 <button class="nav-btn" id="nextBtn">Next →</button>
             </div>
-            <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="nav-tools" style="display: flex; align-items: center; gap: 15px;">
                 <button class="nav-btn" id="refreshBtn" title="Refresh events">Refresh</button>
                 <input type="date" class="date-picker-input" id="goToDate" title="Go to date">
                 <button class="today-btn" id="todayBtn">Today</button>
@@ -2113,17 +2157,14 @@
                     // Update filters.location to match
                     filters.location = currentLocation;
                     
-                    // Update body class and accent color only if not "all"
-                    if (currentLocation === 'all') {
-                        document.body.className = '';
-                        // Keep default accent (Austin blue) when showing all
-                        document.documentElement.style.setProperty('--location-accent', 'var(--austin-blue)');
-                    } else {
-                        document.body.className = currentLocation;
-                        // Update CSS variable
-                        document.documentElement.style.setProperty('--location-accent', 
-                            currentLocation === 'austin' ? 'var(--austin-blue)' : 'var(--nashville-purple)');
+                    // Update location class and accent; preserve dark-mode
+                    document.body.classList.remove('austin', 'nashville');
+                    if (currentLocation !== 'all') {
+                        document.body.classList.add(currentLocation);
                     }
+                    document.documentElement.style.setProperty('--location-accent', 
+                        currentLocation === 'austin' ? 'var(--austin-blue)' : 
+                        currentLocation === 'nashville' ? 'var(--nashville-purple)' : 'var(--austin-blue)');
                     renderCalendar();
                 });
             });
