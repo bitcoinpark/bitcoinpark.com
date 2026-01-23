@@ -2578,12 +2578,13 @@
                     eventDot.className = classes;
                     
                     // Show title on all days, with day indicator for multi-day events
+                    const locationIcon = getLocationIcon(event.normalizedLocation);
                     if (event.isMultiDay && event.allDateKeys) {
                         const dayNum = event.allDateKeys.indexOf(dateKey) + 1;
                         const totalDays = event.allDateKeys.length;
-                        eventDot.textContent = `${event.title || 'Event'} (${dayNum}/${totalDays})`;
+                        eventDot.textContent = `${locationIcon} ${event.title || 'Event'} (${dayNum}/${totalDays})`;
                     } else {
-                        eventDot.textContent = event.title || 'Event';
+                        eventDot.textContent = `${locationIcon} ${event.title || 'Event'}`;
                     }
                     
                     eventDot.title = `${event.title || 'Event'} - ${event.normalizedType}${event.isMultiDay ? ' (Multi-day)' : ''}`;
@@ -2660,7 +2661,8 @@
                 dayEvents.slice(0, 2).forEach(ev => {
                     const div = document.createElement('div');
                     div.className = `week-event ${ev.normalizedType}`;
-                    div.textContent = ev.title || 'Event';
+                    const locIcon = getLocationIcon(ev.normalizedLocation);
+                    div.textContent = `${locIcon} ${ev.title || 'Event'}`;
                     div.title = `${ev.title || 'Event'} - ${formatTime(ev.dateObj)}`;
                     div.addEventListener('click', () => showEventDetail(ev));
                     dayDiv.appendChild(div);
@@ -2803,11 +2805,12 @@
                 if (time) dateDisplay += ` · ${time}`;
             }
             
+            const locIcon = getLocationIcon(event.normalizedLocation);
             card.innerHTML = `
                 <div class="event-card-header">
                     <span class="event-type-badge ${event.normalizedType}">${event.normalizedType}</span>
                 </div>
-                <h3 class="event-title">${event.title || 'Event'}</h3>
+                <h3 class="event-title">${locIcon} ${event.title || 'Event'}</h3>
                 <div class="event-meta">
                     <div class="event-meta-date">${dateDisplay}</div>
                     ${location ? `<div class="event-meta-location">${location}</div>` : ''}
@@ -2901,10 +2904,11 @@
                 </div>
             `;
 
+            const modalLocIcon = getLocationIcon(event.normalizedLocation);
             content.innerHTML = `
                 <div class="event-detail-header">
                     <span class="event-type-badge ${event.normalizedType}">${event.normalizedType}</span>
-                    <h2 class="event-detail-title">${event.title || 'Event'}</h2>
+                    <h2 class="event-detail-title">${modalLocIcon} ${event.title || 'Event'}</h2>
                     <div class="event-detail-meta">
                         <div class="meta-date">${dateDisplay}</div>
                         ${location ? `<div class="meta-location">${location}</div>` : ''}
@@ -3138,6 +3142,12 @@
         }
 
         // Helper functions
+        function getLocationIcon(location) {
+            if (location === 'nashville') return '[NSH]';
+            if (location === 'austin') return '[ATX]';
+            return '[ATX]'; // default to Austin
+        }
+
         function formatHour(hour) {
             if (hour === 0) return '12 AM';
             if (hour < 12) return `${hour} AM`;
