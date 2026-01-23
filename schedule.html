@@ -80,6 +80,9 @@
         body.dark-mode .event-card,
         body.dark-mode .event-dot { background: rgba(45, 60, 45, 0.8); border-color: rgba(160, 180, 160, 0.25); color: #fff; }
         body.dark-mode .event-card:hover { border-color: var(--location-accent); background: rgba(50, 70, 50, 0.9); }
+        body.dark-mode .event-title,
+        body.dark-mode .event-meta-date { color: #fff; }
+        body.dark-mode .event-meta-location { color: #ccc; }
         body.dark-mode .search-input,
         body.dark-mode .filter-select,
         body.dark-mode .filter-input,
@@ -2579,7 +2582,11 @@
                     
                     // Show title on all days, with day indicator for multi-day events
                     const locationIcon = getLocationIcon(event.normalizedLocation);
-                    if (event.isMultiDay && event.allDateKeys) {
+                    const isMobile = window.innerWidth <= 768;
+                    if (isMobile) {
+                        // On mobile, just show location indicator for cleaner look
+                        eventDot.textContent = locationIcon;
+                    } else if (event.isMultiDay && event.allDateKeys) {
                         const dayNum = event.allDateKeys.indexOf(dateKey) + 1;
                         const totalDays = event.allDateKeys.length;
                         eventDot.textContent = `${locationIcon} ${event.title || 'Event'} (${dayNum}/${totalDays})`;
