@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Park - Spotlight Research</title>
+    <link rel="stylesheet" href="https://stackedit.io/style.css" />
+    <style>
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+            max-width: 800px;
+        }
+
+        .research-tile {
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+            background: #fff;
+        }
+
+        .research-tile:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .research-tile img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+        }
+
+        .research-tile h3 {
+            margin: 0 0 12px 0;
+            color: #000;
+        }
+
+        .research-tile p {
+            margin: 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .back-link {
+            margin-top: 32px;
+        }
+    </style>
+</head>
+
+<body class="stackedit">
+    <div class="stackedit__html">
+        <p><img src="https://bitcoinpark.com/bitcoinparkbanner.webp" alt="Bitcoin Park"></p>
+        <h2>Spotlight Research</h2>
+        <p>Explore Bitcoin Park's collection of research and white papers.</p>
+
+        <div class="research-grid">
+            <a href="Bitcoin Custody in 2025.pdf" target="_blank" class="research-tile">
+                <img src="custody-cover.png" alt="Bitcoin Custody in 2025 Cover">
+                <h3>Bitcoin Custody in 2025</h3>
+                <p>An exploration of modern bitcoin custody solutions, best practices, and considerations for individuals and institutions.</p>
+            </a>
+
+            <a href="MONETIZING THE MEGAWATT 1_26.pdf" target="_blank" class="research-tile">
+                <img src="megawatt-cover.png" alt="Monetizing the Megawatt Cover">
+                <h3>Monetizing the Megawatt</h3>
+                <p>A deep dive into bitcoin mining economics and the intersection of energy markets and bitcoin infrastructure.</p>
+            </a>
+        </div>
+
+        <p class="back-link"><a href="https://bitcoinpark.com"><strong>&larr; Back to Bitcoin Park</strong></a></p>
+    </div>
+</body>
+
+</html>
