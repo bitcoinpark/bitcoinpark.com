@@ -732,6 +732,63 @@
       font-size: clamp(1rem, 1.2vw + 0.8rem, 1.2rem);
     }
     
+    /* Panels Section */
+    .panels {
+      background: var(--deep-black);
+      padding: 6rem 2rem;
+    }
+
+    .panels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .panel-card {
+      background: var(--deep-black);
+      border: 1px solid var(--cyber-gray);
+      border-left: 4px solid var(--bitcoin-orange);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(247, 147, 26, 0.05) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .panel-card:hover {
+      border-color: var(--bitcoin-orange);
+      box-shadow: 0 0 30px rgba(247, 147, 26, 0.2), 0 0 20px rgba(0, 212, 255, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .panel-card:hover::before {
+      opacity: 1;
+    }
+
+    .panel-title {
+      font-size: 1.1rem;
+      color: var(--pure-white);
+      font-weight: 600;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+
     /* Speakers Section */
     .speakers {
       background: var(--deep-black);
@@ -1101,6 +1158,7 @@
     <a href="https://bitcoinpark.com" class="navbar-brand">BITCOIN PARK</a>
     <div class="navbar-nav">
       <a href="#overview" class="navbar-link">Overview</a>
+      <a href="#panels" class="navbar-link">Panels</a>
       <a href="#speakers" class="navbar-link">Speakers</a>
       <a href="#attendees" class="navbar-link">Attendees</a>
     </div>
@@ -1118,6 +1176,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
       <li><a href="#overview" onclick="toggleMobileMenu()">Overview</a></li>
+      <li><a href="#panels" onclick="toggleMobileMenu()">Panels</a></li>
       <li><a href="#speakers" onclick="toggleMobileMenu()">Speakers</a></li>
       <li><a href="#attendees" onclick="toggleMobileMenu()">Attendees</a></li>
       <li><a href="https://bitcoinpark.com/takeover26" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 1rem;">JOIN WAITLIST</a></li>
@@ -1161,6 +1220,46 @@
           <p>A showcase of ten builders and entrepreneurs demonstrating proof of work through real businesses and projects. Each presentation offers a window into the strategic thinking, technical challenges, and business models that define Bitcoin's growing ecosystem.</p>
           <p>Categories span: Custody & Security (self-custody tools, multisig solutions, institutional custody infrastructure); Payments & Commerce (point-of-sale systems, payment processors, merchant tools, Lightning service providers); Lightning Infrastructure (node software, channel management, routing optimization, liquidity services); Open Source Development (protocol contributions, wallet development, tooling for developers); AI & Bitcoin (machine learning applications, automated trading, compute optimization); Education & Media (content platforms, educational resources, community-building initiatives); Energy & Mining (mining operations, energy monetization, grid optimization strategies).</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panels Section -->
+  <section id="panels" class="section panels">
+    <h2 class="section-title fade-in">Day One Panels</h2>
+    <p class="section-subtitle fade-in">Power of Payments</p>
+
+    <div class="panels-grid">
+      <div class="panel-card fade-in">
+        <div class="panel-title">Zero to Eight Billion: How to Scale Payments Infrastructure</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">Interest Bearing Products: Finding Where the Yield Comes From</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">Pioneering Merchant Adoption from Point-of-Sale to Business Treasury</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">User Experience Design for Bitcoin Payment Systems</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">Clarity Is King: Navigating the Bitcoin Regulatory Landscape</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors</div>
+      </div>
+
+      <div class="panel-card fade-in">
+        <div class="panel-title">Austin's Freedom Flywheel: How Investing in Austin Startups Creates a Future Worth Inheriting</div>
       </div>
     </div>
   </section>
