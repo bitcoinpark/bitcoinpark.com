@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Energy & Mining Summit 2026: Thomas Templeton - Bitcoin Park</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #1a2332;
+            --navy-blue: #0f1620;
+            --orange: #ff6b35;
+            --white: #ffffff;
+            --light-gray: #b0b8c4;
+            --medium-gray: #8a94a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--orange);
+        }
+
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        /* Navbar Sponsor Logos */
+        .navbar-sponsors {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-sponsor-logo {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: var(--medium-gray);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-sponsor-logo:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* Sponsor Thank You Bar */
+        .sponsor-thank-you {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            flex: 1;
+        }
+
+        .sponsor-thank-you-text {
+            font-size: 0.75rem;
+            color: var(--orange);
+            font-weight: 500;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0.8;
+        }
+
+        .sponsor-thank-you-text a {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .sponsor-thank-you-text a:hover {
+            color: var(--orange);
+            border-bottom-color: var(--orange);
+        }
+
+        .sponsor-separator {
+            color: var(--orange);
+            width: 1px;
+            height: 12px;
+            background-color: var(--orange);
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        /* Force line break after 5 sponsors */
+        .sponsor-break {
+            flex-basis: 100%;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-back-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--orange);
+        }
+
+        /* Navbar Divider */
+        .navbar-divider {
+            width: 1px;
+            height: 20px;
+            background-color: var(--orange);
+            margin: 0 15px;
+        }
+
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy-blue);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--dark-blue));
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--dark-blue);
+            padding: 70px 0 60px 0;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--orange);
+        }
+
+        .speaker-highlight {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Video Placeholder */
+        .video-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .video-placeholder-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .video-placeholder-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 24px solid var(--orange);
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            margin-left: 6px;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .video-placeholder p {
+            font-size: 1rem;
+            color: var(--medium-gray);
+        }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background: var(--navy-blue);
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sponsors-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sponsors-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .sponsors-header p {
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sponsor-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .sponsor-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--navy-blue);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer p {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sponsors-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .page-header {
+                padding-top: 100px;
+                padding-bottom: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .video-placeholder {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you">
+                <span class="sponsor-thank-you-text">A Special Thank You to Our NEMS26 Sponsors:
+                    <a href="https://proto.xyz/">Proto</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://braiins.com">Braiins</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://cleanspark.com">CleanSpark</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://obm.io/">OBM</a>
+                    <div class="sponsor-break"></div>
+                    <a href="https://chollainc.com/">Cholla Inc.</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://foundrydigital.com/">Foundry</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://unchained.com">Unchained</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.cathedra.com/">Cathedra</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.adakonenergy.com/">Adakon Energy</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://upstreamdata.ca">Upstream Data</a>
+                </span>
+            </div>
+            <a href="index_2026.html" class="navbar-back-link">← Back to NEMS 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>User-Centered Design: Hard Lessons in Building Hardware</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index_2026.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--orange)'; this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">NEMS26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value highlight">Fireside Chat</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Date</span>
+                        <span class="session-meta-value">January 22, 2026</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value"><span class="speaker-highlight">Robert Warren</span> (Bitcoin Park), <span class="speaker-highlight">Thomas Templeton</span> (Block)</span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    Dive into the principles of user-centered hardware design in this insightful fireside chat. A veteran tech builder shares lessons from crafting iconic payment terminals to innovative Bitcoin self-custody wallets and cutting-edge mining systems, demonstrating how intuitive design, seamless functionality, and modular durability empower everyday users in fintech and Bitcoin.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="user-centered-design-fireside.jpg" alt="Thomas Templeton fireside chat at NEMS26">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Bitcoin Mining Gets a Design Overhaul</h2>
+                <p class="article-subheader">Block's hardware engineering veteran Thomas Templeton is bringing Silicon Valley's design philosophy to Bitcoin mining, and early miners say it's overdue.</p>
+
+                <div class="article-content">
+                    <p>Templeton, who spent a decade in semiconductors before helping Apple design the original iPhone's camera system and later leading Square's product development, recently joined Block's Bitcoin initiatives to rethink how mining hardware is built. His approach: ask miners what actually hurts, not what they think they want.</p>
+
+                    <p>"The people who live and breathe this every day are the experts," Templeton explained at the recent Nashville Energy & Mining Summit. "Going in with preconceived notions about how it should be, you're not going to arrive at the best solution."</p>
+
+                    <p>The result is Proto, Block's new Bitcoin mining initiative that challenges fundamental assumptions about hardware design. Rather than viewing miners as monolithic devices, Proto reconceptualizes mining equipment as modular infrastructure where individual components, power supplies, cooling systems, and other elements, can be upgraded independently as chip technology advances. This shifts the industry paradigm from disposable hardware to sustainable, repairable systems.</p>
+
+                    <p>Templeton's methodology mirrors his earlier successes at Apple and Square: extensive customer interviews across diverse segments. His team consulted with large-scale operations, small miners, technicians in East Africa and West Texas, and fleet managers. Common themes emerged immediately: quality, durability, repairability, and a fundamental lack of understanding about why mining hardware was designed the way it was.</p>
+
+                    <p>"Why does it have to be shaped like a shoebox? Why do you have to throw out perfectly good components when upgrading? Why do you have to take it off the rack to repair it?" Templeton asked, applying first-principles thinking to an industry that had accepted these constraints as inevitable.</p>
+
+                    <!-- Embedded Video -->
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/bq27NslP1qQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+
+                    <p>Block's approach includes releasing open-source software, reference designs, and comprehensive documentation, tools Templeton views as essential to decentralizing Bitcoin mining. "The biggest way we help with decentralization is open source, talking to community, giving tools and access," he said. The company has already documented diverse use cases emerging from the community, including miners repurposing equipment for greenhouse heating and bathhouse water heating, applications Block's team never anticipated.</p>
+
+                    <p>Rather than prescribing mining's future, Templeton emphasizes Block's role as an enabler. "If we try to decide what's going to happen, we're going to be wrong. The community will find those uses," he noted.</p>
+
+                    <p>For those interested in contributing, Templeton's advice is straightforward: identify your expertise and passion, dive in, and recognize that Bitcoin's developer community is smaller and more welcoming than most expect.</p>
+
+                    <p>As Bitcoin adoption accelerates, the infrastructure supporting it requires the same user-centered design rigor that transformed consumer electronics.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Thank You Section -->
+    <section class="sponsors-section">
+        <div class="container">
+            <div class="sponsors-header">
+                <h2>Supporting Our Mission</h2>
+                <p>We are deeply grateful to our members, partner companies, and community supporters who make our work possible. Your commitment to Bitcoin Park, and to the broader movement for grassroots freedom technology, fuels everything we do. Whether through active participation in our experiences, collaborative partnerships, or shared belief in our mission, you are helping to build the infrastructure and community that empowers individuals to take control of a freer, more sovereign future. Together, we're creating something meaningful.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
