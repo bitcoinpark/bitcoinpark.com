@@ -184,7 +184,60 @@
             padding: 0;
         }
 
-        @keyframes carouselScroll {
+        /* Mobile Scrolling Sponsors */
+        .mobile-sponsor-bar {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 20s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
             0% {
                 transform: translateX(0);
             }
@@ -478,30 +531,16 @@
                 gap: 10px;
             }
 
+            /* Hide desktop sponsors, show mobile scrolling version */
             .sponsor-thank-you {
-                display: block;
-                width: 100%;
-                overflow: hidden;
-                padding: 12px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .sponsor-thank-you-text {
-                display: inline-flex !important;
-                flex-wrap: nowrap !important;
-                white-space: nowrap !important;
-                gap: 8px;
-                animation: carouselScroll 40s linear infinite;
-                font-size: 0 !important;
-            }
-
-            .sponsor-thank-you-text a,
-            .sponsor-thank-you-text .sponsor-separator {
-                font-size: 0.75rem !important;
-            }
-
-            .sponsor-break {
                 display: none;
+            }
+
+            .mobile-sponsor-bar {
+                display: flex;
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .navbar-back-link {
@@ -615,6 +654,54 @@
                     <span class="sponsor-separator"></span>
                     <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
                 </span>
+            </div>
+            <!-- Mobile Scrolling Sponsors -->
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">Thank you to our sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://proto.xyz/">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca">Upstream Data</a>
+                        <span class="sponsor-dot">•</span>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://proto.xyz/">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca">Upstream Data</a>
+                    </div>
+                </div>
             </div>
             <a href="index_2026.html" class="navbar-back-link">← Back to NEMS 2026</a>
         </div>
