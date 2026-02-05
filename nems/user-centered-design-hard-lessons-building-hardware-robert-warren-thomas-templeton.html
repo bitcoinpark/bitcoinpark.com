@@ -184,6 +184,15 @@
             padding: 0;
         }
 
+        @keyframes carouselScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
         .navbar-back-link {
             color: var(--light-gray);
             text-decoration: none;
@@ -466,7 +475,40 @@
             }
 
             .sponsor-thank-you {
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .sponsor-thank-you-text {
+                display: inline-flex !important;
+                flex-wrap: nowrap !important;
+                white-space: nowrap !important;
+                gap: 8px;
+                animation: carouselScroll 40s linear infinite;
+                font-size: 0 !important;
+            }
+
+            .sponsor-thank-you-text a,
+            .sponsor-thank-you-text .sponsor-separator {
+                font-size: 0.75rem !important;
+            }
+
+            .sponsor-break {
                 display: none;
+            }
+
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+
+            .navbar-content {
+                position: relative;
             }
 
             .page-header {
@@ -555,6 +597,7 @@
                     <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
                     <span class="sponsor-separator"></span>
                     <a href="https://obm.io/" target="_blank">OBM</a>
+                    <span class="sponsor-separator"></span>
                     <div class="sponsor-break"></div>
                     <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
                     <span class="sponsor-separator"></span>
