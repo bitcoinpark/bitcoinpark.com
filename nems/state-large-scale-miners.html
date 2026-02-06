@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Energy & Mining Summit 2026: The State of Large Scale Miners - Bitcoin Park</title>
+    <meta property="og:title" content="Nashville Energy & Mining Summit: The State of Large Scale Miners">
+    <meta property="og:description" content="Mike Colyer (Foundry) and Rapha Zagury (Elektron) discuss the changing landscape of large-scale Bitcoin mining at NEMS26.">
+    <meta property="og:image" content="https://bitcoinpark.com/nems/state-large-scale-miners-fireside.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/nems/state-large-scale-miners.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #1a2332;
+            --navy-blue: #0f1620;
+            --orange: #ff6b35;
+            --white: #ffffff;
+            --light-gray: #b0b8c4;
+            --medium-gray: #8a94a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--orange);
+        }
+
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        /* Navbar Sponsor Logos */
+        .navbar-sponsors {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-sponsor-logo {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: var(--medium-gray);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-sponsor-logo:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* Sponsor Thank You Bar - Hidden, replaced by scrolling version */
+        .sponsor-thank-you {
+            display: none;
+        }
+
+        .sponsor-thank-you-text {
+            font-size: 0.75rem;
+            color: var(--orange);
+            font-weight: 500;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0.8;
+        }
+
+        .sponsor-thank-you-text a {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .sponsor-thank-you-text a:hover {
+            color: var(--orange);
+            border-bottom-color: var(--orange);
+        }
+
+        .sponsor-separator {
+            color: var(--orange);
+            width: 1px;
+            height: 12px;
+            background-color: var(--orange);
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        /* Force line break after 5 sponsors */
+        .sponsor-break {
+            flex-basis: 100%;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Scrolling Sponsors Bar */
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 20s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .navbar-back-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--orange);
+        }
+
+        /* Navbar Divider */
+        .navbar-divider {
+            width: 1px;
+            height: 20px;
+            background-color: var(--orange);
+            margin: 0 15px;
+        }
+
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy-blue);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--dark-blue));
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--dark-blue);
+            padding: 70px 0 60px 0;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--orange);
+        }
+
+        .speaker-highlight {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        .article-content blockquote {
+            border-left: 3px solid var(--orange);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: var(--white);
+        }
+
+        /* Video Placeholder */
+        .video-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .video-placeholder-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .video-placeholder-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 24px solid var(--orange);
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            margin-left: 6px;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .video-placeholder p {
+            font-size: 1rem;
+            color: var(--medium-gray);
+        }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background: var(--navy-blue);
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sponsors-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sponsors-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .sponsors-header p {
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sponsor-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .sponsor-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--navy-blue);
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--orange);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--navy-blue);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer p {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sponsors-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 160px 0 60px 0;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+
+            .navbar-content {
+                position: relative;
+            }
+
+            .page-header {
+                padding-top: 220px;
+                padding-bottom: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .video-placeholder {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you">
+                <span class="sponsor-thank-you-text">A Special Thank You to Our NEMS26 Sponsors:
+                    <a href="https://proto.xyz/" target="_blank">Proto</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://braiins.com" target="_blank">Braiins</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://obm.io/" target="_blank">OBM</a>
+                    <span class="sponsor-separator"></span>
+                    <div class="sponsor-break"></div>
+                    <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://unchained.com" target="_blank">Unchained</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                </span>
+            </div>
+            <!-- Mobile Scrolling Sponsors -->
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY 🙏 NEMS26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://proto.xyz/" target="_blank">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com" target="_blank">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/" target="_blank">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                        <span class="sponsor-dot">•</span>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://proto.xyz/" target="_blank">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com" target="_blank">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/" target="_blank">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index_2026.html" class="navbar-back-link">← Back to NEMS 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>The State of Large Scale Miners</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index_2026.html" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--orange)'; this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">NEMS26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Fireside Chat</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Date</span>
+                        <span class="session-meta-value">January 22, 2026</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value"><a href="https://x.com/colyermike" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.borderBottomColor='transparent';">Mike Colyer</a> (Foundry), <a href="https://x.com/alphazeta" target="_blank" style="color: var(--orange); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.borderBottomColor='transparent';">Rapha Zagury</a> (Elektron)</span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    In this intimate Fireside Chat, Mike Colyer and Rapha Zagury delve into their personal journeys into Bitcoin and mining, discussing the impact of hyperinflation on their varied perspectives. They explore the current state of Bitcoin mining, emphasizing the importance of long-term thinking in the volatile market. The discussion also covers market trends, the integration of energy and financial systems, and the future of mining amidst the rise of AI.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="state-large-scale-miners-fireside.jpg" alt="Mike Colyer and Rapha Zagury fireside chat at NEMS26">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">From Hyperinflation to Hash Rate—Lessons from Mining CEOs</h2>
+                <p class="article-subheader">Attendees were treated to an intimate conversation at the recent Nashville Energy & Mining Summit between CEOs Rapha Zagury and Mike Colyer.</p>
+
+                <div class="article-content">
+                    <p>Growing up in Brazil during the country's hyperinflation crisis of the 1980s and 90s, Rapha watched his father cry as the government confiscated their family's savings. Now, as founder of Elektron Energy, one of the world's largest Bitcoin mining operations, Zagury is applying those hard-learned lessons about sound money to secure a decentralized financial future.</p>
+
+                    <p>"My mom would tell me, 'take this money to school for your lunch, don't bring anything back, spend everything because if you bring the money back, it's gonna be worthless by the end of the week,'" he recalled during a fireside chat with Mike Colyer, CEO of Foundry Digital., the largest Bitcoin mining pool. "That really shapes you."</p>
+
+                    <p>That childhood trauma primed Zagury to immediately understand Bitcoin's value proposition when he first encountered it years later. Unlike the Brazilian Real that lost value overnight, Bitcoin's fixed supply of 21 million coins cannot be inflated away by government decree or confiscated through economic manipulation.</p>
+
+                    <p>The conversation between Zagury and Colyer revealed parallel journeys in building Bitcoin mining infrastructure, though from different vantage points. While Zagury operates one of the industry's largest mining operations, Colyer has spent years building the financial and technical infrastructure that enabled Bitcoin mining to flourish in North America after China's dominance of the sector.</p>
+
+                    <p>"When we started, China dominated the Bitcoin mining scene," Colyer explained.</p>
+
+                    <blockquote>"They made the machines, they had most of the hash rate, they controlled the pools. Our goal was to bust up that monopoly."</blockquote>
+
+                    <p>Today, Elektron Energy operates close to 50 exahashes of mining capacity, positioning it among the largest Bitcoin mining operations globally, with ambitious plans for expansion. The company runs one of the industry's leanest operations, with just 33 employees managing this massive computational infrastructure. Backed by cryptocurrency giant Tether since day one, Elektron has remained laser-focused on Bitcoin mining while many competitors pivot to artificial intelligence data centers.</p>
+
+                    <p>"The Bitcoin protocol doesn't care if I have the best marketing team and the best logo," Zagury said. "I'm gonna mine the exact same amount of Bitcoin at the end of the day."</p>
+
+                    <p>This operational philosophy contrasts sharply with publicly traded mining companies that face quarterly earnings pressures. Colyer noted that Foundry's parent company, Digital Currency Group, gave him similar long-term latitude under founder Barry Silbert's leadership.</p>
+
+                    <p>"Barry was very much like, I don't care what happens month to month, quarter to quarter, think in terms of decades," Colyer said. "How's this gonna play out over the next 10 years?"</p>
+
+                    <p>Both leaders see the current market environment, with many miners pivoting to AI and machine prices depressed, as an ideal entry point for committed Bitcoin miners. Colyer recalled a similar moment in late 2019, during the depths of the bear market, when Silbert told him to buy every machine available.</p>
+
+                    <p>"It reminds me of the end of 2019," Colyer said. "Everyone was depressed, there was nobody buying machines, and literally Barry was like, go buy all you can buy."</p>
+
+                    <p>Zagury confirmed that Elektron is currently one of the only buyers purchasing mining equipment at volume, creating favorable conditions for expansion. He anticipates slower hash rate growth this year as capital flows toward AI infrastructure, which he believes represents a riskier bet than Bitcoin mining.</p>
+
+                    <!-- Video Placeholder -->
+                    <div class="video-placeholder">
+                        <div class="video-placeholder-icon"></div>
+                        <h3>Session Video Coming Soon</h3>
+                        <p>The full fireside chat between Mike Colyer and Rapha Zagury will be available here shortly.</p>
+                    </div>
+
+                    <p>"Bitcoin is a significantly less risky business than AI HPC because not only it's less capital intensive," Zagury said. "AI HPC...are still in the nascent part of the technology ramp up. You are going to see step functions that are going to wreck a lot of people."</p>
+
+                    <p>Elektron's strategy involves identifying remote mining sites that will never become AI data centers, acquiring them at discounts, and integrating Bitcoin mining with renewable energy projects. The company recently launched operations in Brazil, where government-subsidized solar and wind projects generate excess power with nowhere to go.</p>
+
+                    <p>"They're buying batteries to store the energy," Zagury said. "We put containers there with older ASICs. You turn on whenever you want, and you monetize immediately."</p>
+
+                    <p>The conversation also addressed Bitcoin mining's decentralization, a topic both leaders take seriously. Colyer emphasized Foundry's support for technologies like Stratum V2 that would allow individual miners to construct their own block templates, though he noted most miners don't currently prioritize this capability.</p>
+
+                    <p>Zagury expressed surprise at this industry apathy.</p>
+
+                    <blockquote>"It's my hash rate. I want to build a block. I want to have control of the block. Maybe that's why a lot of them are shifting to AI, because they were never Bitcoiners to begin with."</blockquote>
+
+                    <p>Both leaders predict continued convergence between energy markets and financial markets, with Bitcoin miners serving as controllable loads that help utilities balance grids, with Colyer noting that Foundry can actually observe weather patterns in Texas simply by watching hash rate fluctuations as miners respond to grid conditions.</p>
+
+                    <p>For Zagury, who watched his father lose everything to government monetary manipulation, securing Bitcoin's decentralized network represents more than business strategy: it's personal mission. The boy who learned to spend money immediately before it became worthless now helps secure a monetary system designed to hold value across generations.</p>
+
+                    <p>"I grew up in hyperinflation," Zagury said. "When I saw Bitcoin for the first time, it kind of clicked to me. It really made sense."</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you 🙏 to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
