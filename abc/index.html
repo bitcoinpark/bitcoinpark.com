@@ -234,10 +234,26 @@
             margin-bottom: 25px;
         }
 
-        /* Videos Section */
-        .video-container {
+        /* Videos Section - Carousel */
+        .video-carousel {
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
         }
 
         .video-embed {
@@ -256,6 +272,89 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        .video-title {
+            text-align: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 15px;
+            padding: 0 20px;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(247, 147, 26, 0.9);
+            color: var(--darker-bg);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: var(--orange);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: -25px;
+        }
+
+        .carousel-nav.next {
+            right: -25px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-dot.active {
+            background: var(--orange);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
         }
 
         /* About Section */
@@ -277,6 +376,68 @@
             color: var(--light-gray);
             margin-bottom: 25px;
             line-height: 1.9;
+        }
+
+        /* Supporters Section */
+        .supporters-section {
+            background: var(--darker-bg);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .supporters-thank-you {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+        .supporters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 10px 16px;
+            color: var(--light-gray);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .supporter-badge:hover {
+            border-color: rgba(247, 147, 26, 0.5);
+            background: rgba(247, 147, 26, 0.1);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .mission-statement {
+                font-size: 1.1rem;
+            }
+
+            .supporters-grid {
+                gap: 8px;
+            }
+
+            .supporter-badge {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
         }
 
         /* Footer */
@@ -363,7 +524,7 @@
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
             <div class="navbar-links">
-                <a href="#learn-more">Learn More</a>
+                <a href="#learn-more">Read More</a>
                 <a href="#videos">Past Meetups</a>
                 <a href="#about">About</a>
                 <a href="https://bitcoinpark.com/schedule.html" target="_blank">Schedule</a>
@@ -383,7 +544,7 @@
     <section id="learn-more" class="learn-more-section">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>Learn More</h2>
+                <h2>Read More</h2>
                 <p>Dive deeper into our recent discussions</p>
             </div>
             <div class="learn-more-card fade-in">
@@ -402,13 +563,41 @@
                 <h2>Past Meetups</h2>
                 <p>Catch up on previous Austin Bitcoin Club discussions</p>
             </div>
-            <div class="video-container fade-in">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/videoseries?list=PL2L0KLglmktl-pXKIcbpLFgn5j8W4rHFR"
-                            title="Austin Bitcoin Club Meetups"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+            <div class="video-carousel fade-in">
+                <button class="carousel-nav prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <div class="video-embed">
+                                <iframe src="https://www.youtube.com/embed/videoseries?list=PL2L0KLglmktl-pXKIcbpLFgn5j8W4rHFR"
+                                        title="Austin Bitcoin Club Playlist"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="video-title">Full Playlist</p>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-embed">
+                                <iframe src="https://www.youtube.com/embed/5bz3jUoxjUY"
+                                        title="Fiat Food, Fiat Health, & Bitcoin"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="video-title">Fiat Food, Fiat Health, & Bitcoin</p>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="video-embed">
+                                <iframe src="https://www.youtube.com/embed/JCVpJHiAi7w"
+                                        title="ABC Meetup"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="video-title">Recent Meetup</p>
+                        </div>
+                    </div>
                 </div>
+                <button class="carousel-nav next" onclick="moveCarousel(1)">&#10095;</button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
                 <a href="https://www.youtube.com/@BitcoinPark/playlists" target="_blank" class="hero-cta btn-outline">
@@ -428,6 +617,26 @@
                     <p>Hosted at Bitcoin Park Austin (The Commons), our meetups feature presentations, open discussions, and networking opportunities with fellow Bitcoiners.</p>
                     <a href="https://bitcoinpark.com/austin" target="_blank" class="hero-cta" style="margin-top: 20px;">Join Us</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you 🙏 to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <div class="supporter-badge">HRF</div>
+                <div class="supporter-badge">Cholla Inc.</div>
+                <div class="supporter-badge">Unchained</div>
+                <div class="supporter-badge">Ten31</div>
+                <div class="supporter-badge">Fedi</div>
+                <div class="supporter-badge">CleanSpark</div>
+                <div class="supporter-badge">Satoshi Pacioli</div>
+                <div class="supporter-badge">Bitkey</div>
+                <div class="supporter-badge">Proto</div>
+                <div class="supporter-badge">Foundry</div>
             </div>
         </div>
     </section>
@@ -461,6 +670,45 @@
         document.querySelectorAll('.fade-in').forEach(element => {
             observer.observe(element);
         });
+
+        // Video Carousel
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = track.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const dotsContainer = document.getElementById('carouselDots');
+
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        // Optional: Auto-advance carousel every 10 seconds
+        // setInterval(() => moveCarousel(1), 10000);
     </script>
 </body>
 </html>
