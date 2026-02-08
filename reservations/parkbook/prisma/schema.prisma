@@ -1,0 +1,202 @@
+// ParkBook - Bitcoin Park Space Booking System
+// Prisma Schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==================== ENUMS ====================
+
+enum UserRole {
+  SUPER_ADMIN
+  LOCATION_ADMIN
+  BOOKING_ADMIN
+  MEMBER
+  GUEST
+}
+
+enum SpaceType {
+  MEETING_ROOM
+  EVENT_HALL
+  PODCAST_STUDIO
+  COWORKING_DESK
+  HOT_DESK
+  PRIVATE_OFFICE
+  OUTDOOR_AREA
+  LOUNGE
+}
+
+enum SpaceStatus {
+  ACTIVE
+  MAINTENANCE
+  RETIRED
+}
+
+enum BookingStatus {
+  CONFIRMED
+  PENDING_APPROVAL
+  CANCELLED
+  DECLINED
+  NO_SHOW
+}
+
+// ==================== MODELS ====================
+
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  passwordHash      String
+  name              String
+  phone             String?
+  role              UserRole  @default(MEMBER)
+  tags              String[]  @default([])
+  preferredLocationId String?
+  isActive          Boolean   @default(true)
+  totpSecret        String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  lastLoginAt       DateTime?
+
+  // Relations
+  preferredLocation Location? @relation("PreferredLocation", fields: [preferredLocationId], references: [id])
+  bookings          Booking[] @relation("UserBookings")
+  createdBookings   Booking[] @relation("BookingCreator")
+  approvedBookings  Booking[] @relation("BookingApprover")
+  auditLogs         AuditLog[]
+  notificationPrefs NotificationPreferences?
+  passwordResetTokens PasswordResetToken[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Location {
+  id               String   @id @default(cuid())
+  name             String
+  address          String
+  timezone         String   @default("America/Chicago")
+  hoursOfOperation Json     // { monday: { open: "09:00", close: "17:00" }, ... }
+  description      String?
+  imageUrl         String?
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relations
+  spaces           Space[]
+  preferredByUsers User[]   @relation("PreferredLocation")
+
+  @@index([name])
+}
+
+model Space {
+  id               String      @id @default(cuid())
+  locationId       String
+  name             String
+  description      String?
+  type             SpaceType
+  capacity         Int         @default(1)
+  minCapacity      Int         @default(1)
+  amenities        String[]    @default([])
+  photos           String[]    @default([])
+  bookableHours    Json?       // Override location hours, same format
+  bufferMinutes    Int         @default(15)
+  status           SpaceStatus @default(ACTIVE)
+  requiresApproval Boolean     @default(false)
+  bookingRules     Json?       // { minDuration: 30, maxDuration: 480, maxAdvanceDays: 30, ... }
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+
+  // Relations
+  location         Location    @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  bookings         Booking[]
+
+  @@unique([locationId, name])
+  @@index([locationId])
+  @@index([type])
+  @@index([status])
+}
+
+model Booking {
+  id                 String        @id @default(cuid())
+  spaceId            String
+  userId             String
+  createdById        String?       // For admin-created bookings
+  title              String
+  description        String?
+  startTime          DateTime
+  endTime            DateTime
+  status             BookingStatus @default(CONFIRMED)
+  attendeeCount      Int           @default(1)
+  recurrenceRule     String?       // iCal RRULE format
+  recurrenceGroupId  String?       // Links recurring instances
+  cancellationReason String?
+  approvedById       String?
+  approvedAt         DateTime?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  // Relations
+  space              Space         @relation(fields: [spaceId], references: [id], onDelete: Cascade)
+  user               User          @relation("UserBookings", fields: [userId], references: [id], onDelete: Cascade)
+  createdBy          User?         @relation("BookingCreator", fields: [createdById], references: [id])
+  approvedBy         User?         @relation("BookingApprover", fields: [approvedById], references: [id])
+
+  @@index([spaceId])
+  @@index([userId])
+  @@index([startTime])
+  @@index([endTime])
+  @@index([status])
+  @@index([recurrenceGroupId])
+}
+
+model NotificationPreferences {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  bookingConfirmation   Boolean  @default(true)
+  bookingReminder       Boolean  @default(true)
+  reminderHoursBefore   Int      @default(24)
+  approvalUpdates       Boolean  @default(true)
+  updatedAt             DateTime @updatedAt
+
+  // Relations
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  action      String
+  entityType  String
+  entityId    String?
+  details     Json?
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([entityType])
+  @@index([createdAt])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+
+  // Relations
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+}
