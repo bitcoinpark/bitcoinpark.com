@@ -54,16 +54,16 @@ export default async function AdminDashboardPage() {
   })
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/dashboard" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook Admin</h1>
+              <h1 className="text-xl font-semibold">Park Reservations Admin</h1>
             </Link>
           </div>
           <Link
@@ -87,17 +87,17 @@ export default async function AdminDashboardPage() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-            <div className="text-3xl font-bold text-[#0e3c07]">{totalUsers}</div>
+            <div className="text-3xl font-bold text-green-600">{totalUsers}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Total Users</div>
             <div className="text-xs text-gray-500 mt-1">{activeUsers} active</div>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-            <div className="text-3xl font-bold text-[#0e3c07]">{totalSpaces}</div>
+            <div className="text-3xl font-bold text-green-600">{totalSpaces}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Spaces</div>
             <div className="text-xs text-gray-500 mt-1">{totalLocations} locations</div>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-            <div className="text-3xl font-bold text-[#0e3c07]">{totalBookings}</div>
+            <div className="text-3xl font-bold text-green-600">{totalBookings}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Total Bookings</div>
             <div className="text-xs text-gray-500 mt-1">{todayBookings} today</div>
           </div>
@@ -105,7 +105,7 @@ export default async function AdminDashboardPage() {
             <div className="text-3xl font-bold text-yellow-500">{pendingBookings}</div>
             <div className="text-sm text-gray-600 dark:text-gray-400">Pending Approval</div>
             {pendingBookings > 0 && (
-              <Link href="/admin/bookings?status=PENDING_APPROVAL" className="text-xs text-[#0e3c07] hover:underline mt-1 block">
+              <Link href="/admin/bookings?status=PENDING_APPROVAL" className="text-xs text-green-600 hover:underline mt-1 block">
                 Review now &rarr;
               </Link>
             )}

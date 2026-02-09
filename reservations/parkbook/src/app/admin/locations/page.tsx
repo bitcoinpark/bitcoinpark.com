@@ -56,16 +56,16 @@ export default function AdminLocationsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/admin" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook Admin</h1>
+              <h1 className="text-xl font-semibold">Park Reservations Admin</h1>
             </Link>
           </div>
           <Link
@@ -88,7 +88,7 @@ export default function AdminLocationsPage() {
           </div>
           <Link
             href="/admin/locations/new"
-            className="px-4 py-2 bg-[#0e3c07] hover:bg-[#E8840F] text-white font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
           >
             Add Location
           </Link>
@@ -97,7 +97,7 @@ export default function AdminLocationsPage() {
         {/* Locations List */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
             <p className="mt-4 text-gray-500">Loading locations...</p>
           </div>
         ) : locations.length === 0 ? (
@@ -105,7 +105,7 @@ export default function AdminLocationsPage() {
             <p className="text-gray-500">No locations configured</p>
             <Link
               href="/admin/locations/new"
-              className="mt-4 inline-block text-[#0e3c07] hover:underline"
+              className="mt-4 inline-block text-green-600 hover:underline"
             >
               Add your first location &rarr;
             </Link>
@@ -146,7 +146,7 @@ export default function AdminLocationsPage() {
                   <div className="flex items-center space-x-4">
                     <Link
                       href={`/admin/locations/${location.id}`}
-                      className="px-3 py-1.5 text-sm text-[#0e3c07] hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors"
+                      className="px-3 py-1.5 text-sm text-green-600 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors"
                     >
                       Edit
                     </Link>
