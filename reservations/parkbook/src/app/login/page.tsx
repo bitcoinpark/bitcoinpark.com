@@ -38,11 +38,11 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-[#111111] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         {/* Logo/Header */}
         <div className="text-center">
-          <div className="mx-auto h-20 w-20 bg-[#0e3c07] rounded-xl flex items-center justify-center p-2">
+          <div className="mx-auto h-20 w-20 bg-green-600 rounded-xl flex items-center justify-center p-2">
             <Image
               src="/bp-logo-bw.png"
               alt="Bitcoin Park"
@@ -52,7 +52,7 @@ export default function LoginPage() {
             />
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 dark:text-white">
-            ParkBook
+            Park Reservations
           </h2>
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
             Bitcoin Park Space Booking System
@@ -80,7 +80,7 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 placeholder="you@example.com"
               />
             </div>
@@ -97,7 +97,7 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                className="appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 placeholder="••••••••••••"
               />
             </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="h-4 w-4 text-[#0e3c07] focus:ring-[#0e3c07] border-gray-300 rounded"
+                className="h-4 w-4 text-green-600 focus:ring-green-600 border-gray-300 rounded"
               />
               <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900 dark:text-gray-300">
                 Remember me
@@ -117,7 +117,7 @@ export default function LoginPage() {
             </div>
 
             <div className="text-sm">
-              <a href="/forgot-password" className="font-medium text-[#0e3c07] hover:text-[#0a2d05]">
+              <a href="/forgot-password" className="font-medium text-green-600 hover:text-green-700">
                 Forgot your password?
               </a>
             </div>
@@ -127,7 +127,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-[#0e3c07] hover:bg-[#0a2d05] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0e3c07] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {loading ? (
                 <span className="flex items-center">

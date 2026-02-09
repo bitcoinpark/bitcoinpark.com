@@ -125,16 +125,16 @@ export default function MyBookingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/dashboard" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook</h1>
+              <h1 className="text-xl font-semibold">Park Reservations</h1>
             </Link>
           </div>
           <Link
@@ -164,7 +164,7 @@ export default function MyBookingsPage() {
           </div>
           <Link
             href="/dashboard/book"
-            className="px-4 py-2 bg-[#0e3c07] hover:bg-[#0a2d05] text-white font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-green-600 hover:bg-[#0a2d05] text-white font-medium rounded-lg transition-colors"
           >
             New Booking
           </Link>
@@ -190,7 +190,7 @@ export default function MyBookingsPage() {
         {/* Bookings List */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
             <p className="mt-4 text-gray-500">Loading bookings...</p>
           </div>
         ) : sortedBookings.length === 0 ? (
@@ -209,7 +209,7 @@ export default function MyBookingsPage() {
             </p>
             <Link
               href="/dashboard/book"
-              className="text-[#0e3c07] hover:underline font-medium"
+              className="text-green-600 hover:underline font-medium"
             >
               Book a space &rarr;
             </Link>

@@ -64,16 +64,16 @@ export default function AdminSpacesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/admin" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook Admin</h1>
+              <h1 className="text-xl font-semibold">Park Reservations Admin</h1>
             </Link>
           </div>
           <Link
@@ -96,7 +96,7 @@ export default function AdminSpacesPage() {
           </div>
           <Link
             href="/admin/spaces/new"
-            className="px-4 py-2 bg-[#0e3c07] hover:bg-[#E8840F] text-white font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
           >
             Add Space
           </Link>
@@ -108,7 +108,7 @@ export default function AdminSpacesPage() {
             <select
               value={locationFilter}
               onChange={(e) => setLocationFilter(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07]"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
             >
               <option value="">All Locations</option>
               {locations.map((loc) => (
@@ -118,7 +118,7 @@ export default function AdminSpacesPage() {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07]"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
             >
               <option value="">All Types</option>
               {types.map((type) => (
@@ -131,7 +131,7 @@ export default function AdminSpacesPage() {
         {/* Spaces Grid */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
             <p className="mt-4 text-gray-500">Loading spaces...</p>
           </div>
         ) : filteredSpaces.length === 0 ? (
@@ -166,7 +166,7 @@ export default function AdminSpacesPage() {
                 <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                   <Link
                     href={`/admin/spaces/${space.id}`}
-                    className="text-sm text-[#0e3c07] hover:underline"
+                    className="text-sm text-green-600 hover:underline"
                   >
                     Edit Settings &rarr;
                   </Link>

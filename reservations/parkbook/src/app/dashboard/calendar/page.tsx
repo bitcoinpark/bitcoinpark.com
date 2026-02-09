@@ -150,16 +150,16 @@ export default function CalendarPage() {
   const weekDays = view === 'week' ? getWeekDays() : [currentDate]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/dashboard" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook</h1>
+              <h1 className="text-xl font-semibold">Park Reservations</h1>
             </Link>
           </div>
           <Link
@@ -244,7 +244,7 @@ export default function CalendarPage() {
               <select
                 value={selectedSpace}
                 onChange={(e) => setSelectedSpace(e.target.value)}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0e3c07]"
+                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-600"
               >
                 <option value="">All Spaces</option>
                 {spaces.map((space) => (
@@ -261,7 +261,7 @@ export default function CalendarPage() {
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
           {loading ? (
             <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
               <p className="mt-4 text-gray-500">Loading calendar...</p>
             </div>
           ) : (
@@ -278,7 +278,7 @@ export default function CalendarPage() {
                         key={day.toISOString()}
                         className={`p-3 text-center text-sm font-medium ${
                           isToday(day)
-                            ? 'bg-[#0e3c07]/10 text-[#0e3c07]'
+                            ? 'bg-green-600/10 text-green-600'
                             : 'text-gray-900 dark:text-white'
                         }`}
                       >
@@ -301,13 +301,13 @@ export default function CalendarPage() {
                           <td
                             key={`${day.toISOString()}-${hour}`}
                             className={`p-1 border-l border-gray-100 dark:border-gray-700/50 align-top h-16 ${
-                              isToday(day) ? 'bg-[#0e3c07]/5' : ''
+                              isToday(day) ? 'bg-green-600/5' : ''
                             }`}
                           >
                             {slotBookings.map((booking) => (
                               <div
                                 key={booking.id}
-                                className="text-xs p-1.5 mb-1 rounded bg-[#0e3c07]/20 border-l-2 border-[#0e3c07] truncate"
+                                className="text-xs p-1.5 mb-1 rounded bg-green-600/20 border-l-2 border-green-600 truncate"
                                 title={`${booking.title} - ${booking.space.name}`}
                               >
                                 <div className="font-medium text-gray-900 dark:text-white truncate">
@@ -332,11 +332,11 @@ export default function CalendarPage() {
         {/* Legend */}
         <div className="mt-4 flex items-center space-x-6 text-sm text-gray-600 dark:text-gray-400">
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-[#0e3c07]/20 border-l-2 border-[#0e3c07] rounded"></div>
+            <div className="w-4 h-4 bg-green-600/20 border-l-2 border-green-600 rounded"></div>
             <span>Booked</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-[#0e3c07]/10 rounded"></div>
+            <div className="w-4 h-4 bg-green-600/10 rounded"></div>
             <span>Today</span>
           </div>
         </div>

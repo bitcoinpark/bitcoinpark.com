@@ -88,16 +88,16 @@ export default function AdminUsersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/admin" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook Admin</h1>
+              <h1 className="text-xl font-semibold">Park Reservations Admin</h1>
             </Link>
           </div>
           <Link
@@ -120,7 +120,7 @@ export default function AdminUsersPage() {
           </div>
           <Link
             href="/admin/users/new"
-            className="px-4 py-2 bg-[#0e3c07] hover:bg-[#E8840F] text-white font-medium rounded-lg transition-colors"
+            className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
           >
             Add User
           </Link>
@@ -135,13 +135,13 @@ export default function AdminUsersPage() {
                 placeholder="Search by name or email..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07]"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07]"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
             >
               <option value="">All Roles</option>
               <option value="SUPER_ADMIN">Super Admin</option>
@@ -155,7 +155,7 @@ export default function AdminUsersPage() {
                 type="checkbox"
                 checked={showInactive}
                 onChange={(e) => setShowInactive(e.target.checked)}
-                className="rounded border-gray-300 text-[#0e3c07] focus:ring-[#0e3c07]"
+                className="rounded border-gray-300 text-green-600 focus:ring-green-600"
               />
               <span>Show inactive</span>
             </label>
@@ -166,7 +166,7 @@ export default function AdminUsersPage() {
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
           {loading ? (
             <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
               <p className="mt-4 text-gray-500">Loading users...</p>
             </div>
           ) : filteredUsers.length === 0 ? (
@@ -224,7 +224,7 @@ export default function AdminUsersPage() {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
                         <Link
                           href={`/admin/users/${user.id}`}
-                          className="text-[#0e3c07] hover:underline mr-4"
+                          className="text-green-600 hover:underline mr-4"
                         >
                           Edit
                         </Link>

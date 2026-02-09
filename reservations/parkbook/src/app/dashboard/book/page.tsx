@@ -113,16 +113,16 @@ export default function BookSpacePage() {
   const today = new Date().toISOString().split('T')[0]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <Link href="/dashboard" className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook</h1>
+              <h1 className="text-xl font-semibold">Park Reservations</h1>
             </Link>
           </div>
           <Link
@@ -145,7 +145,7 @@ export default function BookSpacePage() {
 
         {loading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
             <p className="mt-4 text-gray-500">Loading spaces...</p>
           </div>
         ) : (
@@ -165,7 +165,7 @@ export default function BookSpacePage() {
                 value={formData.spaceId}
                 onChange={(e) => setFormData({ ...formData, spaceId: e.target.value })}
                 required
-                className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
               >
                 <option value="">Choose a space...</option>
                 {spaces.map((space) => (
@@ -204,7 +204,7 @@ export default function BookSpacePage() {
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                   required
                   placeholder="e.g., Team Meeting, Workshop, etc."
-                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 />
               </div>
 
@@ -217,7 +217,7 @@ export default function BookSpacePage() {
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows={3}
                   placeholder="Brief description of your booking..."
-                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent resize-none"
+                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent resize-none"
                 />
               </div>
 
@@ -232,7 +232,7 @@ export default function BookSpacePage() {
                   value={formData.attendeeCount}
                   onChange={(e) => setFormData({ ...formData, attendeeCount: parseInt(e.target.value) || 1 })}
                   required
-                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 />
                 {selectedSpace && (
                   <p className="text-xs text-gray-500 mt-1">Maximum capacity: {selectedSpace.capacity}</p>
@@ -254,7 +254,7 @@ export default function BookSpacePage() {
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                   required
-                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 />
               </div>
 
@@ -268,7 +268,7 @@ export default function BookSpacePage() {
                     value={formData.startTime}
                     onChange={(e) => setFormData({ ...formData, startTime: e.target.value })}
                     required
-                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -280,7 +280,7 @@ export default function BookSpacePage() {
                     value={formData.endTime}
                     onChange={(e) => setFormData({ ...formData, endTime: e.target.value })}
                     required
-                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -290,7 +290,7 @@ export default function BookSpacePage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-4 px-4 bg-[#0e3c07] hover:bg-[#0a2d05] text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 px-4 bg-green-600 hover:bg-[#0a2d05] text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {submitting ? (
                 <span className="flex items-center justify-center">

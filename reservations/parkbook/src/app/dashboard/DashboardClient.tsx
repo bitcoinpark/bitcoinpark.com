@@ -100,6 +100,7 @@ export default function DashboardClient({
   const [calendarBookings, setCalendarBookings] = useState<Booking[]>([])
   const [calendarSpaces, setCalendarSpaces] = useState<Space[]>([])
   const [selectedSpace, setSelectedSpace] = useState<string>('')
+  const [selectedLocation, setSelectedLocation] = useState<string>('')
   const [calendarLoading, setCalendarLoading] = useState(false)
 
   // Fetch spaces for booking form
@@ -121,7 +122,7 @@ export default function DashboardClient({
     if (activeTab === 'calendar') {
       fetchCalendarData()
     }
-  }, [activeTab, currentDate, calendarView, selectedSpace])
+  }, [activeTab, currentDate, calendarView, selectedSpace, selectedLocation])
 
   const fetchSpaces = async () => {
     try {
@@ -308,18 +309,30 @@ export default function DashboardClient({
   const getBookingsForSlot = (date: Date, hour: number) => {
     return calendarBookings.filter((booking) => {
       const bookingStart = new Date(booking.startTime)
-      const bookingEnd = new Date(booking.endTime)
       const slotStart = new Date(date)
       slotStart.setHours(hour, 0, 0, 0)
       const slotEnd = new Date(date)
       slotEnd.setHours(hour + 1, 0, 0, 0)
 
+      // Filter by location if selected
+      const matchesLocation = !selectedLocation || booking.space.location.name === selectedLocation
+
+      // Only show booking in the hour slot where it starts
       return (
+        bookingStart >= slotStart &&
         bookingStart < slotEnd &&
-        bookingEnd > slotStart &&
-        booking.status !== 'CANCELLED'
+        booking.status !== 'CANCELLED' &&
+        matchesLocation
       )
     })
+  }
+
+  const getBookingDuration = (booking: Booking) => {
+    const start = new Date(booking.startTime)
+    const end = new Date(booking.endTime)
+    const durationMs = end.getTime() - start.getTime()
+    const durationHours = durationMs / (1000 * 60 * 60)
+    return durationHours
   }
 
   const isToday = (date: Date) => {
@@ -385,16 +398,16 @@ export default function DashboardClient({
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#111111]">
+    <div className="min-h-screen bg-white dark:bg-black">
       {/* Header */}
-      <header className="bg-[#0e3c07] text-white">
+      <header className="bg-green-600 text-white">
         <div className="px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
             <button onClick={() => setActiveTab('home')} className="flex items-center space-x-4">
               <div className="h-10 w-10 bg-white/10 rounded-lg flex items-center justify-center p-1">
                 <Image src="/bp-logo-bw.png" alt="Bitcoin Park" width={32} height={32} className="invert" />
               </div>
-              <h1 className="text-xl font-semibold">ParkBook</h1>
+              <h1 className="text-xl font-semibold">Park Reservations</h1>
             </button>
           </div>
           <div className="flex items-center space-x-4">
@@ -439,8 +452,8 @@ export default function DashboardClient({
             onClick={() => setActiveTab('book')}
             className={`rounded-xl p-6 transition-all text-left ${
               activeTab === 'book'
-                ? 'bg-[#0e3c07] text-white ring-2 ring-[#0e3c07] ring-offset-2'
-                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-[#0e3c07] hover:text-white hover:border-[#0e3c07] text-gray-900 dark:text-white'
+                ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-green-600 hover:text-white hover:border-green-600 text-gray-900 dark:text-white'
             }`}
           >
             <div className="text-lg font-semibold mb-2">Book a Space</div>
@@ -452,8 +465,8 @@ export default function DashboardClient({
             onClick={() => setActiveTab('my-bookings')}
             className={`rounded-xl p-6 transition-all text-left ${
               activeTab === 'my-bookings'
-                ? 'bg-[#0e3c07] text-white ring-2 ring-[#0e3c07] ring-offset-2'
-                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-[#0e3c07] hover:text-white hover:border-[#0e3c07] text-gray-900 dark:text-white'
+                ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-green-600 hover:text-white hover:border-green-600 text-gray-900 dark:text-white'
             }`}
           >
             <div className="text-lg font-semibold mb-2">My Bookings</div>
@@ -465,8 +478,8 @@ export default function DashboardClient({
             onClick={() => setActiveTab('calendar')}
             className={`rounded-xl p-6 transition-all text-left ${
               activeTab === 'calendar'
-                ? 'bg-[#0e3c07] text-white ring-2 ring-[#0e3c07] ring-offset-2'
-                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-[#0e3c07] hover:text-white hover:border-[#0e3c07] text-gray-900 dark:text-white'
+                ? 'bg-green-600 text-white ring-2 ring-green-600 ring-offset-2'
+                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-green-600 hover:text-white hover:border-green-600 text-gray-900 dark:text-white'
             }`}
           >
             <div className="text-lg font-semibold mb-2">Calendar</div>
@@ -514,7 +527,7 @@ export default function DashboardClient({
                 ) : (
                   <div className="px-6 py-8 text-center text-gray-500 dark:text-gray-400">
                     No upcoming bookings.{' '}
-                    <button onClick={() => setActiveTab('book')} className="text-[#0e3c07] hover:underline">
+                    <button onClick={() => setActiveTab('book')} className="text-green-600 hover:underline">
                       Book a space
                     </button>
                   </div>
@@ -524,7 +537,7 @@ export default function DashboardClient({
                 <div className="px-6 py-4 border-t border-gray-200 dark:border-gray-700">
                   <button
                     onClick={() => setActiveTab('my-bookings')}
-                    className="text-sm text-[#0e3c07] hover:underline"
+                    className="text-sm text-green-600 hover:underline"
                   >
                     View all bookings &rarr;
                   </button>
@@ -551,7 +564,7 @@ export default function DashboardClient({
                             setBookingFormData((prev) => ({ ...prev, spaceId: space.id }))
                             setActiveTab('book')
                           }}
-                          className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-[#0e3c07] hover:bg-[#0e3c07]/5 transition-colors text-left"
+                          className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-green-600 hover:bg-green-600/5 transition-colors text-left"
                         >
                           <div className="font-medium text-gray-900 dark:text-white">{space.name}</div>
                           <div className="text-sm text-gray-500 dark:text-gray-400">
@@ -591,7 +604,7 @@ export default function DashboardClient({
                   value={bookingFormData.spaceId}
                   onChange={(e) => setBookingFormData({ ...bookingFormData, spaceId: e.target.value })}
                   required
-                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                  className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                 >
                   <option value="">Choose a space...</option>
                   {spaces.map((space) => (
@@ -630,7 +643,7 @@ export default function DashboardClient({
                     onChange={(e) => setBookingFormData({ ...bookingFormData, title: e.target.value })}
                     required
                     placeholder="e.g., Team Meeting, Workshop, etc."
-                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                   />
                 </div>
 
@@ -643,7 +656,7 @@ export default function DashboardClient({
                     onChange={(e) => setBookingFormData({ ...bookingFormData, description: e.target.value })}
                     rows={3}
                     placeholder="Brief description of your booking..."
-                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent resize-none"
+                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent resize-none"
                   />
                 </div>
 
@@ -658,7 +671,7 @@ export default function DashboardClient({
                     value={bookingFormData.attendeeCount}
                     onChange={(e) => setBookingFormData({ ...bookingFormData, attendeeCount: parseInt(e.target.value) || 1 })}
                     required
-                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                   />
                   {selectedBookingSpace && (
                     <p className="text-xs text-gray-500 mt-1">Maximum capacity: {selectedBookingSpace.capacity}</p>
@@ -680,7 +693,7 @@ export default function DashboardClient({
                     value={bookingFormData.date}
                     onChange={(e) => setBookingFormData({ ...bookingFormData, date: e.target.value })}
                     required
-                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                    className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                   />
                 </div>
 
@@ -694,7 +707,7 @@ export default function DashboardClient({
                       value={bookingFormData.startTime}
                       onChange={(e) => setBookingFormData({ ...bookingFormData, startTime: e.target.value })}
                       required
-                      className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                      className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -706,7 +719,7 @@ export default function DashboardClient({
                       value={bookingFormData.endTime}
                       onChange={(e) => setBookingFormData({ ...bookingFormData, endTime: e.target.value })}
                       required
-                      className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#0e3c07] focus:border-transparent"
+                      className="w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -716,7 +729,7 @@ export default function DashboardClient({
               <button
                 type="submit"
                 disabled={bookingSubmitting}
-                className="w-full py-4 px-4 bg-[#0e3c07] hover:bg-[#0a2d05] text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 px-4 bg-green-600 hover:bg-[#0a2d05] text-white font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {bookingSubmitting ? (
                   <span className="flex items-center justify-center">
@@ -756,7 +769,7 @@ export default function DashboardClient({
             {/* Bookings List */}
             {bookingsLoading ? (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
                 <p className="mt-4 text-gray-500">Loading bookings...</p>
               </div>
             ) : sortedBookings.length === 0 ? (
@@ -775,7 +788,7 @@ export default function DashboardClient({
                 </p>
                 <button
                   onClick={() => setActiveTab('book')}
-                  className="text-[#0e3c07] hover:underline font-medium"
+                  className="text-green-600 hover:underline font-medium"
                 >
                   Book a space &rarr;
                 </button>
@@ -913,18 +926,37 @@ export default function DashboardClient({
                     </button>
                   </div>
 
+                  {/* Location Filter */}
+                  <select
+                    value={selectedLocation}
+                    onChange={(e) => {
+                      setSelectedLocation(e.target.value)
+                      setSelectedSpace('') // Reset space filter when location changes
+                    }}
+                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-600"
+                  >
+                    <option value="">All Locations</option>
+                    {Array.from(new Set(calendarSpaces.map(s => s.location.name))).sort().map((locationName) => (
+                      <option key={locationName} value={locationName}>
+                        {locationName}
+                      </option>
+                    ))}
+                  </select>
+
                   {/* Space Filter */}
                   <select
                     value={selectedSpace}
                     onChange={(e) => setSelectedSpace(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#0e3c07]"
+                    className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-green-600"
                   >
                     <option value="">All Spaces</option>
-                    {calendarSpaces.map((space) => (
-                      <option key={space.id} value={space.id}>
-                        {space.location.name} - {space.name}
-                      </option>
-                    ))}
+                    {calendarSpaces
+                      .filter(space => !selectedLocation || space.location.name === selectedLocation)
+                      .map((space) => (
+                        <option key={space.id} value={space.id}>
+                          {space.location.name} - {space.name}
+                        </option>
+                      ))}
                   </select>
                 </div>
               </div>
@@ -934,7 +966,7 @@ export default function DashboardClient({
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
               {calendarLoading ? (
                 <div className="text-center py-12">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0e3c07] mx-auto"></div>
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto"></div>
                   <p className="mt-4 text-gray-500">Loading calendar...</p>
                 </div>
               ) : (
@@ -950,7 +982,7 @@ export default function DashboardClient({
                             key={day.toISOString()}
                             className={`p-3 text-center text-sm font-medium ${
                               isToday(day)
-                                ? 'bg-[#0e3c07]/10 text-[#0e3c07]'
+                                ? 'bg-green-600/10 text-green-600'
                                 : 'text-gray-900 dark:text-white'
                             }`}
                           >
@@ -971,24 +1003,40 @@ export default function DashboardClient({
                             return (
                               <td
                                 key={`${day.toISOString()}-${hour}`}
-                                className={`p-1 border-l border-gray-100 dark:border-gray-700/50 align-top h-16 ${
-                                  isToday(day) ? 'bg-[#0e3c07]/5' : ''
+                                className={`p-1 border-l border-gray-100 dark:border-gray-700/50 align-top h-16 relative ${
+                                  isToday(day) ? 'bg-green-600/5' : ''
                                 }`}
                               >
-                                {slotBookings.map((booking) => (
-                                  <div
-                                    key={booking.id}
-                                    className="text-xs p-1.5 mb-1 rounded bg-[#0e3c07]/20 border-l-2 border-[#0e3c07] truncate"
-                                    title={`${booking.title} - ${booking.space.name}`}
-                                  >
-                                    <div className="font-medium text-gray-900 dark:text-white truncate">
-                                      {booking.title}
+                                {slotBookings.map((booking) => {
+                                  const duration = getBookingDuration(booking)
+                                  const heightInRem = duration * 4 // 4rem per hour (h-16 = 4rem)
+                                  return (
+                                    <div
+                                      key={booking.id}
+                                      className="text-xs p-1.5 mb-1 rounded bg-green-600/20 border-l-2 border-green-600 relative"
+                                      style={{ height: `${heightInRem}rem`, minHeight: '3rem' }}
+                                      title={`${booking.title} - ${booking.space.name} (${duration}h)`}
+                                    >
+                                      <div className="font-medium text-gray-900 dark:text-white truncate">
+                                        {booking.title}
+                                      </div>
+                                      <div className="text-gray-500 dark:text-gray-400 truncate">
+                                        {booking.space.name}
+                                      </div>
+                                      <div className="text-gray-400 dark:text-gray-500 text-[10px] mt-0.5">
+                                        {new Date(booking.startTime).toLocaleTimeString('en-US', {
+                                          hour: 'numeric',
+                                          minute: '2-digit',
+                                          hour12: true
+                                        })} - {new Date(booking.endTime).toLocaleTimeString('en-US', {
+                                          hour: 'numeric',
+                                          minute: '2-digit',
+                                          hour12: true
+                                        })}
+                                      </div>
                                     </div>
-                                    <div className="text-gray-500 dark:text-gray-400 truncate">
-                                      {booking.space.name}
-                                    </div>
-                                  </div>
-                                ))}
+                                  )
+                                })}
                               </td>
                             )
                           })}
@@ -1003,11 +1051,11 @@ export default function DashboardClient({
             {/* Legend */}
             <div className="mt-4 flex items-center space-x-6 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-[#0e3c07]/20 border-l-2 border-[#0e3c07] rounded"></div>
+                <div className="w-4 h-4 bg-green-600/20 border-l-2 border-green-600 rounded"></div>
                 <span>Booked</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-[#0e3c07]/10 rounded"></div>
+                <div className="w-4 h-4 bg-green-600/10 rounded"></div>
                 <span>Today</span>
               </div>
             </div>
