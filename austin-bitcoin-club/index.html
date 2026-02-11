@@ -203,14 +203,20 @@
             padding: 80px 0;
         }
 
+        .learn-more-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .learn-more-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 4px solid var(--orange);
             border-radius: 8px;
             padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
             text-align: center;
         }
 
@@ -514,6 +520,11 @@
                 font-size: 2rem;
             }
 
+            .learn-more-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .learn-more-card {
                 padding: 30px 20px;
             }
@@ -578,11 +589,19 @@
                 <h2>Read More</h2>
                 <p>Dive deeper into our recent discussions</p>
             </div>
-            <div class="learn-more-card fade-in">
-                <h3>Fiat Food, Fiat Health, & Bitcoin</h3>
-                <p>Industry leaders discuss how fiat currency's expansion through debt has corrupted both healthcare and food systems, and how direct payment alternatives can fix them.</p>
-                <p class="speakers">Featuring: Jimmy Song (Author), Harry Gray (Meat Mafia), Andy Schoonover (CrowdHealth)</p>
-                <a href="fiat-food-fiat-health-bitcoin-jimmy-song-harry-gray-andy-schoonover.html" class="hero-cta">Read More</a>
+            <div class="learn-more-grid">
+                <div class="learn-more-card fade-in">
+                    <h3>Fiat Food, Fiat Health, & Bitcoin</h3>
+                    <p>Industry leaders discuss how fiat currency's expansion through debt has corrupted both healthcare and food systems, and how direct payment alternatives can fix them.</p>
+                    <p class="speakers">Featuring: Jimmy Song (Author), Harry Gray (Meat Mafia), Andy Schoonover (CrowdHealth)</p>
+                    <a href="fiat-food-fiat-health-bitcoin-jimmy-song-harry-gray-andy-schoonover.html" class="hero-cta">Read More</a>
+                </div>
+                <div class="learn-more-card fade-in">
+                    <h3>Powering Freedom</h3>
+                    <p>360 Energy founder Chris Alfano discusses how his company transforms stranded and flared natural gas into reliable power for off-grid Bitcoin mining, delivering economic and environmental benefits while contributing to decentralized hashrate.</p>
+                    <p class="speakers">Featuring: Chris Alfano (360 Energy), Will Cole (Zaprite)</p>
+                    <a href="powering-freedom-chris-alfano-will-cole.html" class="hero-cta">Read More</a>
+                </div>
             </div>
         </div>
     </section>
