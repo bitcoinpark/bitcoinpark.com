@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grassroots Bitcoin 2026 - Bitcoin Park</title>
+    <meta name="description" content="Grassroots Bitcoin 2026 - A gathering of Bitcoin meetup organizers in Nashville. Apply now.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF3E8;
+            --cream-dark: #F0E6D3;
+            --terracotta: #C96B3C;
+            --terracotta-light: #E08A5A;
+            --terracotta-dark: #A85530;
+            --burnt-orange: #D4713B;
+            --dark-green: #1B3A1A;
+            --forest-green: #2D5A2B;
+            --soft-green: #4A7A48;
+            --gold: #D4A843;
+            --gold-light: #E8C76A;
+            --warm-brown: #8B6D4E;
+            --text-dark: #2C1810;
+            --text-body: #4A3728;
+            --text-light: #7A6555;
+            --white: #FFFFFF;
+            --glow-orange: rgba(201, 107, 60, 0.4);
+            --glow-green: rgba(45, 90, 43, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--cream);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 243, 232, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 107, 60, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(139, 109, 78, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .navbar a:hover {
+            color: var(--terracotta);
+            background: rgba(201, 107, 60, 0.08);
+        }
+
+        .navbar a.nav-cta {
+            background: var(--terracotta);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .navbar a.nav-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px var(--glow-orange);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 20px 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201, 107, 60, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatBg 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(45, 90, 43, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatBg 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatBg {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -20px); }
+            66% { transform: translate(-20px, 15px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-graphic {
+            max-width: 550px;
+            width: 80%;
+            height: auto;
+            margin: 0 auto 40px;
+            display: block;
+            animation: floatGraphic 6s ease-in-out infinite;
+        }
+
+        @keyframes floatGraphic {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 8px;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-content h1 .year {
+            color: var(--text-dark);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-location {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--dark-green);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-date {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 45px;
+        }
+
+        .hero-cta {
+            background: var(--terracotta);
+            color: var(--white);
+            padding: 20px 56px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--glow-orange);
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 35px var(--glow-orange);
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--terracotta), var(--gold));
+            margin: 0 auto 50px;
+            border-radius: 2px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--cream-dark);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--terracotta);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .section-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+            color: var(--text-body);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .info-card {
+            flex: 0 1 340px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 35px;
+            border: 1px solid rgba(201, 107, 60, 0.12);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--terracotta), var(--gold));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(139, 109, 78, 0.12);
+            border-color: rgba(201, 107, 60, 0.25);
+        }
+
+        .info-card .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 20px;
+            text-align: center;
+            background: var(--dark-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 107, 60, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: rgba(250, 243, 232, 0.75);
+            margin-bottom: 45px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--terracotta);
+            color: var(--white);
+            padding: 20px 56px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(201, 107, 60, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background: var(--terracotta-light);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 40px rgba(201, 107, 60, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .footer p {
+            color: rgba(250, 243, 232, 0.45);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: rgba(250, 243, 232, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--terracotta-light);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-content {
+                gap: 16px;
+                padding: 0 20px;
+            }
+
+            .navbar a {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-graphic {
+                max-width: 380px;
+                margin-bottom: 30px;
+            }
+
+            .hero-cta {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 70px 20px;
+            }
+
+            .info-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .info-card {
+                flex: 0 1 auto;
+                width: 100%;
+            }
+
+            .info-card {
+                padding: 30px 25px;
+            }
+
+            .cta-section {
+                padding: 70px 20px;
+            }
+
+            .cta-button {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-content {
+                gap: 8px;
+            }
+
+            .navbar a {
+                font-size: 0.75rem;
+                padding: 5px 8px;
+                letter-spacing: 0.03em;
+            }
+
+            .hero-graphic {
+                max-width: 300px;
+                width: 90%;
+            }
+
+            .hero-cta,
+            .cta-button {
+                display: block;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="#top">Home</a>
+            <a href="#what">About</a>
+            <a href="#who">Who's Invited</a>
+            <a href="https://bitcoinpark.com/grassroots" target="_blank" rel="noopener noreferrer" class="nav-cta">Apply</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <img src="grassroots-graphic.png" alt="Grassroots Bitcoin 2026" class="hero-graphic">
+            <h1>GRASSROOTS BITCOIN <span class="year">2026</span></h1>
+            <p class="hero-subtitle">A Bitcoin Park Experience</p>
+            <p class="hero-location">Nashville, Tennessee</p>
+            <p class="hero-date">April 1, 2026</p>
+            <a href="https://bitcoinpark.com/grassroots" target="_blank" rel="noopener noreferrer" class="hero-cta">Apply Here</a>
+        </div>
+    </section>
+
+    <!-- What is Grassroots? -->
+    <section class="section" id="what">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What is Grassroots?</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content fade-in">
+                <p>Bitcoin Park is inviting bitcoin meetup organizers to Nashville for a 1-day event focused on building the best meetup experiences and how we can best work together toward that goal.</p>
+                <p>This event is invite-only and limited to organizers.</p>
+            </div>
+            <div class="info-cards fade-in">
+                <div class="info-card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Connect</h3>
+                    <p>Meet fellow Bitcoin meetup organizers from across the country and world. Share what works and learn from each other's experiences.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon">🌱</div>
+                    <h3>Grow</h3>
+                    <p>Learn best practices for building thriving local Bitcoin communities. Take home actionable strategies for your meetup.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon">🔗</div>
+                    <h3>Collaborate</h3>
+                    <p>Build lasting relationships and create a network of organizers working together to strengthen Bitcoin adoption from the ground up.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who is Invited? -->
+    <section class="section" id="who">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Who is Invited?</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content fade-in">
+                <p>Grassroots Bitcoin is for Bitcoin meetup organizers throughout the country and world. Anyone who runs BitDevs, Bitcoin meetups, or runs grassroots bitcoin education in their local community is invited to apply.</p>
+            </div>
+            <div class="info-cards fade-in">
+                <div class="info-card">
+                    <div class="card-icon">📍</div>
+                    <h3>Meetup Organizers</h3>
+                    <p>Leaders who run local Bitcoin meetups and bring their communities together around sound money.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon">💻</div>
+                    <h3>BitDevs Organizers</h3>
+                    <p>Technical community leaders who host Socratic seminars and developer-focused Bitcoin discussions.</p>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon">📚</div>
+                    <h3>Bitcoin Educators</h3>
+                    <p>Those running grassroots Bitcoin education programs in their local communities and beyond.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="apply">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Ready to Join?</h2>
+                <p>Applications are open for Bitcoin meetup organizers. Space is limited — apply today to secure your spot at Grassroots Bitcoin 2026.</p>
+                <a href="https://bitcoinpark.com/grassroots" target="_blank" rel="noopener noreferrer" class="cta-button">Apply Here</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a> &middot; Nashville, TN</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
