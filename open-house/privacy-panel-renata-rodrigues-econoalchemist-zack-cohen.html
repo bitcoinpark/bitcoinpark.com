@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open House #30: Privacy Is the New Power, How to Protect Yourself — Renata Rodrigues, Econoalchemist &amp; Zack Cohen — Open House at Bitcoin Park</title>
+    <meta property="og:title" content="Privacy Builders Say Convenience Is Surveillance's Greatest Weapon">
+    <meta property="og:description" content="A Fedi field operator, a 256 Foundation co-founder, and a DC policy researcher argue that privacy tools must outpace regulation because the legal system has already chosen a side.">
+    <meta property="og:image" content="https://bitcoinpark.com/open-house/privacy-panel-renata-rodrigues-econoalchemist-zack-cohen.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/open-house/privacy-panel-renata-rodrigues-econoalchemist-zack-cohen.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #0f1e15;
+            --darker-bg: #0a1610;
+            --green: #2e7d32;
+            --green-light: #4caf50;
+            --white: #ffffff;
+            --light-gray: #b8c8b8;
+            --medium-gray: #82a086;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 30, 21, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--green);
+        }
+
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        .navbar-back-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--green);
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--darker-bg);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--dark-bg));
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--dark-bg);
+            padding: 100px 0 60px 0;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--green);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--green);
+        }
+
+        .speaker-highlight {
+            color: var(--green);
+            font-weight: 600;
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        .article-content blockquote {
+            border-left: 3px solid var(--green);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: var(--white);
+        }
+
+        /* Video Placeholder */
+        .video-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .video-placeholder-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(46, 125, 50, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .video-placeholder-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 24px solid var(--green);
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            margin-left: 6px;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .video-placeholder p {
+            font-size: 1rem;
+            color: var(--medium-gray);
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--darker-bg);
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--green);
+            background: rgba(46, 125, 50, 0.08);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--green);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--darker-bg);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer p {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 80px 0 60px 0;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .video-placeholder {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <span class="navbar-title">Open House</span>
+            <a href="https://bitcoinpark.com/schedule" class="navbar-back-link">&larr; Back to Bitcoin Park Schedule</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>Open House #30: Privacy Is the New Power, How to Protect Yourself</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="https://www.meetup.com/bitcoinpark/events/312748733/" target="_blank" style="color: var(--green); text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">Open House</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Panel Discussion</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Date</span>
+                        <span class="session-meta-value">February 2, 2026</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value"><a href="https://fedi.xyz" target="_blank" style="color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">Renata Rodrigues</a> (<a href="https://fedi.xyz" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--green)'; this.style.borderBottomColor='var(--green)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">Fedi</a>), <a href="https://256foundation.org" target="_blank" style="color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">Econoalchemist</a> (<a href="https://256foundation.org" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--green)'; this.style.borderBottomColor='var(--green)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">256 Foundation</a>), &amp; <a href="https://btcpolicy.org" target="_blank" style="color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">Zack Cohen</a> (<a href="https://btcpolicy.org" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--green)'; this.style.borderBottomColor='var(--green)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">Bitcoin Policy Institute</a>)</span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    A panel discussion on the state of digital privacy featuring <a href="https://fedi.xyz" target="_blank" style="color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">Fedi</a> head of field operations Renata Rodrigues, <a href="https://256foundation.org" target="_blank" style="color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">256 Foundation</a> co-founder Econoalchemist, and <a href="https://btcpolicy.org" target="_blank" style="color: var(--green); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--green)';" onmouseout="this.style.borderBottomColor='transparent';">Bitcoin Policy Institute</a> researcher Zack Cohen. The panel examines the widening gap between people who build privacy tools and the governments prosecuting them, arguing that convenience has become the primary obstacle to personal freedom and that technology must outrun regulation to preserve basic rights.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="privacy-panel-renata-rodrigues-econoalchemist-zack-cohen.jpg" alt="Privacy panel discussion at Open House, Bitcoin Park">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Privacy Builders Say Convenience Is Surveillance's Greatest Weapon</h2>
+                <p class="article-subheader">Three practitioners from different corners of the Bitcoin privacy fight gathered in Nashville to deliver a shared warning: the legal system is criminalizing the tools people need, and the only realistic defense is building faster than regulators can restrict.</p>
+
+                <div class="article-content">
+                    <p>Renata Rodrigues spends her days onboarding activists in communities with no internet access, low literacy, and phones that barely function. As head of field operations at Fedi, a privacy-focused Bitcoin wallet, she has watched people in the most dangerous circumstances immediately upload their real photos and names to platforms that never asked for them. The impulse, she told a Nashville audience, reveals the core problem. Privacy fails not because the tools are absent but because convenience has trained people to surrender personal information reflexively.</p>
+
+                    <p>Econoalchemist, co-founder of the 256 Foundation, framed the stakes in starker terms. He pointed to the Samourai Wallet case, where two software developers received four- and five-year prison sentences for building a tool that helped Bitcoin users preserve their anonymity on a public blockchain. The prosecution treated code as criminal conduct. Econoalchemist argued the underlying principle remains unresolved: software developers are being held responsible for what end users do with neutral technology.</p>
+
+                    <!-- Video Placeholder -->
+                    <div class="video-placeholder">
+                        <div class="video-placeholder-icon"></div>
+                        <h3>Full Panel Recording</h3>
+                        <p>Video coming soon</p>
+                    </div>
+
+                    <blockquote>"Software developers cannot be held responsible for what the end users are doing with that code, just like auto manufacturers are not held responsible when someone does something illegal with that car."</blockquote>
+
+                    <p>Zack Cohen, a researcher at the Bitcoin Policy Institute in Washington, D.C., acknowledged the policy front is not moving fast enough. The Blockchain Regulatory Certainty Act attempted to protect developers from being classified as money transmitting businesses. But Cohen called it insufficient. One federal statute among thousands, he noted, does nothing about state-level enforcement or novel legal theories regulators invent after the fact. The state of California recently sued a Florida-based 3D-printed firearms company simply because California residents could access the files over the internet. Cohen sees this jurisdictional reach as a template for how privacy tool developers will be targeted next.</p>
+
+                    <blockquote>"When privacy goes away, all of our freedoms collapse."</blockquote>
+
+                    <p>Rodrigues brought the conversation back to ground level with a global perspective. She described the travel rule expanding from 64 to 115 countries, creating an international framework where personal financial information crosses borders between governments. In France, she said, the Bitcoin meetup community went from four gatherings to 40 in one year, then dropped to zero after a wave of violent home invasions targeting cryptocurrency holders. The fear, she argued, is not hypothetical. Rodrigues compared uncontrolled internet access for children to dropping them in downtown New York at 3 a.m., a visceral illustration of how digital exposure creates physical danger.</p>
+
+                    <p>The three panelists converged on a practical prescription rather than a political one. Econoalchemist urged the audience to stop using Google services entirely. Rodrigues recommended starting with encrypted email and resisting the temptation to share real identities on platforms that do not require them. Cohen asked people to simply use the privacy tools that already exist, arguing that adoption in rooms like Bitcoin Park is how network effects shift away from surveillance infrastructure. All three acknowledged the difficulty. Building decentralized privacy tools, Rodrigues said, is far harder than running a centralized exchange. But the alternative is a world where every financial transaction, every communication, and every movement generates a permanent record held by institutions that have proven unable to protect it.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
