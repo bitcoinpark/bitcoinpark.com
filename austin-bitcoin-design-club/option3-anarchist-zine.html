@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Bitcoin Design Club - Bitcoin Park Austin</title>
+    <meta property="og:title" content="Austin Bitcoin Design Club - Bitcoin Park Austin">
+    <meta property="og:description" content="Join the Austin Bitcoin Design Club at Bitcoin Park Austin. Monthly meetups exploring design, AI tools, and building freedom tech interfaces.">
+    <meta property="og:image" content="https://bitcoinpark.com/austin-bitcoin-design-club/ABDC-Placeholder.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/austin-bitcoin-design-club/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #f5f0e8;
+            --ink-black: #1a1a1a;
+            --xerox-gray: #3a3a3a;
+            --red-ink: #d62828;
+            --marker-yellow: #ffd60a;
+            --newsprint: #e8e4dc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Courier Prime', 'Courier New', monospace;
+            background: var(--paper);
+            color: var(--ink-black);
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Paper texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Xerox scanlines */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--paper);
+            border-bottom: 4px dashed var(--ink-black);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
+            transform: rotate(-0.3deg);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+            position: relative;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-ink);
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--red-ink);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-logo img {
+            height: 40px;
+            filter: invert(1) grayscale(1) contrast(1.3);
+            transform: rotate(1deg);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 85px;
+            background: var(--newsprint);
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            display: block;
+            filter: grayscale(0.6) contrast(1.3) brightness(1.1);
+            border: 8px solid var(--ink-black);
+            border-style: solid;
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.2);
+            transform: rotate(-0.5deg);
+            object-fit: cover;
+        }
+
+        /* Placeholder styling when image is missing */
+        .hero-image-placeholder {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--newsprint);
+            border: 8px solid var(--ink-black);
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.2);
+            transform: rotate(-0.5deg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 80%;
+            border: 4px dashed var(--xerox-gray);
+            opacity: 0.3;
+        }
+
+        .hero-title {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 4rem;
+            color: var(--ink-black);
+            text-align: center;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
+        }
+
+        .hero-title .lightning {
+            color: var(--marker-yellow);
+            font-size: 3.5rem;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .hero-cta-container {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--paper);
+            position: relative;
+        }
+
+        /* Tape effect */
+        .hero-cta-container::before,
+        .hero-cta-container::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            width: 100px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-cta-container::before {
+            left: 20%;
+            transform: rotate(-5deg);
+        }
+
+        .hero-cta-container::after {
+            right: 20%;
+            transform: rotate(5deg);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--ink-black);
+            color: var(--marker-yellow);
+            padding: 18px 45px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'Permanent Marker', cursive;
+            border: 5px solid var(--ink-black);
+            transform: rotate(-2deg);
+            box-shadow: 8px 8px 0 var(--red-ink);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 2px dashed var(--marker-yellow);
+        }
+
+        .hero-cta:hover {
+            transform: rotate(-2deg) translate(-3px, -3px);
+            box-shadow: 12px 12px 0 var(--red-ink);
+        }
+
+        .btn-outline {
+            background: var(--paper);
+            border: 5px solid var(--ink-black);
+            color: var(--ink-black);
+            box-shadow: 6px 6px 0 var(--xerox-gray);
+        }
+
+        .btn-outline::before {
+            border-color: var(--ink-black);
+        }
+
+        .btn-outline:hover {
+            background: var(--marker-yellow);
+            box-shadow: 10px 10px 0 var(--xerox-gray);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 90px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section::before {
+            content: '✂ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            font-size: 1.2rem;
+            color: var(--xerox-gray);
+            text-align: center;
+            letter-spacing: 0.2em;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--ink-black);
+            text-transform: uppercase;
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            transform: rotate(-1deg);
+        }
+
+        /* Highlighter effect */
+        .section-header h2::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: -10px;
+            right: -10px;
+            height: 35px;
+            background: var(--marker-yellow);
+            opacity: 0.6;
+            z-index: -1;
+            transform: skew(-2deg);
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--xerox-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-family: 'Special Elite', cursive;
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            background: var(--newsprint);
+            padding: 90px 0;
+        }
+
+        .learn-more-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .learn-more-card {
+            background: var(--paper);
+            border: 4px solid var(--ink-black);
+            padding: 35px;
+            position: relative;
+            transition: all 0.2s ease;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.15);
+            transform: rotate(0.5deg);
+        }
+
+        /* Tape corners */
+        .learn-more-card::before,
+        .learn-more-card::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .learn-more-card::before {
+            top: -10px;
+            left: 30px;
+            transform: rotate(-8deg);
+        }
+
+        .learn-more-card::after {
+            bottom: -10px;
+            right: 30px;
+            transform: rotate(5deg);
+        }
+
+        .learn-more-card:hover {
+            transform: rotate(0.5deg) translate(-5px, -5px);
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .learn-more-card h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--ink-black);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.3;
+            font-family: 'Special Elite', cursive;
+            position: relative;
+        }
+
+        /* Underline effect */
+        .learn-more-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--red-ink) 0px,
+                var(--red-ink) 10px,
+                transparent 10px,
+                transparent 15px
+            );
+        }
+
+        .learn-more-card p {
+            font-size: 1.05rem;
+            color: var(--ink-black);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .learn-more-card .speakers {
+            font-size: 0.95rem;
+            color: var(--red-ink);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Special Elite', cursive;
+        }
+
+        /* Videos Section */
+        .video-carousel {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border: 6px solid var(--ink-black);
+            box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.2);
+            transform: rotate(-0.5deg);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            background: var(--ink-black);
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-title {
+            text-align: center;
+            color: var(--ink-black);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 25px;
+            text-transform: uppercase;
+            font-family: 'Special Elite', cursive;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%) rotate(-1deg);
+        }
+
+        .video-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: -5px;
+            right: -5px;
+            height: 12px;
+            background: var(--marker-yellow);
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%) rotate(-5deg);
+            background: var(--ink-black);
+            color: var(--marker-yellow);
+            border: 4px solid var(--ink-black);
+            width: 55px;
+            height: 55px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            font-family: 'Permanent Marker', cursive;
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav:hover {
+            transform: translateY(-50%) rotate(-5deg) scale(1.1);
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav.prev {
+            left: -30px;
+            transform: translateY(-50%) rotate(5deg);
+        }
+
+        .carousel-nav.prev:hover {
+            transform: translateY(-50%) rotate(5deg) scale(1.1);
+        }
+
+        .carousel-nav.next {
+            right: -30px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .carousel-dot {
+            width: 18px;
+            height: 18px;
+            background: var(--paper);
+            border: 3px solid var(--ink-black);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            transform: rotate(45deg);
+        }
+
+        .carousel-dot:hover {
+            background: var(--marker-yellow);
+        }
+
+        .carousel-dot.active {
+            background: var(--red-ink);
+            transform: rotate(45deg) scale(1.3);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            background: var(--paper);
+            border: 5px solid var(--ink-black);
+            padding: 50px 40px;
+            box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.15);
+            position: relative;
+            transform: rotate(-0.5deg);
+        }
+
+        /* More tape */
+        .about-text::before,
+        .about-text::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text::before {
+            top: -12px;
+            right: 80px;
+            transform: rotate(3deg);
+        }
+
+        .about-text::after {
+            top: -12px;
+            left: 80px;
+            transform: rotate(-3deg);
+        }
+
+        .about-text h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--ink-black);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-family: 'Permanent Marker', cursive;
+            position: relative;
+            display: inline-block;
+        }
+
+        .about-text h3::before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: -10px;
+            right: -10px;
+            height: 30px;
+            background: var(--marker-yellow);
+            opacity: 0.5;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            color: var(--ink-black);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Supporters Section */
+        .supporters-section {
+            background: var(--newsprint);
+            padding: 70px 0;
+            text-align: center;
+            border-top: 4px dashed var(--ink-black);
+        }
+
+        .mission-statement {
+            font-size: 1.8rem;
+            color: var(--ink-black);
+            font-weight: 700;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            font-family: 'Permanent Marker', cursive;
+            position: relative;
+            display: inline-block;
+        }
+
+        .mission-statement::before {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: -10px;
+            right: -10px;
+            height: 22px;
+            background: var(--marker-yellow);
+            opacity: 0.6;
+            z-index: -1;
+            transform: skew(-2deg);
+        }
+
+        .supporters-thank-you {
+            font-size: 1.1rem;
+            color: var(--xerox-gray);
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            font-family: 'Special Elite', cursive;
+        }
+
+        .supporters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-badge {
+            background: var(--paper);
+            border: 3px solid var(--ink-black);
+            padding: 10px 18px;
+            color: var(--ink-black);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Special Elite', cursive;
+            transition: all 0.2s ease;
+            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+            transform: rotate(calc(var(--rotation) * 1deg));
+        }
+
+        .supporter-badge:nth-child(odd) {
+            --rotation: 1;
+        }
+
+        .supporter-badge:nth-child(even) {
+            --rotation: -1;
+        }
+
+        .supporter-badge:hover {
+            background: var(--marker-yellow);
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--paper);
+            padding: 45px 0;
+            text-align: center;
+            border-top: 4px dashed var(--ink-black);
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--ink-black);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-family: 'Special Elite', cursive;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-ink);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--red-ink);
+        }
+
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+
+        .site-footer p {
+            color: var(--xerox-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .learn-more-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                padding: 0 20px;
+            }
+
+            .hero-title .lightning {
+                font-size: 2.2rem;
+                margin: 0 5px;
+            }
+
+            .hero-image-placeholder {
+                height: 300px;
+            }
+        }
+
+        /* Hand-drawn circle animation */
+        @keyframes handDrawn {
+            0%, 100% {
+                transform: rotate(-1deg);
+            }
+            50% {
+                transform: rotate(1deg);
+            }
+        }
+
+        .hero-cta {
+            animation: handDrawn 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="navbar-links">
+                <a href="#learn-more">Read</a>
+                <a href="#videos">Videos</a>
+                <a href="#about">About</a>
+                <a href="https://bitcoinpark.com/schedule.html" target="_blank">Schedule</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-image-placeholder">
+            <h1 class="hero-title">AUSTIN BITCOIN <span class="lightning">⚡</span> DESIGN CLUB</h1>
+        </div>
+        <div class="hero-cta-container">
+            <a href="https://bitcoinpark.com/austin" target="_blank" class="hero-cta">Join Us</a>
+        </div>
+    </section>
+
+    <section id="learn-more" class="learn-more-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Read More</h2>
+                <p>Cut & Paste</p>
+            </div>
+            <div class="learn-more-grid">
+                <div class="learn-more-card">
+                    <h3>Designers Debate What's Left When AI Writes the Code in a Day</h3>
+                    <p>Designers and developers grapple with tools that are rapidly rewriting their workflows, questioning traditional visual design tools when AI can generate polished, functional designs in hours instead of weeks.</p>
+                    <p class="speakers">Featuring: Sahil Chaturvedi / Austin Kelsay</p>
+                    <a href="designers-debate-ai-design-sahil-chaturvedi-austin-kelsay.html" class="hero-cta" style="font-size: 1.1rem; padding: 12px 30px; margin-top: 20px;">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Past Meetups</h2>
+                <p>The Archive</p>
+            </div>
+            <div class="video-carousel">
+                <button class="carousel-nav prev" onclick="moveCarousel(-1)">◄</button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <div class="video-embed">
+                                <iframe src="https://www.youtube.com/embed/dY6FJOYgbdg"
+                                        title="Austin Bitcoin Design Club Socratic Seminar"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="video-title">Bitcoin Design Club Socratic</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav next" onclick="moveCarousel(1)">►</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://www.youtube.com/@BitcoinPark/playlists" target="_blank" class="hero-cta btn-outline">
+                    View All Videos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About ABDC</h3>
+                    <p>Austin Bitcoin Design Club is a monthly gathering of designers, developers, and builders in Austin, Texas. We explore the intersection of design, AI tools, and freedom technology, creating spaces for meaningful dialogue about the future of product development in the Bitcoin ecosystem.</p>
+                    <a href="https://bitcoinpark.com/austin" target="_blank" class="hero-cta" style="margin-top: 20px;">Join Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Freedom Tech Movement</p>
+            <p class="supporters-thank-you">Supported By:</p>
+            <div class="supporters-grid">
+                <div class="supporter-badge">HRF</div>
+                <div class="supporter-badge">Cholla Inc.</div>
+                <div class="supporter-badge">Unchained</div>
+                <div class="supporter-badge">Ten31</div>
+                <div class="supporter-badge">Fedi</div>
+                <div class="supporter-badge">CleanSpark</div>
+                <div class="supporter-badge">Satoshi Pacioli</div>
+                <div class="supporter-badge">Bitkey</div>
+                <div class="supporter-badge">Proto</div>
+                <div class="supporter-badge">Foundry</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://bitcoinpark.com" target="_blank">Park</a>
+                <a href="https://twitter.com/bitcoinpark" target="_blank">Twitter</a>
+                <a href="https://www.youtube.com/@BitcoinPark" target="_blank">YouTube</a>
+            </div>
+            <p>© 2026 Bitcoin Park</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = track.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const dotsContainer = document.getElementById('carouselDots');
+
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Bitcoin Design Club - Bitcoin Park Austin</title>
+    <meta property="og:title" content="Austin Bitcoin Design Club - Bitcoin Park Austin">
+    <meta property="og:description" content="Join the Austin Bitcoin Design Club at Bitcoin Park Austin. Monthly meetups exploring design, AI tools, and building freedom tech interfaces.">
+    <meta property="og:image" content="https://bitcoinpark.com/austin-bitcoin-design-club/ABDC-Placeholder.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/austin-bitcoin-design-club/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --almost-black: #0a0a0a;
+            --orange: #ff6600;
+            --blood-red: #cc0000;
+            --electric-yellow: #ffff00;
+            --white: #ffffff;
+            --dirty-white: #f0f0f0;
+            --punk-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', monospace, sans-serif;
+            background: var(--black);
+            color: var(--dirty-white);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--black);
+            border-bottom: 4px solid var(--orange);
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: var(--dirty-white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--electric-yellow);
+            text-shadow: 0 0 10px var(--electric-yellow);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .navbar-logo img {
+            height: 45px;
+            filter: brightness(1.2) contrast(1.3);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 90px;
+            background: var(--almost-black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 102, 0, 0.03) 0px,
+                transparent 2px,
+                transparent 4px,
+                rgba(255, 102, 0, 0.03) 4px
+            );
+            pointer-events: none;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.4) brightness(0.9);
+            border: 5px solid var(--orange);
+            border-left: none;
+            border-right: none;
+        }
+
+        .hero-cta-container {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--black);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--black);
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.2s ease;
+            border: 4px solid var(--orange);
+            font-family: 'Bebas Neue', sans-serif;
+            transform: skew(-5deg);
+            box-shadow: 8px 8px 0 rgba(255, 102, 0, 0.3);
+        }
+
+        .hero-cta:hover {
+            background: var(--electric-yellow);
+            color: var(--black);
+            border-color: var(--electric-yellow);
+            transform: skew(-5deg) translateY(-5px);
+            box-shadow: 12px 12px 0 rgba(255, 102, 0, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 4px solid var(--orange);
+            color: var(--orange);
+            box-shadow: 6px 6px 0 rgba(255, 102, 0, 0.2);
+        }
+
+        .btn-outline:hover {
+            background: var(--orange);
+            color: var(--black);
+            box-shadow: 10px 10px 0 rgba(255, 102, 0, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--orange);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: 'Bebas Neue', sans-serif;
+            text-shadow: 4px 4px 0 var(--orange);
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--punk-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Learn More Section */
+        .learn-more-section {
+            background: var(--almost-black);
+            padding: 100px 0;
+        }
+
+        .learn-more-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .learn-more-card {
+            background: var(--black);
+            border: 4px solid var(--orange);
+            border-left: 15px solid var(--orange);
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-card::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            background: var(--orange);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .learn-more-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 var(--orange);
+        }
+
+        .learn-more-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--electric-yellow);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .learn-more-card p {
+            font-size: 1.1rem;
+            color: var(--dirty-white);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .learn-more-card .speakers {
+            font-size: 0.95rem;
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Videos Section */
+        .video-carousel {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            border: 5px solid var(--orange);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            background: var(--black);
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-title {
+            text-align: center;
+            color: var(--electric-yellow);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--orange);
+            color: var(--black);
+            border: 4px solid var(--black);
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: var(--electric-yellow);
+            transform: translateY(-50%) scale(1.15);
+        }
+
+        .carousel-nav.prev {
+            left: -30px;
+        }
+
+        .carousel-nav.next {
+            right: -30px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .carousel-dot {
+            width: 15px;
+            height: 15px;
+            background: var(--punk-gray);
+            border: 3px solid var(--orange);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            transform: rotate(45deg);
+        }
+
+        .carousel-dot:hover {
+            background: var(--orange);
+        }
+
+        .carousel-dot.active {
+            background: var(--orange);
+            transform: rotate(45deg) scale(1.3);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text h3 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--electric-yellow);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .about-text p {
+            font-size: 1.3rem;
+            color: var(--dirty-white);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Supporters Section */
+        .supporters-section {
+            background: var(--almost-black);
+            padding: 80px 0;
+            text-align: center;
+            border-top: 5px solid var(--orange);
+        }
+
+        .mission-statement {
+            font-size: 1.6rem;
+            color: var(--electric-yellow);
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .supporters-thank-you {
+            font-size: 1.2rem;
+            color: var(--dirty-white);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .supporters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-badge {
+            background: var(--black);
+            border: 3px solid var(--orange);
+            padding: 12px 20px;
+            color: var(--dirty-white);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.2s ease;
+            transform: skew(-5deg);
+        }
+
+        .supporter-badge:hover {
+            background: var(--orange);
+            color: var(--black);
+            transform: skew(-5deg) scale(1.1);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--black);
+            padding: 50px 0;
+            text-align: center;
+            border-top: 4px solid var(--orange);
+        }
+
+        .footer-links {
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            color: var(--dirty-white);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--electric-yellow);
+        }
+
+        .site-footer p {
+            color: var(--punk-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .navbar-links {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .learn-more-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        .hero-cta:active {
+            animation: glitch 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="navbar-links">
+                <a href="#learn-more">Read</a>
+                <a href="#videos">Videos</a>
+                <a href="#about">About</a>
+                <a href="https://bitcoinpark.com/schedule.html" target="_blank">Schedule</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="ABDC-Placeholder.jpg" alt="Austin Bitcoin Design Club" class="hero-image">
+        <div class="hero-cta-container">
+            <a href="https://bitcoinpark.com/austin" target="_blank" class="hero-cta">Join Us</a>
+        </div>
+    </section>
+
+    <section id="learn-more" class="learn-more-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Read More</h2>
+                <p>Dive into the chaos</p>
+            </div>
+            <div class="learn-more-grid">
+                <div class="learn-more-card">
+                    <h3>Designers Debate What's Left When AI Writes the Code in a Day</h3>
+                    <p>Designers and developers grapple with tools that are rapidly rewriting their workflows, questioning traditional visual design tools when AI can generate polished, functional designs in hours instead of weeks.</p>
+                    <p class="speakers">Featuring: Sahil Chaturvedi / Austin Kelsay</p>
+                    <a href="designers-debate-ai-design-sahil-chaturvedi-austin-kelsay.html" class="hero-cta" style="font-size: 1.1rem; padding: 15px 35px; margin-top: 20px;">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Past Meetups</h2>
+                <p>Watch the archive</p>
+            </div>
+            <div class="video-carousel">
+                <button class="carousel-nav prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <div class="video-embed">
+                                <iframe src="https://www.youtube.com/embed/dY6FJOYgbdg"
+                                        title="Austin Bitcoin Design Club Socratic Seminar"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <p class="video-title">Bitcoin Design Club Socratic</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav next" onclick="moveCarousel(1)">&#10095;</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://www.youtube.com/@BitcoinPark/playlists" target="_blank" class="hero-cta btn-outline">
+                    View All Videos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About ABDC</h3>
+                    <p>Austin Bitcoin Design Club is a monthly gathering of designers, developers, and builders in Austin, Texas. We explore the intersection of design, AI tools, and freedom technology, creating spaces for meaningful dialogue about the future of product development in the Bitcoin ecosystem.</p>
+                    <a href="https://bitcoinpark.com/austin" target="_blank" class="hero-cta" style="margin-top: 20px;">Join Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Freedom Tech Movement</p>
+            <p class="supporters-thank-you">Supported By:</p>
+            <div class="supporters-grid">
+                <div class="supporter-badge">HRF</div>
+                <div class="supporter-badge">Cholla Inc.</div>
+                <div class="supporter-badge">Unchained</div>
+                <div class="supporter-badge">Ten31</div>
+                <div class="supporter-badge">Fedi</div>
+                <div class="supporter-badge">CleanSpark</div>
+                <div class="supporter-badge">Satoshi Pacioli</div>
+                <div class="supporter-badge">Bitkey</div>
+                <div class="supporter-badge">Proto</div>
+                <div class="supporter-badge">Foundry</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://bitcoinpark.com" target="_blank">Park</a>
+                <a href="https://twitter.com/bitcoinpark" target="_blank">Twitter</a>
+                <a href="https://www.youtube.com/@BitcoinPark" target="_blank">YouTube</a>
+            </div>
+            <p>© 2026 Bitcoin Park</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const track = document.getElementById('carouselTrack');
+        const slides = track.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const dotsContainer = document.getElementById('carouselDots');
+
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(i);
+            dotsContainer.appendChild(dot);
+        }
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+    </script>
+</body>
+</html>
