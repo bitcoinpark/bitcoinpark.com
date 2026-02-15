@@ -173,7 +173,6 @@ export async function PATCH(
       const emailContent = bookingCancellationEmail({
         title: updatedBooking.title,
         spaceName: updatedBooking.space.name,
-        locationName: updatedBooking.space.location.name,
         startTime: updatedBooking.startTime,
         userName: updatedBooking.user.name,
       })
