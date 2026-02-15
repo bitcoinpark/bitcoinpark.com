@@ -81,6 +81,7 @@ export const createSpaceSchema = z.object({
   photos: z.array(z.string().url()).default([]),
   bookableHours: z
     .record(
+      z.string(),
       z.object({
         open: z.string().nullable(),
         close: z.string().nullable(),
