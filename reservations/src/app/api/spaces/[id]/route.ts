@@ -83,12 +83,12 @@ export async function PATCH(
         type: data.type,
         capacity: data.capacity,
         minCapacity: data.minCapacity,
-        amenities: data.amenities,
-        photos: data.photos,
+        amenities: data.amenities as any,
+        photos: data.photos as any,
         bookableHours: data.bookableHours,
         bufferMinutes: data.bufferMinutes,
         requiresApproval: data.requiresApproval,
-        bookingRules: data.bookingRules,
+        bookingRules: data.bookingRules as any,
         status: body.status, // Allow status updates
       },
       include: {
@@ -103,7 +103,7 @@ export async function PATCH(
         action: 'SPACE_UPDATED',
         entityType: 'Space',
         entityId: id,
-        details: data,
+        details: data as any,
       },
     })
 
