@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
         name: data.name,
         address: data.address,
         timezone: data.timezone,
-        hoursOfOperation: data.hoursOfOperation,
+        hoursOfOperation: data.hoursOfOperation as any,
         description: data.description,
         imageUrl: data.imageUrl,
       },

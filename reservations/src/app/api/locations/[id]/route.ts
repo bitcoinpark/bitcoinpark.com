@@ -85,7 +85,7 @@ export async function PATCH(
         name: data.name,
         address: data.address,
         timezone: data.timezone,
-        hoursOfOperation: data.hoursOfOperation,
+        hoursOfOperation: data.hoursOfOperation as any,
         description: data.description,
         imageUrl: data.imageUrl,
         isActive: data.isActive,
