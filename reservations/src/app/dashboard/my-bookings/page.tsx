@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -23,7 +23,7 @@ interface Booking {
   }
 }
 
-export default function MyBookingsPage() {
+function MyBookingsPageContent() {
   const searchParams = useSearchParams()
   const showSuccess = searchParams.get('success') === 'true'
 
@@ -284,5 +284,13 @@ export default function MyBookingsPage() {
         )}
       </main>
     </div>
+  )
+}
+
+export default function MyBookingsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <MyBookingsPageContent />
+    </Suspense>
   )
 }
