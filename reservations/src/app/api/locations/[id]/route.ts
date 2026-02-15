@@ -99,7 +99,7 @@ export async function PATCH(
         action: 'LOCATION_UPDATED',
         entityType: 'Location',
         entityId: id,
-        details: data,
+        details: data as any,
       },
     })
 
