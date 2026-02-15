@@ -46,6 +46,7 @@ export const createLocationSchema = z.object({
   address: z.string().min(5, 'Address must be at least 5 characters'),
   timezone: z.string().default('America/Chicago'),
   hoursOfOperation: z.record(
+    z.string(),
     z.object({
       open: z.string().nullable(),
       close: z.string().nullable(),
