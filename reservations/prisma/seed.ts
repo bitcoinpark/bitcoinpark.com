@@ -1,15 +1,7 @@
 import { PrismaClient, UserRole, SpaceType, SpaceStatus } from '@prisma/client'
-import { PrismaPg } from '@prisma/adapter-pg'
-import { Pool } from 'pg'
 import bcrypt from 'bcryptjs'
 
-// Use DATABASE_URL from environment
-const connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:51214/template1?sslmode=disable'
-const pool = new Pool({
-  connectionString,
-})
-const adapter = new PrismaPg(pool)
-const prisma = new PrismaClient({ adapter })
+const prisma = new PrismaClient()
 
 const defaultHours = {
   monday: { open: '09:00', close: '21:00' },
