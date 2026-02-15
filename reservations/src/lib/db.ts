@@ -2,9 +2,11 @@ import { PrismaClient } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
 import { Pool } from 'pg'
 
-// Use TCP connection to Prisma Postgres (port 51214)
+// Use DATABASE_URL from environment
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:51214/template1?sslmode=disable'
+
 const pool = new Pool({
-  connectionString: 'postgres://postgres:postgres@localhost:51214/template1?sslmode=disable',
+  connectionString,
 })
 
 const adapter = new PrismaPg(pool)
