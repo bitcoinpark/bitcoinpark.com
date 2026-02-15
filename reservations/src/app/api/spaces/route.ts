@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
         minCapacity: data.minCapacity,
         amenities: data.amenities as any,
         photos: data.photos as any,
-        bookableHours: data.bookableHours,
+        bookableHours: data.bookableHours as any,
         bufferMinutes: data.bufferMinutes,
         requiresApproval: data.requiresApproval,
         bookingRules: data.bookingRules as any,
