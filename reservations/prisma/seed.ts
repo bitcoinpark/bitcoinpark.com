@@ -3,9 +3,10 @@ import { PrismaPg } from '@prisma/adapter-pg'
 import { Pool } from 'pg'
 import bcrypt from 'bcryptjs'
 
-// Use TCP connection for seed script
+// Use DATABASE_URL from environment
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:51214/template1?sslmode=disable'
 const pool = new Pool({
-  connectionString: 'postgres://postgres:postgres@localhost:51214/template1?sslmode=disable',
+  connectionString,
 })
 const adapter = new PrismaPg(pool)
 const prisma = new PrismaClient({ adapter })
