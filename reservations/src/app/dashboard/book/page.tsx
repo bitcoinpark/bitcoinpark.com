@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -20,7 +20,7 @@ interface Space {
   location: Location
 }
 
-export default function BookSpacePage() {
+function BookSpacePageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const preselectedSpaceId = searchParams.get('spaceId')
@@ -308,5 +308,13 @@ export default function BookSpacePage() {
         )}
       </main>
     </div>
+  )
+}
+
+export default function BookSpacePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <BookSpacePageContent />
+    </Suspense>
   )
 }
