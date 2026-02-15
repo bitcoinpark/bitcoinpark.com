@@ -1,0 +1,30 @@
+﻿Brief: Texas Energy and Mining Summit 26
+Location: Bitcoin Park, Austin, Tennessee
+Dates: May 20-21
+Format: Two-day, all-inclusive summit
+Overview
+The Texas Energy and Mining Summit 2026 is a curated gathering of approximately 200 operators, engineers, policymakers, entrepreneurs, capital allocators, and institutional leaders who are building at the intersection of energy, compute, and capital in the most dynamic energy market in North America. We explore how Texas has become the laboratory where Silicon Valley tech innovation meets East Coast financial engineering.
+Hosted in the spirit of Bitcoin Park's signature summits, this gathering centers on the idea of the Energy Frontier in Laboratory Texas, and how the state's unique market structure, permitting environment, and entrepreneurial culture are redefining what's possible in energy monetization. From ERCOT's deregulated market design to the convergence of Bitcoin mining, AI, and next-generation power production, the summit explores how Texas is pioneering new models for grid optimization, resource allocation, and community resilience. As traditional energy producers, Bitcoin miners, ranchers, and technology innovators collaborate in unprecedented ways, Texas stands as both proving ground and blueprint for energy's future.
+Attendees
+* Bitcoin Mining entrepreneurs and operators in hardware, services, and operations.
+* Energy producers, traders, and grid operators within ERCOT and beyond.
+* Policymakers, regulators, and legal experts shaping Texas energy policy.
+* AI and HPC infrastructure builders and capital allocators.
+* Landowners, ranchers, and community stakeholders integrating with energy projects.
+* Financial innovators and capital markets leaders.
+Programming Tracks
+1. The Texas Electric Market: ERCOT and Beyond
+Examining the unique characteristics of Texas's deregulated energy market and how ERCOT's structure creates opportunities unavailable in other states. This track contrasts Texas's market-driven approach with alternative, exploring grid dynamics, price signals, and the mechanisms that enable rapid innovation and deployment.
+2. Fast Permitting and Development: The Texas Advantage
+Focusing on how Texas's regulatory environment enables faster project deployment than anywhere else in the nation. Sessions cover permitting pathways, land development, interconnection processes, and the partnerships between energy developers, local communities, and governmental entities that make the Texas model work.
+3. The Convergence: Bitcoin, AI, and Next-Gen Compute
+Dedicated to the intersection of Bitcoin mining and artificial intelligence workloads in Texas. This track explores how these complementary loads are being co-located, how they optimize grid economics, and why Texas has become the epicenter for this convergence. Includes discussions on infrastructure requirements, cooling solutions, and the future of compute density.
+4. Capital Formation and Financial Innovation
+Zooming in on the financial engines driving Texas's energy transformation. This includes discussions on the Texas Stock Exchange opening in Dallas, novel financing structures for energy projects, treasury strategies for miners and AI operators, and how Wall Street capital is flowing into Texas energy infrastructure. Special focus on how West Coast technology capital and East Coast financial sophistication are meeting in Texas.
+5. Community Integration: Ranchers, Operators, and Local Leaders
+Highlighting the voices and experiences of landowners, ranchers, and small-scale operators who are integrating Bitcoin mining and energy projects into their operations. This track tells the stories of how traditional Texas industries are evolving, how communities are benefiting from energy monetization, and the lessons learned from successful partnerships.
+6. Policy, Energy Security, and the International Bridge
+Addressing the governmental frameworks and international dimensions shaping Texas's energy future. Topics include grid sovereignty, energy independence, the role of Texas's Latin American diaspora in cross-border energy opportunities, and how state policy is enabling innovation while maintaining reliability and security.
+Accompanying Report: "The Texas Frontier: Market Structure at the Edge of Innovation"
+Abstract:
+Texas has emerged as the world's most dynamic laboratory for energy innovation, where a unique combination of deregulated markets, fast permitting, abundant natural resources, and entrepreneurial culture has created unprecedented opportunities for energy monetization. This spotlight examines how ERCOT's market structure differs fundamentally from other domestic and international models, enabling Bitcoin miners, AI operators, and traditional energy producers to experiment with grid optimization, demand response, and novel businesses. We explore the convergence of Silicon Valley innovation and Wall Street capital in Texas, the integration of ranchers and landowners into the energy economy, and the lessons this frontier offers for energy markets worldwide.

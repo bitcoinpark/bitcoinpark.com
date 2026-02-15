@@ -1,0 +1,174 @@
+﻿Brief: Bitcoin Takeover 2026
+Power of Payments
+Location: Bitcoin Park, Austin Texas
+Dates: March 12 to March 13
+Format: Two-day, all-inclusive summit aligned during SXSW
+Overview
+Bitcoin Takeover is a curated gathering of approximately 200 entrepreneurs, developers, policymakers, and capital allocators who are building the infrastructure for sovereign payments and sound money. United by a mission to restore genuine technological discourse at SXSW, we are reclaiming Austin's creative and innovative spirit.
+Austin, Texas,has long hosted SXSW, a festival that began as a celebration of indie music and later expanded into film and technology. Over time, however, SXSW's identity shifted dramatically. What was once a platform for unknown artists and filmmakers has become overshadowed by big business, sidelining creative roots in favor of mainstream tech agendas. 
+Notably absent from SXSW's interactive track is any dedicated focus on Bitcoin, despite it being the most significant monetary and technological innovation of our time.
+The Bitcoin Takeover emerges as an independent response, running parallel to but unaffiliated with SXSW from March 12th to 13th. And a special meetup in partnership with HRF on Monday March 16th. 
+This summit, now in its 5th year, features a two-day immersive experience: 
+Day 1 explores the cutting edge of Bitcoin payments infrastructure, examining how Lightning Network, custody solutions, and payment processors are enabling economic freedom at scale. 
+Day 2 showcases Proof of Work, featuring eight founders and builders expanding from the payments ecosystem touching on custody,, infrastructure, open source development, AI integration, education, energy, and mining. [a]
+Each builder shares their vision, projects, and strategic insights through presentations offering tangible examples of real businesses supporting the Bitcoin industry.
+Our vision is to restore genuine technological discourse by spotlighting Bitcoin as the antidote to fiat currency's structural flaws and celebrating the real people building within the space. Bitcoin represents sound money, economic stability, and freedom, principles far beyond speculative investment narratives. This is a catalyst for builders and believers who understand that innovation happens at the edges.
+
+
+Attendees
+1. Entrepreneurs building Bitcoin-native businesses and payment infrastructure.
+2. Business owners integrating Bitcoin payments and treasury strategies.
+3. Lightning Network developers and node operators.
+4. Open source contributors and protocol developers.
+5. Policymakers and legal experts shaping Bitcoin regulation.
+6. Capital allocators and investors focused on Bitcoin infrastructure.
+Prospective Sponsors:
+1. Zaprite
+2. Unchained
+3. ZBD
+4. Zeus
+5. Square
+6. Cash App
+7. Bull Bitcoin
+8. Strike
+9. River
+10. Breez
+11. Voltage
+12. XAPO Bank
+13. Fold
+14. Nu Bank 
+15. Spiral
+16. Craft Ventures
+17. Open Node
+
+
+Potential Speakers:
+1. Parker Lewis
+2. Andre Neves
+3. Jack Mallers
+4. Miles Suter
+5. Francis Pouliot 
+6. Stephan Livera
+7. Michael Goldstein (Bitstein)
+8. Marty Bent
+9. Drew Armstrong
+10. Will Cole
+11. John Magill
+12. Will Reeves
+13. Alex Bergealuex
+14. Mike Schmidt
+15. Yash Belavadi
+16. Justin Moon
+17. Austin Kelsay
+18. Jesse Shrader
+19. Ryan Gentry
+20. Michael Rihani
+21. Calle (Cashu)
+22. Tom Hoznik
+
+
+Programming Tracks
+Day 1: Power of Payments 
+Dedicated to the infrastructure and innovation enabling Bitcoin as a medium of exchange. The day examines the technical, economic, and practical realities of building payment systems on the Bitcoin and Lightning Network. Sessions cover payment processor architecture, merchant adoption strategies, custody solutions for payment flows, cross-border settlement, point-of-sale integration, and the convergence of Bitcoin payments with emerging technologies. Attendees will engage with founders, engineers, and entrepreneurs who are solving real problems in the payments stack, from routing optimization to user experience design.
+Day 2: Proof of Work 
+A showcase of ten builders and entrepreneurs demonstrating proof of work through real businesses and projects. Each presentation offers a window into the strategic thinking, technical challenges, and business models that define Bitcoin's growing ecosystem. Categories span:
+* Custody & Security: 
+   * Self-custody tools, multisig solutions, and institutional custody infrastructure
+
+   * Payments & Commerce: 
+   * Point-of-sale systems, payment processors, merchant tools, and Lightning service providers
+
+      * Lightning Infrastructure: 
+      * Node software, channel management, routing optimization, and liquidity services
+
+         * Open Source Development: 
+         * Protocol contributions, wallet development, and tooling for developers
+
+            * AI & Bitcoin: 
+            * Machine learning applications, automated trading, and compute optimization
+
+               * Education & Media: 
+               * Content platforms, educational resources, and community-building initiatives
+
+                  * Energy & Mining: 
+                  * Mining operations, energy monetization, and grid optimization strategies
+Each founder will present their work, followed by audience Q&A.
+
+
+
+
+Accompanying Spotlight : SATS BY SATS WEST
+Indie isn’t Dead: Bitcoin Builders and the Counter-SXSW Movement 
+As SXSW has transformed from a platform for unknown creators into a corporate showcase, Bitcoin builders are reclaiming Austin's original ethos of independent innovation and creative disruption. This report examines why Bitcoin, despite being the most transformative technology of the 21st century, remains absent from mainstream tech conferences, and how that absence has catalyzed a parallel movement of entrepreneurs, developers, and thinkers who are building outside established channels. We profile ten entrepreneurs demonstrating proof of work innovation across custody, mining, education, and open source development. The Bitcoin Takeover isn’t mere counter-programming; it is a declaration that real innovation still happens at the grassroots, driven by builders who value sovereignty, freedom, and sound money. This is the story of how Austin's indie spirit lives on—not in conference halls, but in the work of those building the future of money.
+—-------------------
+Creative Brief
+
+
+bitcoinpark.com/takeover 
+Core Visual Identity
+Key Metaphor: The Underground Rising
+The underground music scene, breaking through to reclaim the surface. Just as Austin's iconic indie musicians once performed in dive bars and small venues before transforming culture from the ground up, Bitcoin builders are creating transformative infrastructure outside mainstream recognition, preparing to emerge as the dominant paradigm. The metaphor emphasizes grassroots authenticity, independent creation, and the inevitable rise of genuine innovation over corporate spectacle.
+Key Image: Roots Breaking Through Concrete
+Visualize vibrant, living roots, rendered in subtle Bitcoin orange with electric accents, breaking through cracked, grayscale concrete slabs. 
+The concrete represents corporate tech infrastructure (SXSW), while the roots represent decentralized Bitcoin builders growing from below. The roots should appear strong, networked, and interconnected, symbolizing the Lightning Network and collaborative open source development. The moment of breakthrough conveys inevitability: what grows organically from true need cannot be contained by artificial structures.
+Color Palette
+Primary Colors:
+                  * Bitcoin Orange (#F7931A): Used for all primary branding, headlines, and calls-to-action. Represents energy, innovation, and the Bitcoin movement.
+                  * Electric Blue (#00D4FF): Accent color representing Lightning Network, technological sophistication, and forward momentum. Used sparingly for highlights and digital elements.
+Secondary Colors:
+                  * Deep Black (#0A0A0A): Primary background color, conveying seriousness, sophistication, and the "underground" aesthetic.
+                  * Concrete Gray (#808080): Used for secondary text, borders, and to represent "establishment tech" in contrast visuals.
+                  * Pure White (#FFFFFF): Text on dark backgrounds, creating stark contrast and clarity.
+Accent Colors:
+                  * Neon Green (#39FF14): Limited use for "breakthrough" moments, live indicators, or highlighting proof-of-work achievements.
+                  * Burnt Orange (#CC5500): Used for warmth in photography and to reference Austin's music scene heritage.
+Typography
+Primary Typeface: Inter (Sans-serif)
+A modern, highly legible font family for all body text, supporting text, and digital interfaces. Communicates technical competence and accessibility. Use regular weight for body copy, semi-bold for subheadings, and bold for emphasis.
+  
+
+Display Typeface: Space Grotesk (Geometric Sans) 
+Used exclusively for headlines, event titles, and large-format text. Its geometric construction and wide apertures create visual impact while maintaining technical credibility. Evokes both digital innovation and architectural permanence.
+  
+
+Monospace Accent: JetBrains Mono
+Used sparingly for code snippets, technical specifications, wallet addresses, or to emphasize technical authenticity. Reinforces the developer-focused, technically rigorous nature of the event.
+  
+
+Visual Style & Tone
+Photography Style:
+Authentic, documentary-style photography emphasizing real people building real things. Show hands working on hardware, close-ups of mining equipment, developers at keyboards, small business owners using Lightning terminals. Avoid stock photography aesthetics; prefer raw, unpolished images that convey genuine work. High contrast with deep blacks and strategic use of Bitcoin orange lighting. Environmental shots should show workshops, maker spaces, and community gathering areas—not polished conference rooms.
+Graphic Elements:
+                  * Isometric illustrations of network nodes, showing interconnected payment channels
+                  * Abstract representations of cryptographic concepts rendered geometrically
+                  * Data visualizations showing transaction flows, Lightning Network growth, and adoption metrics
+                  * Minimal use of Bitcoin symbols; when used, integrate them subtly into larger compositions
+                  * Circuit board patterns and electrical imagery to emphasize infrastructure and technical foundations
+Motion & Animation:
+When applicable, use subtle animations showing:
+                  * Network connections forming and strengthening
+                  * Roots growing and branching beneath surfaces
+                  * Lightning bolts moving through payment channels
+                  * Blocks being mined and confirmed All motion should feel organic and purposeful, never flashy or gratuitous.
+Language:
+Language to Embrace:
+Builders, proof of work, sovereignty, infrastructure, grassroots, independent, genuine, real, permissionless, open, decentralized, sound money, freedom, reclaim
+Language to Avoid:
+Disruptive, revolutionary (overused), blockchain, crypto (prefer Bitcoin specifically), innovation (as empty descriptor), ecosystem (prefer network or community), thought leader, synergy
+Application Guidelines
+Print Materials:
+All printed collateral (badges, posters, programs) should use heavy cardstock with matte finish. Consider subtle texture resembling concrete or aged paper. Orange spot color when budget permits; otherwise high-quality black and white with orange reserved for digital.
+Digital Assets:
+Social media graphics should use 16:9 or 1:1 formats with high contrast. Animated GIFs showing root growth or network formation for announcements. Website should feature dark mode by default, with orange accents drawing attention to speaker lineup and registration.
+Environmental Design:
+Signage should feel industrial and purposeful—metal finishes, stenciled typography, high-visibility orange directional elements. Consider projection mapping of network visualizations in main spaces. Avoid corporate conference aesthetics; create spaces that feel like maker shops or recording studios.
+
+
+[a]@rw@bitcoinpark.com 
+
+
+we will need to refine as we confirm speakers.
+
+
+for now, refine based on the 8 proposed speakers in the Speaker sheet https://docs.google.com/spreadsheets/d/1cCapkVrIh5QJNlrvoC36cK_56rdkTTSmhaMYqcYaHJw/edit?gid=584484815#gid=584484815
+_Assigned to rw@bitcoinpark.com_
