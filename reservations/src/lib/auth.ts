@@ -108,13 +108,6 @@ declare module 'next-auth' {
   }
 }
 
-declare module 'next-auth/jwt' {
-  interface JWT {
-    id: string
-    role: UserRole
-  }
-}
-
 // Helper to check if user has required role
 export function hasRole(userRole: UserRole, requiredRoles: UserRole[]): boolean {
   return requiredRoles.includes(userRole)
