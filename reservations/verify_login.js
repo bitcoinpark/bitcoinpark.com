@@ -29,9 +29,9 @@ async function verifyLogin() {
     console.log('   Active:', user.isActive)
     console.log('   Password hash starts with:', user.passwordHash.substring(0, 30) + '...')
     
-    // Test the password
-    const match = await bcrypt.compare('admin123', user.passwordHash)
-    console.log('\n   Testing password "admin123":', match ? '✅ MATCHES' : '❌ DOES NOT MATCH')
+    // Test the password (from seed.ts line 20)
+    const match = await bcrypt.compare('BitcoinPark2026!', user.passwordHash)
+    console.log('\n   Testing password "BitcoinPark2026!":', match ? '✅ MATCHES' : '❌ DOES NOT MATCH')
     
     if (!match) {
       console.log('\n⚠️  PASSWORD MISMATCH - This is the problem!')
