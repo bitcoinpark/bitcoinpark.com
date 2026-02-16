@@ -61,7 +61,7 @@ cp .env.example .env
 
 Required variables:
 - `DATABASE_URL` - PostgreSQL connection string
-- `NEXTAUTH_SECRET` - Generate with `openssl rand -base64 32`
+- `AUTH_SECRET` - Generate with `openssl rand -base64 32` (NextAuth v5 uses AUTH_SECRET, not NEXTAUTH_SECRET)
 - `NEXTAUTH_URL` - Your app URL (e.g., `http://localhost:3000`)
 - `RESEND_API_KEY` - Your Resend API key for emails
 
@@ -90,7 +90,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 After seeding:
 - Email: `admin@bitcoinpark.com`
-- Password: `BitcoinPark2024!`
+- Password: `BitcoinPark2026!`
 
 **Important**: Change this password immediately after first login!
 

@@ -44,15 +44,27 @@ VERCEL_TOKEN          = [Token from step 2]
 VERCEL_ORG_ID         = [Org ID from step 1]
 VERCEL_PROJECT_ID     = [Project ID from step 1]
 DATABASE_URL          = [PostgreSQL connection string from Neon]
-NEXTAUTH_SECRET       = jSKhfBRddK8Jmd1TvzkU3kDlORlO4G5yfolyJj0Kczc=
+AUTH_SECRET           = jSKhfBRddK8Jmd1TvzkU3kDlORlO4G5yfolyJj0Kczc=
 NEXTAUTH_URL          = [Your Vercel URL, e.g., https://parkbook.vercel.app]
 RESEND_API_KEY        = [API key from Resend]
 EMAIL_FROM            = ParkBook <noreply@bitcoinpark.com>
 ```
 
-### 5. Initialize Database
+**IMPORTANT:** NextAuth v5 uses `AUTH_SECRET` (not `NEXTAUTH_SECRET`)!
 
-After first successful deployment, run migrations:
+### 5. Database Initialization
+
+**The GitHub Actions workflow now automatically:**
+- Runs `npx prisma migrate deploy` to create database tables
+- Runs `npx prisma db seed` to create the default admin user and spaces
+
+This happens on every deployment before the build step.
+
+**Default Admin Credentials:**
+- Email: `admin@bitcoinpark.com`
+- Password: `BitcoinPark2026!`
+
+**Manual Database Operations (if needed):**
 
 ```bash
 # Install Vercel CLI
@@ -62,8 +74,10 @@ npm install -g vercel
 cd reservations
 vercel env pull
 
-# Run migrations
+# Run migrations manually
 npx prisma migrate deploy
+
+# Re-run seed script manually
 npx prisma db seed
 ```
 
@@ -89,6 +103,20 @@ After first deployment, also add the environment variables directly in Vercel:
 
 1. Go to Vercel Dashboard → Your Project
 2. **Settings** → **Environment Variables**
-3. Add all the same secrets (except VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID)
+3. Add all the same secrets (except VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID):
+   - `DATABASE_URL` - Your Neon PostgreSQL connection string
+   - `AUTH_SECRET` - Your NextAuth secret (NOT NEXTAUTH_SECRET!)
+   - `NEXTAUTH_URL` - Your Vercel deployment URL
+   - `RESEND_API_KEY` - Your Resend API key
+   - `EMAIL_FROM` - Email sender address
 
 This ensures they're available during build and runtime.
+
+## Login Credentials
+
+After deployment completes, log in with:
+
+**Email:** admin@bitcoinpark.com
+**Password:** BitcoinPark2026!
+
+⚠️ **IMPORTANT:** Change this password immediately after first login!

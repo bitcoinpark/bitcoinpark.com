@@ -21,9 +21,9 @@ async function checkUser() {
     console.log('  Active:', user.isActive)
     console.log('  Password hash:', user.passwordHash.substring(0, 20) + '...')
     
-    // Test password
-    const passwordMatch = await bcrypt.compare('admin123', user.passwordHash)
-    console.log('  Password "admin123" matches:', passwordMatch)
+    // Test password (from seed.ts line 20)
+    const passwordMatch = await bcrypt.compare('BitcoinPark2026!', user.passwordHash)
+    console.log('  Password "BitcoinPark2026!" matches:', passwordMatch)
     
   } catch (error) {
     console.error('Error:', error.message)
