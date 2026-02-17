@@ -258,6 +258,58 @@
             background: var(--marker-yellow);
         }
 
+        /* Video Embed Styles */
+        .video-container {
+            margin: 40px 0;
+            background: var(--newsprint);
+            padding: 20px;
+            border: 5px solid var(--ink-black);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.15);
+            transform: rotate(-0.3deg);
+            position: relative;
+        }
+
+        .video-container::before,
+        .video-container::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 22px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container::before {
+            top: -11px;
+            left: 40px;
+            transform: rotate(-4deg);
+        }
+
+        .video-container::after {
+            top: -11px;
+            right: 40px;
+            transform: rotate(4deg);
+        }
+
+        .video-embed {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: var(--ink-black);
+            border: 3px solid var(--ink-black);
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .speaker-link {
             color: var(--red-ink);
             text-decoration: none;
@@ -448,6 +500,15 @@
 
             <article class="article-content">
                 <p>That tension surfaced throughout a February meetup at Bitcoin Park Austin, where product designers and developers grappled with tools that are rapidly rewriting their workflows. "I cannot believe that just one year ago, we used to spend hours, weeks, and months making prototypes in Figma," one designer noted in a discussion thread. The group examined whether traditional visual design tools still matter when code generation has become so cheap and fast.</p>
+
+                <div class="video-container">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/Xbxq36wg5gY"
+                                title="Designers Debate What's Left When AI Writes the Code in a Day"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
 
                 <p>The debate isn't purely theoretical. Benji Taylor, head of design at Base and creator of the acclaimed Family wallet, recently built an intricate icon morphing system in a single day using Claude Code. His achievement—20 icons that transform into any other through actual shape manipulation rather than opacity fades—would have taken substantially longer using traditional methods. Taylor's insight wasn't just prompting the AI to "make animations look nice." He constrained the system to exactly three SVG lines per icon, forcing elegant solutions the AI might not have discovered alone.</p>
 
