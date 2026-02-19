@@ -16,14 +16,14 @@
   <meta property="og:description" content="Bitcoin Takeover 2026. Power of Payments. March 12 & 13 in Austin, TX. A curated gathering building sovereign payments infrastructure. Presented by Bitcoin Park.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bitcoinpark.com/takeover">
-  <meta property="og:image" content="https://bitcoinpark.com/takeover/Bitcoin Takeover 2026 - FINAL.png">
+  <meta property="og:image" content="https://bitcoinpark.com/takeover/Takeover-Meetup-with-Sponsors.jpg">
   <meta property="og:site_name" content="Bitcoin Park">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bitcoin Takeover 2026 - Power of Payments | March 12-13, Austin TX">
   <meta name="twitter:description" content="Bitcoin Takeover 2026. Power of Payments. March 12 & 13 in Austin, TX. A curated gathering building sovereign payments infrastructure. Presented by Bitcoin Park.">
-  <meta name="twitter:image" content="https://bitcoinpark.com/takeover/Bitcoin Takeover 2026 - FINAL.png">
+  <meta name="twitter:image" content="https://bitcoinpark.com/takeover/Takeover-Meetup-with-Sponsors.jpg">
   
   <link rel="canonical" href="https://bitcoinpark.com/takeover">
   
@@ -51,7 +51,7 @@
       "name": "Bitcoin Park",
       "url": "https://bitcoinpark.com"
     },
-    "image": "https://bitcoinpark.com/takeover/Bitcoin Takeover 2026 - FINAL.png",
+    "image": "https://bitcoinpark.com/takeover/Takeover-Meetup-with-Sponsors.jpg",
     "url": "https://bitcoinpark.com/takeover",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
@@ -537,7 +537,16 @@
       margin: 0;
       padding: 0;
     }
-    
+
+    /* Image map areas - cursor pointer on hover */
+    area {
+      cursor: pointer;
+    }
+
+    area:hover {
+      opacity: 0.8;
+    }
+
     /* Mobile-specific hero image - hidden on desktop */
     .hero-image .hero-image-mobile {
       display: none;
@@ -1188,8 +1197,20 @@
   <!-- Hero Section - Full Width Poster -->
   <section class="hero">
     <div class="hero-image">
-      <img src="./Bitcoin Takeover 2026 - FINAL.png" alt="Bitcoin Takeover 2026 - Power of Payments - March 12 & 13, Austin TX" class="hero-image-desktop">
-      <img src="./Bitcoin Takeover 2026 - FINAL.png" alt="Bitcoin Takeover 2026 - Power of Payments - March 12 & 13, Austin TX" class="hero-image-mobile">
+      <img src="./Takeover-Meetup-with-Sponsors.jpg" alt="Bitcoin Takeover 2026 - Power of Payments - March 12 & 13, Austin TX - Presented by Bitcoin Park, Supported by Zaprite, Block, ZBD, and Unchained" class="hero-image-desktop" usemap="#sponsor-map">
+      <map name="sponsor-map">
+        <!-- Bitcoin Park logo (top) -->
+        <area shape="rect" coords="350,55,590,95" href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer" alt="Bitcoin Park">
+        <!-- Zaprite logo -->
+        <area shape="rect" coords="440,590,580,625" href="https://zaprite.com" target="_blank" rel="noopener noreferrer" alt="Zaprite">
+        <!-- Block logo -->
+        <area shape="rect" coords="655,590,830,625" href="https://block.xyz" target="_blank" rel="noopener noreferrer" alt="Block">
+        <!-- ZBD logo -->
+        <area shape="rect" coords="910,590,1020,625" href="https://zbd.gg" target="_blank" rel="noopener noreferrer" alt="ZBD">
+        <!-- Unchained logo -->
+        <area shape="rect" coords="1095,590,1320,625" href="https://unchained.com" target="_blank" rel="noopener noreferrer" alt="Unchained">
+      </map>
+      <img src="./Takeover-Meetup-with-Sponsors.jpg" alt="Bitcoin Takeover 2026 - Power of Payments - March 12 & 13, Austin TX - Presented by Bitcoin Park, Supported by Zaprite, Block, ZBD, and Unchained" class="hero-image-mobile">
       <div class="hero-roots-overlay"></div>
     </div>
   </section>
@@ -1380,6 +1401,15 @@
         <div class="speaker-name">Sahil Chaturvedi</div>
         <div class="speaker-role mono">Designer</div>
         <div class="speaker-company">Austin Bitcoin Design Club</div>
+      </div>
+
+      <div class="speaker-card fade-in">
+        <div class="speaker-image">
+          <img src="./Janessa-Lopez.jpeg" alt="Janessa Lopez">
+        </div>
+        <div class="speaker-name">Janessa Lopez</div>
+        <div class="speaker-role mono" style="white-space: normal;">Digital Assets, AI & Emerging Tech Policy Lead</div>
+        <div class="speaker-company">Block</div>
       </div>
 
       <div class="speaker-card fade-in">
