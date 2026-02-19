@@ -545,10 +545,14 @@
       cursor: pointer;
       z-index: 10;
       transition: background-color 0.3s ease;
+      /* Temporary: visible border for debugging - remove after testing */
+      border: 2px solid rgba(247, 147, 26, 0.5);
+      background-color: rgba(247, 147, 26, 0.1);
     }
 
     .sponsor-link:hover {
-      background-color: rgba(247, 147, 26, 0.15);
+      background-color: rgba(247, 147, 26, 0.3);
+      border-color: rgba(247, 147, 26, 0.8);
     }
 
     /* Hide sponsor links on mobile */
