@@ -106,7 +106,7 @@ export const revoke = mutation({
 });
 
 // Validate an API key (used internally by HTTP routes)
-export const validate = query({
+export const validate = mutation({
   args: {
     apiKey: v.string(),
   },
