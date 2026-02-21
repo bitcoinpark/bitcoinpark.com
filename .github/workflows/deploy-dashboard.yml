@@ -27,6 +27,12 @@ jobs:
         working-directory: ./dashboard
         run: npm ci
 
+      - name: Deploy Convex backend
+        working-directory: ./dashboard
+        run: npx convex deploy
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+
       - name: Build application
         working-directory: ./dashboard
         run: npm run build
