@@ -82,13 +82,13 @@ export default function TaskDetailPage() {
             <div className="flex gap-2">
               <span
                 className="px-3 py-1 rounded-full text-sm font-medium"
-                style={priorityColors[task.priority]}
+                style={priorityColors[task.priority as keyof typeof priorityColors]}
               >
                 {task.priority}
               </span>
               <span
                 className="px-3 py-1 rounded-full text-sm font-medium"
-                style={statusColors[task.status]}
+                style={statusColors[task.status as keyof typeof statusColors]}
               >
                 {task.status.replace("_", " ")}
               </span>
