@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --bp-bg: #0f1e15;
+  --bp-bg-dark: #0a1610;
+  --bp-card: #162618;
+  --bp-card-hover: #1a2e20;
+  --bp-green: #2e7d32;
+  --bp-green-light: #4caf50;
+  --bp-green-hover: #1b5e20;
+  --bp-text: #ffffff;
+  --bp-text-muted: #b8c8b8;
+  --bp-text-dim: #82a086;
+  --bp-border: #2e5a3e;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bp-bg);
+  color: var(--bp-text);
+}
+
+input, textarea, select {
+  background-color: var(--bp-bg-dark) !important;
+  color: var(--bp-text) !important;
+  border-color: var(--bp-border) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--bp-text-dim) !important;
+}
+
+select option {
+  background-color: var(--bp-bg-dark);
+  color: var(--bp-text);
+}
+
+code {
+  background-color: var(--bp-bg-dark) !important;
+  color: var(--bp-green-light) !important;
+}
+
+.bp-btn-primary {
+  background-color: var(--bp-green);
+  color: #ffffff;
+}
+
+.bp-btn-primary:hover {
+  background-color: var(--bp-green-hover);
+}
