@@ -16,9 +16,9 @@ export function TaskBoard() {
   }
 
   const columns = {
-    todo: tasks?.filter((t) => t.status === "todo") ?? [],
-    in_progress: tasks?.filter((t) => t.status === "in_progress") ?? [],
-    done: tasks?.filter((t) => t.status === "done") ?? [],
+    todo: tasks.filter((t: any) => t.status === "todo"),
+    in_progress: tasks.filter((t: any) => t.status === "in_progress"),
+    done: tasks.filter((t: any) => t.status === "done"),
   };
 
   const columnTitles = {
@@ -52,7 +52,7 @@ export function TaskBoard() {
                 No tasks
               </div>
             ) : (
-              statusTasks.map((task) => <TaskCard key={task._id} task={task} />)
+              statusTasks.map((task: any) => <TaskCard key={task._id} task={task} />)
             )}
           </div>
         </div>

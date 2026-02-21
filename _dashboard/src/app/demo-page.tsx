@@ -28,16 +28,30 @@ const mockProjects = [
   },
 ];
 
-const mockTasks = [
+type MockProject = (typeof mockProjects)[number];
+type MockTask = {
+  _id: string;
+  title: string;
+  description: string;
+  status: "todo" | "in_progress" | "done";
+  priority: "low" | "medium" | "high";
+  projectId: string;
+  project: MockProject | null;
+  assignedTo: { name: string; type: "human" | "agent" } | null;
+  createdAt: number;
+  updatedAt: number;
+};
+
+const mockTasks: MockTask[] = [
   {
     _id: "1",
     title: "Setup project infrastructure",
     description: "Initialize the project with Next.js and Convex",
-    status: "done" as const,
-    priority: "high" as const,
+    status: "done",
+    priority: "high",
     projectId: "p1",
     project: mockProjects[0],
-    assignedTo: { name: "Demo User", type: "human" as const },
+    assignedTo: { name: "Demo User", type: "human" },
     createdAt: Date.now() - 86400000,
     updatedAt: Date.now() - 86400000,
   },
@@ -45,11 +59,11 @@ const mockTasks = [
     _id: "2",
     title: "Implement task board UI",
     description: "Create a Kanban-style board with drag and drop",
-    status: "in_progress" as const,
-    priority: "high" as const,
+    status: "in_progress",
+    priority: "high",
     projectId: "p1",
     project: mockProjects[0],
-    assignedTo: { name: "AI Agent", type: "agent" as const },
+    assignedTo: { name: "AI Agent", type: "agent" },
     createdAt: Date.now() - 43200000,
     updatedAt: Date.now() - 3600000,
   },
@@ -57,11 +71,11 @@ const mockTasks = [
     _id: "3",
     title: "Build HTTP API for agents",
     description: "Create REST endpoints for agent integration",
-    status: "in_progress" as const,
-    priority: "medium" as const,
+    status: "in_progress",
+    priority: "medium",
     projectId: "p1",
     project: mockProjects[0],
-    assignedTo: { name: "Demo User", type: "human" as const },
+    assignedTo: { name: "Demo User", type: "human" },
     createdAt: Date.now() - 43200000,
     updatedAt: Date.now() - 7200000,
   },
@@ -69,8 +83,8 @@ const mockTasks = [
     _id: "4",
     title: "Design mobile screens",
     description: "Create mockups for main app screens",
-    status: "todo" as const,
-    priority: "medium" as const,
+    status: "todo",
+    priority: "medium",
     projectId: "p2",
     project: mockProjects[1],
     assignedTo: null,
@@ -81,8 +95,8 @@ const mockTasks = [
     _id: "5",
     title: "Set up push notifications",
     description: "Implement FCM for Android and APNS for iOS",
-    status: "todo" as const,
-    priority: "low" as const,
+    status: "todo",
+    priority: "low",
     projectId: "p2",
     project: mockProjects[1],
     assignedTo: null,
@@ -93,11 +107,11 @@ const mockTasks = [
     _id: "6",
     title: "Write API documentation",
     description: "Document all HTTP endpoints with examples",
-    status: "done" as const,
-    priority: "high" as const,
+    status: "done",
+    priority: "high",
     projectId: "p3",
     project: mockProjects[2],
-    assignedTo: { name: "AI Agent", type: "agent" as const },
+    assignedTo: { name: "AI Agent", type: "agent" },
     createdAt: Date.now() - 172800000,
     updatedAt: Date.now() - 86400000,
   },
@@ -196,10 +210,10 @@ export default function DemoPage() {
 
   const handleCreateTask = () => {
     const project = projects.find((p) => p._id === newTask.projectId);
-    const task = {
+    const task: MockTask = {
       _id: `task_${Date.now()}`,
       ...newTask,
-      status: "todo" as const,
+      status: "todo",
       project: project || null,
       assignedTo: null,
       createdAt: Date.now(),
