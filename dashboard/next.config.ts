@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -6,7 +7,7 @@ const nextConfig: NextConfig = {
   basePath: isProd ? "/dashboard" : "",
   output: "standalone",
   turbopack: {
-    root: "/Users/andrewdavis/bitcoinpark.com/dashboard",
+    root: path.resolve(__dirname),
   },
 };
 
