@@ -813,6 +813,156 @@
       z-index: 1;
     }
 
+    .panel-card {
+      cursor: pointer;
+    }
+
+    /* Panel Modal */
+    .panel-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .panel-modal-content {
+      background: var(--deep-black);
+      border: 2px solid var(--bitcoin-orange);
+      border-radius: 4px;
+      padding: 3rem;
+      max-width: 800px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 50px rgba(247, 147, 26, 0.3), 0 0 100px rgba(0, 212, 255, 0.2);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .panel-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--pure-white);
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .panel-modal-close:hover {
+      color: var(--bitcoin-orange);
+      transform: rotate(90deg);
+    }
+
+    .panel-modal-title {
+      color: var(--bitcoin-orange);
+      font-size: clamp(1.5rem, 2.5vw + 0.8rem, 2rem);
+      margin-bottom: 1rem;
+      padding-right: 2rem;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .panel-modal-meta {
+      color: var(--electric-blue);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .panel-modal-speakers {
+      color: var(--pure-white);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--cyber-gray);
+      line-height: 1.6;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 500;
+    }
+
+    .panel-modal-speakers a {
+      color: var(--bitcoin-orange);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .panel-modal-speakers a:hover {
+      color: var(--electric-blue);
+      border-bottom: 1px solid var(--electric-blue);
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+    }
+
+    .panel-modal-abstract {
+      color: var(--concrete-gray);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+
+    @media (max-width: 768px) {
+      .panel-modal {
+        padding: 1rem;
+      }
+
+      .panel-modal-content {
+        padding: 2rem 1.5rem;
+        max-height: 90vh;
+      }
+
+      .panel-modal-title {
+        font-size: 1.3rem;
+        padding-right: 2.5rem;
+      }
+
+      .panel-modal-meta {
+        font-size: 0.9rem;
+      }
+
+      .panel-modal-speakers {
+        font-size: 0.9rem;
+      }
+
+      .panel-modal-abstract {
+        font-size: 1rem;
+      }
+    }
+
     /* Speakers Section */
     .speakers {
       background: var(--deep-black);
@@ -1281,39 +1431,39 @@
     <p class="section-subtitle fade-in">Day 1 Panel Topics</p>
 
     <div class="panels-grid">
-      <div class="panel-card fade-in">
-        <div class="panel-title">Spotlight Keynote</div>
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="10:00 - 10:10" data-speakers='Rob Warren (<a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a>)' data-abstract="Spotlight keynote presentation on allocation and treasury strategies.">
+        <div class="panel-title">Keynote on Spotlight</div>
       </div>
 
-      <div class="panel-card fade-in">
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="10:10 - 10:40" data-speakers='' data-abstract="Payment processors must overcome hurdles in velocity, settlement speed, and user experience to achieve global scale. This session explores the technical and architectural choices essential for infrastructure capable of handling millions of transactions, all while upholding security, curbing fraud, and refining routing. It explores the balances between decentralization and efficiency, including ideas like sidechains, channel factories, and near-instant settlements. Drawing from real-world systems, it covers database enhancements, redundancy approaches, and monitoring tools, linking conceptual ideas to practical builds that pave the way for widespread adoption of sovereign payments.">
         <div class="panel-title">Zero to Eight Billion: How to Scale Payments Infrastructure</div>
       </div>
 
-      <div class="panel-card fade-in">
-        <div class="panel-title">Interest Bearing Products: Finding Where the Yield Comes From</div>
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="10:40 - 11:10" data-speakers='Pierre Rochard (<a href="https://www.linkedin.com/in/pierrerochard/" target="_blank" rel="noopener noreferrer">The Bitcoin Bond Company</a>), Yash Belavadi (<a href="https://surge.build/" target="_blank" rel="noopener noreferrer">Surge</a>), Jesse Shrader (<a href="https://amboss.space" target="_blank" rel="noopener noreferrer">Amboss</a>)' data-abstract="Lightning infrastructure is producing something new: a native cost of capital. As routing nodes compete to allocate liquidity, a real-time market for capital is emerging where fees reflect genuine economic signals, not token emissions or rehypothecation. This panel examines what yield looks like when rooted in payment throughput: routing fee dynamics, liquidity leasing, and Bitcoin-denominated debt instruments. We'll explore how operators price channel capacity, what risk-adjusted returns look like in practice, and whether these nascent yield curves can become the foundation of a sovereign financial system.">
+        <div class="panel-title">A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield</div>
       </div>
 
-      <div class="panel-card fade-in">
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="11:10 - 11:30" data-speakers='Drew Armstrong (<a href="https://ciphermining.com" target="_blank" rel="noopener noreferrer">Cipher Mining</a>), Michael Atwood (<a href="https://oshi.tech" target="_blank" rel="noopener noreferrer">Oshi</a>), Will Cole (<a href="https://zaprite.com" target="_blank" rel="noopener noreferrer">Zaprite</a>), Piero Coen (<a href="https://osmomoney.com/" target="_blank" rel="noopener noreferrer">Osmo</a>)' data-abstract="While Lightning Network and layer-2 solutions unlock payment potential, turning them into reliable commerce tools requires bridging gaps in practice. This session treats payment networks as everyday business enablers, focusing on channel oversight, liquidity supply, and cost dynamics. It tackles merchant hurdles like liquidity limits, rebalancing channels, capacity handling, and route improvements, with insights from live deployments, incentive-based fees, and network patterns. Participants will answer how to craft dependable systems for steady and burst transactions, ensuring economic soundness in grassroots Bitcoin commerce.">
         <div class="panel-title">Pioneering Merchant Adoption from Point-of-Sale to Business Treasury</div>
       </div>
 
-      <div class="panel-card fade-in">
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="11:30 - 12:00" data-speakers='Sahil Chaturvedi (<a href="https://x.com/sahilc0" target="_blank" rel="noopener noreferrer">ABDC</a>), John Magill (<a href="https://zaprite.com" target="_blank" rel="noopener noreferrer">Zaprite</a>), OpenMike (<a href="https://tunestr.io" target="_blank" rel="noopener noreferrer">tunestr</a>)' data-abstract="Bitcoin's depth can intimidate, so payment systems need to mask intricacies without sacrificing security or clarity. This talk outlines principles for creating intuitive experiences for merchants and users new to sound money. It addresses key hurdles like verifying addresses, creating invoices, confirming payments, managing refunds, and handling wait times. Highlighting apps that succeed through ease, via QR scans, single-tap actions, and reliable invoices, it compares mobile and web designs, accessibility, and adoption psychology, providing tools to build interfaces as straightforward as legacy ones while safeguarding freedom.">
         <div class="panel-title">User Experience Design for Bitcoin Payment Systems</div>
       </div>
 
-      <div class="panel-card fade-in">
-        <div class="panel-title">Clarity Is King: Navigating the Bitcoin Regulatory Landscape</div>
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="1:30 - 2:00" data-speakers='David Zell (<a href="https://btcpolicy.org" target="_blank" rel="noopener noreferrer">Bitcoin Policy Institute</a>), Janessa Lopez (<a href="https://block.xyz" target="_blank" rel="noopener noreferrer">Block</a>)' data-abstract="Every bitcoin transaction, lightning or on chain, technically triggers a taxable event. But, does a $4 coffee really require capital gains reporting? This conversation digs into both high-level policy and the day-to-day practical tax questions confronting Bitcoin payment builders and users. Where do de minimis exemptions stand legislatively, how do companies handle tax logic at scale, and what does compliance actually look like when you're building on sovereign money rails? We'll discuss the policy levers that could unlock everyday Bitcoin spending for millions of users.">
+        <div class="panel-title">De Minimis, Capital Gains, and What Builders Need to Know Now</div>
       </div>
 
-      <div class="panel-card fade-in">
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="2:00 - 2:30" data-speakers='Stephan Livera (<a href="https://stephanlivera.com" target="_blank" rel="noopener noreferrer">Stephan Livera Podcast</a>), Andre Neves (<a href="https://zbd.gg" target="_blank" rel="noopener noreferrer">ZBD</a>), Derek Ross (<a href="https://soapbox.pub" target="_blank" rel="noopener noreferrer">Soapbox</a>), Christopher David (<a href="https://openagents.com" target="_blank" rel="noopener noreferrer">Open Agents</a>)' data-abstract="Bitcoin payments are merging with AI, IoT, and other fields to unlock new possibilities. This discussion uncovers real intersections: AI forecasting flows and enhancing routes, machine learning spotting fraud, and IoT devices triggering tiny payments on their own. It confronts build challenges like resource limits, trust in automated finance, and legacy code issues, including smart invoices, clearing methods, and bitcoin for agent-less dealings. Examining uses in supply chains, liquidity forecasting, and self-transacting machines, it shows how Bitcoin's flexibility sparks applications that extend commerce toward greater autonomy.">
         <div class="panel-title">Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure</div>
       </div>
 
-      <div class="panel-card fade-in">
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="2:30 - 3:00" data-speakers='Justin Moon (<a href="https://hrf.org" target="_blank" rel="noopener noreferrer">HRF</a>), Mike Schmidt (<a href="https://brink.dev" target="_blank" rel="noopener noreferrer">Brink</a>), Lisa Neigut (<a href="https://btcplusplus.dev" target="_blank" rel="noopener noreferrer">bitcoin++</a>), Austin Kelsay (<a href="https://voltage.cloud" target="_blank" rel="noopener noreferrer">Voltage</a>)' data-abstract="Vital Bitcoin payment foundations rest on open-source efforts, often strained by limited support. This talk reviews ways to sustain them: through grants, corporate backing, and services atop free code. It navigates challenges in upholding shared resources. aligning user demands with maintainer limits, avoiding dominance by firms, and keeping quality high. Analyzing lasting and faltering projects, it pinpoints success drivers, and details how businesses gain from and bolster these efforts via code, funding, and oversight. Attendees will learn to assess project vitality and contribute in ways that honor community-driven development.">
         <div class="panel-title">Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors</div>
       </div>
 
-      <div class="panel-card fade-in">
+      <div class="panel-card fade-in" onclick="openPanelModal(this)" data-day="March 12" data-time="3:00 - 3:30" data-speakers='Michael Goldstein (<a href="https://nakamotoinstitute.org" target="_blank" rel="noopener noreferrer">Satoshi Nakamoto Institute</a>), Rob Hamilton (<a href="https://anchorwatch.com" target="_blank" rel="noopener noreferrer">AnchorWatch</a>), Joe Kelly (<a href="https://unchained.com" target="_blank" rel="noopener noreferrer">Unchained</a>), Marty Bent (<a href="https://ten31.vc" target="_blank" rel="noopener noreferrer">Ten31</a>)' data-abstract="Austin stands as a hub for Bitcoin, drawing creators of payment systems and sound money tools. This chat probes how targeted funding ignites this network, focusing on backing Bitcoin-focused ventures over fleeting trends. It explains the cycle where strong investments pull in talent, resources, and fresh ideas, benefiting all. Covering founder selection, early infrastructure support, and the view that such backing builds lasting value and liberty, it illustrates how Austin's role as an innovation center thrives on investments that strengthen communities and push financial sovereignty forward.">
         <div class="panel-title">Freedom Flywheel: How Investing in Startups Creates a Future Worth Inheriting</div>
       </div>
     </div>
@@ -1542,6 +1692,15 @@
       </div>
 
       <div class="speaker-card fade-in">
+        <div class="speaker-image">
+          <img src="./Derek-Ross.jpg" alt="Derek Ross">
+        </div>
+        <div class="speaker-name">Derek Ross</div>
+        <div class="speaker-role mono">CEO</div>
+        <div class="speaker-company">Soapbox</div>
+      </div>
+
+      <div class="speaker-card fade-in">
         <div class="speaker-image speaker-image-silhouette">
           <img src="./Satoshi.png" alt="More Speakers Coming Soon">
         </div>
@@ -1625,6 +1784,17 @@
     </div>
   </footer>
 
+  <!-- Panel Modal -->
+  <div id="panelModal" class="panel-modal" onclick="closePanelModal(event)">
+    <div class="panel-modal-content" onclick="event.stopPropagation()">
+      <button class="panel-modal-close" onclick="closePanelModal()">&times;</button>
+      <h3 id="panelModalTitle" class="panel-modal-title"></h3>
+      <div id="panelModalMeta" class="panel-modal-meta mono"></div>
+      <div id="panelModalSpeakers" class="panel-modal-speakers"></div>
+      <div id="panelModalAbstract" class="panel-modal-abstract"></div>
+    </div>
+  </div>
+
   <script>
     // Mobile menu toggle
     function toggleMobileMenu() {
@@ -1633,6 +1803,35 @@
       menu.classList.toggle('active');
       hamburger.classList.toggle('active');
     }
+
+    // Panel modal functions
+    function openPanelModal(element) {
+      const title = element.querySelector('.panel-title').textContent;
+      const day = element.getAttribute('data-day');
+      const speakers = element.getAttribute('data-speakers');
+      const abstract = element.getAttribute('data-abstract');
+
+      document.getElementById('panelModalTitle').textContent = title;
+      document.getElementById('panelModalMeta').textContent = day;
+      document.getElementById('panelModalSpeakers').innerHTML = speakers;
+      document.getElementById('panelModalAbstract').textContent = abstract;
+      document.getElementById('panelModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePanelModal(event) {
+      if (!event || event.target.id === 'panelModal' || event.target.classList.contains('panel-modal-close')) {
+        document.getElementById('panelModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closePanelModal();
+      }
+    });
 
     // Binary background animation
     function createBinaryBackground() {
