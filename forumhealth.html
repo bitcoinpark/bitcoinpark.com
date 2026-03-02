@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park Forum: The Case for Bitcoin in Healthcare - Bitcoin Park</title>
+    <meta name="description" content="A curated gathering of physicians, hospital administrators, healthcare entrepreneurs, capital allocators, and policymakers shaping the future of health and sound money.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-dark: #D4780E;
+            --bitcoin-orange-light: #FFAA44;
+            --clinical-white: #FFFFFF;
+            --deep-navy: #1A365D;
+            --navy-mid: #2A4A7F;
+            --healthy-green: #38A169;
+            --pulse-red: #E53E3E;
+            --soft-gray: #718096;
+            --light-gray: #EDF2F7;
+            --bg-light: #FAFAFA;
+            --text-dark: #0D1F3C;
+            --text-body: #2D3748;
+            --text-light: #718096;
+            --glow-orange: rgba(247, 147, 26, 0.35);
+            --glow-navy: rgba(26, 54, 93, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: var(--clinical-white);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(247, 147, 26, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(26, 54, 93, 0.08);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .navbar a:hover {
+            color: var(--bitcoin-orange);
+            background: rgba(247, 147, 26, 0.07);
+        }
+
+        .navbar a.nav-cta {
+            background: var(--bitcoin-orange);
+            color: var(--clinical-white);
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .navbar a.nav-cta:hover {
+            background: var(--bitcoin-orange-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px var(--glow-orange);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 20px 80px;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--clinical-white) 0%, #FFF8F0 50%, #F0F4FF 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(247, 147, 26, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatBg 22s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26, 54, 93, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatBg 17s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatBg {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(25px, -18px); }
+            66% { transform: translate(-18px, 12px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bitcoin Pulse SVG */
+        .pulse-graphic {
+            max-width: 640px;
+            width: 90%;
+            margin: 0 auto 48px;
+            display: block;
+            animation: floatGraphic 7s ease-in-out infinite;
+        }
+
+        @keyframes floatGraphic {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 16px 60px rgba(26, 54, 93, 0.25);
+        }
+
+        .hero-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--bitcoin-orange);
+            margin-bottom: 16px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 10px;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-content h1 .accent {
+            color: var(--bitcoin-orange);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--soft-gray);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-location {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--deep-navy);
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-date {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--soft-gray);
+            font-weight: 500;
+            margin-bottom: 50px;
+        }
+
+        .hero-cta {
+            background: var(--bitcoin-orange);
+            color: var(--clinical-white);
+            padding: 20px 56px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--glow-orange);
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s;
+        }
+
+        .hero-cta:hover::before { left: 100%; }
+
+        .hero-cta:hover {
+            background: var(--bitcoin-orange-dark);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 35px var(--glow-orange);
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bitcoin-orange), var(--healthy-green));
+            margin: 0 auto 50px;
+            border-radius: 2px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 90px 20px;
+            position: relative;
+        }
+
+        .section-alt {
+            background: var(--light-gray);
+        }
+
+        .section-navy {
+            background: var(--deep-navy);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-navy .section-header h2 {
+            color: var(--clinical-white);
+        }
+
+        .section-header h2 .orange {
+            color: var(--bitcoin-orange);
+        }
+
+        .section-content {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .section-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+            color: var(--text-body);
+            line-height: 1.85;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+        .section-navy .section-content p {
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        /* Theme Card (key metaphor callout) */
+        .theme-callout {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background: var(--clinical-white);
+            border-radius: 20px;
+            padding: 48px 48px;
+            border: 1px solid rgba(247, 147, 26, 0.15);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(26, 54, 93, 0.07);
+        }
+
+        .theme-callout::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pulse-red), var(--bitcoin-orange), var(--healthy-green));
+        }
+
+        .theme-callout .callout-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--bitcoin-orange);
+            margin-bottom: 14px;
+        }
+
+        .theme-callout h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .theme-callout p {
+            font-size: 1.05rem;
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 50px;
+        }
+
+        .info-card {
+            flex: 0 1 300px;
+            background: var(--clinical-white);
+            border-radius: 16px;
+            padding: 36px 30px;
+            border: 1px solid rgba(26, 54, 93, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-alt .info-card {
+            background: var(--clinical-white);
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--bitcoin-orange), var(--bitcoin-orange-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .info-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(26, 54, 93, 0.1);
+            border-color: rgba(247, 147, 26, 0.2);
+        }
+
+        .info-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            font-size: 0.98rem;
+            color: var(--text-body);
+            line-height: 1.7;
+        }
+
+        /* Attendee List */
+        .attendee-list {
+            max-width: 700px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+        }
+
+        .attendee-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .attendee-list li:last-child {
+            border-bottom: none;
+        }
+
+        .attendee-list li::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
+            background: var(--bitcoin-orange);
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+
+        /* Topics Grid */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(247, 147, 26, 0.2);
+            border-radius: 14px;
+            padding: 30px 28px;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover {
+            background: rgba(247, 147, 26, 0.08);
+            border-color: rgba(247, 147, 26, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .topic-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--bitcoin-orange);
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.65;
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px auto 0;
+            max-width: 800px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 0 1 180px;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--bitcoin-orange);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 110px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, #0D1F3C 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -40%; left: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(247, 147, 26, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -35%; right: -15%;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(56, 161, 105, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--clinical-white);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--bitcoin-orange);
+            color: var(--clinical-white);
+            padding: 20px 60px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 25px rgba(247, 147, 26, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-button:hover::before { left: 100%; }
+
+        .cta-button:hover {
+            background: var(--bitcoin-orange-light);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 40px rgba(247, 147, 26, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: #080F1C;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover { color: var(--bitcoin-orange); }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-content {
+                gap: 16px;
+                padding: 0 20px;
+            }
+            .navbar a { font-size: 0.8rem; padding: 6px 12px; }
+            .hero { padding: 110px 20px 70px; min-height: auto; }
+            .pulse-graphic { max-width: 420px; margin-bottom: 36px; }
+            .hero-cta { padding: 16px 40px; font-size: 1rem; }
+            .section { padding: 70px 20px; }
+            .info-cards { flex-direction: column; align-items: center; gap: 20px; }
+            .info-card { flex: 0 1 auto; width: 100%; padding: 28px 24px; }
+            .theme-callout { padding: 36px 28px; }
+            .topics-grid { grid-template-columns: 1fr; }
+            .stats-row { gap: 36px; }
+            .cta-section { padding: 80px 20px; }
+            .cta-button { padding: 16px 40px; font-size: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-content { gap: 8px; }
+            .navbar a { font-size: 0.75rem; padding: 5px 8px; letter-spacing: 0.03em; }
+            .pulse-graphic { max-width: 320px; width: 92%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="#top">Home</a>
+            <a href="#about">About</a>
+            <a href="#topics">Topics</a>
+            <a href="#who">Who's Invited</a>
+            <a href="https://bitcoinpark.com/park-forum-healthcare" target="_blank" rel="noopener noreferrer" class="nav-cta">Register</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+
+            <!-- Hero Graphic -->
+            <div class="pulse-graphic">
+                <img src="BP-Nashville-Banner_1920x1080px (1).jpg" alt="Bitcoin Park Nashville" class="hero-banner-img">
+            </div>
+
+            <p class="hero-eyebrow">Bitcoin Park Presents</p>
+            <h1>Park Forum: <span class="accent">The Case for</span><br>Bitcoin in Healthcare</h1>
+            <p class="hero-subtitle">Sound Health Through Sound Money</p>
+            <p class="hero-location">Nashville, Tennessee</p>
+            <p class="hero-date">April 8, 2026 &middot; Bitcoin Park</p>
+            <a href="https://bitcoinpark.com/park-forum-healthcare" target="_blank" rel="noopener noreferrer" class="hero-cta">Register Now</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>About the <span class="orange">Forum</span></h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content fade-in">
+                <p>The Case for Bitcoin in Healthcare is a curated gathering of physicians, hospital administrators, healthcare entrepreneurs, capital allocators, and policymakers who are shaping the future of health and sound money. United by a shared mission, we are pioneering new models for how healthcare is delivered, financed, and monetized in the age of Bitcoin and beyond.</p>
+                <p>Hosted in the spirit of Bitcoin Park experiences, this gathering centers on the transformative theme of sound health through sound money, and how Bitcoin can address the systemic inefficiencies of fiat-driven healthcare.</p>
+            </div>
+
+            <div class="theme-callout fade-in">
+                <div class="callout-label">Core Theme</div>
+                <h3>The Vital Signs of Sound Money</h3>
+                <p>Just as physicians monitor vital signs to assess patient health, Bitcoin provides the vital signs of a healthy monetary system: transparency, predictability, and stability. From direct primary care and self-funded insurance models to Bitcoin-denominated HSAs and longevity-focused care, Bitcoin stands as both a unit of account and a cornerstone of health sovereignty.</p>
+            </div>
+
+            <div class="info-cards fade-in">
+                <div class="info-card">
+                    <h3>Diagnose</h3>
+                    <p>Identify the root causes of fiat-driven dysfunction in healthcare economics, from opaque pricing to misaligned incentives and unsustainable costs.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Connect</h3>
+                    <p>Build relationships across medicine, finance, and policy. Meet the practitioners and innovators leading the shift to Bitcoin-native healthcare models.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Heal</h3>
+                    <p>Take home actionable frameworks for integrating Bitcoin into your practice, personal finances, and patient care, starting today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics -->
+    <section class="section section-navy" id="topics">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What We'll <span style="color: var(--bitcoin-orange);">Explore</span></h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content fade-in">
+                <p style="color: rgba(255,255,255,0.75);">The forum explores how healthcare practitioners and administrators can integrate Bitcoin into their practices and personal financial strategies, as these forces converge toward a new model of health sovereignty.</p>
+            </div>
+            <div class="topics-grid fade-in">
+                <div class="topic-card">
+                    <h4>Direct Primary Care</h4>
+                    <p>Bitcoin-native practice models that restore the physician-patient relationship and eliminate insurance middlemen.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Self-Funded Insurance</h4>
+                    <p>Alternative benefit structures and captive models that give employers and employees true healthcare sovereignty.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Bitcoin-Denominated HSAs</h4>
+                    <p>Health savings strategies anchored in hard money, preserving purchasing power against medical inflation.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Longevity & Preventive Care</h4>
+                    <p>How sound money incentivizes long-term health investment and shifts the system from sick care to true healthcare.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Healthcare Entrepreneurship</h4>
+                    <p>Building Bitcoin-integrated solutions that address real inefficiencies across the care delivery and payment stack.</p>
+                </div>
+                <div class="topic-card">
+                    <h4>Policy & Regulation</h4>
+                    <p>Legal and regulatory pathways for Bitcoin in healthcare: HSA eligibility, payment rails, and the legislative landscape.</p>
+                </div>
+            </div>
+
+            <div class="stats-row fade-in">
+                <div class="stat-item">
+                    <div class="stat-number">4.5T</div>
+                    <div class="stat-label">US Healthcare Spend</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">Administrative Waste</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">₿</div>
+                    <div class="stat-label">The Fix</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who's Invited -->
+    <section class="section section-alt" id="who">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Who's <span class="orange">Invited</span></h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="section-content fade-in">
+                <p>This is a curated, application-based gathering. We bring together the full spectrum of healthcare and Bitcoin to create genuine cross-disciplinary collaboration.</p>
+            </div>
+
+            <div class="info-cards fade-in">
+                <div class="info-card">
+                    <h3>Physicians & DPC Practitioners</h3>
+                    <p>Doctors exploring Bitcoin-native practice models, direct pay structures, and financial sovereignty for themselves and their patients.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Hospital Administrators</h3>
+                    <p>Healthcare executives and system leaders evaluating Bitcoin treasury strategies, alternative payment models, and cost structure reform.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Healthcare Entrepreneurs</h3>
+                    <p>Founders and builders creating Bitcoin-integrated solutions across care delivery, insurance, and health finance.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Benefits Advisors & Brokers</h3>
+                    <p>Insurance and benefits professionals exploring alternative models, self-funded plans, and Bitcoin-denominated health accounts.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Capital Allocators</h3>
+                    <p>Investors focused on the intersection of healthcare innovation and Bitcoin infrastructure, deploying capital in the next era of health.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Policymakers & Legal Experts</h3>
+                    <p>Regulatory, legal, and legislative professionals navigating the policy landscape for Bitcoin in healthcare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="apply">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Join the Forum</h2>
+                <p>Space is limited and attendance is curated. Apply now to secure your seat at the table where Bitcoin and healthcare converge.</p>
+                <a href="https://bitcoinpark.com/park-forum-healthcare" target="_blank" rel="noopener noreferrer" class="cta-button">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a> &middot; Nashville, TN</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
