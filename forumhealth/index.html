@@ -108,7 +108,6 @@
 
         /* Hero */
         .hero {
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -746,10 +745,50 @@
             .cta-button { padding: 16px 40px; font-size: 1rem; }
         }
 
+        /* Sponsors Hero */
+        .sponsors-hero {
+            margin-bottom: 16px;
+        }
+
+        .sponsors-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--soft-gray);
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+        }
+
+        .sponsors-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: -30px;
+        }
+
+        .sponsor-logo {
+            height: 220px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.9;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .sponsor-logo:hover {
+            opacity: 1;
+            transform: scale(1.04);
+        }
+
         @media (max-width: 480px) {
             .navbar-content { gap: 8px; }
             .navbar a { font-size: 0.75rem; padding: 5px 8px; letter-spacing: 0.03em; }
             .pulse-graphic { max-width: 320px; width: 92%; }
+            .sponsor-logo { height: 80px; }
         }
     </style>
 </head>
@@ -781,6 +820,14 @@
             <p class="hero-subtitle">Sound Health Through Sound Money</p>
             <p class="hero-location">Nashville, Tennessee</p>
             <p class="hero-date">April 8, 2026 &middot; Bitcoin Park</p>
+
+            <div class="sponsors-hero">
+                <p class="sponsors-label">Thank You to Our Sponsors</p>
+                <div class="sponsors-logos">
+                    <img src="sound-hsa-logo.png" alt="Sound HSA" class="sponsor-logo">
+                </div>
+            </div>
+
             <a href="https://bitcoinpark.com/park-forum-healthcare" target="_blank" rel="noopener noreferrer" class="hero-cta">Register Now</a>
         </div>
     </section>
