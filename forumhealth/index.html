@@ -195,7 +195,7 @@
 
         .hero-content h1 {
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
-            font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+            font-size: clamp(2rem, 5.5vw, 4.4rem);
             font-weight: 700;
             color: var(--deep-navy);
             margin-bottom: 10px;
@@ -728,14 +728,17 @@
         /* Responsive */
         @media (max-width: 768px) {
             .navbar-content {
-                gap: 16px;
-                padding: 0 20px;
+                gap: 10px;
+                padding: 0 16px;
+                justify-content: center;
             }
-            .navbar a { font-size: 0.8rem; padding: 6px 12px; }
-            .hero { padding: 110px 20px 70px; min-height: auto; }
-            .pulse-graphic { max-width: 420px; margin-bottom: 36px; }
+            .navbar a { font-size: 0.75rem; padding: 6px 10px; }
+            /* Hide less critical nav items on small screens */
+            .navbar a[href="#who"] { display: none; }
+            .hero { padding: 100px 20px 60px; }
+            .pulse-graphic { max-width: 420px; margin-bottom: 28px; }
             .hero-cta { padding: 16px 40px; font-size: 1rem; }
-            .section { padding: 70px 20px; }
+            .section { padding: 60px 20px; }
             .info-cards { flex-direction: column; align-items: center; gap: 20px; }
             .info-card { flex: 0 1 auto; width: 100%; padding: 28px 24px; }
             .theme-callout { padding: 36px 28px; }
@@ -743,6 +746,9 @@
             .stats-row { gap: 36px; }
             .cta-section { padding: 80px 20px; }
             .cta-button { padding: 16px 40px; font-size: 1rem; }
+            .sponsors-logos { margin-top: 6px; overflow: hidden; }
+            .sponsor-logo { height: auto; width: 90%; max-width: 340px; transform: scale(1.5); transform-origin: center center; }
+            .sponsors-hero { margin-bottom: 24px; }
         }
 
         /* Sponsors Hero */
@@ -785,10 +791,13 @@
         }
 
         @media (max-width: 480px) {
-            .navbar-content { gap: 8px; }
-            .navbar a { font-size: 0.75rem; padding: 5px 8px; letter-spacing: 0.03em; }
+            .navbar-content { gap: 6px; }
+            .navbar a { font-size: 0.7rem; padding: 5px 7px; letter-spacing: 0.02em; }
+            .navbar a[href="#topics"],
+            .navbar a[href="#schedule"] { display: none; }
             .pulse-graphic { max-width: 320px; width: 92%; }
-            .sponsor-logo { height: 80px; }
+            .sponsor-logo { height: 100px; }
+            .sponsors-logos { margin-top: 4px; }
         }
     </style>
 </head>
