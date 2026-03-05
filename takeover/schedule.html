@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bitcoin Takeover 2026 - Event Schedule</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bitcoin-orange: #F7931A;
+      --bitcoin-orange-hover: #E8840F;
+      --electric-blue: #00D4FF;
+      --deep-black: #0A0A0A;
+      --concrete-gray: #808080;
+      --pure-white: #FFFFFF;
+      --neon-green: #39FF14;
+      --burnt-orange: #CC5500;
+      --cyber-dark: #1a1a1a;
+      --cyber-gray: #2a2a2a;
+      --charcoal-bg: #2E2E2E;
+      --text-gray: #b0b0b0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--deep-black);
+      color: var(--pure-white);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--cyber-gray);
+    }
+
+    .header h1 {
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+      color: var(--bitcoin-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+    }
+
+    .header .subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--electric-blue);
+      letter-spacing: 0.05em;
+    }
+
+    .day-section {
+      margin-bottom: 4rem;
+    }
+
+    .day-header {
+      background: linear-gradient(135deg, rgba(247, 147, 26, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+      border-left: 4px solid var(--bitcoin-orange);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+
+    .day-header h2 {
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-size: clamp(1.5rem, 2.5vw + 0.8rem, 2rem);
+      color: var(--pure-white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .day-header .day-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--bitcoin-orange);
+      margin-top: 0.5rem;
+    }
+
+    .schedule-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .session-card {
+      background: var(--deep-black);
+      border: 1px solid var(--cyber-gray);
+      border-left: 3px solid var(--bitcoin-orange);
+      padding: 1.5rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .session-card:hover {
+      border-color: var(--bitcoin-orange);
+      box-shadow: 0 0 20px rgba(247, 147, 26, 0.2);
+      transform: translateX(5px);
+    }
+
+    .session-card.no-abstract {
+      cursor: default;
+      opacity: 0.7;
+    }
+
+    .session-card.no-abstract:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .session-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .session-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: var(--electric-blue);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .session-title {
+      flex: 1;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-size: 1.1rem;
+      color: var(--pure-white);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .session-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--bitcoin-orange);
+      background: rgba(247, 147, 26, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .session-speakers {
+      font-size: 0.95rem;
+      color: var(--concrete-gray);
+      margin-top: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .session-speakers strong {
+      color: var(--pure-white);
+    }
+
+    .click-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-gray);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: var(--deep-black);
+      border: 2px solid var(--bitcoin-orange);
+      border-radius: 4px;
+      padding: 3rem;
+      max-width: 900px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 0 50px rgba(247, 147, 26, 0.3);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--pure-white);
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--bitcoin-orange);
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+      color: var(--bitcoin-orange);
+      font-size: clamp(1.3rem, 2.5vw + 0.8rem, 1.8rem);
+      margin-bottom: 1rem;
+      padding-right: 2rem;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      line-height: 1.3;
+    }
+
+    .modal-meta {
+      color: var(--electric-blue);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .modal-speakers {
+      color: var(--pure-white);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--cyber-gray);
+      line-height: 1.8;
+    }
+
+    .modal-abstract {
+      color: var(--concrete-gray);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .modal {
+        padding: 1rem;
+      }
+
+      .modal-content {
+        padding: 2rem 1.5rem;
+        max-height: 90vh;
+      }
+
+      .session-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .session-time {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Event Schedule</h1>
+      <div class="subtitle">Bitcoin Takeover 2026 • March 12-13, 2026 • Austin, TX</div>
+    </div>
+
+    <!-- DAY 1: March 12 -->
+    <div class="day-section">
+      <div class="day-header">
+        <h2>Day 1 - Power of Payments</h2>
+        <div class="day-subtitle">Wednesday, March 12, 2026</div>
+      </div>
+
+      <div class="schedule-grid">
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">7:00 - 8:00</div>
+            <div class="session-title">Set Up and Gameplan / Final Meetings for Volunteers/Staff</div>
+          </div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">8:00 - 9:50</div>
+            <div class="session-title">Doors Open + Food and Coffee</div>
+          </div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">10:00 - 10:05</div>
+            <div class="session-title">Welcome Announcements</div>
+            <div class="session-type">Announcements</div>
+          </div>
+          <div class="session-speakers"><strong>Rod Roudi</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">10:05 - 10:10</div>
+            <div class="session-title">Indie isn't Dead: Bitcoin Builders and the Counter-SXSW Movement</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Rob Warren</strong></div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="Zero to Eight Billion--Where Technological Growth Meets Political Initiative"
+             data-time="10:10 - 10:30"
+             data-type="Fireside Chat"
+             data-speakers="<strong>Parker Lewis</strong> (Zaprite), <strong>Rep. Warren Davidson</strong> (U.S. Congress)"
+             data-abstract="Bitcoin is greater than technology, it's also a fiscal strategy. As inflationary pressures erode the purchasing power of the dollar and the national debt spirals, Bitcoin offers a hard-capped, appreciating asset that can strengthen America's balance sheet rather than weigh it down. This fireside chat explores the policy vision behind legislation like the Bitcoin for America Act, enabling Americans to pay federal taxes in Bitcoin, building a Strategic Bitcoin Reserve, and ensuring the United States leads rather than follows as rival nations like China and Russia accumulate Bitcoin of their own. The conversation covers what it means to treat Bitcoin not as a regulatory problem to contain but as a sovereign financial tool: expanding financial access to the unbanked, giving taxpayers more choice in how they meet their obligations, and reducing the nation's reliance on debt-fueled monetary policy. It's a candid look at the legislative work required to modernize America's financial infrastructure around sound money and how to lead the world in global adoption.">
+          <div class="session-header">
+            <div class="session-time">10:10 - 10:30</div>
+            <div class="session-title">Zero to Eight Billion--Where Technological Growth Meets Political Initiative</div>
+            <div class="session-type">Fireside Chat</div>
+          </div>
+          <div class="session-speakers"><strong>Parker Lewis</strong> (Zaprite), <strong>Rep. Warren Davidson</strong> (U.S. Congress)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield"
+             data-time="10:30 - 11:00"
+             data-type="Panel"
+             data-speakers="<strong>Pierre Rochard</strong> (The Bitcoin Bond Company), <strong>Yash Belavadi</strong> (Surge), <strong>Jesse Shrader</strong> (Amboss)"
+             data-abstract="Lightning infrastructure is producing something new: a native cost of capital. As routing nodes compete to allocate liquidity, a real-time market for capital is emerging where fees reflect genuine economic signals, not token emissions or rehypothecation. This panel examines what yield looks like when rooted in payment throughput: routing fee dynamics, liquidity leasing, and Bitcoin-denominated debt instruments. We'll explore how operators price channel capacity, what risk-adjusted returns look like in practice, and whether these nascent yield curves can become the foundation of a sovereign financial system.">
+          <div class="session-header">
+            <div class="session-time">10:30 - 11:00</div>
+            <div class="session-title">A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield</div>
+            <div class="session-type">Panel</div>
+          </div>
+          <div class="session-speakers"><strong>Pierre Rochard</strong> (The Bitcoin Bond Company), <strong>Yash Belavadi</strong> (Surge), <strong>Jesse Shrader</strong> (Amboss)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="Pioneering Merchant Adoption from Point-of-Sale to Business Treasury"
+             data-time="11:00 - 11:30"
+             data-type="Fireside Chat"
+             data-speakers="<strong>Drew Armstrong</strong> (Cipher Mining), <strong>Michael Atwood</strong> (Oshi), <strong>Will Cole</strong> (Zaprite)"
+             data-abstract="While Lightning Network and layer-2 solutions unlock payment potential, turning them into reliable commerce tools requires bridging gaps in practice. This session treats payment networks as everyday business enablers, focusing on channel oversight, liquidity supply, and cost dynamics. It tackles merchant hurdles like liquidity limits, rebalancing channels, capacity handling, and route improvements, with insights from live deployments, incentive-based fees, and network patterns. Participants will answer how to craft dependable systems for steady and burst transactions, ensuring economic soundness in grassroots Bitcoin commerce.">
+          <div class="session-header">
+            <div class="session-time">11:00 - 11:30</div>
+            <div class="session-title">Pioneering Merchant Adoption from Point-of-Sale to Business Treasury</div>
+            <div class="session-type">Fireside Chat</div>
+          </div>
+          <div class="session-speakers"><strong>Drew Armstrong</strong> (Cipher Mining), <strong>Michael Atwood</strong> (Oshi), <strong>Will Cole</strong> (Zaprite)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="User Experience Design for Bitcoin Payment Systems"
+             data-time="11:30 - 12:10"
+             data-type="Panel"
+             data-speakers="<strong>Sahil Chaturvedi</strong> (ABDC), <strong>John Magill</strong> (Zaprite), <strong>OpenMike</strong> (tunestr), <strong>Jeremy Almond</strong> (Paystand)"
+             data-abstract="Bitcoin's depth can intimidate, so payment systems need to mask intricacies without sacrificing security or clarity. This talk outlines principles for creating intuitive experiences for merchants and users new to sound money. It addresses key hurdles like verifying addresses, creating invoices, confirming payments, managing refunds, and handling wait times. Highlighting apps that succeed through ease, via QR scans, single-tap actions, and reliable invoices, it compares mobile and web designs, accessibility, and adoption psychology, providing tools to build interfaces as straightforward as legacy ones while safeguarding freedom.">
+          <div class="session-header">
+            <div class="session-time">11:30 - 12:10</div>
+            <div class="session-title">User Experience Design for Bitcoin Payment Systems</div>
+            <div class="session-type">Panel</div>
+          </div>
+          <div class="session-speakers"><strong>Sahil Chaturvedi</strong> (ABDC), <strong>John Magill</strong> (Zaprite), <strong>OpenMike</strong> (tunestr), <strong>Jeremy Almond</strong> (Paystand)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">12:10 - 1:30</div>
+            <div class="session-title">Lunch</div>
+          </div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="De Minimis, Capital Gains, and What Builders Need to Know Now"
+             data-time="1:30 - 1:50"
+             data-type="Fireside Chat"
+             data-speakers="<strong>David Zell</strong> (Bitcoin Policy Institute), <strong>Janessa Lopez</strong> (Block)"
+             data-abstract="Every bitcoin transaction, lightning or on chain, technically triggers a taxable event. But, does a $4 coffee really require capital gains reporting? This conversation digs into both high-level policy and the day-to-day practical tax questions confronting Bitcoin payment builders and users. Where do de minimis exemptions stand legislatively, how do companies handle tax logic at scale, and what does compliance actually look like when you're building on sovereign money rails? We'll discuss the policy levers that could unlock everyday Bitcoin spending for millions of users.">
+          <div class="session-header">
+            <div class="session-time">1:30 - 1:50</div>
+            <div class="session-title">De Minimis, Capital Gains, and What Builders Need to Know Now</div>
+            <div class="session-type">Fireside Chat</div>
+          </div>
+          <div class="session-speakers"><strong>David Zell</strong> (Bitcoin Policy Institute), <strong>Janessa Lopez</strong> (Block)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure"
+             data-time="1:50 - 2:30"
+             data-type="Panel"
+             data-speakers="<strong>Marty Bent</strong> (Ten31), <strong>Andre Neves</strong> (ZBD), <strong>Derek Ross</strong> (Soapbox), <strong>Christopher David</strong> (OpenAgents)"
+             data-abstract="Bitcoin payments are merging with AI, IoT, and other fields to unlock new possibilities. This discussion uncovers real intersections: AI forecasting flows and enhancing routes, machine learning spotting fraud, and IoT devices triggering tiny payments on their own. It confronts build challenges like resource limits, trust in automated finance, and legacy code issues, including smart invoices, clearing methods, and bitcoin for agent-less dealings. Examining uses in supply chains, liquidity forecasting, and self-transacting machines, it shows how Bitcoin's flexibility sparks applications that extend commerce toward greater autonomy.">
+          <div class="session-header">
+            <div class="session-time">1:50 - 2:30</div>
+            <div class="session-title">Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure</div>
+            <div class="session-type">Panel</div>
+          </div>
+          <div class="session-speakers"><strong>Marty Bent</strong> (Ten31), <strong>Andre Neves</strong> (ZBD), <strong>Derek Ross</strong> (Soapbox), <strong>Christopher David</strong> (OpenAgents)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors"
+             data-time="2:30 - 3:10"
+             data-type="Panel"
+             data-speakers="<strong>Justin Moon</strong> (HRF), <strong>Mike Schmidt</strong> (Brink), <strong>Lisa Neigut</strong> (bitcoin++), <strong>Austin Kelsay</strong> (PlebDev)"
+             data-abstract="Vital Bitcoin payment foundations rest on open-source efforts, often strained by limited support. This talk reviews ways to sustain them: through grants, corporate backing, and services atop free code. It navigates challenges in upholding shared resources, aligning user demands with maintainer limits, avoiding dominance by firms, and keeping quality high. Analyzing lasting and faltering projects, it pinpoints success drivers, and details how businesses gain from and bolster these efforts via code, funding, and oversight. Attendees will learn to assess project vitality and contribute in ways that honor community-driven development.">
+          <div class="session-header">
+            <div class="session-time">2:30 - 3:10</div>
+            <div class="session-title">Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors</div>
+            <div class="session-type">Panel</div>
+          </div>
+          <div class="session-speakers"><strong>Justin Moon</strong> (HRF), <strong>Mike Schmidt</strong> (Brink), <strong>Lisa Neigut</strong> (bitcoin++), <strong>Austin Kelsay</strong> (PlebDev)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card" onclick="openModal(this)"
+             data-title="Freedom Flywheel: How Investing in Startups Creates a Future Worth Inheriting"
+             data-time="3:10 - 3:50"
+             data-type="Fireside Chat"
+             data-speakers="<strong>Michael Goldstein</strong> (Satoshi Nakamoto Institute), <strong>Rob Hamilton</strong> (AnchorWatch), <strong>Joe Kelly</strong> (Unchained), <strong>Clark Moody</strong> (Epoch)"
+             data-abstract="Austin stands as a hub for Bitcoin, drawing creators of payment systems and sound money tools. This chat probes how targeted funding ignites this network, focusing on backing Bitcoin-focused ventures over fleeting trends. It explains the cycle where strong investments pull in talent, resources, and fresh ideas, benefiting all. Covering founder selection, early infrastructure support, and the view that such backing builds lasting value and liberty, it illustrates how Austin's role as an innovation center thrives on investments that strengthen communities and push financial sovereignty forward.">
+          <div class="session-header">
+            <div class="session-time">3:10 - 3:50</div>
+            <div class="session-title">Freedom Flywheel: How Investing in Startups Creates a Future Worth Inheriting</div>
+            <div class="session-type">Fireside Chat</div>
+          </div>
+          <div class="session-speakers"><strong>Michael Goldstein</strong> (Satoshi Nakamoto Institute), <strong>Rob Hamilton</strong> (AnchorWatch), <strong>Joe Kelly</strong> (Unchained), <strong>Clark Moody</strong> (Epoch)</div>
+          <div class="click-hint">Click for abstract</div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">3:50 - 5:30</div>
+            <div class="session-title">Networking and Cocktail Reception</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2: March 13 -->
+    <div class="day-section">
+      <div class="day-header">
+        <h2>Day 2 - Proof of Work</h2>
+        <div class="day-subtitle">Thursday, March 13, 2026</div>
+      </div>
+
+      <div class="schedule-grid">
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">8:00 - 9:50</div>
+            <div class="session-title">Doors Open / Breakfast</div>
+          </div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">9:50 - 10:00</div>
+            <div class="session-title">Welcome Back + Announcements</div>
+          </div>
+          <div class="session-speakers"><strong>Rod Roudi</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">10:00 - 10:20</div>
+            <div class="session-title">Solo Talk #1</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Rod Roudi</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">10:20 - 10:40</div>
+            <div class="session-title">Solo Talk #2</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Rob Hamilton</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">10:40 - 11:00</div>
+            <div class="session-title">Solo Talk #3</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Gideon Powell</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">11:00 - 11:20</div>
+            <div class="session-title">Solo Talk #4</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Andre Neves</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">11:20 - 1:15</div>
+            <div class="session-title">Lunch</div>
+          </div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">1:15 - 1:20</div>
+            <div class="session-title">Welcome Back + Announcements</div>
+          </div>
+          <div class="session-speakers"><strong>Rod Roudi</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">1:20 - 1:40</div>
+            <div class="session-title">Solo Talk #5</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Parker Lewis</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">1:40 - 2:00</div>
+            <div class="session-title">Solo Talk #6</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Chris Alfano</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">2:00 - 2:20</div>
+            <div class="session-title">Solo Talk #7</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Clark Moody</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">2:20 - 2:40</div>
+            <div class="session-title">Solo Talk #8 - Laboratory Texas</div>
+            <div class="session-type">Presentation</div>
+          </div>
+          <div class="session-speakers"><strong>Rob Warren</strong></div>
+        </div>
+
+        <div class="session-card no-abstract">
+          <div class="session-header">
+            <div class="session-time">2:40 - 3:00</div>
+            <div class="session-title">Closing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="sessionModal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 id="modalTitle" class="modal-title"></h3>
+      <div id="modalMeta" class="modal-meta"></div>
+      <div id="modalSpeakers" class="modal-speakers"></div>
+      <div id="modalAbstract" class="modal-abstract"></div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(element) {
+      const title = element.getAttribute('data-title');
+      const time = element.getAttribute('data-time');
+      const type = element.getAttribute('data-type');
+      const speakers = element.getAttribute('data-speakers');
+      const abstract = element.getAttribute('data-abstract');
+
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalMeta').innerHTML = time + (type ? ' • ' + type : '');
+      document.getElementById('modalSpeakers').innerHTML = speakers;
+      document.getElementById('modalAbstract').textContent = abstract;
+      document.getElementById('sessionModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (!event || event.target.id === 'sessionModal' || event.target.classList.contains('modal-close')) {
+        document.getElementById('sessionModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
