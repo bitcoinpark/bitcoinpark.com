@@ -11,18 +11,22 @@
             --bitcoin-orange-dark: #D4780E;
             --bitcoin-orange-light: #FFAA44;
             --clinical-white: #FFFFFF;
-            --deep-navy: #1A365D;
-            --navy-mid: #2A4A7F;
-            --healthy-green: #38A169;
+            --deep-navy: #031169;
+            --navy-mid: #1A4D8F;
+            --brand-blue: #4EA1E9;
+            --brand-blue-dark: #2B80C9;
+            --brand-blue-light: #EBF5FC;
+            --healthy-green: #4EA1E9;
             --pulse-red: #E53E3E;
-            --soft-gray: #718096;
-            --light-gray: #EDF2F7;
-            --bg-light: #FAFAFA;
-            --text-dark: #0D1F3C;
-            --text-body: #2D3748;
-            --text-light: #718096;
+            --soft-gray: #5B7FA6;
+            --light-gray: #E4F0FB;
+            --bg-light: #F4F9FF;
+            --text-dark: #031169;
+            --text-body: #1A3A6B;
+            --text-light: #5B7FA6;
             --glow-orange: rgba(247, 147, 26, 0.35);
-            --glow-navy: rgba(26, 54, 93, 0.15);
+            --glow-navy: rgba(3, 17, 105, 0.15);
+            --glow-blue: rgba(78, 161, 233, 0.25);
         }
 
         * {
@@ -54,7 +58,7 @@
             -webkit-backdrop-filter: blur(20px);
             padding: 18px 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(247, 147, 26, 0.12);
+            border-bottom: 1px solid rgba(78, 161, 233, 0.2);
             transition: all 0.3s ease;
         }
 
@@ -88,8 +92,8 @@
         }
 
         .navbar a:hover {
-            color: var(--bitcoin-orange);
-            background: rgba(247, 147, 26, 0.07);
+            color: var(--brand-blue-dark);
+            background: rgba(78, 161, 233, 0.1);
         }
 
         .navbar a.nav-cta {
@@ -112,9 +116,9 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 120px 20px 80px;
+            padding: 110px 20px 40px;
             overflow: hidden;
-            background: linear-gradient(160deg, var(--clinical-white) 0%, #FFF8F0 50%, #F0F4FF 100%);
+            background: #FFFFFF;
         }
 
         .hero::before {
@@ -124,7 +128,7 @@
             right: -15%;
             width: 700px;
             height: 700px;
-            background: radial-gradient(circle, rgba(247, 147, 26, 0.07) 0%, transparent 70%);
+            background: none;
             border-radius: 50%;
             animation: floatBg 22s ease-in-out infinite;
         }
@@ -136,7 +140,7 @@
             left: -15%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(26, 54, 93, 0.06) 0%, transparent 70%);
+            background: none;
             border-radius: 50%;
             animation: floatBg 17s ease-in-out infinite reverse;
         }
@@ -163,9 +167,9 @@
 
         /* Bitcoin Pulse SVG */
         .pulse-graphic {
-            max-width: 640px;
-            width: 90%;
-            margin: 0 auto 48px;
+            max-width: 1000px;
+            width: 98%;
+            margin: 0 auto 32px;
             display: block;
             animation: floatGraphic 7s ease-in-out infinite;
         }
@@ -189,7 +193,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.2em;
-            color: var(--bitcoin-orange);
+            color: var(--brand-blue-dark);
             margin-bottom: 16px;
         }
 
@@ -204,7 +208,7 @@
         }
 
         .hero-content h1 .accent {
-            color: var(--bitcoin-orange);
+            color: var(--brand-blue-dark);
         }
 
         .hero-subtitle {
@@ -226,7 +230,7 @@
             font-size: clamp(1rem, 2vw, 1.15rem);
             color: var(--soft-gray);
             font-weight: 500;
-            margin-bottom: 50px;
+            margin-bottom: 28px;
         }
 
         .hero-cta {
@@ -268,23 +272,23 @@
         .section-divider {
             width: 80px;
             height: 3px;
-            background: linear-gradient(90deg, var(--bitcoin-orange), var(--healthy-green));
-            margin: 0 auto 50px;
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
+            margin: 0 auto 28px;
             border-radius: 2px;
         }
 
         /* Sections */
         .section {
-            padding: 90px 20px;
+            padding: 50px 20px;
             position: relative;
         }
 
         .section-alt {
-            background: var(--light-gray);
+            background: #FFFFFF;
         }
 
         .section-navy {
-            background: var(--deep-navy);
+            background: #FFFFFF;
         }
 
         .container {
@@ -295,7 +299,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
         }
 
         .section-header h2 {
@@ -308,11 +312,14 @@
         }
 
         .section-navy .section-header h2 {
-            color: var(--clinical-white);
+            color: var(--text-dark);
         }
 
         .section-header h2 .orange {
-            color: var(--bitcoin-orange);
+            color: var(--brand-blue-dark);
+        }
+        .section-navy .section-header h2 .orange {
+            color: var(--brand-blue-dark);
         }
 
         .section-content {
@@ -329,17 +336,17 @@
         }
 
         .section-navy .section-content p {
-            color: rgba(255, 255, 255, 0.82);
+            color: var(--text-body);
         }
 
         /* Theme Card (key metaphor callout) */
         .theme-callout {
             max-width: 800px;
-            margin: 50px auto 0;
+            margin: 28px auto 0;
             background: var(--clinical-white);
             border-radius: 20px;
             padding: 48px 48px;
-            border: 1px solid rgba(247, 147, 26, 0.15);
+            border: 1px solid rgba(78, 161, 233, 0.2);
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(26, 54, 93, 0.07);
@@ -350,7 +357,7 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--pulse-red), var(--bitcoin-orange), var(--healthy-green));
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
         }
 
         .theme-callout .callout-label {
@@ -359,7 +366,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            color: var(--bitcoin-orange);
+            color: var(--brand-blue-dark);
             margin-bottom: 14px;
         }
 
@@ -385,7 +392,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 28px;
-            margin-top: 50px;
+            margin-top: 28px;
         }
 
         .info-card {
@@ -408,7 +415,7 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--bitcoin-orange), var(--bitcoin-orange-light));
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
             transform: scaleX(0);
             transition: transform 0.4s ease;
             transform-origin: left;
@@ -421,7 +428,7 @@
         .info-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 50px rgba(26, 54, 93, 0.1);
-            border-color: rgba(247, 147, 26, 0.2);
+            border-color: rgba(78, 161, 233, 0.3);
         }
 
         .info-card h3 {
@@ -451,9 +458,9 @@
             align-items: flex-start;
             gap: 16px;
             padding: 18px 0;
-            border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+            border-bottom: 1px solid rgba(78, 161, 233, 0.2);
             font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.88);
+            color: var(--text-body);
             line-height: 1.6;
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
         }
@@ -468,7 +475,7 @@
             width: 8px;
             height: 8px;
             min-width: 8px;
-            background: var(--bitcoin-orange);
+            background: var(--brand-blue);
             border-radius: 50%;
             margin-top: 8px;
         }
@@ -478,20 +485,20 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
-            margin-top: 50px;
+            margin-top: 28px;
         }
 
         .topic-card {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(247, 147, 26, 0.2);
+            border: 1px solid rgba(78, 161, 233, 0.25);
             border-radius: 14px;
             padding: 30px 28px;
             transition: all 0.3s ease;
         }
 
         .topic-card:hover {
-            background: rgba(247, 147, 26, 0.08);
-            border-color: rgba(247, 147, 26, 0.4);
+            background: rgba(78, 161, 233, 0.06);
+            border-color: rgba(78, 161, 233, 0.4);
             transform: translateY(-3px);
         }
 
@@ -499,13 +506,13 @@
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--bitcoin-orange);
+            color: var(--text-dark);
             margin-bottom: 10px;
         }
 
         .topic-card p {
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.72);
+            color: var(--text-body);
             line-height: 1.65;
         }
 
@@ -535,7 +542,7 @@
         }
 
         .schedule-item.social {
-            background: rgba(247, 147, 26, 0.04);
+            background: rgba(78, 161, 233, 0.06);
             padding: 22px 20px;
             border-radius: 10px;
             border-bottom: none;
@@ -546,7 +553,7 @@
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
             font-size: 0.88rem;
             font-weight: 600;
-            color: var(--bitcoin-orange);
+            color: var(--brand-blue-dark);
             letter-spacing: 0.03em;
             padding-top: 2px;
             white-space: nowrap;
@@ -566,7 +573,7 @@
         }
 
         .schedule-item.social .schedule-title {
-            color: var(--bitcoin-orange-dark);
+            color: var(--brand-blue-dark);
         }
 
         @media (max-width: 600px) {
@@ -582,7 +589,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 50px;
-            margin: 50px auto 0;
+            margin: 28px auto 0;
             max-width: 800px;
         }
 
@@ -595,14 +602,14 @@
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
             font-size: 3rem;
             font-weight: 700;
-            color: var(--bitcoin-orange);
+            color: var(--brand-blue-dark);
             line-height: 1;
             margin-bottom: 8px;
         }
 
         .stat-label {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.65);
+            color: var(--text-light);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -610,9 +617,9 @@
 
         /* CTA Section */
         .cta-section {
-            padding: 110px 20px;
+            padding: 60px 20px;
             text-align: center;
-            background: linear-gradient(135deg, var(--deep-navy) 0%, #0D1F3C 100%);
+            background: #FFFFFF;
             position: relative;
             overflow: hidden;
         }
@@ -622,7 +629,7 @@
             position: absolute;
             top: -40%; left: -20%;
             width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(247, 147, 26, 0.1) 0%, transparent 70%);
+            background: none;
             border-radius: 50%;
         }
 
@@ -631,7 +638,7 @@
             position: absolute;
             bottom: -35%; right: -15%;
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(56, 161, 105, 0.07) 0%, transparent 70%);
+            background: none;
             border-radius: 50%;
         }
 
@@ -644,15 +651,15 @@
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
             font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
-            color: var(--clinical-white);
+            color: var(--text-dark);
             margin-bottom: 20px;
             letter-spacing: -0.02em;
         }
 
         .cta-content p {
             font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 50px;
+            color: var(--text-body);
+            margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -695,23 +702,23 @@
 
         /* Footer */
         .footer {
-            background: #080F1C;
+            background: #FFFFFF;
             padding: 40px 20px;
             text-align: center;
         }
 
         .footer p {
-            color: rgba(255, 255, 255, 0.35);
+            color: var(--text-light);
             font-size: 0.85rem;
         }
 
         .footer a {
-            color: rgba(255, 255, 255, 0.55);
+            color: var(--text-body);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer a:hover { color: var(--bitcoin-orange); }
+        .footer a:hover { color: var(--brand-blue); }
 
         /* Scroll Animations */
         .fade-in {
@@ -735,16 +742,16 @@
             .navbar a { font-size: 0.75rem; padding: 6px 10px; }
             /* Hide less critical nav items on small screens */
             .navbar a[href="#who"] { display: none; }
-            .hero { padding: 100px 20px 60px; }
-            .pulse-graphic { max-width: 420px; margin-bottom: 28px; }
+            .hero { padding: 80px 20px 28px; }
+            .pulse-graphic { max-width: 680px; margin-bottom: 20px; }
             .hero-cta { padding: 16px 40px; font-size: 1rem; }
-            .section { padding: 60px 20px; }
+            .section { padding: 36px 20px; }
             .info-cards { flex-direction: column; align-items: center; gap: 20px; }
             .info-card { flex: 0 1 auto; width: 100%; padding: 28px 24px; }
             .theme-callout { padding: 36px 28px; }
             .topics-grid { grid-template-columns: 1fr; }
             .stats-row { gap: 36px; }
-            .cta-section { padding: 80px 20px; }
+            .cta-section { padding: 40px 20px; }
             .cta-button { padding: 16px 40px; font-size: 1rem; }
             .sponsors-logos { margin-top: 6px; gap: 24px; }
             .sponsor-logo { height: 143px; width: auto; transform: none; }
@@ -805,7 +812,7 @@
             .navbar a { font-size: 0.7rem; padding: 5px 7px; letter-spacing: 0.02em; }
             .navbar a[href="#topics"],
             .navbar a[href="#schedule"] { display: none; }
-            .pulse-graphic { max-width: 320px; width: 92%; }
+            .pulse-graphic { max-width: 420px; width: 95%; }
             .sponsor-logo { height: 110px; width: auto; }
             .sponsor-logo-unchained { height: 21px; }
             .sponsor-logo-ten31 { height: 78px; }
@@ -894,7 +901,7 @@
     <section class="section section-navy" id="topics">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>What We'll <span style="color: var(--bitcoin-orange);">Explore</span></h2>
+                <h2>What We'll <span class="orange">Explore</span></h2>
                 <div class="section-divider"></div>
             </div>
             <div class="section-content fade-in">
