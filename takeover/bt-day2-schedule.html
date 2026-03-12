@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>BT26 — Day 2: Proof of Work</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --orange: #F7931A;
+    --orange-dim: rgba(247,147,26,0.6);
+    --orange-glow: rgba(247,147,26,0.08);
+    --bg: #0A0A0A;
+    --card-bg: #111111;
+    --card-border: #2a2a2a;
+    --white: #FFFFFF;
+    --text-dim: #b0b0b0;
+    --text-muted: #808080;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Inter', Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Diagonal line texture — matches site */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      rgba(255,255,255,0.012) 35px,
+      rgba(255,255,255,0.012) 36px
+    );
+    z-index: 0;
+  }
+
+  /* Warm orange glow — top right */
+  body::after {
+    content: '';
+    position: absolute;
+    top: -250px;
+    right: -150px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(247,147,26,0.06) 0%, transparent 65%);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 56px 32px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .header-left { display: flex; flex-direction: column; gap: 6px; }
+
+  .event-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .event-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+  }
+
+  .event-title span {
+    color: var(--orange);
+  }
+
+  .header-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .day-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .date-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  /* Orange underline accent — matches site section headers */
+  .header-left::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--orange);
+    margin-top: 8px;
+    border-radius: 2px;
+  }
+
+  /* ── SCHEDULE GRID ── */
+  .schedule {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .time-block {
+    display: grid;
+    grid-template-columns: 190px 1fr 1fr;
+    align-items: center;
+    min-height: 58px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-left: 4px solid var(--orange);
+    padding: 0 24px;
+  }
+
+  .time-block.break-row {
+    background: rgba(247,147,26,0.03);
+    border-left-color: var(--card-border);
+  }
+
+  .time-block.break-row .topic {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+  }
+
+  .time-block.break-row .speaker { color: transparent; }
+
+  .time-col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .topic {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    padding-right: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .speaker {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--orange);
+    padding-left: 24px;
+    border-left: 1px solid var(--card-border);
+  }
+
+  .speaker .org {
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btc-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--bg);
+  }
+
+  .footer-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .footer-presented {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .sold-out {
+    background: var(--orange);
+    color: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="event-label">Bitcoin Takeover 2026 · Day Two</div>
+      <div class="event-title"><span>Proof of Work</span></div>
+    </div>
+    <div class="header-right">
+      <div class="day-badge">Thursday</div>
+      <div class="date-text">March 13, 2026</div>
+      <div style="margin-top: 6px;"><span class="sold-out">Sold Out</span></div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="schedule">
+
+    <div class="time-block break-row">
+      <div class="time-col">8:00 – 10:00</div>
+      <div class="topic">Doors Open / Breakfast</div>
+      <div class="speaker"></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">10:00 – 10:05</div>
+      <div class="topic">Welcome Back: 4 Years Down, 4 Decades to Go</div>
+      <div class="speaker">Rod Roudi</div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">10:05 – 10:25</div>
+      <div class="topic">Zaprite</div>
+      <div class="speaker">Parker Lewis <span class="org">/ Zaprite</span></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">10:25 – 10:45</div>
+      <div class="topic">Anchor Watch</div>
+      <div class="speaker">Rob Hamilton <span class="org">/ AnchorWatch</span></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">10:45 – 11:05</div>
+      <div class="topic">Cholla Inc.</div>
+      <div class="speaker">Gideon Powell <span class="org">/ Cholla Inc.</span></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">11:05 – 11:25</div>
+      <div class="topic">Bitcoin: The Future Now</div>
+      <div class="speaker">Andre Neves <span class="org">/ ZBD</span></div>
+    </div>
+
+    <div class="time-block break-row">
+      <div class="time-col">11:25 – 1:15</div>
+      <div class="topic">Lunch</div>
+      <div class="speaker"></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">1:15 – 1:20</div>
+      <div class="topic">Welcome Back + Announcements</div>
+      <div class="speaker">Rod Roudi</div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">1:20 – 1:40</div>
+      <div class="topic">The Future of Bitcoin Education</div>
+      <div class="speaker">Korok Ray</div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">1:40 – 2:00</div>
+      <div class="topic">360 Energy</div>
+      <div class="speaker">Chris Alfano <span class="org">/ 360 Energy Inc.</span></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">2:00 – 2:20</div>
+      <div class="topic">Epoch</div>
+      <div class="speaker">Clark Moody <span class="org">/ Epoch</span></div>
+    </div>
+
+    <div class="time-block">
+      <div class="time-col">2:20 – 2:40</div>
+      <div class="topic">An Abundant Future in Laboratory Texas</div>
+      <div class="speaker">Rob Warren <span class="org">/ Bitcoin Park</span></div>
+    </div>
+
+    <div class="time-block break-row">
+      <div class="time-col">2:40 – 3:00</div>
+      <div class="topic">Closing / Flex Time</div>
+      <div class="speaker"></div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">Austin, TX &nbsp;·&nbsp; SXSW 2026</div>
+    <div class="footer-right">
+      <div class="footer-presented">Presented by</div>
+      <div class="btc-icon">₿</div>
+      <div class="footer-brand">Bitcoin Park</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
