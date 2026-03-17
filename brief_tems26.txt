@@ -1,0 +1,198 @@
+Brief: Texas Energy and Mining Summit 26
+Location: Bitcoin Park, Austin, Texas
+Dates: May 20-21
+Format: Two-day, all-inclusive summit
+
+Overview
+The Texas Energy and Mining Summit 2026 is a curated gathering of approximately 200 operators, engineers, policymakers, entrepreneurs, capital allocators, and institutional leaders who are building at the intersection of energy, compute, and capital in the most dynamic energy market in North America. We explore how Texas has become the laboratory where Silicon Valley tech innovation meets East Coast financial engineering.
+
+Hosted in the spirit of Bitcoin Park's signature summits, this gathering centers on the idea of the Energy Frontier in Laboratory Texas, and how the state's unique market structure, permitting environment, and entrepreneurial culture are redefining what's possible in energy monetization. From ERCOT's deregulated market design to the convergence of Bitcoin mining, AI, and next-generation power production, the summit explores how Texas is pioneering new models for grid optimization, resource allocation, and community resilience. As traditional energy producers, Bitcoin miners, ranchers, and technology innovators collaborate in unprecedented ways, Texas stands as both proving ground and blueprint for energy's future.
+
+Attendees
+Bitcoin Mining entrepreneurs and operators in hardware, services, and operations.
+Energy producers, traders, and grid operators within ERCOT and beyond.
+Policymakers, regulators, and legal experts shaping Texas energy policy.
+AI and HPC infrastructure builders and capital allocators.
+Landowners, ranchers, and community stakeholders integrating with energy projects.
+Financial innovators and capital markets leaders.
+
+Historical Sponsors:
+Braiins
+CleanSpark
+Giga
+Core Scientific
+Foundry
+Ocean
+Priority Power
+Riot
+Cholla
+Plebsource
+
+Prospective Sponsors:
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+
+Historical Speakers:
+Marty Bent
+David Branscum
+Parker Lewis
+H Griffith Haby
+Mario Gutierrez
+Chris Alfano
+Andres Cabada
+Bob Burnett
+Luke Dashjr
+Simple Steve
+Kevin Haugen
+Mike Hamiton
+Brad Cuddy
+Haley Thomson
+Doug Allen
+Matthew Pines
+Andrew Myers
+Alex Brammer
+Econoalchemist
+Kulpreet
+Ryan Kuester
+Gideon Powell
+Jon Oliver
+David Schatz
+Pierre Rochard
+Bitcoin Mechanic
+Jay Beddict
+VNPRC
+Tyler Stevens
+RoninMiner
+Will Cole
+Nick Gates
+
+Potential Speakers:
+X
+X
+X
+X
+X
+X
+X
+X
+X
+
+Programming Tracks (Full Stack Texas)
+
+1. The Texas Electric Market: ERCOT and Beyond
+Examining the unique characteristics of Texas's deregulated energy market and how ERCOT's structure creates opportunities unavailable in other states. This track contrasts Texas's market-driven approach with alternative, exploring grid dynamics, price signals, and the mechanisms that enable rapid innovation and deployment.
+
+2. Fast Permitting and Development: The Texas Advantage
+Focusing on how Texas's regulatory environment enables faster project deployment than anywhere else in the nation. Sessions cover permitting pathways, land development, interconnection processes, and the partnerships between energy developers, local communities, and governmental entities that make the Texas model work.
+
+3. The Convergence: Bitcoin, AI, and Next-Gen Compute
+Dedicated to the intersection of Bitcoin mining and artificial intelligence workloads in Texas. This track explores how these complementary loads are being co-located, how they optimize grid economics, and why Texas has become the epicenter for this convergence. Includes discussions on infrastructure requirements, cooling solutions, and the future of compute density.
+
+4. Capital Formation and Financial Innovation
+Zooming in on the financial engines driving Texas's energy transformation. This includes discussions on the Texas Stock Exchange opening in Dallas, novel financing structures for energy projects, treasury strategies for miners and AI operators, and how Wall Street capital is flowing into Texas energy infrastructure. Special focus on how West Coast technology capital and East Coast financial sophistication are meeting in Texas.
+
+5. Community Integration: Ranchers, Operators, and Local Leaders
+Highlighting the voices and experiences of landowners, ranchers, and small-scale operators who are integrating Bitcoin mining and energy projects into their operations. This track tells the stories of how traditional Texas industries are evolving, how communities are benefiting from energy monetization, and the lessons learned from successful partnerships.
+
+6. Policy, Energy Security, and the International Bridge
+Addressing the governmental frameworks and international dimensions shaping Texas's energy future. Topics include grid sovereignty, energy independence, the role of Texas's Latin American diaspora in cross-border energy opportunities, and how state policy is enabling innovation while maintaining reliability and security.
+
+Accompanying Report: "Laboratory Texas: Market Structure at the Edge of Innovation"
+
+Abstract:
+Texas has emerged as the world's most dynamic laboratory for energy innovation, where a unique combination of deregulated markets, fast permitting, abundant natural resources, and entrepreneurial culture has created unprecedented opportunities for energy monetization. This spotlight examines how ERCOT's market structure differs fundamentally from other domestic and international models, enabling Bitcoin miners, AI operators, and traditional energy producers to experiment with grid optimization, demand response, and novel businesses. We explore the convergence of Silicon Valley innovation and Wall Street capital in Texas, the integration of ranchers and landowners into the energy economy, and the lessons this frontier offers for energy markets worldwide.
+
+Interviewees: Chris Alfano <chris@360energyco.com>
+
+=================
+
+Creative Brief
+
+Core Visual Identity
+
+Key Metaphor: The Catalyst
+This event is about collision points—where deregulation meets entrepreneurship, where traditional ranchers meet Bitcoin miners, where Silicon Valley meets Wall Street, where grid physics meets market mechanics, and how those combined forces are a catalyst for innovation. The visual metaphor is the intersection as a site of reaction: not a generic "convergence," but the precise moment where separate systems create energy and possibility. Think of it visually as the moment two currents meet and generate turbulence, that turbulent crossing point is where innovation lives.
+
+The metaphor works because the event argues against siloed thinking (energy in one silo, finance in another, tech in another) and for the collision itself as the source of value. It resonates with an audience of operators and engineers who understand that grid physics is literally about balancing flows and intersections.
+
+Key Image: Aerial Infrastructure at Dusk
+An aerial photograph of Texas infrastructure at the moment of transition, power lines converging, mining facilities adjacent to traditional energy infrastructure, the grid lit from below as dusk falls. The image captures:
+- Scale and complexity (the actual systems being discussed)
+- Integration, not separation (mining rig, substation, transmission line, ranch in frame together)
+- The moment of transition (dusk as literal and metaphorical threshold)
+- Real geography (identifiably Texas, open land, dispersed infrastructure, not dense urban)
+
+Strategic Rationale: This visual identity rejects the tech conference playbook (geometric abstractions, smooth gradients, metaphorical "innovation"). Instead, it grounds the event in actual infrastructure and real market conditions. The intersection metaphor mirrors how the audience thinks: as engineers optimizing flows, as capital allocators mapping connections, as policymakers navigating collisions between systems.
+
+Color Palette
+
+Primary Color: Desert Tan (#C4A57B)
+This is the color of Texas geology and infrastructure—dry earth, transmission tower paint, the actual landscape where these projects live. It's warm without being energetic; grounded without being institutional. Used for primary typography and structural elements, it establishes that this event is rooted in place and physicality, not abstract tech culture. The color says "this is real infrastructure in real terrain," which matters to an audience of operators and land integrators.
+
+Secondary Colors:
+Grid Gold (#D4A574): A slightly warmer variant used for accent typography and emphasis. Represents the economic value extracted from the grid—the financial flows that make the whole system work. Used in headers, callout elements, and report highlights. Strategic purpose: Visually connects energy infrastructure to capital markets.
+
+Dusk Blue (#2C3E50): Deep, grounded blue (not bright corporate blue) representing the evening transition and the precise moment of infrastructure operation. Used for body copy, navigation, and structural elements. This blue has depth and sophistication—it's the color of operational expertise, not consumer-facing tech. Strategic purpose: Communicates technical credibility and the nighttime operations of 24/7 mining and grid management.
+
+Alkali Green (#6B8E23): A muted, desert-appropriate green pulled from Texas scrubland ecology. Used sparingly for data visualization, callouts, and sustainability callouts. Grounds environmental considerations in Texas-specific context. Strategic purpose: Acknowledges the land integration and environmental stewardship themes without resorting to generic "green energy" clichés.
+
+Accent Colors:
+Alert Red (#A23B3F): Deep rust-red (not bright) used only for urgent policy callouts, warnings, or critical grid data points. References both the geological color of Texas iron-rich soil and the real stakes of grid reliability. Use sparingly—only when criticality demands attention.
+
+Compute Silver (#E8E8E8): Soft metallic accent for technical elements, data readouts, and computational visuals. Represents the AI/HPC infrastructure without introducing typical "tech" silver. Use as secondary highlight alongside data visualization.
+
+Typography
+
+Display Typeface: Monument Extended (Sans-serif, Geometric)
+A deliberate, architectural typeface with clear geometry and substantial weight.
+
+Primary Typeface: IBM Plex Sans (Humanist Sans-serif)
+Chosen for accessibility, legibility at all scales, and credibility in technical contexts. IBM Plex Sans is the typeface of serious infrastructure companies and financial institutions—it signals competence and clarity without corporate sterility.
+
+Accent Typeface: IBM Plex Mono (Monospace)
+Used exclusively for data readouts, market statistics, code snippets, policy numbers, and technical specifications. Monospace type signals "this is precise, this is real data, this is not interpretation"
+
+Visual Style & Tone
+
+Photography Style: Operational Realism
+Documentary-style photography that captures people at work and infrastructure in context. Show: Equipment operators in actual rigs, engineers examining hardware, policymakers in working meetings, ranchers on land where mining facilities operate, capital allocators reviewing spreadsheets on-site.
+
+Lighting: Natural or workspace-standard lighting—dawn at a facility, fluorescent facility lighting, daylight at an office.
+Contrast: High contrast that separates subjects from industrial backgrounds, emphasizing clarity and detail work.
+
+What NOT to do: No aspirational lifestyle imagery. No stock photography of smiling teams in an office (this isn't a tech startup). No clean, glossy renderings of facilities (these are operational spaces). No diversity-checkbox casting; cast for actual roles and expertise (a woman Bitcoin operator is not a woman pretending to be a Bitcoin operator for the photo).
+
+Avoid: Sunset power lines (too poetic), drone shots of empty landscapes (too ethereal), people in hard hats posing (too safe). These aren't building the future; they're running the grid—photograph the work, not the aspiration.
+
+Graphic Elements:
+- Grid Pattern Backgrounds: Subtle, repeating ERCOT-style grid maps as texture behind content.
+- Infrastructure Line Diagrams: Simplified, accurate technical drawings of transmission interconnections, mining cooling systems, and grid topology.
+- Market Data Visualizations: Real market charts (price signals, demand curves, mining economics) embedded as design elements.
+- Texas Territory Mapping: Sparse, minimal maps showing project locations, ERCOT zones, and infrastructure corridors.
+
+Avoid: Abstract blob shapes, cryptocurrency-default imagery (coins, chains, miners as generic icons), generic "innovation" iconography.
+
+Language:
+
+To Embrace: "Market structure," "deregulation," "grid optimization," "frontier," "convergence," "laboratory," "operators," "infrastructure," "capital formation," "ERCOT," "community integration," "proving ground," "reliability," "dispatch," "interconnection"
+
+To Avoid: "Disruption," "innovation," "revolution," "the future," "breakthrough," "change-makers," "transforming," "game-changing," "next-generation" (lazy), "cutting-edge," "empowerment," "sustainability" (without specifics), "Web3," "decentralized" (not the framing), "democratizing"
+
+Strategic connection: The "embrace" list reflects how engineers and market operators actually speak—functional, precise, grounded in operational reality. The "avoid" list consists of tech-conference language that distances the event from its audience's actual vocabulary and suggests the organizers don't understand the domain.
+
+Visual Identity System Summary
+
+This event is visually recognizable by:
+- Color trio: Desert Tan, Dusk Blue, and Alkali Green, together they read as "Texas infrastructure at scale"
+- Monument Extended typography for headers—assertive, geometric, operational
+- Aerial infrastructure photography featuring real systems and people at work
+- Grid-pattern structural elements that echo ERCOT operational language
+- Absence of tech-conference clichés: No geometric shapes, no smooth gradients, no aspirational imagery
