@@ -16,14 +16,14 @@
   <meta property="og:description" content="Texas Energy & Mining Summit 2026. May 20-21 in Austin, TX. Laboratory Texas: Where Market Structure Meets Innovation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bitcoinpark.com/tems">
-  <meta property="og:image" content="https://bitcoinpark.com/tems/TEMS2026-Meetup-banner-1200x675px.png">
+  <meta property="og:image" content="https://bitcoinpark.com/tems/TEMS2026-Social Share-1200x630.png">
   <meta property="og:site_name" content="Bitcoin Park">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Texas Energy & Mining Summit 2026 - Bitcoin Park">
   <meta name="twitter:description" content="Texas Energy & Mining Summit 2026. May 20-21 in Austin, TX. Laboratory Texas: Where Market Structure Meets Innovation.">
-  <meta name="twitter:image" content="https://bitcoinpark.com/tems/TEMS2026-Meetup-banner-1200x675px.png">
+  <meta name="twitter:image" content="https://bitcoinpark.com/tems/TEMS2026-Social Share-1200x630.png">
 
   <link rel="canonical" href="https://bitcoinpark.com/tems">
 
@@ -51,7 +51,7 @@
       "name": "Bitcoin Park",
       "url": "https://bitcoinpark.com"
     },
-    "image": "https://bitcoinpark.com/tems/TEMS2026-Meetup-banner-1200x675px.png",
+    "image": "https://bitcoinpark.com/tems/TEMS2026-Social Share-1200x630.png",
     "url": "https://bitcoinpark.com/tems",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
@@ -68,6 +68,8 @@
       --desert-tan: #C4A57B;
       --grid-gold: #D4A574;
       --dusk-blue: #2C3E50;
+      --cobalt-blue: #0047AB;
+      --cobalt-dark: #003580;
       --alkali-green: #6B8E23;
       --alert-red: #A23B3F;
       --compute-silver: #E8E8E8;
@@ -90,11 +92,67 @@
 
     body {
       font-family: 'IBM Plex Sans', Arial, sans-serif;
-      background: var(--dusk-blue);
+      background: var(--cobalt-blue);
       color: var(--pure-white);
       min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.6;
+      position: relative;
+    }
+
+    /* Animated Grid Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(196, 165, 123, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196, 165, 123, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
+      animation: gridMove 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(50px, 50px);
+      }
+    }
+
+    /* Gradient Overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(212, 165, 116, 0.08) 0%, transparent 50%);
+      z-index: 0;
+      animation: pulseGlow 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Ensure content appears above background */
+    .navbar, .hero, .section, .footer {
+      position: relative;
+      z-index: 1;
     }
 
     /* Typography */
@@ -126,8 +184,8 @@
 
     /* Navigation */
     .navbar {
-      background: rgba(44, 62, 80, 0.95);
-      border-bottom: 1px solid var(--border-gray);
+      background: rgba(0, 53, 128, 0.95);
+      border-bottom: 1px solid rgba(196, 165, 123, 0.3);
       height: 70px;
       display: flex;
       align-items: center;
@@ -139,6 +197,13 @@
       right: 0;
       z-index: 1000;
       backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(0, 53, 128, 0.98);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
     }
 
     .navbar-brand {
@@ -172,7 +237,7 @@
 
     .btn-primary {
       background: var(--desert-tan);
-      color: var(--dusk-blue);
+      color: var(--cobalt-dark);
       font-weight: 700;
       text-decoration: none;
       padding: 10px 24px;
@@ -181,14 +246,36 @@
       letter-spacing: 0.05em;
       border: none;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       font-family: 'IBM Plex Sans', sans-serif;
       border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(196, 165, 123, 0.4);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(212, 165, 116, 0.5);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .btn-primary:hover {
       background: var(--grid-gold);
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(212, 165, 116, 0.6);
     }
 
     .btn-primary.disabled {
@@ -237,14 +324,16 @@
       top: 70px;
       left: 0;
       right: 0;
-      background: var(--dusk-blue);
-      border-bottom: 1px solid var(--border-gray);
+      background: var(--cobalt-dark);
+      border-bottom: 1px solid rgba(196, 165, 123, 0.3);
       padding: 2rem;
       z-index: 999;
       transform: translateY(-100%);
       transition: transform 0.3s ease-in-out;
       opacity: 0;
       pointer-events: none;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .mobile-menu.active {
@@ -285,7 +374,29 @@
       position: relative;
       margin-top: 70px;
       padding: 0;
-      background: var(--dusk-blue);
+      background: var(--cobalt-dark);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(196, 165, 123, 0.1) 0%, transparent 50%, rgba(212, 165, 116, 0.1) 100%);
+      animation: heroShift 10s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes heroShift {
+      0% {
+        transform: translateX(-5%) scale(1.05);
+      }
+      100% {
+        transform: translateX(5%) scale(1.05);
+      }
     }
 
     .hero-image {
@@ -299,6 +410,43 @@
       height: auto;
       display: block;
       object-fit: cover;
+      transition: transform 0.5s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.02);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shine 8s infinite;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes shine {
+      0% {
+        left: -100%;
+      }
+      20% {
+        left: 200%;
+      }
+      100% {
+        left: 200%;
+      }
     }
 
     /* Sections */
@@ -328,7 +476,20 @@
       transform: translateX(-50%);
       width: 80px;
       height: 3px;
-      background: var(--grid-gold);
+      background: linear-gradient(90deg, var(--desert-tan), var(--grid-gold), var(--desert-tan));
+      box-shadow: 0 0 10px var(--grid-gold);
+      animation: underlineGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes underlineGlow {
+      0%, 100% {
+        width: 80px;
+        box-shadow: 0 0 10px var(--grid-gold);
+      }
+      50% {
+        width: 120px;
+        box-shadow: 0 0 20px var(--grid-gold);
+      }
     }
 
     .section-subtitle {
@@ -344,8 +505,20 @@
 
     /* About Section */
     .about {
-      background: var(--dusk-blue);
+      background: linear-gradient(180deg, var(--cobalt-blue) 0%, var(--cobalt-dark) 100%);
       padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at top, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .about-content {
@@ -372,24 +545,74 @@
     }
 
     .feature-card {
-      background: rgba(10, 10, 10, 0.4);
-      border: 1px solid var(--border-gray);
-      border-left: 4px solid var(--desert-tan);
+      background: rgba(10, 10, 10, 0.5);
+      border: 1px solid rgba(196, 165, 123, 0.3);
       padding: 2rem;
-      transition: all 0.3s ease;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 0 100%);
+    }
+
+    /* Top-right corner accent */
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border-top: 3px solid var(--desert-tan);
+      border-right: 3px solid var(--desert-tan);
+      transition: all 0.4s ease;
+    }
+
+    /* Bottom-left corner accent */
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-bottom: 3px solid var(--desert-tan);
+      border-left: 3px solid var(--desert-tan);
+      transition: all 0.4s ease;
+    }
+
+    .feature-card:hover::before,
+    .feature-card:hover::after {
+      border-color: var(--grid-gold);
+      width: 40px;
+      height: 40px;
     }
 
     .feature-card:hover {
       border-color: var(--grid-gold);
-      transform: translateY(-5px);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(212, 165, 116, 0.3), 0 0 30px rgba(196, 165, 123, 0.2);
+      background: rgba(10, 10, 10, 0.7);
     }
 
     .feature-title {
       font-size: 1.3rem;
-      color: var(--grid-gold);
+      background: linear-gradient(135deg, var(--grid-gold) 0%, var(--desert-tan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 1rem;
       font-family: 'Space Grotesk', Arial, sans-serif;
       font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-title {
+      background: linear-gradient(135deg, var(--desert-tan) 0%, var(--grid-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transform: scale(1.05);
     }
 
     .feature-description {
@@ -401,8 +624,20 @@
 
     /* Topics Section */
     .topics {
-      background: rgba(10, 10, 10, 0.3);
+      background: linear-gradient(180deg, var(--cobalt-dark) 0%, var(--cobalt-blue) 100%);
       padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .topics::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at bottom, rgba(107, 142, 35, 0.08) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .topics-grid {
@@ -416,16 +651,65 @@
     }
 
     .topic-card {
-      background: rgba(10, 10, 10, 0.4);
-      border: 1px solid var(--border-gray);
-      border-left: 4px solid var(--alkali-green);
+      background: rgba(10, 10, 10, 0.5);
+      border: 1px solid rgba(196, 165, 123, 0.3);
       padding: 1.5rem;
-      transition: all 0.3s ease;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    /* All four corner dots (grid nodes) */
+    .topic-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 8px;
+      height: 8px;
+      background: var(--alkali-green);
+      border-radius: 50%;
+      box-shadow:
+        calc(100% + 2px) 0 0 0 var(--alkali-green),
+        0 calc(100% + 2px) 0 0 var(--alkali-green),
+        calc(100% + 2px) calc(100% + 2px) 0 0 var(--alkali-green);
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* Connecting lines that appear on hover */
+    .topic-card::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      border: 2px solid transparent;
+      transition: all 0.4s ease;
+      pointer-events: none;
+    }
+
+    .topic-card:hover::before {
+      background: var(--grid-gold);
+      box-shadow:
+        calc(100% + 2px) 0 0 0 var(--grid-gold),
+        0 calc(100% + 2px) 0 0 var(--grid-gold),
+        calc(100% + 2px) calc(100% + 2px) 0 0 var(--grid-gold);
+      width: 10px;
+      height: 10px;
+    }
+
+    .topic-card:hover::after {
+      border-color: var(--grid-gold);
     }
 
     .topic-card:hover {
       border-color: var(--grid-gold);
-      transform: translateY(-3px);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(107, 142, 35, 0.3), 0 0 25px rgba(212, 165, 116, 0.2);
+      background: rgba(10, 10, 10, 0.7);
     }
 
     .topic-title {
@@ -445,8 +729,20 @@
 
     /* Attendees Section */
     .attendees {
-      background: var(--dusk-blue);
+      background: linear-gradient(180deg, var(--cobalt-blue) 0%, var(--cobalt-dark) 100%);
       padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .attendees::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, rgba(196, 165, 123, 0.1) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .attendees-grid {
@@ -460,25 +756,87 @@
     }
 
     .attendee-card {
-      background: rgba(10, 10, 10, 0.4);
-      border: 1px solid var(--border-gray);
-      border-left: 4px solid var(--desert-tan);
+      background: rgba(10, 10, 10, 0.5);
+      border: 1px solid rgba(196, 165, 123, 0.3);
       padding: 2rem;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+
+    /* Top transmission line accent */
+    .attendee-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--desert-tan) 10%,
+        var(--desert-tan) 90%,
+        transparent 100%);
+      transition: all 0.4s ease;
+    }
+
+    /* Bottom transmission line accent */
+    .attendee-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20px;
+      right: 20px;
+      height: 3px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--desert-tan) 10%,
+        var(--desert-tan) 90%,
+        transparent 100%);
+      transition: all 0.4s ease;
+    }
+
+    .attendee-card:hover::before,
+    .attendee-card:hover::after {
+      background: linear-gradient(90deg,
+        transparent 0%,
+        var(--grid-gold) 10%,
+        var(--grid-gold) 90%,
+        transparent 100%);
+      left: 10px;
+      right: 10px;
+      box-shadow: 0 0 10px var(--grid-gold);
     }
 
     .attendee-card:hover {
       border-color: var(--grid-gold);
-      transform: translateY(-5px);
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 45px rgba(196, 165, 123, 0.4), 0 0 35px rgba(212, 165, 116, 0.3);
+      background: rgba(10, 10, 10, 0.7);
     }
 
     .attendee-title {
       font-size: clamp(1.2rem, 1.5vw + 0.6rem, 1.5rem);
-      color: var(--grid-gold);
+      background: linear-gradient(135deg, var(--desert-tan) 0%, var(--grid-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 1rem;
       font-family: 'Space Grotesk', Arial, sans-serif;
       font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .attendee-card:hover .attendee-title {
+      background: linear-gradient(135deg, var(--grid-gold) 0%, var(--desert-tan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transform: scale(1.05);
     }
 
     .attendee-description {
@@ -490,17 +848,59 @@
 
     /* CTA Section */
     .cta-section {
-      background: rgba(10, 10, 10, 0.3);
+      background: linear-gradient(180deg, var(--cobalt-dark) 0%, var(--cobalt-blue) 100%);
       padding: 6rem 2rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      animation: ctaPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes ctaPulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+      }
     }
 
     .cta-title {
       font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
-      color: var(--desert-tan);
+      background: linear-gradient(135deg, var(--desert-tan) 0%, var(--grid-gold) 50%, var(--desert-tan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 1.5rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
+      position: relative;
+      z-index: 1;
+      animation: ctaTitlePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes ctaTitlePulse {
+      0%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+      50% {
+        transform: scale(1.02);
+        filter: brightness(1.2);
+      }
     }
 
     .cta-description {
@@ -513,7 +913,7 @@
 
     .btn-large {
       background: var(--desert-tan);
-      color: var(--dusk-blue);
+      color: var(--cobalt-dark);
       font-weight: 700;
       text-decoration: none;
       padding: 16px 40px;
@@ -522,15 +922,39 @@
       letter-spacing: 0.1em;
       display: inline-block;
       border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       font-family: 'IBM Plex Sans', sans-serif;
       border: none;
       cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 6px 25px rgba(196, 165, 123, 0.5);
+    }
+
+    .btn-large::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .btn-large:hover::before {
+      width: 400px;
+      height: 400px;
     }
 
     .btn-large:hover {
       background: var(--grid-gold);
-      transform: translateY(-2px);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(212, 165, 116, 0.7);
     }
 
     .btn-large.disabled {
@@ -544,11 +968,33 @@
 
     /* Footer */
     .footer {
-      background: rgba(10, 10, 10, 0.4);
-      border-top: 1px solid var(--border-gray);
+      background: linear-gradient(180deg, var(--cobalt-dark) 0%, rgba(0, 35, 80, 0.95) 100%);
+      border-top: 2px solid rgba(196, 165, 123, 0.4);
       color: var(--text-gray);
       padding: 3rem 2rem;
       text-align: center;
+      position: relative;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--grid-gold), transparent);
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes borderGlow {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
     }
 
     .footer p {
@@ -578,13 +1024,40 @@
     /* Fade-in Animations */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(30px) scale(0.95);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .fade-in.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+    }
+
+    /* Staggered animation delays */
+    .fade-in:nth-child(1) { transition-delay: 0.1s; }
+    .fade-in:nth-child(2) { transition-delay: 0.2s; }
+    .fade-in:nth-child(3) { transition-delay: 0.3s; }
+    .fade-in:nth-child(4) { transition-delay: 0.4s; }
+    .fade-in:nth-child(5) { transition-delay: 0.5s; }
+    .fade-in:nth-child(6) { transition-delay: 0.6s; }
+
+    /* Parallax elements */
+    .parallax {
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Section title glow effect */
+    .section-title {
+      animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% {
+        text-shadow: 0 0 10px rgba(196, 165, 123, 0.3);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(212, 165, 116, 0.6), 0 0 30px rgba(196, 165, 123, 0.4);
+      }
     }
 
     /* Responsive Design */
@@ -668,7 +1141,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-image">
-      <img src="./TEMS2026-Meetup-banner-1200x675px.png" alt="Texas Energy & Mining Summit 2026 - May 20-21, Bitcoin Park Austin">
+      <img src="./TEMS2026-Social Share-1200x630.png" alt="Texas Energy & Mining Summit 2026 - May 20-21, Bitcoin Park Austin">
     </div>
   </section>
 
@@ -807,6 +1280,53 @@
       hamburger.classList.toggle('active');
     }
 
+    // Navbar scroll effect
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    // Parallax effect for hero and sections
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.parallax');
+
+      parallaxElements.forEach(el => {
+        const speed = el.dataset.speed || 0.5;
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+
+    // Mouse tracking effect for cards
+    document.querySelectorAll('.feature-card, .topic-card, .attendee-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+
+        card.style.transform = `translateY(-10px) scale(1.02) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
     // Intersection Observer for animations
     const observerOptions = {
       threshold: 0.1,
@@ -839,6 +1359,56 @@
         }
       });
     });
+
+    // Add floating animation to CTA button
+    const ctaBtn = document.querySelector('.cta-section .btn-large');
+    if (ctaBtn && !ctaBtn.classList.contains('disabled')) {
+      let floatDirection = 1;
+      setInterval(() => {
+        const currentTransform = ctaBtn.style.transform || '';
+        if (currentTransform.includes('translateY')) {
+          floatDirection *= -1;
+        }
+      }, 2000);
+    }
+
+    // Add sparkle effect on hover for buttons
+    document.querySelectorAll('.btn-primary, .btn-large').forEach(btn => {
+      btn.addEventListener('mouseenter', function(e) {
+        if (!this.classList.contains('disabled')) {
+          const sparkle = document.createElement('span');
+          sparkle.style.position = 'absolute';
+          sparkle.style.width = '5px';
+          sparkle.style.height = '5px';
+          sparkle.style.background = 'rgba(255, 255, 255, 0.8)';
+          sparkle.style.borderRadius = '50%';
+          sparkle.style.pointerEvents = 'none';
+          sparkle.style.left = Math.random() * 100 + '%';
+          sparkle.style.top = Math.random() * 100 + '%';
+          sparkle.style.animation = 'sparkle 0.6s ease-out forwards';
+
+          this.appendChild(sparkle);
+
+          setTimeout(() => sparkle.remove(), 600);
+        }
+      });
+    });
+
+    // Add sparkle animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes sparkle {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(3);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
