@@ -276,7 +276,7 @@
         }
 
         .section:nth-child(even) {
-            background: var(--cream-dark);
+            background: var(--cream);
         }
 
         .container {
@@ -481,31 +481,9 @@
         .cta-section {
             padding: 100px 20px;
             text-align: center;
-            background: var(--dark-green);
+            background: var(--cream);
             position: relative;
             overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -30%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 107, 60, 0.12) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            bottom: -40%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
         }
 
         .cta-content {
@@ -517,14 +495,14 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 700;
-            color: var(--cream);
+            color: var(--terracotta);
             margin-bottom: 20px;
             letter-spacing: -0.02em;
         }
 
         .cta-content p {
             font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-            color: rgba(250, 243, 232, 0.75);
+            color: var(--text-body);
             margin-bottom: 45px;
             max-width: 600px;
             margin-left: auto;
