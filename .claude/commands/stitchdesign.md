@@ -14,11 +14,41 @@ Before starting, verify the user has the required tools. If any command fails, p
 2. **Stitch MCP** — verify `mcp__stitch__list_projects` works (the Stitch MCP tools should be available)
 3. **gcloud CLI** — run `gcloud auth list` to verify authentication
 
-If Stitch MCP calls fail with a quota error, run:
+### If Stitch MCP fails with a quota project error
+
+The stitch-mcp proxy does NOT read `quota_project_id` from the ADC credentials file. It resolves the quota project in this order:
+
+1. `STITCH_PROJECT_ID` env var (highest priority)
+2. `GOOGLE_CLOUD_PROJECT` env var
+3. `gcloud config get-value project` from its **own bundled gcloud config** at `~/.stitch-mcp/config/` (NOT the system gcloud)
+
+To fix, apply ALL of these:
+
+**Fix 1 — Set `STITCH_PROJECT_ID` in the MCP server env config:**
+
+Read `~/.claude.json`, find the stitch MCP server entry for the current project under `projects.<cwd>.mcpServers.stitch.env`, and ensure these env vars are present:
+
+```json
+"STITCH_PROJECT_ID": "bitcoin-park-claude-code-ad",
+"GOOGLE_CLOUD_PROJECT": "bitcoin-park-claude-code-ad"
+```
+
+**Fix 2 — Set the project in stitch-mcp's bundled gcloud config:**
+
+```bash
+cat > ~/.stitch-mcp/config/configurations/config_default << 'EOF'
+[core]
+project = bitcoin-park-claude-code-ad
+EOF
+```
+
+**Fix 3 — Set the ADC quota project (belt and suspenders):**
+
 ```bash
 gcloud auth application-default set-quota-project bitcoin-park-claude-code-ad
 ```
-Then restart Claude Code (the MCP server loads at startup).
+
+After applying fixes, the user must **restart Claude Code** (MCP servers load at startup).
 
 ## Step 1: Identify the Summit Project
 
