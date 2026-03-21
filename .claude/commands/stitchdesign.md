@@ -6,7 +6,18 @@ description: "Design graphics for Bitcoin Park summit projects using Stitch and 
 
 ## Prerequisites
 
-Verify before starting: `gws --help`, `gemini --version`, `gcloud auth list`. All three must work.
+**Required:**
+```bash
+gws --help          # Google Workspace CLI — install: go install github.com/nicholasgasior/gws@latest
+gemini --version    # Gemini CLI — install: npm install -g @google/gemini-cli (run `gemini` once to authenticate)
+gcloud auth list    # gcloud CLI — must be authenticated (gcloud auth login && gcloud auth application-default login)
+```
+
+**Optional (for video/image input):**
+```bash
+ffmpeg -version     # brew install ffmpeg
+yt-dlp --version    # pip3 install yt-dlp
+```
 
 ## Calling Stitch via Gemini CLI
 
@@ -15,9 +26,9 @@ All Stitch operations use Gemini CLI headless mode. Verify `gemini mcp list` sho
 ```bash
 gemini mcp add stitch npx @_davideast/stitch-mcp proxy \
   --scope user --trust \
-  -e GOOGLE_APPLICATION_CREDENTIALS=/Users/andrewdavis/.config/gcloud/application_default_credentials.json \
-  -e CLOUDSDK_CONFIG=/Users/andrewdavis/.config/gcloud \
-  -e HOME=/Users/andrewdavis \
+  -e GOOGLE_APPLICATION_CREDENTIALS=$HOME/.config/gcloud/application_default_credentials.json \
+  -e CLOUDSDK_CONFIG=$HOME/.config/gcloud \
+  -e HOME=$HOME \
   -e "PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" \
   -e STITCH_PROJECT_ID=bitcoin-park-claude-code-ad \
   -e GOOGLE_CLOUD_PROJECT=bitcoin-park-claude-code-ad
@@ -33,9 +44,9 @@ First call may be slow (~30s, MCP cold start). Do NOT retry — just wait.
 
 **Quota errors?** Re-add the MCP server with correct env vars above, and set `~/.stitch-mcp/config/configurations/config_default` to `[core]\nproject = bitcoin-park-claude-code-ad`.
 
-## Video & Image Input
+## Video & Image Input (optional)
 
-If the user provides a video (Loom URL, local MP4/MOV, remote URL) or image, invoke `/videoanalysis` first. The video describes what the final graphic should look like — treat the analysis output as the design brief. Extract layout, colors, text content, style cues, and any spoken/on-screen instructions, then use those details directly as the Stitch design prompt in Step 3.
+If the user provides a video (Loom URL, local MP4/MOV, remote URL) or image, invoke `/videoanalysis` first. Requires `ffmpeg` and `yt-dlp` — if missing, ask the user to describe the design instead. The video describes what the final graphic should look like — treat the analysis output as the design brief. Extract layout, colors, text content, style cues, and any spoken/on-screen instructions, then use those details directly as the Stitch design prompt in Step 3.
 
 ## Step 1: Identify Summit
 
