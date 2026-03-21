@@ -56,7 +56,7 @@ CTS   → 1rYc0Mdu3ZGnNAvs4VB74ygKY4s0PK4L0
 GBS   → 1vEG7f5NLs7GM6hziDo6phjZjw3O_qzMZ
 ```
 
-### Find or create the year subfolder
+### Find the year subfolder (or prompt to create a new project folder)
 
 Search for a folder named like the project code (e.g., "NEMS26") inside the parent folder:
 
@@ -71,7 +71,15 @@ gws drive files list --params '{
 }'
 ```
 
-If the year folder doesn't exist, create it:
+**If the year folder does NOT exist**, do NOT silently create it. This means the user is starting a brand new project (e.g., NEMS27, a new meetup series, etc.). Ask the user:
+
+> I don't see a project folder for **<PROJECT_CODE>** in Google Drive yet. Would you like me to create one?
+>
+> This will create: `<PARENT_SUMMIT_FOLDER>` → `<PROJECT_CODE>`
+>
+> If this is a new project type (not one of the existing summits), let me know the name and where it should live in the Drive, and I'll set it up.
+
+Only after the user confirms, create the folder:
 
 ```bash
 gws drive files create --json '{
@@ -80,6 +88,8 @@ gws drive files create --json '{
   "parents": ["<PARENT_FOLDER_ID>"]
 }' --params '{"supportsAllDrives": true}'
 ```
+
+If the user names something that isn't one of the known summit codes (e.g., a meetup or special event), ask them which parent folder it should go under — it could be under `2C. SUMMITS`, `2. EXPERIENCES`, or elsewhere in the shared drive. List the top-level folders to help them choose.
 
 ### Find or create the Stitch graphics subfolder
 
