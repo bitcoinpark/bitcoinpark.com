@@ -52,14 +52,19 @@ The Bitcoin Park Shared Drive is organized as:
 0. CULTURE & SYSTEMS    → 1Cq49eOmQKTOMcrlpM-o8RN4s6cCt1M-C
 1. MEMBERSHIP           → 1_e6W25rMUemEasxlsBGLLhP4yQjjOkFV
 2. EXPERIENCES          → 1ewldFexfKCJHR8_Z0uMjPOyQjeArbppL
-   └── 2C. SUMMITS      → 1Zd7yoMIvidGrA5J0ZTqjjji-MGpwSK9G
+   ├── 2A. PARK NASHVILLE → 1-2bXWOqiX3iDPei_vkDCfXrsIhF-TbSK
+   ├── 2B. PARK AUSTIN    → 10Is_LMlL-Mbum-9Q_9GwUnyGTlWuoRTg
+   └── 2C. SUMMITS        → 1Zd7yoMIvidGrA5J0ZTqjjji-MGpwSK9G
 3. IMAGINE IF           → 1eXC2Zz933q3LJ-z992r3MSJElnMVBIno
 4. OTHER PROJECTS       → 1xvnBVITH-uOb90guBIuSj1a9t9reDWIi
 ```
 
 **Routing rules:**
-- **IF** (all years: IF26, IF27, IF28, etc.) → lives under **3. IMAGINE IF**
-- **All other summits and meetups** → live under **2. EXPERIENCES > 2C. SUMMITS**
+- **Summits** (NEMS, BT, GB, TEMS, CTS, GBS) → **2. EXPERIENCES > 2C. SUMMITS**
+- **IF** (all years: IF26, IF27, IF28, etc.) → **3. IMAGINE IF**
+- **Nashville meetups** → **2. EXPERIENCES > 2A. PARK NASHVILLE**
+- **Austin meetups** → **2. EXPERIENCES > 2B. PARK AUSTIN**
+- **Everything else** → **4. OTHER PROJECTS**
 
 ### Summit parent folder IDs
 
@@ -108,9 +113,13 @@ gws drive files create --json '{
 }' --params '{"supportsAllDrives": true}'
 ```
 
-If the user names something that isn't one of the known summit codes (e.g., a meetup or special event), ask them which parent folder it should go under. Default to `2. EXPERIENCES > 2C. SUMMITS` for summit-type events, or `2. EXPERIENCES` for meetups. List the top-level folders to help them choose if unclear.
+If the user names something that isn't one of the known summit codes, determine where it goes based on the routing rules:
 
-Remember the routing rule: **IF** projects always go under `3. IMAGINE IF`, everything else goes under `2. EXPERIENCES`.
+- **Nashville meetup** → create under `2A. PARK NASHVILLE` (`1-2bXWOqiX3iDPei_vkDCfXrsIhF-TbSK`)
+- **Austin meetup** → create under `2B. PARK AUSTIN` (`10Is_LMlL-Mbum-9Q_9GwUnyGTlWuoRTg`)
+- **Anything else** → create under `4. OTHER PROJECTS` (`1xvnBVITH-uOb90guBIuSj1a9t9reDWIi`)
+
+Ask the user to confirm the location if you're unsure which category it falls into.
 
 ### Find or create the Stitch graphics subfolders
 
