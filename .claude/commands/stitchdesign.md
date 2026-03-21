@@ -44,16 +44,35 @@ Use the `gws` CLI for all Drive operations. Every Drive API call on this shared 
 
 The shared drive ID is: `0AEtADa_AopTlUk9PVA`
 
-### Summit parent folder IDs
+### Drive architecture
+
+The Bitcoin Park Shared Drive is organized as:
 
 ```
-NEMS  → 1lKma4acIwosjj2fTHSa3tAT4jkTlFV6Y
-BT    → 1BE5OJDcDOEdt30ppZPcwTFpKLCXEog89
-GB    → 1scZCZBtLDg2qjmobdMlCSAPMv7iOMLSm
-TEMS  → 1PvJsYEDNMfzo6NAnB5nYKNeDToWHui2h
-IF    → 1eXC2Zz933q3LJ-z992r3MSJElnMVBIno
-CTS   → 1rYc0Mdu3ZGnNAvs4VB74ygKY4s0PK4L0
-GBS   → 1vEG7f5NLs7GM6hziDo6phjZjw3O_qzMZ
+0. CULTURE & SYSTEMS    → 1Cq49eOmQKTOMcrlpM-o8RN4s6cCt1M-C
+1. MEMBERSHIP           → 1_e6W25rMUemEasxlsBGLLhP4yQjjOkFV
+2. EXPERIENCES          → 1ewldFexfKCJHR8_Z0uMjPOyQjeArbppL
+   └── 2C. SUMMITS      → 1Zd7yoMIvidGrA5J0ZTqjjji-MGpwSK9G
+3. IMAGINE IF           → 1eXC2Zz933q3LJ-z992r3MSJElnMVBIno
+4. OTHER PROJECTS       → 1xvnBVITH-uOb90guBIuSj1a9t9reDWIi
+```
+
+**Routing rules:**
+- **IF** (all years: IF26, IF27, IF28, etc.) → lives under **3. IMAGINE IF**
+- **All other summits and meetups** → live under **2. EXPERIENCES > 2C. SUMMITS**
+
+### Summit parent folder IDs
+
+These are the parent folders for each summit type (year subfolders go inside these):
+
+```
+NEMS  → 1lKma4acIwosjj2fTHSa3tAT4jkTlFV6Y   (under 2C. SUMMITS)
+BT    → 1BE5OJDcDOEdt30ppZPcwTFpKLCXEog89   (under 2C. SUMMITS)
+GB    → 1scZCZBtLDg2qjmobdMlCSAPMv7iOMLSm   (under 2C. SUMMITS)
+TEMS  → 1PvJsYEDNMfzo6NAnB5nYKNeDToWHui2h   (under 2C. SUMMITS)
+IF    → 1eXC2Zz933q3LJ-z992r3MSJElnMVBIno   (under 3. IMAGINE IF)
+CTS   → 1rYc0Mdu3ZGnNAvs4VB74ygKY4s0PK4L0   (under 2C. SUMMITS)
+GBS   → 1vEG7f5NLs7GM6hziDo6phjZjw3O_qzMZ   (under 2C. SUMMITS)
 ```
 
 ### Find the year subfolder (or prompt to create a new project folder)
@@ -89,15 +108,22 @@ gws drive files create --json '{
 }' --params '{"supportsAllDrives": true}'
 ```
 
-If the user names something that isn't one of the known summit codes (e.g., a meetup or special event), ask them which parent folder it should go under — it could be under `2C. SUMMITS`, `2. EXPERIENCES`, or elsewhere in the shared drive. List the top-level folders to help them choose.
+If the user names something that isn't one of the known summit codes (e.g., a meetup or special event), ask them which parent folder it should go under. Default to `2. EXPERIENCES > 2C. SUMMITS` for summit-type events, or `2. EXPERIENCES` for meetups. List the top-level folders to help them choose if unclear.
 
-### Find or create the Stitch graphics subfolder
+Remember the routing rule: **IF** projects always go under `3. IMAGINE IF`, everything else goes under `2. EXPERIENCES`.
 
-Inside the year folder, look for or create a folder named `[<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS`:
+### Find or create the Stitch graphics subfolders
+
+Each project gets two subfolders inside the year folder:
+
+- `FINAL - [<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS` — approved, ready-to-use designs
+- `SPEC - [<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS` — speculative/draft designs still being iterated on
+
+Search for both inside the year folder:
 
 ```bash
 gws drive files list --params '{
-  "q": "mimeType=\"application/vnd.google-apps.folder\" and name=\"[<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS\" and \"<YEAR_FOLDER_ID>\" in parents",
+  "q": "mimeType=\"application/vnd.google-apps.folder\" and name contains \"STITCH CREATIVES AND GRAPHICS\" and \"<YEAR_FOLDER_ID>\" in parents",
   "fields": "files(id,name)",
   "driveId": "0AEtADa_AopTlUk9PVA",
   "corpora": "drive",
@@ -106,17 +132,25 @@ gws drive files list --params '{
 }'
 ```
 
-If it doesn't exist:
+Create whichever don't exist:
 
 ```bash
+# SPEC folder (drafts go here first)
 gws drive files create --json '{
-  "name": "[<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS",
+  "name": "SPEC - [<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS",
+  "mimeType": "application/vnd.google-apps.folder",
+  "parents": ["<YEAR_FOLDER_ID>"]
+}' --params '{"supportsAllDrives": true}'
+
+# FINAL folder (approved designs)
+gws drive files create --json '{
+  "name": "FINAL - [<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS",
   "mimeType": "application/vnd.google-apps.folder",
   "parents": ["<YEAR_FOLDER_ID>"]
 }' --params '{"supportsAllDrives": true}'
 ```
 
-Save the graphics folder ID — you'll upload files here later.
+Save both folder IDs. New designs upload to the **SPEC** folder by default. When the user approves a design as final, upload (or move) it to the **FINAL** folder.
 
 ## Step 3: Create a Stitch Project
 
@@ -182,16 +216,16 @@ mcp__stitch__get_screen(
 )
 ```
 
-The screen response contains an `imageUri` or rendered image URL. Download it and upload to the Drive folder:
+The screen response contains an `imageUri` or rendered image URL. Download it and upload to the **SPEC** folder (drafts go here by default):
 
 ```bash
 # Download the image
 curl -L -o /tmp/stitch_design.png "<IMAGE_URL>"
 
-# Upload to the graphics folder
+# Upload to the SPEC folder
 gws drive +upload /tmp/stitch_design.png \
   --params '{"supportsAllDrives": true}' \
-  --json '{"name": "<descriptive-filename>.png", "parents": ["<GRAPHICS_FOLDER_ID>"]}'
+  --json '{"name": "<descriptive-filename>.png", "parents": ["<SPEC_FOLDER_ID>"]}'
 ```
 
 Use a descriptive filename like `NEMS26-speaker-card-john-doe.png` or `BT27-social-announcement-banner.png`.
@@ -201,7 +235,24 @@ If `+upload` doesn't work, use the standard files create with upload:
 ```bash
 gws drive files create \
   --upload /tmp/stitch_design.png \
-  --json '{"name": "<descriptive-filename>.png", "parents": ["<GRAPHICS_FOLDER_ID>"]}' \
+  --json '{"name": "<descriptive-filename>.png", "parents": ["<SPEC_FOLDER_ID>"]}' \
+  --params '{"supportsAllDrives": true}'
+```
+
+### Moving approved designs to FINAL
+
+When the user says a design is final/approved, move it from SPEC to FINAL:
+
+```bash
+gws drive files update --params '{"fileId": "<FILE_ID>", "addParents": "<FINAL_FOLDER_ID>", "removeParents": "<SPEC_FOLDER_ID>", "supportsAllDrives": true}'
+```
+
+Or if uploading a new final version directly, upload to the FINAL folder instead:
+
+```bash
+gws drive files create \
+  --upload /tmp/stitch_design.png \
+  --json '{"name": "<descriptive-filename>.png", "parents": ["<FINAL_FOLDER_ID>"]}' \
   --params '{"supportsAllDrives": true}'
 ```
 
