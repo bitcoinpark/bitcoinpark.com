@@ -9,7 +9,6 @@ description: "Design graphics for Bitcoin Park summit projects using Stitch and 
 **Required:**
 ```bash
 gws --help          # Google Workspace CLI — install: go install github.com/nicholasgasior/gws@latest
-gemini --version    # Gemini CLI — install: npm install -g @google/gemini-cli (run `gemini` once to authenticate)
 gcloud auth list    # gcloud CLI — must be authenticated (gcloud auth login && gcloud auth application-default login)
 ```
 
@@ -19,9 +18,17 @@ ffmpeg -version     # brew install ffmpeg
 yt-dlp --version    # pip3 install yt-dlp
 ```
 
-## Calling Stitch via Gemini CLI
+## Calling Stitch
 
-All Stitch operations use Gemini CLI headless mode. Verify `gemini mcp list` shows `stitch`. If missing:
+Use the Stitch MCP tools directly: `mcp__stitch__create_project`, `mcp__stitch__generate_screen_from_text`, `mcp__stitch__edit_screens`, `mcp__stitch__get_screen`, `mcp__stitch__get_project`, `mcp__stitch__list_projects`, `mcp__stitch__list_screens`, `mcp__stitch__generate_variants`.
+
+Call these tools directly — no Gemini CLI needed. This is the fastest path: Claude Code → Stitch MCP → Stitch API.
+
+**Quota errors?** Check that `STITCH_PROJECT_ID=bitcoin-park-claude-code-ad` is set in the MCP server config, and that `~/.stitch-mcp/config/configurations/config_default` contains `[core]\nproject = bitcoin-park-claude-code-ad`.
+
+### Fallback: Gemini CLI (only if MCP tools are unavailable)
+
+If the `mcp__stitch__*` tools are not connected, fall back to Gemini CLI as a proxy:
 
 ```bash
 gemini mcp add stitch npx @_davideast/stitch-mcp proxy \
@@ -34,15 +41,10 @@ gemini mcp add stitch npx @_davideast/stitch-mcp proxy \
   -e GOOGLE_CLOUD_PROJECT=bitcoin-park-claude-code-ad
 ```
 
-**Call pattern** — every Stitch tool call uses this:
-
+Call pattern (Gemini fallback only):
 ```bash
 gemini -p "<instruction to call stitch tool with params>. Return only the raw JSON result." -o json --yolo 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin)['response'])"
 ```
-
-First call may be slow (~30s, MCP cold start). Do NOT retry — just wait.
-
-**Quota errors?** Re-add the MCP server with correct env vars above, and set `~/.stitch-mcp/config/configurations/config_default` to `[core]\nproject = bitcoin-park-claude-code-ad`.
 
 ## Video & Image Input (optional)
 
@@ -90,39 +92,47 @@ Search with the same `gws drive files list` pattern (query for `name contains "S
 
 ## Step 3: Create Stitch Project & Design
 
-**Create project:**
-```
-stitch create_project with title '<PROJECT_CODE> - <description>'
-```
+**Create project** using `mcp__stitch__create_project` with a descriptive title like `<PROJECT_CODE> - <description>`.
+
 Extract the numeric project ID from the `name` field (e.g., `projects/1234567890` → `1234567890`).
 
-**Generate screen:**
-```
-stitch generate_screen_from_text with projectId '<ID>', prompt '<design prompt>', deviceType '<DESKTOP|MOBILE|TABLET|AGNOSTIC>'
-```
-Add `modelId 'GEMINI_3_1_PRO'` for highest quality, `'GEMINI_3_FLASH'` for speed.
+**Generate screen** using `mcp__stitch__generate_screen_from_text` with:
+- `projectId`: the numeric ID
+- `prompt`: detailed design prompt
+- `deviceType`: `DESKTOP`, `MOBILE`, `TABLET`, or `AGNOSTIC`
 
 Present `outputComponents` text/suggestions to the user.
 
-**Edit existing screen:**
-```
-stitch edit_screens with projectId '<ID>', selectedScreenIds ['<SCREEN_ID>'], prompt '<changes>'
-```
+**Edit existing screen** using `mcp__stitch__edit_screens` with:
+- `projectId`: the numeric ID
+- `selectedScreenIds`: array of screen IDs to edit
+- `prompt`: description of changes
+
+**Generate variants** using `mcp__stitch__generate_variants` for quick variations of existing screens.
 
 ## Step 4: Export to Google Drive
 
-**Get screen** to retrieve the image URL:
-```
-stitch get_screen with projectId '<ID>', screenId '<SCREEN_ID>', name 'projects/<ID>/screens/<SCREEN_ID>'
-```
+Export designs as **full-resolution PNGs** by rendering the HTML source, NOT by downloading the screenshot thumbnail.
 
-**Download and upload:**
+**Get screen** using `mcp__stitch__get_screen` to retrieve the `htmlCode.downloadUrl` (the actual design source).
+
+**Download HTML, render to full-res PNG, upload:**
 ```bash
-curl -L -o /tmp/stitch_design.png "<IMAGE_URL>"
+# 1. Download the HTML source
+curl -L -o /tmp/stitch_design.html "<HTMLCODE_DOWNLOAD_URL>"
+
+# 2. Render to full-resolution PNG (1920x1080 @2x = 3840x2160 output)
+cd ~/.claude/scripts && node stitch_render.mjs /tmp/stitch_design.html /tmp/stitch_design.png 1920 1080
+
+# 3. Upload to Drive
 gws drive files create --upload /tmp/stitch_design.png \
   --json '{"name": "<PROJECT_CODE>-<descriptive-name>.png", "parents": ["<SPEC_FOLDER_ID>"]}' \
   --params '{"supportsAllDrives": true}'
 ```
+
+The render script lives at `~/.claude/scripts/stitch_render.mjs` with puppeteer installed locally. It uses Chrome to render the HTML at the specified viewport size with 2x device scale factor for retina-quality output. Default is 1920x1080 → 3840x2160 PNG.
+
+For non-16:9 formats, adjust width/height: e.g., `1080 1080` for square, `1080 1920` for stories.
 
 **Move to FINAL** when approved:
 ```bash

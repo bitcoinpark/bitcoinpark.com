@@ -18,7 +18,20 @@ gcloud auth application-default login
 gcloud auth application-default set-quota-project bitcoin-park-claude-code-ad
 ```
 
-### Gemini CLI (Stitch design generation)
+### Stitch MCP (design generation)
+
+Stitch is called directly via MCP tools (`mcp__stitch__*`). No Gemini CLI needed for the primary workflow.
+
+Requires `STITCH_PROJECT_ID=bitcoin-park-claude-code-ad` in MCP server config.
+
+### Full-resolution export (Puppeteer)
+
+```bash
+# Render script at ~/.claude/scripts/stitch_render.mjs
+cd ~/.claude/scripts && npm install   # installs puppeteer (uses local Chrome)
+```
+
+### Gemini CLI (fallback only — if MCP tools are unavailable)
 
 ```bash
 npm install -g @google/gemini-cli
