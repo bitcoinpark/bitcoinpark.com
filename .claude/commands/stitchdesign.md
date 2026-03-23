@@ -84,11 +84,13 @@ If it doesn't exist, **ask the user before creating it**. Then create with:
 gws drive files create --json '{"name": "<PROJECT_CODE>", "mimeType": "application/vnd.google-apps.folder", "parents": ["<PARENT_ID>"]}' --params '{"supportsAllDrives": true}'
 ```
 
-**Find or create two subfolders** inside the year folder:
-- `SPEC - [<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS` — drafts (default upload target)
-- `FINAL - [<PROJECT_CODE>] STITCH CREATIVES AND GRAPHICS` — approved designs
+**Find or create the FINAL folder** inside the year folder:
+- `<PROJECT_CODE>_GRAPHICS_FINAL` — approved designs
 
-Search with the same `gws drive files list` pattern (query for `name contains "STITCH CREATIVES AND GRAPHICS"`). Create any missing ones with `gws drive files create`.
+**Find or create the SPEC folder** inside the FINAL folder:
+- `<PROJECT_CODE>_GRAPHICS_SPEC` — drafts (default upload target)
+
+Search with the same `gws drive files list` pattern (query for `name contains "GRAPHICS_FINAL"` or `name contains "GRAPHICS_SPEC"`). Create any missing ones with `gws drive files create`. Note: the SPEC folder's parent is the FINAL folder, not the year folder.
 
 ## Step 3: Create Stitch Project & Design
 
@@ -134,7 +136,7 @@ The render script lives at `~/.claude/scripts/stitch_render.mjs` with puppeteer 
 
 For non-16:9 formats, adjust width/height: e.g., `1080 1080` for square, `1080 1920` for stories.
 
-**Move to FINAL** when approved:
+**Move to FINAL** when approved (move from SPEC up to its parent FINAL folder):
 ```bash
 gws drive files update --params '{"fileId": "<FILE_ID>", "addParents": "<FINAL_FOLDER_ID>", "removeParents": "<SPEC_FOLDER_ID>", "supportsAllDrives": true}'
 ```
