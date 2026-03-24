@@ -1,15 +1,21 @@
 ---
-description: "Create or reorganize the full project skeleton for any Bitcoin Park summit — Google Drive folders/docs/sheets and Asana project with milestones, sections, and subtasks. Handles both new summit creation and auditing/fixing existing summits."
+description: "Create or reorganize the full project skeleton for any Bitcoin Park summit — Google Drive folders/docs/sheets and Asana project with milestones, sections, and subtasks. Handles both new summit creation and auditing/fixing existing summits. Populates docs and sheets with formatted skeleton templates."
 ---
 
 # Summit Architect — Bitcoin Park Summit Project Skeleton
 
-Create or reorganize the complete project infrastructure for any Bitcoin Park summit in both Google Drive and Asana. Ensures every summit follows the same standardized structure.
+This skill creates or reorganizes the complete project infrastructure for any Bitcoin Park summit in both Google Drive and Asana. It ensures every summit follows the same standardized structure.
+
+## When to Use
+
+Trigger on `/summitarchitect` or when the user asks to:
+- Create a new summit project (e.g., "set up TEMS27", "create CTS27 project")
+- Reorganize/audit an existing summit (e.g., "organize CTS26", "clean up IF26")
+- Check if a summit follows the standard structure
 
 ## Required Inputs
 
 Ask the user if not provided:
-
 1. **Summit code + year** — e.g., `TEMS27`, `CTS26`, `IF27`, `NEMS27`, `GB27`, `BT27`, `GFTS27`
 2. **Mode** — `new` (create from scratch) or `organize` (audit and fix existing)
 3. **Event dates** (optional for skeleton) — e.g., "May 20-21, 2027"
@@ -87,6 +93,166 @@ gws drive files list --params '{"q": "'\''FOLDER_ID'\'' in parents", "fields": "
 ```bash
 gws drive files update --params '{"fileId": "FILE_ID", "addParents": "NEW_PARENT_ID", "removeParents": "OLD_PARENT_ID", "supportsAllDrives": true}' <<< '{}'
 ```
+
+## Document & Sheet Templates
+
+After creating docs and sheets, populate them with skeleton content using the templates below. Replace placeholders: `{CODE}` = summit code (e.g., CTS), `{YY}` = 2-digit year, `{PREV_YY}` = previous year, `{FULL_NAME}` = full summit name from registry.
+
+### GOALS Doc Template
+
+```
+Registrations: [TARGET]
+Tickets Sold: [TARGET]
+Ticket Revenue: $[TARGET]
+Sponsors: [TARGET]
+Sponsor Revenue: $[TARGET]
+Budget Tracker: $[TARGET]
+
+Speakers Confirmed: [TARGET]
+Panels/Fireside Chats: [TARGET]
+Post Production BWP's: [TARGET]
+```
+
+### BRIEF Doc Template
+
+Title line should be bold, 17pt: `Brief: {FULL_NAME} {YY}`
+
+Then the following body content:
+
+```
+Location: [VENUE], [CITY], [STATE]
+Dates: [EVENT_DATES]
+Format: Two-day, all-inclusive summit
+
+Overview
+[empty - to be filled]
+
+Attendees
+[empty - to be filled]
+
+Historical Sponsors:
+
+Prospective Sponsors:
+
+Historical Speakers:
+
+Potential Speakers:
+
+Programming Tracks
+1.
+2.
+3.
+4.
+5.
+6.
+
+Accompanying Report
+Abstract:
+
+Creative Brief
+Core Visual Identity
+Color Palette
+Typography
+Visual Style & Tone
+```
+
+Formatting notes:
+- "Location:", "Dates:", "Format:" labels are **bold**
+- "Overview" and "Attendees" are **HEADING_3** style
+
+### MASTER Agenda Sheet Template
+
+Two tabs:
+
+**Tab 1 — `Master Agenda [2 Days]`** (rename the default Sheet1):
+- Header row (row 1) columns: `[blank, Email 1 (Intro), Cal Invite (Update), Email 2 (Finalization), Speaker Cards, Media, Day, Time, Topic, EMCEE, Lead Speaker/Moderator, Speaker 1, Speaker 2, Speaker 3, Abstract]`
+- Pre-populate Day 1 and Day 2 time slots:
+  - Day 1: 8:00 AM, 8:30 AM, 9:00 AM, 9:30 AM, 10:00 AM, 10:30 AM, 11:00 AM, 11:30 AM, 12:00 PM (Lunch), 1:00 PM, 1:30 PM, 2:00 PM, 2:30 PM, 3:00 PM, 3:30 PM, 4:00 PM, 4:30 PM, 5:00 PM (Happy Hour)
+  - Day 2: same time slots
+
+**Tab 2 — `Color codes`** (add new tab):
+- Row 3: `[blank, Orange, Draft ready for review]`
+- Row 4: `[blank, Green, Review & ready to be shared with speakers]`
+- Row 5: `[blank, Blue, Shipped]`
+
+### BUDGET Sheet Template
+
+**Tab name:** `Budget` (rename the default Sheet1)
+
+- Row 1: `["{CODE}{YY}", "F/B"]`
+- Row 4 (header): `[Line Item Description, Vendor, {PREV_YY} Actuals, {YY} Estimate, {YY} Actual, Deposit, Status, Signed (Y/N), Latest Date, Contact, Timing, Notes]`
+- Pre-populated category rows below header:
+
+```
+FOOD/BEVERAGE
+  Lunch Day 1
+  Tip
+  Lunch Day 2
+  Tip
+  Breakfast Day 1
+  Breakfast Day 2
+  Tip
+  Coffee
+  Coffee Cups
+  Alcohol
+  Non-Alcohol
+  Happy Hour
+  After Party
+  Tip
+STAFFING/EVENT
+  Audience Chairs
+  Stage
+  Stage Chairs
+MISCELLANEOUS
+  Volunteer Tees
+  Lanyards
+  Poster
+  White Paper
+  Speaker Cards
+```
+
+### VOLUNTEERS Sheet Template
+
+Two tabs:
+
+**Tab 1 — `Combined_Volunteer_Schedule`** (rename the default Sheet1):
+- Row 1: `Volunteer Schedule`
+- Row 2: `PIC`
+- Row 3: `Signal Group:`
+- Row 6 header: `[Time, Location, Task, Volunteer 1, Volunteer 2, Volunteer 3, Volunteer 4]`
+- Pre-populated standard volunteer shifts below header:
+  - Lobby, Kitchen, Registration, Usher, A/V, Timer
+
+**Tab 2 — `Volunteers`** (add new tab):
+- Header row: `[Name, Signal, Confirmed]`
+
+### How to Populate Templates After Creation
+
+Use the `gws` CLI to populate docs and sheets after creating them.
+
+**Populate a Google Doc** (insert text at the beginning):
+```bash
+gws docs documents batchUpdate --params '{"documentId": "DOC_ID"}' --json '{"requests": [{"insertText": {"location": {"index": 1}, "text": "CONTENT_HERE"}}]}'
+```
+
+**Rename a sheet tab:**
+```bash
+gws sheets spreadsheets batchUpdate --params '{"spreadsheetId": "SHEET_ID"}' --json '{"requests": [{"updateSheetProperties": {"properties": {"sheetId": 0, "title": "NEW_NAME"}, "fields": "title"}}]}'
+```
+
+**Add a new sheet tab:**
+```bash
+gws sheets spreadsheets batchUpdate --params '{"spreadsheetId": "SHEET_ID"}' --json '{"requests": [{"addSheet": {"properties": {"title": "TAB_NAME"}}}]}'
+```
+
+**Set cell values:**
+```bash
+gws sheets spreadsheets values batchUpdate --params '{"spreadsheetId": "SHEET_ID"}' --json '{"valueInputOption": "RAW", "data": [{"range": "TabName!A1:O1", "values": [["Col1", "Col2", ...]]}]}'
+```
+
+For Google Docs, build the full text content string and insert it with `insertText`. Then apply formatting (bold, heading styles) with additional `updateTextStyle` and `updateParagraphStyle` requests in a second `batchUpdate` call.
+
+For Google Sheets, first rename/add tabs with `spreadsheets batchUpdate`, then populate cell values with `spreadsheets values batchUpdate`.
 
 ---
 
@@ -192,7 +358,7 @@ Use Asana MCP tools. Key operations:
 
 **Create project:** Use `create_project` with `workspace_gid`, `team_gid`, `name`, `default_view: list`.
 
-**Create section:** Use `asana_get_project_sections` to list, then create sections as needed.
+**Create section:** Use `asana_get_project_sections` to list, then create sections as needed. Sections are created via the Asana API.
 
 **Create milestone:** Use Asana task creation with `resource_subtype: milestone` and assign to the MILESTONES section.
 
@@ -214,6 +380,7 @@ Use Asana MCP tools. Key operations:
    b. Create numbered docs (1-2) and sheets (3-5) in root
    c. Create subfolders: BWP, EMAILS, GRAPHICS_FINAL, SPOTLIGHT
    d. Create GRAPHICS_FINAL subfolders: SPEC, SOCIAL, MEETUP, ZAPRITE, EVENT_DISPLAY_SCREENS
+   e. Populate docs and sheets with skeleton template content (see "Document & Sheet Templates" section)
 3. **Create Asana project:**
    a. Create the project in workspace/team
    b. Create sections in order: MILESTONES, IN-TRAY, SPONSORS, INVITATIONS/REGISTRATIONS, DONE
