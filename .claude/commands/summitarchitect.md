@@ -69,19 +69,21 @@ Every summit year folder lives under its summit-type parent folder. Create this 
 
 Use the `gws` CLI. Always include `"supportsAllDrives": true` in params.
 
+**IMPORTANT:** Always use `--json` for request bodies, never `<<<` stdin (stdin does not pass the body correctly).
+
 **Create a folder:**
 ```bash
-gws drive files create --params '{"supportsAllDrives": true}' <<< '{"name": "FOLDER_NAME", "mimeType": "application/vnd.google-apps.folder", "parents": ["PARENT_ID"]}'
+gws drive files create --params '{"supportsAllDrives": true}' --json '{"name": "FOLDER_NAME", "mimeType": "application/vnd.google-apps.folder", "parents": ["PARENT_ID"]}'
 ```
 
 **Create a Google Doc:**
 ```bash
-gws drive files create --params '{"supportsAllDrives": true}' <<< '{"name": "DOC_NAME", "mimeType": "application/vnd.google-apps.document", "parents": ["PARENT_ID"]}'
+gws drive files create --params '{"supportsAllDrives": true}' --json '{"name": "DOC_NAME", "mimeType": "application/vnd.google-apps.document", "parents": ["PARENT_ID"]}'
 ```
 
 **Create a Google Sheet:**
 ```bash
-gws drive files create --params '{"supportsAllDrives": true}' <<< '{"name": "SHEET_NAME", "mimeType": "application/vnd.google-apps.spreadsheet", "parents": ["PARENT_ID"]}'
+gws drive files create --params '{"supportsAllDrives": true}' --json '{"name": "SHEET_NAME", "mimeType": "application/vnd.google-apps.spreadsheet", "parents": ["PARENT_ID"]}'
 ```
 
 **List folder contents (for audit):**
@@ -91,8 +93,22 @@ gws drive files list --params '{"q": "'\''FOLDER_ID'\'' in parents", "fields": "
 
 **Move a file to a different folder:**
 ```bash
-gws drive files update --params '{"fileId": "FILE_ID", "addParents": "NEW_PARENT_ID", "removeParents": "OLD_PARENT_ID", "supportsAllDrives": true}' <<< '{}'
+gws drive files update --params '{"fileId": "FILE_ID", "addParents": "NEW_PARENT_ID", "removeParents": "OLD_PARENT_ID", "supportsAllDrives": true}' --json '{}'
 ```
+
+**Rename a file (with optional move):**
+```bash
+gws drive files update --params '{"fileId": "FILE_ID", "supportsAllDrives": true}' --json '{"name": "NEW_NAME"}'
+```
+
+**Search for files across all drives by name:**
+```bash
+gws drive files list --params '{"q": "name contains '\''SEARCH_TERM'\''", "fields": "files(id,name,mimeType,parents)", "supportsAllDrives": true, "includeItemsFromAllDrives": true, "corpora": "allDrives", "pageSize": 50}'
+```
+
+**Note on large JSON bodies:** If the `--json` string contains special characters that break shell quoting, write the JSON to a temp file and pass it via `--json "$(cat /tmp/file.json)"`.
+
+**Note on shared drive permissions:** Moving files *into* a shared drive may fail with `fileWriterTeamDriveMoveInDisabled` if you only have writer access to the source. In that case, rename in place and flag for manual move.
 
 ## Document & Sheet Templates
 
@@ -411,19 +427,35 @@ Use Asana MCP tools. Key operations:
 1. **Find existing resources:**
    a. List the summit's Drive folder contents
    b. Find the Asana project (search by name pattern)
-2. **Audit Google Drive:**
-   a. Check all 5 numbered docs/sheets exist — create any missing ones
+2. **Search for similar files across all drives (merge step):**
+   a. Search all drives for files matching the summit code (e.g., `name contains 'BT26'`) and the full summit name (e.g., `name contains 'Bitcoin Takeover' and name contains '26'`)
+   b. Filter results to only docs/sheets/folders that are NOT already inside the summit root folder
+   c. Match each found file against the 5 standard items by keyword:
+      - Contains "goal" → matches GOALS doc
+      - Contains "brief" → matches BRIEF doc
+      - Contains "master" or "agenda" or "speaker" → matches MASTER Agenda sheet
+      - Contains "budget" or "actual" → matches BUDGET sheet
+      - Contains "volunteer" or "schedule" → matches VOLUNTEERS sheet
+      - Contains "graphic" → matches GRAPHICS_FINAL folder
+      - Contains "spotlight" → matches SPOTLIGHT folder
+   d. For each match found outside the summit folder:
+      - **If the standard item is missing from the summit folder:** Rename the found file to the standard name and move it into the summit folder (this replaces creating a new empty one)
+      - **If the standard item already exists in the summit folder:** Report the duplicate and ask the user which to keep
+      - **If the move fails** (e.g., shared drive permissions): Rename in place and flag for manual move
+   e. Only after this merge step, create any standard items that are still missing
+3. **Audit Google Drive:**
+   a. Check all 5 numbered docs/sheets exist (accounting for items merged in step 2) — create any still missing
    b. Check all subfolders exist — create any missing ones
    c. Check GRAPHICS_FINAL subfolders exist — create any missing ones
    d. Identify loose files that should be in subfolders — report and offer to move
-3. **Audit Asana:**
+4. **Audit Asana:**
    a. Check sections exist and are named correctly — create/rename as needed
    b. Ensure MILESTONES section exists (some older projects use FOCUS instead — rename to MILESTONES)
    c. Check all 10 milestones exist — create any missing ones
    d. Check subtasks under each milestone — create any missing ones
    e. Find loose tasks in IN-TRAY or other sections that belong under a milestone — report and offer to move
    f. Ensure all milestone tasks have `resource_subtype: milestone` (not `default_task`)
-4. **Report** — Print audit summary: what was found, what was created, what needs manual attention
+5. **Report** — Print audit summary: what was found, what was merged, what was created, what needs manual attention
 
 ---
 
