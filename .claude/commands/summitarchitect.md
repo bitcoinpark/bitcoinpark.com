@@ -1,5 +1,5 @@
 ---
-description: "Create or reorganize the full project skeleton for any Bitcoin Park summit — Google Drive folders/docs/sheets and Asana project with milestones, sections, and subtasks. Handles both new summit creation and auditing/fixing existing summits. Populates docs and sheets with formatted skeleton templates."
+description: "Create or reorganize the full project skeleton for any Bitcoin Park summit — Google Drive folders/docs/sheets and Asana project with milestones, sections, and subtasks. Handles both new summit creation and auditing/fixing existing summits. Populates docs and sheets with formatted skeleton templates and links milestones to their Drive files."
 ---
 
 # Summit Architect — Bitcoin Park Summit Project Skeleton
@@ -278,7 +278,24 @@ All milestone tasks go in the `MILESTONES` section. Each is created as a **miles
 
 The naming pattern is: `[{CODE}{YY}] Milestone Name`
 
-Create these 10 milestones in this order, each with its standard subtasks:
+Create these 10 milestones in this order, each with its standard subtasks.
+
+**Each milestone's `notes` field must contain the Google Drive link to its corresponding doc, sheet, or folder.** The mapping is:
+
+| Milestone | Drive Link Format |
+|-----------|------------------|
+| Goals - Sponsors & Sales | `Google Drive: https://docs.google.com/document/d/{GOALS_DOC_ID}/edit` |
+| Brief | `Google Drive: https://docs.google.com/document/d/{BRIEF_DOC_ID}/edit` |
+| MASTER Agenda Speakers | `Google Drive: https://docs.google.com/spreadsheets/d/{MASTER_SHEET_ID}/edit` |
+| Spotlight | `Google Drive: https://drive.google.com/drive/folders/{SPOTLIGHT_FOLDER_ID}` |
+| Budget & Vendor Contracts Closed | `Google Drive: https://docs.google.com/spreadsheets/d/{BUDGET_SHEET_ID}/edit` |
+| Volunteers | `Google Drive: https://docs.google.com/spreadsheets/d/{VOLUNTEERS_SHEET_ID}/edit` |
+| BWP | `Google Drive: https://drive.google.com/drive/folders/{BWP_FOLDER_ID}` |
+| Emails | `Google Drive: https://drive.google.com/drive/folders/{EMAILS_FOLDER_ID}` |
+| Graphics Final | `Google Drive: https://drive.google.com/drive/folders/{GRAPHICS_FINAL_FOLDER_ID}` |
+| Final Confirmations Checklist | *(no Drive link — this is a task-only milestone)* |
+
+Store the file/folder IDs returned during Drive creation and use them when creating the milestones via `asana_update_task` with the `notes` field.
 
 #### 1. `[{CODE}{YY}] Goals - Sponsors & Sales`
 Subtasks:
@@ -386,6 +403,7 @@ Use Asana MCP tools. Key operations:
    b. Create sections in order: MILESTONES, IN-TRAY, SPONSORS, INVITATIONS/REGISTRATIONS, DONE
    c. Create all 10 milestone tasks in MILESTONES section
    d. Create all subtasks under each milestone
+   e. Link each milestone to its Drive doc/sheet/folder by setting the `notes` field (see Milestone-to-Drive mapping table)
 4. **Report** — Print summary with Drive folder URL and Asana project URL
 
 ### Mode: ORGANIZE (audit + fix existing)
