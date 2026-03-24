@@ -242,13 +242,13 @@ gws drive files create --json '{"name": "<ABBREV>_EMAILS", "mimeType": "applicat
 gws drive files create --json '{"name": "[##]. [Summit Name] [Year] - [Email Title] Draft", "mimeType": "application/vnd.google-apps.document", "parents": ["FOLDER_ID"]}' --params '{"supportsAllDrives": true}'
 ```
 
-**Step 3: Write the email content** to each doc:
+**Step 3: Write the email content** to each doc using the Docs API:
 
 ```bash
-gws docs documents batchUpdate --params '{"documentId": "DOC_ID"}' --body '{"requests": [{"insertText": {"location": {"index": 1}, "text": "EMAIL CONTENT HERE"}}]}'
+gws docs documents batchUpdate --params '{"documentId": "DOC_ID"}' --json '{"requests": [{"insertText": {"location": {"index": 1}, "text": "EMAIL CONTENT HERE"}}]}'
 ```
 
-Write each email's full text content into its doc. The content should be plain text (no HTML) matching the format of the existing IF26 emails.
+Write each email's full text content into its doc. Use single `\n` between lines — Google Docs will render paragraph breaks naturally. Use `--json` (not `--body`) for the request payload. The content should be plain text (no HTML) matching the format of the existing IF26 emails.
 
 ### Workflow
 
