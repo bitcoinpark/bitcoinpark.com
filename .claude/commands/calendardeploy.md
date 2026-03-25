@@ -19,7 +19,14 @@ Ask the user for anything not provided:
 3. **Summit end date** (optional) — for multi-day events. If not provided, assume single-day (start = end)
 4. **_EMAILS folder** — Google Drive URL or folder ID for the summit's email drafts folder
 5. **Zaprite event page URL or payment link ID** — e.g., `https://app.zaprite.com/org/.../events/pl_uTJen8SBWt/tickets` or just `pl_uTJen8SBWt`
-6. **Zaprite API key** — Bearer token for the Zaprite API
+
+## Zaprite API Key
+
+The Zaprite API key is stored and does not need to be requested from the user:
+
+```
+6607fb3f-532c-4db0-a995-baebd14c121e
+```
 
 ## Summit Type Registry
 
@@ -33,6 +40,7 @@ Ask the user for anything not provided:
 | GBS | Global Bitcoin Summit |
 | BT | Bitcoin Takeover |
 | GFTS | Global Freedom Tech Summit |
+| HB | Health & Bitcoin |
 
 ---
 
@@ -129,10 +137,9 @@ Creates a Google Apps Script bound to the registrant sheet that checks Zaprite d
 
 ### Prerequisites
 
-The Apps Script API requires three things. If the deploy fails, walk the user through whichever is missing:
+The Apps Script API requires these to be enabled. If the deploy fails, walk the user through whichever is missing:
 
-1. **OAuth scope**: `gws auth login --scopes https://www.googleapis.com/auth/script.projects`
-   (Re-login with full scopes afterward: `gws auth login`)
+1. **OAuth scope** — The `script.projects` scope is already included in the standard gws full scope set. No separate login is needed.
 2. **GCP API enabled**: The error message includes the activation URL
 3. **User-level toggle ON**: https://script.google.com/home/usersettings
 
@@ -275,10 +282,6 @@ After deploy, instruct the user to:
 3. Click **Run** and authorize when prompted
 4. If they see an "unsafe app" warning: **Advanced** > **Go to Registration Sync (unsafe)**
 
-### Restore full gws scopes
-
-Remind: `gws auth login` (select all scopes)
-
 ---
 
 ## Execution Summary
@@ -288,7 +291,7 @@ Report back with:
 - Table: Email title | Send date
 - Registrant sheet link + count
 - Apps Script editor link
-- Reminder to run `createDailyTrigger` and restore gws scopes
+- Reminder to run `createDailyTrigger`
 
 ## Notes
 
