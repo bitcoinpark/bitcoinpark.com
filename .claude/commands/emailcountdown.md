@@ -118,6 +118,8 @@ Always present. Same phrasing pattern every email:
 
 *"Thank you to [Sponsor 1], [Sponsor 2], ... and [Last Sponsor] for their [partnership/support]. Their support makes this experience possible."*
 
+**Always hyperlink each sponsor name to their company website.** After writing the email text into a Google Doc, use `updateTextStyle` with a `link` field to apply hyperlinks to every occurrence of each sponsor name. Use a script to find the text indices and batch-apply the links.
+
 ### Registration CTA
 
 Always present (except email 14). Short nudge + link. Escalating urgency as the event approaches:
@@ -164,6 +166,7 @@ Read the brand guidelines at `/Users/andrewdavis/.brand-guidelines/SKILL.md` for
 - **Progressively urgent** — early emails are expansive and vision-focused. Later emails get shorter, more logistical, more action-oriented.
 - **Specific over vague** — real names, real projects, real numbers. Never generic filler.
 - **No AI slop** — content reads as human-written, intentional, and specific. No buzzwords, no corporate-speak.
+- **No AI writing tells** — never use em-dashes (use hyphens or commas instead), avoid "delve," "tapestry," "landscape," and other LLM-signature words. Avoid overly parallel sentence structures and repetitive openers. Vary sentence length and rhythm naturally. These emails go out under Rod's name and must pass as human-written.
 
 ### Recurring Phrases (adapt to each summit's identity)
 
