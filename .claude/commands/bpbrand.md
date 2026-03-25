@@ -1,23 +1,26 @@
 ---
-description: "Brand guidelines for Bitcoin Park and AI Freedom Lab — covers visual identity (logos, colors, typography, imagery), brand voice and tone, and content review for both organizations. Use this skill whenever creating, editing, or reviewing any content for Bitcoin Park or AI Freedom Lab, including: social media posts, event promos, grant applications, pitch decks, email outreach, newsletters, website copy, landing pages, slide decks, one-pagers, or any branded document. Also trigger when someone asks about brand colors, fonts, logo usage, voice/tone, or says things like 'write this in our voice', 'is this on-brand', 'make this look like BP/AFL', or references either organization's visual identity. If the user mentions Bitcoin Park, AI Freedom Lab, BP, AFL, Park Orange, Electric Cyan, or any brand-specific terminology, consult this skill."
+description: "Brand guidelines for Bitcoin Park, AI Freedom Lab, and Imagine IF — covers visual identity (logos, colors, typography, imagery), brand voice and tone, and content review for all three organizations. Use this skill whenever creating, editing, or reviewing any content for Bitcoin Park, AI Freedom Lab, or Imagine IF, including: social media posts, event promos, grant applications, pitch decks, email outreach, newsletters, website copy, landing pages, slide decks, one-pagers, or any branded document. Also trigger when someone asks about brand colors, fonts, logo usage, voice/tone, or says things like 'write this in our voice', 'is this on-brand', 'make this look like BP/AFL/IIF', or references any organization's visual identity. If the user mentions Bitcoin Park, AI Freedom Lab, Imagine IF, BP, AFL, IIF, Park Orange, Electric Cyan, Sunrise Orange, Royal Purple, or any brand-specific terminology, consult this skill."
 ---
 
-# Brand Guidelines — Bitcoin Park & AI Freedom Lab
+# Brand Guidelines — Bitcoin Park, AI Freedom Lab & Imagine IF
 
-This skill is the single source of truth for creating on-brand content for **Bitcoin Park** (BP) and **AI Freedom Lab** (AFL). Both brands were designed by Leah Dorrian (dorriandesigns) and share a sibling relationship — related but distinct.
+This skill is the single source of truth for creating on-brand content for **Bitcoin Park** (BP), **AI Freedom Lab** (AFL), and **Imagine IF** (IIF). All three brands were designed by Leah Dorrian (dorriandesigns) and share a sibling relationship — related but distinct.
 
 For full visual identity details (logo variations, clear space rules, color specs with Pantone/CMYK, typography weights and usage, imagery style, brand extensions), read the appropriate reference file **before creating any visual asset, slide deck, or design-heavy document**:
 
 - **`.brand-guidelines/references/bitcoin-park.md`** — BP's complete visual identity (including Nashville and Austin extensions)
 - **`.brand-guidelines/references/ai-freedom-lab.md`** — AFL's complete visual identity
+- **`.brand-guidelines/references/imagine-if.md`** — Imagine IF's complete visual identity
 
 ---
 
 ## Brand Relationship
 
-Bitcoin Park is the parent community brand — a community-supported campus focused on grassroots bitcoin adoption. AI Freedom Lab is a distinct initiative under the BP umbrella, focused on sovereign AI infrastructure and intelligence freedom. They share Park Orange (#FF9974) as a bridge color, and Leah Dorrian designed both systems. But their palettes, typography, and visual moods are different.
+Bitcoin Park is the parent community brand — a community-supported campus focused on grassroots bitcoin adoption. AI Freedom Lab is a distinct initiative under the BP umbrella, focused on sovereign AI infrastructure and intelligence freedom. Imagine IF is a distinct event series / initiative under the BP umbrella, focused on imaginative, human-centered talks rooted in Freedom Tech ethos + human flourishing + creative optimism.
 
-**When content mentions both orgs**, lead with whichever is the primary subject and use the other as context. Don't blend their color palettes or swap their typefaces.
+All three brands were designed by Leah Dorrian and share thematic DNA but have distinct visual identities. BP and AFL share Park Orange (#FF9974) as a bridge color. Imagine IF uses its own Sunrise Orange (#e68158) — a related but distinct warm hue.
+
+**When content mentions multiple orgs**, lead with whichever is the primary subject and use the others as context. Don't blend their color palettes or swap their typefaces.
 
 ---
 
@@ -100,6 +103,15 @@ These principles are Bitcoin Park's cultural operating system. They should infor
 **Nashville extension** swaps purple for a deeper violet (#B290F4) and adjusts peach to #DD9974.
 **Austin extension** swaps purple for sky blue (#62B9E8), uses Tilt Warp as headline font.
 
+### Imagine IF
+| Color | Hex | Role |
+|-------|-----|------|
+| Sunrise Orange | #e68158 | Optimistic glow. CTAs, prominent headlines, attention-demanding elements. |
+| Coral | #ffc6c2 | Background accents, subtle textures, softening bold statements. |
+| Light Purple | #b683ed | Creative concepts, infographics, innovation sections. |
+| Royal Purple | #7958ed | Primary brand color. Logo, essential typography, prominent graphics. |
+| Midnight Blue | #070c70 | Foundational anchor. Body text, nav bars, contrasting backdrops. |
+
 ---
 
 ## Quick-Reference: Typography
@@ -124,6 +136,14 @@ These principles are Bitcoin Park's cultural operating system. They should infor
 
 Note: Optima may require a license. Source Sans Pro is open source and always available as fallback.
 
+### Imagine IF
+| Role | Font | Weight |
+|------|------|--------|
+| Headlines | Rethink Sans | Bold |
+| Body text / paragraphs | Rethink Sans | Regular |
+| "Imagine IF" in hero moments | Cormorant Garamond | Bold Italic |
+| Logo wordmark | Encode Sans Expanded | Bold |
+
 ---
 
 ## Content Review Checklist
@@ -135,7 +155,7 @@ When reviewing content for brand compliance, check each item:
 - [ ] Logo has minimum clear space (AFL: 24px each side; BP: 4px each side)
 - [ ] Logo is not stretched, rotated, recolored outside approved palette, or placed on busy backgrounds
 - [ ] Colors are from the approved palette (check hex values, not "close enough")
-- [ ] Correct typefaces used for the right org (don't mix AFL and BP type systems)
+- [ ] Correct typefaces used for the right org (don't mix AFL, BP, and IIF type systems)
 - [ ] Typography hierarchy follows role assignments (headlines, body, captions)
 
 **Voice & Tone**
@@ -150,12 +170,16 @@ When reviewing content for brand compliance, check each item:
 - [ ] AFL: No staged corporate photography, no stock aesthetics, no artificial diversity
 - [ ] BP: Flat vector and line-work illustrations using brand palette, minimalist approach
 - [ ] BP: Noise textures and subtle stylistic treatments are acceptable
+- [ ] IIF: Futuristic yet warm aesthetic, clean minimalist design with imaginative flair
+- [ ] IIF: Geometric abstract illustrations with warm gradients (orange-to-purple spectrum)
 
 **Brand Integrity**
-- [ ] Bitcoin Park and AI Freedom Lab are never visually blended (don't mix their palettes)
-- [ ] Park Orange is the only shared color — everything else is org-specific
+- [ ] Bitcoin Park, AI Freedom Lab, and Imagine IF are never visually blended (don't mix their palettes)
+- [ ] BP and AFL share Park Orange (#FF9974) — everything else is org-specific
+- [ ] IIF uses its own Sunrise Orange (#e68158) — do not substitute with Park Orange
 - [ ] Content aligns with the spirit of the 8 Core Principles (for BP content)
 - [ ] AFL content reflects "The Unlock" metaphor — transition from closed to open, institutional to individual
+- [ ] IIF content reflects the "Imagine IF..." format — emotionally engaging, combining imagination with agency
 
 ---
 
@@ -164,5 +188,7 @@ When reviewing content for brand compliance, check each item:
 **Bitcoin Park:** A community-supported campus in Nashville, TN and beyond, focused on grassroots bitcoin adoption and a home for Bitcoiners to work, learn, collaborate, and build.
 
 **AI Freedom Lab:** Exists to ensure that artificial intelligence is a universal right, not a corporate privilege. Tagline: "Build On Your Own Terms." North Star concept: "The Unlock" — the moment control shifts from institution to individual. Self-custodial, collaborative, decentralized.
+
+**Imagine IF:** A call to action for dreamers, builders, and believers to come together and shape the world we want to live in. Rooted in Freedom Tech (bitcoin) ethos + human flourishing + creative optimism. Each "Imagine IF..." talk plants a seed for what's possible when we combine bold imagination with human action.
 
 **BP Mission (from Core Principles):** Support and accelerate the grassroots freedom tech movement by creating a home (physically and digitally) for mission-obsessed Bitcoiners, Builders, and Freedom Fighters to work, learn, collaborate, and build.
