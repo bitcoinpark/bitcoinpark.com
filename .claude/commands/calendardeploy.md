@@ -138,19 +138,139 @@ The Apps Script API requires three things. If the deploy fails, walk the user th
 
 ### Deploy
 
-Use the helper script at `/Users/andrewdavis/.claude/skills/calendardeploy/scripts/deploy_apps_script.py`:
+Write the following Python script to a temp file, substituting `SHEET_ID`, `ZAPRITE_API_KEY`, and `ZAPRITE_PL_ID` with the actual values, then run it:
 
-```bash
-python3 /Users/andrewdavis/.claude/skills/calendardeploy/scripts/deploy_apps_script.py \
-  "SHEET_ID" "ZAPRITE_API_KEY" "ZAPRITE_PL_ID"
+```python
+#!/usr/bin/env python3
+"""Deploy a container-bound Apps Script to a Google Sheet for Zaprite registration sync."""
+import json, base64, urllib.request, urllib.parse
+from pathlib import Path
+
+GWS_CONFIG = Path.home() / ".config" / "gws"
+
+# --- Config: substitute these before running ---
+SHEET_ID = "__SHEET_ID__"
+ZAPRITE_API_KEY = "__ZAPRITE_API_KEY__"
+ZAPRITE_PL_ID = "__ZAPRITE_PL_ID__"
+
+# --- Apps Script source code (Zaprite -> Sheet sync) ---
+APPS_SCRIPT_CODE = r'''
+var ZAPRITE_API_KEY = "''' + ZAPRITE_API_KEY + r'''";
+var TARGET_PL_ID = "''' + ZAPRITE_PL_ID + r'''";
+
+function syncRegistrations() {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+  var lastRow = sheet.getLastRow();
+  var existingEmails = {};
+  if (lastRow > 1) {
+    var emailRange = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
+    for (var i = 0; i < emailRange.length; i++) {
+      if (emailRange[i][0]) existingEmails[emailRange[i][0].toString().toLowerCase()] = true;
+    }
+  }
+  var allRegistrants = [];
+  var page = 1;
+  var totalPages = 1;
+  while (page <= totalPages) {
+    var url = "https://api.zaprite.com/v1/orders?limit=100&page=" + page;
+    var response = UrlFetchApp.fetch(url, {
+      method: "get",
+      headers: { "Authorization": "Bearer " + ZAPRITE_API_KEY },
+      muteHttpExceptions: true
+    });
+    var data = JSON.parse(response.getContentText());
+    if (page === 1 && data.meta) totalPages = data.meta.pagesCount || 1;
+    var items = data.items || [];
+    for (var i = 0; i < items.length; i++) {
+      var order = items[i];
+      var pl = order.paymentLink || {};
+      if (pl.id === TARGET_PL_ID && order.status === "COMPLETE") {
+        var cd = order.customerData || {};
+        var email = (cd.email || "").toLowerCase();
+        if (email && !existingEmails[email]) {
+          var tickets = order.eventTickets || [];
+          var ticketType = (tickets.length > 0 && tickets[0].paymentLinkItem) ? tickets[0].paymentLinkItem.title || "" : "";
+          allRegistrants.push([cd.email, cd.name || "", cd.company || "", ticketType, (order.paidAt || "").substring(0, 10)]);
+          existingEmails[email] = true;
+        }
+      }
+    }
+    page++;
+  }
+  if (allRegistrants.length > 0) {
+    sheet.getRange(sheet.getLastRow() + 1, 1, allRegistrants.length, 5).setValues(allRegistrants);
+    Logger.log("Added " + allRegistrants.length + " new registrants");
+  } else {
+    Logger.log("No new registrants found");
+  }
+}
+
+function createDailyTrigger() {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === "syncRegistrations") ScriptApp.deleteTrigger(triggers[i]);
+  }
+  ScriptApp.newTrigger("syncRegistrations").timeBased().everyDays(1).atHour(5).inTimezone("America/Chicago").create();
+  Logger.log("Daily trigger created for 5:00 AM CT");
+}
+'''
+
+MANIFEST = json.dumps({
+    "timeZone": "America/Chicago",
+    "dependencies": {},
+    "exceptionLogging": "STACKDRIVER",
+    "runtimeVersion": "V8",
+    "oauthScopes": [
+        "https://www.googleapis.com/auth/spreadsheets",
+        "https://www.googleapis.com/auth/script.scriptapp",
+        "https://www.googleapis.com/auth/script.external_request",
+    ],
+})
+
+def get_access_token():
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    with open(GWS_CONFIG / ".encryption_key", "r") as f:
+        key = base64.b64decode(f.read().strip())
+    with open(GWS_CONFIG / "credentials.enc", "rb") as f:
+        enc_data = f.read()
+    creds = json.loads(AESGCM(key).decrypt(enc_data[:12], enc_data[12:], None))
+    cs = json.load(open(GWS_CONFIG / "client_secret.json"))["installed"]
+    data = urllib.parse.urlencode({
+        "client_id": cs["client_id"], "client_secret": cs["client_secret"],
+        "refresh_token": creds["refresh_token"], "grant_type": "refresh_token",
+    }).encode()
+    return json.loads(urllib.request.urlopen(
+        urllib.request.Request("https://oauth2.googleapis.com/token", data=data)
+    ).read())["access_token"]
+
+def api_call(token, url, body, method="POST"):
+    req = urllib.request.Request(url, data=json.dumps(body).encode(),
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"}, method=method)
+    return json.loads(urllib.request.urlopen(req).read())
+
+token = get_access_token()
+project = api_call(token, "https://script.googleapis.com/v1/projects",
+    {"title": "Registration Sync", "parentId": SHEET_ID})
+script_id = project["scriptId"]
+api_call(token, f"https://script.googleapis.com/v1/projects/{script_id}/content",
+    {"files": [
+        {"name": "Code", "type": "SERVER_JS", "source": APPS_SCRIPT_CODE},
+        {"name": "appsscript", "type": "JSON", "source": MANIFEST},
+    ]}, method="PUT")
+print(f"Apps Script deployed: https://script.google.com/d/{script_id}/edit")
+print(json.dumps({"scriptId": script_id, "editorUrl": f"https://script.google.com/d/{script_id}/edit"}))
 ```
 
-This script decrypts gws credentials (AES-GCM), exchanges for an access token, creates a container-bound Apps Script project on the sheet, and pushes the parameterized sync code.
+Write this to `/tmp/deploy_apps_script.py` (with the three config values filled in), then run:
+
+```bash
+python3 /tmp/deploy_apps_script.py
+```
 
 ### Activate the trigger
 
 After deploy, instruct the user to:
-1. Open the Apps Script editor URL (printed by the deploy script)
+1. Open the Apps Script editor URL (printed by the script)
 2. Select `createDailyTrigger` from the function dropdown
 3. Click **Run** and authorize when prompted
 4. If they see an "unsafe app" warning: **Advanced** > **Go to Registration Sync (unsafe)**
