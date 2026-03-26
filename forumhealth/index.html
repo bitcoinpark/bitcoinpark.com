@@ -615,6 +615,67 @@
             letter-spacing: 0.08em;
         }
 
+        /* Speakers */
+        .speakers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 28px;
+        }
+
+        .speaker-card {
+            flex: 0 1 700px;
+            background: var(--clinical-white);
+            border-radius: 16px;
+            padding: 40px 36px;
+            border: 1px solid rgba(78, 161, 233, 0.15);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 30px rgba(26, 54, 93, 0.06);
+        }
+
+        .speaker-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
+        }
+
+        .speaker-card h3 {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+
+        .speaker-card h3 a {
+            color: var(--deep-navy);
+            text-decoration: none;
+            border-bottom: 2px solid var(--brand-blue);
+            transition: color 0.3s ease;
+        }
+
+        .speaker-card h3 a:hover {
+            color: var(--brand-blue);
+        }
+
+        .speaker-org {
+            font-size: 0.95rem;
+            color: var(--brand-blue-dark);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .speaker-abstract {
+            font-size: 1.02rem;
+            color: var(--text-body);
+            line-height: 1.8;
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 60px 20px;
@@ -830,6 +891,7 @@
             <a href="#topics">Topics</a>
             <a href="#who">Who's Invited</a>
             <a href="#schedule">Schedule</a>
+            <a href="#speakers">Speakers</a>
             <a href="https://www.meetup.com/bitcoinpark/events/313656621/" target="_blank" rel="noopener noreferrer" class="nav-cta">Join the Waitlist</a>
         </div>
     </nav>
@@ -1036,6 +1098,23 @@
                     <span class="schedule-title">Networking, Drinks and Appetizers</span>
                 </li>
             </ul>
+        </div>
+    </section>
+
+    <!-- Speakers -->
+    <section class="section section-alt" id="speakers">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2><span class="orange">Speakers</span></h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="speakers-grid fade-in">
+                <div class="speaker-card">
+                    <h3><a href="https://www.linkedin.com/in/stuart-lackey-ms-hci-34105a13/" target="_blank" rel="noopener noreferrer">Stuart Lackey</a></h3>
+                    <p class="speaker-org">Sound Health Advisory</p>
+                    <p class="speaker-abstract">Stuart Lackey, co-founder and CEO of SOUND Health Advisory, brings over two decades of experience supporting surgical device and medical technology innovations. As a pioneer in healthcare interoperability standards, Lackey explores the current challenges of healthcare delivery, examining systemic inefficiencies in payment systems, data fragmentation, and rising costs. Drawing from his extensive work developing the GO-70 interoperability standard and his insights from navigating the 2018 blockchain healthcare landscape, this keynote addresses how Bitcoin's decentralized technology offers transformative solutions for transparency, patient-centric data management, and realigning incentives to reduce healthcare complexity while improving accessibility and affordability.</p>
+                </div>
+            </div>
         </div>
     </section>
 
