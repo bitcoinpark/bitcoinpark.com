@@ -19,10 +19,9 @@ Ask the user if not provided:
 ### Upgrade an existing deck
 If the user provides an **existing presentation URL**:
 1. GET the presentation to extract all slide IDs, element IDs, and current text
-2. Read any source docs the user links — extract key themes, updated stats, and language
-3. Map each element that needs updating
-4. Use the **Python batching pattern** (see Execution Mechanics) to update in bulk
-5. Preserve existing images/logos unless asked to change visuals
+2. Map each element that needs updating (text boxes to replace, styles to refresh)
+3. Use the **Python batching pattern** (see Execution Mechanics) to update in bulk
+4. Preserve existing images/logos unless asked to change visuals
 
 ### Create a variant from an existing deck
 If the user wants a restructured version (e.g., "make a shorter version", "one focused on the orgs"):
@@ -50,17 +49,15 @@ Use WebFetch to pull the audience's website, mission page, and program-specific 
 
 If their site is Wix/JS-heavy, fall back to WebSearch for press coverage and third-party descriptions.
 
-## Step 3: Extract Source Document Themes
+## Step 3: Extract Source Material
 
-When the user provides an LOI, one-pager, or other source doc, read it via `gws docs documents get` and extract:
-- **Thesis/framing** — the conceptual hook (e.g., "The Mispricing of Freedom", "Freedom Alpha")
-- **Updated stats** — always use the most recent numbers from the source doc
-- **Key phrases** — language the audience will recognize (e.g., "The mission is the boss", "Simplicity compounds")
-- **Structural model** — how the orgs are framed (e.g., "three-layer accelerator: Community, Financial, Intelligence")
-- **The ask** — specific grant/partnership request and how it's structured
-- **Audience-specific references** — mirror their investments, publications, or frameworks back to them
+When the user provides a source doc (one-pager, grant brief, event description), read it via `gws docs documents get` and extract:
+- **Updated stats** — always use the most recent numbers
+- **Key phrases** — language that anchors the narrative
+- **Structural model** — how the orgs are framed
+- **The ask** — specific request and how it's structured
 
-**Important:** The deck should tell the same story as the source doc but in different words. Never copy LOI wording verbatim into slides. Same facts, fresh language.
+**Important:** The deck should tell the same story as source material but in different words. Same facts, fresh language for slides.
 
 ## Step 4: Discover Logo Assets
 
@@ -351,17 +348,17 @@ Return the Google Slides URL and a summary table of all slides.
 
 | Concept | What It Means | When to Use |
 |---------|--------------|-------------|
-| **The Mispricing of Freedom** | <1% of $900B annual philanthropy reaches freedom/democracy. Not a scarcity problem — a mispriced risk problem. (Dr. Salas Castro) | Grant pitches, especially Reynolds |
-| **Freedom Alpha** | Measurable observed outcomes exceeding the counterfactual. Every tool shipped = Freedom Alpha. | When audience uses investment/returns language |
 | **The Three-Layer Model** | Community (BP) + Financial (Bitcoin/GBS) + Intelligence (AFL) = one integrated system | Whenever presenting BP + AFL together |
 | **The Unlock** | The moment control over intelligence shifts from institution to individual. "Not your memory, not your brain." | AFL-focused slides, vision sections |
 | **Simplicity Compounds** | Every event, partnership, and builder compounds. BP's operating philosophy. | BP-focused sections, closing arguments |
+| **Build On Your Own Terms** | AFL tagline. Self-custodial AI, sovereign infrastructure. | Close slides, AFL hero moments |
 
 ## Common Audiences
 
-| Audience | Key Language to Mirror | What They Care About |
-|----------|----------------------|---------------------|
-| Reynolds Foundation | "Freedom Alpha", "The Mispricing of Freedom", "make freedom investible, measurable, irresistible", "strategic capital". Reference: OpenSats, Cornell Bitcoin Technology Policy Institute, BLISS Summit. | Freedom tech, dissidents, data-driven impact, scaling from <1% to 10% of philanthropy |
-| Human Rights Foundation | "Freedom tech", "dissidents", "authoritarian regimes", "financial sovereignty" | Tools for people under authoritarian rule, Bitcoin as human rights tool |
-| Foresight Institute | "Existential hope", "long-term flourishing", "intelligent cooperation" | AI governance, decentralized systems, civilizational resilience |
-| Corporate Sponsors | ROI, brand alignment, audience demographics, exclusivity tiers | Reach, credibility, networking access |
+| Audience Type | Key Language to Mirror | What They Care About |
+|---------------|----------------------|---------------------|
+| Freedom-tech foundations | "Freedom tech", "dissidents", "authoritarian regimes", "civic infrastructure" | Tools for people under authoritarian rule, measurable impact, scaling freedom |
+| Human Rights Foundation | "Freedom tech", "dissidents", "financial sovereignty" | Tools for people under authoritarian rule, Bitcoin as human rights tool |
+| AI / tech foundations | "Existential hope", "long-term flourishing", "intelligent cooperation" | AI governance, decentralized systems, civilizational resilience |
+| Corporate sponsors | ROI, brand alignment, audience demographics, exclusivity tiers | Reach, credibility, networking access |
+| Government / policy | "Civic infrastructure", "public goods", "open-source", "digital rights" | Community impact, education, workforce development |
