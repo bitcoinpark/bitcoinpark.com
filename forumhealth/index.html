@@ -559,12 +559,135 @@
             white-space: nowrap;
         }
 
+        .schedule-info {
+            min-width: 0;
+        }
+
         .schedule-title {
             font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-dark);
             line-height: 1.5;
+        }
+
+        .schedule-item.has-details .schedule-title {
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .schedule-item.has-details .schedule-title::after {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
+            border-right: 2px solid var(--brand-blue);
+            border-bottom: 2px solid var(--brand-blue);
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
+            margin-top: 6px;
+        }
+
+        .schedule-item.has-details.expanded .schedule-title::after {
+            transform: rotate(-135deg);
+        }
+
+        .schedule-type {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-blue-dark);
+            background: rgba(78, 161, 233, 0.1);
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-top: 6px;
+        }
+
+        .schedule-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, padding 0.4s ease;
+            opacity: 0;
+            padding-top: 0;
+        }
+
+        .schedule-item.has-details.expanded .schedule-details {
+            max-height: 800px;
+            opacity: 1;
+            padding-top: 16px;
+        }
+
+        .schedule-speaker {
+            margin-bottom: 14px;
+        }
+
+        .schedule-speaker h4 {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 2px;
+        }
+
+        .schedule-speaker h4 a {
+            color: var(--deep-navy);
+            text-decoration: none;
+            border-bottom: 2px solid var(--brand-blue);
+            transition: color 0.3s ease;
+        }
+
+        .schedule-speaker h4 a:hover {
+            color: var(--brand-blue);
+        }
+
+        .schedule-speaker .speaker-org {
+            font-size: 0.9rem;
+            color: var(--brand-blue-dark);
+            font-weight: 600;
+        }
+
+        .schedule-panelists {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px 0;
+        }
+
+        .schedule-panelists li {
+            font-size: 0.98rem;
+            margin-bottom: 3px;
+        }
+
+        .schedule-panelists li a {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            font-weight: 700;
+            color: var(--deep-navy);
+            text-decoration: none;
+            border-bottom: 2px solid var(--brand-blue);
+            transition: color 0.3s ease;
+        }
+
+        .schedule-panelists li a:hover {
+            color: var(--brand-blue);
+        }
+
+        .schedule-panelists li span {
+            color: var(--brand-blue-dark);
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+
+        .schedule-abstract {
+            font-size: 0.95rem;
+            color: var(--text-body);
+            line-height: 1.75;
+            margin: 0;
+            padding: 12px 0 0;
+            border-top: 1px solid rgba(78, 161, 233, 0.15);
         }
 
         .schedule-item.break .schedule-title {
@@ -615,95 +738,11 @@
             letter-spacing: 0.08em;
         }
 
-        /* Speakers */
-        .speakers-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 32px;
-            margin-top: 28px;
-        }
-
-        .speaker-card {
-            flex: 0 1 700px;
-            background: var(--clinical-white);
-            border-radius: 16px;
-            padding: 40px 36px;
-            border: 1px solid rgba(78, 161, 233, 0.15);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 6px 30px rgba(26, 54, 93, 0.06);
-        }
-
-        .speaker-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
-        }
-
-        .speaker-card h3 {
-            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
-            font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-            font-weight: 700;
-            color: var(--deep-navy);
-            margin-bottom: 4px;
-            letter-spacing: -0.01em;
-        }
-
-        .speaker-card h3 a {
-            color: var(--deep-navy);
-            text-decoration: none;
-            border-bottom: 2px solid var(--brand-blue);
-            transition: color 0.3s ease;
-        }
-
-        .speaker-card h3 a:hover {
-            color: var(--brand-blue);
-        }
-
+        /* Speaker org label (used in schedule details) */
         .speaker-org {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--brand-blue-dark);
             font-weight: 600;
-            margin-bottom: 18px;
-        }
-
-        .speaker-abstract {
-            font-size: 1.02rem;
-            color: var(--text-body);
-            line-height: 1.8;
-        }
-
-        .speaker-panelists {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 18px 0;
-        }
-
-        .speaker-panelists li {
-            font-size: 1.05rem;
-            margin-bottom: 4px;
-        }
-
-        .speaker-panelists li a {
-            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
-            font-weight: 700;
-            color: var(--deep-navy);
-            text-decoration: none;
-            border-bottom: 2px solid var(--brand-blue);
-            transition: color 0.3s ease;
-        }
-
-        .speaker-panelists li a:hover {
-            color: var(--brand-blue);
-        }
-
-        .speaker-panelists li span {
-            color: var(--brand-blue-dark);
-            font-weight: 600;
-            font-size: 0.93rem;
         }
 
         /* CTA Section */
@@ -921,7 +960,6 @@
             <a href="#topics">Topics</a>
             <a href="#who">Who's Invited</a>
             <a href="#schedule">Schedule</a>
-            <a href="#speakers">Speakers</a>
             <a href="https://www.meetup.com/bitcoinpark/events/313656621/" target="_blank" rel="noopener noreferrer" class="nav-cta">Join the Waitlist</a>
         </div>
     </nav>
@@ -1093,88 +1131,103 @@
             <ul class="schedule-list fade-in">
                 <li class="schedule-item">
                     <span class="schedule-time">12:00pm – 1:00pm</span>
-                    <span class="schedule-title">Welcome + Reception</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Welcome + Reception</span>
+                    </div>
                 </li>
                 <li class="schedule-item">
                     <span class="schedule-time">1:00pm – 1:05pm</span>
-                    <span class="schedule-title">Welcome Announcements</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Welcome Announcements</span>
+                    </div>
                 </li>
-                <li class="schedule-item">
+                <li class="schedule-item has-details">
                     <span class="schedule-time">1:05pm – 1:20pm</span>
-                    <span class="schedule-title">The US Healthcare Mess, and How Bitcoin Revitalizes the Industry</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">The US Healthcare Mess, and How Bitcoin Revitalizes the Industry</span>
+                        <span class="schedule-type">Keynote</span>
+                        <div class="schedule-details">
+                            <div class="schedule-speaker">
+                                <h4><a href="https://www.linkedin.com/in/stuart-lackey-ms-hci-34105a13/" target="_blank" rel="noopener noreferrer">Stuart Lackey</a></h4>
+                                <span class="speaker-org">Sound Health Advisory</span>
+                            </div>
+                            <p class="schedule-abstract">Stuart Lackey, co-founder and CEO of SOUND Health Advisory, brings over two decades of experience supporting surgical device and medical technology innovations. As a pioneer in healthcare interoperability standards, Lackey explores the current challenges of healthcare delivery, examining systemic inefficiencies in payment systems, data fragmentation, and rising costs. Drawing from his extensive work developing the GO-70 interoperability standard and his insights from navigating the 2018 blockchain healthcare landscape, this keynote addresses how Bitcoin's decentralized technology offers transformative solutions for transparency, patient-centric data management, and realigning incentives to reduce healthcare complexity while improving accessibility and affordability.</p>
+                        </div>
+                    </div>
                 </li>
-                <li class="schedule-item">
+                <li class="schedule-item has-details">
                     <span class="schedule-time">1:20pm – 2:05pm</span>
-                    <span class="schedule-title">Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems</span>
+                        <span class="schedule-type">Panel</span>
+                        <div class="schedule-details">
+                            <ul class="schedule-panelists">
+                                <li><a href="https://www.linkedin.com/in/mark-r-connors/" target="_blank" rel="noopener noreferrer">Mark Connors</a> <span>— Riskdimensions</span></li>
+                                <li><a href="https://www.linkedin.com/in/robert-rahimi-md-mscr-5147455/" target="_blank" rel="noopener noreferrer">Dr. Robert Rahimi</a> <span>— Baylor Scott &amp; White, BPN</span></li>
+                                <li><a href="https://www.linkedin.com/in/mark-link-541a863a/" target="_blank" rel="noopener noreferrer">Dr. Mark Link</a> <span>— Link Dental</span></li>
+                            </ul>
+                            <p class="schedule-abstract">This comprehensive panel examines how Bitcoin infrastructure can fundamentally reshape healthcare finance through three interconnected frameworks. Panelists explore the mechanics of implementing Bitcoin-based payment systems for medical services, replacing traditional payment rails with peer-to-peer transactions that reduce intermediary costs and settlement delays. Panelists address treasury management strategies for healthcare businesses adopting Bitcoin reserves, examining volatility mitigation, regulatory compliance, and integration with existing financial operations. And finally, speakers investigate circular health economy concepts where Bitcoin facilitates closed-loop value exchange within healthcare ecosystems, enabling direct provider-patient relationships, transparent pricing, and programmable health savings accounts. Drawing on real-world implementation challenges and opportunities, panelists provide actionable frameworks for healthcare organizations considering Bitcoin adoption.</p>
+                        </div>
+                    </div>
                 </li>
-                <li class="schedule-item">
+                <li class="schedule-item has-details">
                     <span class="schedule-time">2:05pm – 2:50pm</span>
-                    <span class="schedule-title">Root Causes of Fiat Health Problems: Perverse Incentives and Bitcoin Solutions</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Root Causes of Fiat Health Problems: Perverse Incentives and Bitcoin Solutions</span>
+                        <span class="schedule-type">Panel</span>
+                        <div class="schedule-details">
+                            <ul class="schedule-panelists">
+                                <li><a href="https://www.linkedin.com/in/abeljamesbascom/" target="_blank" rel="noopener noreferrer">Abel James Bascom</a> <span>— The Wild Diet</span></li>
+                                <li><a href="https://www.linkedin.com/in/mark-stephany-d-o-diplomat-aclm-54369431/" target="_blank" rel="noopener noreferrer">Dr. Mark Stephany</a> <span>— Bitcoin Physicians Network</span></li>
+                                <li><a href="https://med.uth.edu/temrc/2022/12/07/daniel-ostermayer-md/" target="_blank" rel="noopener noreferrer">Dr. Daniel Ostermayer</a> <span>— Bitcoin Physicians Network</span></li>
+                                <li><a href="https://www.linkedin.com/in/ahmadammous/" target="_blank" rel="noopener noreferrer">Dr. Ahmad Ammous</a> <span>— Harvard, Beth Israel Deaconess Medical Center</span></li>
+                            </ul>
+                            <p class="schedule-abstract">Dissect the fundamental structural problems plaguing modern healthcare systems, tracing how fiat currency inflation and centralized financial control have created misaligned incentives throughout the healthcare value chain. Panelists examine how fee-for-service models incentivize volume over outcomes, how third-party payment systems disconnect consumers from true costs, and how centralized intermediaries extract value while obscuring pricing transparency. The discussion explores metabolic health dysfunction as a symptom of these systemic failures, analyzing how ultra-processed foods and pharmaceutical dependencies have become profit centers rather than health solutions. Panelists present Bitcoin as a catalyst for restructuring healthcare economics, enabling sovereign health, equitable resource distribution, transparent pricing mechanisms, and restoring physician autonomy while reducing administrative burden and intermediary rent-seeking.</p>
+                        </div>
+                    </div>
                 </li>
                 <li class="schedule-item break">
                     <span class="schedule-time">2:50pm – 3:15pm</span>
-                    <span class="schedule-title">Break</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Break</span>
+                    </div>
                 </li>
-                <li class="schedule-item">
+                <li class="schedule-item has-details">
                     <span class="schedule-time">3:15pm – 4:00pm</span>
-                    <span class="schedule-title">Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance</span>
+                        <span class="schedule-type">Panel</span>
+                        <div class="schedule-details">
+                            <ul class="schedule-panelists">
+                                <li><a href="https://www.linkedin.com/in/jon-gordon-29942162/" target="_blank" rel="noopener noreferrer">Jon Gordon</a> <span>— SOUND HSA</span></li>
+                                <li><a href="https://www.linkedin.com/in/geetindergoyal/" target="_blank" rel="noopener noreferrer">Dr. Geetinder Goyal</a> <span>— First Primary Care</span></li>
+                                <li><a href="https://www.linkedin.com/in/andy-schoonover-6261557/" target="_blank" rel="noopener noreferrer">Andy Schoonover</a> <span>— CrowdHealth</span></li>
+                            </ul>
+                            <p class="schedule-abstract">This panel explores the cutting edge of healthcare financing mechanisms enabled by Bitcoin technology, examining how it revolutionizes health savings accounts, direct primary care arrangements, and alternative insurance models. Panelists discuss Bitcoin-denominated health savings accounts that protect purchasing power against inflation while enabling borderless portability and programmable compliance. The conversation addresses Direct Primary Care integration with Bitcoin payments, creating transparent subscription models that bypass insurance overhead and restore patient-physician relationships. Speakers evaluate peer-to-peer health risk-sharing networks, crowdfunding for medical expenses, and decentralized health finance applications built on Bitcoin infrastructure. Drawing from regulatory landscapes, implementation case studies, and actuarial considerations, this session provides practical roadmaps for organizations and individuals seeking to leverage Bitcoin for accessible, affordable, and autonomous healthcare financing.</p>
+                        </div>
+                    </div>
                 </li>
-                <li class="schedule-item">
+                <li class="schedule-item has-details">
                     <span class="schedule-time">4:00pm – 4:15pm</span>
-                    <span class="schedule-title">The Future of Healthcare Finance: Unlocking New Opportunities in a $5T Industry</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">The Future of Healthcare Finance: Unlocking New Opportunities in a $5T Industry</span>
+                        <span class="schedule-type">Keynote</span>
+                        <div class="schedule-details">
+                            <div class="schedule-speaker">
+                                <h4><a href="https://www.linkedin.com/in/rich-lassiter-md-614a004/" target="_blank" rel="noopener noreferrer">Dr. Rich Lassiter</a></h4>
+                                <span class="speaker-org">Bitcoin Physicians Network</span>
+                            </div>
+                            <p class="schedule-abstract">Dr. Rich Lassiter, emergency medicine physician and prominent Bitcoin educator, delivers our closing keynote, exploring Bitcoin's potential to unlock emergent opportunities within the $5 trillion US healthcare industry. Drawing from his dual expertise as a practicing emergency room physician and bitcoin advocate, Dr. Lassiter examines how Bitcoin can address healthcare's most pressing financial challenges: runaway costs, lack of price transparency, insurance complexity, and limited patient financial autonomy. He presents real-world scenarios for Bitcoin adoption across healthcare stakeholders, from hospital treasury strategies and physician payment systems to patient savings mechanisms and medical tourism. The keynote explores new investment models as Dr. Lassiter challenges attendees to envision a future where Bitcoin serves as foundational infrastructure for accessible, efficient, and patient-centered healthcare finance.</p>
+                        </div>
+                    </div>
                 </li>
                 <li class="schedule-item">
                     <span class="schedule-time">4:15pm – 6:00pm</span>
-                    <span class="schedule-title">Networking, Drinks and Appetizers</span>
+                    <div class="schedule-info">
+                        <span class="schedule-title">Networking, Drinks and Appetizers</span>
+                    </div>
                 </li>
             </ul>
-        </div>
-    </section>
-
-    <!-- Speakers -->
-    <section class="section section-alt" id="speakers">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2><span class="orange">Speakers</span></h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="speakers-grid fade-in">
-                <div class="speaker-card">
-                    <h3><a href="https://www.linkedin.com/in/stuart-lackey-ms-hci-34105a13/" target="_blank" rel="noopener noreferrer">Stuart Lackey</a></h3>
-                    <p class="speaker-org">Sound Health Advisory</p>
-                    <p class="speaker-abstract">Stuart Lackey, co-founder and CEO of SOUND Health Advisory, brings over two decades of experience supporting surgical device and medical technology innovations. As a pioneer in healthcare interoperability standards, Lackey explores the current challenges of healthcare delivery, examining systemic inefficiencies in payment systems, data fragmentation, and rising costs. Drawing from his extensive work developing the GO-70 interoperability standard and his insights from navigating the 2018 blockchain healthcare landscape, this keynote addresses how Bitcoin's decentralized technology offers transformative solutions for transparency, patient-centric data management, and realigning incentives to reduce healthcare complexity while improving accessibility and affordability.</p>
-                </div>
-                <div class="speaker-card">
-                    <ul class="speaker-panelists">
-                        <li><a href="https://www.linkedin.com/in/mark-r-connors/" target="_blank" rel="noopener noreferrer">Mark Connors</a> <span>— Riskdimensions</span></li>
-                        <li><a href="https://www.linkedin.com/in/robert-rahimi-md-mscr-5147455/" target="_blank" rel="noopener noreferrer">Dr. Robert Rahimi</a> <span>— Baylor Scott &amp; White, BPN</span></li>
-                        <li><a href="https://www.linkedin.com/in/mark-link-541a863a/" target="_blank" rel="noopener noreferrer">Dr. Mark Link</a> <span>— Link Dental</span></li>
-                    </ul>
-                    <p class="speaker-abstract">This comprehensive panel examines how Bitcoin infrastructure can fundamentally reshape healthcare finance through three interconnected frameworks. Panelists explore the mechanics of implementing Bitcoin-based payment systems for medical services, replacing traditional payment rails with peer-to-peer transactions that reduce intermediary costs and settlement delays. Panelists address treasury management strategies for healthcare businesses adopting Bitcoin reserves, examining volatility mitigation, regulatory compliance, and integration with existing financial operations. And finally, speakers investigate circular health economy concepts where Bitcoin facilitates closed-loop value exchange within healthcare ecosystems, enabling direct provider-patient relationships, transparent pricing, and programmable health savings accounts. Drawing on real-world implementation challenges and opportunities, panelists provide actionable frameworks for healthcare organizations considering Bitcoin adoption.</p>
-                </div>
-                <div class="speaker-card">
-                    <ul class="speaker-panelists">
-                        <li><a href="https://www.linkedin.com/in/abeljamesbascom/" target="_blank" rel="noopener noreferrer">Abel James Bascom</a> <span>— The Wild Diet</span></li>
-                        <li><a href="https://www.linkedin.com/in/mark-stephany-d-o-diplomat-aclm-54369431/" target="_blank" rel="noopener noreferrer">Dr. Mark Stephany</a> <span>— Bitcoin Physicians Network</span></li>
-                        <li><a href="https://med.uth.edu/temrc/2022/12/07/daniel-ostermayer-md/" target="_blank" rel="noopener noreferrer">Dr. Daniel Ostermayer</a> <span>— Bitcoin Physicians Network</span></li>
-                        <li><a href="https://www.linkedin.com/in/ahmadammous/" target="_blank" rel="noopener noreferrer">Dr. Ahmad Ammous</a> <span>— Harvard, Beth Israel Deaconess Medical Center</span></li>
-                    </ul>
-                    <p class="speaker-abstract">Dissect the fundamental structural problems plaguing modern healthcare systems, tracing how fiat currency inflation and centralized financial control have created misaligned incentives throughout the healthcare value chain. Panelists examine how fee-for-service models incentivize volume over outcomes, how third-party payment systems disconnect consumers from true costs, and how centralized intermediaries extract value while obscuring pricing transparency. The discussion explores metabolic health dysfunction as a symptom of these systemic failures, analyzing how ultra-processed foods and pharmaceutical dependencies have become profit centers rather than health solutions. Panelists present Bitcoin as a catalyst for restructuring healthcare economics, enabling sovereign health, equitable resource distribution, transparent pricing mechanisms, and restoring physician autonomy while reducing administrative burden and intermediary rent-seeking.</p>
-                </div>
-                <div class="speaker-card">
-                    <ul class="speaker-panelists">
-                        <li><a href="https://www.linkedin.com/in/jon-gordon-29942162/" target="_blank" rel="noopener noreferrer">Jon Gordon</a> <span>— SOUND HSA</span></li>
-                        <li><a href="https://www.linkedin.com/in/geetindergoyal/" target="_blank" rel="noopener noreferrer">Dr. Geetinder Goyal</a> <span>— First Primary Care</span></li>
-                        <li><a href="https://www.linkedin.com/in/andy-schoonover-6261557/" target="_blank" rel="noopener noreferrer">Andy Schoonover</a> <span>— CrowdHealth</span></li>
-                    </ul>
-                    <p class="speaker-abstract">This panel explores the cutting edge of healthcare financing mechanisms enabled by Bitcoin technology, examining how it revolutionizes health savings accounts, direct primary care arrangements, and alternative insurance models. Panelists discuss Bitcoin-denominated health savings accounts that protect purchasing power against inflation while enabling borderless portability and programmable compliance. The conversation addresses Direct Primary Care integration with Bitcoin payments, creating transparent subscription models that bypass insurance overhead and restore patient-physician relationships. Speakers evaluate peer-to-peer health risk-sharing networks, crowdfunding for medical expenses, and decentralized health finance applications built on Bitcoin infrastructure. Drawing from regulatory landscapes, implementation case studies, and actuarial considerations, this session provides practical roadmaps for organizations and individuals seeking to leverage Bitcoin for accessible, affordable, and autonomous healthcare financing.</p>
-                </div>
-                <div class="speaker-card">
-                    <h3><a href="https://www.linkedin.com/in/rich-lassiter-md-614a004/" target="_blank" rel="noopener noreferrer">Dr. Rich Lassiter</a></h3>
-                    <p class="speaker-org">Bitcoin Physicians Network</p>
-                    <p class="speaker-abstract">Dr. Rich Lassiter, emergency medicine physician and prominent Bitcoin educator, delivers our closing keynote, exploring Bitcoin's potential to unlock emergent opportunities within the $5 trillion US healthcare industry. Drawing from his dual expertise as a practicing emergency room physician and bitcoin advocate, Dr. Lassiter examines how Bitcoin can address healthcare's most pressing financial challenges: runaway costs, lack of price transparency, insurance complexity, and limited patient financial autonomy. He presents real-world scenarios for Bitcoin adoption across healthcare stakeholders, from hospital treasury strategies and physician payment systems to patient savings mechanisms and medical tourism. The keynote explores new investment models as Dr. Lassiter challenges attendees to envision a future where Bitcoin serves as foundational infrastructure for accessible, efficient, and patient-centered healthcare finance.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1209,6 +1262,44 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Expandable schedule items
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        document.querySelectorAll('.schedule-item.has-details').forEach(item => {
+            const title = item.querySelector('.schedule-title');
+
+            // Click toggles on all devices
+            title.addEventListener('click', () => {
+                item.classList.toggle('expanded');
+            });
+
+            // Desktop only: hover to expand
+            if (!isTouch) {
+                let hoverTimer;
+                item.addEventListener('mouseenter', () => {
+                    hoverTimer = setTimeout(() => {
+                        item.classList.add('expanded');
+                    }, 200);
+                });
+                item.addEventListener('mouseleave', () => {
+                    clearTimeout(hoverTimer);
+                    // Only collapse on mouseleave if opened by hover, not by click
+                    // We use a data attribute to track click-locked state
+                    if (!item.dataset.clickLocked) {
+                        item.classList.remove('expanded');
+                    }
+                });
+                title.addEventListener('click', () => {
+                    // Toggle click-lock: if already locked, unlock and allow hover to control
+                    if (item.dataset.clickLocked) {
+                        delete item.dataset.clickLocked;
+                    } else {
+                        item.dataset.clickLocked = '1';
+                    }
+                });
+            }
+        });
     </script>
 
 </body>
