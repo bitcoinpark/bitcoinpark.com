@@ -355,6 +355,62 @@
             color: var(--terracotta);
         }
 
+        /* Nested sub-items (e.g. workshops during lunch) */
+        .timeline-sub-items {
+            margin-left: 138px;
+            padding: 4px 0 4px 0;
+            border-left: 2px dashed rgba(201, 107, 60, 0.2);
+            margin-top: -1px;
+        }
+
+        .timeline-sub-item {
+            display: flex;
+            gap: 0;
+            position: relative;
+            padding: 8px 0 8px 20px;
+        }
+
+        .timeline-sub-item .sub-time {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--warm-brown);
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            flex: 0 0 80px;
+        }
+
+        .timeline-sub-item .sub-body h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-body);
+            line-height: 1.3;
+        }
+
+        .timeline-sub-item .sub-body .timeline-badge {
+            font-size: 0.65rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-sub-items {
+                margin-left: 108px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-sub-items {
+                margin-left: 92px;
+            }
+            .timeline-sub-item .sub-time {
+                font-size: 0.65rem;
+                flex: 0 0 68px;
+            }
+            .timeline-sub-item .sub-body h4 {
+                font-size: 0.82rem;
+            }
+        }
+
         /* Section divider for evening */
         .timeline-section-break {
             display: flex;
@@ -720,16 +776,7 @@
                     <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
                     <div class="timeline-body">
                         <h3>Doors Open + Breakfast</h3>
-                        <span class="timeline-badge badge-meal">9:00 &ndash; 9:45 AM</span>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time"><span>9:45 AM</span></div>
-                    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
-                    <div class="timeline-body">
-                        <h3>Welcome Back &amp; Fedi Announcement</h3>
-                        <span class="timeline-badge badge-opening">9:45 &ndash; 10:00 AM</span>
+                        <span class="timeline-badge badge-meal">9:00 &ndash; 10:00 AM</span>
                     </div>
                 </div>
 
@@ -737,44 +784,50 @@
                     <div class="timeline-time"><span>10:00 AM</span></div>
                     <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
                     <div class="timeline-body">
+                        <h3>Welcome Back &amp; Fedi Announcement</h3>
+                        <span class="timeline-badge badge-opening">10:00 &ndash; 10:15 AM</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time"><span>10:15 AM</span></div>
+                    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+                    <div class="timeline-body">
                         <h3>Fedi Workshop</h3>
-                        <span class="timeline-badge badge-workshop">10:00 &ndash; 11:30 AM</span>
+                        <span class="timeline-badge badge-workshop">10:15 &ndash; 11:30 AM</span>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time"><span>12:00 PM</span></div>
+                    <div class="timeline-time"><span>11:30 AM</span></div>
                     <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
                     <div class="timeline-body">
-                        <h3>Lunch and Workshops Happening</h3>
-                        <span class="timeline-badge badge-meal">12:00 &ndash; 1:30 PM</span>
+                        <h3>Lunch on Site</h3>
+                        <span class="timeline-badge badge-meal">11:30 AM &ndash; 1:30 PM</span>
                     </div>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-time"><span>12:15 PM</span></div>
-                    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
-                    <div class="timeline-body">
-                        <h3>OpenClaw / Agents / AI Automation</h3>
-                        <span class="timeline-badge badge-workshop">12:15 &ndash; 12:45 PM</span>
+                <div class="timeline-sub-items">
+                    <div class="timeline-sub-item">
+                        <span class="sub-time">12:15 PM</span>
+                        <div class="sub-body">
+                            <h4>OpenClaw / Agents / AI Automation</h4>
+                            <span class="timeline-badge badge-workshop">12:15 &ndash; 12:45 PM</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time"><span>12:45 PM</span></div>
-                    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
-                    <div class="timeline-body">
-                        <h3>Bitcoin 101 Workshop</h3>
-                        <span class="timeline-badge badge-workshop">12:45 &ndash; 1:15 PM</span>
+                    <div class="timeline-sub-item">
+                        <span class="sub-time">12:45 PM</span>
+                        <div class="sub-body">
+                            <h4>Bitcoin 101 Workshop</h4>
+                            <span class="timeline-badge badge-workshop">12:45 &ndash; 1:15 PM</span>
+                        </div>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time"><span>12:45 PM</span></div>
-                    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
-                    <div class="timeline-body">
-                        <h3>Meetup Distribution / Organization Strategies</h3>
-                        <span class="timeline-badge badge-workshop">12:45 &ndash; 1:15 PM</span>
+                    <div class="timeline-sub-item">
+                        <span class="sub-time">12:45 PM</span>
+                        <div class="sub-body">
+                            <h4>Meetup Distribution / Organization Strategies</h4>
+                            <span class="timeline-badge badge-workshop">12:45 &ndash; 1:15 PM</span>
+                        </div>
                     </div>
                 </div>
 
@@ -783,16 +836,16 @@
                     <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
                     <div class="timeline-body">
                         <h3>Magic Internet Math Live Recording</h3>
-                        <span class="timeline-badge badge-content">1:30 &ndash; 2:00 PM</span>
+                        <span class="timeline-badge badge-content">1:30 &ndash; 2:15 PM</span>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time"><span>2:00 PM</span></div>
+                    <div class="timeline-time"><span>2:15 PM</span></div>
                     <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
                     <div class="timeline-body">
                         <h3>Closing Remarks</h3>
-                        <span class="timeline-badge badge-opening">2:00 &ndash; 2:15 PM</span>
+                        <span class="timeline-badge badge-opening">2:15 PM</span>
                     </div>
                 </div>
 
