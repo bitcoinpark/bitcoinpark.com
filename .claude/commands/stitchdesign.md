@@ -1,5 +1,5 @@
 ---
-description: "Design graphics for Bitcoin Park summit projects using Stitch and save them to Google Drive. Use when the user wants to create event graphics, social media assets, banners, speaker cards, or any visual design for summits like NEMS, BT, GB, TEMS, IF, CTS, or GBS."
+description: "Design graphics for Bitcoin Park summit projects using Stitch and save them to Google Drive. Use when the user wants to create event graphics, social media assets, banners, speaker cards, or any visual design for summits like NEMS, BT, GB, TEMS, IF, CTS, GBS, or HB."
 ---
 
 # Stitch Design for Bitcoin Park Summits
@@ -20,30 +20,51 @@ yt-dlp --version    # pip3 install yt-dlp
 
 ## Calling Stitch
 
-Use the Stitch MCP tools directly: `mcp__stitch__create_project`, `mcp__stitch__generate_screen_from_text`, `mcp__stitch__edit_screens`, `mcp__stitch__get_screen`, `mcp__stitch__get_project`, `mcp__stitch__list_projects`, `mcp__stitch__list_screens`, `mcp__stitch__generate_variants`.
+### Primary: CLI `tool` command (fastest, most reliable)
 
-Call these tools directly — no Gemini CLI needed. This is the fastest path: Claude Code → Stitch MCP → Stitch API.
+Use the `npx @_davideast/stitch-mcp tool` CLI with the `STITCH_API_KEY` env var. This bypasses MCP connection issues entirely.
+
+```bash
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool <tool_name> -d '<json_args>'
+```
+
+Available tools: `create_project`, `list_projects`, `list_screens`, `get_screen`, `generate_screen_from_text`, `edit_screens`, `generate_variants`, `get_project`.
+
+**Examples:**
+```bash
+# Create a project
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool create_project -d '{"title":"HB26 LinkedIn Graphics"}'
+
+# Generate a screen
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool generate_screen_from_text -d '{
+    "projectId": "1234567890",
+    "prompt": "detailed design prompt here",
+    "deviceType": "DESKTOP"
+  }'
+
+# List screens in a project
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool list_screens -d '{"projectId": "1234567890"}'
+```
+
+### Fallback: Direct MCP tools (if connected)
+
+If `mcp__stitch__*` tools are available in the session, use them directly: `mcp__stitch__create_project`, `mcp__stitch__generate_screen_from_text`, `mcp__stitch__edit_screens`, `mcp__stitch__get_screen`, `mcp__stitch__get_project`, `mcp__stitch__list_projects`, `mcp__stitch__list_screens`, `mcp__stitch__generate_variants`.
 
 **Quota errors?** Check that `STITCH_PROJECT_ID=bitcoin-park-claude-code-ad` is set in the MCP server config, and that `~/.stitch-mcp/config/configurations/config_default` contains `[core]\nproject = bitcoin-park-claude-code-ad`.
 
-### Fallback: Gemini CLI (only if MCP tools are unavailable)
+### Last resort: Gemini CLI
 
-If the `mcp__stitch__*` tools are not connected, fall back to Gemini CLI as a proxy:
+Only if both CLI `tool` and MCP tools fail:
 
 ```bash
 gemini mcp add stitch npx @_davideast/stitch-mcp proxy \
   --scope user --trust \
-  -e GOOGLE_APPLICATION_CREDENTIALS=$HOME/.config/gcloud/application_default_credentials.json \
-  -e CLOUDSDK_CONFIG=$HOME/.config/gcloud \
-  -e HOME=$HOME \
-  -e "PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" \
-  -e STITCH_PROJECT_ID=bitcoin-park-claude-code-ad \
-  -e GOOGLE_CLOUD_PROJECT=bitcoin-park-claude-code-ad
-```
-
-Call pattern (Gemini fallback only):
-```bash
-gemini -p "<instruction to call stitch tool with params>. Return only the raw JSON result." -o json --yolo 2>/dev/null | python3 -c "import sys,json; print(json.load(sys.stdin)['response'])"
+  -e STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  -e STITCH_PROJECT_ID=bitcoin-park-claude-code-ad
 ```
 
 ## Video & Image Input (optional)
@@ -63,62 +84,80 @@ If not already specified, ask the user which summit. Project code = summit code 
 | IF | Imagine IF | `1eXC2Zz933q3LJ-z992r3MSJElnMVBIno` |
 | CTS | Bitcoin Custody & Treasury Summit | `1rYc0Mdu3ZGnNAvs4VB74ygKY4s0PK4L0` |
 | GBS | Global Bitcoin Summit | `1vEG7f5NLs7GM6hziDo6phjZjw3O_qzMZ` |
+| HB | Park Forum: Bitcoin in Healthcare | `1ZIdrVyzIE0wgjy5okDpNue-vAziTon38` |
 
 All summits except IF live under **2C. SUMMITS**. IF lives under **3. IMAGINE IF**.
 
+**If the user provides a Drive folder URL**, extract the folder ID from it and use that directly as the parent — do NOT use the table above. The user knows where they want files to go.
+
 Non-summit routing: Nashville meetups → `1-2bXWOqiX3iDPei_vkDCfXrsIhF-TbSK`, Austin meetups → `10Is_LMlL-Mbum-9Q_9GwUnyGTlWuoRTg`, everything else → `1xvnBVITH-uOb90guBIuSj1a9t9reDWIi`.
 
-## Step 2: Set Up Drive Folders
+## Step 2: Determine Upload Folder
 
-Shared drive ID: `0AEtADa_AopTlUk9PVA`. All `gws drive` calls need `supportsAllDrives: true`.
+**IMPORTANT: Do NOT create new Drive folders.** The folder structure already exists for each summit. Your job is to find the right SPEC folder and upload there.
 
-**Find the year folder** (e.g., "CTS26") inside the parent:
+**If the user provides a Drive folder URL or ID**, use that directly as the upload target. Extract the folder ID from URLs like `https://drive.google.com/drive/u/0/folders/<FOLDER_ID>`.
 
-```bash
-gws drive files list --params '{"q": "mimeType=\"application/vnd.google-apps.folder\" and name contains \"<PROJECT_CODE>\" and \"<PARENT_ID>\" in parents", "fields": "files(id,name)", "driveId": "0AEtADa_AopTlUk9PVA", "corpora": "drive", "includeItemsFromAllDrives": true, "supportsAllDrives": true}'
-```
-
-If it doesn't exist, **ask the user before creating it**. Then create with:
+**If no URL is provided**, find the existing SPEC folder using the summit's parent folder ID from the table above:
 
 ```bash
-gws drive files create --json '{"name": "<PROJECT_CODE>", "mimeType": "application/vnd.google-apps.folder", "parents": ["<PARENT_ID>"]}' --params '{"supportsAllDrives": true}'
+# Search for the GRAPHICS_SPEC folder inside the summit's parent folder tree
+gws drive files list --params '{"q": "mimeType=\"application/vnd.google-apps.folder\" and name contains \"GRAPHICS_SPEC\"", "fields": "files(id,name,parents)", "driveId": "0AEtADa_AopTlUk9PVA", "corpora": "drive", "includeItemsFromAllDrives": true, "supportsAllDrives": true}'
 ```
 
-**Find or create the FINAL folder** inside the year folder:
-- `<PROJECT_CODE>_GRAPHICS_FINAL` — approved designs
-
-**Find or create the SPEC folder** inside the FINAL folder:
-- `<PROJECT_CODE>_GRAPHICS_SPEC` — drafts (default upload target)
-
-Search with the same `gws drive files list` pattern (query for `name contains "GRAPHICS_FINAL"` or `name contains "GRAPHICS_SPEC"`). Create any missing ones with `gws drive files create`. Note: the SPEC folder's parent is the FINAL folder, not the year folder.
+If you truly cannot find the SPEC folder, **ask the user for the folder link** rather than creating new folders. Shared drive ID for all queries: `0AEtADa_AopTlUk9PVA`. All `gws drive` calls need `supportsAllDrives: true`.
 
 ## Step 3: Create Stitch Project & Design
 
-**Create project** using `mcp__stitch__create_project` with a descriptive title like `<PROJECT_CODE> - <description>`.
+**Create project:**
+```bash
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool create_project -d '{"title":"<PROJECT_CODE> - <description>"}'
+```
 
 Extract the numeric project ID from the `name` field (e.g., `projects/1234567890` → `1234567890`).
 
-**Generate screen** using `mcp__stitch__generate_screen_from_text` with:
-- `projectId`: the numeric ID
-- `prompt`: detailed design prompt
-- `deviceType`: `DESKTOP`, `MOBILE`, `TABLET`, or `AGNOSTIC`
+**Generate screen:**
+```bash
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool generate_screen_from_text -d '{
+    "projectId": "<NUMERIC_ID>",
+    "prompt": "<detailed design prompt>",
+    "deviceType": "DESKTOP"
+  }'
+```
 
-Present `outputComponents` text/suggestions to the user.
+The response contains `outputComponents[1].design.screens[0]` with:
+- `.name` — screen resource name (contains screen ID)
+- `.htmlCode.downloadUrl` — URL to download the HTML source
+- `.screenshot.downloadUrl` — URL to the thumbnail (low-res, don't use for final export)
 
-**Edit existing screen** using `mcp__stitch__edit_screens` with:
-- `projectId`: the numeric ID
-- `selectedScreenIds`: array of screen IDs to edit
-- `prompt`: description of changes
+**Edit existing screen:**
+```bash
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool edit_screens -d '{
+    "projectId": "<NUMERIC_ID>",
+    "selectedScreenIds": ["<SCREEN_ID>"],
+    "prompt": "description of changes"
+  }'
+```
 
-**Generate variants** using `mcp__stitch__generate_variants` for quick variations of existing screens.
+**Generate variants** for quick variations of existing screens:
+```bash
+STITCH_API_KEY="AQ.Ab8RN6ImFfrUEft_laPg0VMKuN_hSmrzeh0A-bldkPTXz4cQYQ" \
+  npx @_davideast/stitch-mcp tool generate_variants -d '{
+    "projectId": "<NUMERIC_ID>",
+    "screenId": "<SCREEN_ID>"
+  }'
+```
 
 ## Step 4: Export to Google Drive
 
 Export designs as **full-resolution PNGs** by rendering the HTML source, NOT by downloading the screenshot thumbnail.
 
-**Get screen** using `mcp__stitch__get_screen` to retrieve the `htmlCode.downloadUrl` (the actual design source).
+**Extract the `htmlCode.downloadUrl`** from the generate response at `outputComponents[1].design.screens[0].htmlCode.downloadUrl`.
 
-**Download HTML, render to full-res PNG, upload:**
+**Download HTML, render to full-res PNG, upload to the user's target folder:**
 ```bash
 # 1. Download the HTML source
 curl -L -o /tmp/stitch_design.html "<HTMLCODE_DOWNLOAD_URL>"
@@ -126,15 +165,19 @@ curl -L -o /tmp/stitch_design.html "<HTMLCODE_DOWNLOAD_URL>"
 # 2. Render to full-resolution PNG (1920x1080 @2x = 3840x2160 output)
 cd ~/.claude/scripts && node stitch_render.mjs /tmp/stitch_design.html /tmp/stitch_design.png 1920 1080
 
-# 3. Upload to Drive
+# 3. Upload directly to the target folder (from Step 2 — user-provided or found SPEC folder)
 gws drive files create --upload /tmp/stitch_design.png \
-  --json '{"name": "<PROJECT_CODE>-<descriptive-name>.png", "parents": ["<SPEC_FOLDER_ID>"]}' \
+  --json '{"name": "<PROJECT_CODE>-<descriptive-name>.png", "parents": ["<TARGET_FOLDER_ID>"]}' \
   --params '{"supportsAllDrives": true}'
 ```
 
 The render script lives at `~/.claude/scripts/stitch_render.mjs` with puppeteer installed locally. It uses Chrome to render the HTML at the specified viewport size with 2x device scale factor for retina-quality output. Default is 1920x1080 → 3840x2160 PNG.
 
-For non-16:9 formats, adjust width/height: e.g., `1080 1080` for square, `1080 1920` for stories.
+**Common sizes:**
+- LinkedIn graphic: `1200 628`
+- Square (Instagram): `1080 1080`
+- Stories: `1080 1920`
+- Standard 16:9: `1920 1080`
 
 **Move to FINAL** when approved (move from SPEC up to its parent FINAL folder):
 ```bash
