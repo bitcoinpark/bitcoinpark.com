@@ -343,6 +343,11 @@ def set_task_parent(task_gid, parent_gid):
     return api_post(f"/tasks/{task_gid}/setParent", {"parent": parent_gid})
 
 
+def move_task_to_section(task_gid, project_gid, section_gid):
+    """Move a task to a different section within a project."""
+    return api_post(f"/sections/{section_gid}/addTask", {"task": task_gid})
+
+
 def process_project(project_gid, project_name, dry_run=True):
     """Process a single project: find milestones, find loose tasks, assign."""
     print(f"\n{'='*70}")
@@ -359,7 +364,19 @@ def process_project(project_gid, project_name, dry_run=True):
 
     if not milestone_section:
         print("  ⏭  No MILESTONES section found — skipping")
-        return {"project": project_name, "loose": 0, "assigned": 0, "unmatched": 0}
+        return {"project": project_name, "loose": 0, "assigned": 0, "unmatched": 0, "evicted": 0}
+
+    # 1b. Find the "In Tray" section (fallback: first section that isn't MILESTONES)
+    intray_section = None
+    first_other_section = None
+    for s in sections:
+        sname = s["name"].upper().strip()
+        if "IN TRAY" in sname or "IN-TRAY" in sname or "INTRAY" in sname:
+            intray_section = s
+            break
+        if sname != "MILESTONES" and first_other_section is None:
+            first_other_section = s
+    intray_section = intray_section or first_other_section
 
     # 2. Get all tasks in the project
     tasks = api_get_all(
@@ -369,9 +386,10 @@ def process_project(project_gid, project_name, dry_run=True):
         },
     )
 
-    # 3. Separate milestones and loose tasks
+    # 3. Separate milestones, loose tasks, and non-milestone tasks in MILESTONES section
     milestones = []
     loose_tasks = []
+    misplaced_tasks = []  # non-milestone tasks sitting in MILESTONES section
 
     for t in tasks:
         subtype = t.get("resource_subtype", "")
@@ -393,6 +411,12 @@ def process_project(project_gid, project_name, dry_run=True):
                 "name": t["name"],
                 "section": section_name,
             })
+            # Track non-milestone tasks that are in the MILESTONES section
+            if section_name.upper().strip() == "MILESTONES":
+                misplaced_tasks.append({
+                    "gid": t["gid"],
+                    "name": t["name"],
+                })
 
     print(f"  Milestones: {len(milestones)}")
     for ms in milestones:
@@ -400,9 +424,27 @@ def process_project(project_gid, project_name, dry_run=True):
 
     print(f"  Loose tasks: {len(loose_tasks)}")
 
+    # 3b. Evict non-milestone tasks from MILESTONES section → In Tray
+    evicted = 0
+    if misplaced_tasks and intray_section:
+        print(f"\n  🧹 {len(misplaced_tasks)} non-milestone task(s) in MILESTONES section:")
+        for task in misplaced_tasks:
+            action = "→"
+            if not dry_run:
+                result = move_task_to_section(task["gid"], project_gid, intray_section["gid"])
+                if result:
+                    action = "✓"
+                    time.sleep(0.15)
+                else:
+                    action = "✗"
+            print(f"    {action} \"{task['name']}\" → {intray_section['name']}")
+            evicted += 1
+    elif misplaced_tasks:
+        print(f"\n  ⚠  {len(misplaced_tasks)} non-milestone task(s) in MILESTONES but no In Tray section to move them to")
+
     if not milestones:
         print("  ⏭  No milestones to assign to — skipping")
-        return {"project": project_name, "loose": len(loose_tasks), "assigned": 0, "unmatched": len(loose_tasks)}
+        return {"project": project_name, "loose": len(loose_tasks), "assigned": 0, "unmatched": len(loose_tasks), "evicted": evicted}
 
     # 4. Match each loose task to a milestone
     assigned = 0
@@ -437,6 +479,7 @@ def process_project(project_gid, project_name, dry_run=True):
         "loose": len(loose_tasks),
         "assigned": assigned,
         "unmatched": unmatched,
+        "evicted": evicted,
     }
 
 
@@ -485,6 +528,7 @@ def main():
     total_loose = sum(r["loose"] for r in results)
     total_assigned = sum(r["assigned"] for r in results)
     total_unmatched = sum(r["unmatched"] for r in results)
+    total_evicted = sum(r["evicted"] for r in results)
     projects_with_milestones = sum(1 for r in results if r["loose"] > 0 or r["assigned"] > 0)
 
     print(f"  Projects scanned:    {len(results)}")
@@ -492,6 +536,7 @@ def main():
     print(f"  Total loose tasks:   {total_loose}")
     print(f"  Assigned:            {total_assigned}")
     print(f"  Unmatched:           {total_unmatched}")
+    print(f"  Evicted from MILESTONES: {total_evicted}")
 
     if dry_run and total_assigned > 0:
         print(f"\n  Run with --execute to apply these {total_assigned} assignment(s).")
