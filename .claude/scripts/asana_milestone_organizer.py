@@ -405,17 +405,20 @@ def process_project(project_gid, project_name, dry_run=True):
                 "name": t["name"],
                 "category": strip_summit_prefix(t["name"]),
             })
-        elif parent is None and not t.get("completed", False):
-            loose_tasks.append({
-                "gid": t["gid"],
-                "name": t["name"],
-                "section": section_name,
-            })
-            # Track non-milestone tasks that are in the MILESTONES section
-            if section_name.upper().strip() == "MILESTONES":
+        else:
+            # Track ALL non-milestone tasks in the MILESTONES section (even
+            # ones that already have a parent) so they get evicted to In Tray.
+            if section_name.upper().strip() == "MILESTONES" and not t.get("completed", False):
                 misplaced_tasks.append({
                     "gid": t["gid"],
                     "name": t["name"],
+                })
+
+            if parent is None and not t.get("completed", False):
+                loose_tasks.append({
+                    "gid": t["gid"],
+                    "name": t["name"],
+                    "section": section_name,
                 })
 
     print(f"  Milestones: {len(milestones)}")
