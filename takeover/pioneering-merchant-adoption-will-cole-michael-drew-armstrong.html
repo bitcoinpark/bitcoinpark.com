@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Takeover 2026: Pioneering Merchant Adoption from Point-of-Sale to Business Treasury - Bitcoin Park</title>
+    <meta property="og:title" content="Bitcoin Takeover 2026: Pioneering Merchant Adoption from Point-of-Sale to Business Treasury">
+    <meta property="og:description" content="Will Cole, Michael, and Drew Armstrong agree Bitcoin merchant adoption is stalled. They disagree on whether the problem is the tech stack, consumer behavior, or tax policy.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/pioneering-merchant-adoption-hero.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/takeover/pioneering-merchant-adoption-will-cole-michael-drew-armstrong.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-hover: #E8840F;
+            --electric-blue: #00D4FF;
+            --deep-black: #0A0A0A;
+            --cyber-dark: #1a1a1a;
+            --cyber-gray: #2a2a2a;
+            --concrete-gray: #808080;
+            --text-gray: #b0b0b0;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--deep-black);
+            color: var(--pure-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* BT26 Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Scanline Effect */
+        .scanline-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06),
+                rgba(0, 0, 0, 0.06) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10001;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cyber-gray);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        /* Sponsor Thank You Bar - Hidden, replaced by scrolling version */
+        .sponsor-thank-you {
+            display: none;
+        }
+
+        .sponsor-thank-you-text {
+            font-size: 0.75rem;
+            color: var(--bitcoin-orange);
+            font-weight: 500;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0.8;
+        }
+
+        .sponsor-thank-you-text a {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .sponsor-thank-you-text a:hover {
+            color: var(--bitcoin-orange);
+            border-bottom-color: var(--bitcoin-orange);
+        }
+
+        .sponsor-separator {
+            color: var(--bitcoin-orange);
+            width: 1px;
+            height: 12px;
+            background-color: var(--bitcoin-orange);
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        /* Scrolling Sponsors Bar */
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--bitcoin-orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 15s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--bitcoin-orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .navbar-back-link {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--deep-black);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: transparent;
+            padding: 70px 0 60px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            border-left: 4px solid var(--bitcoin-orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--concrete-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--bitcoin-orange);
+        }
+
+        .speaker-highlight {
+            color: var(--bitcoin-orange);
+            font-weight: 600;
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            border-top: 1px solid var(--cyber-gray);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--cyber-dark);
+            padding: 60px 0;
+            border-top: 1px solid var(--cyber-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--pure-white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--bitcoin-orange);
+            background: rgba(247, 147, 26, 0.08);
+            box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--bitcoin-orange);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--deep-black);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--cyber-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-footer p {
+            color: var(--concrete-gray);
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 160px 0 60px 0;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--cyber-gray);
+            }
+
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+
+            .navbar-content {
+                position: relative;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline-effect"></div>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you">
+                <span class="sponsor-thank-you-text">A Special Thank You to Our BT26 Sponsors:
+                    <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://block.xyz" target="_blank">Block</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://zbd.gg" target="_blank">ZBD</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://unchained.com" target="_blank">Unchained</a>
+                </span>
+            </div>
+            <!-- Mobile Scrolling Sponsors -->
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>Pioneering Merchant Adoption from Point-of-Sale to Business Treasury</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Panel Discussion</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value">
+                            <a href="https://zaprite.com" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Will Cole</a> (Zaprite),
+                            <a href="https://www.oshi.com" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Michael</a> (Oshi),
+                            <a href="https://www.pubkey.nyc" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Drew Armstrong</a> (Pubkey NYC)
+                        </span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    This Bitcoin Takeover panel explores the current state and future potential of Bitcoin adoption among merchants, focusing on Lightning payments, rewards programs, and overcoming technical and cultural barriers.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="pioneering-merchant-adoption-hero.jpg" alt="Will Cole, Michael, and Drew Armstrong discussing Bitcoin merchant adoption at Bitcoin Takeover 2026">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Bitcoin Merchant Adoption Has Three Bottlenecks. We Can't Agree Which One Is Worst.</h2>
+                <p class="article-subheader">Twelve years after Apple Pay launched, roughly 60% of payments still happen by card swipe or tap — not phone. Three Bitcoin practitioners took that statistic as their starting point.</p>
+
+                <div class="article-content">
+                    <p>Twelve years after Apple Pay launched, roughly 60% of payments still happen by card swipe or tap &mdash; not phone. That statistic framed the mood at the Bitcoin Takeover merchant adoption panel, where three practitioners offered competing diagnoses of what is slowing Bitcoin down at the point of sale.</p>
+
+                    <p>Will Cole of Zaprite, Michael of Oshi, and Drew Armstrong of Cipher Mining and Pubkey NYC covered merchants accepting Bitcoin, consumers spending it, and the structural problems blocking both. They agreed on the destination. They differed on which obstacle deserves the most urgency.</p>
+
+                    <p>Cole laid out the closed-ecosystem problem first. Toast dominates the restaurant industry, Clover runs in many locally owned businesses, and Square has its own turf. Each is a sealed stack with no open API for payments integrations. A restaurant using Toast cannot add a Zaprite Bitcoin checkout without replacing its entire POS system. That is a hard ask when the merchant in question does 95% of transactions in dollars and chose Toast for reasons that have nothing to do with currency. "You have very specialized payment rails for different types of businesses," Cole said.</p>
+
+                    <p>He drew a parallel to eBay and PayPal in the late 1990s. People were reluctant to type credit card numbers online until PayPal created a trusted pool of spendable digital dollars. eBay and PayPal converged because the supply of buyers and sellers aligned. Bitcoin needs the same moment: enough consumer wallets ready to spend, enough merchants ready to receive, to make the connection worth building.</p>
+
+                    <p>Michael, who has been onboarding merchants since 2020 and now runs Bitcoin rewards and loyalty programs through Oshi, flagged a subtler problem on the consumer side. Even dedicated Bitcoiners hold their coins in multiple contexts &mdash; multisig vaults, custodial exchange wallets, phone-based Lightning wallets &mdash; and moving between them is non-trivial. "Just because someone has Bitcoin in multisig doesn't mean they're in a position to operationalize it and spend it with a merchant," Cole added.</p>
+
+                    <!-- Embedded Video -->
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/XfvgwSxCtCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+
+                    <p>Armstrong offered an example from Pubkey, the Bitcoin-themed bar in New York City he co-founded. The setup required staff to manually tag every Bitcoin transaction as "BTC" in Square and then direct the customer to a separate iPad running Zeus for the Lightning QR code. It was two extra steps. On a busy Friday night, that was enough to make every bartender anxious. The friction was psychological, not technical, but it was real.</p>
+
+                    <p>When asked to name the single biggest bottleneck, Cole chose politics. The de minimis tax exemption is essential, he said, and the mechanism matters &mdash; it will only move through reconciliation, not standalone legislation. As evidence that small vocal pressure works, he pointed to a $4 trillion spending bill held up for four days under the Biden administration solely over language about self-hosted wallet reporting. "A few people yelling about it" created the delay.</p>
+
+                    <p>Michael chose culture and behavior. Build the technical infrastructure, fix the tax treatment, and you still have decades of habit change ahead. Apple Pay is the benchmark: universally available, easy to use, and still accounts for less than half of transactions. "Human behavior is a real thing to change," he said.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
