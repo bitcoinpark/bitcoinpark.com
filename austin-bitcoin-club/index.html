@@ -203,12 +203,28 @@
             padding: 80px 0;
         }
 
-        .learn-more-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 1200px;
+        .learn-more-carousel {
+            max-width: 1100px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        .learn-more-container {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .learn-more-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .learn-more-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            padding: 0 15px;
+            display: flex;
+            justify-content: center;
         }
 
         .learn-more-card {
@@ -216,8 +232,32 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 4px solid var(--orange);
             border-radius: 8px;
-            padding: 40px;
+            padding: 0;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-thumbnail {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: var(--dark-bg);
+        }
+
+        .card-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more-card:hover .card-thumbnail img {
+            transform: scale(1.05);
         }
 
         .learn-more-card h3 {
@@ -225,6 +265,7 @@
             font-weight: 700;
             color: var(--white);
             margin-bottom: 15px;
+            padding: 30px 40px 0 40px;
         }
 
         .learn-more-card p {
@@ -232,12 +273,18 @@
             color: var(--light-gray);
             margin-bottom: 25px;
             line-height: 1.7;
+            padding: 0 40px;
         }
 
         .learn-more-card .speakers {
             font-size: 0.95rem;
             color: var(--orange);
             margin-bottom: 25px;
+            padding: 0 40px;
+        }
+
+        .learn-more-card .hero-cta {
+            margin: auto 40px 40px 40px;
         }
 
         /* Videos Section - Carousel */
@@ -589,19 +636,47 @@
                 <h2>Read More</h2>
                 <p>Dive deeper into our recent discussions</p>
             </div>
-            <div class="learn-more-grid">
-                <div class="learn-more-card fade-in">
-                    <h3>Fiat Food, Fiat Health, & Bitcoin</h3>
-                    <p>Industry leaders discuss how fiat currency's expansion through debt has corrupted both healthcare and food systems, and how direct payment alternatives can fix them.</p>
-                    <p class="speakers">Featuring: Jimmy Song (Author), Harry Gray (Meat Mafia), Andy Schoonover (CrowdHealth)</p>
-                    <a href="fiat-food-fiat-health-bitcoin-jimmy-song-harry-gray-andy-schoonover.html" class="hero-cta">Read More</a>
+            <div class="learn-more-carousel fade-in">
+                <button class="carousel-nav prev" onclick="moveLearnMoreCarousel(-1)">&#10094;</button>
+                <div class="learn-more-container">
+                    <div class="learn-more-track" id="learnMoreTrack">
+                        <div class="learn-more-slide">
+                            <div class="learn-more-card">
+                                <div class="card-thumbnail">
+                                    <img src="CF3B5945-07B5-42F3-B7C0-E00A70F63961_1_105_c.jpeg" alt="AI Surveillance in China">
+                                </div>
+                                <h3>AI Surveillance in China and the Role of Freedom Tech</h3>
+                                <p>Physicist turned human rights activist Xiao Qiang discusses how China's AI-powered surveillance apparatus has evolved and why freedom tech payment infrastructure has become essential for Chinese citizens seeking access to uncensored information.</p>
+                                <p class="speakers">Featuring: Xiao Qiang (China Digital Times), Jenny Wang (HRF)</p>
+                                <a href="ai-surveillance-in-china.html" class="hero-cta">Read More</a>
+                            </div>
+                        </div>
+                        <div class="learn-more-slide">
+                            <div class="learn-more-card">
+                                <div class="card-thumbnail">
+                                    <img src="fiat-food-panel.jpg" alt="Fiat Food, Fiat Health, & Bitcoin">
+                                </div>
+                                <h3>Fiat Food, Fiat Health, & Bitcoin</h3>
+                                <p>Industry leaders discuss how fiat currency's expansion through debt has corrupted both healthcare and food systems, and how direct payment alternatives can fix them.</p>
+                                <p class="speakers">Featuring: Jimmy Song (Author), Harry Gray (Meat Mafia), Andy Schoonover (CrowdHealth)</p>
+                                <a href="fiat-food-fiat-health-bitcoin-jimmy-song-harry-gray-andy-schoonover.html" class="hero-cta">Read More</a>
+                            </div>
+                        </div>
+                        <div class="learn-more-slide">
+                            <div class="learn-more-card">
+                                <div class="card-thumbnail">
+                                    <img src="Powering-Freedom.jpeg" alt="Powering Freedom">
+                                </div>
+                                <h3>Powering Freedom</h3>
+                                <p>360 Energy founder Chris Alfano discusses how his company transforms stranded and flared natural gas into reliable power for off-grid Bitcoin mining, delivering economic and environmental benefits while contributing to decentralized hashrate.</p>
+                                <p class="speakers">Featuring: Chris Alfano (360 Energy), Will Cole (Zaprite)</p>
+                                <a href="powering-freedom-chris-alfano-will-cole.html" class="hero-cta">Read More</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="learn-more-card fade-in">
-                    <h3>Powering Freedom</h3>
-                    <p>360 Energy founder Chris Alfano discusses how his company transforms stranded and flared natural gas into reliable power for off-grid Bitcoin mining, delivering economic and environmental benefits while contributing to decentralized hashrate.</p>
-                    <p class="speakers">Featuring: Chris Alfano (360 Energy), Will Cole (Zaprite)</p>
-                    <a href="powering-freedom-chris-alfano-will-cole.html" class="hero-cta">Read More</a>
-                </div>
+                <button class="carousel-nav next" onclick="moveLearnMoreCarousel(1)">&#10095;</button>
+                <div class="carousel-dots" id="learnMoreDots"></div>
             </div>
         </div>
     </section>
@@ -800,6 +875,42 @@
         document.querySelectorAll('.fade-in').forEach(element => {
             observer.observe(element);
         });
+
+        // Learn More Carousel
+        let currentLearnMoreSlide = 0;
+        const learnMoreTrack = document.getElementById('learnMoreTrack');
+        const learnMoreSlides = learnMoreTrack.querySelectorAll('.learn-more-slide');
+        const totalLearnMoreSlides = learnMoreSlides.length;
+        const learnMoreDotsContainer = document.getElementById('learnMoreDots');
+
+        // Create dots for Learn More carousel
+        for (let i = 0; i < totalLearnMoreSlides; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => goToLearnMoreSlide(i);
+            learnMoreDotsContainer.appendChild(dot);
+        }
+
+        function updateLearnMoreCarousel() {
+            learnMoreTrack.style.transform = `translateX(-${currentLearnMoreSlide * 100}%)`;
+            const dots = learnMoreDotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentLearnMoreSlide);
+            });
+        }
+
+        function moveLearnMoreCarousel(direction) {
+            currentLearnMoreSlide += direction;
+            if (currentLearnMoreSlide < 0) currentLearnMoreSlide = totalLearnMoreSlides - 1;
+            if (currentLearnMoreSlide >= totalLearnMoreSlides) currentLearnMoreSlide = 0;
+            updateLearnMoreCarousel();
+        }
+
+        function goToLearnMoreSlide(index) {
+            currentLearnMoreSlide = index;
+            updateLearnMoreCarousel();
+        }
 
         // Video Carousel
         let currentSlide = 0;
