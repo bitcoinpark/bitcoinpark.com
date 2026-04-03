@@ -963,6 +963,120 @@
       }
     }
 
+    /* Recaps Section */
+    .recaps {
+      background: var(--deep-black);
+      padding: 6rem 2rem;
+    }
+
+    .recaps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .recap-card {
+      background: var(--deep-black);
+      border: 1px solid var(--cyber-gray);
+      border-left: 4px solid var(--bitcoin-orange);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      cursor: pointer;
+    }
+
+    .recap-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(247, 147, 26, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .recap-card:hover {
+      border-color: var(--bitcoin-orange);
+      box-shadow: 0 0 30px rgba(247, 147, 26, 0.2), 0 0 20px rgba(0, 212, 255, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .recap-card:hover::before {
+      opacity: 1;
+    }
+
+    .recap-image {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .recap-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      transition: transform 0.3s ease;
+    }
+
+    .recap-card:hover .recap-image img {
+      transform: scale(1.05);
+    }
+
+    .recap-content {
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .recap-title {
+      font-size: 1.4rem;
+      color: var(--pure-white);
+      margin-bottom: 0.75rem;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .recap-speaker {
+      font-size: 1rem;
+      color: var(--bitcoin-orange);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .recap-description {
+      font-size: 1rem;
+      color: var(--concrete-gray);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .recaps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recap-image {
+        height: 250px;
+      }
+
+      .recap-content {
+        padding: 1.5rem;
+      }
+    }
+
     /* Speakers Section */
     .speakers {
       background: var(--deep-black);
@@ -1334,12 +1448,13 @@
     <a href="https://bitcoinpark.com" class="navbar-brand">BITCOIN PARK</a>
     <div class="navbar-nav">
       <a href="#overview" class="navbar-link">Overview</a>
+      <a href="#recaps" class="navbar-link">Recaps</a>
       <a href="#panels" class="navbar-link">Panels</a>
       <a href="#speakers" class="navbar-link">Speakers</a>
       <a href="#attendees" class="navbar-link">Attendees</a>
     </div>
     <div class="navbar-actions">
-      <a href="https://bitcoinpark.com/takeover26" class="btn-primary" target="_blank" rel="noopener noreferrer">SOLD OUT</a>
+      <a href="#recaps" class="btn-primary">RECAPS & PROOF OF WORK</a>
     </div>
     <button class="hamburger" onclick="toggleMobileMenu()">
       <span></span>
@@ -1352,10 +1467,11 @@
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
       <li><a href="#overview" onclick="toggleMobileMenu()">Overview</a></li>
+      <li><a href="#recaps" onclick="toggleMobileMenu()">Recaps</a></li>
       <li><a href="#panels" onclick="toggleMobileMenu()">Panels</a></li>
       <li><a href="#speakers" onclick="toggleMobileMenu()">Speakers</a></li>
       <li><a href="#attendees" onclick="toggleMobileMenu()">Attendees</a></li>
-      <li><a href="https://bitcoinpark.com/takeover26" class="btn-primary" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 1rem;">SOLD OUT</a></li>
+      <li><a href="#recaps" class="btn-primary" style="display: inline-block; margin-top: 1rem;">RECAPS & PROOF OF WORK</a></li>
     </ul>
   </div>
 
@@ -1392,6 +1508,25 @@
 
       <img src="./Takeover-Meetup-with-Sponsors.jpg" alt="Bitcoin Takeover 2026 - Power of Payments - March 12 & 13, Austin TX - Presented by Bitcoin Park, Supported by Zaprite, Block, ZBD, and Unchained" class="hero-image-mobile">
       <div class="hero-roots-overlay"></div>
+    </div>
+  </section>
+
+  <!-- Recaps & Proof of Work Section -->
+  <section id="recaps" class="section recaps">
+    <h2 class="section-title fade-in">Recaps & Proof of Work</h2>
+    <p class="section-subtitle fade-in">Watch presentations and explore the ideas shared at Bitcoin Takeover 2026</p>
+
+    <div class="recaps-grid">
+      <a href="./an-abundant-future-laboratory-texas-robert-warren.html" target="_blank" rel="noopener noreferrer" class="recap-card fade-in" style="text-decoration: none;">
+        <div class="recap-image">
+          <img src="./an-abundant-future-hero.jpg" alt="An Abundant Future in Laboratory Texas">
+        </div>
+        <div class="recap-content">
+          <h3 class="recap-title">An Abundant Future in Laboratory Texas</h3>
+          <div class="recap-speaker">Robert Warren</div>
+          <p class="recap-description">Robert Warren traces Bitcoin mining's evolution from apartment tinkering to industrial scale, making the case that Texas is where the full potential of Bitcoin mining gets proven out.</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -1802,7 +1937,7 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <a href="https://bitcoinpark.com/takeover26" class="btn-primary footer-cta" target="_blank" rel="noopener noreferrer">SOLD OUT</a>
+    <a href="#recaps" class="btn-primary footer-cta">RECAPS & PROOF OF WORK</a>
     <p class="mono">&copy; 2026 BITCOIN PARK. ALL RIGHTS RESERVED.</p>
     <div class="footer-links">
       <a href="https://bitcoinpark.com">BITCOIN PARK</a>
