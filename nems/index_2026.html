@@ -1006,6 +1006,36 @@
             color: var(--light-gray);
             line-height: 1.7;
             margin: 0;
+            padding-bottom: 2rem;
+        }
+
+        .recap-read-more {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 2rem;
+            color: var(--orange);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .recap-read-more::after {
+            content: '→';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .recap-card:hover .recap-read-more {
+            color: var(--white);
+        }
+
+        .recap-card:hover .recap-read-more::after {
+            transform: translateX(5px);
         }
     </style>
 </head>
@@ -1069,6 +1099,7 @@
                         <h3 class="recap-title">User-Centered Design: Hard Lessons in Building Hardware</h3>
                         <div class="recap-speaker">Robert Warren & Thomas Templeton</div>
                         <p class="recap-description">Join Robert Warren and Thomas Templeton for an insightful fireside chat on user-centered hardware design at NEMS26.</p>
+                        <span class="recap-read-more">Read More</span>
                     </div>
                 </a>
 
@@ -1080,6 +1111,7 @@
                         <h3 class="recap-title">The State of Large Scale Miners</h3>
                         <div class="recap-speaker">Mike Colyer (Foundry) & Rapha Zagury (Elektron)</div>
                         <p class="recap-description">Mike Colyer (Foundry) and Rapha Zagury (Elektron) discuss the changing landscape of large-scale Bitcoin mining at NEMS26.</p>
+                        <span class="recap-read-more">Read More</span>
                     </div>
                 </a>
 
@@ -1091,6 +1123,7 @@
                         <h3 class="recap-title">Where Regulatory Advocacy Meets Energy Optimization</h3>
                         <div class="recap-speaker">Zack Cohen, Michael Sullivan, Will Paul</div>
                         <p class="recap-description">Zack Cohen (BPI), Michael Sullivan (White Oak Strategies), and Will Paul (Block) discuss navigating the regulatory landscape and energy optimization at NEMS26.</p>
+                        <span class="recap-read-more">Read More</span>
                     </div>
                 </a>
             </div>
