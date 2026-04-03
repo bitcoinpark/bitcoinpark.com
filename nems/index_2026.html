@@ -908,6 +908,105 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Recaps Section */
+        .recaps {
+            background: var(--navy-blue);
+            padding: 6rem 2rem;
+        }
+
+        .recaps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .recap-card {
+            background: var(--dark-blue);
+            border: 1px solid rgba(255, 107, 53, 0.2);
+            border-left: 4px solid var(--orange);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: block;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .recap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 107, 53, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .recap-card:hover {
+            border-color: var(--orange);
+            box-shadow: 0 0 30px rgba(255, 107, 53, 0.3), 0 0 20px rgba(255, 107, 53, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .recap-card:hover::before {
+            opacity: 1;
+        }
+
+        .recap-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .recap-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            transition: transform 0.3s ease;
+        }
+
+        .recap-card:hover .recap-image img {
+            transform: scale(1.05);
+        }
+
+        .recap-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .recap-title {
+            font-size: 1.4rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .recap-speaker {
+            font-size: 1rem;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .recap-description {
+            font-size: 1rem;
+            color: var(--light-gray);
+            line-height: 1.7;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -920,11 +1019,12 @@
             </button>
             <div class="navbar-menu" id="navbarMenu">
                 <a href="#top">Home</a>
+                <a href="#recaps">Recaps</a>
                 <a href="#about">About</a>
                 <a href="#videos">Videos</a>
                 <a href="#topics">Topics</a>
                 <a href="#audience">Audience</a>
-                <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer">Sold Out</a>
+                <a href="#recaps">RECAPS & PROOF OF WORK</a>
             </div>
         </div>
     </nav>
@@ -945,12 +1045,57 @@
             </div>
         </div>
         
-        <a href="https://bitcoinpark.com/nems26" target="_blank" rel="noopener noreferrer" class="hero-cta-button">Sold Out</a>
+        <a href="#recaps" class="hero-cta-button">RECAPS & PROOF OF WORK</a>
         
         <div class="line-art-section">
             <img src="nems-skyline.png" alt="Nashville Energy & Mining Skyline">
         </div>
     </div>
+
+    <!-- Recaps & Proof of Work Section -->
+    <section id="recaps" class="section recaps">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>Recaps & Proof of Work</h2>
+                <p>Explore presentations and insights from NEMS 2026</p>
+            </div>
+
+            <div class="recaps-grid">
+                <a href="./user-centered-design-hard-lessons-building-hardware-robert-warren-thomas-templeton.html" class="recap-card">
+                    <div class="recap-image">
+                        <img src="./user-centered-design-fireside.jpg" alt="User-Centered Design: Hard Lessons in Building Hardware">
+                    </div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">User-Centered Design: Hard Lessons in Building Hardware</h3>
+                        <div class="recap-speaker">Robert Warren & Thomas Templeton</div>
+                        <p class="recap-description">Join Robert Warren and Thomas Templeton for an insightful fireside chat on user-centered hardware design at NEMS26.</p>
+                    </div>
+                </a>
+
+                <a href="./state-large-scale-miners.html" class="recap-card">
+                    <div class="recap-image">
+                        <img src="./state-large-scale-miners-fireside.jpg" alt="The State of Large Scale Miners">
+                    </div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">The State of Large Scale Miners</h3>
+                        <div class="recap-speaker">Mike Colyer (Foundry) & Rapha Zagury (Elektron)</div>
+                        <p class="recap-description">Mike Colyer (Foundry) and Rapha Zagury (Elektron) discuss the changing landscape of large-scale Bitcoin mining at NEMS26.</p>
+                    </div>
+                </a>
+
+                <a href="./regulatory-advocacy-meets-energy-optimization.html" class="recap-card">
+                    <div class="recap-image">
+                        <img src="./regulatory-advocacy-meets-energy-optimization-panel.jpg" alt="Where Regulatory Advocacy Meets Energy Optimization">
+                    </div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">Where Regulatory Advocacy Meets Energy Optimization</h3>
+                        <div class="recap-speaker">Zack Cohen, Michael Sullivan, Will Paul</div>
+                        <p class="recap-description">Zack Cohen (BPI), Michael Sullivan (White Oak Strategies), and Will Paul (Block) discuss navigating the regulatory landscape and energy optimization at NEMS26.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <div class="main-content">
         <div class="section" id="about">
