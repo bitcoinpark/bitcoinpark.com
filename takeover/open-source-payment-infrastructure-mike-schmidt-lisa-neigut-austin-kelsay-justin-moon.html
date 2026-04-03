@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Takeover 2026: Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors - Bitcoin Park</title>
+    <meta property="og:title" content="Bitcoin Takeover 2026: Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors">
+    <meta property="og:description" content="Mike Schmidt, Lisa Neigut, Austin Kelsay, and Justin Moon on how Bitcoin's open-source funding has splintered across a dozen organizations — and why that fragmentation makes the ecosystem harder to kill.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/open-source-payment-infrastructure-hero.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/takeover/open-source-payment-infrastructure-mike-schmidt-lisa-neigut-austin-kelsay-justin-moon.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-hover: #E8840F;
+            --electric-blue: #00D4FF;
+            --deep-black: #0A0A0A;
+            --cyber-dark: #1a1a1a;
+            --cyber-gray: #2a2a2a;
+            --concrete-gray: #808080;
+            --text-gray: #b0b0b0;
+            --pure-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--deep-black);
+            color: var(--pure-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .scanline-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.06),
+                rgba(0, 0, 0, 0.06) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 10001;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cyber-gray);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        .sponsor-thank-you {
+            display: none;
+        }
+
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--bitcoin-orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 15s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--bitcoin-orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .navbar-back-link {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--deep-black);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            pointer-events: none;
+        }
+
+        .main-content {
+            background: transparent;
+            padding: 70px 0 60px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            border-left: 4px solid var(--bitcoin-orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--concrete-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            border-top: 1px solid var(--cyber-gray);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        .supporters-section {
+            background: var(--cyber-dark);
+            padding: 60px 0;
+            border-top: 1px solid var(--cyber-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--pure-white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--bitcoin-orange);
+            background: rgba(247, 147, 26, 0.08);
+            box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--bitcoin-orange);
+        }
+
+        .site-footer {
+            background: var(--deep-black);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--cyber-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-footer p {
+            color: var(--concrete-gray);
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .main-content { padding: 160px 0 60px 0; }
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                position: relative;
+            }
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--cyber-gray);
+            }
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+            .session-summary { padding: 30px 20px; }
+            .session-summary h2 { font-size: 1.4rem; }
+            .session-meta { gap: 20px; }
+            .article-headline { font-size: 1.8rem; }
+            .article-subheader { font-size: 1.1rem; }
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .session-meta { flex-direction: column; gap: 15px; }
+            .article-headline { font-size: 1.5rem; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline-effect"></div>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you"></div>
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>Open-Source Payment Infrastructure: Building the Commons, Sustaining Contributors</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Panel Discussion</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value">
+                            <a href="https://brink.dev" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Mike Schmidt</a> (Brink),
+                            <a href="https://btcpp.dev" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Lisa Neigut</a> (Bitcoin++),
+                            <a href="https://voltage.cloud" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Austin Kelsay</a> (Voltage),
+                            <a href="https://hrf.org" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Justin Moon</a> (HRF)
+                        </span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    This Bitcoin Takeover panel explores the importance of open source in Bitcoin and payment infrastructure, the evolution of the Lightning Network, funding models for open-source projects, and how newcomers can contribute to Bitcoin development.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="open-source-payment-infrastructure-hero.jpg" alt="Mike Schmidt, Lisa Neigut, Austin Kelsay, and Justin Moon at Bitcoin Takeover 2026">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Twelve Organizations Now Fund Bitcoin Core. The Diversity Is the Point.</h2>
+                <p class="article-subheader">A few years ago, three entities funded nearly all Bitcoin Core development. Today, a dozen organizations across multiple countries support roughly 30 to 40 engineers — and the people running those programs say that sprawl is a feature.</p>
+
+                <div class="article-content">
+                    <p>The argument anchored a panel at Bitcoin Park featuring Mike Schmidt of Brink, Lisa Neigut of Bitcoin++, Austin Kelsay of Voltage, and Justin Moon of HRF. The four traced how Bitcoin's open-source funding and governance models have splintered, and why that fragmentation makes the ecosystem harder to kill.</p>
+
+                    <p>Schmidt, who leads Brink and contributes to Bitcoin Optech, walked through the shift. The Bitcoin Foundation tried to centralize funding and "failed spectacularly," he said. What replaced it is a patchwork: Chaincode Labs is self-funded, Blockstream is for-profit, Brink and OpenSats are 501(c)(3) nonprofits taking donations, and Spiral operates as a nonprofit arm of Block. The organizations now span the U.S., UK, Europe, and Africa.</p>
+
+                    <p>"There isn't one best way," Schmidt said. "Having all of those is the best way because you have resiliency." He pointed to the last bear market, when exchange-funded development arms that had done good work for a year or two vanished overnight. The projects that survived drew from multiple funding sources.</p>
+
+                    <p>OpenSats, where Moon served on a review board and Neigut as a Board Member, distributes roughly $1 million per month with essentially one salaried employee. Volunteer expert committees review proposals quarterly. Kelsay, who builds Frostsr &mdash; a multisig protocol for Nostr and Lightning identities &mdash; described applying as straightforward but noted how quickly a hobby project acquires governance obligations. "All of a sudden you're in this governance structure between your users and the spec and this organization," he said. "It gets pretty serious pretty quickly."</p>
+
+                    <!-- Embedded Video -->
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/NG6DdarGUgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+
+                    <p>The panel also mapped a tension running through Bitcoin's payment stack. Lightning has matured into a reliable backbone rail, but a wave of newer protocols like Arc, Spark, and ecash systems like Cashu and Fedimint are fragmenting the user-facing layer. Kelsay called it "simultaneous unification and fragmentation." All these protocols interoperate with Lightning or use it as a gateway, but each carries different tradeoffs around trust, privacy, custody, and ease of integration.</p>
+
+                    <p>Neigut, who attended nearly every Lightning specification meeting since the protocol's early days, drew a sharp contrast in governance models. Lightning operates from a written specification, the BOLTs, with four or five independent implementations built against it. Bitcoin Core has no formal spec at all. Developers must infer the protocol's rules from the existing codebase. She cited a case where a Bitcoin Improvement Proposal documenting replace-by-fee rules turned out to be wrong, with a hidden sixth rule discovered years later.</p>
+
+                    <p>"There's not a document explaining how Bitcoin should work," Schmidt confirmed. "You have to kind of infer the rules from the existing one."</p>
+
+                    <p>On getting started, the panelists pushed back against the assumption that contributing means writing code. Schmidt solicited a list from Bitcoin Core developers of non-code needs and got 50 items. Neigut pointed to Bitcoin++ hackathons as an entry point, noting that projects like Mutiny Wallet started at one. Moon closed with a warning about burnout. His own early Spiral grant left him isolated. "I became very atomized. It was just me by myself," he said. Kelsay agreed: "I wouldn't be able to maintain it for three months if I was alone."</p>
+
+                    <p>The funding is more distributed than ever. The question is whether the people doing the work can collaborate and build on it.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
