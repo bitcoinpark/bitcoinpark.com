@@ -1329,12 +1329,12 @@
         .youtube-carousel {
             display: flex;
             gap: 30px;
-            padding: 0 max(20px, calc((100vw - 500px) / 2));
+            padding: 0 max(20px, calc((100vw - 700px) / 2));
             min-width: min-content;
         }
 
         .youtube-video {
-            flex: 0 0 500px;
+            flex: 0 0 700px;
             background: var(--bp-white);
             border-radius: 16px;
             overflow: hidden;
@@ -1342,6 +1342,50 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             scroll-snap-align: center;
             scroll-snap-stop: always;
+        }
+
+        /* Carousel Navigation Arrows */
+        .carousel-nav {
+            position: relative;
+            max-width: 100%;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bp-peachy-orange);
+            color: var(--bp-white);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--bp-coral);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-arrow.prev {
+            left: 10px;
+        }
+
+        .carousel-arrow.next {
+            right: 10px;
         }
 
         .youtube-video:hover {
@@ -1603,11 +1647,17 @@
             }
 
             .youtube-carousel {
-                padding: 0 max(20px, calc((100vw - 320px) / 2));
+                padding: 0 max(20px, calc((100vw - 450px) / 2));
             }
 
             .youtube-video {
-                flex: 0 0 320px;
+                flex: 0 0 450px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
 
@@ -2247,8 +2297,11 @@
             <p class="section-subtitle">Watch the latest content from Bitcoin Park.</p>
         </div>
 
-        <div class="youtube-carousel-container">
-            <div class="youtube-carousel">
+        <div class="carousel-nav">
+            <button class="carousel-arrow prev" id="prevVideo" aria-label="Previous video">‹</button>
+            <button class="carousel-arrow next" id="nextVideo" aria-label="Next video">›</button>
+            <div class="youtube-carousel-container" id="videoCarousel">
+                <div class="youtube-carousel">
                 <div class="youtube-video fade-in">
                     <div class="video-wrapper">
                         <iframe src="https://www.youtube.com/embed/6bbtHYft7t8" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -2300,6 +2353,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
         <div style="text-align: center; margin-top: 40px;">
@@ -2464,6 +2518,29 @@
                 easterEggOverlay.remove();
             }, 2000);
         }, 750);
+
+        // Video Carousel Navigation
+        const videoCarousel = document.getElementById('videoCarousel');
+        const prevButton = document.getElementById('prevVideo');
+        const nextButton = document.getElementById('nextVideo');
+
+        if (videoCarousel && prevButton && nextButton) {
+            const scrollAmount = 730; // 700px video width + 30px gap
+
+            prevButton.addEventListener('click', () => {
+                videoCarousel.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            nextButton.addEventListener('click', () => {
+                videoCarousel.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         // Navigation scroll behavior
         const navbar = document.getElementById('navbar');
