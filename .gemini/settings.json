@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "stitch": {
-      "command": "npx @_davideast/stitch-mcp proxy",
-      "args": [],
-      "trust": true
-    }
-  }
-}
