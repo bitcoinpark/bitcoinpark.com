@@ -3,248 +3,2841 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brands - Bitcoin Park</title>
+    <title>Bitcoin Park - A Home for Builders, Innovators, and Freedom Tech Pioneers</title>
+    <meta name="description" content="Join Bitcoin Park's exclusive membership community. Access Nashville + Austin campuses, premium experiences, workshops, and summits. Apply today.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bp-green: #0A2B07;
-            --bp-dark: #1A3321;
+            /* Bitcoin Park Color Palette */
+            --bp-primary-green: #0A2B07;
+            --bp-dark-green: #1A3321;
+            --bp-peachy-orange: #FF9974;
             --bp-light: #FFF8F3;
+            --bp-sage-green: #9BCE9C;
+            --bp-bitcoin-orange: #F7931A;
+            --bp-coral: #F27979;
+            --bp-charcoal: #212121;
+            --bp-gray: #808080;
+            --bp-light-gray: #b0b8c4;
+            --bp-white: #FFFFFF;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bp-light);
-            color: var(--bp-dark);
-            line-height: 1.6;
+            color: var(--bp-charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+            padding: 20px 0;
+        }
+
+        .navbar.scrolled {
+            background: var(--bp-white);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            background: var(--bp-green);
-            color: white;
-            padding: 30px 0 20px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .header p {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .back-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
+            padding: 0 40px;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
-            opacity: 0.8;
-            transition: opacity 0.2s;
         }
 
-        .back-link:hover {
+        .navbar-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--bp-white);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .navbar.scrolled .navbar-logo {
+            color: var(--bp-primary-green);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            color: var(--bp-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar.scrolled .navbar-links a {
+            color: var(--bp-charcoal);
+        }
+
+        .navbar-links a:hover {
+            color: var(--bp-peachy-orange);
+        }
+
+        .navbar-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-apply {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-primary-green);
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-apply:hover {
+            background: var(--bp-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 116, 0.4);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--bp-white);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--bp-primary-green);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--bp-white);
+            box-shadow: -4px 0 30px rgba(0, 0, 0, 0.15);
+            padding: 80px 30px 30px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
             opacity: 1;
         }
 
-        .brands-section {
-            padding: 40px 0;
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 60px;
+        .mobile-menu-links a {
+            color: var(--bp-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .brand-card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            border: 2px solid var(--bp-green);
-        }
-
-        .brand-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(10, 43, 7, 0.18);
-            border-color: var(--bp-dark);
-        }
-
-        .brand-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--bp-green);
-            border-radius: 20px;
-            margin: 0 auto 24px;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0 2px 8px rgba(10, 43, 7, 0.10);
+            position: relative;
+            overflow: hidden;
+            padding: 100px 20px 60px;
         }
 
-        .brand-name {
-            font-size: 1.5rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8707.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.4);
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 43, 7, 0.85) 0%, rgba(26, 51, 33, 0.75) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--bp-sage-green);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+            font-weight: 800;
+            color: var(--bp-white);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 1.2vw + 0.8rem, 1.4rem);
+            color: var(--bp-light-gray);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta-primary {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-primary-green);
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--bp-dark);
-            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
-        .brand-description {
-            color: #6B4F3F;
-            font-size: 1rem;
-            line-height: 1.5;
-            font-family: 'Montserrat', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        .hero-cta-primary:hover {
+            background: var(--bp-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 153, 116, 0.4);
+        }
+
+        .hero-cta-secondary {
+            background: transparent;
+            color: var(--bp-white);
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--bp-white);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--bp-sage-green);
+            color: var(--bp-sage-green);
+        }
+
+        /* Member Benefits Section */
+        .benefits-section {
+            background: var(--bp-primary-green);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8601.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .benefits-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 3vw + 0.8rem, 3rem);
             font-weight: 700;
-            margin-bottom: 20px;
-            color: #1a1a1a;
+            color: var(--bp-primary-green);
+            margin-bottom: 15px;
         }
 
         .section-subtitle {
-            text-align: center;
             font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
+            color: var(--bp-gray);
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5rem;
+        /* Dark sections use white/light text */
+        .benefits-section .section-title,
+        .final-cta-section .section-title {
+            color: var(--bp-white);
+        }
+
+        .benefits-section .section-subtitle,
+        .final-cta-section .section-subtitle {
+            color: var(--bp-light-gray);
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--bp-sage-green);
+            box-shadow: 0 12px 40px rgba(155, 206, 156, 0.15);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--bp-peachy-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--bp-primary-green);
+        }
+
+        .benefits-toggle {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-show-more {
+            background: transparent;
+            color: var(--bp-white);
+            border: 2px solid var(--bp-sage-green);
+            padding: 15px 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .btn-show-more:hover {
+            background: var(--bp-sage-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(155, 206, 156, 0.4);
+        }
+
+        .benefit-card.hidden-benefit {
+            display: none;
+        }
+
+        .benefit-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--bp-white);
+            margin-bottom: 12px;
+        }
+
+        .benefit-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Photo Gallery Section */
+        .gallery-section {
+            background: var(--bp-white);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8573.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.04;
+            z-index: 0;
+        }
+
+        .gallery-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 43, 7, 0.3) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Large feature items */
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Experience Categories */
+        .experiences-section {
+            background: var(--bp-light);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experiences-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8656.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .experiences-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .experiences-section .section-subtitle {
+            max-width: 1000px;
+        }
+
+        .category-section {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(10, 43, 7, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .category-header {
+            padding: 20px 40px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 247, 250, 0.95) 100%);
+        }
+
+        .category-header:hover {
+            background: linear-gradient(135deg, rgba(255, 153, 116, 0.1) 0%, rgba(245, 247, 250, 0.95) 100%);
+        }
+
+        .category-header-content {
+            flex: 1;
+        }
+
+        .category-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--bp-peachy-orange);
+            margin-bottom: 10px;
+        }
+
+        .category-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.5rem);
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            margin: 0;
+        }
+
+        .category-toggle {
+            font-size: 2rem;
+            color: var(--bp-primary-green);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(10, 43, 7, 0.1);
+        }
+
+        .category-section.active .category-toggle {
+            transform: rotate(45deg);
+            background: var(--bp-peachy-orange);
+            color: var(--bp-white);
+        }
+
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            padding: 0 40px;
+        }
+
+        .category-section.active .category-content {
+            max-height: 5000px;
+            padding: 0 40px 40px 40px;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Summit grid - full width horizontal cards */
+        .summit-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .experience-card {
+            background: var(--bp-white);
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(10, 43, 7, 0.12);
+            border-color: var(--bp-peachy-orange);
+        }
+
+        /* Summit cards - horizontal layout */
+        .summit-card {
+            display: flex;
+            flex-direction: row;
+            height: auto;
+            min-height: 280px;
+        }
+
+        .summit-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(10, 43, 7, 0.15);
+        }
+
+        .experience-image {
+            width: 100%;
+            height: 240px;
+            background: var(--bp-white);
+            filter: grayscale(20%);
+            transition: filter 0.3s ease;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .experience-card:hover .experience-image {
+            filter: grayscale(0%);
+        }
+
+        .experience-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        /* Summit cards - horizontal image on left */
+        .summit-card .experience-image {
+            width: 45%;
+            min-width: 400px;
+            height: auto;
+            background: var(--bp-charcoal);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .summit-card .experience-image img {
+            object-fit: cover;
+            object-position: center center;
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+        }
+
+        .summit-card .experience-content {
+            flex: 1;
+            padding: 35px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .summit-card .experience-name {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .summit-card .experience-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .summit-card .experience-link {
+            font-size: 1rem;
+        }
+
+        /* Summit card responsive - stack on mobile */
+        @media (max-width: 968px) {
+            .summit-card {
+                flex-direction: column;
             }
-            
-            .brands-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
+
+            .summit-card .experience-image {
+                width: 100%;
+                min-width: auto;
+                height: 300px;
             }
-            
-            .brand-card {
-                padding: 24px;
+
+            .summit-card .experience-content {
+                padding: 25px;
             }
-            
-            .section-title {
-                font-size: 2rem;
+
+            .summit-card .experience-name {
+                font-size: 1.5rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
+        .experience-content {
+            padding: 28px;
+        }
+
+        .experience-category {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--bp-peachy-orange);
+            margin-bottom: 10px;
+        }
+
+        .experience-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            margin-bottom: 12px;
+        }
+
+        .experience-description {
+            font-size: 0.95rem;
+            color: var(--bp-gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .experience-link {
+            font-weight: 600;
+            color: var(--bp-peachy-orange);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .experience-card:hover .experience-link {
+            color: var(--bp-coral);
+        }
+
+        /* Summit Cards - Special Styling */
+        .summit-card {
+            border-left: 4px solid var(--bp-peachy-orange);
+        }
+
+        .summit-card.nems {
+            border-left-color: #FF6B35;
+        }
+
+        .summit-card.takeover {
+            border-left-color: #F7931A;
+        }
+
+        .summit-card.grassroots {
+            border-left-color: #C96B3C;
+        }
+
+        .summit-card.imagine-if {
+            border-left-color: #9B4DCA;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            background: var(--bp-white);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8463.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.06;
+            z-index: 0;
+        }
+
+        .schedule-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .schedule-header .section-title {
+            color: var(--bp-primary-green);
+        }
+
+        .schedule-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .schedule-cta .btn-schedule {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-primary-green);
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .schedule-cta .btn-schedule:hover {
+            background: var(--bp-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 153, 116, 0.4);
+        }
+
+        .schedule-preview {
+            background: var(--bp-light);
+            border: 2px solid rgba(10, 43, 7, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .schedule-preview h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            margin-bottom: 20px;
+        }
+
+        .schedule-preview p {
+            font-size: 1.1rem;
+            color: var(--bp-gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Embedded Week Calendar */
+        .embedded-week-calendar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            box-shadow: 0 8px 32px rgba(10, 43, 7, 0.1);
+            margin-top: 40px;
+        }
+
+        .week-calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(10, 43, 7, 0.1);
+        }
+
+        .week-calendar-nav-btn {
+            background: var(--bp-primary-green);
+            color: var(--bp-white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .week-calendar-nav-btn:hover {
+            background: var(--bp-peachy-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 153, 116, 0.3);
+        }
+
+        .week-calendar-today-btn {
+            background: transparent;
+            color: var(--bp-primary-green);
+            border: 2px solid var(--bp-primary-green);
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .week-calendar-today-btn:hover {
+            background: var(--bp-primary-green);
+            color: var(--bp-white);
+        }
+
+        .week-calendar-date-display {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            text-align: center;
+        }
+
+        .week-calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .week-calendar-day-header {
+            text-align: center;
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            font-size: 0.85rem;
+            padding: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .week-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            min-height: 300px;
+        }
+
+        .week-calendar-day {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(245, 247, 250, 0.6) 100%);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-height: 0;
+            overflow: auto;
+        }
+
+        .week-calendar-day.today {
+            border-color: var(--bp-peachy-orange);
+            background: linear-gradient(135deg, rgba(255, 153, 116, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+            box-shadow: 0 4px 12px rgba(255, 153, 116, 0.2);
+        }
+
+        .week-calendar-event {
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid;
+            flex-shrink: 0;
+            background: rgba(10, 43, 7, 0.1);
+            border-left-color: var(--bp-peachy-orange);
+            color: var(--bp-primary-green);
+        }
+
+        .week-calendar-event:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 153, 116, 0.2);
+        }
+
+        .week-calendar-event.meetup {
+            background: rgba(98, 185, 232, 0.2);
+            border-left-color: #62B9E8;
+        }
+
+        .week-calendar-event.workshop {
+            background: rgba(221, 153, 116, 0.2);
+            border-left-color: #DD9974;
+        }
+
+        .week-calendar-event.summit {
+            background: rgba(178, 144, 244, 0.2);
+            border-left-color: #B290F4;
+        }
+
+        .calendar-loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--bp-gray);
+        }
+
+        @media (max-width: 968px) {
+            .embedded-week-calendar {
+                padding: 16px;
+                overflow-x: auto;
             }
-            
-            .header {
-                padding: 40px 0 30px;
+
+            .week-calendar-header,
+            .week-calendar-grid {
+                min-width: 700px;
             }
-            
-            .header h1 {
-                font-size: 2rem;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--bp-light);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .supporters-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8544.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .supporters-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .supporters-section .section-title {
+            color: var(--bp-primary-green);
+        }
+
+        .supporters-section .section-subtitle {
+            color: var(--bp-gray);
+        }
+
+        .supporters-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .supporter-card {
+            background: var(--bp-white);
+            border: 1px solid rgba(10, 43, 7, 0.1);
+            border-radius: 10px;
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            min-height: 140px;
+        }
+
+        .supporter-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--bp-sage-green);
+            box-shadow: 0 8px 30px rgba(155, 206, 156, 0.15);
+        }
+
+        .supporter-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            text-align: center;
+            filter: grayscale(40%);
+            transition: filter 0.3s ease;
+        }
+
+        .supporter-card:hover .supporter-name {
+            filter: grayscale(0%);
+            color: var(--bp-peachy-orange);
+        }
+
+        /* Locations Section */
+        .locations-section {
+            background: var(--bp-white);
+            padding: 100px 20px;
+        }
+
+        .locations-section .section-title {
+            color: var(--bp-primary-green);
+        }
+
+        .locations-section .section-subtitle {
+            color: var(--bp-gray);
+            max-width: 900px;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .locations-section .section-subtitle {
+                white-space: normal;
             }
-            
-            .back-link {
-                top: 16px;
-                left: 16px;
+        }
+
+        .locations-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+        }
+
+        .location-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 60px rgba(0, 0, 0, 0.18);
+        }
+
+        .location-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .location-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 43, 7, 0.9) 0%, transparent 100%);
+            padding: 40px;
+            color: var(--bp-white);
+        }
+
+        .location-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .location-subtitle {
+            font-size: 1.1rem;
+            color: var(--bp-sage-green);
+            margin-bottom: 20px;
+        }
+
+        .location-cta {
+            color: var(--bp-peachy-orange);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .location-cta:hover {
+            color: var(--bp-white);
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            background: var(--bp-light);
+            padding: 100px 20px;
+        }
+
+        .youtube-section .section-title {
+            color: var(--bp-primary-green);
+        }
+
+        .youtube-section .section-subtitle {
+            color: var(--bp-gray);
+            max-width: 800px;
+        }
+
+        .youtube-grid {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .youtube-video {
+            background: var(--bp-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .youtube-video:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-youtube {
+            display: inline-block;
+            background: var(--bp-peachy-orange);
+            color: var(--bp-primary-green);
+            padding: 18px 48px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-youtube:hover {
+            background: var(--bp-coral);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 116, 0.4);
+        }
+
+        /* Spotlight Section */
+        .spotlight-section {
+            background: var(--bp-white);
+            padding: 100px 20px;
+        }
+
+        .spotlight-section .section-title {
+            color: var(--bp-primary-green);
+        }
+
+        .spotlight-section .section-subtitle {
+            color: var(--bp-gray);
+            max-width: 900px;
+        }
+
+        .spotlight-grid {
+            max-width: 1200px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .spotlight-card {
+            background: var(--bp-white);
+            border: 2px solid rgba(10, 43, 7, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--bp-sage-green);
+        }
+
+        .spotlight-image {
+            width: 100%;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bp-light);
+            padding: 20px;
+        }
+
+        .spotlight-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .spotlight-card:hover .spotlight-image img {
+            transform: scale(1.03);
+        }
+
+        .spotlight-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .spotlight-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bp-primary-green);
+            margin-bottom: 12px;
+        }
+
+        .spotlight-description {
+            font-size: 1rem;
+            color: var(--bp-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .spotlight-link {
+            color: var(--bp-peachy-orange);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            margin-top: auto;
+            display: block;
+        }
+
+        .spotlight-card:hover .spotlight-link {
+            color: var(--bp-coral);
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            background: var(--bp-primary-green);
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./Park-Images/IMG_8339.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        .final-cta-section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .final-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 4vw + 1rem, 3.5rem);
+            font-weight: 800;
+            color: var(--bp-white);
+            margin-bottom: 20px;
+        }
+
+        .final-cta-description {
+            font-size: 1.2rem;
+            color: var(--bp-light-gray);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .locations-grid {
+                grid-template-columns: 1fr;
             }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .navbar-links,
+            .navbar-actions {
+                display: none;
+            }
+
+            .hamburger,
+            .mobile-menu,
+            .mobile-menu-overlay {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .gallery-item.large {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .hero {
+                padding: 80px 20px 40px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .hero-cta-primary,
+            .hero-cta-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .location-card {
+                min-width: auto;
+            }
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Dynamic Background Animations */
+        @keyframes subtleZoom {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes subtleSlide {
+            0%, 100% {
+                background-position: center center;
+            }
+            50% {
+                background-position: center calc(50% + 20px);
+            }
+        }
+
+        .benefits-section::before {
+            animation: subtleZoom 30s ease-in-out infinite;
+        }
+
+        .experiences-section::before {
+            animation: subtleSlide 25s ease-in-out infinite;
+        }
+
+        .final-cta-section::before {
+            animation: subtleZoom 35s ease-in-out infinite;
+        }
+
+        /* Section entrance animation */
+        section {
+            opacity: 0;
+            animation: sectionFadeIn 0.8s ease forwards;
+        }
+
+        @keyframes sectionFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        section:nth-child(1) { animation-delay: 0s; }
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+        section:nth-child(6) { animation-delay: 0.5s; }
+        section:nth-child(7) { animation-delay: 0.6s; }
+        /* Easter Egg Overlay */
+        .easter-egg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #f4f4f4;
+            z-index: 99999;
+            overflow-y: auto;
+            transition: opacity 2s ease-out;
+        }
+
+        .easter-egg-overlay.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .easter-egg-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .easter-egg-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+
+        .easter-egg-content h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 20px 0;
+            color: #000;
+        }
+
+        .easter-egg-content p {
+            margin: 16px 0;
+            font-size: 1.1rem;
+        }
+
+        .easter-egg-content a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .easter-egg-content a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="/" class="back-link">
-            ← Back to Bitcoin Park
-        </a>
-        <div class="container">
-            <h1>Our Brands</h1>
-            <p>Discover the ecosystem of Bitcoin Park brands and initiatives driving grassroots freedom tech adoption</p>
+    <!-- Easter Egg Overlay - Old Index.html -->
+    <div class="easter-egg-overlay" id="easterEggOverlay">
+        <div class="easter-egg-content">
+            <img src="https://bitcoinpark.com/bitcoinparkbanner.webp" alt="Bitcoin Park">
+            <p><strong>A community supported campus in Nashville, TN and Austin, TX focused on grassroots freedom tech adoption and a home for bitcoiners to work, learn, collaborate, and build.</strong></p>
+
+            <p>Know when and where every meetup, workshop, summit, and experience is happening at the Park by bookmarking our consolidated <a href="https://bitcoinpark.com/schedule" target="_blank"><strong>Park schedule</strong></a>.</p>
+
+            <p>Consider subscribing to <a href="https://bitcoinpark.com/email" target="_blank"><strong>OP_Daily</strong></a>, bitcoin news and information delivered to your inbox each morning: <a href="https://bitcoinpark.com/email" target="_blank"><strong>bitcoinpark.com/email</strong></a></p>
+
+            <p><a href="https://bitcoinpark.com/spotlight" target="_blank"><strong>Check out Bitcoin Park's Spotlight Research</strong></a></p>
+
+            <p><a href="https://bitcoinpark.com/nashville" target="_blank"><strong>Bitcoin Park Nashville</strong></a>: learn about our meetups, workshops, summits and RSVP using our meetup page</p>
+
+            <p><a href="https://bitcoinpark.com/austin" target="_blank"><strong>Bitcoin Park Austin</strong></a>: learn about our meetups, workshops, summits and RSVP using our meetup page</p>
+
+            <p>Stay up to date by following us on <strong><a href="https://primal.net/park" target="_blank">nostr</a></strong> or <strong><a href="https://twitter.com/bitcoinpark_" target="_blank">twitter</a></strong>.</p>
+
+            <p>Collaborate with our community on our <a href="https://discord.gg/RBgZndpAM2" target="_blank"><strong>discord</strong></a> chat server.</p>
+
+            <p>Search <strong><a href="https://podcasts.apple.com/us/podcast/bitcoin-park/id1646515985" target="_blank">Bitcoin Park</a></strong> in your favorite podcast app to listen to past events.</p>
+
+            <p><strong>Support us with</strong> <a href="https://geyser.fund/project/bitcoinpark" target="_blank"><strong>bitcoin</strong></a>.</p>
+
+            <p>Learn about <strong><a href="https://bitcoinpark.com/members" target="_blank">Park membership</a></strong>. Space is limited and prospective members are subject to approval.</p>
+
+            <p><strong>You do not have to be a member to participate in our monthly free public meetups. Join us!</strong></p>
+
+            <img src="https://bitcoinpark.com/front.jpg" alt="Bitcoin Park">
         </div>
     </div>
 
-    <div class="brands-section">
-        <div class="container">
-            <div class="brands-grid">
-                <div class="brand-card">
-                    <img src="BP-Nashville-Banner_1920x1080px (1).jpg" alt="Bitcoin Park Nashville" class="brand-icon" style="object-fit:cover;width:80px;height:80px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,0.10);background:#fff;" />
-                    <h3 class="brand-name">Bitcoin Park Nashville</h3>
-                    <p class="brand-description">Our flagship campus in Nashville, TN serving as a hub for Bitcoin meetups, workshops, and community events.</p>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="/" class="navbar-logo">BITCOIN PARK</a>
 
-                <div class="brand-card">
-                    <img src="BitcoinParkAustin-Banner_1920x1080px (2).jpg" alt="Bitcoin Park Austin" class="brand-icon" style="object-fit:cover;width:80px;height:80px;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,0.10);background:#fff;" />
-                    <h3 class="brand-name">Bitcoin Park Austin</h3>
-                    <p class="brand-description">Our Austin campus fostering Bitcoin innovation and community building in the Texas capital.</p>
-                </div>
+            <div class="navbar-links">
+                <a href="#membership">Membership</a>
+                <a href="#experiences">Experiences</a>
+                <a href="#locations">Locations</a>
+                <a href="#proof-of-work">Proof of Work</a>
+                <a href="#spotlight">Spotlight</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#support">Supporters</a>
+                <a href="/email">OP_Daily</a>
+            </div>
 
-                <div class="brand-card">
-                    <div class="brand-icon">ST</div>
-                    <h3 class="brand-name">Stream</h3>
-                    <p class="brand-description">Digital platform for Bitcoin content, education, and community engagement across our ecosystem.</p>
-                </div>
+            <div class="navbar-actions">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScTSNdo55W1P6EFpOogtinl5gJnGkCDhDB097GVQkLwJeMa7A/viewform" class="btn-apply">MEMBERSHIP</a>
+            </div>
 
-                <div class="brand-card">
-                    <div class="brand-icon">OP</div>
-                    <h3 class="brand-name">OP Daily</h3>
-                    <p class="brand-description">Daily Bitcoin news and information delivered to your inbox, keeping you informed and connected.</p>
-                </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-                <div class="brand-card">
-                    <div class="brand-icon">AL</div>
-                    <h3 class="brand-name">Almanac</h3>
-                    <p class="brand-description">Comprehensive resource and guide for Bitcoin knowledge, events, and community resources.</p>
-                </div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
 
-                <div class="brand-card">
-                    <div class="brand-icon">NE</div>
-                    <h3 class="brand-name">Nashville Energy & Mining Summit</h3>
-                    <p class="brand-description">Premier event bringing together Bitcoin mining and energy professionals in Nashville.</p>
-                </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="navbarMenu">
+        <div class="mobile-menu-links">
+            <a href="#membership">Membership</a>
+            <a href="#experiences">Experiences</a>
+            <a href="#locations">Locations</a>
+            <a href="#proof-of-work">Proof of Work</a>
+            <a href="#spotlight">Spotlight</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#support">Support</a>
+            <a href="/email">OP_DAILY</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScTSNdo55W1P6EFpOogtinl5gJnGkCDhDB097GVQkLwJeMa7A/viewform" class="btn-apply" style="text-align: center; display: block;">Apply for Membership</a>
+        </div>
+    </div>
 
-                <div class="brand-card">
-                    <div class="brand-icon">TE</div>
-                    <h3 class="brand-name">Texas Energy & Mining Summit</h3>
-                    <p class="brand-description">Leading conference for Bitcoin mining and energy innovation in the Texas market.</p>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">JOIN BITCOIN PARK</div>
+            <h1 class="hero-title">For Builders, Innovators, and Freedom Tech Pioneers</h1>
+            <p class="hero-description">A physical and digital home for mission-obsessed Bitcoiners and Freedom Fighters to work, learn, collaborate, and build.</p>
+            <div class="hero-cta-group">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScTSNdo55W1P6EFpOogtinl5gJnGkCDhDB097GVQkLwJeMa7A/viewform" class="hero-cta-primary">Apply for Membership</a>
+                <a href="#experiences" class="hero-cta-secondary">Explore Experiences</a>
+            </div>
+        </div>
+    </section>
 
-                <div class="brand-card">
-                    <div class="brand-icon">IF</div>
-                    <h3 class="brand-name">Imagine IF</h3>
-                    <p class="brand-description">Innovation forum exploring the future of Bitcoin technology and its impact on society.</p>
+    <!-- Member Benefits Section -->
+    <section id="membership" class="benefits-section">
+        <div class="section-header">
+            <h2 class="section-title">Every Park Membership Includes</h2>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a.9959.9959 0 0 0-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">24/7 Key Access</h3>
+                <p class="benefit-description">Unrestricted access to Nashville and Austin campuses at any time</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Host Private Experiences*</h3>
+                <p class="benefit-description">Reserve spaces for your own experiences and gatherings</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Reserve Office + Studio Space</h3>
+                <p class="benefit-description">Book dedicated office and podcast studio spaces for your work</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Complimentary Imagine IF Ticket</h3>
+                <p class="benefit-description">Free admission to our annual Imagine IF innovation forum</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Mail Delivery</h3>
+                <p class="benefit-description">Use Bitcoin Park as your business mailing address</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <text x="12" y="17" text-anchor="middle" font-size="16" font-weight="bold" fill="currentColor">+1</text>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Bring Guests to the Park</h3>
+                <p class="benefit-description">Invite guests to experience the community and facilities</p>
+            </div>
+
+            <div class="benefit-card fade-in hidden-benefit">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 20h2c1.1 0 2-.9 2-2v-2h-4v4zM6 16H2v2c0 1.1.9 2 2 2h2v-4zm14-8h4V6c0-1.1-.9-2-2-2h-2v4zM6 4H4c-1.1 0-2 .9-2 2v2h4V4zm10.86 9.77L12 9.92l-4.86 3.85c-.67.53-.69 1.51-.04 2.07.65.56 1.67.52 2.28-.09L12 13.5l2.62 2.25c.61.61 1.63.65 2.28.09.65-.56.63-1.54-.04-2.07z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Park Merch</h3>
+                <p class="benefit-description">Exclusive Bitcoin Park merchandise and swag</p>
+            </div>
+
+            <div class="benefit-card fade-in hidden-benefit">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Support Grassroots Initiatives</h3>
+                <p class="benefit-description">Your membership funds global Bitcoin grassroots programs</p>
+            </div>
+
+            <div class="benefit-card fade-in hidden-benefit">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">NOSTR Nip-5 Address</h3>
+                <p class="benefit-description">Verified Nostr identity with @bitcoinpark.com address</p>
+            </div>
+
+            <div class="benefit-card fade-in hidden-benefit">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-9 7.5h-2v-3h2v3zm0-4.5h-2c0-1.5-2.5-3-2.5-5 0-1.93 1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5c0 2-2.5 3.5-2.5 5z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Discounted Summit & Forum Tickets</h3>
+                <p class="benefit-description">Member pricing on NEMS, Takeover, Grassroots, and all summits</p>
+            </div>
+
+            <div class="benefit-card fade-in hidden-benefit">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2l-5.5 9h11L12 2zm0 3.84L13.93 9h-3.87L12 5.84zM17.5 13c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm0 7c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zM3 21.5h8v-8H3v8zm2-6h4v4H5v-4z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Member-Specific Experiences</h3>
+                <p class="benefit-description">Exclusive member experiences, forums, and networking opportunities</p>
+            </div>
+
+            <div class="benefit-card fade-in hidden-benefit">
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                </div>
+                <h3 class="benefit-title">Access to All Future Park Locations</h3>
+                <p class="benefit-description">Your membership grows as we expand to new cities worldwide</p>
+            </div>
+        </div>
+
+        <div class="benefits-toggle">
+            <button class="btn-show-more" id="showMoreBenefits">Show More Benefits</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px;">
+            <p style="font-size: 1.5rem; color: var(--bp-peachy-orange); font-weight: 700; margin-bottom: 15px;">$6,000/year ($500/month) billed annually</p>
+            <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">There are a limited number of membership spots available.</p>
+            <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">Applications require approval from Park leadership.</p>
+            <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); font-style: italic;">*Subject to approval + additional costs</p>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <h2 class="section-title">The Park</h2>
+            <p class="section-subtitle">A world-class facility for builders, innovators, and freedom tech pioneers.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item large fade-in">
+                <img src="./Park-Images/IMG_8707.jpg" alt="Bitcoin Park Nashville Main Space" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8670.jpg" alt="Bitcoin Park Experience Space" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8695.jpg" alt="Bitcoin Park Collaboration Area" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8601.jpg" alt="Bitcoin Park Workspace" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8573.jpg" alt="Bitcoin Park Community" loading="lazy">
+            </div>
+            <div class="gallery-item large fade-in">
+                <img src="./Park-Images/IMG_8339.jpg" alt="Bitcoin Park Meeting Room" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8544.jpg" alt="Bitcoin Park Studio" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8463.jpg" alt="Bitcoin Park Meeting Space" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8480.jpg" alt="Bitcoin Park Networking Area" loading="lazy">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="./Park-Images/IMG_8529.jpg" alt="Bitcoin Park Lounge Area" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences-section">
+        <div class="section-header">
+            <h2 class="section-title">Bitcoin Park Experiences</h2>
+            <p class="section-subtitle">Discover how Bitcoin Park is accelerating the grassroots freedom tech movement.</p>
+        </div>
+
+        <!-- Meetups -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header-content">
+                    <div class="category-label">MEETUPS</div>
+                    <h3 class="category-title">Free & Open Community Meetups</h3>
+                </div>
+                <div class="category-toggle">+</div>
+            </div>
+
+            <div class="category-content">
+                <div class="experience-grid">
+                <a href="/austin-bitcoin-club/index.html" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">ABC</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">MEETUP</div>
+                        <h4 class="experience-name">Austin Bitcoin Club</h4>
+                        <p class="experience-description">Monthly gathering of Bitcoiners in Austin for education, networking, and community building.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="/austin-bitcoin-design-club/index.html" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2C1810 0%, #4A3728 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">ABDC</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">MEETUP</div>
+                        <h4 class="experience-name">Austin Bitcoin Design Club</h4>
+                        <p class="experience-description">Design-focused meetup for Bitcoin UX/UI designers and product builders.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="https://bitcoinpark.com/nashville" target="_blank" rel="noopener noreferrer" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/IMG_8362.jpg" alt="Nostr Nights at Bitcoin Park" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">MEETUP</div>
+                        <h4 class="experience-name">Nostr Nights</h4>
+                        <p class="experience-description">Exploring decentralized social protocols and the future of censorship-resistant communication.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="https://bitcoinpark.com/nashville" target="_blank" rel="noopener noreferrer" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/IMG_8656.jpg" alt="Open House at Bitcoin Park" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">MEETUP</div>
+                        <h4 class="experience-name">Open House</h4>
+                        <p class="experience-description">Regular community open house experiences welcoming newcomers and Bitcoin enthusiasts.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Workshops -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header-content">
+                    <div class="category-label">WORKSHOPS</div>
+                    <h3 class="category-title">Technical & Educational Deep-Dives</h3>
+                </div>
+                <div class="category-toggle">+</div>
+            </div>
+
+            <div class="category-content">
+                <div class="experience-grid">
+                <a href="https://aihackforfreedom.org" target="_blank" rel="noopener noreferrer" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/IMG_8270.jpg" alt="AI Hack for Freedom Workshop" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">WORKSHOP</div>
+                        <h4 class="experience-name">AI Hack for Freedom</h4>
+                        <p class="experience-description">Join developers, activists, and innovators for an intensive weekend of building cutting-edge solutions that advance freedom, privacy, and decentralized technology.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="https://aifreedomlab.org" target="_blank" rel="noopener noreferrer" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/IMG_8525.jpg" alt="AI Freedom Lab" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">WORKSHOP</div>
+                        <h4 class="experience-name">AI Freedom Lab</h4>
+                        <p class="experience-description">Educational lab exploring AI, machine learning, and decentralized technologies.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <!-- Summits -->
+        <div class="category-section">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header-content">
+                    <div class="category-label">SUMMITS</div>
+                    <h3 class="category-title">Bitcoin Park Signature Summits</h3>
+                </div>
+                <div class="category-toggle">+</div>
+            </div>
+
+            <div class="category-content">
+                <div class="summit-grid">
+                <a href="https://imagineifnashville.com" target="_blank" rel="noopener noreferrer" class="experience-card summit-card imagine-if fade-in">
+                    <div class="experience-image">
+                        <img src="./imagineif/Imagine IF Poster_cursor.png" alt="Imagine IF 2026" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Imagine IF</h4>
+                        <p class="experience-description">A summit of summits exploring the convergence of Bitcoin, AI, Energy, and Freedom Technology.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="./nems/index_2026.html" target="_blank" rel="noopener noreferrer" class="experience-card summit-card nems fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/nems-cover.png" alt="Nashville Energy & Mining Summit 2026" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Nashville Energy & Mining Summit</h4>
+                        <p class="experience-description">Premier experience bringing together Bitcoin mining and energy professionals in Nashville.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="./takeover/index.html" target="_blank" rel="noopener noreferrer" class="experience-card summit-card takeover fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/Takeover-cover.jpg" alt="Bitcoin Takeover 2026" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Bitcoin Takeover</h4>
+                        <p class="experience-description">Power of Payments summit exploring sovereign payment infrastructure and sound money.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="./grassroots/26.html" target="_blank" rel="noopener noreferrer" class="experience-card summit-card grassroots fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/Grassroots-Cover.png" alt="Grassroots Bitcoin 2026" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Grassroots Bitcoin</h4>
+                        <p class="experience-description">Gathering of Bitcoin meetup organizers driving grassroots adoption worldwide.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="./tems/index.html" target="_blank" rel="noopener noreferrer" class="experience-card summit-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/TEMS-cover.png" alt="Texas Energy & Mining Summit 2026" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Texas Energy & Mining Summit</h4>
+                        <p class="experience-description">Leading summit for Bitcoin mining and energy innovation in the Texas market.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <a href="./custody-treasury/index.html" target="_blank" rel="noopener noreferrer" class="experience-card summit-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/CTS-cover.png" alt="Custody & Treasury Summit" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Custody & Treasury Summit</h4>
+                        <p class="experience-description">Summit focused on Bitcoin custody solutions and corporate treasury strategies.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
+
+                <div class="experience-card summit-card fade-in">
+                    <div class="experience-image">
+                        <img src="./Park-Images/gbs-cover.jpg" alt="Global Bitcoin Summit" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">SUMMIT</div>
+                        <h4 class="experience-name">Global Bitcoin Summit</h4>
+                        <p class="experience-description">International summit bringing together global freedom technology leaders and innovators.</p>
+                        <span class="experience-link">Invite Only</span>
+                    </div>
                 </div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="locations-section">
+        <div class="section-header">
+            <h2 class="section-title">Park Locations</h2>
+            <p class="section-subtitle">World-class facilities in Nashville and Austin serving the Freedom Tech community.</p>
+        </div>
+
+        <div class="locations-grid">
+            <div class="location-card fade-in">
+                <img src="BP-Nashville-Banner_1920x1080px (1).jpg" alt="Bitcoin Park Nashville" class="location-image">
+                <div class="location-overlay">
+                    <h3 class="location-name">Nashville</h3>
+                    <p class="location-subtitle">Flagship Campus</p>
+                    <a href="https://bitcoinpark.com/nashville" target="_blank" rel="noopener noreferrer" class="location-cta">Visit Nashville →</a>
+                </div>
+            </div>
+
+            <div class="location-card fade-in">
+                <img src="./Park-Images/park-austin-meetup.avif" alt="Bitcoin Park Austin" class="location-image">
+                <div class="location-overlay">
+                    <h3 class="location-name">Austin</h3>
+                    <p class="location-subtitle">Texas Innovation Hub</p>
+                    <a href="https://bitcoinpark.com/austin" target="_blank" rel="noopener noreferrer" class="location-cta">Visit Austin →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof of Work YouTube Section -->
+    <section id="proof-of-work" class="youtube-section">
+        <div class="section-header">
+            <h2 class="section-title">Proof of Work</h2>
+            <p class="section-subtitle">Watch the latest content from Bitcoin Park.</p>
+        </div>
+
+        <div class="youtube-grid">
+            <div class="youtube-video fade-in">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/videoseries?list=UULFBPR9DMOcJ5fDPZeCoqYJ"
+                            title="Bitcoin Park Latest Videos"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://www.youtube.com/@BitcoinPark1" target="_blank" rel="noopener noreferrer" class="btn-youtube">
+                View All Videos on YouTube →
+            </a>
+        </div>
+    </section>
+
+    <!-- Spotlight Section -->
+    <section id="spotlight" class="spotlight-section">
+        <div class="section-header">
+            <h2 class="section-title">Spotlight Papers</h2>
+            <p class="section-subtitle">See the forces that shape the future of our industry.</p>
+        </div>
+
+        <div class="spotlight-grid">
+            <a href="./Indie%20isn%E2%80%99t%20Dead%20White%20Paper-2026%20(1).pdf" target="_blank" rel="noopener noreferrer" class="spotlight-card fade-in">
+                <div class="spotlight-image">
+                    <img src="./Cover-Indie-Isn't-Dead.png" alt="Indie isn't Dead Cover" loading="lazy">
+                </div>
+                <div class="spotlight-content">
+                    <h3 class="spotlight-title">Indie isn't Dead</h3>
+                    <p class="spotlight-description">An examination of the independent builder movement and the counter-SXSW narrative shaping Bitcoin's grassroots innovation culture.</p>
+                    <span class="spotlight-link">Read Paper →</span>
+                </div>
+            </a>
+
+            <a href="./MONETIZING%20THE%20MEGAWATT%201_26.pdf" target="_blank" rel="noopener noreferrer" class="spotlight-card fade-in">
+                <div class="spotlight-image">
+                    <img src="./megawatt-cover.png" alt="Monetizing the Megawatt Cover" loading="lazy">
+                </div>
+                <div class="spotlight-content">
+                    <h3 class="spotlight-title">Monetizing the Megawatt</h3>
+                    <p class="spotlight-description">A deep dive into bitcoin mining economics and the intersection of energy markets and bitcoin infrastructure.</p>
+                    <span class="spotlight-link">Read Paper →</span>
+                </div>
+            </a>
+
+            <a href="./Bitcoin%20Custody%20in%202025.pdf" target="_blank" rel="noopener noreferrer" class="spotlight-card fade-in">
+                <div class="spotlight-image">
+                    <img src="./custody-cover.png" alt="Bitcoin Custody in 2025 Cover" loading="lazy">
+                </div>
+                <div class="spotlight-content">
+                    <h3 class="spotlight-title">Bitcoin Custody in 2025</h3>
+                    <p class="spotlight-description">An exploration of modern bitcoin custody solutions, best practices, and considerations for individuals and institutions.</p>
+                    <span class="spotlight-link">Read Paper →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <h2 class="section-title">The Park Calendar</h2>
+                <p class="section-subtitle">Stay connected with our vibrant community through regular meetups, workshops, and summits across Nashville and Austin.</p>
+            </div>
+
+            <div class="embedded-week-calendar">
+                <div class="calendar-loading" id="calendarLoading">Loading this week's experiences...</div>
+                <div id="weekCalendarContainer" style="display: none;">
+                    <div class="week-calendar-nav">
+                        <button class="week-calendar-nav-btn" id="prevWeekBtn">
+                            <span>←</span>
+                            <span>Previous Week</span>
+                        </button>
+                        <div class="week-calendar-date-display" id="weekDateDisplay"></div>
+                        <button class="week-calendar-nav-btn" id="nextWeekBtn">
+                            <span>Next Week</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <button class="week-calendar-today-btn" id="todayWeekBtn">Today</button>
+                    </div>
+                    <div class="week-calendar-header" id="weekCalendarHeader"></div>
+                    <div class="week-calendar-grid" id="weekCalendarGrid"></div>
+                </div>
+            </div>
+
+            <div class="schedule-cta">
+                <a href="./schedule.html" class="btn-schedule">View Full Schedule</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Supporters Section -->
+    <section id="support" class="supporters-section">
+        <div class="section-header">
+            <h2 class="section-title">Supported By:</h2>
+        </div>
+
+        <div class="supporters-grid">
+            <a href="https://hrf.org" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">HRF</div>
+            </a>
+
+            <a href="https://chollainc.com" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Cholla Inc.</div>
+            </a>
+
+            <a href="https://unchained.com" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Unchained</div>
+            </a>
+
+            <a href="https://ten31.vc" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Ten31</div>
+            </a>
+
+            <a href="https://fedi.xyz" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Fedi</div>
+            </a>
+
+            <a href="https://cleanspark.com" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">CleanSpark</div>
+            </a>
+
+            <a href="https://satoshipacioli.com" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Satoshi Pacioli</div>
+            </a>
+
+            <a href="https://bitkey.world" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Bitkey</div>
+            </a>
+
+            <a href="https://proto.app" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Proto</div>
+            </a>
+
+            <a href="https://foundrydigital.com" target="_blank" rel="noopener noreferrer" class="supporter-card fade-in">
+                <div class="supporter-name">Foundry</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <div class="final-cta-content">
+            <h2 class="final-cta-title">Ready to Join?</h2>
+            <p class="final-cta-description">Space is limited. Prospective members are subject to approval. Apply today to join Bitcoin Park's exclusive community of builders and innovators.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScTSNdo55W1P6EFpOogtinl5gJnGkCDhDB097GVQkLwJeMa7A/viewform" class="hero-cta-primary">Apply for Membership</a>
+        </div>
+    </section>
+
+    <!-- Copyright -->
+    <div style="background: var(--bp-dark-green); padding: 20px; text-align: center;">
+        <p style="color: var(--bp-gray); font-size: 0.9rem; margin: 0;">© 2026 Bitcoin Park. All rights reserved.</p>
     </div>
+
+    <script>
+        // Easter Egg Overlay - Auto dissolve after 0.5 seconds
+        const easterEggOverlay = document.getElementById('easterEggOverlay');
+
+        // Automatically fade out after 0.5 seconds
+        setTimeout(() => {
+            easterEggOverlay.classList.add('fade-out');
+
+            // Remove from DOM after fade animation completes (2 seconds)
+            setTimeout(() => {
+                easterEggOverlay.remove();
+            }, 2000);
+        }, 500);
+
+        // Navigation scroll behavior
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navbarMenu = document.getElementById('navbarMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navbarMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = navbarMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (link.getAttribute('href').startsWith('#')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // ============================================
+        // EMBEDDED WEEK CALENDAR
+        // ============================================
+
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxOrOe84ly3hnCGC-7OfzAmtiNd4OwpzLywLC0wA58piuws1CL0aeCHreQYkFtF3-83/exec';
+
+        let allCalendarEvents = [];
+        let currentWeekOffset = 0; // 0 = this week, -1 = last week, +1 = next week
+
+        async function loadWeekCalendar() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL);
+                if (!response.ok) throw new Error('Failed to fetch events');
+
+                const responseText = await response.text();
+                console.log('API Response (first 500 chars):', responseText.substring(0, 500));
+
+                // Try to parse as JSON first (Apps Script might return JSON)
+                let csvData;
+                try {
+                    const jsonData = JSON.parse(responseText);
+                    console.log('Received JSON data, converting to CSV');
+                    if (Array.isArray(jsonData)) {
+                        csvData = convertJSONToCSV(jsonData);
+                    } else {
+                        csvData = responseText;
+                    }
+                } catch (e) {
+                    // Not JSON, treat as CSV
+                    console.log('Response is CSV');
+                    csvData = responseText;
+                }
+
+                allCalendarEvents = parseEventsCSV(csvData);
+                console.log('Parsed events:', allCalendarEvents.length);
+                if (allCalendarEvents.length > 0) {
+                    console.log('Sample event:', allCalendarEvents[0]);
+                }
+                renderWeekCalendar();
+                setupWeekNavigation();
+            } catch (error) {
+                console.error('Error loading week calendar:', error);
+                document.getElementById('calendarLoading').innerHTML =
+                    '<p style="color: var(--bp-gray);">Unable to load calendar. <a href="./schedule.html" style="color: var(--bp-peachy-orange);">View full schedule →</a></p>';
+            }
+        }
+
+        function setupWeekNavigation() {
+            document.getElementById('prevWeekBtn').addEventListener('click', () => {
+                currentWeekOffset--;
+                renderWeekCalendar();
+            });
+
+            document.getElementById('nextWeekBtn').addEventListener('click', () => {
+                currentWeekOffset++;
+                renderWeekCalendar();
+            });
+
+            document.getElementById('todayWeekBtn').addEventListener('click', () => {
+                currentWeekOffset = 0;
+                renderWeekCalendar();
+            });
+        }
+
+        function convertJSONToCSV(jsonArray) {
+            if (!jsonArray || !Array.isArray(jsonArray) || jsonArray.length === 0) {
+                return 'title,date\n';
+            }
+
+            const headers = Object.keys(jsonArray[0]);
+            const csvRows = [headers.map(h => `"${String(h).replace(/"/g, '""')}"`).join(',')];
+
+            jsonArray.forEach(obj => {
+                const row = headers.map(header => {
+                    const value = obj[header] !== undefined && obj[header] !== null ? obj[header] : '';
+                    const escaped = String(value).replace(/"/g, '""').replace(/\n/g, ' ').replace(/\r/g, '');
+                    return `"${escaped}"`;
+                });
+                csvRows.push(row.join(','));
+            });
+
+            return csvRows.join('\n');
+        }
+
+        function parseEventsCSV(csv) {
+            if (!csv || typeof csv !== 'string') {
+                console.error('Invalid CSV data');
+                return [];
+            }
+
+            const lines = csv.split('\n').filter(line => line.trim());
+            if (lines.length === 0) return [];
+
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g, ''));
+            console.log('CSV Headers:', headers);
+
+            const events = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+
+                const values = parseCSVLine(lines[i]);
+                if (values.length < headers.length) continue;
+
+                const event = {};
+                headers.forEach((header, index) => {
+                    const value = values[index] ? values[index].trim().replace(/"/g, '') : '';
+                    event[header] = value;
+                    event[`_col_${index}`] = value; // Also store by column index
+                });
+
+                // Check "Listed on schedule" column (column J, index 9)
+                const colJ = (event['_col_9'] || '').toString().trim().toUpperCase();
+                if (event.hasOwnProperty('_col_9') && colJ !== 'Y') continue;
+
+                // Find title
+                let title = event['title'] || event['event title'] || event['name'] || event['event name'] || event['event'] || '';
+                if (!title) {
+                    // Try first non-empty column that's not a date
+                    for (const key in event) {
+                        const val = event[key];
+                        if (val && val.length > 2 && !/\d{1,2}[\/\-]\d{1,2}/.test(val)) {
+                            title = val;
+                            break;
+                        }
+                    }
+                }
+
+                // Find date
+                let date = event['date'] || event['event date'] || event['start date'] || event['startdate'] || '';
+                if (!date) {
+                    // Try to find any value that looks like a date
+                    for (const key in event) {
+                        const val = event[key];
+                        if (val && /\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}/.test(val)) {
+                            date = val;
+                            break;
+                        }
+                    }
+                }
+
+                if (!title || !date) continue;
+
+                // Find location
+                const location = (event['location'] || event['where'] || event['campus'] || '').toLowerCase();
+                let normalizedLocation = 'austin';
+                if (location.includes('nashville')) normalizedLocation = 'nashville';
+                else if (location.includes('austin')) normalizedLocation = 'austin';
+
+                // Find category/type (column H, index 7)
+                let category = event['category'] || event['type'] || event['event type'] || event['_col_7'] || '';
+                if (!category && headers.length > 7) {
+                    category = event[headers[7]] || '';
+                }
+
+                const categoryLower = category.toLowerCase();
+                let normalizedType = 'meetup';
+                if (categoryLower.includes('summit')) normalizedType = 'summit';
+                else if (categoryLower.includes('workshop')) normalizedType = 'workshop';
+                else if (categoryLower.includes('hackathon')) normalizedType = 'hackathon';
+                else if (categoryLower.includes('experience')) normalizedType = 'experience';
+
+                // Parse date
+                const dateObj = parseEventDate(date);
+                if (!dateObj) continue;
+
+                // Find time
+                const time = event['time'] || event['start time'] || event['starttime'] || '';
+
+                events.push({
+                    title: title,
+                    location: normalizedLocation,
+                    category: normalizedType,
+                    startDate: date,
+                    dateObj: dateObj,
+                    startTime: time,
+                    description: event['description'] || event['event description'] || ''
+                });
+            }
+
+            return events;
+        }
+
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                const nextChar = line[i + 1];
+
+                if (char === '"' && inQuotes && nextChar === '"') {
+                    current += '"';
+                    i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+
+            result.push(current);
+            return result;
+        }
+
+        function parseEventDate(dateStr) {
+            if (!dateStr) return null;
+
+            // Try various date formats
+            const formats = [
+                // MM/DD/YYYY or M/D/YYYY
+                /(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/,
+                // YYYY-MM-DD
+                /(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/,
+                // MM/DD/YY or M/D/YY
+                /(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2})$/
+            ];
+
+            for (const regex of formats) {
+                const match = dateStr.match(regex);
+                if (match) {
+                    let year, month, day;
+
+                    if (regex.source.startsWith('(\\d{4})')) {
+                        // YYYY-MM-DD format
+                        [, year, month, day] = match;
+                    } else if (match[3].length === 2) {
+                        // MM/DD/YY format
+                        [, month, day, year] = match;
+                        year = parseInt(year) + 2000; // Assume 20xx
+                    } else {
+                        // MM/DD/YYYY format
+                        [, month, day, year] = match;
+                    }
+
+                    const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+                    if (!isNaN(date.getTime())) {
+                        return date;
+                    }
+                }
+            }
+
+            // Try parsing as-is
+            const date = new Date(dateStr);
+            return isNaN(date.getTime()) ? null : date;
+        }
+
+        function renderWeekCalendar() {
+            const today = new Date();
+            const currentDay = today.getDay();
+
+            // Calculate the start of the target week based on offset
+            const startOfWeek = new Date(today);
+            startOfWeek.setDate(today.getDate() - currentDay + (currentWeekOffset * 7));
+            startOfWeek.setHours(0, 0, 0, 0);
+
+            const endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 6);
+            endOfWeek.setHours(23, 59, 59, 999);
+
+            // Update date display
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const startMonth = months[startOfWeek.getMonth()];
+            const endMonth = months[endOfWeek.getMonth()];
+            const dateDisplay = document.getElementById('weekDateDisplay');
+            if (dateDisplay) {
+                if (startMonth === endMonth) {
+                    dateDisplay.textContent = `${startMonth} ${startOfWeek.getDate()} - ${endOfWeek.getDate()}, ${startOfWeek.getFullYear()}`;
+                } else {
+                    dateDisplay.textContent = `${startMonth} ${startOfWeek.getDate()} - ${endMonth} ${endOfWeek.getDate()}, ${startOfWeek.getFullYear()}`;
+                }
+            }
+
+            // Filter events for this week
+            const weekEvents = allCalendarEvents.filter(event => {
+                if (!event.dateObj) return false;
+                return event.dateObj >= startOfWeek && event.dateObj <= endOfWeek;
+            });
+
+            console.log(`Rendering week: ${startOfWeek.toDateString()} to ${endOfWeek.toDateString()}`);
+            console.log(`Week offset: ${currentWeekOffset}`);
+            console.log(`Events this week: ${weekEvents.length}`);
+
+            // Render headers
+            const headerContainer = document.getElementById('weekCalendarHeader');
+            const gridContainer = document.getElementById('weekCalendarGrid');
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            headerContainer.innerHTML = '';
+            gridContainer.innerHTML = '';
+
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startOfWeek);
+                date.setDate(startOfWeek.getDate() + i);
+
+                // Header
+                const header = document.createElement('div');
+                header.className = 'week-calendar-day-header';
+                header.innerHTML = `${days[i]}<br><span style="font-size: 1.1rem; font-weight: 800;">${date.getDate()}</span>`;
+                headerContainer.appendChild(header);
+
+                // Day column
+                const dayCol = document.createElement('div');
+                dayCol.className = 'week-calendar-day';
+
+                // Check if today
+                const isToday = date.toDateString() === today.toDateString();
+                if (isToday) {
+                    dayCol.classList.add('today');
+                }
+
+                // Find events for this day
+                const dayEvents = weekEvents.filter(event => {
+                    if (!event.dateObj) return false;
+                    return event.dateObj.toDateString() === date.toDateString();
+                });
+
+                // Sort by time
+                dayEvents.sort((a, b) => {
+                    if (!a.startTime || !b.startTime) return 0;
+                    return a.startTime.localeCompare(b.startTime);
+                });
+
+                // Add events
+                dayEvents.forEach(event => {
+                    const eventEl = document.createElement('div');
+                    eventEl.className = `week-calendar-event ${event.category}`;
+                    eventEl.innerHTML = `
+                        <div style="font-size: 0.7rem; opacity: 0.8; margin-bottom: 2px;">${event.startTime || ''}</div>
+                        <div>${event.title}</div>
+                        <div style="font-size: 0.7rem; opacity: 0.8; margin-top: 2px;">${event.location === 'nashville' ? '📍 Nashville' : event.location === 'austin' ? '📍 Austin' : ''}</div>
+                    `;
+                    eventEl.title = event.description || event.title;
+                    dayCol.appendChild(eventEl);
+                });
+
+                gridContainer.appendChild(dayCol);
+            }
+
+            // Show calendar, hide loading
+            document.getElementById('calendarLoading').style.display = 'none';
+            document.getElementById('weekCalendarContainer').style.display = 'block';
+        }
+
+        // Load calendar when page loads
+        if (document.getElementById('weekCalendarGrid')) {
+            loadWeekCalendar();
+        }
+
+        // Show More Benefits Toggle
+        const showMoreBtn = document.getElementById('showMoreBenefits');
+        const hiddenBenefits = document.querySelectorAll('.hidden-benefit');
+        let benefitsExpanded = false;
+
+        if (showMoreBtn) {
+            showMoreBtn.addEventListener('click', () => {
+                benefitsExpanded = !benefitsExpanded;
+
+                hiddenBenefits.forEach(benefit => {
+                    if (benefitsExpanded) {
+                        benefit.classList.remove('hidden-benefit');
+                        benefit.style.display = 'block';
+                    } else {
+                        benefit.classList.add('hidden-benefit');
+                        benefit.style.display = 'none';
+                    }
+                });
+
+                showMoreBtn.textContent = benefitsExpanded ? 'Show Less Benefits' : 'Show More Benefits';
+            });
+        }
+
+        // Experience Category Accordion Toggle
+        function toggleCategory(headerElement) {
+            const categorySection = headerElement.parentElement;
+            const wasActive = categorySection.classList.contains('active');
+
+            // Close all other categories
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Toggle this category
+            if (!wasActive) {
+                categorySection.classList.add('active');
+            }
+        }
+    </script>
 </body>
-</html> 
+</html>
