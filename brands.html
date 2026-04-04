@@ -1303,6 +1303,8 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-color: var(--bp-peachy-orange) var(--bp-light);
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
         }
 
         .youtube-carousel-container::-webkit-scrollbar {
@@ -1317,12 +1319,17 @@
         .youtube-carousel-container::-webkit-scrollbar-thumb {
             background: var(--bp-peachy-orange);
             border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .youtube-carousel-container::-webkit-scrollbar-thumb:hover {
+            background: var(--bp-coral);
         }
 
         .youtube-carousel {
             display: flex;
             gap: 30px;
-            padding: 0 20px;
+            padding: 0 max(20px, calc((100vw - 500px) / 2));
             min-width: min-content;
         }
 
@@ -1332,7 +1339,9 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
         }
 
         .youtube-video:hover {
@@ -1591,6 +1600,10 @@
 
             .location-card {
                 min-width: auto;
+            }
+
+            .youtube-carousel {
+                padding: 0 max(20px, calc((100vw - 320px) / 2));
             }
 
             .youtube-video {
