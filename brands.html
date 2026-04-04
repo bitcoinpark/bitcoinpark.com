@@ -1586,7 +1586,7 @@
         }
 
         .video-thumbnail {
-            flex: 0 0 280px;
+            flex: 0 0 450px;
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 12px;
@@ -2537,21 +2537,14 @@
             <p class="section-subtitle">Watch the latest content from Bitcoin Park.</p>
         </div>
 
-        <!-- Featured Video -->
-        <div class="featured-video-container">
-            <button class="featured-arrow prev" id="prevFeatured" aria-label="Previous video">‹</button>
-            <button class="featured-arrow next" id="nextFeatured" aria-label="Next video">›</button>
-            <iframe id="featuredVideo" src="https://www.youtube.com/embed/6bbtHYft7t8" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
-        <!-- Video Thumbnail Carousel -->
+        <!-- Video Carousel -->
         <div class="carousel-nav">
             <button class="carousel-arrow prev" id="prevVideo" aria-label="Previous video">‹</button>
             <button class="carousel-arrow next" id="nextVideo" aria-label="Next video">›</button>
             <div class="youtube-carousel-container" id="videoCarousel">
                 <div class="youtube-carousel">
 
-                    <div class="video-thumbnail active" data-video-id="6bbtHYft7t8">
+                    <div class="video-thumbnail" data-video-id="6bbtHYft7t8">
                         <div class="video-thumbnail-wrapper">
                             <img src="https://img.youtube.com/vi/6bbtHYft7t8/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
                             <div class="video-thumbnail-overlay">
@@ -2826,16 +2819,14 @@
             }, 2000);
         }, 750);
 
-        // Video Jukebox Navigation
+        // Video Carousel Navigation
         const videoCarousel = document.getElementById('videoCarousel');
         const prevButton = document.getElementById('prevVideo');
         const nextButton = document.getElementById('nextVideo');
-        const featuredVideo = document.getElementById('featuredVideo');
-        const videoThumbnails = document.querySelectorAll('.video-thumbnail');
 
         // Carousel navigation arrows
         if (videoCarousel && prevButton && nextButton) {
-            const scrollAmount = 310; // 280px thumbnail width + 30px gap
+            const scrollAmount = 470; // 450px thumbnail width + 20px gap
 
             prevButton.addEventListener('click', () => {
                 videoCarousel.scrollBy({
@@ -2849,68 +2840,6 @@
                     left: scrollAmount,
                     behavior: 'smooth'
                 });
-            });
-        }
-
-        // Thumbnail click handlers for jukebox functionality
-        videoThumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
-                const videoId = this.getAttribute('data-video-id');
-
-                // Update featured video
-                if (featuredVideo && videoId) {
-                    featuredVideo.src = `https://www.youtube.com/embed/${videoId}`;
-                }
-
-                // Update active state
-                videoThumbnails.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Featured video navigation arrows
-        const prevFeaturedButton = document.getElementById('prevFeatured');
-        const nextFeaturedButton = document.getElementById('nextFeatured');
-
-        if (prevFeaturedButton && nextFeaturedButton && videoThumbnails.length > 0) {
-            // Get array of thumbnails for navigation
-            const thumbnailsArray = Array.from(videoThumbnails);
-
-            // Function to get current active index
-            function getActiveIndex() {
-                return thumbnailsArray.findIndex(t => t.classList.contains('active'));
-            }
-
-            // Function to set featured video by index
-            function setFeaturedVideo(index) {
-                const thumbnail = thumbnailsArray[index];
-                const videoId = thumbnail.getAttribute('data-video-id');
-
-                // Update featured video
-                if (featuredVideo && videoId) {
-                    featuredVideo.src = `https://www.youtube.com/embed/${videoId}`;
-                }
-
-                // Update active state
-                videoThumbnails.forEach(t => t.classList.remove('active'));
-                thumbnail.classList.add('active');
-
-                // Scroll thumbnail into view
-                thumbnail.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-
-            // Previous video handler
-            prevFeaturedButton.addEventListener('click', () => {
-                const currentIndex = getActiveIndex();
-                const newIndex = currentIndex > 0 ? currentIndex - 1 : thumbnailsArray.length - 1;
-                setFeaturedVideo(newIndex);
-            });
-
-            // Next video handler
-            nextFeaturedButton.addEventListener('click', () => {
-                const currentIndex = getActiveIndex();
-                const newIndex = currentIndex < thumbnailsArray.length - 1 ? currentIndex + 1 : 0;
-                setFeaturedVideo(newIndex);
             });
         }
 
