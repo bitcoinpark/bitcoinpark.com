@@ -1585,74 +1585,34 @@
             width: max-content;
         }
 
-        .video-thumbnail {
-            flex: 0 0 450px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 12px;
+        .youtube-video {
+            flex: 0 0 600px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 3px solid transparent;
-            position: relative;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
         }
 
-        .video-thumbnail.active {
-            border-color: var(--bp-peachy-orange);
-            box-shadow: 0 8px 30px rgba(255, 153, 116, 0.3);
-        }
-
-        .video-thumbnail:hover {
+        .youtube-video:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .video-thumbnail-wrapper {
+        .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 */
             height: 0;
             overflow: hidden;
             background: var(--bp-primary-green);
         }
 
-        .video-thumbnail-wrapper img {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .video-thumbnail-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 43, 7, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .video-thumbnail:hover .video-thumbnail-overlay {
-            background: rgba(255, 153, 116, 0.4);
-        }
-
-        .video-thumbnail.active .video-thumbnail-overlay {
-            background: rgba(255, 153, 116, 0.6);
-        }
-
-        .play-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--bp-white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bp-primary-green);
-            font-size: 1.5rem;
+            border: none;
         }
 
         .btn-youtube {
@@ -2544,111 +2504,75 @@
             <div class="youtube-carousel-container" id="videoCarousel">
                 <div class="youtube-carousel">
 
-                    <div class="video-thumbnail" data-video-id="6bbtHYft7t8">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/6bbtHYft7t8/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/6bbtHYft7t8" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="iWvSBrA274Q">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/iWvSBrA274Q/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/iWvSBrA274Q" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="YRZhk4Fbhrc">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/YRZhk4Fbhrc/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/YRZhk4Fbhrc" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="JLcRUS-a4_g">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/JLcRUS-a4_g/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/JLcRUS-a4_g" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="u5hRdxCuyFY">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/u5hRdxCuyFY/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/u5hRdxCuyFY" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="DN-zIuzMM0w">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/DN-zIuzMM0w/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/DN-zIuzMM0w" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="Cdho0blnTR8">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/Cdho0blnTR8/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/Cdho0blnTR8" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="Ag3q64fMASU">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/Ag3q64fMASU/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/Ag3q64fMASU" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="MCU81VGn2Kw">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/MCU81VGn2Kw/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/MCU81VGn2Kw" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="IU71sval8Pg">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/IU71sval8Pg/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/IU71sval8Pg" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="8b3eusOiZsw">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/8b3eusOiZsw/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/8b3eusOiZsw" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
-                    <div class="video-thumbnail" data-video-id="nW_3jppA9nQ">
-                        <div class="video-thumbnail-wrapper">
-                            <img src="https://img.youtube.com/vi/nW_3jppA9nQ/maxresdefault.jpg" alt="Bitcoin Park video content - Meetups, workshops, and community events">
-                            <div class="video-thumbnail-overlay">
-                                <div class="play-icon">▶</div>
-                            </div>
+                    <div class="youtube-video">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/nW_3jppA9nQ" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </div>
                     </div>
 
@@ -2826,7 +2750,7 @@
 
         // Carousel navigation arrows
         if (videoCarousel && prevButton && nextButton) {
-            const scrollAmount = 470; // 450px thumbnail width + 20px gap
+            const scrollAmount = 620; // 600px video width + 20px gap
 
             prevButton.addEventListener('click', () => {
                 videoCarousel.scrollBy({
