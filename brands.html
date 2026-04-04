@@ -2208,12 +2208,12 @@
         <div class="youtube-grid">
             <div class="youtube-video fade-in">
                 <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed?listType=playlist&list=UULFBPR9DMOcJ5fDPZeCoqYJ"
+                    <iframe src="https://www.youtube.com/embed/videoseries?si=jEoILz3aK89yXD_b&amp;list=UULFBPR9DMOcJ5fDPZeCoqYJ"
                             title="Bitcoin Park Videos"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen
-                            style="border: none;">
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
                     </iframe>
                 </div>
             </div>
@@ -2369,10 +2369,10 @@
     </div>
 
     <script>
-        // Easter Egg Overlay - Auto dissolve after 0.5 seconds
+        // Easter Egg Overlay - Auto dissolve after 0.75 seconds
         const easterEggOverlay = document.getElementById('easterEggOverlay');
 
-        // Automatically fade out after 0.5 seconds
+        // Automatically fade out after 0.75 seconds
         setTimeout(() => {
             easterEggOverlay.classList.add('fade-out');
 
@@ -2380,7 +2380,7 @@
             setTimeout(() => {
                 easterEggOverlay.remove();
             }, 2000);
-        }, 500);
+        }, 750);
 
         // Navigation scroll behavior
         const navbar = document.getElementById('navbar');
