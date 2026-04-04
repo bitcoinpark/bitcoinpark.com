@@ -1294,15 +1294,40 @@
             max-width: 800px;
         }
 
-        .youtube-grid {
-            max-width: 1400px;
+        .youtube-carousel-container {
+            max-width: 100%;
             margin: 60px auto 0;
-            display: grid;
-            grid-template-columns: 1fr;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 20px 0;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--bp-peachy-orange) var(--bp-light);
+        }
+
+        .youtube-carousel-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .youtube-carousel-container::-webkit-scrollbar-track {
+            background: var(--bp-light);
+            border-radius: 10px;
+        }
+
+        .youtube-carousel-container::-webkit-scrollbar-thumb {
+            background: var(--bp-peachy-orange);
+            border-radius: 10px;
+        }
+
+        .youtube-carousel {
+            display: flex;
             gap: 30px;
+            padding: 0 20px;
+            min-width: min-content;
         }
 
         .youtube-video {
+            flex: 0 0 500px;
             background: var(--bp-white);
             border-radius: 16px;
             overflow: hidden;
@@ -1566,6 +1591,10 @@
 
             .location-card {
                 min-width: auto;
+            }
+
+            .youtube-video {
+                flex: 0 0 320px;
             }
         }
 
@@ -2205,15 +2234,60 @@
             <p class="section-subtitle">Watch the latest content from Bitcoin Park.</p>
         </div>
 
-        <div style="text-align: center; padding: 80px 20px;">
-            <div style="max-width: 800px; margin: 0 auto; background: linear-gradient(135deg, #0A2B07 0%, #1A3321 100%); border-radius: 20px; padding: 60px 40px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);">
-                <div style="font-size: 4rem; margin-bottom: 20px;">▶️</div>
-                <h3 style="font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 700; color: var(--bp-white); margin-bottom: 15px;">Watch Our Latest Videos</h3>
-                <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 35px; line-height: 1.6;">From technical workshops to community events, explore our growing collection of educational content and event recordings.</p>
-                <a href="https://www.youtube.com/@BitcoinPark1/videos" target="_blank" rel="noopener noreferrer" class="btn-youtube" style="display: inline-block; font-size: 1.1rem;">
-                    Browse All Videos →
-                </a>
+        <div class="youtube-carousel-container">
+            <div class="youtube-carousel">
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/YRZhk4Fbhrc" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/JLcRUS-a4_g" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/u5hRdxCuyFY" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/DN-zIuzMM0w" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/Ag3q64fMASU" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/MCU81VGn2Kw" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/IU71sval8Pg" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/8b3eusOiZsw" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="youtube-video fade-in">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/nW_3jppA9nQ" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://www.youtube.com/@BitcoinPark1/videos" target="_blank" rel="noopener noreferrer" class="btn-youtube">
+                View All Videos on YouTube →
+            </a>
         </div>
     </section>
 
