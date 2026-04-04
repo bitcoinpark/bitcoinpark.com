@@ -1304,12 +1304,13 @@
         .featured-video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding-bottom: 50.625%; /* 16:9 ratio for 900px width */
             height: 0;
             overflow: hidden;
             border-radius: 16px;
             background: var(--bp-primary-green);
-            margin-bottom: 40px;
             box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
         }
 
