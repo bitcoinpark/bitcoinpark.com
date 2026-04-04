@@ -2,8 +2,8 @@
 
 ## World Memory
 
-Operational knowledge base at `.world-model/`. Start at `.world-model/INDEX.md`.
-Query via `.world-model/scripts/query`. See `.world-model/README.md` for full usage.
+Operational knowledge base at `.world-memory/`. Start at `.world-memory/INDEX.md`.
+Query via `.world-memory/scripts/query`. See `.world-memory/README.md` for full usage.
 
 The world memory has three layers:
 - `identity/` — Mission, principles, brand, team (hand-authored, rarely changes)
