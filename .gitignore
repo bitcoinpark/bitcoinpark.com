@@ -1,3 +1,35 @@
-.DS_Store
+# Claude Code and AI tool directories
 .claude/worktrees/
 .gemini/
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Node modules (if any)
+node_modules/
+.npm-cache/
+
+# Build outputs
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Environment files
+.env
+.env.local
