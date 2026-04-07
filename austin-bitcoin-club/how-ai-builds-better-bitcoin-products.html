@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Designer and an Engineer Walk Into a Bitcoin Meetup - Austin Bitcoin Club</title>
+    <meta property="og:title" content="A Designer and an Engineer Walk Into a Bitcoin Meetup">
+    <meta property="og:description" content="Sahil Chaturvedi and Nate Kitzke discuss how AI is transforming Bitcoin product development, from design workflows to engineering processes.">
+    <meta property="og:image" content="https://bitcoinpark.com/austin-bitcoin-club/FAED3CEF-6A51-43DE-A713-485D42863D67.jpeg">
+    <meta property="og:url" content="https://bitcoinpark.com/austin-bitcoin-club/how-ai-builds-better-bitcoin-products.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a1a1a;
+            --darker-bg: #111111;
+            --orange: #f7931a;
+            --orange-light: #ffb347;
+            --white: #ffffff;
+            --light-gray: #b0b8c4;
+            --medium-gray: #8a94a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--darker-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(17, 17, 17, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--orange);
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        .navbar-back-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--orange);
+        }
+
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--darker-bg);
+            padding: 100px 0 60px 0;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--orange);
+        }
+
+        .speaker-highlight {
+            color: var(--orange);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .speaker-highlight:hover {
+            border-bottom-color: var(--orange);
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark-bg);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--darker-bg));
+            pointer-events: none;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        .article-content blockquote {
+            border-left: 3px solid var(--orange);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: var(--white);
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 50px 0;
+        }
+
+        .photo-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+
+        /* Video Embed */
+        .video-embed {
+            margin: 40px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--dark-bg);
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--orange);
+            background: rgba(247, 147, 26, 0.08);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--orange);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--dark-bg);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer p {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 80px 0 60px 0;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .navbar-title {
+                display: none;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .photo-gallery img {
+                height: 300px;
+            }
+
+            .video-embed iframe {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <span class="navbar-title">Austin Bitcoin Club</span>
+            <a href="index.html" class="navbar-back-link">← Back to ABC</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>A Designer and an Engineer Walk Into a Bitcoin Meetup</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--orange)'; this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">Austin Bitcoin Club</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Date</span>
+                        <span class="session-meta-value">April 2026</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value highlight">Panel Discussion</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Location</span>
+                        <span class="session-meta-value">Bitcoin Park Austin</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value">
+                            <a href="https://x.com/futurepaul" target="_blank" class="speaker-highlight">Paul Miller</a> (Moderator),
+                            <a href="https://twitter.com/sahilc0" target="_blank" class="speaker-highlight">Sahil Chaturvedi</a> (<a href="https://arklabs.xyz" target="_blank" style="color: inherit;">Ark Labs</a>),
+                            <a href="https://twitter.com/natekitzke" target="_blank" class="speaker-highlight">Nate Kitzke</a> (<a href="https://zaprite.com" target="_blank" style="color: inherit;">Zaprite</a>)
+                        </span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    A designer from Ark Labs, the head of engineering from Zaprite, and moderator Paul Miller discuss how AI is transforming Bitcoin product development, from accelerating design workflows to streamlining engineering processes, and what it means for building better Bitcoin products.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <div class="hero-image fade-in">
+                <img src="FAED3CEF-6A51-43DE-A713-485D42863D67.jpeg" alt="Panel discussion at Austin Bitcoin Club">
+            </div>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">How AI Is Changing the Way Bitcoin Products Are Built</h2>
+                <p class="article-subheader">At Austin Bitcoin Club, a designer and an engineer sat down to discuss how artificial intelligence is reshaping their workflows—and why Bitcoin builders might have more to gain from AI than anyone else.</p>
+
+                <div class="article-content">
+                    <p>The conversation began with a straightforward premise: AI tools aren't replacing Bitcoin builders—they're making them faster, sharper, and more capable of shipping products that matter. Sahil Chaturvedi, a designer at Ark Labs, and Nate Kitzke, head of engineering at Zaprite, brought different perspectives but arrived at similar conclusions: AI is a force multiplier, not a replacement.</p>
+
+                    <div class="photo-gallery fade-in">
+                        <img src="297A8A65-3B4A-4637-B4DD-71B2803ADE62_4_5005_c.jpeg" alt="Speaker at Austin Bitcoin Club">
+                        <img src="BF2A5FD8-8046-4D61-86C9-85D7C11F3BA4_1_105_c.jpeg" alt="Nate Kitzke from Zaprite">
+                        <img src="40C885CF-4B4D-4821-99BF-8212A96AF967_1_105_c.jpeg" alt="Sahil Chaturvedi from Ark Labs">
+                    </div>
+
+                    <p>For Chaturvedi, the transformation started with design. "AI has completely changed how I approach mockups and iterations," he explained. Where designers previously spent hours refining layouts pixel by pixel, AI-assisted tools now generate multiple variations in seconds. The designer's role shifts from execution to curation—choosing the best direction, refining the details, and ensuring the final product aligns with user needs.</p>
+
+                    <p>But speed isn't the only advantage. Chaturvedi emphasized that AI helps designers explore creative directions they might not have considered otherwise. "You get options you wouldn't have thought of on your own," he said. "It's like having a brainstorming partner who never gets tired."</p>
+
+                    <p>On the engineering side, Kitzke described how AI tools have become indispensable for code review, debugging, and even writing entire functions. "I use AI to catch things I might have missed," he said. "It's not perfect, but it's another set of eyes—one that doesn't get distracted or tired."</p>
+
+                    <p>Both panelists acknowledged the risks. AI hallucinations—instances where models generate plausible-sounding but incorrect information—remain a challenge. Kitzke noted that engineers still need to verify every line of AI-generated code. "You can't blindly trust it," he said. "But when you know what you're looking for, it accelerates everything."</p>
+
+                    <!-- Video Embed -->
+                    <div class="video-embed fade-in">
+                        <iframe src="https://www.youtube.com/embed/Bi4KhOpkBwI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+
+                    <blockquote>"AI doesn't replace judgment. It amplifies it. The best builders are the ones who know when to use it—and when to ignore it."</blockquote>
+
+                    <p>The discussion also touched on a broader philosophical point: Bitcoin builders, more than most, understand the importance of sovereignty and self-reliance. AI tools, when used correctly, extend that principle. They allow small teams to compete with large corporations, enable solo builders to ship products that once required entire departments, and reduce dependence on external service providers.</p>
+
+                    <p>Chaturvedi summed it up: "We're in a rare moment where the tools are democratizing faster than the incumbents can adapt. Bitcoin builders should be taking full advantage."</p>
+
+                    <p>The panel ended with a question from the audience: Will AI make Bitcoin products better, or will it just make them faster? Kitzke's answer was direct. "Both," he said. "But only if the people using it care about quality. AI doesn't have taste. You do."</p>
+
+                    <p>For Bitcoin builders navigating an increasingly competitive landscape, the message was clear: AI isn't a threat to craftsmanship. It's a tool that, in the right hands, makes great work possible at a scale that wasn't conceivable just a few years ago.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you 🙏 to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://arklabs.xyz" target="_blank" class="supporter-logo"><span>Ark Labs</span></a>
+                <a href="https://zaprite.com" target="_blank" class="supporter-logo"><span>Zaprite</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
