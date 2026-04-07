@@ -910,12 +910,33 @@
             observer.observe(element);
         });
 
-        // Learn More Carousel - Shows 2 articles at a time on desktop, 1 on mobile
+        // Learn More Carousel - Infinite scroll with 2 articles at a time on desktop, 1 on mobile
         let currentLearnMoreSlide = 0;
         const learnMoreTrack = document.getElementById('learnMoreTrack');
         const learnMoreSlides = learnMoreTrack.querySelectorAll('.learn-more-slide');
         const totalLearnMoreSlides = learnMoreSlides.length;
         const learnMoreDotsContainer = document.getElementById('learnMoreDots');
+        let isTransitioning = false;
+
+        // Clone slides for infinite loop
+        function initInfiniteCarousel() {
+            const slidesToShow = getSlidesToShow();
+            // Clone first slides and append to end
+            for (let i = 0; i < slidesToShow; i++) {
+                const clone = learnMoreSlides[i].cloneNode(true);
+                clone.classList.add('clone');
+                learnMoreTrack.appendChild(clone);
+            }
+            // Clone last slides and prepend to beginning
+            for (let i = totalLearnMoreSlides - 1; i >= totalLearnMoreSlides - slidesToShow; i--) {
+                const clone = learnMoreSlides[i].cloneNode(true);
+                clone.classList.add('clone');
+                learnMoreTrack.insertBefore(clone, learnMoreTrack.firstChild);
+            }
+            // Start at the first real slide (after prepended clones)
+            currentLearnMoreSlide = slidesToShow;
+            updateLearnMoreCarousel(false);
+        }
 
         function getSlidesToShow() {
             return window.innerWidth <= 768 ? 1 : 2;
@@ -929,40 +950,70 @@
                 const dot = document.createElement('button');
                 dot.classList.add('carousel-dot');
                 if (i === 0) dot.classList.add('active');
-                dot.onclick = () => goToLearnMoreSlide(i * slidesToShow);
+                dot.onclick = () => goToLearnMoreSlide(i * slidesToShow + slidesToShow);
                 learnMoreDotsContainer.appendChild(dot);
             }
         }
 
-        function updateLearnMoreCarousel() {
+        function updateLearnMoreCarousel(animate = true) {
             const slidesToShow = getSlidesToShow();
             const slidePercentage = slidesToShow === 1 ? 100 : 50;
+
+            if (!animate) {
+                learnMoreTrack.style.transition = 'none';
+            } else {
+                learnMoreTrack.style.transition = 'transform 0.5s ease-in-out';
+            }
+
             learnMoreTrack.style.transform = `translateX(-${currentLearnMoreSlide * slidePercentage}%)`;
+
             const dots = learnMoreDotsContainer.querySelectorAll('.carousel-dot');
-            const currentPage = Math.floor(currentLearnMoreSlide / slidesToShow);
+            const actualSlide = ((currentLearnMoreSlide - slidesToShow) % totalLearnMoreSlides + totalLearnMoreSlides) % totalLearnMoreSlides;
+            const currentPage = Math.floor(actualSlide / slidesToShow);
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentPage);
             });
+
+            if (!animate) {
+                // Force reflow to apply the transition:none before re-enabling transitions
+                learnMoreTrack.offsetHeight;
+            }
         }
 
         function moveLearnMoreCarousel(direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
             const slidesToShow = getSlidesToShow();
-            const maxSlide = Math.max(0, totalLearnMoreSlides - slidesToShow);
             currentLearnMoreSlide += direction * slidesToShow;
-            if (currentLearnMoreSlide < 0) currentLearnMoreSlide = maxSlide;
-            if (currentLearnMoreSlide > maxSlide) currentLearnMoreSlide = 0;
-            updateLearnMoreCarousel();
+            updateLearnMoreCarousel(true);
+
+            setTimeout(() => {
+                const totalWithClones = totalLearnMoreSlides + (slidesToShow * 2);
+
+                // If we're past the last real slide, jump to the first real slide
+                if (currentLearnMoreSlide >= totalLearnMoreSlides + slidesToShow) {
+                    currentLearnMoreSlide = slidesToShow;
+                    updateLearnMoreCarousel(false);
+                }
+                // If we're before the first real slide, jump to the last real slide
+                else if (currentLearnMoreSlide < slidesToShow) {
+                    currentLearnMoreSlide = totalLearnMoreSlides;
+                    updateLearnMoreCarousel(false);
+                }
+
+                isTransitioning = false;
+            }, 500);
         }
 
         function goToLearnMoreSlide(index) {
-            const slidesToShow = getSlidesToShow();
-            const maxSlide = Math.max(0, totalLearnMoreSlides - slidesToShow);
+            if (isTransitioning) return;
             currentLearnMoreSlide = index;
-            if (currentLearnMoreSlide > maxSlide) currentLearnMoreSlide = maxSlide;
-            updateLearnMoreCarousel();
+            updateLearnMoreCarousel(true);
         }
 
-        // Initialize dots on load
+        // Initialize infinite carousel
+        initInfiniteCarousel();
         initLearnMoreDots();
 
         // Reinitialize on window resize
@@ -970,10 +1021,12 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                const slidesToShow = getSlidesToShow();
-                currentLearnMoreSlide = Math.floor(currentLearnMoreSlide / slidesToShow) * slidesToShow;
+                // Remove clones
+                document.querySelectorAll('.learn-more-slide.clone').forEach(el => el.remove());
+                // Reinitialize
+                currentLearnMoreSlide = 0;
+                initInfiniteCarousel();
                 initLearnMoreDots();
-                updateLearnMoreCarousel();
             }, 250);
         });
 
