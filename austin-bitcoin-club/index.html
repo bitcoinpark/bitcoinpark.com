@@ -220,7 +220,7 @@
         }
 
         .learn-more-slide {
-            min-width: 100%;
+            min-width: 50%;
             flex-shrink: 0;
             padding: 0 15px;
             display: flex;
@@ -395,6 +395,10 @@
         }
 
         @media (max-width: 768px) {
+            .learn-more-slide {
+                min-width: 100%;
+            }
+
             .carousel-nav {
                 width: 40px;
                 height: 40px;
@@ -643,6 +647,17 @@
                         <div class="learn-more-slide">
                             <div class="learn-more-card">
                                 <div class="card-thumbnail">
+                                    <img src="FAED3CEF-6A51-43DE-A713-485D42863D67.jpeg" alt="A Designer and an Engineer Walk Into a Bitcoin Meetup">
+                                </div>
+                                <h3>A Designer and an Engineer Walk Into a Bitcoin Meetup</h3>
+                                <p>Sahil Chaturvedi and Nate Kitzke discuss how AI is transforming Bitcoin product development, from design workflows to engineering processes.</p>
+                                <p class="speakers">Featuring: Sahil Chaturvedi (Stakwork), Nate Kitzke (Roam)</p>
+                                <a href="how-ai-builds-better-bitcoin-products.html" class="hero-cta">Read More</a>
+                            </div>
+                        </div>
+                        <div class="learn-more-slide">
+                            <div class="learn-more-card">
+                                <div class="card-thumbnail">
                                     <img src="D00ACDAA-989D-45A0-85E5-FB2828D3276B_1_102_o.jpeg" alt="Vibe Coding for Freedom">
                                 </div>
                                 <h3>Vibe Coding for Freedom: Building Bitcoin Into AI</h3>
@@ -887,41 +902,72 @@
             observer.observe(element);
         });
 
-        // Learn More Carousel
+        // Learn More Carousel - Shows 2 articles at a time on desktop, 1 on mobile
         let currentLearnMoreSlide = 0;
         const learnMoreTrack = document.getElementById('learnMoreTrack');
         const learnMoreSlides = learnMoreTrack.querySelectorAll('.learn-more-slide');
         const totalLearnMoreSlides = learnMoreSlides.length;
         const learnMoreDotsContainer = document.getElementById('learnMoreDots');
 
-        // Create dots for Learn More carousel
-        for (let i = 0; i < totalLearnMoreSlides; i++) {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.onclick = () => goToLearnMoreSlide(i);
-            learnMoreDotsContainer.appendChild(dot);
+        function getSlidesToShow() {
+            return window.innerWidth <= 768 ? 1 : 2;
+        }
+
+        function initLearnMoreDots() {
+            learnMoreDotsContainer.innerHTML = '';
+            const slidesToShow = getSlidesToShow();
+            const numPages = Math.ceil(totalLearnMoreSlides / slidesToShow);
+            for (let i = 0; i < numPages; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => goToLearnMoreSlide(i * slidesToShow);
+                learnMoreDotsContainer.appendChild(dot);
+            }
         }
 
         function updateLearnMoreCarousel() {
-            learnMoreTrack.style.transform = `translateX(-${currentLearnMoreSlide * 100}%)`;
+            const slidesToShow = getSlidesToShow();
+            const slidePercentage = slidesToShow === 1 ? 100 : 50;
+            learnMoreTrack.style.transform = `translateX(-${currentLearnMoreSlide * slidePercentage}%)`;
             const dots = learnMoreDotsContainer.querySelectorAll('.carousel-dot');
+            const currentPage = Math.floor(currentLearnMoreSlide / slidesToShow);
             dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentLearnMoreSlide);
+                dot.classList.toggle('active', index === currentPage);
             });
         }
 
         function moveLearnMoreCarousel(direction) {
-            currentLearnMoreSlide += direction;
-            if (currentLearnMoreSlide < 0) currentLearnMoreSlide = totalLearnMoreSlides - 1;
-            if (currentLearnMoreSlide >= totalLearnMoreSlides) currentLearnMoreSlide = 0;
+            const slidesToShow = getSlidesToShow();
+            const maxSlide = Math.max(0, totalLearnMoreSlides - slidesToShow);
+            currentLearnMoreSlide += direction * slidesToShow;
+            if (currentLearnMoreSlide < 0) currentLearnMoreSlide = maxSlide;
+            if (currentLearnMoreSlide > maxSlide) currentLearnMoreSlide = 0;
             updateLearnMoreCarousel();
         }
 
         function goToLearnMoreSlide(index) {
+            const slidesToShow = getSlidesToShow();
+            const maxSlide = Math.max(0, totalLearnMoreSlides - slidesToShow);
             currentLearnMoreSlide = index;
+            if (currentLearnMoreSlide > maxSlide) currentLearnMoreSlide = maxSlide;
             updateLearnMoreCarousel();
         }
+
+        // Initialize dots on load
+        initLearnMoreDots();
+
+        // Reinitialize on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const slidesToShow = getSlidesToShow();
+                currentLearnMoreSlide = Math.floor(currentLearnMoreSlide / slidesToShow) * slidesToShow;
+                initLearnMoreDots();
+                updateLearnMoreCarousel();
+            }, 250);
+        });
 
         // Video Carousel
         let currentSlide = 0;
