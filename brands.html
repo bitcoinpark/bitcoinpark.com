@@ -3371,6 +3371,10 @@
             const categorySection = headerElement.parentElement;
             const wasActive = categorySection.classList.contains('active');
 
+            // Save the current position of the header relative to viewport
+            const headerRect = headerElement.getBoundingClientRect();
+            const headerTop = headerRect.top;
+
             // Close all other categories
             document.querySelectorAll('.category-section').forEach(section => {
                 section.classList.remove('active');
@@ -3379,6 +3383,18 @@
             // Toggle this category
             if (!wasActive) {
                 categorySection.classList.add('active');
+
+                // After expansion, maintain the header's position
+                requestAnimationFrame(() => {
+                    const newHeaderRect = headerElement.getBoundingClientRect();
+                    const scrollAdjustment = newHeaderRect.top - headerTop;
+                    if (scrollAdjustment !== 0) {
+                        window.scrollBy({
+                            top: scrollAdjustment,
+                            behavior: 'instant'
+                        });
+                    }
+                });
             }
         }
     </script>
