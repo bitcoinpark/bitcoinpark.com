@@ -3398,7 +3398,8 @@
                 categorySection.classList.add('active');
 
                 // After expansion, maintain the header's position
-                requestAnimationFrame(() => {
+                // Use setTimeout to ensure images have loaded and layout is complete
+                setTimeout(() => {
                     const newHeaderRect = headerElement.getBoundingClientRect();
                     const scrollAdjustment = newHeaderRect.top - headerTop;
                     if (scrollAdjustment !== 0) {
@@ -3407,7 +3408,7 @@
                             behavior: 'instant'
                         });
                     }
-                });
+                }, 50);
             }
         }
     </script>
