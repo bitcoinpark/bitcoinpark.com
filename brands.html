@@ -217,17 +217,20 @@
         }
 
         .navbar-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--bp-white);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
-        .navbar.scrolled .navbar-logo {
-            color: var(--bp-primary-green);
+        .navbar-logo img {
+            height: 35px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .navbar.scrolled .navbar-logo img {
+            filter: none;
         }
 
         .navbar-links {
@@ -2032,7 +2035,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="navbar-content">
-            <a href="/" class="navbar-logo">BITCOIN PARK</a>
+            <a href="/" class="navbar-logo"><img src="/BP-PRIMARY-LOGO-BLACK.png" alt="Bitcoin Park"></a>
 
             <div class="navbar-links">
                 <a href="#experiences">Experiences</a>
