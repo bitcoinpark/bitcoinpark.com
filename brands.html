@@ -950,6 +950,8 @@
 
         .experience-content {
             padding: 28px;
+            display: flex;
+            flex-direction: column;
         }
 
         .experience-category {
@@ -982,6 +984,7 @@
             color: var(--bp-peachy-orange);
             font-size: 0.9rem;
             transition: color 0.3s ease;
+            margin-top: auto;
         }
 
         .experience-card:hover .experience-link {
@@ -2429,6 +2432,18 @@
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
+
+                <a href="forumhealth/index.html" target="_blank" rel="noopener noreferrer" class="experience-card fade-in">
+                    <div class="experience-image">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #059669 0%, #047857 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">⚕️</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-category">FORUM</div>
+                        <h4 class="experience-name">Forums</h4>
+                        <p class="experience-description">Exclusive quarterly gathering exploring healthcare innovation, freedom, and Bitcoin adoption in medical practice.</p>
+                        <span class="experience-link">Learn More →</span>
+                    </div>
+                </a>
             </div>
         </div>
         </div>
@@ -2584,13 +2599,13 @@
 
                     <div class="youtube-video">
                         <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/iWvSBrA274Q" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/YRZhk4Fbhrc" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                         </div>
                     </div>
 
                     <div class="youtube-video">
                         <div class="video-wrapper">
-                            <iframe src="https://www.youtube.com/embed/YRZhk4Fbhrc" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+                            <iframe src="https://www.youtube.com/embed/iWvSBrA274Q" title="Bitcoin Park Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
                         </div>
                     </div>
 
@@ -2823,20 +2838,75 @@
         // Carousel navigation arrows
         if (videoCarousel && prevButton && nextButton) {
             const scrollAmount = 620; // 600px video width + 20px gap
+            let autoScrollInterval;
+            let isPaused = false;
 
+            // Function to scroll to next video
+            const scrollToNext = () => {
+                const maxScroll = videoCarousel.scrollWidth - videoCarousel.clientWidth;
+
+                if (videoCarousel.scrollLeft >= maxScroll - 10) {
+                    // Loop back to start
+                    videoCarousel.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    videoCarousel.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+
+            // Auto-scroll every 6 seconds
+            const startAutoScroll = () => {
+                if (!isPaused) {
+                    autoScrollInterval = setInterval(scrollToNext, 6000);
+                }
+            };
+
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+
+            // Manual navigation
             prevButton.addEventListener('click', () => {
+                stopAutoScroll();
+                isPaused = true;
                 videoCarousel.scrollBy({
                     left: -scrollAmount,
                     behavior: 'smooth'
                 });
+                setTimeout(() => {
+                    isPaused = false;
+                    startAutoScroll();
+                }, 10000); // Resume after 10 seconds
             });
 
             nextButton.addEventListener('click', () => {
-                videoCarousel.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
+                stopAutoScroll();
+                isPaused = true;
+                scrollToNext();
+                setTimeout(() => {
+                    isPaused = false;
+                    startAutoScroll();
+                }, 10000); // Resume after 10 seconds
             });
+
+            // Pause on hover
+            videoCarousel.addEventListener('mouseenter', () => {
+                stopAutoScroll();
+            });
+
+            videoCarousel.addEventListener('mouseleave', () => {
+                if (!isPaused) {
+                    startAutoScroll();
+                }
+            });
+
+            // Start auto-scroll on page load
+            startAutoScroll();
         }
 
         // Navigation scroll behavior
