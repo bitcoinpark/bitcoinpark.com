@@ -2259,7 +2259,7 @@
 
         <!-- Meetups -->
         <div class="category-section">
-            <div class="category-header" onclick="toggleCategory(this)">
+            <div class="category-header" onclick="toggleCategory(this, event)">
                 <div class="category-header-content">
                     <div class="category-label">MEETUPS</div>
                     <h3 class="category-title">Free & Open Community Meetups</h3>
@@ -2388,7 +2388,7 @@
 
         <!-- Workshops/Forums -->
         <div class="category-section">
-            <div class="category-header" onclick="toggleCategory(this)">
+            <div class="category-header" onclick="toggleCategory(this, event)">
                 <div class="category-header-content">
                     <div class="category-label">WORKSHOPS/FORUMS</div>
                     <h3 class="category-title">Technical & Educational Deep-Dives</h3>
@@ -2440,7 +2440,7 @@
 
         <!-- Summits -->
         <div class="category-section">
-            <div class="category-header" onclick="toggleCategory(this)">
+            <div class="category-header" onclick="toggleCategory(this, event)">
                 <div class="category-header-content">
                     <div class="category-label">SUMMITS</div>
                     <h3 class="category-title">Bitcoin Park Signature Summits</h3>
@@ -3380,13 +3380,20 @@
         }
 
         // Experience Category Accordion Toggle
-        function toggleCategory(headerElement) {
+        function toggleCategory(headerElement, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
             const categorySection = headerElement.parentElement;
             const wasActive = categorySection.classList.contains('active');
 
-            // Save the current position of the header relative to viewport
-            const headerRect = headerElement.getBoundingClientRect();
-            const headerTop = headerRect.top;
+            // Save the current scroll position
+            const initialScrollY = window.scrollY;
+
+            // Save the header's position on the page (not viewport)
+            const headerOffsetTop = headerElement.getBoundingClientRect().top + window.scrollY;
 
             // Close all other categories
             document.querySelectorAll('.category-section').forEach(section => {
@@ -3398,17 +3405,22 @@
                 categorySection.classList.add('active');
 
                 // After expansion, maintain the header's position
-                // Use setTimeout to ensure images have loaded and layout is complete
-                setTimeout(() => {
-                    const newHeaderRect = headerElement.getBoundingClientRect();
-                    const scrollAdjustment = newHeaderRect.top - headerTop;
-                    if (scrollAdjustment !== 0) {
-                        window.scrollBy({
-                            top: scrollAdjustment,
-                            behavior: 'instant'
-                        });
-                    }
-                }, 50);
+                // Use requestAnimationFrame for better timing
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        // Calculate where the header is now
+                        const newHeaderOffsetTop = headerElement.getBoundingClientRect().top + window.scrollY;
+
+                        // Scroll to keep header in same position
+                        const scrollAdjustment = newHeaderOffsetTop - headerOffsetTop;
+                        if (Math.abs(scrollAdjustment) > 1) {
+                            window.scrollTo({
+                                top: initialScrollY + scrollAdjustment,
+                                behavior: 'instant'
+                            });
+                        }
+                    });
+                });
             }
         }
     </script>
