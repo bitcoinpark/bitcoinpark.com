@@ -2837,76 +2837,94 @@
 
         // Carousel navigation arrows
         if (videoCarousel && prevButton && nextButton) {
-            const scrollAmount = 620; // 600px video width + 20px gap
-            let autoScrollInterval;
-            let isPaused = false;
+            const jumpAmount = 620; // 600px video width + 20px gap (for manual navigation)
+            let autoScrollInterval = null;
+            let isHovering = false;
+            let isManuallyPaused = false;
 
-            // Function to scroll to next video
-            const scrollToNext = () => {
+            // Continuous smooth auto-scroll
+            const continuousScroll = () => {
                 const maxScroll = videoCarousel.scrollWidth - videoCarousel.clientWidth;
+                const currentScroll = videoCarousel.scrollLeft;
 
-                if (videoCarousel.scrollLeft >= maxScroll - 10) {
+                if (currentScroll >= maxScroll - 2) {
                     // Loop back to start
-                    videoCarousel.scrollTo({
-                        left: 0,
-                        behavior: 'smooth'
-                    });
+                    videoCarousel.scrollLeft = 0;
                 } else {
-                    videoCarousel.scrollBy({
-                        left: scrollAmount,
-                        behavior: 'smooth'
-                    });
+                    // Scroll by 1 pixel every 50ms for smooth continuous motion
+                    videoCarousel.scrollLeft += 1;
                 }
             };
 
-            // Auto-scroll every 6 seconds
+            // Start auto-scroll
             const startAutoScroll = () => {
-                if (!isPaused) {
-                    autoScrollInterval = setInterval(scrollToNext, 6000);
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                }
+                if (!isHovering && !isManuallyPaused) {
+                    autoScrollInterval = setInterval(continuousScroll, 50);
                 }
             };
 
+            // Stop auto-scroll
             const stopAutoScroll = () => {
-                clearInterval(autoScrollInterval);
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                    autoScrollInterval = null;
+                }
             };
 
-            // Manual navigation
+            // Manual navigation - Previous
             prevButton.addEventListener('click', () => {
                 stopAutoScroll();
-                isPaused = true;
+                isManuallyPaused = true;
                 videoCarousel.scrollBy({
-                    left: -scrollAmount,
+                    left: -jumpAmount,
                     behavior: 'smooth'
                 });
+                // Resume after 10 seconds
                 setTimeout(() => {
-                    isPaused = false;
-                    startAutoScroll();
-                }, 10000); // Resume after 10 seconds
+                    isManuallyPaused = false;
+                    if (!isHovering) {
+                        startAutoScroll();
+                    }
+                }, 10000);
             });
 
+            // Manual navigation - Next
             nextButton.addEventListener('click', () => {
                 stopAutoScroll();
-                isPaused = true;
-                scrollToNext();
+                isManuallyPaused = true;
+                videoCarousel.scrollBy({
+                    left: jumpAmount,
+                    behavior: 'smooth'
+                });
+                // Resume after 10 seconds
                 setTimeout(() => {
-                    isPaused = false;
-                    startAutoScroll();
-                }, 10000); // Resume after 10 seconds
+                    isManuallyPaused = false;
+                    if (!isHovering) {
+                        startAutoScroll();
+                    }
+                }, 10000);
             });
 
             // Pause on hover
             videoCarousel.addEventListener('mouseenter', () => {
+                isHovering = true;
                 stopAutoScroll();
             });
 
             videoCarousel.addEventListener('mouseleave', () => {
-                if (!isPaused) {
+                isHovering = false;
+                if (!isManuallyPaused) {
                     startAutoScroll();
                 }
             });
 
-            // Start auto-scroll on page load
-            startAutoScroll();
+            // Start auto-scroll after page loads
+            setTimeout(() => {
+                startAutoScroll();
+            }, 1000);
         }
 
         // Navigation scroll behavior
