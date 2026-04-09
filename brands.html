@@ -2830,18 +2830,30 @@
 
         // Carousel navigation arrows
         if (videoCarousel && prevButton && nextButton) {
+            // Clone all videos for infinite scroll
+            const carousel = videoCarousel.querySelector('.youtube-carousel');
+            const videos = Array.from(carousel.querySelectorAll('.youtube-video'));
+
+            // Clone and append videos for seamless loop
+            videos.forEach(video => {
+                const clone = video.cloneNode(true);
+                carousel.appendChild(clone);
+            });
+
             const jumpAmount = 620; // 600px video width + 20px gap (for manual navigation)
             let autoScrollInterval = null;
             let isHovering = false;
             let isManuallyPaused = false;
 
-            // Continuous smooth auto-scroll
+            // Calculate the scroll width of original videos
+            const originalScrollWidth = videos.length * 620; // videoWidth(600) + gap(20)
+
+            // Continuous smooth auto-scroll with seamless loop
             const continuousScroll = () => {
-                const maxScroll = videoCarousel.scrollWidth - videoCarousel.clientWidth;
                 const currentScroll = videoCarousel.scrollLeft;
 
-                if (currentScroll >= maxScroll - 2) {
-                    // Loop back to start
+                // When we reach the end of original videos, reset to start seamlessly
+                if (currentScroll >= originalScrollWidth) {
                     videoCarousel.scrollLeft = 0;
                 } else {
                     // Scroll by 1 pixel every 50ms for smooth continuous motion
