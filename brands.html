@@ -224,8 +224,9 @@
         }
 
         .navbar-logo img {
-            height: 35px;
+            height: 50px;
             width: auto;
+            transition: opacity 0.3s ease;
         }
 
         .navbar-links {
@@ -2925,11 +2926,15 @@
         const navbarMenu = document.getElementById('navbarMenu');
         const menuOverlay = document.getElementById('menuOverlay');
 
+        const navbarLogo = document.querySelector('.navbar-logo img');
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
+                navbarLogo.src = './BP-PRIMARY-LOGO-BLACK.png';
             } else {
                 navbar.classList.remove('scrolled');
+                navbarLogo.src = './BP-PRIMARY-LOGO-WHITE.png';
             }
         });
 
