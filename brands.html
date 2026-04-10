@@ -2076,6 +2076,113 @@
         section:nth-child(5) { animation-delay: 0.4s; }
         section:nth-child(6) { animation-delay: 0.5s; }
         section:nth-child(7) { animation-delay: 0.6s; }
+
+        /* Event Ticker */
+        .event-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(135deg, #0A2B07 0%, #15401A 100%);
+            border-top: 2px solid var(--bp-peachy-orange);
+            display: flex;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .ticker-label {
+            background: var(--bp-peachy-orange);
+            color: var(--bp-white);
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: tickerFadeIn 0.5s ease;
+            white-space: nowrap;
+        }
+
+        @keyframes tickerFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ticker-event-title {
+            color: var(--bp-white);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .ticker-event-date {
+            color: var(--bp-peachy-orange);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .ticker-event-city {
+            color: var(--bp-sage-green);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .ticker-separator {
+            color: rgba(255, 255, 255, 0.3);
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .event-ticker {
+                height: 45px;
+            }
+
+            .ticker-label {
+                padding: 0 15px;
+                font-size: 0.75rem;
+            }
+
+            .ticker-content {
+                padding: 0 15px;
+            }
+
+            .ticker-event-title {
+                font-size: 0.85rem;
+            }
+
+            .ticker-event-date,
+            .ticker-event-city {
+                font-size: 0.8rem;
+            }
+        }
+
         /* Easter Egg Overlay */
         .easter-egg-overlay {
             position: fixed;
@@ -2938,6 +3045,16 @@
         </div>
     </section>
 
+    <!-- Event Ticker -->
+    <div class="event-ticker">
+        <div class="ticker-label">UPCOMING</div>
+        <div class="ticker-content">
+            <div class="ticker-item" id="tickerItem">
+                <span class="ticker-event-title">Loading events...</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Copyright -->
     <div style="background: var(--bp-dark-green); padding: 20px; text-align: center;">
         <p style="color: var(--bp-gray); font-size: 0.9rem; margin: 0;">© 2026 Bitcoin Park. All rights reserved.</p>
@@ -3492,6 +3609,91 @@
             } else {
                 setTimeout(() => loadWeekCalendar(), 100);
             }
+        }
+
+        // Event Ticker
+        let tickerEvents = [];
+        let currentTickerIndex = 0;
+
+        async function loadEventTicker() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL);
+                if (!response.ok) throw new Error('Failed to fetch events');
+
+                const responseText = await response.text();
+                let events = [];
+
+                try {
+                    events = JSON.parse(responseText);
+                } catch (parseError) {
+                    const jsonMatch = responseText.match(/\[[\s\S]*\]/);
+                    if (jsonMatch) {
+                        events = JSON.parse(jsonMatch[0]);
+                    }
+                }
+
+                const now = new Date();
+                now.setHours(0, 0, 0, 0);
+
+                // Filter for upcoming events only (today and future)
+                tickerEvents = events
+                    .filter(event => {
+                        const eventDate = new Date(event.start);
+                        eventDate.setHours(0, 0, 0, 0);
+                        return eventDate >= now;
+                    })
+                    .sort((a, b) => new Date(a.start) - new Date(b.start))
+                    .slice(0, 10); // Show next 10 upcoming events
+
+                if (tickerEvents.length > 0) {
+                    updateTicker();
+                    setInterval(rotateTicker, 5000); // Rotate every 5 seconds
+                }
+            } catch (error) {
+                console.error('Error loading ticker:', error);
+                document.querySelector('.ticker-item').innerHTML =
+                    '<span class="ticker-event-title">Visit our schedule to see upcoming events</span>';
+            }
+        }
+
+        function updateTicker() {
+            if (tickerEvents.length === 0) return;
+
+            const event = tickerEvents[currentTickerIndex];
+            const eventDate = new Date(event.start);
+            const tickerItem = document.getElementById('tickerItem');
+
+            // Format date
+            const dateOptions = { month: 'short', day: 'numeric' };
+            const formattedDate = eventDate.toLocaleDateString('en-US', dateOptions);
+
+            // Get city
+            const city = event.location === 'nashville' ? 'Nashville' :
+                        event.location === 'austin' ? 'Austin' : '';
+
+            // Update ticker content with fade animation
+            tickerItem.style.animation = 'none';
+            setTimeout(() => {
+                tickerItem.innerHTML = `
+                    <span class="ticker-event-title">${event.title}</span>
+                    <span class="ticker-separator">•</span>
+                    <span class="ticker-event-date">${formattedDate}</span>
+                    ${city ? `<span class="ticker-separator">•</span><span class="ticker-event-city">${city}</span>` : ''}
+                `;
+                tickerItem.style.animation = 'tickerFadeIn 0.5s ease';
+            }, 10);
+        }
+
+        function rotateTicker() {
+            currentTickerIndex = (currentTickerIndex + 1) % tickerEvents.length;
+            updateTicker();
+        }
+
+        // Load ticker
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => loadEventTicker());
+        } else {
+            setTimeout(() => loadEventTicker(), 500);
         }
 
         // Show More Benefits Toggle
