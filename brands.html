@@ -3524,6 +3524,9 @@
                 event.stopPropagation();
             }
 
+            // Save current scroll position
+            const scrollY = window.scrollY;
+
             const categorySection = headerElement.parentElement;
             const wasActive = categorySection.classList.contains('active');
 
@@ -3535,6 +3538,11 @@
             // Toggle this category
             if (!wasActive) {
                 categorySection.classList.add('active');
+
+                // Restore scroll position after a brief delay to prevent jumping
+                setTimeout(() => {
+                    window.scrollTo(0, scrollY);
+                }, 0);
             }
         }
     </script>
