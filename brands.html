@@ -2111,28 +2111,36 @@
             flex: 1;
             height: 100%;
             overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-scroll-container {
             display: flex;
             align-items: center;
-            padding: 0 16px;
+            height: 100%;
+            white-space: nowrap;
+            animation: tickerScroll 60s linear infinite;
+        }
+
+        .ticker-scroll-container:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes tickerScroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .ticker-item {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 15px;
-            animation: tickerFadeIn 0.5s ease;
             white-space: nowrap;
-        }
-
-        @keyframes tickerFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            padding: 0 40px;
         }
 
         .ticker-event-title {
@@ -2170,12 +2178,9 @@
                 font-size: 0.7rem;
             }
 
-            .ticker-content {
-                padding: 0 12px;
-            }
-
             .ticker-item {
                 gap: 12px;
+                padding: 0 30px;
             }
 
             .ticker-event-title {
@@ -3058,7 +3063,7 @@
     <div class="event-ticker">
         <div class="ticker-label">UPCOMING</div>
         <div class="ticker-content">
-            <div class="ticker-item" id="tickerItem">
+            <div class="ticker-scroll-container" id="tickerScrollContainer">
                 <span class="ticker-event-title">Loading experiences...</span>
             </div>
         </div>
@@ -3621,13 +3626,10 @@
         }
 
         // Event Ticker
-        let tickerEvents = [];
-        let currentTickerIndex = 0;
-
         function loadEventTicker() {
-            const tickerItem = document.querySelector('.ticker-item');
-            if (!tickerItem) {
-                console.error('Ticker element not found');
+            const tickerContainer = document.getElementById('tickerScrollContainer');
+            if (!tickerContainer) {
+                console.error('Ticker container not found');
                 return;
             }
 
@@ -3643,7 +3645,7 @@
                 now.setHours(0, 0, 0, 0);
 
                 // Filter for upcoming events only (today and future)
-                tickerEvents = allCalendarEvents
+                const upcomingEvents = allCalendarEvents
                     .filter(event => {
                         if (!event.dateObj) return false;
                         const eventDate = new Date(event.dateObj);
@@ -3651,63 +3653,52 @@
                         return eventDate >= now;
                     })
                     .sort((a, b) => new Date(a.dateObj) - new Date(b.dateObj))
-                    .slice(0, 10); // Show next 10 upcoming events
+                    .slice(0, 15); // Show next 15 upcoming events
 
-                console.log(`Loaded ${tickerEvents.length} upcoming experiences for ticker`);
-                if (tickerEvents.length > 0) {
-                    console.log('Sample ticker event:', tickerEvents[0]);
+                console.log(`Loaded ${upcomingEvents.length} upcoming experiences for ticker`);
+                if (upcomingEvents.length > 0) {
+                    console.log('Sample ticker event:', upcomingEvents[0]);
                 }
 
-                if (tickerEvents.length > 0) {
-                    updateTicker();
-                    setInterval(rotateTicker, 5000); // Rotate every 5 seconds
-                } else {
-                    tickerItem.innerHTML =
-                        '<span class="ticker-event-title">Check our schedule for upcoming experiences</span>';
+                if (upcomingEvents.length === 0) {
+                    tickerContainer.innerHTML =
+                        '<span class="ticker-event-title" style="padding: 0 40px;">Check our schedule for upcoming experiences</span>';
+                    return;
                 }
+
+                // Create ticker items HTML
+                const tickerHTML = upcomingEvents.map(event => {
+                    const eventDate = event.dateObj ? new Date(event.dateObj) : null;
+                    if (!eventDate) return '';
+
+                    const dateOptions = { month: 'short', day: 'numeric' };
+                    const formattedDate = eventDate.toLocaleDateString('en-US', dateOptions);
+                    const city = event.location === 'nashville' ? 'Nashville' :
+                                event.location === 'austin' ? 'Austin' : '';
+
+                    return `
+                        <div class="ticker-item">
+                            <span class="ticker-event-title">${event.title}</span>
+                            <span class="ticker-separator">•</span>
+                            <span class="ticker-event-date">${formattedDate}</span>
+                            ${city ? `<span class="ticker-separator">•</span><span class="ticker-event-city">${city}</span>` : ''}
+                        </div>
+                    `;
+                }).join('');
+
+                // Duplicate content for seamless loop
+                tickerContainer.innerHTML = tickerHTML + tickerHTML;
+
+                // Adjust animation speed based on content length
+                const contentWidth = tickerContainer.scrollWidth / 2;
+                const duration = Math.max(40, contentWidth / 50); // Adjust speed: ~50px per second
+                tickerContainer.style.animationDuration = `${duration}s`;
+
             } catch (error) {
                 console.error('Error loading ticker:', error);
-                tickerItem.innerHTML =
-                    '<span class="ticker-event-title">Visit our schedule to see upcoming experiences</span>';
+                tickerContainer.innerHTML =
+                    '<span class="ticker-event-title" style="padding: 0 40px;">Visit our schedule to see upcoming experiences</span>';
             }
-        }
-
-        function updateTicker() {
-            if (tickerEvents.length === 0) return;
-
-            const event = tickerEvents[currentTickerIndex];
-            const eventDate = event.dateObj ? new Date(event.dateObj) : null;
-            const tickerItem = document.getElementById('tickerItem');
-
-            if (!eventDate) {
-                console.error('Event missing dateObj:', event);
-                return;
-            }
-
-            // Format date
-            const dateOptions = { month: 'short', day: 'numeric' };
-            const formattedDate = eventDate.toLocaleDateString('en-US', dateOptions);
-
-            // Get city - capitalize first letter
-            const city = event.location === 'nashville' ? 'Nashville' :
-                        event.location === 'austin' ? 'Austin' : '';
-
-            // Update ticker content with fade animation
-            tickerItem.style.animation = 'none';
-            setTimeout(() => {
-                tickerItem.innerHTML = `
-                    <span class="ticker-event-title">${event.title}</span>
-                    <span class="ticker-separator">•</span>
-                    <span class="ticker-event-date">${formattedDate}</span>
-                    ${city ? `<span class="ticker-separator">•</span><span class="ticker-event-city">${city}</span>` : ''}
-                `;
-                tickerItem.style.animation = 'tickerFadeIn 0.5s ease';
-            }, 10);
-        }
-
-        function rotateTicker() {
-            currentTickerIndex = (currentTickerIndex + 1) % tickerEvents.length;
-            updateTicker();
         }
 
         // Load ticker
