@@ -1807,9 +1807,12 @@
                 display: none;
             }
 
-            .hamburger,
-            .mobile-menu,
-            .mobile-menu-overlay {
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu.active,
+            .mobile-menu-overlay.active {
                 display: flex;
             }
         }
