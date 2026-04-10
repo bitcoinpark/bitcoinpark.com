@@ -3499,12 +3499,6 @@
             const categorySection = headerElement.parentElement;
             const wasActive = categorySection.classList.contains('active');
 
-            // Save the current scroll position
-            const initialScrollY = window.scrollY;
-
-            // Save the header's position on the page (not viewport)
-            const headerOffsetTop = headerElement.getBoundingClientRect().top + window.scrollY;
-
             // Close all other categories
             document.querySelectorAll('.category-section').forEach(section => {
                 section.classList.remove('active');
@@ -3513,24 +3507,6 @@
             // Toggle this category
             if (!wasActive) {
                 categorySection.classList.add('active');
-
-                // After expansion, maintain the header's position
-                // Use requestAnimationFrame for better timing
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        // Calculate where the header is now
-                        const newHeaderOffsetTop = headerElement.getBoundingClientRect().top + window.scrollY;
-
-                        // Scroll to keep header in same position
-                        const scrollAdjustment = newHeaderOffsetTop - headerOffsetTop;
-                        if (Math.abs(scrollAdjustment) > 1) {
-                            window.scrollTo({
-                                top: initialScrollY + scrollAdjustment,
-                                behavior: 'instant'
-                            });
-                        }
-                    });
-                });
             }
         }
     </script>
