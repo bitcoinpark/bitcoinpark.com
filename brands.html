@@ -3059,7 +3059,7 @@
         <div class="ticker-label">UPCOMING</div>
         <div class="ticker-content">
             <div class="ticker-item" id="tickerItem">
-                <span class="ticker-event-title">Loading events...</span>
+                <span class="ticker-event-title">Loading experiences...</span>
             </div>
         </div>
     </div>
@@ -3624,28 +3624,26 @@
         let tickerEvents = [];
         let currentTickerIndex = 0;
 
-        async function loadEventTicker() {
+        function loadEventTicker() {
+            const tickerItem = document.querySelector('.ticker-item');
+            if (!tickerItem) {
+                console.error('Ticker element not found');
+                return;
+            }
+
             try {
-                const response = await fetch(APPS_SCRIPT_URL);
-                if (!response.ok) throw new Error('Failed to fetch events');
-
-                const responseText = await response.text();
-                let events = [];
-
-                try {
-                    events = JSON.parse(responseText);
-                } catch (parseError) {
-                    const jsonMatch = responseText.match(/\[[\s\S]*\]/);
-                    if (jsonMatch) {
-                        events = JSON.parse(jsonMatch[0]);
-                    }
+                // Wait for calendar events to be loaded
+                if (!allCalendarEvents || allCalendarEvents.length === 0) {
+                    console.log('Calendar events not loaded yet, retrying...');
+                    setTimeout(loadEventTicker, 1000);
+                    return;
                 }
 
                 const now = new Date();
                 now.setHours(0, 0, 0, 0);
 
                 // Filter for upcoming events only (today and future)
-                tickerEvents = events
+                tickerEvents = allCalendarEvents
                     .filter(event => {
                         const eventDate = new Date(event.start);
                         eventDate.setHours(0, 0, 0, 0);
@@ -3654,14 +3652,19 @@
                     .sort((a, b) => new Date(a.start) - new Date(b.start))
                     .slice(0, 10); // Show next 10 upcoming events
 
+                console.log(`Loaded ${tickerEvents.length} upcoming experiences for ticker`);
+
                 if (tickerEvents.length > 0) {
                     updateTicker();
                     setInterval(rotateTicker, 5000); // Rotate every 5 seconds
+                } else {
+                    tickerItem.innerHTML =
+                        '<span class="ticker-event-title">Check our schedule for upcoming experiences</span>';
                 }
             } catch (error) {
                 console.error('Error loading ticker:', error);
-                document.querySelector('.ticker-item').innerHTML =
-                    '<span class="ticker-event-title">Visit our schedule to see upcoming events</span>';
+                tickerItem.innerHTML =
+                    '<span class="ticker-event-title">Visit our schedule to see upcoming experiences</span>';
             }
         }
 
