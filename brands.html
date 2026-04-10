@@ -158,18 +158,19 @@
 
     <style>
         :root {
-            /* Bitcoin Park Color Palette */
-            --bp-primary-green: #0A2B07;
-            --bp-dark-green: #1A3321;
-            --bp-peachy-orange: #FF9974;
-            --bp-light: #FFF8F3;
-            --bp-sage-green: #9BCE9C;
-            --bp-bitcoin-orange: #F7931A;
-            --bp-coral: #F27979;
-            --bp-charcoal: #212121;
-            --bp-gray: #808080;
-            --bp-light-gray: #b0b8c4;
-            --bp-white: #FFFFFF;
+            /* Bitcoin Park Brand Color Palette - Brand Book 2025 */
+            /* Primary Colors */
+            --bp-primary-green: #0A2B07;  /* Dark Green - sophistication, wealth, progress */
+            --bp-peachy-orange: #FF9974;  /* Park Orange - peachy-orange homage to Bitcoin */
+            --bp-park-purple: #DABDFF;    /* Park Purple - ambition, wisdom, creativity */
+
+            /* Secondary Colors */
+            --bp-charcoal: #212121;       /* Dark Grey - modernity anchor */
+            --bp-white: #FFFFFF;          /* White - clean backgrounds */
+            --bp-coral: #F27979;          /* Coral - warm accent */
+            --bp-muted-peach: #FFC69C;    /* Muted Peach - soft warmth */
+            --bp-sage-green: #9BCE9C;     /* Sage Green - cool balance */
+            --bp-pale-yellow: #FFF0A5;    /* Pale Yellow - energy accent */
         }
 
         * {
@@ -184,7 +185,7 @@
 
         body {
             font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background-color: var(--bp-light);
+            background-color: var(--bp-white);
             color: var(--bp-charcoal);
             line-height: 1.7;
             overflow-x: hidden;
@@ -425,7 +426,7 @@
 
         .hero-description {
             font-size: clamp(1rem, 1.2vw + 0.8rem, 1.4rem);
-            color: var(--bp-light-gray);
+            color: rgba(33, 33, 33, 0.4);
             line-height: 1.8;
             margin-bottom: 40px;
             max-width: 700px;
@@ -525,7 +526,7 @@
 
         .section-subtitle {
             font-size: 1.2rem;
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             max-width: 700px;
             margin: 0 auto;
         }
@@ -538,7 +539,7 @@
 
         .benefits-section .section-subtitle,
         .final-cta-section .section-subtitle {
-            color: var(--bp-light-gray);
+            color: rgba(33, 33, 33, 0.4);
         }
 
         .benefits-grid {
@@ -710,7 +711,7 @@
 
         /* Experience Categories */
         .experiences-section {
-            background: var(--bp-light);
+            background: var(--bp-white);
             padding: 100px 20px;
             position: relative;
             overflow: hidden;
@@ -980,7 +981,7 @@
 
         .experience-description {
             font-size: 0.95rem;
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             line-height: 1.6;
             margin-bottom: 15px;
         }
@@ -1086,7 +1087,7 @@
         }
 
         .schedule-preview {
-            background: var(--bp-light);
+            background: var(--bp-white);
             border: 2px solid rgba(10, 43, 7, 0.1);
             border-radius: 16px;
             padding: 40px;
@@ -1103,7 +1104,7 @@
 
         .schedule-preview p {
             font-size: 1.1rem;
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             margin-bottom: 30px;
             line-height: 1.8;
         }
@@ -1256,7 +1257,7 @@
         .calendar-loading {
             text-align: center;
             padding: 60px 20px;
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
         }
 
         @media (max-width: 968px) {
@@ -1273,7 +1274,7 @@
 
         /* Company Supporters Section */
         .supporters-section {
-            background: var(--bp-light);
+            background: var(--bp-white);
             padding: 100px 20px;
             position: relative;
             overflow: hidden;
@@ -1304,7 +1305,7 @@
         }
 
         .supporters-section .section-subtitle {
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
         }
 
         .supporters-grid {
@@ -1360,7 +1361,7 @@
         }
 
         .locations-section .section-subtitle {
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             max-width: 900px;
             white-space: nowrap;
         }
@@ -1436,7 +1437,7 @@
 
         /* YouTube Section - Jukebox Style */
         .youtube-section {
-            background: var(--bp-light);
+            background: var(--bp-white);
             padding: 100px 20px;
         }
 
@@ -1445,7 +1446,7 @@
         }
 
         .youtube-section .section-subtitle {
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             max-width: 800px;
         }
 
@@ -1568,7 +1569,7 @@
             padding: 20px 0;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
-            scrollbar-color: var(--bp-peachy-orange) var(--bp-light);
+            scrollbar-color: var(--bp-peachy-orange) var(--bp-white);
             scroll-behavior: smooth;
         }
 
@@ -1577,7 +1578,7 @@
         }
 
         .youtube-carousel-container::-webkit-scrollbar-track {
-            background: var(--bp-light);
+            background: var(--bp-white);
             border-radius: 10px;
         }
 
@@ -1660,7 +1661,7 @@
         }
 
         .spotlight-section .section-subtitle {
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             max-width: 900px;
         }
 
@@ -1695,7 +1696,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--bp-light);
+            background: var(--bp-white);
             padding: 20px;
         }
 
@@ -1727,7 +1728,7 @@
 
         .spotlight-description {
             font-size: 1rem;
-            color: var(--bp-gray);
+            color: rgba(33, 33, 33, 0.6);
             line-height: 1.7;
             margin-bottom: 20px;
         }
@@ -1789,7 +1790,7 @@
 
         .final-cta-description {
             font-size: 1.2rem;
-            color: var(--bp-light-gray);
+            color: rgba(33, 33, 33, 0.4);
             margin-bottom: 40px;
             line-height: 1.8;
         }
@@ -2345,7 +2346,7 @@
         <div class="hero-content">
             <div class="hero-eyebrow">BITCOIN PARK</div>
             <h1 class="hero-title">For Freedom Tech Pioneers</h1>
-            <p class="hero-description">Bitcoin Park's mission is to accelerate and grow the grassroots freedom tech movement.</p>
+            <p class="hero-description">We're accelerating the grassroots freedom tech movement — one builder, one project, one breakthrough at a time.</p>
             <div class="hero-cta-group">
                 <a href="#experiences" class="hero-cta-primary">Explore Our Experiences</a>
             </div>
@@ -2573,7 +2574,7 @@
                     <div class="experience-content">
                         <div class="experience-category">MEETUP</div>
                         <h4 class="experience-name">Open House</h4>
-                        <p class="experience-description">Regular community open house experiences welcoming newcomers and Bitcoin enthusiasts.</p>
+                        <p class="experience-description">Weekly open house where curious minds meet committed Bitcoiners. Come with questions, leave with connections.</p>
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
@@ -2609,7 +2610,7 @@
                     <div class="experience-content">
                         <div class="experience-category">MEETUP</div>
                         <h4 class="experience-name">Park 102</h4>
-                        <p class="experience-description">Intermediate Bitcoin topics and hands-on learning experiences.</p>
+                        <p class="experience-description">Ready to go deeper? This meetup tackles intermediate Bitcoin concepts with hands-on practice and real-world applications.</p>
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
@@ -2637,7 +2638,7 @@
                     <div class="experience-content">
                         <div class="experience-category">MEETUP</div>
                         <h4 class="experience-name">Austin Bitcoin Club</h4>
-                        <p class="experience-description">Monthly gathering of Bitcoiners in Austin for education, networking, and community building.</p>
+                        <p class="experience-description">Austin's Bitcoin community gathers monthly to learn, build, and grow together. All experience levels welcome.</p>
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
@@ -2700,7 +2701,7 @@
                     <div class="experience-content">
                         <div class="experience-category">WORKSHOP</div>
                         <h4 class="experience-name">AI Freedom Lab</h4>
-                        <p class="experience-description">Educational lab exploring AI, machine learning, and decentralized technologies.</p>
+                        <p class="experience-description">Hands-on exploration of AI and machine learning — all rooted in the principles of freedom, sovereignty, and decentralization.</p>
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
@@ -2775,7 +2776,7 @@
                     <div class="experience-content">
                         <div class="experience-category">SUMMIT</div>
                         <h4 class="experience-name">Grassroots Bitcoin</h4>
-                        <p class="experience-description">Gathering of Bitcoin meetup organizers driving grassroots adoption worldwide.</p>
+                        <p class="experience-description">Meetup organizers from around the world gather to share strategies, stories, and tactics for growing Bitcoin communities from the ground up.</p>
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
@@ -2799,7 +2800,7 @@
                     <div class="experience-content">
                         <div class="experience-category">SUMMIT</div>
                         <h4 class="experience-name">Custody & Treasury Summit</h4>
-                        <p class="experience-description">Summit focused on Bitcoin custody solutions and corporate treasury strategies.</p>
+                        <p class="experience-description">Where custody meets confidence. Treasurers, CFOs, and custody providers gather to explore secure Bitcoin treasury strategies.</p>
                         <span class="experience-link">Learn More →</span>
                     </div>
                 </a>
@@ -2824,7 +2825,7 @@
     <section id="locations" class="locations-section">
         <div class="section-header">
             <h2 class="section-title">Park Locations</h2>
-            <p class="section-subtitle">World-class facilities in Nashville and Austin serving the Freedom Tech community.</p>
+            <p class="section-subtitle">Two cities. One mission. World-class spaces built for builders, thinkers, and freedom tech pioneers.</p>
         </div>
 
         <div class="locations-grid">
@@ -2949,7 +2950,7 @@
     <section id="spotlight" class="spotlight-section">
         <div class="section-header">
             <h2 class="section-title">Spotlight Papers</h2>
-            <p class="section-subtitle">See the forces that shape the future of our industry.</p>
+            <p class="section-subtitle">The builders, thinkers, and pioneers shaping Bitcoin and freedom tech.</p>
         </div>
 
         <div class="spotlight-grid">
@@ -3091,8 +3092,8 @@
     </div>
 
     <!-- Copyright -->
-    <div style="background: var(--bp-dark-green); padding: 20px; text-align: center;">
-        <p style="color: var(--bp-gray); font-size: 0.9rem; margin: 0;">© 2026 Bitcoin Park. All rights reserved.</p>
+    <div style="background: var(--bp-primary-green); padding: 20px; text-align: center;">
+        <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">© 2026 Bitcoin Park. All rights reserved.</p>
     </div>
 
     <script>
@@ -3331,7 +3332,7 @@
             } catch (error) {
                 console.error('Error loading week calendar:', error);
                 document.getElementById('calendarLoading').innerHTML =
-                    '<p style="color: var(--bp-gray);">Unable to load calendar. <a href="./schedule.html" style="color: var(--bp-peachy-orange);">View full schedule →</a></p>';
+                    '<p style="color: rgba(33, 33, 33, 0.6);">Unable to load calendar. <a href="./schedule.html" style="color: var(--bp-peachy-orange);">View full schedule →</a></p>';
             }
         }
 
