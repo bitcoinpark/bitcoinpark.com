@@ -3063,8 +3063,8 @@
     <div class="event-ticker">
         <div class="ticker-label">UPCOMING</div>
         <div class="ticker-content">
-            <div class="ticker-scroll-container" id="tickerScrollContainer">
-                <span class="ticker-event-title">Loading experiences...</span>
+            <div class="ticker-scroll-container" id="tickerScrollContainer" style="animation: none;">
+                <span class="ticker-event-title" style="padding: 0 40px;">Loading experiences...</span>
             </div>
         </div>
     </div>
@@ -3661,6 +3661,7 @@
                 }
 
                 if (upcomingEvents.length === 0) {
+                    tickerContainer.style.animation = 'none';
                     tickerContainer.innerHTML =
                         '<span class="ticker-event-title" style="padding: 0 40px;">Check our schedule for upcoming experiences</span>';
                     return;
@@ -3689,13 +3690,14 @@
                 // Duplicate content for seamless loop
                 tickerContainer.innerHTML = tickerHTML + tickerHTML;
 
-                // Adjust animation speed based on content length
+                // Adjust animation speed based on content length - faster scroll
                 const contentWidth = tickerContainer.scrollWidth / 2;
-                const duration = Math.max(40, contentWidth / 50); // Adjust speed: ~50px per second
+                const duration = Math.max(20, contentWidth / 100); // Faster: ~100px per second
                 tickerContainer.style.animationDuration = `${duration}s`;
 
             } catch (error) {
                 console.error('Error loading ticker:', error);
+                tickerContainer.style.animation = 'none';
                 tickerContainer.innerHTML =
                     '<span class="ticker-event-title" style="padding: 0 40px;">Visit our schedule to see upcoming experiences</span>';
             }
