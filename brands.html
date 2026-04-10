@@ -3645,14 +3645,18 @@
                 // Filter for upcoming events only (today and future)
                 tickerEvents = allCalendarEvents
                     .filter(event => {
-                        const eventDate = new Date(event.start);
+                        if (!event.dateObj) return false;
+                        const eventDate = new Date(event.dateObj);
                         eventDate.setHours(0, 0, 0, 0);
                         return eventDate >= now;
                     })
-                    .sort((a, b) => new Date(a.start) - new Date(b.start))
+                    .sort((a, b) => new Date(a.dateObj) - new Date(b.dateObj))
                     .slice(0, 10); // Show next 10 upcoming events
 
                 console.log(`Loaded ${tickerEvents.length} upcoming experiences for ticker`);
+                if (tickerEvents.length > 0) {
+                    console.log('Sample ticker event:', tickerEvents[0]);
+                }
 
                 if (tickerEvents.length > 0) {
                     updateTicker();
@@ -3672,14 +3676,19 @@
             if (tickerEvents.length === 0) return;
 
             const event = tickerEvents[currentTickerIndex];
-            const eventDate = new Date(event.start);
+            const eventDate = event.dateObj ? new Date(event.dateObj) : null;
             const tickerItem = document.getElementById('tickerItem');
+
+            if (!eventDate) {
+                console.error('Event missing dateObj:', event);
+                return;
+            }
 
             // Format date
             const dateOptions = { month: 'short', day: 'numeric' };
             const formattedDate = eventDate.toLocaleDateString('en-US', dateOptions);
 
-            // Get city
+            // Get city - capitalize first letter
             const city = event.location === 'nashville' ? 'Nashville' :
                         event.location === 'austin' ? 'Austin' : '';
 
