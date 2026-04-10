@@ -3650,13 +3650,17 @@
                 const now = new Date();
                 now.setHours(0, 0, 0, 0);
 
-                // Filter for upcoming events only (today and future)
+                // Calculate 60 days from now
+                const sixtyDaysFromNow = new Date(now);
+                sixtyDaysFromNow.setDate(sixtyDaysFromNow.getDate() + 60);
+
+                // Filter for upcoming events within next 60 days
                 const upcomingEvents = allCalendarEvents
                     .filter(event => {
                         if (!event.dateObj) return false;
                         const eventDate = new Date(event.dateObj);
                         eventDate.setHours(0, 0, 0, 0);
-                        return eventDate >= now;
+                        return eventDate >= now && eventDate <= sixtyDaysFromNow;
                     })
                     .sort((a, b) => new Date(a.dateObj) - new Date(b.dateObj))
                     .slice(0, 15); // Show next 15 upcoming events
