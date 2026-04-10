@@ -224,7 +224,7 @@
         }
 
         .navbar-logo img {
-            height: 85px;
+            height: 110px;
             width: auto;
             transition: opacity 0.3s ease;
         }
@@ -933,7 +933,14 @@
             .summit-card .experience-image {
                 width: 100%;
                 min-width: auto;
-                height: 300px;
+                height: auto;
+            }
+
+            .summit-card .experience-image img {
+                width: 100%;
+                height: auto;
+                min-height: auto;
+                object-fit: contain;
             }
 
             .summit-card .experience-content {
@@ -1878,7 +1885,7 @@
             }
 
             .navbar-logo img {
-                height: 60px;
+                height: 75px;
             }
 
             .hero-title {
@@ -1905,7 +1912,7 @@
             }
 
             .navbar-logo img {
-                height: 50px;
+                height: 65px;
             }
 
             .navbar-content {
@@ -1956,7 +1963,11 @@
             }
 
             .summit-card .experience-image {
-                height: 250px;
+                height: auto;
+            }
+
+            .summit-card .experience-image img {
+                object-fit: contain;
             }
 
             .youtube-video {
@@ -3703,9 +3714,9 @@
                 // Duplicate content for seamless loop
                 tickerContainer.innerHTML = tickerHTML + tickerHTML;
 
-                // Adjust animation speed based on content length - much faster scroll
+                // Adjust animation speed based on content length - ESPN speed
                 const contentWidth = tickerContainer.scrollWidth / 2;
-                const duration = Math.max(15, contentWidth / 200); // Much faster: ~200px per second
+                const duration = Math.max(10, contentWidth / 300); // ESPN speed: ~300px per second
                 tickerContainer.style.animationDuration = `${duration}s`;
 
             } catch (error) {
