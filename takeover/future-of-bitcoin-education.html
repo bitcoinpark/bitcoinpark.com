@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Takeover 2026: The Future of Bitcoin Education — Korok Ray - Bitcoin Park</title>
+    <meta property="og:title" content="Bitcoin Takeover 2026: The Future of Bitcoin Education — Korok Ray">
+    <meta property="og:description" content="Academia has a Bitcoin problem. The fix isn't a new course. Texas A&M professor Korok Ray argues universities need an architectural solution, not a political one.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/[BP][BT26][The Future of Bitcoin Education]-2.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/takeover/future-of-bitcoin-education.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-hover: #E8840F;
+            --electric-blue: #00D4FF;
+            --deep-black: #0A0A0A;
+            --cyber-dark: #1a1a1a;
+            --cyber-gray: #2a2a2a;
+            --concrete-gray: #808080;
+            --text-gray: #b0b0b0;
+            --pure-white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--deep-black);
+            color: var(--pure-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .scanline-effect {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 10001;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', Arial, sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cyber-gray);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .navbar-logo { display: flex; align-items: center; }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img { opacity: 1; }
+
+        .sponsor-thank-you { display: none; }
+
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--bitcoin-orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 15s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover { color: var(--bitcoin-orange); }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--bitcoin-orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .navbar-back-link {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--electric-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--deep-black);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            pointer-events: none;
+        }
+
+        .main-content {
+            background: transparent;
+            padding: 70px 0 60px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            border-left: 4px solid var(--bitcoin-orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--concrete-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+            border-top: 1px solid var(--cyber-gray);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        .article-section { margin-bottom: 80px; }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 15px;
+            letter-spacing: 0.02em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p { margin-bottom: 25px; }
+
+        .supporters-section {
+            background: var(--cyber-dark);
+            padding: 60px 0;
+            border-top: 1px solid var(--cyber-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .supporters-section .container { text-align: center; }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--pure-white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--bitcoin-orange);
+            background: rgba(247, 147, 26, 0.08);
+            box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span { color: var(--bitcoin-orange); }
+
+        .site-footer {
+            background: var(--deep-black);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--cyber-gray);
+            position: relative;
+            z-index: 1;
+        }
+
+        .site-footer p {
+            color: var(--concrete-gray);
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 1024px) {
+            .supporters-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .main-content { padding: 160px 0 60px 0; }
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                position: relative;
+            }
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--cyber-gray);
+            }
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+            .session-summary { padding: 30px 20px; }
+            .session-summary h2 { font-size: 1.4rem; }
+            .session-meta { gap: 20px; }
+            .article-headline { font-size: 1.8rem; }
+            .article-subheader { font-size: 1.1rem; }
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .session-meta { flex-direction: column; gap: 15px; }
+            .article-headline { font-size: 1.5rem; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline-effect"></div>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you"></div>
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>The Future of Bitcoin Education</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Presentation</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speaker</span>
+                        <span class="session-meta-value">
+                            <a href="https://x.com/korokray" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Korok Ray</a> (Texas A&M University)
+                        </span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    Universities have spent years either ignoring Bitcoin or struggling to place it. Texas A&M professor Korok Ray argues the issue isn't hostility—it's architecture. Bitcoin spans cryptography, economics, game theory, and computer science, making it homeless in a system built around narrow specialization. Ray's solution: embed Bitcoin modules inside existing courses and launch the Bitcoin Education Institute to coordinate faculty worldwide.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="[BP][BT26][The Future of Bitcoin Education]-2.jpg" alt="Korok Ray presenting The Future of Bitcoin Education at Bitcoin Takeover 2026">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Academia Has a Bitcoin Problem. The Fix Isn't a New Course.</h2>
+                <p class="article-subheader">Universities have spent years either ignoring Bitcoin or struggling to place it—and a Texas A&M professor argues they've been solving the wrong problem. The issue isn't hostility, he contends. It's architecture.</p>
+
+                <div class="article-content">
+                    <p>Korok Ray has taught Bitcoin at Texas A&M for four years, and he frames the academic establishment's indifference in structural rather than political terms. Modern universities, he argued at the recent Bitcoin Takeover summit at Bitcoin Park in Austin, are "isolated fiefdoms of knowledge" where engineering professors understand how Bitcoin works but not why it has value, and economists grasp its monetary logic but can't distinguish it from other cryptocurrencies. Bitcoin, precisely because it spans cryptography, macroeconomics, game theory, and computer science, has no natural home in a system built around narrow specialization. "The experts become blinded by their own expertise," Ray said.</p>
+
+                    <p>That diagnosis shapes his proposed remedy. Rather than fighting the institutional friction of standalone Bitcoin courses—it took Ray two years and multiple attempts to get his own approved, and the university has since stopped paying him for it—he is advocating for a different model: embed Bitcoin modules inside existing classes. A corporate finance course could spend one week valuing a Bitcoin treasury company. A power systems class in electrical engineering could examine how miners balance the energy grid. A macroeconomics course could present Bitcoin as the first rules-based monetary system in history. The approach requires no new course approvals and leaves faculty in control of their own syllabi.</p>
+
+                    <p>The conventional assumption that academia is uniformly skeptical of Bitcoin may itself be overstated, Ray suggested. He analyzed 1,800 active Bitcoin research papers at universities worldwide using AI-assisted sentiment scoring on a scale of negative one to one. The results showed a bell-curve distribution with a mean that is positive and statistically indistinguishable from zero. The researchers are already there—they simply haven't been organized or connected to classrooms. Ray's strategy is to identify faculty who are already publishing Bitcoin-adjacent work and ask them to surface that knowledge in their teaching.</p>
+
+                    <!-- Embedded Video -->
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/dXhEnCyp_Es" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+
+                    <p>To coordinate that effort, Ray announced the launch of the Bitcoin Education Institute, a nonprofit aimed at scaling Bitcoin's presence on college campuses. The organization plans an annual conference in Washington, D.C., intends to open-source existing curriculum from roughly 20 Bitcoin courses already running worldwide, and will build a speaker database connecting Bitcoin professionals with professors who want guest lecturers. Ray described meeting roughly six faculty in a single recent month who expressed genuine openness to incorporating Bitcoin—including a Northwestern professor who grew up in China, studied Austrian economics independently, and now teaches his blockchain course as 95% Bitcoin.</p>
+
+                    <p>Whether institutional momentum can match grassroots optimism remains an open question. Ray's own situation—teaching a class without university compensation, funding, or even chalk—illustrates exactly the friction his strategy is designed to route around rather than eliminate. The embedding approach sidesteps approval battles, but it also depends on individual faculty goodwill rather than structural change.</p>
+
+                    <p>"We beg, borrowed, and steal to get space on campus," Ray acknowledged. The Bitcoin Education Institute's bet is that the next generation of educators won't have to.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
