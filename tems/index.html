@@ -402,12 +402,16 @@
     .hero-image {
       width: 100%;
       max-width: 100%;
+      max-height: calc(100vh - 30px);
       display: block;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero-image img {
       width: 100%;
       height: auto;
+      max-height: calc(100vh - 30px);
       display: block;
       object-fit: contain;
       transition: transform 0.5s ease-out;
@@ -417,11 +421,6 @@
 
     .hero-image:hover img {
       transform: scale(1.02);
-    }
-
-    .hero-image {
-      position: relative;
-      overflow: hidden;
     }
 
     .hero-image::after {
