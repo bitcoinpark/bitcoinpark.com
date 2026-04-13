@@ -375,7 +375,7 @@
       margin-top: 70px;
       padding: 0;
       background: var(--cobalt-dark);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero::before {
@@ -409,7 +409,7 @@
       width: 100%;
       height: auto;
       display: block;
-      object-fit: cover;
+      object-fit: contain;
       transition: transform 0.5s ease-out;
       position: relative;
       z-index: 1;
@@ -449,14 +449,13 @@
       }
     }
 
-    /* Sponsor logo clickable overlays */
+    /* Sponsor logo clickable overlays - invisible but clickable */
     .hero-image a {
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      background: transparent;
     }
 
     .hero-image a:hover {
-      background-color: rgba(196, 165, 123, 0.2);
-      transform: scale(1.05);
+      background: transparent;
     }
 
     /* Hide sponsor links on mobile */
@@ -1163,27 +1162,27 @@
       <!-- Clickable sponsor logo overlays -->
       <!-- CleanSpark logo -->
       <a href="https://www.cleanspark.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 10%; bottom: 7%; width: 12%; height: 8%; z-index: 1000; display: block; cursor: pointer;"
+         style="position: absolute; left: 10%; bottom: 3%; width: 12%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
          aria-label="CleanSpark"></a>
 
       <!-- Foundry logo -->
       <a href="https://foundrydigital.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 25%; bottom: 7%; width: 14%; height: 8%; z-index: 1000; display: block; cursor: pointer;"
+         style="position: absolute; left: 25%; bottom: 3%; width: 14%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
          aria-label="Foundry"></a>
 
       <!-- Priority Power logo -->
       <a href="https://prioritypower.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 43%; bottom: 7%; width: 14%; height: 8%; z-index: 1000; display: block; cursor: pointer;"
+         style="position: absolute; left: 43%; bottom: 3%; width: 14%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
          aria-label="Priority Power"></a>
 
       <!-- Cholla logo -->
       <a href="https://chollainc.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 61%; bottom: 7%; width: 12%; height: 8%; z-index: 1000; display: block; cursor: pointer;"
+         style="position: absolute; left: 61%; bottom: 3%; width: 12%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
          aria-label="Cholla"></a>
 
       <!-- Proto logo -->
       <a href="https://proto.xyz" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 76%; bottom: 7%; width: 14%; height: 8%; z-index: 1000; display: block; cursor: pointer;"
+         style="position: absolute; left: 76%; bottom: 3%; width: 14%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
          aria-label="Proto"></a>
     </div>
   </section>
