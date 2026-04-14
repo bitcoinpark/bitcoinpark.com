@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The US Healthcare Mess, and How Bitcoin Revitalizes the Industry - Bitcoin Park</title>
+    <meta name="description" content="Stu Lackey walked a room full of Bitcoiners through 96 years of American healthcare gone wrong, then showed them why $83 titanium implants bill at $5,000.">
+    <meta property="og:title" content="The US Healthcare Mess, and How Bitcoin Revitalizes the Industry - Bitcoin Park">
+    <meta property="og:description" content="Stu Lackey walked a room full of Bitcoiners through 96 years of American healthcare gone wrong, then showed them why $83 titanium implants bill at $5,000.">
+    <meta property="og:image" content="https://bitcoinpark.com/forumhealth/stu-lackey-forum.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/forumhealth/us-healthcare-mess-bitcoin-revitalizes-industry-stu-lackey-test.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The US Healthcare Mess, and How Bitcoin Revitalizes the Industry">
+    <meta name="twitter:description" content="Stu Lackey walked a room full of Bitcoiners through 96 years of American healthcare gone wrong, then showed them why $83 titanium implants bill at $5,000.">
+    <meta name="twitter:image" content="https://bitcoinpark.com/forumhealth/stu-lackey-forum.jpg">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-dark: #D4780E;
+            --bitcoin-orange-light: #FFAA44;
+            --clinical-white: #FFFFFF;
+            --deep-navy: #031169;
+            --navy-mid: #1A4D8F;
+            --brand-blue: #4EA1E9;
+            --brand-blue-dark: #2B80C9;
+            --brand-blue-light: #EBF5FC;
+            --soft-gray: #5B7FA6;
+            --light-gray: #E4F0FB;
+            --bg-light: #F4F9FF;
+            --text-dark: #031169;
+            --text-body: #1A3A6B;
+            --text-light: #5B7FA6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            background: var(--clinical-white);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(78, 161, 233, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(26, 54, 93, 0.08);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar-sponsors {
+            font-size: 0.8rem;
+            color: var(--text-body);
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-sponsors a {
+            color: var(--brand-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-sponsors a:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        .navbar-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+        }
+
+        .navbar-back {
+            color: var(--brand-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-back:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 60px 20px 40px;
+            background: var(--clinical-white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .hero-meta {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-bottom: 40px;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin-bottom: 50px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 16px 60px rgba(26, 54, 93, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article Section */
+        .article {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .article-headline {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--soft-gray);
+            margin-bottom: 36px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .article-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+            color: var(--text-body);
+            line-height: 1.85;
+            margin-bottom: 24px;
+        }
+
+        /* Video Embed */
+        .video-container {
+            margin: 50px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.12);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
+            margin: 50px auto;
+            border-radius: 2px;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--bg-light);
+            padding: 60px 20px;
+            border-top: 1px solid rgba(78, 161, 233, 0.15);
+        }
+
+        .supporters-section .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--text-body);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--text-body);
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(78, 161, 233, 0.08);
+            border: 1px solid rgba(78, 161, 233, 0.2);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--brand-blue);
+            background: rgba(78, 161, 233, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--brand-blue);
+        }
+
+        @media (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--clinical-white);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(78, 161, 233, 0.15);
+        }
+
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--text-body);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 40px 20px 30px;
+            }
+
+            .video-container iframe {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">BITCOIN PARK</a>
+            <p class="navbar-sponsors">Thank you to our sponsors: <a href="https://www.unchained.com/" target="_blank" rel="noopener noreferrer">Unchained</a>, <a href="https://www.ten31.vc/" target="_blank" rel="noopener noreferrer">Ten31</a>, and <a href="https://soundhsa.com" target="_blank" rel="noopener noreferrer">Sound HSA</a></p>
+            <a href="index.html" class="navbar-back">← Back to Forum</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Park Forum: The Case for Bitcoin in Healthcare</p>
+            <h1 class="hero-title">The US Healthcare Mess, and How Bitcoin Revitalizes the Industry</h1>
+            <p class="hero-meta">Opening Keynote by Stuart Lackey • April 8, 2026</p>
+
+            <div class="hero-image fade-in">
+                <img src="stu-lackey-forum.jpg" alt="Stuart Lackey presenting at Park Forum">
+            </div>
+        </div>
+    </section>
+
+    <!-- Article -->
+    <article class="article">
+        <h2 class="article-headline fade-in">Five Trillion Dollars and We're Still the Sickest Country in the Room</h2>
+        <p class="article-subheader fade-in">Stu Lackey spent 20 years selling surgical implants into America's most expensive operating rooms. Then he asked a question nobody wanted to answer.</p>
+
+        <div class="article-content fade-in">
+            <p>"Guess how much one of these bad boys cost to machine?" Stu Lackey held up the number for a room full of Bitcoiners at Park Forum in Nashville. Titanium. Triangular. Plasma-sprayed. Three of them tapped across a patient's SI joint to treat lower back pain. Listed at $5,000 each. Fifteen grand per procedure. Someone in the audience shouted fifty bucks. Someone else said three dollars. The actual number: $83.</p>
+
+            <p>That question, and the silence that followed the answer, pretty much set the tone for the entire afternoon.</p>
+
+            <p>Lackey wasn't there to trash the industry he built his career in. He said so himself: "We helped thousands, hundreds of thousands of patients. It's not an indictment on the R&D. It's an indictment on the system." But the system is exactly what he came to talk about, and he had receipts going back to 1929.</p>
+
+            <div class="video-container fade-in">
+                <iframe src="https://www.youtube.com/embed/730Y5CJjRgk" title="The US Healthcare Mess, and How Bitcoin Revitalizes the Industry" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p>Here's the quick history, because it matters. In the middle of the Great Depression, the Baylor Health System in Dallas needed revenue. So they cut a deal with 1,300 school teachers: 21 hospital visits a year for $6.50 a month. Blue Cross was born from that handshake. Two flaws baked in from day one. It only covered hospital stays, which pushed every episode of care to the most expensive setting imaginable. And it separated the patient from the true cost of anything.</p>
+
+            <p>Then World War II made it worse. Wage freezes meant companies couldn't compete on salary, so someone had the bright idea to tie health insurance to your job. It worked beautifully as a recruiting tool. It also meant 160 million Americans today still get their coverage through their employer and have zero idea what any of it actually costs.</p>
+
+            <p>Lackey put a graphic up on screen. US healthcare spending from 1960 to 2022, animated. The color orange represented patient responsibility. In 1960, orange was everywhere. Patients paid 56% out of pocket. Then the colors shifted. Green crept in. CMS. Commercial insurance. By 2022, orange had nearly vanished. Patients now cover 11%. "Isn't that great that the patient pays so much less?" he asked. Nobody clapped, because everyone in the room already knew the trick. The money didn't disappear. It just got routed through so many intermediaries that $800 billion of it evaporates as administrative overhead before a single doctor sees a single patient.</p>
+
+            <p>He got personal. His father died of Parkinson's. "He didn't expect that to happen. None of us did, but it happened." You're going to need healthcare. Especially as you age. That's not the question. The question is whether the system you're paying into is actually designed to help you, or designed to bill you.</p>
+
+            <p>A study from UCSF kept coming back into the conversation. Dr. Steven Schroeder's meta-analysis from 2007, re-examined in 2024 with identical results. What determines whether you die early? Behavior: 40%. Genetics: 30%. Healthcare: 10%. The country spends five trillion dollars a year on a factor that accounts for one tenth of the outcome. Lackey let that number sit for a moment.</p>
+
+            <p>So where does Bitcoin fit? LASIK eye surgery has dropped 95% in cost over its lifetime because it's cash pay. Surgery Center of Oklahoma publishes every price on their website and has raised prices once in 20 years. DPC clinicians in Nashville charge $1,500 to $2,000 a year. Remove the middlemen, prices collapse. Lackey's bet is a Bitcoin health savings account. Self-directed, federally regulated, triple tax advantaged, holding actual bitcoin instead of fiat. Sound money for sound health, as he put it.</p>
+
+            <p>Nobody in that room walked out thinking healthcare is simple. But Lackey landed something that stuck: "This has nothing to do with politics. It is about behavior and math. And the math don't math."</p>
+        </div>
+
+        <div class="section-divider"></div>
+    </article>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you 🙏 to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a> • <a href="index.html">Park Forum: The Case for Bitcoin in Healthcare</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
