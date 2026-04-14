@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Bitcoin Fixes Healthcare: Sound Money for a Broken System - Bitcoin Park</title>
+    <meta name="description" content="ER doctor Rich Lassiter exposes how a $76,000 helicopter ride nobody would pay reveals the structural failures Bitcoin could fix in American healthcare.">
+    <meta property="og:title" content="How Bitcoin Fixes Healthcare: Sound Money for a Broken System - Bitcoin Park">
+    <meta property="og:description" content="ER doctor Rich Lassiter exposes how a $76,000 helicopter ride nobody would pay reveals the structural failures Bitcoin could fix in American healthcare.">
+    <meta property="og:image" content="https://bitcoinpark.com/forumhealth/how-bitcoin-fixes-health-cover.jpeg">
+    <meta property="og:url" content="https://bitcoinpark.com/forumhealth/how-bitcoin-fixes-healthcare-sound-money-broken-system.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How Bitcoin Fixes Healthcare: Sound Money for a Broken System">
+    <meta name="twitter:description" content="ER doctor Rich Lassiter exposes how a $76,000 helicopter ride nobody would pay reveals the structural failures Bitcoin could fix in American healthcare.">
+    <meta name="twitter:image" content="https://bitcoinpark.com/forumhealth/how-bitcoin-fixes-health-cover.jpeg">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-dark: #D4780E;
+            --bitcoin-orange-light: #FFAA44;
+            --clinical-white: #FFFFFF;
+            --deep-navy: #031169;
+            --navy-mid: #1A4D8F;
+            --brand-blue: #4EA1E9;
+            --brand-blue-dark: #2B80C9;
+            --brand-blue-light: #EBF5FC;
+            --soft-gray: #5B7FA6;
+            --light-gray: #E4F0FB;
+            --bg-light: #F4F9FF;
+            --text-dark: #031169;
+            --text-body: #1A3A6B;
+            --text-light: #5B7FA6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            background: var(--clinical-white);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(78, 161, 233, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(26, 54, 93, 0.08);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+        }
+
+        .navbar-back {
+            color: var(--brand-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-back:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 60px 20px 40px;
+            background: var(--clinical-white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .hero-meta {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-bottom: 40px;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin-bottom: 50px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 16px 60px rgba(26, 54, 93, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article Section */
+        .article {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .article-headline {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--soft-gray);
+            margin-bottom: 36px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .article-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+            color: var(--text-body);
+            line-height: 1.85;
+            margin-bottom: 24px;
+        }
+
+        /* Video Embed */
+        .video-container {
+            margin: 50px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.12);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
+            margin: 50px auto;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(78, 161, 233, 0.15);
+        }
+
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--text-body);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 40px 20px 30px;
+            }
+
+            .video-container iframe {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">BITCOIN PARK</a>
+            <a href="index.html" class="navbar-back">← Back to Forum</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Park Forum: The Case for Bitcoin in Healthcare</p>
+            <h1 class="hero-title">How Bitcoin Fixes Healthcare: Sound Money for a Broken System</h1>
+            <p class="hero-meta">Closing Keynote by Dr. Rich Lassiter • April 8, 2026</p>
+
+            <div class="hero-image fade-in">
+                <img src="how-bitcoin-fixes-health-cover.jpeg" alt="Dr. Rich Lassiter presenting at Park Forum">
+            </div>
+        </div>
+    </section>
+
+    <!-- Article -->
+    <article class="article">
+        <h2 class="article-headline fade-in">A $76,000 Helicopter Ride No One Would Pay Captures What Bitcoin Could Fix</h2>
+        <p class="article-subheader fade-in">At Bitcoin Park Nashville, Rich Lassiter was not supposed to be on that stage. The ER doctor from Atlanta said as much himself -- he works inside the hospital system, the same system he had just spent 20 minutes dismantling point by point.</p>
+
+        <div class="article-content fade-in">
+            <p>Lassiter, a member of the Bitcoin Physicians Network and founder of the Georgia Bitcoin Council, made the case that American healthcare's deepest failures trace back to a single problem: nobody knows what anything costs, and the system prefers it that way.</p>
+
+            <div class="video-container fade-in">
+                <iframe src="https://www.youtube.com/embed/yDQsljZa7u0" title="How Bitcoin Fixes Healthcare: Sound Money for a Broken System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p>He saved his sharpest example for last. A colleague's father suffered a possible cardiac arrest at a hospital about 45 minutes outside Atlanta. The medical team airlifted him by helicopter. The bill came to $76,000. The man had no health insurance and would never pay it. His bypass surgery was scheduled for the following day -- meaning the urgency that justified the flight was, at minimum, debatable.</p>
+
+            <p>"We aren't able to have these discussions," Lassiter said, describing the price conversation that never happened. "The numbers aren't published, and no one has these sorts of hard conversations with the patients." Nobody offered the family a choice between a $76,000 helicopter and an ambulance ride that would have arrived in roughly the same window, given that surgery wasn't happening until morning anyway.</p>
+
+            <p>That story, Lassiter explained, is a product of three structural failures he sees play out in emergency rooms every day. The first is misaligned incentives. He cited the Affordable Care Act's medical loss ratio requirement, which mandates that health insurers pay out 80% of collected premiums. On its face that sounds like consumer protection. In practice, it means a $1,000 procedure at a 20% margin earns an insurer $200, but doubling the price doubles the take to $400. Insurers, he argued, have a financial incentive to let prices rise.</p>
+
+            <p>The second failure is price opacity. Lassiter compared the current system to a flight where passengers are assigned ticket prices only after landing -- some pay $500, some pay nothing, some pay $2,000, all on the same plane. An MRI that costs $400 at one facility runs $2,000 at another. A colonoscopy that costs $1,200 within driving distance might cost $4,000 nearby. None of that information is readily available to patients, and the system, Lassiter said, has no interest in changing that.</p>
+
+            <p>The third failure is unrealistic expectations about outcomes, particularly around death. Lassiter described families who enroll loved ones in hospice care and then panic at the end, calling 911 when a hospice nurse isn't present. Paramedics arrive, begin CPR, and the patient lands in an ICU where the final days of care can cost $100,000 to $200,000. "This is my job," he said. "This is what I do. This happens every day in every ER in the nation."</p>
+
+            <p>Lassiter came to Bitcoin, as he put it, "for the number go up" and stayed "for the freedom to go up." He now sees Bitcoin and the Lightning Network -- a payment layer that enables fast, low-cost transactions -- as tools that could introduce price transparency and direct payment into a system built to avoid both. He pointed to Lightning wallets, self-hosted payment nodes, and the direct primary care model as early examples of what that might look like.</p>
+
+            <p>The doctor who said he probably didn't belong on the stage left the audience with a line borrowed from economist Friedrich Hayek: you cannot fix the money from within the system that broke it.</p>
+        </div>
+
+        <div class="section-divider"></div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a> • <a href="index.html">Park Forum: The Case for Bitcoin in Healthcare</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

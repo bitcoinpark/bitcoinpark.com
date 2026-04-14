@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance - Bitcoin Park</title>
+    <meta name="description" content="Andy Schoonover and Jon Gordon reveal how health insurance profits from rising costs and why Bitcoin-native HSAs offer an escape from broken incentives.">
+    <meta property="og:title" content="Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance - Bitcoin Park">
+    <meta property="og:description" content="Andy Schoonover and Jon Gordon reveal how health insurance profits from rising costs and why Bitcoin-native HSAs offer an escape from broken incentives.">
+    <meta property="og:image" content="https://bitcoinpark.com/forumhealth/Hard-Money-Health-Cover.jpeg">
+    <meta property="og:url" content="https://bitcoinpark.com/forumhealth/hard-money-health-business-models-hsas-dpc-decentralized-finance.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance">
+    <meta name="twitter:description" content="Andy Schoonover and Jon Gordon reveal how health insurance profits from rising costs and why Bitcoin-native HSAs offer an escape from broken incentives.">
+    <meta name="twitter:image" content="https://bitcoinpark.com/forumhealth/Hard-Money-Health-Cover.jpeg">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-dark: #D4780E;
+            --bitcoin-orange-light: #FFAA44;
+            --clinical-white: #FFFFFF;
+            --deep-navy: #031169;
+            --navy-mid: #1A4D8F;
+            --brand-blue: #4EA1E9;
+            --brand-blue-dark: #2B80C9;
+            --brand-blue-light: #EBF5FC;
+            --soft-gray: #5B7FA6;
+            --light-gray: #E4F0FB;
+            --bg-light: #F4F9FF;
+            --text-dark: #031169;
+            --text-body: #1A3A6B;
+            --text-light: #5B7FA6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            background: var(--clinical-white);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(78, 161, 233, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(26, 54, 93, 0.08);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+        }
+
+        .navbar-back {
+            color: var(--brand-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-back:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 60px 20px 40px;
+            background: var(--clinical-white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .hero-meta {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-bottom: 40px;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin-bottom: 50px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 16px 60px rgba(26, 54, 93, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article Section */
+        .article {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .article-headline {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--soft-gray);
+            margin-bottom: 36px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .article-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+            color: var(--text-body);
+            line-height: 1.85;
+            margin-bottom: 24px;
+        }
+
+        /* Video Embed */
+        .video-container {
+            margin: 50px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.12);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
+            margin: 50px auto;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(78, 161, 233, 0.15);
+        }
+
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--text-body);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 40px 20px 30px;
+            }
+
+            .video-container iframe {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">BITCOIN PARK</a>
+            <a href="index.html" class="navbar-back">← Back to Forum</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Park Forum: The Case for Bitcoin in Healthcare</p>
+            <h1 class="hero-title">Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance</h1>
+            <p class="hero-meta">Panel Discussion • April 8, 2026</p>
+
+            <div class="hero-image fade-in">
+                <img src="Hard-Money-Health-Cover.jpeg" alt="Hard Money Health Business Models panel at Park Forum">
+            </div>
+        </div>
+    </section>
+
+    <!-- Article -->
+    <article class="article">
+        <h2 class="article-headline fade-in">The Health Insurance Industry Profits When Your Bills Go Up</h2>
+        <p class="article-subheader fade-in">The most damaging feature of American health insurance isn't the claim denials or the surprise bills. It's that the companies collecting your premiums are financially motivated to make the whole system more expensive.</p>
+
+        <div class="article-content fade-in">
+            <p>That's the structural argument Andy Schoonover has been stress-testing for five years, and 30,000 paying members suggest he's onto something.</p>
+
+            <div class="video-container fade-in">
+                <iframe src="https://www.youtube.com/embed/3QdrJStwlvA" title="Hard Money Health Business Models: HSAs, Direct Primary Care, and Decentralized Health Finance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p>Schoonover, founder of Crowd Health, laid out the logic at the Park Forum: The Case for Bitcoin in Healthcare. Under the Affordable Care Act, insurers are capped on administrative profit as a percentage of premiums collected. The result is a cost-plus model: to grow earnings, a health plan needs premiums to rise. "If the buyer and the seller want the price to go up," he argued, "the price goes up." Hospital systems, the sellers, have always preferred higher prices. Now the insurers, nominally the buyers, share that preference. Market discipline collapses when both sides of a transaction benefit from inflation.</p>
+
+            <p>The data Schoonover cites makes the abstraction concrete. His members pay roughly 50% of what UnitedHealthcare pays for identical procedures, often at the same facilities. Kaiser Family Foundation data shows insurers deny approximately 19% of claims. Crowd Health's community-funded model has rejected 0.1% of submitted bills over 40,000 healthcare events. His own family pays $520 a month on Crowd Health against an ACA alternative that would run $1,400 with a $16,000 to $18,000 deductible, essentially $30,000 out of pocket before insurance contributes anything.</p>
+
+            <p>Jon Gordon, co-founder and COO of Sound HSA, approaches the same broken system from a different angle. He's focused on $170 billion sitting in 40 million health savings accounts across the country, more than half of it in cash, losing purchasing power to inflation every year. "The underlying money is broken," he said, and an account designed for long-term health savings denominated in depreciating currency defeats its own purpose. Sound HSA is building a Bitcoin-native HSA using a multi-institutional, multi-signature custody structure. Unchained, Gannett Trust, and Horizon Trust serve as key holders, so account holders can accumulate real Bitcoin within the triple-tax-advantaged wrapper without relying on a proxy or ETF.</p>
+
+            <p>The regulatory constraints are real. Current law requires fiat to enter the HSA before converting to Bitcoin, and spending Bitcoin directly on healthcare remains a compliance frontier the team is still navigating. A separate policy barrier, the requirement that HSA holders carry a high-deductible health plan, limits who can participate. Gordon sees that changing eventually, and it matters: removing the requirement would open HSA access to anyone, not just those willing to absorb a $16,000 deductible to get the tax advantage.</p>
+
+            <p>Both builders are also watching a larger experiment: whether Bitcoin can function as a medium of exchange inside healthcare, not just a savings vehicle. Schoonover said 15 to 20% of Crowd Health's membership are Bitcoiners, and the platform is currently in discussions with a top-10 U.S. hospital system about accepting Bitcoin as payment. The obstacle is a chicken-and-egg problem he describes plainly. Enough buyers need to exist before sellers will build the infrastructure to accept them.</p>
+
+            <p>Whether hospital systems will move fast enough, and whether regulators will expand HSA eligibility before the savings opportunity compounds further, remain open questions. What's already visible is the cost gap. "We are extracting that money out of the healthcare system," Schoonover said. "We are putting it into the pockets of people." The $70 million his members have saved over five years is a proof of concept, not yet a transformation. But the structural argument for why that gap exists may be the harder thing to rebut.</p>
+        </div>
+
+        <div class="section-divider"></div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a> • <a href="index.html">Park Forum: The Case for Bitcoin in Healthcare</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>

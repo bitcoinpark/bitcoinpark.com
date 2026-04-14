@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems - Bitcoin Park</title>
+    <meta name="description" content="Two physicians debate whether Bitcoin adoption in healthcare starts with grassroots practice or institutional treasury management.">
+    <meta property="og:title" content="Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems - Bitcoin Park">
+    <meta property="og:description" content="Two physicians debate whether Bitcoin adoption in healthcare starts with grassroots practice or institutional treasury management.">
+    <meta property="og:image" content="https://bitcoinpark.com/forumhealth/building-the-bitcoin-health-cover.jpeg">
+    <meta property="og:url" content="https://bitcoinpark.com/forumhealth/building-bitcoin-health-economy-payments-treasury-circular-systems.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems">
+    <meta name="twitter:description" content="Two physicians debate whether Bitcoin adoption in healthcare starts with grassroots practice or institutional treasury management.">
+    <meta name="twitter:image" content="https://bitcoinpark.com/forumhealth/building-the-bitcoin-health-cover.jpeg">
+    <style>
+        :root {
+            --bitcoin-orange: #F7931A;
+            --bitcoin-orange-dark: #D4780E;
+            --bitcoin-orange-light: #FFAA44;
+            --clinical-white: #FFFFFF;
+            --deep-navy: #031169;
+            --navy-mid: #1A4D8F;
+            --brand-blue: #4EA1E9;
+            --brand-blue-dark: #2B80C9;
+            --brand-blue-light: #EBF5FC;
+            --soft-gray: #5B7FA6;
+            --light-gray: #E4F0FB;
+            --bg-light: #F4F9FF;
+            --text-dark: #031169;
+            --text-body: #1A3A6B;
+            --text-light: #5B7FA6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+            background: var(--clinical-white);
+            color: var(--text-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 18px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(78, 161, 233, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(26, 54, 93, 0.08);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-family: 'Optima', 'Optima Nova', 'Candara', 'Palatino', Georgia, serif;
+        }
+
+        .navbar-back {
+            color: var(--brand-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-back:hover {
+            color: var(--bitcoin-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 60px 20px 40px;
+            background: var(--clinical-white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--brand-blue-dark);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--brand-blue);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .hero-meta {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--soft-gray);
+            margin-bottom: 40px;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin-bottom: 50px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 16px 60px rgba(26, 54, 93, 0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Article Section */
+        .article {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .article-headline {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--deep-navy);
+            margin-bottom: 16px;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--soft-gray);
+            margin-bottom: 36px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .article-content p {
+            font-size: clamp(1.05rem, 1.8vw, 1.18rem);
+            color: var(--text-body);
+            line-height: 1.85;
+            margin-bottom: 24px;
+        }
+
+        /* Video Embed */
+        .video-container {
+            margin: 50px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.12);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            display: block;
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--brand-blue-dark), var(--brand-blue));
+            margin: 50px auto;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(78, 161, 233, 0.15);
+        }
+
+        .footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--text-body);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: var(--brand-blue);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-content {
+                padding: 0 20px;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 40px 20px 30px;
+            }
+
+            .video-container iframe {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">BITCOIN PARK</a>
+            <a href="index.html" class="navbar-back">← Back to Forum</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Park Forum: The Case for Bitcoin in Healthcare</p>
+            <h1 class="hero-title">Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems</h1>
+            <p class="hero-meta">Panel Discussion • April 8, 2026</p>
+
+            <div class="hero-image fade-in">
+                <img src="building-the-bitcoin-health-cover.jpeg" alt="Building the Bitcoin Health Economy panel at Park Forum">
+            </div>
+        </div>
+    </section>
+
+    <!-- Article -->
+    <article class="article">
+        <h2 class="article-headline fade-in">Doctors Can't Fix Healthcare. Can Bitcoin?</h2>
+        <p class="article-subheader fade-in">Two physicians walking different corridors of American medicine have arrived at the same diagnosis: the financial system corroding their profession is the same one corroding their patients' savings. Their prescriptions, however, diverge sharply.</p>
+
+        <div class="article-content fade-in">
+            <p>At a recent panel at Bitcoin Park in Nashville, moderator Mark Connors of Risk Dimensions drew out competing theories from Dr. Mark Link, a private-practice dentist with 40 years in fee-for-service medicine, and Dr. Robert Rahimi, a transplant hepatologist at Baylor Dallas, on how Bitcoin enters healthcare and why the pathway matters as much as the destination.</p>
+
+            <div class="video-container fade-in">
+                <iframe src="https://www.youtube.com/embed/sUGscIn_pTU" title="Building the Bitcoin Health Economy: Payments, Treasury Management, and Circular Healthcare Systems" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <p>Link's case is built on what he calls a bottleneck. "You have Bitcoiners who know that this is gonna go up in value so they don't wanna spend their Bitcoin," he explained, "and you have merchants who say, well, nobody wants to spend their Bitcoin, so why should I offer my services for Bitcoin?" His answer is that practitioners in private practice are uniquely positioned to break the stalemate. Not through grand institutional strategy, but through the patient relationship itself.</p>
+
+            <p>When Link began accepting Bitcoin in 2023, he framed it initially as a cost play: no merchant service fees, instant settlement, no chargebacks. The economics held up. Patients began driving from Colorado Springs, 60 miles away, specifically because his practice appeared on the BTC Map app. But the more durable effect, he argues, was cultural. "It starts conversations with people who trust you implicitly," he said. Patients would ask why he accepted it, and those organic exchanges, he contends, will do more for adoption than any corporate initiative.</p>
+
+            <p>Rahimi does not disagree with Link's grassroots logic, but he is simultaneously pursuing the harder target: the hospital balance sheet. He pitched Baylor's administration on holding Bitcoin when the price was $7,000. They declined. He believes that moment will look different in retrospect. His current argument to large systems is deliberately modest. Skip the ideology, start with the arithmetic. "If you even think of from the basic principles of saving 2% on billions of dollars, that's a lot of money," he said, pointing to credit card processing fees alone. Add the operational friction of 90-day insurance reimbursement cycles, and Lightning Network settlement starts to look less like a philosophy experiment and more like a treasurer's tool.</p>
+
+            <p>Where the two doctors part ways is on institutional patience. Rahimi sees large-system adoption as inevitable once Fidelity, Schwab, and similar custodians normalize Bitcoin exposure, a top-down legitimacy cascade. Link is skeptical that waiting for institutions is even the right frame. "When you live in a system that benefits by your dependence," he argued, "you can't expect them to give you back your freedom and your sovereignty of practice." His father, also a dentist, paid $1,500 for his first practice. That same amount buys one high-speed handpiece today. The sands, he said, shifted beneath two generations before anyone noticed.</p>
+
+            <p>The structural argument underlying both positions is that medicine's incentive problem and money's incentive problem are the same problem. Fifty-patient days. Physician burnout. Margin compression forcing internists into concierge models or out of practice entirely. Neither man believes Bitcoin fixes the regulatory architecture of American healthcare. What they do believe is that sound money, a store of value that doesn't erode the way a $0.25-per-hour raise disappears into inflation, changes the calculus for the practitioners who hold it.</p>
+
+            <p>Whether the entry point is a dental chair in Colorado or a transplant program's treasury committee, the unresolved question is the same: who moves first, and whether the other side follows.</p>
+        </div>
+
+        <div class="section-divider"></div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><a href="https://bitcoinpark.com" target="_blank" rel="noopener noreferrer">Bitcoin Park</a> • <a href="index.html">Park Forum: The Case for Bitcoin in Healthcare</a></p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
