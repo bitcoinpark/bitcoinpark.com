@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Energy & Mining Summit 2026: The Future of Managed Load - Bitcoin Park</title>
+    <meta property="og:title" content="Nashville Energy & Mining Summit: The Future of Managed Load">
+    <meta property="og:description" content="Bitcoin Mining Emerges as Grid Stabilizer while AI Workloads Pose Challenges">
+    <meta property="og:image" content="https://bitcoinpark.com/nems/bitcoinpark_brandmark_white_3@2x.png">
+    <meta property="og:url" content="https://bitcoinpark.com/nems/future-of-managed-load-bitcoin-grid-stabilizer-panel.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #1a2332;
+            --navy-blue: #0f1620;
+            --orange: #ff6b35;
+            --white: #ffffff;
+            --light-gray: #b0b8c4;
+            --medium-gray: #8a94a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--orange);
+        }
+
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        /* Sponsor Thank You Bar - Hidden, replaced by scrolling version */
+        .sponsor-thank-you {
+            display: none;
+        }
+
+        /* Scrolling Sponsors Bar */
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 20s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .navbar-back-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--orange);
+        }
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy-blue);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--dark-blue));
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--dark-blue);
+            padding: 70px 0 60px 0;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--orange);
+        }
+
+        .speaker-highlight {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--navy-blue);
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--orange);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--navy-blue);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer p {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 160px 0 60px 0;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+
+            .navbar-content {
+                position: relative;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you">
+                <span class="sponsor-thank-you-text">A Special Thank You to Our NEMS26 Sponsors:
+                    <a href="https://proto.xyz/" target="_blank">Proto</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://braiins.com" target="_blank">Braiins</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://obm.io/" target="_blank">OBM</a>
+                    <span class="sponsor-separator"></span>
+                    <div class="sponsor-break"></div>
+                    <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://unchained.com" target="_blank">Unchained</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                </span>
+            </div>
+            <!-- Mobile Scrolling Sponsors -->
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY 🙏 NEMS26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://proto.xyz/" target="_blank">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com" target="_blank">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/" target="_blank">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                        <span class="sponsor-dot">•</span>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://proto.xyz/" target="_blank">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com" target="_blank">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/" target="_blank">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index_2026.html" class="navbar-back-link">← Back to NEMS 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>The Future of Managed Load</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index_2026.html" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--orange)'; this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">NEMS26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Panel Discussion</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Date</span>
+                        <span class="session-meta-value">January 22, 2026</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value"><span style="color: var(--orange); font-weight: 600;">Nima Amir</span> (LoD), <span style="color: var(--orange); font-weight: 600;">Joe Dillon</span> (Adakon Energy), <span style="color: var(--orange); font-weight: 600;">Javier Hermosa</span> (Braiins)</span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    Industry experts explore how Bitcoin mining provides flexible load to stabilize grids while AI data centers create unprecedented volatility challenges. The panel examines emerging architectures combining firm and flexible loads with fast-acting batteries to manage the future energy landscape.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="47-D81_7532.jpg" alt="The Future of Managed Load Panel at NEMS26">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Bitcoin Mining Emerges as Grid Stabilizer</h2>
+                <p class="article-subheader">While AI workloads pose unprecedented challenges with millisecond power swings, Bitcoin mining provides the flexibility grid operators need for renewable energy integration.</p>
+
+                <div class="article-content">
+                    <p>The electricity grid faces a stark choice: build 300 to 600 gigawatts of new generation capacity by 2030, or deploy massive amounts of flexible load to prevent widespread brownouts. That sobering forecast comes from industry operators who, while conservatively modeling, even stripped AI and Bitcoin from their models and projected only residential and electric vehicle growth, a 3% increase that existing infrastructure cannot handle without fundamental changes to grid management.</p>
+
+                    <p>The tension centers on load growth capacity and two radically different 21st-century energy consumers. Bitcoin mining has evolved into what grid operators increasingly view as essential infrastructure, a flexible load that can ramp down 210 megawatts in 90 seconds to stabilize frequency. AI data centers, by contrast, create volatility grid operators have never encountered: 20 to 30 megawatt power swings in milliseconds that may threaten system stability.</p>
+
+                    <p>"AI data centers are unlike anything we've ever seen on the grid ever before," said <strong>Nima Amir</strong> of LoD, who co-wrote the handbook on managed load and analyzed hundreds of datasets on energy generation and consumption patterns. The load profiles emerging from hyperscale AI facilities show sub-second oscillations, drops and spikes of 20 to 30 megawatts occurring in milliseconds. For context, federal regulations cap grid-connected load changes at 100 megawatts per minute on high-voltage transmission lines designed to move 1,200 megawatts. AI workloads are changing at rates hundreds of times faster.</p>
+
+                    <p><strong>Joe Dillon</strong>, CEO of Adakon Energy, which owns a North Dakota mining facility co-located with a 1.2 gigawatt coal plant, explained the infrastructure implications. "You have to overbuild the infrastructure by 200% if you're going to have that much volatility," he said. Current site designs allocate at least 20% of baseplate capacity just for voltage regulation batteries, an extraordinary overhead that makes these facilities enormously capital-intensive. The federal ramp limit exists precisely because grids cannot absorb rapid power changes without destabilizing frequency, which all generation sources must maintain synchronously at 60 hertz in the United States.</p>
+
+                    <!-- Embedded Video -->
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/Z2bYeRwxCCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+
+                    <p>Bitcoin mining's flexibility derives from its geographical agnosticism and instant curtailment capability. <strong>Javier Hermosa</strong>, who began mining at home in 2013 and now analyzes grid dynamics for Braiins, pointed to Texas as proof of concept. "Since the blackout of 2021, the introduction of Bitcoin mining and the participation of miners into demand response programs has led to that never happening again," he said. Spain experienced the opposite trajectory last year when a large solar farm went offline and inverters failed. Without flexible load or sufficient battery storage, frequency dropped uncontrollably. "There was no Bitcoin mining to stop," Hermosa noted.</p>
+
+                    <p>The contrast reflects a fundamental engineering reality about renewable energy penetration. Solar and wind lack the massive flywheels that coal, natural gas, and nuclear plants use to maintain grid inertia, the angular momentum that buffers against sudden load changes. "When you have a drop in frequency, that drop will be much more significant when you don't have enough inertial energy sources," Hermosa explained. Bitcoin mining acts as what he terms a "virtual power plant," not generating electricity but providing the flexibility traditional spinning mass once offered through mechanical inertia.</p>
+
+                    <p>The emerging architecture combines three load types in microgrids: firm load from AI training, flexible load from Bitcoin mining, and fast-acting batteries to smooth sub-second volatility. Dillon's North Dakota facility demonstrates this model at scale, automatically integrating with the MISO grid to provide instantaneous response. "Instead of having to ramp that power plant at two and a half megawatts a minute, you ramped it at 200 megawatts in 90 seconds," he said. The result: a coal plant that functions like a battery for grid operators.</p>
+
+                    <p>Regulatory frameworks haven't caught up to these realities. Nuclear co-location faces particular challenges from legacy Department of Defense requirements and complex grid regulations, though Dillon believes small modular reactors may provide clearer pathways. European grids show varying sophistication. Finland's Fingrid and the Nordic region generally understand flexibility needs, while Spain is "waking up to this necessity" and asking demand response aggregators to return after years of absence, according to Hermosa.</p>
+
+                    <p>Technology may partially address AI's volatility problem. Solid-state batteries entering the market from companies like Finnish startup Donut promise capacitor-like discharge rates with greater capacity than traditional lithium-ion systems. "When you combine these solid-state batteries with flexible generation with Bitcoin mining inside a microgrid, then you're basically able to flatten out those waves," Hermosa said. He predicts regulators will mandate such flexibility requirements before permitting new AI data centers on grids already straining under renewable penetration.</p>
+
+                    <p>Whether innovation arrives fast enough remains uncertain. The 2030 timeline for 300 to 600 gigawatts of flexibility assumes no AI load growth—an increasingly unrealistic scenario as companies race to build training infrastructure. Batteries currently provide the only response fast enough to buffer AI's millisecond swings, but Amir questioned their long-term viability at such scales. The answer likely involves co-location strategies, hybrid architectures, and flexible loads that turn what seemed like a problem, Bitcoin's massive energy appetite, into infrastructure that makes an AI-powered grid possible.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you 🙏 to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

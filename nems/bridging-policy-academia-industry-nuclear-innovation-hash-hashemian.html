@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Energy & Mining Summit 2026: Hash Hashemian - Bitcoin Park</title>
+    <meta property="og:title" content="Nashville Energy & Mining Summit: Bridging Policy, Academia, and Industry">
+    <meta property="og:description" content="Hash Hashemian and Justin Maierhofer discuss nuclear workforce concerns and accelerating nuclear energy innovation.">
+    <meta property="og:image" content="https://bitcoinpark.com/nems/bitcoinpark_brandmark_white_3@2x.png">
+    <meta property="og:url" content="https://bitcoinpark.com/nems/bridging-policy-academia-industry-nuclear-innovation-hash-hashemian.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #1a2332;
+            --navy-blue: #0f1620;
+            --orange: #ff6b35;
+            --white: #ffffff;
+            --light-gray: #b0b8c4;
+            --medium-gray: #8a94a6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--orange);
+        }
+
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            letter-spacing: 0.02em;
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img {
+            opacity: 1;
+        }
+
+        /* Navbar Sponsor Logos */
+        .navbar-sponsors {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-sponsor-logo {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: var(--medium-gray);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-sponsor-logo:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* Sponsor Thank You Bar - Hidden, replaced by scrolling version */
+        .sponsor-thank-you {
+            display: none;
+        }
+
+        .sponsor-thank-you-text {
+            font-size: 0.75rem;
+            color: var(--orange);
+            font-weight: 500;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-start;
+            line-height: 0.8;
+        }
+
+        .sponsor-thank-you-text a {
+            font-size: 0.75rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+            white-space: nowrap;
+        }
+
+        .sponsor-thank-you-text a:hover {
+            color: var(--orange);
+            border-bottom-color: var(--orange);
+        }
+
+        .sponsor-separator {
+            color: var(--orange);
+            width: 1px;
+            height: 12px;
+            background-color: var(--orange);
+            display: inline-block;
+            margin: 0 4px;
+        }
+
+        /* Force line break after 5 sponsors */
+        .sponsor-break {
+            flex-basis: 100%;
+            height: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Scrolling Sponsors Bar */
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--orange);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 20s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover {
+            color: var(--orange);
+        }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--orange);
+            font-size: 0.5rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes scrollSponsors {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .navbar-back-link {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--orange);
+        }
+
+        /* Navbar Divider */
+        .navbar-divider {
+            width: 1px;
+            height: 20px;
+            background-color: var(--orange);
+            margin: 0 15px;
+        }
+
+
+        /* Hero Image Section */
+        .hero-image {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--navy-blue);
+            margin: 60px 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, transparent, var(--dark-blue));
+            pointer-events: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--dark-blue);
+            padding: 70px 0 60px 0;
+        }
+
+        /* Session Summary Section */
+        .session-summary {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 4px solid var(--orange);
+            padding: 35px 40px 40px 40px;
+            margin-bottom: 60px;
+        }
+
+        .session-summary h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .session-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .session-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .session-meta-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .session-meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--light-gray);
+        }
+
+        .session-meta-value.highlight {
+            color: var(--orange);
+        }
+
+        .speaker-highlight {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .session-abstract {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        /* Article Section */
+        .article-section {
+            margin-bottom: 80px;
+        }
+
+        .article-headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 15px;
+            letter-spacing: -0.01em;
+        }
+
+        .article-subheader {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 25px;
+        }
+
+        /* Video Placeholder */
+        .video-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .video-placeholder-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 107, 53, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .video-placeholder-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 24px solid var(--orange);
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            margin-left: 6px;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .video-placeholder p {
+            font-size: 1rem;
+            color: var(--medium-gray);
+        }
+
+        /* Sponsors Section */
+        .sponsors-section {
+            background: var(--navy-blue);
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sponsors-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sponsors-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .sponsors-header p {
+            font-size: 1rem;
+            color: var(--light-gray);
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .sponsor-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .sponsor-item:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .sponsor-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        /* Company Supporters Section */
+        .supporters-section {
+            background: var(--navy-blue);
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .supporters-section .container {
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--orange);
+            background: rgba(255, 107, 53, 0.08);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span {
+            color: var(--orange);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--navy-blue);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .site-footer p {
+            color: var(--medium-gray);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sponsors-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .main-content {
+                padding: 160px 0 60px 0;
+            }
+
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+
+            .navbar-content {
+                position: relative;
+            }
+
+            .page-header {
+                padding-top: 220px;
+                padding-bottom: 30px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .session-summary {
+                padding: 30px 20px;
+            }
+
+            .session-summary h2 {
+                font-size: 1.4rem;
+            }
+
+            .session-meta {
+                gap: 20px;
+            }
+
+            .article-headline {
+                font-size: 1.8rem;
+            }
+
+            .article-subheader {
+                font-size: 1.1rem;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .supporters-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .video-placeholder {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .session-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .sponsors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .article-headline {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="sponsor-thank-you">
+                <span class="sponsor-thank-you-text">A Special Thank You to Our NEMS26 Sponsors:
+                    <a href="https://proto.xyz/" target="_blank">Proto</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://braiins.com" target="_blank">Braiins</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://obm.io/" target="_blank">OBM</a>
+                    <span class="sponsor-separator"></span>
+                    <div class="sponsor-break"></div>
+                    <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://unchained.com" target="_blank">Unchained</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                    <span class="sponsor-separator"></span>
+                    <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                </span>
+            </div>
+            <!-- Mobile Scrolling Sponsors -->
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY 🙏 NEMS26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://proto.xyz/" target="_blank">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com" target="_blank">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/" target="_blank">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                        <span class="sponsor-dot">•</span>
+                        <!-- Duplicate for seamless loop -->
+                        <a href="https://proto.xyz/" target="_blank">Proto</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://braiins.com" target="_blank">Braiins</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://cleanspark.com" target="_blank">CleanSpark</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://obm.io/" target="_blank">OBM</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://chollainc.com/" target="_blank">Cholla Inc.</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://foundrydigital.com/" target="_blank">Foundry</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.cathedra.com/" target="_blank">Cathedra</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://www.adakonenergy.com/" target="_blank">Adakon Energy</a>
+                        <span class="sponsor-dot">•</span>
+                        <a href="https://upstreamdata.ca" target="_blank">Upstream Data</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index_2026.html" class="navbar-back-link">← Back to NEMS 2026</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Session Summary -->
+            <section class="session-summary fade-in">
+                <h2>Bridging Policy, Academia, and Industry: Accelerating Nuclear Energy Innovation</h2>
+                <div class="session-meta">
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Experience</span>
+                        <span class="session-meta-value"><a href="index_2026.html" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--orange)'; this.style.borderBottomColor='var(--orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">NEMS26</a></span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Session Type</span>
+                        <span class="session-meta-value">Fireside Chat</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Date</span>
+                        <span class="session-meta-value">January 22, 2026</span>
+                    </div>
+                    <div class="session-meta-item">
+                        <span class="session-meta-label">Speakers</span>
+                        <span class="session-meta-value"><span style="color: var(--orange); font-weight: 600;">Hash Hashemian</span> (American Nuclear Society) & <span style="color: var(--orange); font-weight: 600;">Justin Maierhofer</span> (Tennessee Electric Cooperative Association)</span>
+                    </div>
+                </div>
+                <div class="session-abstract">
+                    Hash Hashemian and Justin Maierhofer discuss nuclear workforce concerns and why the industry may be "overreacting" to talent challenges while exploring how to bridge policy, academia, and industry to accelerate nuclear innovation.
+                </div>
+            </section>
+
+            <!-- Hero Image -->
+            <section class="hero-image">
+                <img src="13-D81_7462.jpg" alt="Hash Hashemian fireside chat at NEMS26">
+            </section>
+
+            <!-- Article Section -->
+            <article class="article-section fade-in">
+                <h2 class="article-headline">Nuclear Industry's Workforce "Overreaction"</h2>
+                <p class="article-subheader">Hash Hashemian argues the nuclear industry is overreacting to workforce concerns while discussing how to bridge policy, academia, and industry for innovation.</p>
+
+                <div class="article-content">
+                    <p>That's the counterintuitive argument from Hash Hashemian, President of the American Nuclear Society and a 47-year veteran of the nuclear industry, who says the sector's hand-wringing over labor shortages misses a simpler truth: build it and they will come.</p>
+
+                    <p>"We cannot put out 100,000 people pronto when we don't know whether or not they are going to have jobs," Hashemian told attendees at the Nashville Energy & Mining Summit in Tennessee. His reasoning challenges the conventional wisdom dominating energy policy discussions, that workforce development must precede infrastructure deployment. The real bottleneck, he argues, isn't labor supply but deployment commitment.</p>
+
+                    <p>Hashemian points to Bitcoin mining's rapid expansion as evidence that industries scale their workforces when demand exists. "You started this whole Bitcoin...industry not too long ago, and it's going gangbusters," he noted. The nuclear sector's workforce concerns stem from an unusual problem: everyone anticipates massive growth, but actual construction remains limited. Until reactor projects break ground at scale, training programs risk producing workers without jobs.</p>
+
+                    <!-- Embedded Video -->
+                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/WNeYoX7ObTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+
+                    <p>The stakes are substantial. Hashemian projects U.S. electricity demand will triple from 500 gigawatts today to 1,500 gigawatts by 2050, matching in 25 years what took 250 years to build. Meeting that demand "can only be done by nuclear," he argues. Yet the sector remains caught between workforce anxiety and construction hesitancy. Hashemian's confidence in workforce scalability contrasts with his evolved views on government funding. Two years ago, Hashemian criticized modest federal nuclear investments as inadequate. Now he openly advocates for $500 billion to $1 trillion in government support, acknowledging his earlier skepticism was misplaced. Recent federal action, including $2.7 billion allocated to three companies days before his remarks, suggests policymakers are listening.</p>
+
+                    <p>What nuclear plants actually need complicates workforce planning. "In a nuclear power plant, there's 1,000 people there. There's only 10 nuclear engineers," Hashemian explained, noting that welders, plumbers, and electricians constitute the bulk of personnel. These trades face shortages across construction sectors, not just nuclear. Tennessee's vocational programs are responding, but the chicken-and-egg dilemma persists: train workers for projects that haven't started, or start projects without trained workers?</p>
+
+                    <p>Hashemian's broader message emphasized urgency over precision. China built the same American-designed reactors operating in Georgia in half the time and for one-third the cost, seven years versus 15, roughly $6 billion versus $17 billion each. That comparison haunts U.S. nuclear advocates who see technical capability undermined by regulatory and financial structures. The workforce question, in this context, becomes secondary to deployment commitment.</p>
+
+                    <p>Whether Hashemian's optimism about self-correcting labor markets proves accurate depends on factors beyond workforce policy, financing structures, regulatory reform, and sustained political will. One variable looms largest: "All of this stuff you're hearing about nuclear power today is going to stop or cool down significantly with one accident anywhere in the world," he acknowledged. For now, workforce concerns may indeed be overblown. The real test comes when construction begins at scale.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Company Supporters Section -->
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you 🙏 to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
