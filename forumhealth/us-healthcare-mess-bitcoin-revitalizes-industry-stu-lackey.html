@@ -78,6 +78,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
+        }
+
+        .navbar-sponsors {
+            font-size: 0.8rem;
+            color: var(--text-body);
+            flex: 1;
+            text-align: center;
+        }
+
+        .navbar-sponsors a {
+            color: var(--brand-blue-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-sponsors a:hover {
+            color: var(--bitcoin-orange);
         }
 
         .navbar-logo {
@@ -136,25 +155,7 @@
             text-align: center;
             font-size: 1rem;
             color: var(--soft-gray);
-            margin-bottom: 20px;
-        }
-
-        .hero-sponsors {
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--text-body);
             margin-bottom: 40px;
-        }
-
-        .hero-sponsors a {
-            color: var(--brand-blue-dark);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .hero-sponsors a:hover {
-            color: var(--bitcoin-orange);
         }
 
         .hero-image {
@@ -362,6 +363,7 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">BITCOIN PARK</a>
+            <p class="navbar-sponsors">Thank you to our sponsors: <a href="https://www.unchained.com/" target="_blank" rel="noopener noreferrer">Unchained</a>, <a href="https://www.ten31.vc/" target="_blank" rel="noopener noreferrer">Ten31</a>, and <a href="https://soundhsa.com" target="_blank" rel="noopener noreferrer">Sound HSA</a></p>
             <a href="index.html" class="navbar-back">← Back to Forum</a>
         </div>
     </nav>
@@ -372,7 +374,6 @@
             <p class="hero-eyebrow">Park Forum: The Case for Bitcoin in Healthcare</p>
             <h1 class="hero-title">The US Healthcare Mess, and How Bitcoin Revitalizes the Industry</h1>
             <p class="hero-meta">Opening Keynote by Stuart Lackey • April 8, 2026</p>
-            <p class="hero-sponsors">Thank you to our sponsors: <a href="https://www.unchained.com/" target="_blank" rel="noopener noreferrer">Unchained</a>, <a href="https://www.ten31.vc/" target="_blank" rel="noopener noreferrer">Ten31</a>, and <a href="https://soundhsa.com" target="_blank" rel="noopener noreferrer">Sound HSA</a></p>
 
             <div class="hero-image fade-in">
                 <img src="stu-lackey-forum.jpg" alt="Stuart Lackey presenting at Park Forum">
