@@ -167,26 +167,25 @@
             margin-top: 60px;
             margin-bottom: -80px;
             height: 600px;
+            display: flex;
         }
 
         .hero-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            width: 50%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
         }
 
         .hero-image img:first-child {
-            z-index: 1;
+            /* Janessa on RIGHT half */
+            order: 2;
+            object-position: 35% center;
         }
 
         .hero-image img:last-child {
-            z-index: 2;
-            opacity: 0.5;
-            mix-blend-mode: lighten;
+            /* David on LEFT half */
+            order: 1;
+            object-position: 65% center;
         }
 
         .hero-image::after {
@@ -476,7 +475,7 @@
     <main>
         <header class="session-header" data-reveal>
             <h1>De Minimis, Developer Freedom, and the Future of Bitcoin Payments</h1>
-            <p class="byline">Janessa Lopez (Block), David Zell (Bitcoin Policy Institute) · Bitcoin Takeover 2026 · Panel</p>
+            <p class="byline">David Zell (Bitcoin Policy Institute), Janessa Lopez (Block) · Bitcoin Takeover 2026 · Panel</p>
         </header>
 
         <section class="chapter" data-reveal>
