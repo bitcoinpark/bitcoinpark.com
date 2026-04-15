@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedom Tech is Fundamental to a Free Society - Econoalchemist | Imagine IF</title>
+    <meta property="og:title" content="Freedom Tech is Fundamental to a Free Society - Econoalchemist">
+    <meta property="og:description" content="The laws of math are stronger than the laws of man. All the violence in the world doesn't change the laws of math.">
+    <meta property="og:image" content="https://bitcoinpark.com/imagineif/ImagineIf-brandmark-blue@2x.png">
+    <meta property="og:url" content="https://bitcoinpark.com/imagineif/freedom-tech-free-society-econoalchemist-test3.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #b683ed;
+            --text: #FFFFFF;
+            --accent: #e68158;
+            --secondary: #ffc6c2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rethink Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(182, 131, 237, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .navbar-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .navbar a:hover { opacity: 1; }
+        .navbar-logo img {
+            height: 36px;
+            width: auto;
+            opacity: 0.9;
+        }
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Thesis */
+        .thesis-container {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 60px;
+            position: relative;
+        }
+        .thesis {
+            position: sticky;
+            top: 0;
+            padding: 80px 0;
+            text-align: center;
+            z-index: 1;
+        }
+        .thesis-text {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--accent);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .thesis .byline {
+            font-size: 0.95rem;
+            opacity: 0.5;
+            margin-top: 20px;
+        }
+        .thesis .byline a {
+            color: #070c70;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .thesis .byline a:hover { border-bottom-color: #070c70; }
+
+        /* Content sections */
+        .opening-context {
+            padding: 60px 40px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .opening-context p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .evidence {
+            padding: 60px 0;
+        }
+        .evidence-quote {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            line-height: 1.3;
+            border-left: 4px solid var(--accent);
+            padding-left: 25px;
+            max-width: 680px;
+            margin: 0 auto 30px;
+            padding-right: 40px;
+            padding-left: 65px;
+        }
+        .evidence-context {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .evidence-context p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Video */
+        .video-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* Thesis restate */
+        .thesis-restate {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .thesis-closing {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.25;
+            color: var(--accent);
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0 40px;
+        }
+        .thesis-restate .closing-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Supporters */
+        .supporters-section {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+        .supporters-section .container {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .mission-statement {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        .supporters-thank-you {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .supporter-logo:hover {
+            border-color: var(--secondary);
+            background: rgba(255, 198, 194, 0.1);
+        }
+        .supporter-logo span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0.7;
+            text-align: center;
+        }
+        .supporter-logo:hover span { opacity: 1; }
+
+        /* Footer */
+        .site-footer {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .site-footer p { opacity: 0.5; font-size: 0.85rem; }
+
+        /* Reveal */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .thesis-container { padding: 110px 24px 40px; min-height: auto; }
+            .thesis { position: static; padding: 40px 0; }
+            .opening-context { padding: 40px 24px; }
+            .evidence { padding: 40px 0; }
+            .evidence-quote { padding-left: 49px; padding-right: 24px; }
+            .evidence-context { padding: 0 24px; }
+            .video-section { padding: 20px 24px; }
+            .thesis-closing { padding: 0 24px; }
+            .thesis-restate .closing-text { padding: 0 24px; }
+            .navbar-content { padding: 0 24px; }
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-content">
+        <a href="https://bitcoinpark.com/imagineif" class="navbar-logo">
+            <img src="ImagineIf-brandmark-blue@2x.png" alt="Imagine IF">
+        </a>
+        <span class="navbar-title">Imagine IF 2025</span>
+        <a href="index_imagineif.html">&larr; Back</a>
+    </div>
+</nav>
+
+<main>
+
+    <!-- Thesis -->
+    <section class="thesis-container">
+        <div class="thesis" data-thesis-parallax>
+            <p class="thesis-text">The laws of math are stronger than the laws of man. And without the people who write the code, there is no free society.</p>
+            <p class="byline"><a href="https://x.com/econoalchemist" target="_blank">Econoalchemist</a> &middot; Imagine IF 2025</p>
+        </div>
+    </section>
+
+    <!-- Opening context -->
+    <section class="opening-context" data-reveal>
+        <p>Econoalchemist asked every person in the room to raise their hand. Do you like to speak your mind? Do you like to transact freely? Do you own property? Do you value privacy?</p>
+        <p>Every hand went up. Then he asked them to picture a world where every one of those rights had been taken. Retaliation for speaking. Bank accounts frozen. Property confiscated. Surveillance everywhere.</p>
+        <p>That's not hypothetical. That's the trajectory. "All governments trend toward totalitarianism, eroding your rights along their descent." The only thing standing between those two worlds is freedom tech, and the only reason freedom tech exists is because developers chose to build it.</p>
+    </section>
+
+    <!-- Evidence 1 -->
+    <section class="evidence" data-reveal>
+        <blockquote class="evidence-quote">"It's not a matter of don't tread on me. It's that you can't tread on me. That's the point."</blockquote>
+        <div class="evidence-context">
+            <p>Freedom tech has unique attributes that make it different from every other tool. It's free and open source. Permissionless. It provides asymmetric advantages like encryption, where it's trivially easy to lock something down and computationally impossible to break it. It's censorship resistant. It does what it's supposed to do, and it doesn't care what any law says. "It's easy to contribute to. It's easy to find, but it's really hard to stop."</p>
+        </div>
+    </section>
+
+    <!-- Evidence 2 -->
+    <section class="evidence" data-reveal>
+        <blockquote class="evidence-quote">"Combating misinformation is just code speak for attacking free speech, suppression of dissenting opinions, conditional access, and retaliation for speaking freely."</blockquote>
+        <div class="evidence-context">
+            <p>The EU rolled out a digital identification mandate under the guise of fighting misinformation. Google now requires government ID from developers and blocks sideloading on stock devices. Twitter forces identification in certain countries. China's great firewall technology is being sold to governments worldwide. Each system built to protect you is really a gate between you and the open internet. The countermeasures already exist: Nostr, Start9, GrapheneOS, Signal, Tor, Mullvad. Every vector of control has an open-source answer.</p>
+        </div>
+    </section>
+
+    <!-- Video — the crescendo -->
+    <section class="video-section" data-reveal>
+        <iframe
+            src="https://www.youtube.com/embed/hfXUwuH2OPU"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; display: block;">
+        </iframe>
+    </section>
+
+    <!-- Evidence 3 -->
+    <section class="evidence" data-reveal>
+        <blockquote class="evidence-quote">"Bitcoin is not confiscatable if it's done right. Software is code. Code is speech. And I for one stand for unrestricted free speech."</blockquote>
+        <div class="evidence-context">
+            <p>The Canadian trucker convoy proved it. People who donated had their bank accounts seized. The financial system was weaponized against dissent. Bitcoin doesn't bend to that. Ashigaru on mobile, Sparrow on desktop, Ronin and Dojo for the network, CoinJoin for privacy. The entire stack runs without anyone's permission.</p>
+        </div>
+    </section>
+
+    <!-- Evidence 4 -->
+    <section class="evidence" data-reveal>
+        <blockquote class="evidence-quote">"We don't go after gun manufacturers when some psychopath comes out of a crowd and shoots Charlie Kirk in the neck. Why are we going after software developers?"</blockquote>
+        <div class="evidence-context">
+            <p>Two Samourai Wallet developers. Arrested. $200 million in fines. 25 years in prison. Non-custodial software. Never touched anyone's money. The state kicked in their doors for writing code that enabled anonymity on a public blockchain. The pendulum swings, and one day you go from upstanding citizen to criminal overnight. Groups like petertodd.org ensure privacy developers have legal defense when they need it. "Privacy is a human fight."</p>
+        </div>
+    </section>
+
+    <!-- Thesis restated -->
+    <section class="thesis-restate" data-reveal>
+        <p class="thesis-closing">If you value the free society that you live in, then ensure that your kids can enjoy it too by supporting these developers today.</p>
+        <p class="closing-text">He ended with a photo of himself and his son on a roof, installing a Blockstream satellite dish to download the Bitcoin blockchain without the internet. His wife took the picture. "I was explaining to my son that the question's not who's going to let us, but who's going to stop us." Sovereignty isn't granted. It's built.</p>
+    </section>
+
+</main>
+
+<!-- Supporters -->
+<section class="supporters-section">
+    <div class="container">
+        <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+        <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+        <div class="supporters-grid">
+            <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+            <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+            <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+            <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+            <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+            <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+            <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+            <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+            <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+            <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 Bitcoin Park. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+(function(){
+  // Reveal on scroll
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+
+  // Thesis parallax (desktop only)
+  var thesis = document.querySelector('[data-thesis-parallax]');
+  if(thesis && window.innerWidth > 768){
+    var ticking = false;
+    var firstEvidence = document.querySelector('.evidence');
+    if(firstEvidence){
+      window.addEventListener('scroll',function(){
+        if(!ticking){
+          requestAnimationFrame(function(){
+            var rect = firstEvidence.getBoundingClientRect();
+            var viewH = window.innerHeight;
+            var progress = Math.min(Math.max(1 - (rect.top / viewH), 0), 1);
+            thesis.style.opacity = 1 - (progress * 0.85);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
