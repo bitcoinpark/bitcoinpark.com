@@ -3,73 +3,55 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Takeover 2026: An Abundant Future in Laboratory Texas - Bitcoin Park</title>
-    <meta property="og:title" content="Bitcoin Takeover 2026: An Abundant Future in Laboratory Texas">
-    <meta property="og:description" content="Robert Warren traces Bitcoin mining's evolution from apartment tinkering to industrial scale, making the case that Texas is where the full potential of Bitcoin mining gets proven out.">
-    <meta property="og:image" content="https://bitcoinpark.com/takeover/an-abundant-future-hero.jpg">
+    <title>An Abundant Future in Laboratory Texas - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="An Abundant Future in Laboratory Texas">
+    <meta property="og:description" content="Robert Warren on why Texas is where Bitcoin mining's full potential gets proven out.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/laboratory-texas-hero.jpg">
     <meta property="og:url" content="https://bitcoinpark.com/takeover/an-abundant-future-laboratory-texas-robert-warren.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-orange-hover: #E8840F;
-            --electric-blue: #00D4FF;
-            --deep-black: #0A0A0A;
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
             --cyber-dark: #1a1a1a;
             --cyber-gray: #2a2a2a;
-            --concrete-gray: #808080;
-            --text-gray: #b0b0b0;
-            --pure-white: #FFFFFF;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: var(--deep-black);
-            color: var(--pure-white);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* BT26 Background Effects */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background:
                 radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Scanline Effect */
         .scanline-effect {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.06),
-                rgba(0, 0, 0, 0.06) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 1px, transparent 1px, transparent 2px);
             pointer-events: none;
             z-index: 10001;
             animation: scanline 8s linear infinite;
@@ -80,27 +62,9 @@
             100% { transform: translateY(100vh); }
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 0;
@@ -118,24 +82,6 @@
             gap: 15px;
         }
 
-        .navbar a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-        }
-
         .navbar-logo img {
             height: 39px;
             width: auto;
@@ -143,51 +89,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .navbar-logo:hover img {
-            opacity: 1;
-        }
+        .navbar-logo:hover img { opacity: 1; }
 
-        /* Sponsor Thank You Bar - Hidden, replaced by scrolling version */
-        .sponsor-thank-you {
-            display: none;
-        }
-
-        .sponsor-thank-you-text {
-            font-size: 0.75rem;
-            color: var(--bitcoin-orange);
-            font-weight: 500;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-start;
-            line-height: 0.8;
-        }
-
-        .sponsor-thank-you-text a {
-            font-size: 0.75rem;
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            border-bottom: 1px solid transparent;
-            white-space: nowrap;
-        }
-
-        .sponsor-thank-you-text a:hover {
-            color: var(--bitcoin-orange);
-            border-bottom-color: var(--bitcoin-orange);
-        }
-
-        .sponsor-separator {
-            color: var(--bitcoin-orange);
-            width: 1px;
-            height: 12px;
-            background-color: var(--bitcoin-orange);
-            display: inline-block;
-            margin: 0 4px;
-        }
-
-        /* Scrolling Sponsors Bar */
         .mobile-sponsor-bar {
             display: flex;
             align-items: center;
@@ -199,11 +102,11 @@
 
         .mobile-sponsor-static {
             font-size: 0.7rem;
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         .mobile-sponsor-scroll-container {
@@ -211,7 +114,6 @@
             flex: 1;
             min-width: 0;
             mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
         }
 
         .mobile-sponsor-scroll {
@@ -229,29 +131,20 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-sponsor-scroll a:hover {
-            color: var(--bitcoin-orange);
-        }
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
 
         .mobile-sponsor-scroll .sponsor-dot {
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-size: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
         }
 
         @keyframes scrollSponsors {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .navbar-back-link {
-            color: var(--pure-white);
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
@@ -262,17 +155,17 @@
         }
 
         .navbar-back-link:hover {
-            color: var(--electric-blue);
+            color: var(--accent2);
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
-        /* Hero Image Section */
         .hero-image {
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--deep-black);
-            margin: 60px 0;
+            background: var(--bg);
+            margin-top: 60px;
+            margin-bottom: -80px;
         }
 
         .hero-image img {
@@ -287,127 +180,121 @@
         .hero-image::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            bottom: 0; left: 0; right: 0;
+            height: 250px;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.85) 70%, var(--bg));
             pointer-events: none;
         }
 
-        /* Main Content */
-        .main-content {
-            background: transparent;
-            padding: 70px 0 60px 0;
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        /* Session Summary Section */
-        .session-summary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--cyber-gray);
-            border-left: 4px solid var(--bitcoin-orange);
-            padding: 35px 40px 40px 40px;
-            margin-bottom: 60px;
+        .thesis-container {
+            padding: 0 0 80px 0;
         }
 
-        .session-summary h2 {
-            font-size: 1.8rem;
+        .thesis {
+            position: sticky;
+            top: 0;
+            padding: 40px 0;
+            background: var(--bg);
+            z-index: 5;
+        }
+
+        .thesis-text {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
         }
 
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.7;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .opening-context {
+            padding: 35px 0;
+        }
+
+        .opening-context p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
             margin-bottom: 25px;
         }
 
-        .session-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .evidence {
+            padding: 35px 0;
         }
 
-        .session-meta-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--concrete-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .session-meta-value {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-gray);
-        }
-
-        .session-meta-value.highlight {
-            color: var(--bitcoin-orange);
-        }
-
-        .speaker-highlight {
-            color: var(--bitcoin-orange);
-            font-weight: 600;
-        }
-
-        .session-abstract {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--cyber-gray);
-            padding-top: 25px;
-            margin-top: 25px;
-        }
-
-        /* Article Section */
-        .article-section {
-            margin-bottom: 80px;
-        }
-
-        .article-headline {
-            font-size: 2.2rem;
+        .evidence-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 15px;
-            letter-spacing: 0.02em;
+            color: var(--text);
+            line-height: 1.3;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent);
         }
 
-        .article-subheader {
-            font-size: 1.3rem;
-            font-weight: 500;
+        .evidence-context p {
+            font-size: 1.125rem;
             color: var(--text-gray);
-            margin-bottom: 35px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .video-embed {
+            margin: 40px 0;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .thesis-restate {
+            padding: 35px 0 60px 0;
+        }
+
+        .thesis-closing {
+            font-size: 1.125rem;
+            color: var(--text);
+            font-weight: 600;
+            margin-bottom: 25px;
             line-height: 1.6;
         }
 
-        .article-content {
-            font-size: 1.1rem;
+        .thesis-restate p {
+            font-size: 1.125rem;
             color: var(--text-gray);
             line-height: 1.9;
         }
 
-        .article-content p {
-            margin-bottom: 25px;
-        }
-
-        /* Company Supporters Section */
         .supporters-section {
             background: var(--cyber-dark);
             padding: 60px 0;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
             text-align: center;
         }
 
@@ -420,7 +307,7 @@
 
         .supporters-thank-you {
             font-size: 1rem;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 35px;
         }
 
@@ -445,7 +332,7 @@
         }
 
         .supporter-logo:hover {
-            border-color: var(--bitcoin-orange);
+            border-color: var(--accent);
             background: rgba(247, 147, 26, 0.08);
             box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
         }
@@ -457,135 +344,73 @@
             text-align: center;
         }
 
-        .supporter-logo:hover span {
-            color: var(--bitcoin-orange);
-        }
+        .supporter-logo:hover span { color: var(--accent); }
 
-        /* Footer */
         .site-footer {
-            background: var(--deep-black);
+            background: var(--bg);
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .site-footer p {
-            color: var(--concrete-gray);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
-        /* Responsive */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 1024px) {
-            .supporters-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
+            .supporters-grid { grid-template-columns: repeat(5, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            .main-content {
-                padding: 160px 0 60px 0;
-            }
-
+            main { padding: 0 24px; }
+            .hero-image { margin-bottom: -60px; }
+            .thesis-container { padding: 0 0 60px 0; }
+            .thesis { position: static; padding: 0; background: transparent; }
+            .opening-context { padding: 25px 0; }
+            .evidence { padding: 25px 0; }
+            .supporters-section .container { padding: 0 20px; }
             .navbar-content {
                 padding: 0 20px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
             }
-
             .mobile-sponsor-bar {
                 width: 100%;
                 padding: 8px 0;
                 border-bottom: 1px solid var(--cyber-gray);
             }
-
             .navbar-back-link {
                 position: absolute;
                 top: 15px;
                 right: 20px;
                 font-size: 0.85rem;
             }
-
-            .navbar-content {
-                position: relative;
-            }
-
-            .session-summary {
-                padding: 30px 20px;
-            }
-
-            .session-summary h2 {
-                font-size: 1.4rem;
-            }
-
-            .session-meta {
-                gap: 20px;
-            }
-
-            .article-headline {
-                font-size: 1.8rem;
-            }
-
-            .article-subheader {
-                font-size: 1.1rem;
-            }
-
-            .supporters-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .session-meta {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .article-headline {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Fade-in animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
     <div class="scanline-effect"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
-            <div class="sponsor-thank-you">
-                <span class="sponsor-thank-you-text">A Special Thank You to Our BT26 Sponsors:
-                    <a href="https://zaprite.com" target="_blank">Zaprite</a>
-                    <span class="sponsor-separator"></span>
-                    <a href="https://block.xyz" target="_blank">Block</a>
-                    <span class="sponsor-separator"></span>
-                    <a href="https://zbd.gg" target="_blank">ZBD</a>
-                    <span class="sponsor-separator"></span>
-                    <a href="https://unchained.com" target="_blank">Unchained</a>
-                </span>
-            </div>
-            <!-- Mobile Scrolling Sponsors -->
             <div class="mobile-sponsor-bar">
                 <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
                 <div class="mobile-sponsor-scroll-container">
@@ -598,7 +423,6 @@
                         <span class="sponsor-dot">&#8226;</span>
                         <a href="https://unchained.com" target="_blank">Unchained</a>
                         <span class="sponsor-dot">&#8226;</span>
-                        <!-- Duplicate for seamless loop -->
                         <a href="https://zaprite.com" target="_blank">Zaprite</a>
                         <span class="sponsor-dot">&#8226;</span>
                         <a href="https://block.xyz" target="_blank">Block</a>
@@ -609,73 +433,68 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="container">
-            <!-- Session Summary -->
-            <section class="session-summary fade-in">
-                <h2>An Abundant Future in Laboratory Texas</h2>
-                <div class="session-meta">
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Experience</span>
-                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Session Type</span>
-                        <span class="session-meta-value">Presentation</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Date</span>
-                        <span class="session-meta-value">March 13, 2026</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Speaker</span>
-                        <span class="session-meta-value"><a href="https://x.com/robertwarren" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Robert Warren</a> (Bitcoin Park)</span>
-                    </div>
-                </div>
-                <div class="session-abstract">
-                    This episode explores the evolution of Bitcoin mining, its technological advancements, and the significance of Texas as a hub for energy innovation and Bitcoin development. Robert Warren shares personal stories, industry insights, and the transformative potential of energy and talent in shaping the future of Bitcoin and global economies.
-                </div>
-            </section>
+    <section class="hero-image">
+        <img src="laboratory-texas-hero.jpg" alt="Robert Warren presenting on Bitcoin mining at Bitcoin Takeover 2026">
+    </section>
 
-            <!-- Hero Image -->
-            <section class="hero-image">
-                <img src="an-abundant-future-hero.jpg" alt="Robert Warren presenting An Abundant Future in Laboratory Texas at Bitcoin Takeover 2026">
-            </section>
+    <main>
+        <section class="thesis-container">
+            <div class="thesis" data-thesis-parallax>
+                <p class="thesis-text">Texas is the only place on earth where the full potential of Bitcoin mining can be proven out, and the work happening there will become the template applied everywhere else.</p>
+                <p class="byline">Robert Warren · Bitcoin Takeover 2026 · Keynote</p>
+            </div>
+        </section>
 
-            <!-- Article Section -->
-            <article class="article-section fade-in">
-                <h2 class="article-headline">From an Apartment Bathroom to Hundreds of Megawatts, Robert Warren Shows Bitcoin Mining's First Principles</h2>
-                <p class="article-subheader">Five years ago, Robert Warren was staring at the door of his second bathroom in a Denver apartment, listening to the scream of a Bitmain S9 ASIC miner. Now he's making the case that Texas is where Bitcoin mining's full potential gets proven out.</p>
+        <section class="opening-context" data-reveal>
+            <p>Five years ago, Robert Warren was staring at the door of his second bathroom in a Denver apartment, listening to the scream of a Bitmain S9 ASIC miner.</p>
+            <p>Warren, now a Bitcoin mining industry veteran and Head of Research and Education at Bitcoin Park, shared that story at Bitcoin Takeover 2026 as the opening act for a larger argument about where Bitcoin mining goes next.</p>
+        </section>
 
-                <div class="article-content">
-                    <p>Warren, now a Bitcoin mining industry veteran and Head of Research and Education at Bitcoin Park, shared the story at Bitcoin Takeover 2026, as the opening act for a larger argument: that Texas has become the only place on earth where the full potential of Bitcoin mining can be proven out, and that the work happening there today will become the template applied everywhere else. "For the first time, the network had come to life for me," Warren said of those early days mining in the apartment. "And it was currently drying my laundry."</p>
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"For the first time, the network had come to life for me. And it was currently drying my laundry."</blockquote>
+            <div class="evidence-context">
+                <p>The S9 didn't stay in the bathroom. It moved to a balcony enclosure built from a sheet of plywood, a design Upstream Data CEO Steve Barber had shared online, and then into the laundry room of the house Warren eventually bought, where it pumped waste heat into the HVAC return.</p>
+                <p>That tinkering phase produced the Bitcoin Miner's Almanac, a guide Warren wrote before AI writing tools existed.</p>
+            </div>
+        </section>
 
-                    <p>The S9 didn't stay in the bathroom. It moved to a balcony enclosure built from a sheet of plywood &mdash; a design Upstream Data CEO, Steve Barber had shared online &mdash; and then into the laundry room of the house Warren eventually bought, where it pumped waste heat into the HVAC return. That tinkering phase produced the Bitcoin Miner's Almanac, a guide Warren wrote, he noted jokingly, before AI writing tools existed.</p>
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">The retail wave was enabled by four factors: talent, money, catalyst, and attractor.</blockquote>
+            <div class="evidence-context">
+                <p>Warren traced the conditions that made the first wave of retail Bitcoin mining possible. Depreciated S9s hitting the secondary market when S19s arrived. A community of tinkerers on Twitter and Telegram who swapped designs and shipped pallets of machines to each other. COVID-era restlessness as the catalyst. The open internet as the connective tissue.</p>
+                <p>Those same four factors then appeared at industrial scale.</p>
+            </div>
+        </section>
 
-                    <p>The journey from that 14-terahash machine to the 30-foot wall of S19s at Riot's Rockdale, Texas facility, where Warren later worked, wasn't just a change in scale. It was a change in the nature of the problem. "We were solving for the problem of this building is a thousand feet long," he said. "How do I correlate the size of my transformers to the size of my cooling infrastructure?"</p>
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"We were solving for the problem of this building is a thousand feet long. How do I correlate the size of my transformers to the size of my cooling infrastructure?"</blockquote>
+            <div class="evidence-context">
+                <p>The journey from that 14-terahash machine to the 30-foot wall of S19s at Riot's Rockdale, Texas facility, where Warren later worked, wasn't just a change in scale. It was a change in the nature of the problem.</p>
+            </div>
+        </section>
 
-                    <!-- Embedded Video -->
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/jnWSNffKu-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
-
-                    <p>Warren traced the conditions that made the first wave of retail Bitcoin mining possible: depreciated S9s hitting the secondary market when S19s arrived, a community of tinkerers on Twitter and Telegram who swapped designs and shipped pallets of machines to each other, COVID-era restlessness as the catalyst, and the open internet as the connective tissue.</p>
-
-                    <p>Those same four factors &mdash; talent, money, catalyst, and attractor &mdash; then appeared at industrial scale. The catalyst the second time was Sen. Elizabeth Warren's (D-Mass.) attempt to get the EPA to compel miners to disclose their machines, contracts, and vendors. The industry responded by sending Pierre Rochard to the Rockdale site with a CO2 monitor to show that Bitcoin miners produce no carbon emissions.</p>
-
-                    <p>"Power is fundamentally human flourishing," Warren said. "There is no rich, low-energy country on earth. There will never be a rich, low-energy country on earth."</p>
-
-                    <p>Texas, he argued, is where that thesis gets tested at scale. Its independent grid, ERCOT, is unlike any other in the world. The demand to connect to it keeps growing. And the concentration of miners, infrastructure builders, and energy operators there means the frameworks being developed will eventually reach places that don't yet have Texas's advantages.</p>
-
-                    <p>Warren is already pointing to what comes next: the Texas Energy & Mining Summit on May 21.</p>
-                </div>
-            </article>
+        <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/jnWSNffKu-0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"Power is fundamentally human flourishing. There is no rich, low-energy country on earth. There will never be a rich, low-energy country on earth."</blockquote>
+            <div class="evidence-context">
+                <p>The catalyst the second time was Sen. Elizabeth Warren's attempt to get the EPA to compel miners to disclose their machines, contracts, and vendors. The industry responded by sending Pierre Rochard to the Rockdale site with a CO2 monitor to show that Bitcoin miners produce no carbon emissions.</p>
+                <p>The response clarified the stakes.</p>
+            </div>
+        </section>
+
+        <section class="thesis-restate" data-reveal>
+            <p class="thesis-closing">Texas, Warren argued, is where that thesis gets tested at scale.</p>
+            <p>Its independent grid, ERCOT, is unlike any other in the world. The demand to connect to it keeps growing. And the concentration of miners, infrastructure builders, and energy operators there means the frameworks being developed will eventually reach places that don't yet have Texas's advantages.</p>
+        </section>
     </main>
 
-    <!-- Company Supporters Section -->
     <section class="supporters-section">
         <div class="container">
             <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
@@ -702,23 +521,33 @@
     </footer>
 
     <script>
-        // Fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+  var thesis = document.querySelector('[data-thesis-parallax]');
+  if(thesis && window.innerWidth > 768){
+    var ticking = false;
+    var firstEvidence = document.querySelector('.evidence');
+    if(firstEvidence){
+      window.addEventListener('scroll',function(){
+        if(!ticking){
+          requestAnimationFrame(function(){
+            var rect = firstEvidence.getBoundingClientRect();
+            var viewH = window.innerHeight;
+            var progress = Math.min(Math.max(1 - (rect.top / viewH), 0), 1);
+            thesis.style.opacity = 1 - (progress * 0.85);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  }
+})();
     </script>
 </body>
 </html>
