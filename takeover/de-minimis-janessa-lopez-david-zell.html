@@ -3,36 +3,36 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Takeover 2026: De Minimis Developer Freedom and the Future of Bitcoin Payments - Bitcoin Park</title>
-    <meta property="og:title" content="Bitcoin Takeover 2026: De Minimis Developer Freedom and the Future of Bitcoin Payments">
-    <meta property="og:description" content="Congress may pass a de minimis tax exemption that excludes Bitcoin entirely. Janessa Lopez of Block and David Zell of the Bitcoin Policy Institute explain why that matters — and what you can do about it.">
+    <title>De Minimis, Developer Freedom, and the Future of Bitcoin Payments - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="De Minimis, Developer Freedom, and the Future of Bitcoin Payments">
+    <meta property="og:description" content="Janessa Lopez and David Zell on why a stablecoin-only de minimis would leave Bitcoin behind.">
     <meta property="og:image" content="https://bitcoinpark.com/takeover/de-minimis-hero.jpg">
     <meta property="og:url" content="https://bitcoinpark.com/takeover/de-minimis-janessa-lopez-david-zell.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-orange-hover: #E8840F;
-            --electric-blue: #00D4FF;
-            --deep-black: #0A0A0A;
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
             --cyber-dark: #1a1a1a;
             --cyber-gray: #2a2a2a;
-            --concrete-gray: #808080;
-            --text-gray: #b0b0b0;
-            --pure-white: #FFFFFF;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: var(--deep-black);
-            color: var(--pure-white);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
         body::before {
@@ -42,9 +42,7 @@
             width: 100%; height: 100%;
             background:
                 radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -62,21 +60,6 @@
         @keyframes scanline {
             0% { transform: translateY(0); }
             100% { transform: translateY(100vh); }
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
         }
 
         .navbar {
@@ -99,21 +82,6 @@
             gap: 15px;
         }
 
-        .navbar a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .navbar-logo { display: flex; align-items: center; }
-
         .navbar-logo img {
             height: 39px;
             width: auto;
@@ -122,8 +90,6 @@
         }
 
         .navbar-logo:hover img { opacity: 1; }
-
-        .sponsor-thank-you { display: none; }
 
         .mobile-sponsor-bar {
             display: flex;
@@ -136,11 +102,11 @@
 
         .mobile-sponsor-static {
             font-size: 0.7rem;
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         .mobile-sponsor-scroll-container {
@@ -148,7 +114,6 @@
             flex: 1;
             min-width: 0;
             mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
         }
 
         .mobile-sponsor-scroll {
@@ -166,14 +131,11 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-sponsor-scroll a:hover { color: var(--bitcoin-orange); }
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
 
         .mobile-sponsor-scroll .sponsor-dot {
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-size: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
         }
 
         @keyframes scrollSponsors {
@@ -182,7 +144,7 @@
         }
 
         .navbar-back-link {
-            color: var(--pure-white);
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
@@ -193,7 +155,7 @@
         }
 
         .navbar-back-link:hover {
-            color: var(--electric-blue);
+            color: var(--accent2);
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
@@ -201,8 +163,9 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--deep-black);
-            margin: 60px 0;
+            background: var(--bg);
+            margin-top: 60px;
+            margin-bottom: -80px;
         }
 
         .hero-image img {
@@ -218,107 +181,135 @@
             content: '';
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            height: 250px;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.85) 70%, var(--bg));
             pointer-events: none;
         }
 
-        .main-content {
-            background: transparent;
-            padding: 70px 0 60px 0;
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        .session-summary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--cyber-gray);
-            border-left: 4px solid var(--bitcoin-orange);
-            padding: 35px 40px 40px 40px;
-            margin-bottom: 60px;
+        .session-header {
+            padding: 0 0 80px 0;
+            position: relative;
         }
 
-        .session-summary h2 {
-            font-size: 1.8rem;
+        .session-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+            color: var(--text);
+            margin-bottom: 15px;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
         }
 
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.7;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .chapter {
+            padding: 35px 0;
+        }
+
+        .chapter-divider {
             margin-bottom: 25px;
         }
 
-        .session-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .chapter-divider hr {
+            border: none;
+            border-top: 2px solid var(--accent);
+            margin-bottom: 10px;
         }
 
-        .session-meta-label {
+        .chapter:nth-child(even) .chapter-divider hr {
+            border-color: var(--accent2);
+        }
+
+        .chapter-name {
+            font-family: var(--font-display);
             font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--concrete-gray);
+            color: var(--text);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
         }
 
-        .session-meta-value {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-gray);
+        .pull-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+            margin: 25px 0;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent);
         }
 
-        .session-abstract {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--cyber-gray);
-            padding-top: 25px;
-            margin-top: 25px;
-        }
-
-        .article-section { margin-bottom: 80px; }
-
-        .article-headline {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 15px;
-            letter-spacing: 0.02em;
-        }
-
-        .article-subheader {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-
-        .article-content {
-            font-size: 1.1rem;
+        .chapter-content {
+            font-size: 1.125rem;
             color: var(--text-gray);
             line-height: 1.9;
         }
 
-        .article-content p { margin-bottom: 25px; }
+        .chapter-content p {
+            margin-bottom: 25px;
+        }
+
+        .chapter-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-content a:hover {
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 8px rgba(247, 147, 26, 0.3);
+        }
+
+        .video-embed {
+            margin: 40px 0;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .closing {
+            padding: 35px 0 60px 0;
+        }
+
+        .closing p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
 
         .supporters-section {
             background: var(--cyber-dark);
             padding: 60px 0;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
-        .supporters-section .container { text-align: center; }
+        .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
 
         .mission-statement {
             font-size: 1.1rem;
@@ -329,7 +320,7 @@
 
         .supporters-thank-you {
             font-size: 1rem;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 35px;
         }
 
@@ -354,7 +345,7 @@
         }
 
         .supporter-logo:hover {
-            border-color: var(--bitcoin-orange);
+            border-color: var(--accent);
             background: rgba(247, 147, 26, 0.08);
             box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
         }
@@ -366,21 +357,34 @@
             text-align: center;
         }
 
-        .supporter-logo:hover span { color: var(--bitcoin-orange); }
+        .supporter-logo:hover span { color: var(--accent); }
 
         .site-footer {
-            background: var(--deep-black);
+            background: var(--bg);
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .site-footer p {
-            color: var(--concrete-gray);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chapter [data-reveal]:nth-child(2) {
+            transition-delay: 0.05s;
         }
 
         @media (max-width: 1024px) {
@@ -388,14 +392,16 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .main-content { padding: 160px 0 60px 0; }
+            main { padding: 0 24px; }
+            .hero-image { margin-bottom: -60px; }
+            .session-header { padding: 0 0 60px 0; }
+            .chapter { padding: 25px 0; }
+            .supporters-section .container { padding: 0 20px; }
             .navbar-content {
                 padding: 0 20px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
-                position: relative;
             }
             .mobile-sponsor-bar {
                 width: 100%;
@@ -408,39 +414,21 @@
                 right: 20px;
                 font-size: 0.85rem;
             }
-            .session-summary { padding: 30px 20px; }
-            .session-summary h2 { font-size: 1.4rem; }
-            .session-meta { gap: 20px; }
-            .article-headline { font-size: 1.8rem; }
-            .article-subheader { font-size: 1.1rem; }
-            .supporters-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        }
-
-        @media (max-width: 480px) {
-            .session-meta { flex-direction: column; gap: 15px; }
-            .article-headline { font-size: 1.5rem; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
+            .chapter [data-reveal]:nth-child(2) {
+                transition-delay: 0.05s;
+            }
         }
     </style>
 </head>
 <body>
     <div class="scanline-effect"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
-            <div class="sponsor-thank-you"></div>
             <div class="mobile-sponsor-bar">
                 <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
                 <div class="mobile-sponsor-scroll-container">
@@ -463,76 +451,89 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="container">
-            <!-- Session Summary -->
-            <section class="session-summary fade-in">
-                <h2>De Minimis Developer Freedom and the Future of Bitcoin Payments</h2>
-                <div class="session-meta">
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Experience</span>
-                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Session Type</span>
-                        <span class="session-meta-value">Panel Discussion</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Speakers</span>
-                        <span class="session-meta-value">
-                            <a href="https://x.com/janessalopez__" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Janessa Lopez</a> (Block),
-                            <a href="https://x.com/DavidZell_" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">David Zell</a> (Bitcoin Policy Institute)
-                        </span>
-                    </div>
-                </div>
-                <div class="session-abstract">
-                    This Bitcoin Takeover panel covers the de minimis tax exemption for Bitcoin payments, policy advocacy, and the future of Bitcoin regulation in the US. Janessa Lopez of Block and David Zell of the Bitcoin Policy Institute discuss how policy changes impact Bitcoin adoption — and what advocates can do to influence legislation.
-                </div>
-            </section>
+    <section class="hero-image">
+        <img src="de-minimis-hero.jpg" alt="Janessa Lopez and David Zell discussing Bitcoin tax policy at Bitcoin Takeover 2026">
+    </section>
 
-            <!-- Hero Image -->
-            <section class="hero-image">
-                <img src="de-minimis-hero.jpg" alt="Janessa Lopez and David Zell discussing Bitcoin policy at Bitcoin Takeover 2026">
-            </section>
+    <main>
+        <header class="session-header" data-reveal>
+            <h1>De Minimis, Developer Freedom, and the Future of Bitcoin Payments</h1>
+            <p class="byline">Janessa Lopez (Block), David Zell (Bitcoin Policy Institute) · Bitcoin Takeover 2026 · Panel</p>
+        </header>
 
-            <!-- Article Section -->
-            <article class="article-section fade-in">
-                <h2 class="article-headline">A Stablecoin-Only De Minimis Would Leave Bitcoin Behind, Block Policy Lead Warns</h2>
-                <p class="article-subheader">Congress may pass a de minimis tax exemption that excludes Bitcoin entirely. Janessa Lopez, head of digital assets policy at Block, says that makes "zero sense" — and the window to fix it is closing fast.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">8 Billion Forms</span>
+            </div>
+            <blockquote class="pull-quote">"This has moved from being a hypothetical reality to a realistic one."</blockquote>
+            <div class="chapter-content" data-reveal>
+                <p>Janessa Lopez, head of digital assets policy at Block, laid out the scale of the problem. Block has enabled more than 4 million U.S. merchants to accept Bitcoin at the point of sale through Square. Customers can tap their phone to pay, just like any other transaction.</p>
+                <p>But every one of those purchases triggers a capital gains reporting obligation to the IRS, no matter how small.</p>
+                <p>The IRS estimates it will receive more than 8 billion broker reporting forms in the first year of crypto tax enforcement. Block expects that number to climb sharply as Bitcoin payment adoption grows, flooding the agency with forms over transactions that generate negligible tax revenue.</p>
+            </div>
+        </section>
 
-                <div class="article-content">
-                    <p>Speaking at Bitcoin Takeover, Lopez laid out the ecosystem. Block has enabled more than 4 million U.S. merchants to accept Bitcoin at the point of sale through Square. Customers can tap their phone to pay, just like any other transaction. But every one of those purchases triggers a capital gains reporting obligation to the IRS, no matter how small.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The $200 Compromise</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>A de minimis exemption would set a dollar threshold below which Bitcoin purchases are exempt from capital gains reporting. Block initially proposed $600 per transaction. Skeptics called that too high.</p>
+                <p>The conversation has since settled around $200, matching the existing exemption for foreign currency payments.</p>
+            </div>
+        </section>
 
-                    <p>"This has moved from being a hypothetical reality to a realistic one," she said. "Creating policies for that technology is a more legitimate claim that we have."</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">Stablecoins Aren't Bitcoin</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>But a bill introduced in the House applied the exemption only to stablecoins, which are pegged to the dollar and produce no taxable gain or loss by design.</p>
+                <p>Lopez argued stablecoins should simply be treated as cash equivalents, with no capital gains reporting at all. The exemption, she said, is needed for assets like Bitcoin that actually fluctuate in value.</p>
+                <p>"We desperately need this change," she said.</p>
+            </div>
 
-                    <p>The IRS estimates it will receive more than 8 billion broker reporting forms in the first year of crypto tax enforcement. Block expects that number to climb sharply as Bitcoin payment adoption grows, flooding the agency with forms over transactions that generate negligible tax revenue.</p>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/eD9GZBCy5O0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
 
-                    <p>A de minimis exemption would set a dollar threshold below which Bitcoin purchases are exempt from capital gains reporting. Block initially proposed $600 per transaction. Skeptics called that too high. The conversation has since settled around $200, matching the existing exemption for foreign currency payments.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Trojan Horse Myth</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>Critics, including Americans for Tax Fairness, have called a crypto de minimis a "Trojan horse for tax evasion." Lopez dismissed the concern. A millionaire looking to dodge taxes, she argued, would use existing loopholes rather than structure hundreds of sub-$200 transactions.</p>
+                <p>She also pointed to Bank Secrecy Act compliance controls already in place at brokers like Cash App, which flag suspicious patterns automatically.</p>
+                <p>Block has proposed limiting the exemption to payment activity rather than investment trades, adding anti-structuring rules, and restricting eligibility to digital assets with market capitalizations above $25 billion. That would effectively narrow the field to large, established networks while keeping the policy technology-neutral, an approach Congress prefers to naming Bitcoin in statute.</p>
+            </div>
+        </section>
 
-                    <!-- Embedded Video -->
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/eD9GZBCy5O0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Reconciliation Clock</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>The legislative window is tight. A standalone tax bill has almost no chance of passing. The most likely vehicle is a reconciliation package, and Lopez said the push needs to happen before Congress leaves for August recess and shifts focus to midterm elections.</p>
+                <p>For Bitcoiners who want to help, Block built <a href="https://btcismoney.xyz/" target="_blank">btcismoney.xyz</a>, a site with pre-written emails users can send to their representatives.</p>
+                <p>David Zell, who leads a free legal counsel program at the Bitcoin Policy Institute for Bitcoin builders, urged the audience to contact their offices directly. Whether the exemption lands at $200 or some other number matters less than whether Bitcoin is included at all.</p>
+            </div>
+        </section>
 
-                    <p>But a bill introduced in the House applied the exemption only to stablecoins, which are pegged to the dollar and produce no taxable gain or loss by design. Lopez argued stablecoins should simply be treated as cash equivalents, with no capital gains reporting at all. The exemption, she said, is needed for assets like Bitcoin that actually fluctuate in value.</p>
-
-                    <p>"We desperately need this change," she said.</p>
-
-                    <p>Critics, including Americans for Tax Fairness, have called a crypto de minimis a "Trojan horse for tax evasion." Lopez dismissed the concern. A millionaire looking to dodge taxes, she argued, would use existing loopholes rather than structure hundreds of sub-$200 transactions. She also pointed to Bank Secrecy Act compliance controls already in place at brokers like Cash App, which flag suspicious patterns automatically.</p>
-
-                    <p>Block has proposed limiting the exemption to payment activity rather than investment trades, adding anti-structuring rules, and restricting eligibility to digital assets with market capitalizations above $25 billion. That would effectively narrow the field to large, established networks while keeping the policy technology-neutral &mdash; an approach Congress prefers to naming Bitcoin in statute.</p>
-
-                    <p>The legislative window is tight. A standalone tax bill has almost no chance of passing. The most likely vehicle is a reconciliation package, and Lopez said the push needs to happen before Congress leaves for August recess and shifts focus to midterm elections.</p>
-
-                    <p>For Bitcoiners who want to help, Block built <a href="https://btcismoney.xyz/" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 8px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">btcismoney.xyz</a>, a site with pre-written emails users can send to their representatives. David Zell, who leads a free legal counsel program at the Bitcoin Policy Institute for Bitcoin builders, urged the audience to contact their offices directly. Whether the exemption lands at $200 or some other number matters less than whether Bitcoin is included at all. The reconciliation clock is ticking.</p>
-                </div>
-            </article>
-        </div>
+        <section class="closing" data-reveal>
+            <p>The reconciliation clock is ticking.</p>
+        </section>
     </main>
 
-    <!-- Company Supporters Section -->
     <section class="supporters-section">
         <div class="container">
             <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
@@ -559,13 +560,14 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+})();
     </script>
 </body>
 </html>
