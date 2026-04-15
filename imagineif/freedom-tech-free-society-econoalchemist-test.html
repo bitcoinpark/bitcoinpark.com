@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedom Tech is Fundamental to a Free Society - Econoalchemist | Imagine IF</title>
+    <meta property="og:title" content="Freedom Tech is Fundamental to a Free Society - Econoalchemist">
+    <meta property="og:description" content="It's not a matter of don't tread on me. It's that you can't tread on me. That's the point.">
+    <meta property="og:image" content="https://bitcoinpark.com/imagineif/ImagineIF-brandmark-blue@2x.png">
+    <meta property="og:url" content="https://bitcoinpark.com/imagineif/freedom-tech-free-society-econoalchemist-test.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #b683ed;
+            --text: #FFFFFF;
+            --accent: #e68158;
+            --secondary: #ffc6c2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rethink Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(182, 131, 237, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .navbar-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .navbar a:hover { opacity: 1; }
+        .navbar-logo img {
+            height: 36px;
+            width: auto;
+            opacity: 0.9;
+        }
+        .navbar-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+            flex: 1;
+            text-align: center;
+        }
+
+        /* Content container */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .container-wide {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Quote-driven sections */
+        .hero-quote {
+            padding: 140px 0 30px;
+        }
+        .quote-block {
+            padding: 60px 0;
+        }
+        .quote-hero {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .quote-hero::before {
+            content: none;
+        }
+        .byline {
+            font-size: 0.95rem;
+            opacity: 0.5;
+            max-width: 800px;
+            margin: 20px auto 0;
+            padding: 0 40px;
+        }
+        .context {
+            padding: 40px 0;
+        }
+        .context p, .chapter-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto 20px;
+            padding: 0 40px;
+        }
+
+        /* Video */
+        .video-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* Accent line between sections */
+        .quote-block + .quote-block::before {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 60px;
+            border-radius: 2px;
+        }
+
+        /* Supporters */
+        .supporters-section {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+        .supporters-section .container { text-align: center; }
+        .mission-statement {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        .supporters-thank-you {
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .supporter-logo:hover {
+            border-color: var(--secondary);
+            background: rgba(255, 198, 194, 0.1);
+        }
+        .supporter-logo span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0.7;
+            text-align: center;
+        }
+        .supporter-logo:hover span { opacity: 1; }
+
+        /* Footer */
+        .site-footer {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .site-footer p { opacity: 0.5; font-size: 0.85rem; }
+
+        /* Reveal animation */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quote-hero, .byline, .context p { padding: 0 24px; }
+            .navbar-content, .video-section { padding: 0 24px; }
+            .hero-quote { padding: 120px 0 20px; }
+            .quote-block { padding: 40px 0; }
+            .context { padding: 30px 0; }
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="navbar-content">
+        <a href="https://bitcoinpark.com/imagineif" class="navbar-logo">
+            <img src="ImagineIF-brandmark-blue@2x.png" alt="Imagine IF">
+        </a>
+        <span class="navbar-title">Imagine IF 2025</span>
+        <a href="index_imagineif.html">&larr; Back</a>
+    </div>
+</nav>
+
+<main>
+
+    <!-- Quote 1: The hook -->
+    <section class="hero-quote" data-reveal>
+        <blockquote class="quote-hero">"It's not a matter of don't tread on me. It's that you can't tread on me. That's the point."</blockquote>
+        <p class="byline">Econoalchemist &middot; Imagine IF 2025 &middot; Presentation</p>
+    </section>
+
+    <section class="context" data-reveal>
+        <p>Econoalchemist opened his Imagine IF presentation with a line that reframed the entire conversation about digital rights. Not a request. Not a protest sign. A mathematical fact. The tools exist. The encryption works. And no government on earth can change that.</p>
+        <p>What followed was 16 minutes of controlled fire. A case for why open-source developers are the most important people in the room, and why the free society you enjoy right now depends on them continuing to ship code.</p>
+    </section>
+
+    <!-- Quote 2 -->
+    <section class="quote-block" data-reveal>
+        <blockquote class="quote-hero">"The laws of math are stronger than the laws of man. All the violence in the world doesn't change the laws of math."</blockquote>
+    </section>
+    <section class="context" data-reveal>
+        <p>This was the thesis. Everything else in the talk built on this single premise. Encryption doesn't care about jurisdiction. A properly generated private key doesn't bend to a subpoena. The math just works.</p>
+    </section>
+
+    <!-- Quote 3 -->
+    <section class="quote-block" data-reveal>
+        <blockquote class="quote-hero">"Without open-source developers, there is no freedom tech. And without freedom tech, there is no free society."</blockquote>
+    </section>
+    <section class="context" data-reveal>
+        <p>He said this more than once, and it deserved repeating. The tools that protect your speech, your transactions, your property, your privacy? Someone built them for free. Nostr. GrapheneOS. Signal. Start9. Sparrow. Every one of them exists because a developer chose to write code that no company commissioned and no government approved.</p>
+    </section>
+
+    <!-- Video -->
+    <section class="video-section" data-reveal>
+        <iframe
+            src="https://www.youtube.com/embed/hfXUwuH2OPU"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            style="width: 100%; aspect-ratio: 16/9; border-radius: 8px; display: block;">
+        </iframe>
+    </section>
+
+    <!-- Quote 4 -->
+    <section class="quote-block" data-reveal>
+        <blockquote class="quote-hero">"Combating misinformation is just code speak for attacking free speech, suppression of dissenting opinions, conditional access, and retaliation for speaking freely."</blockquote>
+    </section>
+    <section class="context" data-reveal>
+        <p>He walked through the receipts. The EU's digital identification mandate. Google requiring government ID from Play Store developers. Twitter forcing identification in certain countries. Each one wrapped in the language of safety. Each one a new gate between you and the open internet.</p>
+    </section>
+
+    <!-- Quote 5 -->
+    <section class="quote-block" data-reveal>
+        <blockquote class="quote-hero">"Bitcoin is not confiscatable if it's done right. And in its most simple form, Bitcoin is software. Software is code. Code is speech."</blockquote>
+    </section>
+    <section class="context" data-reveal>
+        <p>The Canadian trucker convoy was the case study. Governments froze bank accounts. They went after donors. They used the financial system as a weapon against people who disagreed with them. Bitcoin sidesteps that entirely. Ashigaru on mobile. Sparrow on desktop. Ronin and Dojo to connect to the network. CoinJoin for privacy on a public blockchain. The stack exists. Right now.</p>
+    </section>
+
+    <!-- Quote 6 -->
+    <section class="quote-block" data-reveal>
+        <blockquote class="quote-hero">"We don't go after gun manufacturers when some psychopath comes out of a crowd and shoots Charlie Kirk in the neck. Why are we going after software developers?"</blockquote>
+    </section>
+    <section class="context" data-reveal>
+        <p>The Samourai Wallet case hit hardest. Two privacy developers facing $200 million in fines and 25 years in prison. Their crime: they wrote code that enabled anonymity on a public blockchain. Non-custodial. Never touched anyone's money. Never had custody or control. The state kicked in their doors anyway.</p>
+    </section>
+
+    <!-- Quote 7: The close -->
+    <section class="quote-block" data-reveal>
+        <blockquote class="quote-hero">"The question's not who's going to let us, but who's going to stop us."</blockquote>
+    </section>
+    <section class="context" data-reveal>
+        <p>He closed with a photo of himself and his son on a roof, installing a Blockstream satellite dish to download the Bitcoin blockchain without the internet. His wife took the picture. A father teaching his kid that sovereignty isn't something you're granted. It's something you build. One open-source project at a time.</p>
+    </section>
+
+</main>
+
+<!-- Supporters -->
+<section class="supporters-section">
+    <div class="container">
+        <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+        <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+        <div class="supporters-grid">
+            <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+            <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+            <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+            <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+            <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+            <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+            <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+            <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+            <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+            <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>&copy; 2025 Bitcoin Park. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+})();
+</script>
+
+</body>
+</html>
