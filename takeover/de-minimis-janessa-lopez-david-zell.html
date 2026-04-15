@@ -166,15 +166,27 @@
             background: var(--bg);
             margin-top: 60px;
             margin-bottom: -80px;
+            height: 600px;
         }
 
         .hero-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            max-height: 600px;
+            height: 100%;
             object-fit: cover;
             object-position: center;
-            display: block;
+        }
+
+        .hero-image img:first-child {
+            z-index: 1;
+        }
+
+        .hero-image img:last-child {
+            z-index: 2;
+            opacity: 0.5;
+            mix-blend-mode: lighten;
         }
 
         .hero-image::after {
@@ -184,6 +196,7 @@
             height: 250px;
             background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.85) 70%, var(--bg));
             pointer-events: none;
+            z-index: 3;
         }
 
         main {
@@ -393,7 +406,7 @@
 
         @media (max-width: 768px) {
             main { padding: 0 24px; }
-            .hero-image { margin-bottom: -60px; }
+            .hero-image { margin-bottom: -60px; height: 400px; }
             .session-header { padding: 0 0 60px 0; }
             .chapter { padding: 25px 0; }
             .supporters-section .container { padding: 0 20px; }
@@ -456,7 +469,8 @@
     </nav>
 
     <section class="hero-image">
-        <img src="de-minimis-hero.jpg" alt="Janessa Lopez and David Zell discussing Bitcoin tax policy at Bitcoin Takeover 2026">
+        <img src="de-minimis-hero.jpg" alt="Janessa Lopez discussing Bitcoin tax policy at Bitcoin Takeover 2026">
+        <img src="de-minimis-hero-2.jpg" alt="David Zell discussing Bitcoin tax policy at Bitcoin Takeover 2026">
     </section>
 
     <main>
