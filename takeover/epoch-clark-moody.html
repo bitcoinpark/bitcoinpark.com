@@ -3,71 +3,55 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Takeover 2026: Epoch — Clark Moody - Bitcoin Park</title>
-    <meta property="og:title" content="Bitcoin Takeover 2026: Epoch — Clark Moody">
-    <meta property="og:description" content="Clark Moody framed his Bitcoin Takeover talk as a visit from three spirits — Bitcoin past, present, and future — to make one argument: the threats facing Bitcoin are not new, and the time to act is now.">
+    <title>Epoch — Clark Moody - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="Epoch — Clark Moody">
+    <meta property="og:description" content="Clark Moody delivered a séance, not a keynote — three spirits visiting to warn that Bitcoin's threats are not new, and the time to act is now.">
     <meta property="og:image" content="https://bitcoinpark.com/takeover/epoch-clark-moody-hero.jpg">
     <meta property="og:url" content="https://bitcoinpark.com/takeover/epoch-clark-moody.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-orange-hover: #E8840F;
-            --electric-blue: #00D4FF;
-            --deep-black: #0A0A0A;
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
             --cyber-dark: #1a1a1a;
             --cyber-gray: #2a2a2a;
-            --concrete-gray: #808080;
-            --text-gray: #b0b0b0;
-            --pure-white: #FFFFFF;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: var(--deep-black);
-            color: var(--pure-white);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background:
                 radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
 
         .scanline-effect {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.06),
-                rgba(0, 0, 0, 0.06) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 1px, transparent 1px, transparent 2px);
             pointer-events: none;
             z-index: 10001;
             animation: scanline 8s linear infinite;
@@ -78,26 +62,9 @@
             100% { transform: translateY(100vh); }
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
-        }
-
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 0;
@@ -115,24 +82,6 @@
             gap: 15px;
         }
 
-        .navbar a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-        }
-
         .navbar-logo img {
             height: 39px;
             width: auto;
@@ -140,13 +89,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .navbar-logo:hover img {
-            opacity: 1;
-        }
-
-        .sponsor-thank-you {
-            display: none;
-        }
+        .navbar-logo:hover img { opacity: 1; }
 
         .mobile-sponsor-bar {
             display: flex;
@@ -159,11 +102,11 @@
 
         .mobile-sponsor-static {
             font-size: 0.7rem;
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         .mobile-sponsor-scroll-container {
@@ -171,7 +114,6 @@
             flex: 1;
             min-width: 0;
             mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
         }
 
         .mobile-sponsor-scroll {
@@ -189,16 +131,11 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-sponsor-scroll a:hover {
-            color: var(--bitcoin-orange);
-        }
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
 
         .mobile-sponsor-scroll .sponsor-dot {
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-size: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
         }
 
         @keyframes scrollSponsors {
@@ -207,7 +144,7 @@
         }
 
         .navbar-back-link {
-            color: var(--pure-white);
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
@@ -218,7 +155,7 @@
         }
 
         .navbar-back-link:hover {
-            color: var(--electric-blue);
+            color: var(--accent2);
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
@@ -226,8 +163,9 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--deep-black);
-            margin: 60px 0;
+            background: var(--bg);
+            margin-top: 60px;
+            margin-bottom: -80px;
         }
 
         .hero-image img {
@@ -235,121 +173,141 @@
             height: auto;
             max-height: 600px;
             object-fit: cover;
-            object-position: center;
+            object-position: center 30%;
             display: block;
         }
 
         .hero-image::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            bottom: 0; left: 0; right: 0;
+            height: 250px;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.85) 70%, var(--bg));
             pointer-events: none;
         }
 
-        .main-content {
-            background: transparent;
-            padding: 70px 0 60px 0;
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        .session-summary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--cyber-gray);
-            border-left: 4px solid var(--bitcoin-orange);
-            padding: 35px 40px 40px 40px;
-            margin-bottom: 60px;
+        .session-header {
+            padding: 0 0 80px 0;
+            position: relative;
         }
 
-        .session-summary h2 {
-            font-size: 1.8rem;
+        .session-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+            color: var(--text);
+            margin-bottom: 15px;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
         }
 
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.7;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .chapter {
+            padding: 35px 0;
+        }
+
+        .chapter-divider {
             margin-bottom: 25px;
         }
 
-        .session-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .chapter-divider hr {
+            border: none;
+            border-top: 2px solid var(--accent);
+            margin-bottom: 10px;
         }
 
-        .session-meta-label {
+        .chapter:nth-child(even) .chapter-divider hr {
+            border-color: var(--accent2);
+        }
+
+        .chapter-name {
+            font-family: var(--font-display);
             font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--concrete-gray);
+            color: var(--text);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
         }
 
-        .session-meta-value {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-gray);
+        .pull-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+            margin: 25px 0;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent);
         }
 
-        .session-abstract {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--cyber-gray);
-            padding-top: 25px;
-            margin-top: 25px;
-        }
-
-        .article-section {
-            margin-bottom: 80px;
-        }
-
-        .article-headline {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 15px;
-            letter-spacing: 0.02em;
-        }
-
-        .article-subheader {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-
-        .article-content {
-            font-size: 1.1rem;
+        .chapter-content {
+            font-size: 1.125rem;
             color: var(--text-gray);
             line-height: 1.9;
         }
 
-        .article-content p {
+        .chapter-content p {
             margin-bottom: 25px;
+        }
+
+        .chapter-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-content a:hover {
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 8px rgba(247, 147, 26, 0.3);
+        }
+
+        .video-embed {
+            margin: 40px 0;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .closing {
+            padding: 35px 0 60px 0;
+        }
+
+        .closing p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
         }
 
         .supporters-section {
             background: var(--cyber-dark);
             padding: 60px 0;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
             text-align: center;
         }
 
@@ -362,7 +320,7 @@
 
         .supporters-thank-you {
             font-size: 1rem;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 35px;
         }
 
@@ -387,7 +345,7 @@
         }
 
         .supporter-logo:hover {
-            border-color: var(--bitcoin-orange);
+            border-color: var(--accent);
             background: rgba(247, 147, 26, 0.08);
             box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
         }
@@ -399,23 +357,34 @@
             text-align: center;
         }
 
-        .supporter-logo:hover span {
-            color: var(--bitcoin-orange);
-        }
+        .supporter-logo:hover span { color: var(--accent); }
 
         .site-footer {
-            background: var(--deep-black);
+            background: var(--bg);
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .site-footer p {
-            color: var(--concrete-gray);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chapter [data-reveal]:nth-child(2) {
+            transition-delay: 0.05s;
         }
 
         @media (max-width: 1024px) {
@@ -423,14 +392,16 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .main-content { padding: 160px 0 60px 0; }
+            main { padding: 0 24px; }
+            .hero-image { margin-bottom: -60px; }
+            .session-header { padding: 0 0 60px 0; }
+            .chapter { padding: 25px 0; }
+            .supporters-section .container { padding: 0 20px; }
             .navbar-content {
                 padding: 0 20px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
-                position: relative;
             }
             .mobile-sponsor-bar {
                 width: 100%;
@@ -443,39 +414,21 @@
                 right: 20px;
                 font-size: 0.85rem;
             }
-            .session-summary { padding: 30px 20px; }
-            .session-summary h2 { font-size: 1.4rem; }
-            .session-meta { gap: 20px; }
-            .article-headline { font-size: 1.8rem; }
-            .article-subheader { font-size: 1.1rem; }
-            .supporters-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        }
-
-        @media (max-width: 480px) {
-            .session-meta { flex-direction: column; gap: 15px; }
-            .article-headline { font-size: 1.5rem; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
+            .chapter [data-reveal]:nth-child(2) {
+                transition-delay: 0.05s;
+            }
         }
     </style>
 </head>
 <body>
     <div class="scanline-effect"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
-            <div class="sponsor-thank-you"></div>
             <div class="mobile-sponsor-bar">
                 <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
                 <div class="mobile-sponsor-scroll-container">
@@ -498,69 +451,82 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="container">
-            <!-- Session Summary -->
-            <section class="session-summary fade-in">
-                <h2>Epoch</h2>
-                <div class="session-meta">
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Experience</span>
-                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Session Type</span>
-                        <span class="session-meta-value">Presentation</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Speaker</span>
-                        <span class="session-meta-value">
-                            <a href="https://x.com/clarkmoody" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Clark Moody</a> (Epoch)
-                        </span>
-                    </div>
-                </div>
-                <div class="session-abstract">
-                    Clark Moody shares his journey through the evolution of Bitcoin, from early days to future challenges, emphasizing the importance of open protocols, privacy, and community-driven development.
-                </div>
-            </section>
+    <section class="hero-image">
+        <img src="epoch-clark-moody-hero.jpg" alt="Clark Moody presenting Epoch at Bitcoin Takeover 2026">
+    </section>
 
-            <!-- Hero Image -->
-            <section class="hero-image">
-                <img src="epoch-clark-moody-hero.jpg" alt="Clark Moody presenting Epoch at Bitcoin Takeover 2026">
-            </section>
+    <main>
+        <header class="session-header" data-reveal>
+            <h1>Epoch</h1>
+            <p class="byline">Clark Moody (Epoch) · Bitcoin Takeover 2026 · Keynote</p>
+        </header>
 
-            <!-- Article Section -->
-            <article class="article-section fade-in">
-                <h2 class="article-headline">Clark Moody Didn't Deliver a Keynote at Bitcoin Takeover 2026. He Delivered a S&eacute;ance.</h2>
-                <p class="article-subheader">Framing his talk as a visit from three spirits &mdash; Bitcoin past, present, and future &mdash; Moody used <em>A Christmas Carol</em> to make one argument: the threats facing Bitcoin are not new, the community keeps repeating the same mistakes, and the time to act is now.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Ghost of Bitcoin Past</span>
+            </div>
+            <blockquote class="pull-quote">"Litecoin, Namecoin, Hobo Nickels. They're all going to replace Bitcoin — faster block times, more throughput, premines, scams. It was all there."</blockquote>
+            <div class="chapter-content" data-reveal>
+                <p>Clark Moody didn't deliver a keynote at Bitcoin Takeover 2026. He delivered a séance.</p>
+                <p>Framing his talk as a visit from three spirits — Bitcoin past, present, and future — Moody, technical partner at Epoch and creator of the Clark Moody Dashboard, used <em>A Christmas Carol</em> to make one argument: the threats facing Bitcoin are not new, the community keeps repeating the same mistakes, and the time to act is now.</p>
+                <p>The ghost of Bitcoin past tracked Moody's own career. Building RTBTC in 2011 on Mt. Gox market data before the WebSocket protocol was finished. Cycling through Blockchain and Bitcoin.com during the pre-fork era. Watching the first altcoin wave arrive and collapse.</p>
+                <p>The cycles, he argued, are eternal. Nothing about the current moment is without precedent.</p>
+            </div>
+        </section>
 
-                <div class="article-content">
-                    <p>Moody, technical partner at Epoch and creator of the Clark Moody Dashboard, used the <em>A Christmas Carol</em> structure to make one argument: the threats facing Bitcoin are not new, the community keeps repeating the same mistakes, and the time to act is now.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Ghost of Bitcoin Present</span>
+            </div>
+            <blockquote class="pull-quote">"People are selling Bitcoin because of quantum computers. Like, what?"</blockquote>
+            <div class="chapter-content" data-reveal>
+                <p>The ghost of Bitcoin present arrived with a specific list: quantum FUD threatening elliptic curve cryptography, FATF putting developers in jail, financial surveillance tightening, and institutional yield products pulling in capital with 11% returns on wrapped BTC exposure.</p>
+                <p>Moody wasn't dismissive. The issue, he said, isn't that the threats are imaginary. It's that panic and narrative-chasing are a choice.</p>
+                <p>Quantum computers aren't breaking Bitcoin tomorrow. Developers aren't being rounded up en masse. But the fear is real, and fear drives bad decisions.</p>
+            </div>
 
-                    <p>The ghost of Bitcoin past tracked Moody's own career, building RTBTC in 2011 on Mount Gox market data before the WebSocket protocol was finished, cycling through Blockchain and Bitcoin.com during the pre-fork era, watching the first altcoin wave arrive and collapse. "Litecoin, Namecoin, Hobo Nickels," he recalled to audience laughter. "They're all going to replace Bitcoin &mdash; faster block times, more throughput, premines, scams. It was all there." The cycles, he argued, are eternal. Nothing about the current moment is without precedent.</p>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/QX9gcfB8uZs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
 
-                    <p>The ghost of Bitcoin present arrived with a specific list: quantum FUD threatening elliptic curve cryptography, FATF putting developers in jail, financial surveillance tightening, and institutional yield products pulling in capital with 11% returns on wrapped BTC exposure. Moody wasn't dismissive. "People are selling Bitcoin because of quantum computers," he said, pausing for effect. "Like, what?" The issue isn't that the threats are imaginary. It's that panic and narrative-chasing are a choice.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Ghost of Bitcoin Future</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>The third spirit pointed at unresolved questions: Will covenants come to Bitcoin? Is ecash the answer or a custodial dead end? Will wealth taxes force a jurisdictional exodus?</p>
+                <p>Moody didn't pretend to have answers. He refused to let the uncertainty become an excuse.</p>
+                <p>The future is unknowable. The direction is not.</p>
+            </div>
+        </section>
 
-                    <!-- Embedded Video -->
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/QX9gcfB8uZs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Time to Act</span>
+            </div>
+            <blockquote class="pull-quote">"Use your own product. Claude can't use your product. Claude doesn't care."</blockquote>
+            <div class="chapter-content" data-reveal>
+                <p>Moody's call to action was concrete. Build privacy tools. Make privacy the default. He asked the room how many wallet operators had implemented Payjoin, then how many hadn't. The room answered.</p>
+                <p>"Use your own product," he told product managers. "Claude can't use your product. Claude doesn't care. It passed the tests and renders the UI properly. That's Claude using your product."</p>
+                <p>Build on open protocols — Nostr, Bitcoin — because AI agents can't sign up for Twitter or Signal, but they can use open systems. Fund open source developers. Fund wallets, which he called "the weak link in all of this."</p>
+                <p>He closed on story. "Tell better stories," he said. "People want to hear stories. People respond to stories."</p>
+            </div>
+        </section>
 
-                    <p>The third spirit pointed at unresolved questions: Will covenants come to Bitcoin? Is ecash the answer or a custodial dead end? Will wealth taxes force a jurisdictional exodus? Moody didn't pretend to have answers. He refused to let the uncertainty become an excuse.</p>
-
-                    <p>His call to action was concrete. Build privacy tools. Make privacy the default. He asked the room how many wallet operators had implemented Payjoin, then how many hadn't. The room answered. "Use your own product," he told product managers. "Claude can't use your product. Claude doesn't care. It passed the tests and renders the UI properly. That's Claude using your product." Build on open protocols &mdash; Nostr, Bitcoin &mdash; because AI agents can't sign up for Twitter or Signal, but they can use open systems. Fund open source developers. Fund wallets, which he called "the weak link in all of this."</p>
-
-                    <p>He closed on story. "Tell better stories," he said. "People want to hear stories. People respond to stories."</p>
-
-                    <p>For Moody, who has watched four distinct cycles of hype, collapse, and rebuild since 2011, that's not a soft closing thought. It's the mechanism. The protocols exist. The tools exist. What's missing is the narrative that makes people pick them up.</p>
-                </div>
-            </article>
-        </div>
+        <section class="closing" data-reveal>
+            <p>For Moody, who has watched four distinct cycles of hype, collapse, and rebuild since 2011, that's not a soft closing thought. It's the mechanism. The protocols exist. The tools exist. What's missing is the narrative that makes people pick them up.</p>
+        </section>
     </main>
 
-    <!-- Company Supporters Section -->
     <section class="supporters-section">
         <div class="container">
             <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
@@ -587,13 +553,14 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+})();
     </script>
 </body>
 </html>

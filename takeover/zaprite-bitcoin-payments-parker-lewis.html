@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Bitch Applications: Why Bitcoin Payments Need Density, Not Technology - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="Basic Bitch Applications: Why Bitcoin Payments Need Density, Not Technology">
+    <meta property="og:description" content="Bitcoin payments are limited not by technology but by adoption density. Parker Lewis on why Zaprite is building boring, fundamental infrastructure.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/Zaprite Bitcoin Takeover 2026.pptx.jpg">
+    <meta property="og:url" content="https://bitcoinpark.com/takeover/zaprite-bitcoin-payments-parker-lewis.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
+            --cyber-dark: #1a1a1a;
+            --cyber-gray: #2a2a2a;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .scanline-effect {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 1px, transparent 1px, transparent 2px);
+            pointer-events: none;
+            z-index: 10001;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--cyber-gray);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .navbar-logo img {
+            height: 39px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-logo:hover img { opacity: 1; }
+
+        .mobile-sponsor-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .mobile-sponsor-static {
+            font-size: 0.7rem;
+            color: var(--accent);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: var(--font-mono);
+        }
+
+        .mobile-sponsor-scroll-container {
+            overflow: hidden;
+            flex: 1;
+            min-width: 0;
+            mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+        }
+
+        .mobile-sponsor-scroll {
+            display: flex;
+            gap: 12px;
+            animation: scrollSponsors 15s linear infinite;
+            width: max-content;
+        }
+
+        .mobile-sponsor-scroll a {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
+
+        .mobile-sponsor-scroll .sponsor-dot {
+            color: var(--accent);
+            font-size: 0.5rem;
+        }
+
+        @keyframes scrollSponsors {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .navbar-back-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .navbar-back-link:hover {
+            color: var(--accent2);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero-image {
+            width: 100%;
+            position: relative;
+            margin-top: 60px;
+            margin-bottom: 0;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 60px 40px;
+        }
+
+        .parker-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .parker-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .parker-background::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.7));
+            pointer-events: none;
+        }
+
+        .tweet-overlay {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin-left: 0;
+        }
+
+        .tweet-overlay img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid var(--accent);
+            border-radius: 16px;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.8),
+                0 0 60px rgba(247, 147, 26, 0.5),
+                0 0 100px rgba(247, 147, 26, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tweet-overlay img:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, 0.9),
+                0 0 80px rgba(247, 147, 26, 0.6),
+                0 0 120px rgba(247, 147, 26, 0.4),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px 60px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .thesis-container {
+            margin-bottom: 60px;
+        }
+
+        .thesis {
+            position: sticky;
+            top: 0;
+            padding: 40px 0;
+            background: linear-gradient(to bottom, var(--bg) 0%, var(--bg) 80%, transparent 100%);
+            z-index: 100;
+        }
+
+        .thesis-text {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        .opening-context {
+            padding: 35px 0;
+        }
+
+        .opening-context p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .evidence {
+            padding: 35px 0;
+        }
+
+        .evidence-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.3;
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .evidence:nth-child(even) .evidence-quote {
+            border-left-color: var(--accent2);
+        }
+
+        .evidence-context p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .presentation-section {
+            margin: 60px 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .presentation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .presentation-image {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--cyber-gray);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .presentation-image:hover {
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.6),
+                0 0 50px rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .presentation-image::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(247, 147, 26, 0.1) 0%,
+                transparent 30%,
+                transparent 70%,
+                rgba(0, 212, 255, 0.1) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .presentation-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .slide-caption {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 15px;
+            text-align: center;
+            font-family: var(--font-mono);
+        }
+
+        .video-embed {
+            margin: 40px 0;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .thesis-restate {
+            padding: 35px 0;
+        }
+
+        .thesis-closing {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+            margin-bottom: 25px;
+        }
+
+        .thesis-restate p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .supporters-section {
+            background: var(--cyber-dark);
+            padding: 60px 0;
+            border-top: 1px solid var(--cyber-gray);
+        }
+
+        .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        .mission-statement {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .supporters-thank-you {
+            font-size: 1rem;
+            color: var(--text);
+            margin-bottom: 35px;
+        }
+
+        .supporters-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .supporter-logo {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--cyber-gray);
+            padding: 12px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .supporter-logo:hover {
+            border-color: var(--accent);
+            background: rgba(247, 147, 26, 0.08);
+            box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
+        }
+
+        .supporter-logo span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        .supporter-logo:hover span { color: var(--accent); }
+
+        .site-footer {
+            background: var(--bg);
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--cyber-gray);
+        }
+
+        .site-footer p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .supporters-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            main { padding: 0 24px 60px 24px; }
+            .thesis { position: static; background: transparent; }
+            .hero-image { margin-bottom: 20px; padding: 40px 20px; min-height: 500px; }
+            .tweet-overlay { max-width: 100%; }
+            .opening-context { padding: 25px 0; }
+            .evidence { padding: 25px 0; }
+            .thesis-restate { padding: 25px 0; }
+            .presentation-section { margin: 40px -24px; width: calc(100% + 48px); }
+            .presentation-grid { grid-template-columns: 1fr; gap: 20px; padding: 0 24px; }
+            .supporters-section .container { padding: 0 20px; }
+            .navbar-content {
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .mobile-sponsor-bar {
+                width: 100%;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--cyber-gray);
+            }
+            .navbar-back-link {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 0.85rem;
+            }
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanline-effect"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://bitcoinpark.com" class="navbar-logo">
+                <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+            </a>
+            <div class="mobile-sponsor-bar">
+                <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
+                <div class="mobile-sponsor-scroll-container">
+                    <div class="mobile-sponsor-scroll">
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zaprite.com" target="_blank">Zaprite</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://block.xyz" target="_blank">Block</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://zbd.gg" target="_blank">ZBD</a>
+                        <span class="sponsor-dot">&#8226;</span>
+                        <a href="https://unchained.com" target="_blank">Unchained</a>
+                    </div>
+                </div>
+            </div>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
+        </div>
+    </nav>
+
+    <section class="hero-image">
+        <div class="parker-background">
+            <img src="[BP][BT26][Zaprite]-2.jpg" alt="Parker Lewis presenting Zaprite's Bitcoin payments vision at Bitcoin Takeover 2026">
+        </div>
+        <div class="tweet-overlay">
+            <img src="Zaprite Bitcoin Takeover 2026.pptx.jpg" alt="Giacomo Zucco tweet: Yes, we need builders all right! But not for fancy, novel, shining use cases: for trivial, boring, basic-bitch ones, which are still shitty!">
+        </div>
+    </section>
+
+    <main>
+        <section class="thesis-container">
+            <div class="thesis" data-thesis-parallax>
+                <p class="thesis-text">Bitcoin payments are limited not by technology but by adoption density.</p>
+                <p class="byline">Parker Lewis (Zaprite) · Bitcoin Takeover 2026 · Presentation</p>
+            </div>
+        </section>
+
+        <section class="opening-context" data-reveal>
+            <p>The foundation of Bitcoin is fixed supply. People adopt Bitcoin as a store of value first. Buy a little for fiat, then more. But once you understand why Bitcoin stores value, accepting it as payment becomes logical.</p>
+            <p>That progression from savings to spending is already happening. The people who started saving in Bitcoin five or ten years ago are now advancing out to the frontier, accepting Bitcoin as payment. A small minority is using Bitcoin for transactions today, but the dollar is still the unit of account.</p>
+            <p>The future Zaprite is building toward is one where Bitcoin is the unit of account. Rib eyes priced in Bitcoin. Tickets to Bitcoin Park events priced in Bitcoin. Gas at the station priced in Bitcoin.</p>
+        </section>
+
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"It takes one person to buy Bitcoin, but if you want to pay someone in Bitcoin or they want to accept it, a trade takes two."</blockquote>
+            <div class="evidence-context">
+                <p>What limits Bitcoin payments is not tax policy, volatility, or fear that the price will go up forever. It is density. If only 1% of people understand Bitcoin, and you need two people to trade, the math is simple. As that 1% grows to 2%, 3%, 10%, the ability for Bitcoin to emerge as a trading economy grows exponentially with adoption.</p>
+                <p>But the adoption curve is steep. A doctor Parker Lewis respects said, "I like the idea of an independent currency, but until I can use Bitcoin to put gas in my car and food on the table, I'm out." That is a logical stance. Only a small minority can look at Bitcoin, read the Bitcoin Standard, and have the vision for why everyone in the future will demand it. The vast majority will come to understand Bitcoin when they see it used as money.</p>
+                <p>Commerce is key to adoption. But the market for Bitcoin payments in 2026 is brutal. 99% of people are uninterested in Bitcoin. That is the first blocker.</p>
+            </div>
+        </section>
+
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"Yes, we need builders all right! But not for fancy, novel, shining use cases. For trivial, boring, basic-bitch ones, which are still shitty!"</blockquote>
+            <div class="evidence-context">
+                <p>Giacomo Zucco posted that two days before Bitcoin Takeover. Parker Lewis added it to his deck last minute because it captures the exact problem Zaprite is solving.</p>
+                <p>Sending Bitcoin between friends still sucks. If you have 20 friends and each of them has six different wallets, you do not know which wallet to use when you want to send money. You do not know if your friend is willing to accept Lightning for $2,000. You do not know if their Lightning node has capacity. There is always this song and dance. Where do you want to be paid? Lightning or Bitcoin? Send me an address. Send me an invoice.</p>
+                <p>And what if wallets change? What if someone lost an app? How do you know?</p>
+            </div>
+        </section>
+
+
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"You do not have to have Zaprite to pay someone who's on Zaprite."</blockquote>
+            <div class="evidence-context">
+                <p>That is the key difference between Zaprite's P2P app and walled gardens like Venmo or Cash App. Zaprite is building non-custodially. Users can connect Strike, a Lightning node, a cold card, or any other wallet. The app facilitates discoverability, contact management, and payment routing without inserting Zaprite as a financial intermediary.</p>
+                <p>Network effects scale exponentially. If three wallets each had 100,000 users sending only to their own customers, putting all three together would create a 9x network effect compared to a single wallet. Every wallet will not become a P2P app for the same reason every bank is not a P2P app. Abstracting the identity layer and mapping wallets to a unified app lets you send to friends without knowing where they receive funds.</p>
+                <p>When you send money on Venmo, you have no idea what bank your friend uses. You do not care. You just need to know you are pointing at the right place.</p>
+            </div>
+        </section>
+
+        <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/nXsBJ9oHUBQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <section class="evidence" data-reveal>
+            <blockquote class="evidence-quote">"If we perfect the ways that peers pay other peers, then we can connect consumers directly to sellers and marketplaces."</blockquote>
+            <div class="evidence-context">
+                <p>The P2P app is strategic to broader payments. Once Zaprite perfects peer payments, they can enable one-click buys, auto-payments in Bitcoin, tap-to-pay, and online bill pay. It removes critical pain points for sellers at scale.</p>
+                <p>There is no good way to do refunds in Bitcoin. In the fiat world, you reverse a payment. In Bitcoin, whether Lightning or onchain, money has to be sent back. You need a destination to do that, and it has to tie to a sale in an automated way. Solving peer payments unlocks that.</p>
+            </div>
+        </section>
+
+        <section class="thesis-restate" data-reveal>
+            <p class="thesis-closing">The single thing limiting Bitcoin payments is that we need more Bitcoiners.</p>
+            <p>Zaprite focuses on Bitcoin businesses and their customers because that is where the greatest overlap exists between people willing to accept Bitcoin and a customer segment that wants to pay in it. When a business turns on Bitcoin payments, sales in Bitcoin might be 5%, growing to 10%. But if adoption is zero, that is a bad customer experience.</p>
+            <p>The closed beta for Zaprite's P2P app launches at the end of April. You can sign up at <a href="https://paymeandbitcoin.com" target="_blank" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;">paymeandbitcoin.com</a>. Open beta follows in the summer.</p>
+            <p>Density drives payments. Payments drive adoption. And the boring, basic infrastructure to make that loop work is still shitty. That is what Zaprite is building.</p>
+        </section>
+    </main>
+
+    <section class="supporters-section">
+        <div class="container">
+            <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
+            <p class="supporters-thank-you">A special thank you to our company supporters who make this possible:</p>
+            <div class="supporters-grid">
+                <a href="https://hrf.org" target="_blank" class="supporter-logo"><span>HRF</span></a>
+                <a href="https://chollainc.com/" target="_blank" class="supporter-logo"><span>Cholla Inc.</span></a>
+                <a href="https://unchained.com" target="_blank" class="supporter-logo"><span>Unchained</span></a>
+                <a href="https://ten31.vc" target="_blank" class="supporter-logo"><span>Ten31</span></a>
+                <a href="https://fedi.xyz" target="_blank" class="supporter-logo"><span>Fedi</span></a>
+                <a href="https://cleanspark.com" target="_blank" class="supporter-logo"><span>CleanSpark</span></a>
+                <a href="https://satoshipacioli.com" target="_blank" class="supporter-logo"><span>Satoshi Pacioli</span></a>
+                <a href="https://bitkey.world" target="_blank" class="supporter-logo"><span>Bitkey</span></a>
+                <a href="https://proto.xyz" target="_blank" class="supporter-logo"><span>Proto</span></a>
+                <a href="https://foundrydigital.com/" target="_blank" class="supporter-logo"><span>Foundry</span></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Bitcoin Park. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+  var thesis = document.querySelector('[data-thesis-parallax]');
+  if(thesis && window.innerWidth > 768){
+    var ticking = false;
+    var firstEvidence = document.querySelector('.evidence');
+    if(firstEvidence){
+      window.addEventListener('scroll',function(){
+        if(!ticking){
+          requestAnimationFrame(function(){
+            var rect = firstEvidence.getBoundingClientRect();
+            var viewH = window.innerHeight;
+            var progress = Math.min(Math.max(1 - (rect.top / viewH), 0), 1);
+            thesis.style.opacity = 1 - (progress * 0.85);
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  }
+})();
+    </script>
+</body>
+</html>
