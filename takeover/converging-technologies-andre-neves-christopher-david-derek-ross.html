@@ -3,36 +3,36 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Takeover 2026: Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure - Bitcoin Park</title>
-    <meta property="og:title" content="Bitcoin Takeover 2026: Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure">
-    <meta property="og:description" content="Andre Neves, Christopher David, and Derek Ross on why AI agents will dwarf human Lightning traffic — and why the infrastructure isn't ready.">
+    <title>Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure">
+    <meta property="og:description" content="Andre Neves, Christopher David, and Derek Ross on why AI agents will dwarf human Lightning traffic and why the infrastructure isn't ready.">
     <meta property="og:image" content="https://bitcoinpark.com/takeover/converging-technologies-hero.jpg">
     <meta property="og:url" content="https://bitcoinpark.com/takeover/converging-technologies-andre-neves-christopher-david-derek-ross.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-orange-hover: #E8840F;
-            --electric-blue: #00D4FF;
-            --deep-black: #0A0A0A;
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
             --cyber-dark: #1a1a1a;
             --cyber-gray: #2a2a2a;
-            --concrete-gray: #808080;
-            --text-gray: #b0b0b0;
-            --pure-white: #FFFFFF;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: var(--deep-black);
-            color: var(--pure-white);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
         body::before {
@@ -42,9 +42,7 @@
             width: 100%; height: 100%;
             background:
                 radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -62,21 +60,6 @@
         @keyframes scanline {
             0% { transform: translateY(0); }
             100% { transform: translateY(100vh); }
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
         }
 
         .navbar {
@@ -99,21 +82,6 @@
             gap: 15px;
         }
 
-        .navbar a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .navbar-logo { display: flex; align-items: center; }
-
         .navbar-logo img {
             height: 39px;
             width: auto;
@@ -122,8 +90,6 @@
         }
 
         .navbar-logo:hover img { opacity: 1; }
-
-        .sponsor-thank-you { display: none; }
 
         .mobile-sponsor-bar {
             display: flex;
@@ -136,11 +102,11 @@
 
         .mobile-sponsor-static {
             font-size: 0.7rem;
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         .mobile-sponsor-scroll-container {
@@ -148,7 +114,6 @@
             flex: 1;
             min-width: 0;
             mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
         }
 
         .mobile-sponsor-scroll {
@@ -166,14 +131,11 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-sponsor-scroll a:hover { color: var(--bitcoin-orange); }
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
 
         .mobile-sponsor-scroll .sponsor-dot {
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-size: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
         }
 
         @keyframes scrollSponsors {
@@ -182,7 +144,7 @@
         }
 
         .navbar-back-link {
-            color: var(--pure-white);
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
@@ -193,7 +155,7 @@
         }
 
         .navbar-back-link:hover {
-            color: var(--electric-blue);
+            color: var(--accent2);
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
@@ -201,8 +163,8 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--deep-black);
-            margin: 60px 0;
+            background: var(--bg);
+            margin-top: 60px;
         }
 
         .hero-image img {
@@ -219,106 +181,131 @@
             position: absolute;
             bottom: 0; left: 0; right: 0;
             height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            background: linear-gradient(to bottom, transparent, var(--bg));
             pointer-events: none;
         }
 
-        .main-content {
-            background: transparent;
-            padding: 70px 0 60px 0;
+        main {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 40px;
             position: relative;
             z-index: 1;
         }
 
-        .session-summary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--cyber-gray);
-            border-left: 4px solid var(--bitcoin-orange);
-            padding: 35px 40px 40px 40px;
-            margin-bottom: 60px;
+        .session-header {
+            padding: 60px 0 35px 0;
         }
 
-        .session-summary h2 {
-            font-size: 1.8rem;
+        .session-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
-        }
-
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 25px;
-        }
-
-        .session-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .session-meta-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--concrete-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .session-meta-value {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-gray);
-        }
-
-        .session-abstract {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--cyber-gray);
-            padding-top: 25px;
-            margin-top: 25px;
-        }
-
-        .article-section { margin-bottom: 80px; }
-
-        .article-headline {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 15px;
+            line-height: 1.2;
             letter-spacing: 0.02em;
         }
 
-        .article-subheader {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-            line-height: 1.6;
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.5;
         }
 
-        .article-content {
-            font-size: 1.1rem;
+        .chapter {
+            padding: 35px 0;
+        }
+
+        .chapter-divider {
+            margin-bottom: 25px;
+        }
+
+        .chapter-divider hr {
+            border: none;
+            border-top: 2px solid var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .chapter:nth-child(even) .chapter-divider hr {
+            border-color: var(--accent2);
+        }
+
+        .chapter-name {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .pull-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+            margin: 25px 0;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .chapter-content {
+            font-size: 1.125rem;
             color: var(--text-gray);
             line-height: 1.9;
         }
 
-        .article-content p { margin-bottom: 25px; }
+        .chapter-content p {
+            margin-bottom: 25px;
+        }
+
+        .chapter-content a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-content a:hover {
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 8px rgba(247, 147, 26, 0.3);
+        }
+
+        .video-embed {
+            margin: 40px 0;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .closing {
+            padding: 35px 0 60px 0;
+        }
+
+        .closing p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
 
         .supporters-section {
             background: var(--cyber-dark);
             padding: 60px 0;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
-        .supporters-section .container { text-align: center; }
+        .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
 
         .mission-statement {
             font-size: 1.1rem;
@@ -329,7 +316,7 @@
 
         .supporters-thank-you {
             font-size: 1rem;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 35px;
         }
 
@@ -354,7 +341,7 @@
         }
 
         .supporter-logo:hover {
-            border-color: var(--bitcoin-orange);
+            border-color: var(--accent);
             background: rgba(247, 147, 26, 0.08);
             box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
         }
@@ -366,21 +353,34 @@
             text-align: center;
         }
 
-        .supporter-logo:hover span { color: var(--bitcoin-orange); }
+        .supporter-logo:hover span { color: var(--accent); }
 
         .site-footer {
-            background: var(--deep-black);
+            background: var(--bg);
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .site-footer p {
-            color: var(--concrete-gray);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chapter [data-reveal]:nth-child(2) {
+            transition-delay: 0.05s;
         }
 
         @media (max-width: 1024px) {
@@ -388,14 +388,15 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .main-content { padding: 160px 0 60px 0; }
+            main { padding: 0 24px; }
+            .session-header { padding: 40px 0 25px 0; }
+            .chapter { padding: 25px 0; }
+            .supporters-section .container { padding: 0 20px; }
             .navbar-content {
                 padding: 0 20px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
-                position: relative;
             }
             .mobile-sponsor-bar {
                 width: 100%;
@@ -408,39 +409,21 @@
                 right: 20px;
                 font-size: 0.85rem;
             }
-            .session-summary { padding: 30px 20px; }
-            .session-summary h2 { font-size: 1.4rem; }
-            .session-meta { gap: 20px; }
-            .article-headline { font-size: 1.8rem; }
-            .article-subheader { font-size: 1.1rem; }
-            .supporters-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        }
-
-        @media (max-width: 480px) {
-            .session-meta { flex-direction: column; gap: 15px; }
-            .article-headline { font-size: 1.5rem; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
+            .chapter [data-reveal]:nth-child(2) {
+                transition-delay: 0.05s;
+            }
         }
     </style>
 </head>
 <body>
     <div class="scanline-effect"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
-            <div class="sponsor-thank-you"></div>
             <div class="mobile-sponsor-bar">
                 <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
                 <div class="mobile-sponsor-scroll-container">
@@ -463,81 +446,91 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="container">
-            <!-- Session Summary -->
-            <section class="session-summary fade-in">
-                <h2>Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure</h2>
-                <div class="session-meta">
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Experience</span>
-                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Session Type</span>
-                        <span class="session-meta-value">Panel Discussion</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Moderator</span>
-                        <span class="session-meta-value">
-                            <a href="https://x.com/martybent" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Marty Bent</a>
-                        </span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Speakers</span>
-                        <span class="session-meta-value">
-                            <a href="https://x.com/andreneves" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Andre Neves</a> (ZBD),
-                            <a href="https://x.com/AtlantisPleb" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Christopher David</a> (OpenAgents),
-                            <a href="https://x.com/SoapboxTech" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Derek Ross</a> (Soapbox)
-                        </span>
-                    </div>
-                </div>
-                <div class="session-abstract">
-                    This Bitcoin Takeover panel explores the emerging agentic economy, Bitcoin's role as a payment mechanism, and the infrastructure needed to support autonomous agents leveraging Lightning, Nostr, and open protocols.
-                </div>
-            </section>
+    <section class="hero-image">
+        <img src="converging-technologies-hero.jpg" alt="Andre Neves, Christopher David, and Derek Ross discussing AI and Bitcoin at Bitcoin Takeover 2026">
+    </section>
 
-            <!-- Hero Image -->
-            <section class="hero-image">
-                <img src="converging-technologies-hero.jpg" alt="Andre Neves, Christopher David, and Derek Ross discussing AI and Bitcoin at Bitcoin Takeover 2026">
-            </section>
+    <main>
+        <header class="session-header" data-reveal>
+            <h1>Converging Technologies: AI, IoT, Gaming, and Bitcoin Payment Infrastructure</h1>
+            <p class="byline">Andre Neves (ZBD), Christopher David (OpenAgents), Derek Ross (Soapbox) · Bitcoin Takeover 2026 · Panel</p>
+        </header>
 
-            <!-- Article Section -->
-            <article class="article-section fade-in">
-                <h2 class="article-headline">Agents Will Dwarf Human Lightning Traffic. The Infrastructure Isn't Ready.</h2>
-                <p class="article-subheader">AI agents will generate orders of magnitude more Lightning transactions than humans ever have, and the Bitcoin builders tasked with scaling that infrastructure say the missing pieces go far beyond throughput.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Scale Challenge</span>
+            </div>
+            <blockquote class="pull-quote">"I make 10 transactions. An agent makes 10,000 in an hour."</blockquote>
+            <div class="chapter-content" data-reveal>
+                <p>Andre Neves framed the problem simply. His company, ZBD, processed 120 million Lightning transactions last year powering video game payments. That number is huge by today's standards. River's recent report showed Lightning crossed $1 billion in monthly volume in November 2025.</p>
+                <p>But Neves expects AI agents to dwarf those numbers. He is not sure current infrastructure can handle it.</p>
+                <p>The panel at Bitcoin Takeover featured Neves alongside Christopher David of OpenAgents and Derek Ross of Soapbox, moderated by Marty Bent. The four outlined competing visions for what the agentic economy needs and where Bitcoin's open protocols hold an edge.</p>
+            </div>
+        </section>
 
-                <div class="article-content">
-                    <p>That was the consensus at the Bitcoin Takeover discussion panel featuring Andre Neves of ZBD, Christopher David of OpenAgents, and Derek Ross of Soapbox, moderated by Marty Bent. The four outlined competing visions for what the agentic economy needs and where Bitcoin's open protocols hold an edge.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Measurability Gap</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>Christopher David argued that raw throughput is the wrong place to focus first.</p>
+                <p>Citing a 110-page paper by Christian Catalini of MIT and Lightspark, he pointed to what Catalini calls a "measurability gap" between the falling cost of AI output and the rising cost of verifying it. David estimated that gap accounts for $5 to $17 billion in damages from AI-related cloud outages over the past six months.</p>
+                <p>"We've solved trust with Bitcoin in a unique way. We need to extend those layers up," David said. "I don't think anyone outside of our community is going to solve that in the way that we can."</p>
+            </div>
+        </section>
 
-                    <p>Neves, whose company processed 120 million Lightning transactions last year powering video game payments, framed the scale challenge. "I make 10 transactions. An agent makes 10,000 in an hour," he said. River's recent report showed Lightning crossed $1 billion in monthly volume in November 2025. Neves expects agents to dwarf those numbers, and he is not sure current infrastructure can handle it.</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">Permissionless Access</span>
+            </div>
+            <blockquote class="pull-quote">"Permissionless money is permissionless for humans and agents."</blockquote>
+            <div class="chapter-content" data-reveal>
+                <p>Derek Ross took a different tack, zeroing in on permissionless access.</p>
+                <p>His agent social network, Shakespeare, bootstrapped every agent with a Cashu-based Lightning wallet through <a href="http://npub.cash/" target="_blank">npub.cash</a>, enabling instant payments without any human creating API keys or registering accounts.</p>
+                <p>"Agents shouldn't have to ask permission to pay another agent for a service," Ross said.</p>
+            </div>
 
-                    <p>But David argued that raw throughput is the wrong place to focus first. Citing a 110-page paper by Christian Catalini of MIT and Lightspark, he pointed to what Catalini calls a "measurability gap" between the falling cost of AI output and the rising cost of verifying it. David estimated that gap accounts for $5 to $17 billion in damages from AI-related cloud outages over the past six months.</p>
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/iWvSBrA274Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
 
-                    <p>"We've solved trust with Bitcoin in a unique way. We need to extend those layers up," David said. "I don't think anyone outside of our community is going to solve that in the way that we can."</p>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">Building the Infrastructure</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>The panel converged on one concrete gap: a skill marketplace where agents can advertise capabilities, discover each other, and transact.</p>
+                <p>Ross and David are collaborating on draft Nostr Improvement Proposals for a sovereign agent skill registry, built on Nostr's open data protocol so no single company controls the directory. They expect working code within weeks.</p>
+                <p>David's Open Agents is also betting on decentralized compute. The company launched a marketplace where owners of Apple Silicon machines can sell spare processing power, paid in Bitcoin over Lightning through a built-in Nostr wallet.</p>
+                <p>He noted that idle consumer Macs collectively represent 5.5 gigawatts of compute, dwarfing OpenAI's roughly 2-gigawatt footprint. "We have the rails now. It's local models. It's Lightning. It's Nostr. That's it," he said.</p>
+            </div>
+        </section>
 
-                    <!-- Embedded Video -->
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/iWvSBrA274Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
+        <section class="chapter" data-reveal>
+            <div class="chapter-divider">
+                <hr>
+                <span class="chapter-name">The Privacy Question</span>
+            </div>
+            <div class="chapter-content" data-reveal>
+                <p>Neves raised one uncomfortable question the group left unresolved.</p>
+                <p>If agents come to dominate Lightning usage, their credentials likely sit with large language model providers like OpenAI and Anthropic. "Maybe we don't want our Lightning node credentials sitting out there in big tech companies," he said, calling for better local and privacy-preserving models.</p>
+            </div>
+        </section>
 
-                    <p>Ross took a different tack, zeroing in on permissionless access. His agent social network, Shakespeare, bootstrapped every agent with a Cashu-based Lightning wallet through <a href="http://npub.cash/" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 8px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">npub.cash</a>, enabling instant payments without any human creating API keys or registering accounts. "Permissionless money is permissionless for humans and agents," he said. "Agents shouldn't have to ask permission to pay another agent for a service."</p>
-
-                    <p>The panel converged on one concrete gap: a skill marketplace where agents can advertise capabilities, discover each other, and transact. Ross and David are collaborating on draft Nostr Improvement Proposals for a sovereign agent skill registry, built on Nostr's open data protocol so no single company controls the directory. They expect working code within weeks.</p>
-
-                    <p>David's Open Agents is also betting on decentralized compute. The company launched a marketplace where owners of Apple Silicon machines can sell spare processing power, paid in Bitcoin over Lightning through a built-in Nostr wallet. He noted that idle consumer Macs collectively represent 5.5 gigawatts of compute, dwarfing OpenAI's roughly 2-gigawatt footprint. "We have the rails now. It's local models. It's Lightning. It's Nostr. That's it," he said.</p>
-
-                    <p>Neves raised one uncomfortable question the group left unresolved: if agents come to dominate Lightning usage, their credentials likely sit with large language model providers like OpenAI and Anthropic. "Maybe we don't want our Lightning node credentials sitting out there in big tech companies," he said, calling for better local and privacy-preserving models.</p>
-
-                    <p>The skill registry, the compute market, and the trust layer each represent a bet on which bottleneck breaks first. None of the panelists claimed to know the answer. All of them said they plan to ship code and find out.</p>
-                </div>
-            </article>
-        </div>
+        <section class="closing" data-reveal>
+            <p>The skill registry, the compute market, and the trust layer each represent a bet on which bottleneck breaks first. None of the panelists claimed to know the answer. All of them said they plan to ship code and find out.</p>
+        </section>
     </main>
 
-    <!-- Company Supporters Section -->
     <section class="supporters-section">
         <div class="container">
             <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
@@ -564,13 +557,14 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+})();
     </script>
 </body>
 </html>
