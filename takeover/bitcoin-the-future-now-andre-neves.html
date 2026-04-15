@@ -3,36 +3,36 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Takeover 2026: Bitcoin: The Future Now — Andre Neves - Bitcoin Park</title>
-    <meta property="og:title" content="Bitcoin Takeover 2026: Bitcoin: The Future Now — Andre Neves">
-    <meta property="og:description" content="473 times Bitcoin has been declared dead. Not one obituary named the builders. Andre Neves, CEO of ZBD, wants to change that.">
-    <meta property="og:image" content="https://bitcoinpark.com/takeover/bitcoin-the-future-now-hero.jpg">
+    <title>Bitcoin: The Future Now - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="Bitcoin: The Future Now">
+    <meta property="og:description" content="Andre Neves on why Bitcoin is not inevitable—it's a choice made by builders every single day.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/future-now-hero.jpg">
     <meta property="og:url" content="https://bitcoinpark.com/takeover/bitcoin-the-future-now-andre-neves.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-orange-hover: #E8840F;
-            --electric-blue: #00D4FF;
-            --deep-black: #0A0A0A;
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
             --cyber-dark: #1a1a1a;
             --cyber-gray: #2a2a2a;
-            --concrete-gray: #808080;
-            --text-gray: #b0b0b0;
-            --pure-white: #FFFFFF;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: var(--deep-black);
-            color: var(--pure-white);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
         body::before {
@@ -42,9 +42,7 @@
             width: 100%; height: 100%;
             background:
                 radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
@@ -62,21 +60,6 @@
         @keyframes scanline {
             0% { transform: translateY(0); }
             100% { transform: translateY(100vh); }
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
         }
 
         .navbar {
@@ -99,21 +82,6 @@
             gap: 15px;
         }
 
-        .navbar a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .navbar-logo { display: flex; align-items: center; }
-
         .navbar-logo img {
             height: 39px;
             width: auto;
@@ -122,8 +90,6 @@
         }
 
         .navbar-logo:hover img { opacity: 1; }
-
-        .sponsor-thank-you { display: none; }
 
         .mobile-sponsor-bar {
             display: flex;
@@ -136,11 +102,11 @@
 
         .mobile-sponsor-static {
             font-size: 0.7rem;
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         .mobile-sponsor-scroll-container {
@@ -148,7 +114,6 @@
             flex: 1;
             min-width: 0;
             mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
         }
 
         .mobile-sponsor-scroll {
@@ -166,14 +131,11 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-sponsor-scroll a:hover { color: var(--bitcoin-orange); }
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
 
         .mobile-sponsor-scroll .sponsor-dot {
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-size: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
         }
 
         @keyframes scrollSponsors {
@@ -182,7 +144,7 @@
         }
 
         .navbar-back-link {
-            color: var(--pure-white);
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
@@ -193,7 +155,7 @@
         }
 
         .navbar-back-link:hover {
-            color: var(--electric-blue);
+            color: var(--accent2);
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
@@ -201,8 +163,9 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--deep-black);
-            margin: 60px 0;
+            background: var(--bg);
+            margin-top: 60px;
+            margin-bottom: -80px;
         }
 
         .hero-image img {
@@ -218,107 +181,91 @@
             content: '';
             position: absolute;
             bottom: 0; left: 0; right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            height: 250px;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.85) 70%, var(--bg));
             pointer-events: none;
         }
 
-        .main-content {
-            background: transparent;
-            padding: 70px 0 60px 0;
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        .session-summary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--cyber-gray);
-            border-left: 4px solid var(--bitcoin-orange);
-            padding: 35px 40px 40px 40px;
-            margin-bottom: 60px;
+        .hero-quote {
+            padding: 0 0 80px 0;
         }
 
-        .session-summary h2 {
-            font-size: 1.8rem;
+        .quote-hero {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
         }
 
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.7;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .context {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 35px 0;
+        }
+
+        .context p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.9;
             margin-bottom: 25px;
         }
 
-        .session-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .quote-block {
+            padding: 35px 0;
         }
 
-        .session-meta-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--concrete-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: 'JetBrains Mono', monospace;
+        .quote-block .quote-hero {
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            text-shadow: none;
         }
 
-        .session-meta-value {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-gray);
+        .quote-block .context {
+            padding: 0;
         }
 
-        .session-abstract {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--cyber-gray);
-            padding-top: 25px;
-            margin-top: 25px;
+        .video-embed {
+            max-width: 680px;
+            margin: 40px auto;
         }
 
-        .article-section { margin-bottom: 80px; }
-
-        .article-headline {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 15px;
-            letter-spacing: 0.02em;
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
         }
-
-        .article-subheader {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-
-        .article-content {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.9;
-        }
-
-        .article-content p { margin-bottom: 25px; }
 
         .supporters-section {
             background: var(--cyber-dark);
             padding: 60px 0;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
-        .supporters-section .container { text-align: center; }
+        .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            text-align: center;
+        }
 
         .mission-statement {
             font-size: 1.1rem;
@@ -329,7 +276,7 @@
 
         .supporters-thank-you {
             font-size: 1rem;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 35px;
         }
 
@@ -354,7 +301,7 @@
         }
 
         .supporter-logo:hover {
-            border-color: var(--bitcoin-orange);
+            border-color: var(--accent);
             background: rgba(247, 147, 26, 0.08);
             box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
         }
@@ -366,21 +313,30 @@
             text-align: center;
         }
 
-        .supporter-logo:hover span { color: var(--bitcoin-orange); }
+        .supporter-logo:hover span { color: var(--accent); }
 
         .site-footer {
-            background: var(--deep-black);
+            background: var(--bg);
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .site-footer p {
-            color: var(--concrete-gray);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
+        }
+
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 1024px) {
@@ -388,14 +344,17 @@
         }
 
         @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .main-content { padding: 160px 0 60px 0; }
+            main { padding: 0 24px; }
+            .hero-image { margin-bottom: -60px; }
+            .hero-quote { padding: 0 0 60px 0; }
+            .context { padding: 25px 0; }
+            .quote-block { padding: 25px 0; }
+            .supporters-section .container { padding: 0 20px; }
             .navbar-content {
                 padding: 0 20px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
-                position: relative;
             }
             .mobile-sponsor-bar {
                 width: 100%;
@@ -408,39 +367,18 @@
                 right: 20px;
                 font-size: 0.85rem;
             }
-            .session-summary { padding: 30px 20px; }
-            .session-summary h2 { font-size: 1.4rem; }
-            .session-meta { gap: 20px; }
-            .article-headline { font-size: 1.8rem; }
-            .article-subheader { font-size: 1.1rem; }
-            .supporters-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        }
-
-        @media (max-width: 480px) {
-            .session-meta { flex-direction: column; gap: 15px; }
-            .article-headline { font-size: 1.5rem; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
     <div class="scanline-effect"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
-            <div class="sponsor-thank-you"></div>
             <div class="mobile-sponsor-bar">
                 <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
                 <div class="mobile-sponsor-scroll-container">
@@ -463,73 +401,67 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="container">
-            <!-- Session Summary -->
-            <section class="session-summary fade-in">
-                <h2>Bitcoin: The Future Now</h2>
-                <div class="session-meta">
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Experience</span>
-                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Session Type</span>
-                        <span class="session-meta-value">Presentation</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Speaker</span>
-                        <span class="session-meta-value">
-                            <a href="https://x.com/andreneves" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Andre Neves</a> (ZBD)
-                        </span>
-                    </div>
-                </div>
-                <div class="session-abstract">
-                    This Bitcoin Takeover presentation explores the evolution of Bitcoin and the Lightning Network, highlighting the importance of builders, global inclusivity, and innovative protocols like Lightning Address. Bitcoin's success is a result of deliberate effort and community resilience — and the next builders are already here.
-                </div>
-            </section>
+    <section class="hero-image">
+        <img src="future-now-hero.jpg" alt="Andre Neves presenting on Bitcoin builders at Bitcoin Takeover 2026">
+    </section>
 
-            <!-- Hero Image -->
-            <section class="hero-image">
-                <img src="bitcoin-the-future-now-hero.jpg" alt="Andre Neves presenting Bitcoin: The Future Now at Bitcoin Takeover 2026">
-            </section>
+    <main>
+        <section class="hero-quote" data-reveal>
+            <blockquote class="quote-hero">"Bitcoin is not inevitable. Bitcoin is a choice made by builders every single day."</blockquote>
+            <p class="byline">Andre Neves (ZBD) · Bitcoin Takeover 2026 · Keynote</p>
+        </section>
 
-            <!-- Article Section -->
-            <article class="article-section fade-in">
-                <h2 class="article-headline">473 Obituaries and Not One Mentioned the Builders. Andre Neves Wants to Change That.</h2>
-                <p class="article-subheader">Bitcoin is not inevitable. It's a choice made by builders every single day — and Andre Neves, CEO of ZBD, has been making that choice since Lightning was still labeled "reckless."</p>
+        <section class="context" data-reveal>
+            <p>Andre Neves opened his talk with a number: 473. That's how many times journalists, economists, and heads of state have declared Bitcoin dead.</p>
+            <p>Not one of those obituaries named the people who kept it alive.</p>
+            <p>Neves is the CEO of ZBD, a company building embedded payments infrastructure for the video gaming industry on top of the Lightning Network. He has been building with Lightning since the protocol launched in 2018, when it was still labeled "reckless" in node software.</p>
+        </section>
 
-                <div class="article-content">
-                    <p>Andre Neves opened his Bitcoin Park talk with a number: 473. That's how many times journalists, economists, and heads of state have declared Bitcoin dead. Not one of those obituaries named the people who kept it alive. "Bitcoin is not inevitable," Neves said. "Bitcoin is a choice made by builders every single day."</p>
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"Gamers have usernames and gamer tags. They do not have invoices or QR codes."</blockquote>
+            <div class="context">
+                <p>The problem Neves kept hitting was friction. Lightning is an interactive protocol. To receive a payment, you had to be online, generate an invoice QR code, send it to the payer, and hope nothing timed out. For gaming — tipping streamers, rewarding players — that loop broke constantly.</p>
+                <p>In August 2021, Neves released the Lightning Address protocol, which works like email but for Bitcoin. No QR codes, no invoices. Just send to an address. He built it for gamers.</p>
+                <p>Twenty-seven days later, El Salvador's Bitcoin law went into effect, and millions of people downloaded Lightning wallets for the first time. Many of those wallets already supported Lightning Address because the industry had adopted it in less than a month.</p>
+            </div>
+        </section>
 
-                    <p>Neves is the CEO of ZBD, a company building embedded payments infrastructure for the video gaming industry on top of the Lightning Network. He has been building with Lightning since the protocol launched in 2018, when it was still labeled "reckless" in node software. The problem he kept hitting was friction. Lightning is an interactive protocol. To receive a payment, you had to be online, generate an invoice QR code, send it to the payer, and hope nothing timed out. For gaming &mdash; tipping streamers, rewarding players &mdash; that loop broke constantly.</p>
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"What she actually learned was proof. Proof that Bitcoin works, proof that it's actually easy to use, and proof that it is for everyone everywhere in the world."</blockquote>
+            <div class="context">
+                <p>Neves told the story of Maria, a fruit stand owner in El Zonte, El Salvador. A Bitcoiner named Dread helped onboard her into a Lightning wallet and posted her Lightning Address on Twitter.</p>
+                <p>People in Tokyo, Berlin, Sao Paulo, and Mumbai — strangers Maria would never meet — sent her money in real time, for free.</p>
+                <p>Today, Lightning Address runs on everything from Cash App to home Lightning nodes.</p>
+            </div>
+        </section>
 
-                    <p>"Gamers have usernames and gamer tags," Neves said. "They do not have invoices or QR codes."</p>
-
-                    <p>In August 2021, Neves released the Lightning Address protocol, which works like email but for Bitcoin. No QR codes, no invoices. Just send to an address. He built it for gamers. Twenty-seven days later, El Salvador's Bitcoin law went into effect, and millions of people downloaded Lightning wallets for the first time. Many of those wallets already supported Lightning Address because the industry had adopted it in less than a month.</p>
-
-                    <!-- Embedded Video -->
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/Cdho0blnTR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
-
-                    <p>Neves told the story of Maria, a fruit stand owner in El Zonte, El Salvador. A Bitcoiner named Dread helped onboard her into a Lightning wallet and posted her Lightning Address on Twitter. People in Tokyo, Berlin, Sao Paulo, and Mumbai &mdash; strangers Maria would never meet &mdash; sent her money in real time, for free. "What she actually learned was proof," Neves said. "Proof that Bitcoin works, proof that it's actually easy to use, and proof that it is for everyone everywhere in the world." Today, Lightning Address runs on everything from Cash App to home Lightning nodes.</p>
-
-                    <p>But tooling was only part of Neves's story. In 2018, he attended Chaincode Labs' first Lightning Network residency in New York &mdash; 10 engineers, two weeks, heads down. No tuition, no equity taken. "They just gathered a bunch of serious developers in the room and said, 'Go deep,'" he said. That room changed his life. It also raised a question: what about the developers who never get in?</p>
-
-                    <p>Neves is originally from Brazil. When he looked at the Bitcoin developer scene there, he found nothing &mdash; no dev meetups, no conferences, no training. He scheduled the first Brazilian dev cohort for March 12, 2020. The pandemic shut it down. They moved everything online, including dev meetups in VR chat rendered at 15 frames per second. In early 2022, Neves raised philanthropic capital and launched Vincum, a nonprofit focused on Bitcoin development in Brazil. It now runs Bit Devs meetups countrywide, technical conferences, hackathons, and places trained engineers into industry jobs.</p>
-
-                    <p>"Chaincode built a room for me. Vincum built a room for Brazil," Neves said. "And Brazilian builders are building rooms of their own. That's the chain."</p>
-
-                    <p>He closed with the current state of Lightning: over a billion dollars in monthly volume, 99% payment success rates, subsecond settlement, and 45,000 nodes. Eight years ago, the software warned you the network was reckless. Now open-source AI tools let a solo developer prototype in a weekend what used to take a team a quarter to build. The barriers to entry have collapsed. The only thing left is the decision to start. "You don't need permission," Neves said, "and you never did."</p>
-                </div>
-            </article>
+        <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/Cdho0blnTR8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"Chaincode built a room for me. Vincum built a room for Brazil. And Brazilian builders are building rooms of their own. That's the chain."</blockquote>
+            <div class="context">
+                <p>In 2018, Neves attended Chaincode Labs' first Lightning Network residency in New York — 10 engineers, two weeks, heads down. No tuition, no equity taken. That room changed his life. It also raised a question: what about the developers who never get in?</p>
+                <p>Neves is originally from Brazil. When he looked at the Bitcoin developer scene there, he found nothing — no dev meetups, no conferences, no training. He scheduled the first Brazilian dev cohort for March 12, 2020. The pandemic shut it down. They moved everything online, including dev meetups in VR chat rendered at 15 frames per second.</p>
+                <p>In early 2022, Neves raised philanthropic capital and launched Vincum, a nonprofit focused on Bitcoin development in Brazil. It now runs Bit Devs meetups countrywide, technical conferences, hackathons, and places trained engineers into industry jobs.</p>
+            </div>
+        </section>
+
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"You don't need permission, and you never did."</blockquote>
+            <div class="context">
+                <p>Neves closed with the current state of Lightning: over a billion dollars in monthly volume, 99 percent payment success rates, subsecond settlement, and 45,000 nodes.</p>
+                <p>Eight years ago, the software warned you the network was reckless. Now open-source AI tools let a solo developer prototype in a weekend what used to take a team a quarter to build. The barriers to entry have collapsed.</p>
+                <p>The only thing left is the decision to start.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Company Supporters Section -->
     <section class="supporters-section">
         <div class="container">
             <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
@@ -556,13 +488,14 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+})();
     </script>
 </body>
 </html>
