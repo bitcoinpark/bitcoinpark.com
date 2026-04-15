@@ -3,73 +3,55 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Takeover 2026: A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield - Bitcoin Park</title>
-    <meta property="og:title" content="Bitcoin Takeover 2026: A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield">
-    <meta property="og:description" content="Jesse Shrader and Yash Belavadi give two very different answers to the same question — where does the yield come from? — and both turn out to be right.">
-    <meta property="og:image" content="https://bitcoinpark.com/takeover/a-cost-of-capital-hero.jpg">
+    <title>A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield - Bitcoin Takeover 2026</title>
+    <meta property="og:title" content="A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield">
+    <meta property="og:description" content="Jesse Shrader and Yash Belavadi on routing fees, credit markets, and why Lightning's constraint is the feature.">
+    <meta property="og:image" content="https://bitcoinpark.com/takeover/cost-of-capital-hero.jpg">
     <meta property="og:url" content="https://bitcoinpark.com/takeover/a-cost-of-capital-lightning-jesse-shrader-yash-belavadi.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bitcoin-orange: #F7931A;
-            --bitcoin-orange-hover: #E8840F;
-            --electric-blue: #00D4FF;
-            --deep-black: #0A0A0A;
+            --bg: #0A0A0A;
+            --text: #FFFFFF;
+            --accent: #F7931A;
+            --accent2: #00D4FF;
+            --text-gray: #b0b0b0;
             --cyber-dark: #1a1a1a;
             --cyber-gray: #2a2a2a;
-            --concrete-gray: #808080;
-            --text-gray: #b0b0b0;
-            --pure-white: #FFFFFF;
+            --font-display: 'Space Grotesk', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', Arial, sans-serif;
-            background: var(--deep-black);
-            color: var(--pure-white);
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* BT26 Background Effects */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background:
                 radial-gradient(circle at 20% 50%, rgba(247, 147, 26, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(247, 147, 26, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 60% 30%, rgba(0, 212, 255, 0.03) 0%, transparent 40%);
+                radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Scanline Effect */
         .scanline-effect {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.06),
-                rgba(0, 0, 0, 0.06) 1px,
-                transparent 1px,
-                transparent 2px
-            );
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.06), rgba(0,0,0,0.06) 1px, transparent 1px, transparent 2px);
             pointer-events: none;
             z-index: 10001;
             animation: scanline 8s linear infinite;
@@ -80,27 +62,9 @@
             100% { transform: translateY(100vh); }
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', Arial, sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.02em;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Navigation */
         .navbar {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 0;
@@ -118,24 +82,6 @@
             gap: 15px;
         }
 
-        .navbar a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--electric-blue);
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-        }
-
-        .navbar-logo {
-            display: flex;
-            align-items: center;
-        }
-
         .navbar-logo img {
             height: 39px;
             width: auto;
@@ -143,51 +89,8 @@
             transition: opacity 0.3s ease;
         }
 
-        .navbar-logo:hover img {
-            opacity: 1;
-        }
+        .navbar-logo:hover img { opacity: 1; }
 
-        /* Sponsor Thank You Bar - Hidden, replaced by scrolling version */
-        .sponsor-thank-you {
-            display: none;
-        }
-
-        .sponsor-thank-you-text {
-            font-size: 0.75rem;
-            color: var(--bitcoin-orange);
-            font-weight: 500;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: flex-start;
-            line-height: 0.8;
-        }
-
-        .sponsor-thank-you-text a {
-            font-size: 0.75rem;
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            border-bottom: 1px solid transparent;
-            white-space: nowrap;
-        }
-
-        .sponsor-thank-you-text a:hover {
-            color: var(--bitcoin-orange);
-            border-bottom-color: var(--bitcoin-orange);
-        }
-
-        .sponsor-separator {
-            color: var(--bitcoin-orange);
-            width: 1px;
-            height: 12px;
-            background-color: var(--bitcoin-orange);
-            display: inline-block;
-            margin: 0 4px;
-        }
-
-        /* Scrolling Sponsors Bar */
         .mobile-sponsor-bar {
             display: flex;
             align-items: center;
@@ -199,11 +102,11 @@
 
         .mobile-sponsor-static {
             font-size: 0.7rem;
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
         .mobile-sponsor-scroll-container {
@@ -211,7 +114,6 @@
             flex: 1;
             min-width: 0;
             mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
         }
 
         .mobile-sponsor-scroll {
@@ -229,29 +131,20 @@
             transition: color 0.3s ease;
         }
 
-        .mobile-sponsor-scroll a:hover {
-            color: var(--bitcoin-orange);
-        }
+        .mobile-sponsor-scroll a:hover { color: var(--accent); }
 
         .mobile-sponsor-scroll .sponsor-dot {
-            color: var(--bitcoin-orange);
+            color: var(--accent);
             font-size: 0.5rem;
-            line-height: 1;
-            display: flex;
-            align-items: center;
         }
 
         @keyframes scrollSponsors {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .navbar-back-link {
-            color: var(--pure-white);
+            color: var(--text);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
@@ -262,17 +155,17 @@
         }
 
         .navbar-back-link:hover {
-            color: var(--electric-blue);
+            color: var(--accent2);
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
         }
 
-        /* Hero Image Section */
         .hero-image {
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--deep-black);
-            margin: 60px 0;
+            background: var(--bg);
+            margin-top: 60px;
+            margin-bottom: -80px;
         }
 
         .hero-image img {
@@ -287,127 +180,102 @@
         .hero-image::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, var(--deep-black));
+            bottom: 0; left: 0; right: 0;
+            height: 250px;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.85) 70%, var(--bg));
             pointer-events: none;
         }
 
-        /* Main Content */
-        .main-content {
-            background: transparent;
-            padding: 70px 0 60px 0;
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        /* Session Summary Section */
-        .session-summary {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--cyber-gray);
-            border-left: 4px solid var(--bitcoin-orange);
-            padding: 35px 40px 40px 40px;
-            margin-bottom: 60px;
+        .hero-quote {
+            padding: 0 0 35px 0;
         }
 
-        .session-summary h2 {
-            font-size: 1.8rem;
+        .quote-hero {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 700;
-            color: var(--pure-white);
-            margin-bottom: 20px;
-            line-height: 1.3;
-            text-shadow: 0 0 20px rgba(247, 147, 26, 0.15);
-        }
-
-        .session-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 25px;
-        }
-
-        .session-meta-item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .session-meta-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--concrete-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .session-meta-value {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-gray);
-        }
-
-        .session-meta-value.highlight {
-            color: var(--bitcoin-orange);
-        }
-
-        .speaker-highlight {
-            color: var(--bitcoin-orange);
-            font-weight: 600;
-        }
-
-        .session-abstract {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--cyber-gray);
-            padding-top: 25px;
-            margin-top: 25px;
-        }
-
-        /* Article Section */
-        .article-section {
-            margin-bottom: 80px;
-        }
-
-        .article-headline {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--pure-white);
+            color: var(--text);
+            line-height: 1.2;
             margin-bottom: 15px;
-            letter-spacing: 0.02em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
         }
 
-        .article-subheader {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            margin-bottom: 35px;
-            line-height: 1.6;
+        .byline {
+            font-size: 0.95rem;
+            color: var(--text);
+            opacity: 0.7;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
         }
 
-        .article-content {
-            font-size: 1.1rem;
+        .context {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 35px 0;
+        }
+
+        .context p {
+            font-size: 1.125rem;
             color: var(--text-gray);
             line-height: 1.9;
-        }
-
-        .article-content p {
             margin-bottom: 25px;
         }
 
-        /* Company Supporters Section */
+        .quote-block {
+            padding: 35px 0;
+        }
+
+        .quote-block .quote-hero {
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+            text-shadow: none;
+        }
+
+        .quote-block .context {
+            padding: 0;
+        }
+
+        .context a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .context a:hover {
+            border-bottom-color: var(--accent);
+            text-shadow: 0 0 8px rgba(247, 147, 26, 0.3);
+        }
+
+        .video-embed {
+            max-width: 680px;
+            margin: 40px auto;
+        }
+
+        .video-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            display: block;
+        }
+
         .supporters-section {
             background: var(--cyber-dark);
             padding: 60px 0;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .supporters-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
             text-align: center;
         }
 
@@ -420,7 +288,7 @@
 
         .supporters-thank-you {
             font-size: 1rem;
-            color: var(--pure-white);
+            color: var(--text);
             margin-bottom: 35px;
         }
 
@@ -445,7 +313,7 @@
         }
 
         .supporter-logo:hover {
-            border-color: var(--bitcoin-orange);
+            border-color: var(--accent);
             background: rgba(247, 147, 26, 0.08);
             box-shadow: 0 0 15px rgba(247, 147, 26, 0.15);
         }
@@ -457,135 +325,72 @@
             text-align: center;
         }
 
-        .supporter-logo:hover span {
-            color: var(--bitcoin-orange);
-        }
+        .supporter-logo:hover span { color: var(--accent); }
 
-        /* Footer */
         .site-footer {
-            background: var(--deep-black);
+            background: var(--bg);
             padding: 30px 0;
             text-align: center;
             border-top: 1px solid var(--cyber-gray);
-            position: relative;
-            z-index: 1;
         }
 
         .site-footer p {
-            color: var(--concrete-gray);
+            color: rgba(255, 255, 255, 0.4);
             font-size: 0.85rem;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
 
-        /* Responsive */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        [data-reveal].revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 1024px) {
-            .supporters-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
+            .supporters-grid { grid-template-columns: repeat(5, 1fr); }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-
-            .main-content {
-                padding: 160px 0 60px 0;
-            }
-
+            main { padding: 0 24px; }
+            .hero-image { margin-bottom: -60px; }
+            .hero-quote { padding: 0 0 60px 0; }
+            .context { padding: 25px 0; }
+            .quote-block { padding: 25px 0; }
+            .supporters-section .container { padding: 0 20px; }
             .navbar-content {
                 padding: 0 20px;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 10px;
             }
-
             .mobile-sponsor-bar {
                 width: 100%;
                 padding: 8px 0;
                 border-bottom: 1px solid var(--cyber-gray);
             }
-
             .navbar-back-link {
                 position: absolute;
                 top: 15px;
                 right: 20px;
                 font-size: 0.85rem;
             }
-
-            .navbar-content {
-                position: relative;
-            }
-
-            .session-summary {
-                padding: 30px 20px;
-            }
-
-            .session-summary h2 {
-                font-size: 1.4rem;
-            }
-
-            .session-meta {
-                gap: 20px;
-            }
-
-            .article-headline {
-                font-size: 1.8rem;
-            }
-
-            .article-subheader {
-                font-size: 1.1rem;
-            }
-
-            .supporters-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .session-meta {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .article-headline {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Fade-in animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .supporters-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
 <body>
     <div class="scanline-effect"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <a href="https://bitcoinpark.com" class="navbar-logo">
                 <img src="../nems/bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
             </a>
-            <div class="sponsor-thank-you">
-                <span class="sponsor-thank-you-text">A Special Thank You to Our BT26 Sponsors:
-                    <a href="https://zaprite.com" target="_blank">Zaprite</a>
-                    <span class="sponsor-separator"></span>
-                    <a href="https://block.xyz" target="_blank">Block</a>
-                    <span class="sponsor-separator"></span>
-                    <a href="https://zbd.gg" target="_blank">ZBD</a>
-                    <span class="sponsor-separator"></span>
-                    <a href="https://unchained.com" target="_blank">Unchained</a>
-                </span>
-            </div>
-            <!-- Mobile Scrolling Sponsors -->
             <div class="mobile-sponsor-bar">
                 <span class="mobile-sponsor-static">TY BT26 Sponsors:</span>
                 <div class="mobile-sponsor-scroll-container">
@@ -598,7 +403,6 @@
                         <span class="sponsor-dot">&#8226;</span>
                         <a href="https://unchained.com" target="_blank">Unchained</a>
                         <span class="sponsor-dot">&#8226;</span>
-                        <!-- Duplicate for seamless loop -->
                         <a href="https://zaprite.com" target="_blank">Zaprite</a>
                         <span class="sponsor-dot">&#8226;</span>
                         <a href="https://block.xyz" target="_blank">Block</a>
@@ -609,75 +413,64 @@
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="navbar-back-link">&larr; Back to Bitcoin Takeover 2026</a>
+            <a href="index.html" class="navbar-back-link">&larr; Back to BT26</a>
         </div>
     </nav>
 
-    <main class="main-content">
-        <div class="container">
-            <!-- Session Summary -->
-            <section class="session-summary fade-in">
-                <h2>A Cost of Capital on Lightning and the Birth of Bitcoin-Native Yield</h2>
-                <div class="session-meta">
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Experience</span>
-                        <span class="session-meta-value"><a href="index.html" style="color: inherit; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.3s ease;" onmouseover="this.style.color='var(--bitcoin-orange)'; this.style.borderBottomColor='var(--bitcoin-orange)';" onmouseout="this.style.color='inherit'; this.style.borderBottomColor='transparent';">BT26</a></span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Session Type</span>
-                        <span class="session-meta-value">Panel Discussion</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Moderator</span>
-                        <span class="session-meta-value"><a href="https://x.com/BitcoinPierre" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Pierre Rochard</a> (The Bitcoin Bond Company)</span>
-                    </div>
-                    <div class="session-meta-item">
-                        <span class="session-meta-label">Speakers</span>
-                        <span class="session-meta-value"><a href="https://x.com/ambosstech" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Jesse Shrader</a> (Amboss) &amp; <a href="https://surge.credit/" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease; font-weight: 600;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 10px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">Yash Belavadi</a> (Surge)</span>
-                    </div>
-                </div>
-                <div class="session-abstract">
-                    This Bitcoin Takeover session explores the innovative world of Bitcoin Lightning yield, self-custody, and decentralized finance. Jesse Shrader and Yash Belavadi discuss how the Lightning Network operates, the sources of yield, and the future of Bitcoin-native credit markets.
-                </div>
-            </section>
+    <section class="hero-image">
+        <img src="cost-of-capital-hero.jpg" alt="Jesse Shrader and Yash Belavadi discussing Bitcoin-native yield at Bitcoin Takeover 2026">
+    </section>
 
-            <!-- Hero Image -->
-            <section class="hero-image">
-                <img src="a-cost-of-capital-hero.jpg" alt="Jesse Shrader and Yash Belavadi discussing Bitcoin-native yield at Bitcoin Takeover 2026">
-            </section>
+    <main>
+        <section class="hero-quote" data-reveal>
+            <blockquote class="quote-hero">"If you're unique in connecting sources and destinations, you're going to have a disproportionate advantage."</blockquote>
+            <p class="byline">Jesse Shrader (Amboss), Yash Belavadi (Surge) · Moderated by Pierre Rochard · Bitcoin Takeover 2026 · Panel</p>
+        </section>
 
-            <!-- Article Section -->
-            <article class="article-section fade-in">
-                <h2 class="article-headline">Bitcoin-Native Yield Is Real, but it Requires Skill</h2>
-                <p class="article-subheader">Jesse Shrader built machine learning models to chase routing fees. Yash Belavadi is bringing credit markets to native Bitcoin. Both agree Lightning's constraint is the feature.</p>
+        <section class="context" data-reveal>
+            <p>Jesse Shrader described Lightning yield as a toll road business. Nodes that sit at high-traffic intersections in the payment graph earn routing fees from every transaction that passes through them.</p>
+            <p>Amboss spent five years building machine learning models to help liquidity providers identify where to deploy capital for maximum fee capture. Graph neural networks borrowed from ISP bandwidth planning and pipe flow optimization.</p>
+            <p>The results have been modest but self-custodied. Last month, Amboss hit 1.5% APY.</p>
+        </section>
 
-                <div class="article-content">
-                    <p>The question "where does the yield come from?" sounds simple. At the Bitcoin Takeover panel on Lightning yield and Bitcoin-native credit markets, two founders gave very different answers.</p>
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"There's no shortage of Bitcoin looking for self-custody yield."</blockquote>
+            <div class="context">
+                <p>Shrader's waitlist hit 3,700 Bitcoin. A competitor, Stroom, which offered tokens in exchange for people depositing Bitcoin on the Lightning Network under a fully custodial model, could not generate comparable yield and recently shut down.</p>
+                <p>His point was implicit: custody matters, and the economics only work if the underlying approach is sound.</p>
+            </div>
+        </section>
 
-                    <p>Jesse Shrader, CEO of Amboss, and Yash Belavadi, co-founder of Surge, joined moderator Pierre Rochard to lay out the diverging approaches. Shrader's answer was routing fees. Belavadi's was credit markets. The difference matters because they carry different custody trade-offs, different risk profiles, and very different technical infrastructure.</p>
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">Running a Lightning node is like raising a Tamagotchi.</blockquote>
+            <div class="context">
+                <p>Lightning routing is not passive income. Yields are not uniform. They depend on connectivity, uptime, fee management, and whether your node sits on a route anyone actually uses.</p>
+                <p>Amboss is building managed services to abstract that complexity, but the underlying skill requirement remains.</p>
+            </div>
+        </section>
 
-                    <p>Shrader described Lightning yield as a toll road business. Nodes that sit at high-traffic intersections in the payment graph earn routing fees from every transaction that passes through them. "If you're unique in connecting sources and destinations, you're going to have a disproportionate advantage," he said. Amboss spent five years building machine learning models &mdash; graph neural networks borrowed from ISP bandwidth planning and pipe flow optimization &mdash; to help liquidity providers identify where to deploy capital for maximum fee capture.</p>
-
-                    <p>The results have been modest but self-custodied. Last month, Amboss hit 1.5% APY. A competitor, Stroom, which offered tokens in exchange for people depositing Bitcoin on the Lightning Network under a fully custodial model, could not generate comparable yield and recently shut down. Shrader's point was implicit: custody matters, and the economics only work if the underlying approach is sound. "There's no shortage of Bitcoin looking for self-custody yield," he said. His waitlist hit 3,700 Bitcoin.</p>
-
-                    <p>But Lightning routing is not passive income. Shrader compared running a node to raising a Tamagotchi. Yields are not uniform. They depend on connectivity, uptime, fee management, and whether your node sits on a route anyone actually uses. Amboss is building managed services to abstract that complexity, but the underlying skill requirement remains.</p>
-
-                    <!-- Embedded Video -->
-                    <iframe width="100%" height="400" src="https://www.youtube.com/embed/Z4oYGv8CmK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin: 40px 0; border-radius: 8px; display: block;"></iframe>
-
-                    <p>Belavadi came at the problem from DeFi. The existing Bitcoin-backed credit market on Ethereum-based protocols totals roughly $15 billion in wrapped Bitcoin, earning lenders 3 to 4% &mdash; but utilization is only 20 to 30%, and borrowers have to hand their Bitcoin to a custodian on an EVM chain. "I'm sure this room is not comfortable giving up Bitcoin custody to some random token on some EVM chain," he said.</p>
-
-                    <p>Surge, launching in private beta in April at <a href="https://surge.credit/" target="_blank" style="color: var(--bitcoin-orange); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.3s ease;" onmouseover="this.style.borderBottomColor='var(--bitcoin-orange)'; this.style.textShadow='0 0 8px rgba(247,147,26,0.3)';" onmouseout="this.style.borderBottomColor='transparent'; this.style.textShadow='none';">surge.credit</a>, is trying to bring that rate to native Bitcoin. Borrowers put up Bitcoin as collateral without it leaving a Bitcoin address, verified on-chain. Lenders receive stablecoins. The protocol targets 7% at launch. The coordination layer uses multi-party computation rather than a human intermediary, removing the bank-like overhead that makes most Bitcoin lending expensive.</p>
-
-                    <p>The oracle problem is the unresolved tension. Automated liquidation requires a price feed, and a single-source oracle can be gamed or manipulated &mdash; as a recent Binance incident illustrated with a billion-dollar liquidation cascade. Belavadi acknowledged the risk, arguing that multi-source price aggregation and improved MPC infrastructure have made the technology more reliable since 2023.</p>
-
-                    <p>Both founders converged on the same premise: Lightning is a full reserve system with no credit and no debt creation, and that constraint is the feature. Everything being built on top of it is an attempt to unlock yield from that constraint without compromising it.</p>
-                </div>
-            </article>
+        <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/Z4oYGv8CmK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
+
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"I'm sure this room is not comfortable giving up Bitcoin custody to some random token on some EVM chain."</blockquote>
+            <div class="context">
+                <p>Yash Belavadi came at the problem from DeFi. The existing Bitcoin-backed credit market on Ethereum-based protocols totals roughly $15 billion in wrapped Bitcoin, earning lenders 3 to 4 percent. But utilization is only 20 to 30 percent, and borrowers have to hand their Bitcoin to a custodian on an EVM chain.</p>
+                <p>Surge, launching in private beta in April at <a href="https://surge.credit/" target="_blank">surge.credit</a>, is trying to bring that rate to native Bitcoin. Borrowers put up Bitcoin as collateral without it leaving a Bitcoin address, verified on-chain. Lenders receive stablecoins. The protocol targets 7 percent at launch.</p>
+                <p>The coordination layer uses multi-party computation rather than a human intermediary, removing the bank-like overhead that makes most Bitcoin lending expensive.</p>
+            </div>
+        </section>
+
+        <section class="quote-block" data-reveal>
+            <blockquote class="quote-hero">"Lightning is a full reserve system with no credit and no debt creation, and that constraint is the feature."</blockquote>
+            <div class="context">
+                <p>The oracle problem is the unresolved tension. Automated liquidation requires a price feed, and a single-source oracle can be gamed or manipulated. A recent Binance incident illustrated this with a billion-dollar liquidation cascade. Belavadi acknowledged the risk, arguing that multi-source price aggregation and improved MPC infrastructure have made the technology more reliable since 2023.</p>
+                <p>Both founders converged on the same premise: everything being built on top of Lightning is an attempt to unlock yield from that constraint without compromising it.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- Company Supporters Section -->
     <section class="supporters-section">
         <div class="container">
             <p class="mission-statement">Bitcoin Park's mission is to support and accelerate the grassroots freedom tech movement.</p>
@@ -704,23 +497,14 @@
     </footer>
 
     <script>
-        // Fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');ro.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ro.observe(el);});
+})();
     </script>
 </body>
 </html>
