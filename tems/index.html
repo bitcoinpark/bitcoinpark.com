@@ -16,14 +16,14 @@
   <meta property="og:description" content="Texas Energy & Mining Summit 2026. May 20-21 in Austin, TX. Laboratory Texas: Where Market Structure Meets Innovation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bitcoinpark.com/tems">
-  <meta property="og:image" content="https://bitcoinpark.com/tems/TEMS-MEETUP-SPONSORS (1).png">
+  <meta property="og:image" content="https://bitcoinpark.com/tems/TEMS-MEETUP-SPONSORS (1).png?v=20260422">
   <meta property="og:site_name" content="Bitcoin Park">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Texas Energy & Mining Summit 2026 - Bitcoin Park">
   <meta name="twitter:description" content="Texas Energy & Mining Summit 2026. May 20-21 in Austin, TX. Laboratory Texas: Where Market Structure Meets Innovation.">
-  <meta name="twitter:image" content="https://bitcoinpark.com/tems/TEMS-MEETUP-SPONSORS (1).png">
+  <meta name="twitter:image" content="https://bitcoinpark.com/tems/TEMS-MEETUP-SPONSORS (1).png?v=20260422">
 
   <link rel="canonical" href="https://bitcoinpark.com/tems">
 
@@ -51,7 +51,7 @@
       "name": "Bitcoin Park",
       "url": "https://bitcoinpark.com"
     },
-    "image": "https://bitcoinpark.com/tems/TEMS-MEETUP-SPONSORS (1).png",
+    "image": "https://bitcoinpark.com/tems/TEMS-MEETUP-SPONSORS (1).png?v=20260422",
     "url": "https://bitcoinpark.com/tems",
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
@@ -448,20 +448,51 @@
       }
     }
 
-    /* Sponsor logo clickable overlays - invisible but clickable */
-    .hero-image a {
+    /* Sponsor logo overlays track the composite hero image. */
+    .hero-sponsor-link {
+      position: absolute;
+      bottom: 1.5%;
+      height: 10.5%;
+      z-index: 1000;
+      display: block;
+      cursor: pointer;
+      border-radius: 10px;
       background: transparent;
     }
 
-    .hero-image a:hover {
-      background: transparent;
+    .hero-sponsor-link:focus-visible {
+      outline: 2px solid rgba(255, 244, 226, 0.6);
+      outline-offset: 2px;
     }
 
-    /* Hide sponsor links on mobile */
-    @media (max-width: 768px) {
-      .hero-image a {
-        display: none !important;
-      }
+    .hero-sponsor-cleanspark {
+      left: 8%;
+      width: 11%;
+    }
+
+    .hero-sponsor-foundry {
+      left: 19.5%;
+      width: 16%;
+    }
+
+    .hero-sponsor-priority {
+      left: 36%;
+      width: 19%;
+    }
+
+    .hero-sponsor-cholla {
+      left: 56%;
+      width: 13%;
+    }
+
+    .hero-sponsor-proto {
+      left: 67%;
+      width: 14%;
+    }
+
+    .hero-sponsor-obm {
+      left: 81.5%;
+      width: 12%;
     }
 
     /* Sections */
@@ -1156,33 +1187,38 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-image">
-      <img src="./TEMS-MEETUP-SPONSORS (1).png" alt="Texas Energy & Mining Summit 2026 - May 20-21, Bitcoin Park Austin - Supported by CleanSpark, Foundry, Priority Power, Cholla, and Proto">
+      <img src="./TEMS-MEETUP-SPONSORS (1).png?v=20260422" alt="Texas Energy & Mining Summit 2026 - May 20-21, Bitcoin Park Austin - Supported by CleanSpark, Foundry, Priority Power, Cholla Inc., Proto, and OBM">
 
       <!-- Clickable sponsor logo overlays -->
       <!-- CleanSpark logo -->
       <a href="https://www.cleanspark.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 10%; bottom: 3%; width: 12%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
+         class="hero-sponsor-link hero-sponsor-cleanspark"
          aria-label="CleanSpark"></a>
 
       <!-- Foundry logo -->
       <a href="https://foundrydigital.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 25%; bottom: 3%; width: 14%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
+         class="hero-sponsor-link hero-sponsor-foundry"
          aria-label="Foundry"></a>
 
       <!-- Priority Power logo -->
       <a href="https://prioritypower.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 43%; bottom: 3%; width: 14%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
+         class="hero-sponsor-link hero-sponsor-priority"
          aria-label="Priority Power"></a>
 
       <!-- Cholla logo -->
       <a href="https://chollainc.com/" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 61%; bottom: 3%; width: 12%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
-         aria-label="Cholla"></a>
+         class="hero-sponsor-link hero-sponsor-cholla"
+         aria-label="Cholla Inc."></a>
 
       <!-- Proto logo -->
-      <a href="https://proto.xyz" target="_blank" rel="noopener noreferrer"
-         style="position: absolute; left: 76%; bottom: 3%; width: 14%; height: 10%; z-index: 1000; display: block; cursor: pointer;"
+      <a href="https://proto.xyz/" target="_blank" rel="noopener noreferrer"
+         class="hero-sponsor-link hero-sponsor-proto"
          aria-label="Proto"></a>
+
+      <!-- OBM logo -->
+      <a href="https://obm.io/" target="_blank" rel="noopener noreferrer"
+         class="hero-sponsor-link hero-sponsor-obm"
+         aria-label="OBM"></a>
     </div>
   </section>
 
