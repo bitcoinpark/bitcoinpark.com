@@ -521,6 +521,18 @@
       font-size: 0.85rem;
     }
 
+    .speaker a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .speaker a:hover {
+      color: var(--desert-tan);
+      border-bottom-color: rgba(196, 165, 123, 0.5);
+    }
+
     .session-emcee {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.75rem;
@@ -725,7 +737,7 @@
           <span class="session-tag tag-housekeeping">Welcome</span>
           <h3 class="session-title">Welcome Announcement</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Rod Roudi <span class="speaker-affiliation">(Bitcoin Park)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/rodroudi" target="_blank" rel="noopener">Rod Roudi</a> <span class="speaker-affiliation">(Bitcoin Park)</span></span>
           </div>
         </div>
       </article>
@@ -736,7 +748,7 @@
           <span class="session-tag tag-keynote">Keynote</span>
           <h3 class="session-title">Proof of Flexibility: What 21 Mining Facilities Reveal About Load, Emissions, and Market Design</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Margot Paez</span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/margotpaez/" target="_blank" rel="noopener">Margot Paez</a></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Bitcoin miners have long claimed to be the most flexible large-scale loads on any power grid. This keynote presents the first empirical proof from 21 real facilities across North America, matching hourly consumption against locational marginal emissions. The data confirms that miners curtail meaningfully during high-carbon hours — but flexibility varies dramatically across facilities and market structures. ERCOT's real-time pricing produces the most effective curtailment behavior of any grid in the study. Paez introduces a diagnostic for identifying flexible facilities from standard metering data and a model forecasting hashrate, energy demand, and miner revenue under multiple scenarios.</p>
@@ -749,10 +761,10 @@
           <span class="session-tag tag-fireside">Fireside</span>
           <h3 class="session-title">Shovels in the Ground: Texas's Fast Lane for Energy Infrastructure</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Tyler Stevens <span class="speaker-affiliation">(Exergy)</span></span>
-            <span class="speaker">Nick Gates <span class="speaker-affiliation">(Priority Power)</span></span>
-            <span class="speaker">Rapha Zagury <span class="speaker-affiliation">(Elektron Energy)</span></span>
-            <span class="speaker">Austin Storms <span class="speaker-affiliation">(Galaxy Digital)</span></span>
+            <span class="speaker lead"><a href="https://x.com/tylerkstevens" target="_blank" rel="noopener">Tyler Stevens</a> <span class="speaker-affiliation">(Exergy)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/nick-gates-3500b935" target="_blank" rel="noopener">Nick Gates</a> <span class="speaker-affiliation">(Priority Power)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/rzagury/" target="_blank" rel="noopener">Rapha Zagury</a> <span class="speaker-affiliation">(Elektron Energy)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/austin-storms-94946a236" target="_blank" rel="noopener">Austin Storms</a> <span class="speaker-affiliation">(Galaxy Digital)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">While other states spend years mired in environmental reviews and interconnection queues, Texas offers a permitting environment where large-scale energy projects move from concept to construction in months. This fireside examines the regulatory architecture behind that speed advantage, from streamlined county-level approvals to expedited transmission interconnection processes. The conversation explores how behind-the-meter configurations, modular power generation, and creative site selection allow miners and data center operators to energize facilities faster than anywhere else in North America and why this velocity advantage is accelerating capital deployment into the state.</p>
@@ -765,9 +777,9 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Powering Places: Service and Community Development Through Compute</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Parker Lewis <span class="speaker-affiliation">(Zaprite)</span></span>
-            <span class="speaker">Sterling Lee <span class="speaker-affiliation">(Cholla)</span></span>
-            <span class="speaker">H Griffin Haby III <span class="speaker-affiliation">(Mountain Lion)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/parker-lewis-ab904669" target="_blank" rel="noopener">Parker Lewis</a> <span class="speaker-affiliation">(Zaprite)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/sterling-lee-b26522177/" target="_blank" rel="noopener">Sterling Lee</a> <span class="speaker-affiliation">(Cholla)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/hayden-griffin-haby-iii-299aaa51" target="_blank" rel="noopener">H Griffin Haby III</a> <span class="speaker-affiliation">(Mountain Lion)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Compute infrastructure is emerging as a transformative force for economic development in communities across Texas and the broader American heartland. This panel examines how mining operations and data centers are catalyzing local economies through direct employment, supply chain development, and infrastructure investment that benefits residents far beyond the facility fence line. Panelists explore innovative models for community ownership, revenue sharing, and workforce development programs that ensure host communities participate meaningfully in the upside of an increasingly digital economy.</p>
@@ -788,7 +800,7 @@
           <span class="session-tag tag-housekeeping">Announcements</span>
           <h3 class="session-title">Afternoon Announcements</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Rod Roudi <span class="speaker-affiliation">(Bitcoin Park)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/rodroudi" target="_blank" rel="noopener">Rod Roudi</a> <span class="speaker-affiliation">(Bitcoin Park)</span></span>
           </div>
         </div>
       </article>
@@ -799,10 +811,10 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Energy Sovereignty: Policy Frameworks for Computational Independence</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Zack Cohen <span class="speaker-affiliation">(Bitcoin Policy Institute)</span></span>
-            <span class="speaker">Justin Ballard <span class="speaker-affiliation">(J Ballard Law)</span></span>
-            <span class="speaker">Will Paul <span class="speaker-affiliation">(Block)</span></span>
-            <span class="speaker">Giovanni Capriglione <span class="speaker-affiliation">(State Rep · TBC)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/zackbcohen/" target="_blank" rel="noopener">Zack Cohen</a> <span class="speaker-affiliation">(Bitcoin Policy Institute)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/justin-ballard-76576912" target="_blank" rel="noopener">Justin Ballard</a> <span class="speaker-affiliation">(J Ballard Law)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/wpaul1/" target="_blank" rel="noopener">Will Paul</a> <span class="speaker-affiliation">(Block)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/giocap/" target="_blank" rel="noopener">Giovanni Capriglione</a> <span class="speaker-affiliation">(State Rep · TBC)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Texas has staked its claim as a regulatory haven for energy-intensive computing, but the policy landscape is shifting beneath operators' feet. This panel dissects the legislative frameworks that made the Lone Star State the global capital of Bitcoin mining and evaluates emerging regulatory pressures from federal agencies and competing jurisdictions. Panelists assess how Texas can maintain its competitive edge while establishing governance models that other states and nations seek to replicate. The conversation explores the delicate balance between welcoming innovation and safeguarding grid reliability as computational loads scale toward unprecedented levels.</p>
@@ -815,10 +827,10 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Open Source Mining: Firmware, Pools, and the Decentralization Imperative</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Skot <span class="speaker-affiliation">(Bitaxe)</span></span>
-            <span class="speaker">John Stefanopolous <span class="speaker-affiliation">(FutureBit)</span></span>
-            <span class="speaker">Ryan Keuster <span class="speaker-affiliation">(Mujina)</span></span>
-            <span class="speaker">Michael Schmid <span class="speaker-affiliation">(Libre Board)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/skotcroshere" target="_blank" rel="noopener">Skot</a> <span class="speaker-affiliation">(Bitaxe)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/john-stefanopoulos-b4520238" target="_blank" rel="noopener">John Stefanopoulos</a> <span class="speaker-affiliation">(FutureBit)</span></span>
+            <span class="speaker"><a href="https://x.com/ryankuester" target="_blank" rel="noopener">Ryan Kuester</a> <span class="speaker-affiliation">(Mujina)</span></span>
+            <span class="speaker"><a href="https://x.com/Schnitzel" target="_blank" rel="noopener">Michael Schmid</a> <span class="speaker-affiliation">(Libre Board)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Enterprise-scale operations command the hashrate charts, but Bitcoin's security model depends on mining remaining distributed and permissionless. This panel convenes the builders working at the grassroots layer — open-source firmware developers, decentralized pool architects, and DIY hardware creators — to examine how their work counterbalances centralization pressures. Panelists discuss the technical and governance challenges of running transparent mining pools, the viability of open-source ASIC designs, and how firmware freedom gives individual operators control over their machines. The session makes the case that decentralized mining infrastructure is not a niche pursuit but a systemic necessity.</p>
@@ -831,10 +843,10 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">How Low Can We Go? Controlling Costs in a Hyper-Competitive Market</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Nico Moran</span>
-            <span class="speaker">Brad Cuddy <span class="speaker-affiliation">(Cholla Inc.)</span></span>
-            <span class="speaker">Kevin Hennigan <span class="speaker-affiliation">(CleanSpark)</span></span>
-            <span class="speaker">Dan Lawrence <span class="speaker-affiliation">(OBM)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/nicozm/" target="_blank" rel="noopener">Nico Moran</a></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/bradleycuddy/" target="_blank" rel="noopener">Brad Cuddy</a> <span class="speaker-affiliation">(Cholla Inc.)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/kevin-hennigan-29122148/" target="_blank" rel="noopener">Kevin Hennigan</a> <span class="speaker-affiliation">(CleanSpark)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/foreman-dan" target="_blank" rel="noopener">Dan Lawrence</a> <span class="speaker-affiliation">(OBM)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Hashprice compression and rising difficulty have made cost discipline the single most important variable separating viable mining operations from those headed toward capitulation. This panel brings together operators and energy advisors who have built their businesses around relentless cost optimization to dissect the levers that actually move the needle — from power contract structuring and curtailment strategy to site-level operational efficiency and maintenance economics. Panelists share hard-won lessons on managing all-in cost per kilowatt-hour, navigating ERCOT's real-time pricing volatility, and building operational frameworks that protect margins through market cycles.</p>
@@ -847,8 +859,8 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Ranchers, Rights-of-Way, and Revenue: Land Integration Case Studies</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Marty Bent <span class="speaker-affiliation">(TFTC)</span></span>
-            <span class="speaker">Gideon Powell <span class="speaker-affiliation">(Cholla Inc.)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/marty-bent-635b2a297/" target="_blank" rel="noopener">Marty Bent</a> <span class="speaker-affiliation">(TFTC)</span></span>
+            <span class="speaker"><a href="https://x.com/GideonOPowell" target="_blank" rel="noopener">Gideon Powell</a> <span class="speaker-affiliation">(Cholla Inc.)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Behind every megawatt deployment sits a landowner who signed the lease. This panel centers the voices of ranchers, mineral-rights holders, and rural operators who have integrated Bitcoin mining into working agricultural land. Panelists present concrete case studies — from surface-use agreements and royalty structures to noise mitigation, heat recapture for livestock operations, and community benefit frameworks that earned local support rather than opposition. The session maps the practical realities of siting compute on ranch land and offers a replicable playbook for operators seeking durable partnerships with the people who own the ground beneath the infrastructure.</p>
@@ -885,7 +897,7 @@
           <span class="session-tag tag-housekeeping">Welcome</span>
           <h3 class="session-title">Welcome Announcement</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Rod Roudi <span class="speaker-affiliation">(Bitcoin Park)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/rodroudi" target="_blank" rel="noopener">Rod Roudi</a> <span class="speaker-affiliation">(Bitcoin Park)</span></span>
           </div>
         </div>
       </article>
@@ -896,10 +908,10 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Grid Dynamics: Bitcoin Mining as ERCOT's Flexible Load Pioneer</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Mario Gutierrez <span class="speaker-affiliation">(TeraWulf)</span></span>
-            <span class="speaker">Scooter Womack <span class="speaker-affiliation">(Vega Energy)</span></span>
-            <span class="speaker">Nathan Mancha <span class="speaker-affiliation">(BP · ERCOT Demand Working Group)</span></span>
-            <span class="speaker">Rapha Zagury <span class="speaker-affiliation">(Elektron Energy)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/mario-andres-gutierrez" target="_blank" rel="noopener">Mario Gutierrez</a> <span class="speaker-affiliation">(TeraWulf)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/scooter-womack-513a697" target="_blank" rel="noopener">Scooter Womack</a> <span class="speaker-affiliation">(Vega Energy)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/nathan-mancha-aba74570" target="_blank" rel="noopener">Nathan Mancha</a> <span class="speaker-affiliation">(BP · ERCOT Demand Working Group)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/rzagury/" target="_blank" rel="noopener">Rapha Zagury</a> <span class="speaker-affiliation">(Elektron Energy)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Texas's deregulated energy grid has become the global proving ground for flexible computing loads. This panel examines how Bitcoin miners have emerged as ERCOT's most responsive demand-side participants, curtailing gigawatts during peak events while stabilizing grid frequency in real time. Panelists explore the evolving relationship between miners and grid operators, the economic mechanics of four-coincident-peak management, and how ancillary service markets are being reshaped by computational loads that can modulate consumption in seconds rather than minutes. The session charts the future of miner-grid symbiosis as Texas builds tomorrow's energy infrastructure.</p>
@@ -912,10 +924,10 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Funding the Frontier: Capital Strategies for Compute</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Mark Connors <span class="speaker-affiliation">(Risk Dimensions)</span></span>
-            <span class="speaker">Baron Koch <span class="speaker-affiliation">(Braiins)</span></span>
-            <span class="speaker">Haley Thomson <span class="speaker-affiliation">(Luxor)</span></span>
-            <span class="speaker">Andrew Myers <span class="speaker-affiliation">(Satoshi Energy)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/mark-r-connors" target="_blank" rel="noopener">Mark Connors</a> <span class="speaker-affiliation">(Risk Dimensions)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/baron-koch-cfa-bb68a2b" target="_blank" rel="noopener">Baron Koch</a> <span class="speaker-affiliation">(Braiins)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/company/luxor/posts/" target="_blank" rel="noopener">Haley Thomson</a> <span class="speaker-affiliation">(Luxor)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/myersac" target="_blank" rel="noopener">Andrew Myers</a> <span class="speaker-affiliation">(Satoshi Energy)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">The capital stack financing Bitcoin mining and AI compute infrastructure has matured dramatically in recent cycles. This panel examines how public equity markets, project finance structures, convertible instruments, and strategic partnerships are fueling the next generation of energy-adjacent computing facilities. Panelists discuss the investor thesis behind hundred-megawatt deployments, the role of power purchase agreements as collateral, and how treasury strategies anchored in Bitcoin are reshaping corporate balance sheets. The conversation navigates the tension between growth capital demands and shareholder returns in an industry where scale increasingly dictates survival.</p>
@@ -928,10 +940,10 @@
           <span class="session-tag tag-panel">Panel</span>
           <h3 class="session-title">Megawatt Moonshots: Scaling to Gigawatt-Class Compute Campuses</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Lisa Hough <span class="speaker-affiliation">(Mawson Infrastructure Group)</span></span>
-            <span class="speaker">Austin Storms <span class="speaker-affiliation">(Galaxy Digital)</span></span>
-            <span class="speaker">Mike Hamilton <span class="speaker-affiliation">(Elektron Energy)</span></span>
-            <span class="speaker">Joe Dillon <span class="speaker-affiliation">(Adakon Energy)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/lhough" target="_blank" rel="noopener">Lisa Hough</a> <span class="speaker-affiliation">(Mawson Infrastructure Group)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/austin-storms-94946a236" target="_blank" rel="noopener">Austin Storms</a> <span class="speaker-affiliation">(Galaxy Digital)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/mike-hamilton-1668a83/" target="_blank" rel="noopener">Mike Hamilton</a> <span class="speaker-affiliation">(Elektron Energy)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/josephdillon" target="_blank" rel="noopener">Joe Dillon</a> <span class="speaker-affiliation">(Adakon Energy)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">The scale of ambition in Texas's compute infrastructure landscape has shifted from megawatts to gigawatts practically overnight. This panel examines the engineering, procurement, and operational challenges facing operators building the next generation of campus-scale facilities. Panelists discuss site selection at unprecedented scale, the fierce competition for transmission capacity, innovative approaches to power generation and delivery, and how modular deployment strategies enable facilities to grow in lockstep with demand. The session explores what separates operators ready to build at gigawatt scale from those still thinking in rack-level increments.</p>
@@ -952,7 +964,7 @@
           <span class="session-tag tag-housekeeping">Announcements</span>
           <h3 class="session-title">Afternoon Announcements</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Rod Roudi <span class="speaker-affiliation">(Bitcoin Park)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/rodroudi" target="_blank" rel="noopener">Rod Roudi</a> <span class="speaker-affiliation">(Bitcoin Park)</span></span>
           </div>
         </div>
       </article>
@@ -963,10 +975,10 @@
           <span class="session-tag tag-fireside">Fireside</span>
           <h3 class="session-title">Digital Alchemy and the Future of Natural Gas</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Jonathan Kohn <span class="speaker-affiliation">(BitPetro)</span></span>
-            <span class="speaker">Paul Cockerham <span class="speaker-affiliation">(Verde Mining)</span></span>
-            <span class="speaker">Chris Alfano <span class="speaker-affiliation">(360 Energy)</span></span>
-            <span class="speaker">Stephen Barbour <span class="speaker-affiliation">(Upstream Data)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/jonathankohn/" target="_blank" rel="noopener">Jonathan Kohn</a> <span class="speaker-affiliation">(BitPetro)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/paul-cockerham-a6200218" target="_blank" rel="noopener">Paul Cockerham</a> <span class="speaker-affiliation">(Verde Mining)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/christopher-alfano-a195a058/" target="_blank" rel="noopener">Chris Alfano</a> <span class="speaker-affiliation">(360 Energy)</span></span>
+            <span class="speaker"><a href="https://ca.linkedin.com/in/stephen-barbour-3b6b3092" target="_blank" rel="noopener">Stephen Barbour</a> <span class="speaker-affiliation">(Upstream Data)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">Across Texas and beyond, vast quantities of energy go to waste at wellheads, during low-demand hours, and at stranded generation assets far from load centers. This fireside explores the pioneering operators converting these wasted resources into productive computational output. The conversation examines the logistics, economics, and environmental case for deploying mobile and modular mining operations at the point of energy production, and how this approach is creating a new asset class at the intersection of waste mitigation, energy monetization, and decentralized computing infrastructure.</p>
@@ -979,10 +991,10 @@
           <span class="session-tag tag-fireside">Fireside</span>
           <h3 class="session-title">Treasury Wars: Bitcoin Balance Sheets and Corporate Strategy</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Michael Goldstein <span class="speaker-affiliation">(Satoshi Nakamoto Institute)</span></span>
-            <span class="speaker">Jay Beddict <span class="speaker-affiliation">(CleanSpark)</span></span>
-            <span class="speaker">Rob Hamilton <span class="speaker-affiliation">(Anchor Watch)</span></span>
-            <span class="speaker">Joe Kelly <span class="speaker-affiliation">(Unchained)</span></span>
+            <span class="speaker lead"><a href="https://x.com/bitstein" target="_blank" rel="noopener">Michael Goldstein</a> <span class="speaker-affiliation">(Satoshi Nakamoto Institute)</span></span>
+            <span class="speaker"><a href="https://twitter.com/JBeddict" target="_blank" rel="noopener">Jay Beddict</a> <span class="speaker-affiliation">(CleanSpark)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/anchorwatch-rob/" target="_blank" rel="noopener">Rob Hamilton</a> <span class="speaker-affiliation">(Anchor Watch)</span></span>
+            <span class="speaker"><a href="https://www.linkedin.com/in/josephkelly" target="_blank" rel="noopener">Joe Kelly</a> <span class="speaker-affiliation">(Unchained)</span></span>
           </div>
           <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract</button>
           <p class="session-abstract">The corporate treasury landscape has been permanently altered by Bitcoin. This fireside examines how companies, energy firms, and technology enterprises are integrating Bitcoin into their balance sheet strategies from direct accumulation to synthetic exposure through mining operations. The conversation explores the financial mechanics of Bitcoin treasury management, the impact on credit ratings and investor relations, the competitive dynamics driving corporate adoption, and how holding Bitcoin transforms the strategic calculus for companies operating at the intersection of energy and computation. The session distills lessons from both triumphs and cautionary tales.</p>
@@ -995,7 +1007,7 @@
           <span class="session-tag tag-housekeeping">Closing</span>
           <h3 class="session-title">Closing Announcements</h3>
           <div class="session-speakers">
-            <span class="speaker lead">Rod Roudi <span class="speaker-affiliation">(Bitcoin Park)</span></span>
+            <span class="speaker lead"><a href="https://www.linkedin.com/in/rodroudi" target="_blank" rel="noopener">Rod Roudi</a> <span class="speaker-affiliation">(Bitcoin Park)</span></span>
           </div>
         </div>
       </article>
