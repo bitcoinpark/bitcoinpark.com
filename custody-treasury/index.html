@@ -84,14 +84,10 @@ img{max-width:100%}
 .rom{font-size:13px;letter-spacing:.32em;color:var(--gold);font-weight:500}
 
 /* Themes */
-.themes-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:44px;gap:40px}
-.themes-head h2,.speakers h2,.park h2{margin:0;font-weight:500}
-.themes-head h2{font-size:clamp(38px,5vw,56px);margin-top:14px}
-.themes-note{font-size:15px;line-height:1.55;color:var(--brown);max-width:34ch;text-align:right}
-.theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.theme-card{border:1px solid rgba(30,59,50,.16);padding:38px 34px;display:flex;flex-direction:column;gap:16px;background:rgba(255,255,255,.22);transition:background .25s ease}
-.theme-card:hover{background:rgba(255,255,255,.5)}
-.theme-title{font-size:30px;font-weight:600;line-height:1.1}
+.themes{text-align:center}
+.themes h2,.speakers h2,.park h2{margin:0;font-weight:500}
+.themes h2{font-size:clamp(38px,5vw,56px);margin-top:14px}
+.themes-sub{font-size:16px;line-height:1.55;color:var(--brown);max-width:52ch;margin:16px auto 0}
 .theme-desc,.skel-row{font-size:15px;line-height:1.55;color:var(--brown)}
 
 /* Speakers */
@@ -133,9 +129,6 @@ img{max-width:100%}
     .sec{padding:70px 40px}
     .hero{padding:60px 40px 0}
     .purpose,.agenda,.park{grid-template-columns:1fr;gap:50px}
-    .theme-grid{grid-template-columns:1fr 1fr}
-    .themes-head{flex-direction:column;align-items:flex-start;gap:16px}
-    .themes-note{text-align:left}
     .purpose-lede{font-size:36px}
     .hero-key{width:min(520px,90%)}
     .hero-vault{width:min(380px,80%)}
@@ -146,7 +139,6 @@ img{max-width:100%}
     .footer{padding:28px 24px;justify-content:center;text-align:center}
 }
 @media (max-width:640px){
-    .theme-grid{grid-template-columns:1fr}
     .sec{padding:60px 24px}
     .hero{padding:48px 24px 0}
     .hero-summit{letter-spacing:.4em;text-indent:.4em}
@@ -177,7 +169,6 @@ img{max-width:100%}
     <div class="hero-date">October 2026 · Nashville, TN · Hosted at Bitcoin Park</div>
     <div class="hero-ctas">
         <a class="btn" href="https://www.meetup.com/bitcoinpark/events/314966347/">Join the Waitlist</a>
-        <a class="btn btn-ghost" href="mailto:info@bitcoinpark.com?subject=Custody%20%26%20Treasury%20Summit%202026%20%E2%80%94%20Supporter">Become a Supporter</a>
     </div>
     <img class="hero-key" src="assets/key-long.png" alt="Gold bitcoin key">
 </header>
@@ -202,22 +193,10 @@ img{max-width:100%}
     </div>
 </section>
 
-<section id="themes" class="sec" style="padding-top:0">
-    <div class="themes-head">
-        <div>
-            <div class="label">02 — Themes</div>
-            <h2 class="serif">Six rooms in the vault</h2>
-        </div>
-        <div class="themes-note">Full session tracks announced with the agenda.</div>
-    </div>
-    <div class="theme-grid">
-        <div class="theme-card"><span class="rom">I</span><div class="theme-title serif">Cold, Warm &amp; MPC</div><div class="theme-desc">Security trade-offs and implementation across custody approaches.</div></div>
-        <div class="theme-card"><span class="rom">II</span><div class="theme-title serif">Collaborative Custody</div><div class="theme-desc">Multi-sig, shared arrangements, and distributed trust.</div></div>
-        <div class="theme-card"><span class="rom">III</span><div class="theme-title serif">Corporate Balance Sheets</div><div class="theme-desc">Allocation, accounting treatment, and treasury integration.</div></div>
-        <div class="theme-card"><span class="rom">IV</span><div class="theme-title serif">Estate &amp; Succession</div><div class="theme-desc">Inheritance, key management, and access across generations.</div></div>
-        <div class="theme-card"><span class="rom">V</span><div class="theme-title serif">Controls &amp; Governance</div><div class="theme-desc">Internal controls, audit procedures, and governance frameworks.</div></div>
-        <div class="theme-card"><span class="rom">VI</span><div class="theme-title serif">Insurance &amp; Volatility</div><div class="theme-desc">Insured custody and strategies for the ever-changing market.</div></div>
-    </div>
+<section id="themes" class="sec themes" style="padding-top:0">
+    <div class="label">02 — Themes</div>
+    <h2 class="serif">Coming soon</h2>
+    <p class="themes-sub">Session themes and tracks announced with the agenda.</p>
 </section>
 
 <section id="speakers" class="sec speakers" style="padding-top:20px">
