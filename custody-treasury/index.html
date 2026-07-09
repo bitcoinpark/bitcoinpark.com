@@ -103,6 +103,24 @@ img{max-width:100%}
 .agenda{display:grid;grid-template-columns:1fr 1fr;gap:90px}
 .skel-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed rgba(30,59,50,.32);padding:20px 4px}
 
+/* Archive */
+.archive-head{text-align:center;margin-bottom:56px}
+.archive-head h2{margin:0;font-weight:500;font-size:clamp(38px,5vw,56px);margin-top:14px}
+.archive-sub{font-size:16px;line-height:1.55;color:var(--brown);max-width:52ch;margin:16px auto 0}
+.vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 20px}
+.vid-card{display:flex;flex-direction:column;gap:14px}
+.vid-wrap{position:relative;padding-bottom:56.25%;overflow:hidden;background:var(--forest);border:1px solid rgba(30,59,50,.16)}
+.vid-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.vid-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:pointer;transition:transform .5s ease}
+.vid-wrap:hover .vid-thumb{transform:scale(1.05)}
+.vid-overlay{position:absolute;inset:0;background:rgba(22,48,42,.18);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s ease}
+.vid-wrap:hover .vid-overlay{background:rgba(22,48,42,.06)}
+.vid-play{width:56px;height:56px;border-radius:50%;background:rgba(253,236,216,.92);display:flex;align-items:center;justify-content:center;transition:transform .3s ease}
+.vid-wrap:hover .vid-play{transform:scale(1.1)}
+.vid-play svg{width:22px;height:22px;margin-left:3px}
+.vid-title{font-size:22px;font-weight:600;line-height:1.15}
+.vid-speakers{font-size:14px;line-height:1.5;color:var(--brown)}
+
 /* The Park */
 .park{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
 .park .label{color:var(--gold-bright)}
@@ -129,6 +147,7 @@ img{max-width:100%}
     .sec{padding:70px 40px}
     .hero{padding:60px 40px 0}
     .purpose,.agenda,.park{grid-template-columns:1fr;gap:50px}
+    .vid-grid{grid-template-columns:1fr 1fr}
     .purpose-lede{font-size:36px}
     .hero-key{width:min(520px,90%)}
     .hero-vault{width:min(380px,80%)}
@@ -139,6 +158,7 @@ img{max-width:100%}
     .footer{padding:28px 24px;justify-content:center;text-align:center}
 }
 @media (max-width:640px){
+    .vid-grid{grid-template-columns:1fr}
     .sec{padding:60px 24px}
     .hero{padding:48px 24px 0}
     .hero-summit{letter-spacing:.4em;text-indent:.4em}
@@ -157,6 +177,7 @@ img{max-width:100%}
         <a href="#themes">Themes</a>
         <a href="#speakers">Speakers</a>
         <a href="#agenda">Agenda</a>
+        <a href="#archive">Archive</a>
         <a href="#park">The Park</a>
     </div>
     <a class="btn" href="https://www.meetup.com/bitcoinpark/events/314966347/">Join the Waitlist</a>
@@ -229,9 +250,127 @@ img{max-width:100%}
     </div>
 </section>
 
+<section id="archive" class="sec" style="padding-top:30px">
+    <div class="archive-head">
+        <div class="label">05 — The Archive</div>
+        <h2 class="serif">Inside last year&rsquo;s vault</h2>
+        <p class="archive-sub">Twelve sessions from the 2025 Custody &amp; Treasury Summit — open for anyone.</p>
+    </div>
+    <div class="vid-grid">
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/L-1wmxI4fRc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/L-1wmxI4fRc/hqdefault.jpg'" alt="Cold, Warm, or MPC? Choosing Enterprise Custody" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'L-1wmxI4fRc')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">I</span>
+            <div class="vid-title serif">Cold, Warm, or MPC? Choosing Enterprise Custody</div>
+            <div class="vid-speakers">Will Cole, Becca Rubenfeld &amp; Jesse Posner</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/u5hRdxCuyFY/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/u5hRdxCuyFY/hqdefault.jpg'" alt="The Tradeoffs of Control" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'u5hRdxCuyFY')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">II</span>
+            <div class="vid-title serif">The Tradeoffs of Control</div>
+            <div class="vid-speakers">Preston Pysh, Parker Lewis &amp; Michael Goldstein</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/3jUsugp50Fk/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/3jUsugp50Fk/hqdefault.jpg'" alt="The Endgame of Custody: Bitcoin's Final Defense" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'3jUsugp50Fk')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">III</span>
+            <div class="vid-title serif">The Endgame of Custody: Bitcoin&rsquo;s Final Defense</div>
+            <div class="vid-speakers">Matt Odell &amp; Adam Back</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/b4O2Do-fftU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/b4O2Do-fftU/hqdefault.jpg'" alt="Inside Corporate Bitcoin Treasuries: Real-World Case Studies" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'b4O2Do-fftU')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">IV</span>
+            <div class="vid-title serif">Inside Corporate Bitcoin Treasuries: Real-World Case Studies</div>
+            <div class="vid-speakers">Preston Pysh &amp; Sean Bill</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/zqDzI1uquW4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/zqDzI1uquW4/hqdefault.jpg'" alt="How Family Offices Embrace a Bitcoin Paradigm" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'zqDzI1uquW4')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">V</span>
+            <div class="vid-title serif">How Family Offices Embrace a Bitcoin Paradigm</div>
+            <div class="vid-speakers">Stephan Livera, Matt McClintock &amp; Eric Kalnins</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/q4mUNEuF1nE/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/q4mUNEuF1nE/hqdefault.jpg'" alt="Allocator Due Diligence" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'q4mUNEuF1nE')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">VI</span>
+            <div class="vid-title serif">Allocator Due Diligence</div>
+            <div class="vid-speakers">Ryan Gentry, Andrew Hohns, Sam Abbassi &amp; Ian Northon</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/FbZwXDDD1rc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/FbZwXDDD1rc/hqdefault.jpg'" alt="Where Does the Yield Come From?" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'FbZwXDDD1rc')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">VII</span>
+            <div class="vid-title serif">Where Does the Yield Come From?</div>
+            <div class="vid-speakers">Shawn Yeager, Max Kei, Myles Snider &amp; Jesse Schrader</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/-nHKpE_7h6Y/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/-nHKpE_7h6Y/hqdefault.jpg'" alt="Volatility Strategies for Bitcoin-Native Treasury Teams" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'-nHKpE_7h6Y')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">VIII</span>
+            <div class="vid-title serif">Volatility Strategies for Bitcoin-Native Treasury Teams</div>
+            <div class="vid-speakers">Stephan Livera &amp; Rory Murray</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/eHaBld94i3g/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/eHaBld94i3g/hqdefault.jpg'" alt="Custody as Resilience: Lessons from Geopolitical Instability" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'eHaBld94i3g')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">IX</span>
+            <div class="vid-title serif">Custody as Resilience: Lessons from Geopolitical Instability</div>
+            <div class="vid-speakers">Michael Sullivan &amp; Brian Domitrovic</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/dAmGCJEjSGI/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/dAmGCJEjSGI/hqdefault.jpg'" alt="Accounting and Business Structure: The Treasury Backbone" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'dAmGCJEjSGI')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">X</span>
+            <div class="vid-title serif">Accounting and Business Structure: The Treasury Backbone</div>
+            <div class="vid-speakers">Rod, Steve Myers, Joe Wood &amp; Rockstar</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/45miA5s1hZk/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/45miA5s1hZk/hqdefault.jpg'" alt="Custody in 2025: Navigating Risk and Responsibility" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'45miA5s1hZk')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">XI</span>
+            <div class="vid-title serif">Custody in 2025: Navigating Risk and Responsibility</div>
+            <div class="vid-speakers">Robert Warren</div>
+        </div>
+        <div class="vid-card">
+            <div class="vid-wrap">
+                <img class="vid-thumb" src="https://img.youtube.com/vi/l452Xumm54A/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/l452Xumm54A/hqdefault.jpg'" alt="Risk Off: Bitcoin Custody Through the Eyes of Insurers" loading="lazy">
+                <div class="vid-overlay" onclick="playSession(this.parentElement,'l452Xumm54A')"><div class="vid-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5.14v13.72a1 1 0 001.5.86l11.04-6.86a1 1 0 000-1.72L9.5 4.28a1 1 0 00-1.5.86z" fill="#1e3b32"/></svg></div></div>
+            </div>
+            <span class="rom">XII</span>
+            <div class="vid-title serif">Risk Off: Bitcoin Custody Through the Eyes of Insurers</div>
+            <div class="vid-speakers">2025 Summit Session</div>
+        </div>
+    </div>
+</section>
+
 <section id="park" class="sec sec-green park">
     <div>
-        <div class="label">05 — The Park</div>
+        <div class="label">06 — The Park</div>
         <h2 class="serif">A community-supported campus in Nashville, Tennessee</h2>
     </div>
     <div>
@@ -249,6 +388,12 @@ img{max-width:100%}
         <a href="https://twitter.com/bitcoinpark_">X</a>
     </div>
 </footer>
+
+<script>
+function playSession(wrap, id){
+    wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&controls=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+}
+</script>
 
 </body>
 </html>
