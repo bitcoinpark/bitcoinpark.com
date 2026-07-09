@@ -88,7 +88,7 @@ img{max-width:100%}
 .themes h2,.speakers h2,.park h2{margin:0;font-weight:500}
 .themes h2{font-size:clamp(38px,5vw,56px);margin-top:14px}
 .themes-sub{font-size:16px;line-height:1.55;color:var(--brown);max-width:52ch;margin:16px auto 0}
-.theme-desc,.skel-row{font-size:15px;line-height:1.55;color:var(--brown)}
+.theme-desc{font-size:15px;line-height:1.55;color:var(--brown)}
 
 /* Speakers */
 .speakers{text-align:center}
@@ -98,10 +98,6 @@ img{max-width:100%}
 .slot{width:150px;height:150px;border-radius:50%;border:1.5px dashed rgba(169,126,63,.6);display:flex;align-items:center;justify-content:center;color:rgba(169,126,63,.55);flex:none}
 .keyhole{width:26px;height:26px;border-radius:50%;background:currentColor;position:relative;animation:pulse 4s ease-in-out infinite}
 .keyhole::after{content:"";position:absolute;left:50%;top:19px;transform:translateX(-50%);border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:24px solid currentColor}
-
-/* Agenda */
-.agenda{display:grid;grid-template-columns:1fr 1fr;gap:90px}
-.skel-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed rgba(30,59,50,.32);padding:20px 4px}
 
 /* Archive */
 .archive-head{text-align:center;margin-bottom:56px}
@@ -146,7 +142,7 @@ img{max-width:100%}
 @media (max-width:1100px){
     .sec{padding:70px 40px}
     .hero{padding:60px 40px 0}
-    .purpose,.agenda,.park{grid-template-columns:1fr;gap:50px}
+    .purpose,.park{grid-template-columns:1fr;gap:50px}
     .vid-grid{grid-template-columns:1fr 1fr}
     .purpose-lede{font-size:36px}
     .hero-key{width:min(520px,90%)}
@@ -176,7 +172,6 @@ img{max-width:100%}
         <a href="#purpose">Purpose</a>
         <a href="#themes">Themes</a>
         <a href="#speakers">Speakers</a>
-        <a href="#agenda">Agenda</a>
         <a href="#archive">Archive</a>
         <a href="#park">The Park</a>
     </div>
@@ -235,24 +230,9 @@ img{max-width:100%}
     <a class="btn btn-ghost" style="margin-top:46px" href="https://www.meetup.com/bitcoinpark/events/314966347/">Get speaker announcements</a>
 </section>
 
-<section id="agenda" class="sec agenda" style="padding-top:30px">
-    <div>
-        <div class="label">04 — Agenda · Day One</div>
-        <div class="skel-row"><span>Morning</span><span>Sessions to be announced</span></div>
-        <div class="skel-row"><span>Midday</span><span>Sessions to be announced</span></div>
-        <div class="skel-row"><span>Evening</span><span>Reception at the Park</span></div>
-    </div>
-    <div>
-        <div class="label">Day Two</div>
-        <div class="skel-row"><span>Morning</span><span>Sessions to be announced</span></div>
-        <div class="skel-row"><span>Midday</span><span>Sessions to be announced</span></div>
-        <div class="skel-row"><span>Afternoon</span><span>Closing fireside</span></div>
-    </div>
-</section>
-
 <section id="archive" class="sec" style="padding-top:30px">
     <div class="archive-head">
-        <div class="label">05 — The Archive</div>
+        <div class="label">04 — The Archive</div>
         <h2 class="serif">Inside last year&rsquo;s vault</h2>
         <p class="archive-sub">Twelve sessions from the 2025 Custody &amp; Treasury Summit — open for anyone.</p>
     </div>
@@ -370,7 +350,7 @@ img{max-width:100%}
 
 <section id="park" class="sec sec-green park">
     <div>
-        <div class="label">06 — The Park</div>
+        <div class="label">05 — The Park</div>
         <h2 class="serif">A community-supported campus in Nashville, Tennessee</h2>
     </div>
     <div>
