@@ -64,10 +64,11 @@ img{max-width:100%}
 .hero-ctas{display:flex;justify-content:center;gap:16px;margin-top:38px;flex-wrap:wrap}
 .hero-key{width:520px;display:block;margin:60px auto 70px;animation:reveal 1.8s cubic-bezier(.2,.7,.2,1) .4s both}
 
-/* Marquee ticker */
-.ticker{display:flex;overflow:hidden;padding:15px 0;background:var(--forest);color:var(--cream-on-green);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-.ticker-inner{flex:none;display:flex;gap:70px;padding-right:70px;animation:tick 32s linear infinite;font-size:13px;letter-spacing:.34em;text-transform:uppercase;white-space:nowrap}
+/* Banner */
+.ticker{display:flex;justify-content:center;overflow:hidden;padding:15px 20px;background:var(--forest);color:var(--cream-on-green);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.ticker-inner{display:flex;gap:70px;font-size:13px;letter-spacing:.34em;text-transform:uppercase;white-space:nowrap}
 .ticker-star{color:var(--gold)}
+@media (max-width:900px){.ticker-inner{gap:24px;letter-spacing:.18em;flex-wrap:wrap;justify-content:center;white-space:normal}}
 
 /* Sections */
 .sec{padding:100px 96px}
@@ -83,21 +84,8 @@ img{max-width:100%}
 .attend-title{font-size:20px;font-weight:600}
 .rom{font-size:13px;letter-spacing:.32em;color:var(--gold);font-weight:500}
 
-/* Themes */
-.themes{text-align:center}
-.themes h2,.speakers h2,.park h2{margin:0;font-weight:500}
-.themes h2{font-size:clamp(38px,5vw,56px);margin-top:14px}
-.themes-sub{font-size:16px;line-height:1.55;color:var(--brown);max-width:52ch;margin:16px auto 0}
+.park h2{margin:0;font-weight:500}
 .theme-desc{font-size:15px;line-height:1.55;color:var(--brown)}
-
-/* Speakers */
-.speakers{text-align:center}
-.speakers h2{font-size:clamp(38px,5vw,56px);margin-top:14px}
-.speakers-sub{font-size:16px;line-height:1.55;color:var(--brown);max-width:52ch;margin:16px auto 46px}
-.slot-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
-.slot{width:150px;height:150px;border-radius:50%;border:1.5px dashed rgba(169,126,63,.6);display:flex;align-items:center;justify-content:center;color:rgba(169,126,63,.55);flex:none}
-.keyhole{width:26px;height:26px;border-radius:50%;background:currentColor;position:relative;animation:pulse 4s ease-in-out infinite}
-.keyhole::after{content:"";position:absolute;left:50%;top:19px;transform:translateX(-50%);border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:24px solid currentColor}
 
 /* Archive */
 .archive-head{text-align:center;margin-bottom:56px}
@@ -130,10 +118,8 @@ img{max-width:100%}
 /* Animations */
 @keyframes float{50%{transform:translateY(-13px)}}
 @keyframes reveal{from{clip-path:inset(0 100% 0 0);opacity:0}to{clip-path:inset(0 -5% 0 0);opacity:1}}
-@keyframes tick{to{transform:translateX(-100%)}}
-@keyframes pulse{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){
-    .hero-vault,.ticker-inner,.keyhole{animation:none}
+    .hero-vault{animation:none}
     .hero-key{animation:none;clip-path:none;opacity:1}
     html{scroll-behavior:auto}
 }
@@ -170,8 +156,6 @@ img{max-width:100%}
     <a href="https://bitcoinpark.com"><img class="nav-logo" src="assets/bp-logo.png" alt="Bitcoin Park"></a>
     <div class="nav-links">
         <a href="#purpose">Purpose</a>
-        <a href="#themes">Themes</a>
-        <a href="#speakers">Speakers</a>
         <a href="#archive">Archive</a>
         <a href="#park">The Park</a>
     </div>
@@ -190,8 +174,7 @@ img{max-width:100%}
 </header>
 
 <div class="ticker">
-    <div class="ticker-inner"><span>Custody &amp; Treasury Summit 2026</span><span class="ticker-star">✦</span><span>Bitcoin Park · Nashville</span><span class="ticker-star">✦</span><span>Not your keys · Not your coins</span><span class="ticker-star">✦</span></div>
-    <div class="ticker-inner" aria-hidden="true"><span>Custody &amp; Treasury Summit 2026</span><span class="ticker-star">✦</span><span>Bitcoin Park · Nashville</span><span class="ticker-star">✦</span><span>Not your keys · Not your coins</span><span class="ticker-star">✦</span></div>
+    <div class="ticker-inner"><span>Custody &amp; Treasury Summit 2026</span><span class="ticker-star">✦</span><span>Bitcoin Park · Nashville</span><span class="ticker-star">✦</span><span>Not your keys · Not your coins</span></div>
 </div>
 
 <section id="purpose" class="sec purpose">
@@ -204,37 +187,16 @@ img{max-width:100%}
         <div class="label attend-label">Who attends</div>
         <div class="attend-row"><span class="rom">I</span><div><div class="attend-title">Custody Providers</div><div class="theme-desc">Infrastructure builders and solution providers</div></div></div>
         <div class="attend-row"><span class="rom">II</span><div><div class="attend-title">Legal &amp; Policy</div><div class="theme-desc">Security, legal, and policy professionals</div></div></div>
-        <div class="attend-row"><span class="rom">III</span><div><div class="attend-title">Treasurers</div><div class="theme-desc">Professionals exploring Bitcoin allocation</div></div></div>
+        <div class="attend-row"><span class="rom">III</span><div><div class="attend-title">Capital Allocators</div><div class="theme-desc">Professionals exploring Bitcoin allocation</div></div></div>
         <div class="attend-row"><span class="rom">IV</span><div><div class="attend-title">Entrepreneurs</div><div class="theme-desc">Technical innovators and ecosystem builders</div></div></div>
     </div>
 </section>
 
-<section id="themes" class="sec themes" style="padding-top:0">
-    <div class="label">02 — Themes</div>
-    <h2 class="serif">Coming soon</h2>
-    <p class="themes-sub">Session themes and tracks announced with the agenda.</p>
-</section>
-
-<section id="speakers" class="sec speakers" style="padding-top:20px">
-    <div class="label">03 — Speakers</div>
-    <h2 class="serif">The keys are being cut</h2>
-    <p class="speakers-sub">Leading voices in institutional custody and treasury management, announced through the spring.</p>
-    <div class="slot-row">
-        <div class="slot"><div class="keyhole"></div></div>
-        <div class="slot"><div class="keyhole" style="animation-delay:.5s"></div></div>
-        <div class="slot"><div class="keyhole" style="animation-delay:1s"></div></div>
-        <div class="slot"><div class="keyhole" style="animation-delay:1.5s"></div></div>
-        <div class="slot"><div class="keyhole" style="animation-delay:2s"></div></div>
-        <div class="slot"><div class="keyhole" style="animation-delay:2.5s"></div></div>
-    </div>
-    <a class="btn btn-ghost" style="margin-top:46px" href="https://www.meetup.com/bitcoinpark/events/314966347/">Get speaker announcements</a>
-</section>
-
-<section id="archive" class="sec" style="padding-top:30px">
+<section id="archive" class="sec" style="padding-top:0">
     <div class="archive-head">
-        <div class="label">04 — The Archive</div>
+        <div class="label">02 — The Archive</div>
         <h2 class="serif">Inside last year&rsquo;s vault</h2>
-        <p class="archive-sub">Sessions from the 2025 Custody &amp; Treasury Summit — open for anyone.</p>
+        <p class="archive-sub">Sessions from the 2025 Custody &amp; Treasury Summit.</p>
     </div>
     <div class="vid-grid">
         <div class="vid-card">
@@ -332,7 +294,7 @@ img{max-width:100%}
 
 <section id="park" class="sec sec-green park">
     <div>
-        <div class="label">05 — The Park</div>
+        <div class="label">03 — The Park</div>
         <h2 class="serif">A community-supported campus in Nashville, Tennessee</h2>
     </div>
     <div>
