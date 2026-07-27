@@ -218,6 +218,32 @@ You can adjust the interval:
 
 ---
 
+## Calendar Subscription Feed (.ics) — LIVE
+
+Anyone can subscribe to the Bitcoin Park schedule in their own calendar app. Their calendar auto-updates when the Google Sheet changes — no API keys, nothing to maintain.
+
+**Feed URL:** `https://bitcoinpark.com/schedule.ics`
+
+### How to subscribe:
+- **Google Calendar:** Other calendars → **+** → "From URL" → paste the feed URL
+- **Apple Calendar:** File → New Calendar Subscription → paste the feed URL
+- **Outlook:** Add calendar → Subscribe from web → paste the feed URL
+
+There is also a **Subscribe** button on bitcoinpark.com/schedule with one-click links for each app.
+
+### How it works:
+1. `scripts/generate-schedule-ics.js` fetches the schedule from the existing Apps Script JSON endpoint (same Google Sheet that powers schedule.html) and writes `schedule.ics` in iCalendar format.
+2. The GitHub Action `.github/workflows/update-schedule-ics.yml` runs the script every 2 hours and commits `schedule.ics` only when the sheet has actually changed. GitHub Pages then serves the updated file.
+3. Subscribers' calendar apps poll the URL on their own schedule (Google Calendar up to ~24h, Apple/Outlook typically every few hours).
+
+To regenerate manually: `node scripts/generate-schedule-ics.js`, or trigger the workflow from the GitHub Actions tab (it has a manual "Run workflow" button).
+
+### Notes:
+- Events appear as all-day events (the sheet stores dates, not times). Anything in the description column carries over as event notes, and the meetup link is included.
+- If the Apps Script endpoint URL ever changes, update `FEED_URL` in `scripts/generate-schedule-ics.js`.
+
+---
+
 ## Recommended Setup
 
 For production use, I recommend:

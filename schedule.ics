@@ -1,0 +1,1758 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Bitcoin Park//Schedule//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Bitcoin Park Events
+X-WR-CALDESC:Events at Bitcoin Park in Nashville and Austin. bitcoinpark.
+ com/schedule
+X-PUBLISHED-TTL:PT6H
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+BEGIN:VEVENT
+UID:20251110-bitcoin-veterans-summit@bitcoinpark.com
+DTSTAMP:20251110T000000Z
+DTSTART;VALUE=DATE:20251110
+DTEND;VALUE=DATE:20251111
+SUMMARY:Bitcoin Veterans Summit
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/308527453/?eventOri
+ gin=group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/308527453/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251111-bitcoin-veterans-range-day@bitcoinpark.com
+DTSTAMP:20251111T000000Z
+DTSTART;VALUE=DATE:20251111
+DTEND;VALUE=DATE:20251112
+SUMMARY:Bitcoin Veterans Range Day
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/308531728/?eventOri
+ gin=group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/308531728/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251111-nashbitdevs-socratic-seminar-37@bitcoinpark.com
+DTSTAMP:20251111T000000Z
+DTSTART;VALUE=DATE:20251111
+DTEND;VALUE=DATE:20251112
+SUMMARY:NashBitDevs Socratic Seminar #37
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/307443112/?utm_medi
+ um=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=li
+ nk
+URL:https://www.meetup.com/bitcoinpark/events/307443112/?utm_medium=refer
+ ral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link
+END:VEVENT
+BEGIN:VEVENT
+UID:20251112-bitcoin-park-member-grillout@bitcoinpark.com
+DTSTAMP:20251112T000000Z
+DTSTART;VALUE=DATE:20251112
+DTEND;VALUE=DATE:20251113
+SUMMARY:Bitcoin Park Member Grillout
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Noon
+END:VEVENT
+BEGIN:VEVENT
+UID:20251113-park-101-intro-to-bitcoin@bitcoinpark.com
+DTSTAMP:20251113T000000Z
+DTSTART;VALUE=DATE:20251113
+DTEND;VALUE=DATE:20251114
+SUMMARY:Park 101: Intro to Bitcoin
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/309195906/?eventOri
+ gin=group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/309195906/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251118-abdc@bitcoinpark.com
+DTSTAMP:20251118T000000Z
+DTSTART;VALUE=DATE:20251118
+DTEND;VALUE=DATE:20251119
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:https://www.meetup.com/bitcoin-park-austin/events/306401258/?
+ eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401258/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251119-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20251119T000000Z
+DTSTART;VALUE=DATE:20251119
+DTEND;VALUE=DATE:20251120
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:https://www.meetup.com/bitcoin-park-austin/events/307355792/?
+ eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/307355792/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251120-austin-bitdevs-70@bitcoinpark.com
+DTSTAMP:20251120T000000Z
+DTSTART;VALUE=DATE:20251120
+DTEND;VALUE=DATE:20251121
+SUMMARY:Austin Bitdevs # 70
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:https://www.meetup.com/bitcoin-commons-austin/events/30549275
+ 8/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&ut
+ m_source=link
+URL:https://www.meetup.com/bitcoin-commons-austin/events/305492758/?utm_m
+ edium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source
+ =link
+END:VEVENT
+BEGIN:VEVENT
+UID:20251203-park-forum-nashville-the-case-for-bitcoin@bitcoinpark.com
+DTSTAMP:20251203T000000Z
+DTSTART;VALUE=DATE:20251203
+DTEND;VALUE=DATE:20251204
+SUMMARY:Park Forum [Nashville] - The Case for Bitcoin
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Invitation only
+END:VEVENT
+BEGIN:VEVENT
+UID:20251204-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20251204T000000Z
+DTSTART;VALUE=DATE:20251204
+DTEND;VALUE=DATE:20251205
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:https://www.meetup.com/bitcoin-park-austin/events/306390322/?
+ eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306390322/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251209-nashbitdevs-socratic-seminar-38@bitcoinpark.com
+DTSTAMP:20251209T000000Z
+DTSTART;VALUE=DATE:20251209
+DTEND;VALUE=DATE:20251210
+SUMMARY:NashBitDevs Socratic Seminar #38
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/307443117/?utm_medi
+ um=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=li
+ nk
+URL:https://www.meetup.com/bitcoinpark/events/307443117/?utm_medium=refer
+ ral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link
+END:VEVENT
+BEGIN:VEVENT
+UID:20251210-open-house-year-end-tax-strategies-and-policy-updates@bitcoi
+ npark.com
+DTSTAMP:20251210T000000Z
+DTSTART;VALUE=DATE:20251210
+DTEND;VALUE=DATE:20251211
+SUMMARY:Open House: Year-End Tax Strategies and Policy Updates
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/311746108/?eventOri
+ gin=group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/311746108/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251211-park-102-workshops@bitcoinpark.com
+DTSTAMP:20251211T000000Z
+DTSTART;VALUE=DATE:20251211
+DTEND;VALUE=DATE:20251212
+SUMMARY:Park 102: Workshops
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/309195928/?eventOri
+ gin=group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/309195928/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251216-abdc@bitcoinpark.com
+DTSTAMP:20251216T000000Z
+DTSTART;VALUE=DATE:20251216
+DTEND;VALUE=DATE:20251217
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:https://www.meetup.com/bitcoin-park-austin/events/306401266/?
+ eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401266/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20251218-austin-bitdevs-71@bitcoinpark.com
+DTSTAMP:20251218T000000Z
+DTSTART;VALUE=DATE:20251218
+DTEND;VALUE=DATE:20251219
+SUMMARY:Austin Bitdevs # 71
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:https://www.meetup.com/bitcoin-commons-austin/events/30549275
+ 9/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&ut
+ m_source=link
+URL:https://www.meetup.com/bitcoin-commons-austin/events/305492759/?utm_m
+ edium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source
+ =link
+END:VEVENT
+BEGIN:VEVENT
+UID:20260106-abdc@bitcoinpark.com
+DTSTAMP:20260106T000000Z
+DTSTART;VALUE=DATE:20260106
+DTEND;VALUE=DATE:20260107
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/306401268/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401268/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260108-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20260108T000000Z
+DTSTART;VALUE=DATE:20260108
+DTEND;VALUE=DATE:20260109
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Texas has become an epicenter of Bitcoin mining\, where abund
+ ant energy meets monetary technology. This panel convenes mining special
+ ists to discuss how Bitcoin mining is transforming the energy sector and
+  strengthening grid resilience. Hear about projects turning wasted natur
+ al gas into Bitcoin (360 Mining’s vertically integrated gas wells) and
+  how miners can act as flexible energy buyers\, even returning power to 
+ the grid when needed.\nhttps://www.meetup.com/bitcoin-park-austin/events
+ /312103453/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/312103453/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260113-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260113T000000Z
+DTSTART;VALUE=DATE:20260113
+DTEND;VALUE=DATE:20260114
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856705/
+URL:https://www.meetup.com/bitcoinpark/events/311856705/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260115-park-101@bitcoinpark.com
+DTSTAMP:20260115T000000Z
+DTSTART;VALUE=DATE:20260115
+DTEND;VALUE=DATE:20260116
+SUMMARY:Park 101
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Who is this for: This is a beginner level discussion for peop
+ le curious or interested to learn about bitcoin. What is Money?\nDiving 
+ into the history and features of money. What is Bitcoin and why should I
+  care?\nProviding a framework to learn about Bitcoin\, how it works\, an
+ d why it has value\nhttps://www.meetup.com/bitcoinpark/events/311846869/
+URL:https://www.meetup.com/bitcoinpark/events/311846869/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260115-austin-bitdevs-72@bitcoinpark.com
+DTSTAMP:20260115T000000Z
+DTSTART;VALUE=DATE:20260115
+DTEND;VALUE=DATE:20260116
+SUMMARY:Austin Bitdevs #72
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:A Socratic discussion on technical developments in Bitcoin.\n
+ \nAustin Bitdevs is inspired by the original BitDevs NYC and similar mee
+ tups to help grow a community in the Austin area of those interested in 
+ discussing and participating in the research and development of Bitcoin 
+ and related protocols (i.e. Lightning\, Fedimint\, Stratum\, etc.) and s
+ oftware. We focus on in-depth\, Socratic discussions on technical develo
+ pments within the ecosystem. You can be well-versed with or new to the t
+ opics\; all are welcome. Be advised: discussion will be technical.\nhttp
+ s://www.meetup.com/bitcoin-park-austin/events/306401060/?eventOrigin=gro
+ up_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401060/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260116-ai-hack-for-freedom-welcome-reception-at-hestia@bitcoinpark.
+ com
+DTSTAMP:20260116T000000Z
+DTSTART;VALUE=DATE:20260116
+DTEND;VALUE=DATE:20260117
+SUMMARY:AI Hack for Freedom - Welcome Reception at Hestia
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Welcome reception for hackathon participants and invited gues
+ ts\nn/a
+URL:n/a
+END:VEVENT
+BEGIN:VEVENT
+UID:20260117-ai-hack-for-freedom@bitcoinpark.com
+DTSTAMP:20260117T000000Z
+DTSTART;VALUE=DATE:20260117
+DTEND;VALUE=DATE:20260119
+SUMMARY:AI Hack for Freedom
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Join developers\, activists\, and innovators for an intensive
+  weekend of building cutting-edge solutions that advance freedom\, priva
+ cy\, and decentralized technology.\nhttps://www.meetup.com/bitcoin-park-
+ austin/events/312100300/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/312100300/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260118-ai-hack-for-freedom-winners-announcement-celebration@bitcoin
+ park.com
+DTSTAMP:20260118T000000Z
+DTSTART;VALUE=DATE:20260118
+DTEND;VALUE=DATE:20260119
+SUMMARY:AI Hack for Freedom Winners Announcement & Celebration
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Join us this Sunday for an exciting afternoon as we wrap up o
+ ur hackathon and celebrate the winners!\nSchedule:\n2:30 PM - Pitches fr
+ om the teams\n3:30 PM - Judges convene\n3:50 PM - Announce winners\n4:15
+  PM - Group heads to Saturn's Cocktail Bar for social + celebration\nhtt
+ ps://www.meetup.com/bitcoin-park-austin/events/312902709/
+URL:https://www.meetup.com/bitcoin-park-austin/events/312902709/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260121-telehash-3@bitcoinpark.com
+DTSTAMP:20260121T000000Z
+DTSTART;VALUE=DATE:20260121
+DTEND;VALUE=DATE:20260122
+SUMMARY:Telehash #3
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:If you heard about the legendary Telehash fundraiser last yea
+ r where the 256 Foundation made history solo mining Bitcoin block #88142
+ 3 during the live stream\, then you definitely do not want to miss this 
+ year's Telehash which is poised to bring more guests\, more hash rate\, 
+ and more surprises. Be there as the entire 256 Foundation team makes his
+ tory again while showcasing all the open-source Bitcoin mining solutions
+  they have developed over the last year.\nhttps://www.meetup.com/bitcoin
+ park/events/310818082/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/310818082/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260122-nashville-energy-mining-summit-2026@bitcoinpark.com
+DTSTAMP:20260122T000000Z
+DTSTART;VALUE=DATE:20260122
+DTEND;VALUE=DATE:20260124
+SUMMARY:Nashville Energy & Mining Summit 2026
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:An intimate two-day summit focused on energy production and b
+ itcoin mining. This summit is catered towards investors\, policymakers\,
+  energy producers\, and full-spectrum mining operators and service provi
+ ders.\nhttps://www.meetup.com/bitcoinpark/events/310812625/?eventOrigin=
+ group_events_list
+URL:https://www.meetup.com/bitcoinpark/events/310812625/?eventOrigin=grou
+ p_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260202-nostr-nights-1@bitcoinpark.com
+DTSTAMP:20260202T000000Z
+DTSTART;VALUE=DATE:20260202
+DTEND;VALUE=DATE:20260203
+SUMMARY:Nostr Nights #1
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Nostr Nights is a quarterly meetup for anyone passionate abou
+ t building\, growing\, and exploring the future of decentralized social 
+ technology. Whether you're brand-new to Nostr or already building on it\
+ , this event is designed to help you learn\, connect\, and go deeper.\nh
+ ttps://www.meetup.com/bitcoinpark/events/312318620/
+URL:https://www.meetup.com/bitcoinpark/events/312318620/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260205-austin-bitcoin-club-fiat-food-fiat-health-bitcoin@bitcoinpar
+ k.com
+DTSTAMP:20260205T000000Z
+DTSTART;VALUE=DATE:20260205
+DTEND;VALUE=DATE:20260206
+SUMMARY:Austin Bitcoin Club: Fiat Food\, Fiat Health\, & Bitcoin
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:True freedom isn't just financial. This panel explores the in
+ tersection of Bitcoin\, nutrition\, and healthcare in Austin's community
+ . Jimmy Song will moderate this discussion on health sovereignty and Bit
+ coin principles. Harry Gray will share the Meat Mafia mission of sparkin
+ g a real food renaissance: advocating for nutrient-dense diets\, local r
+ anchers\, and breaking free from fiat food system subsidies. Andy Schoon
+ over will discuss how CrowdHealth is empowering people to escape legacy 
+ health insurance and take charge of medical costs together\, aligned wit
+ h Bitcoin's ethos of personal responsibility. From metabolically healthy
+  lifestyles to sharing medical bills via Bitcoin\, panelists will highli
+ ght how embracing self-sovereignty in what we eat and how we care for ou
+ r bodies can lead to better outcomes. Austin is at the forefront of this
+  health and wellness movement rooted in freedom tech values.\nhttps://ww
+ w.meetup.com/bitcoin-park-austin/events/312103455/?eventOrigin=group_eve
+ nts_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/312103455/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260210-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260210T000000Z
+DTSTART;VALUE=DATE:20260210
+DTEND;VALUE=DATE:20260211
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856711/
+URL:https://www.meetup.com/bitcoinpark/events/311856711/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260210-abdc@bitcoinpark.com
+DTSTAMP:20260210T000000Z
+DTSTART;VALUE=DATE:20260210
+DTEND;VALUE=DATE:20260211
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/306401422/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401422/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260211-working-lunch-with-fedi-focus-group@bitcoinpark.com
+DTSTAMP:20260211T000000Z
+DTSTART;VALUE=DATE:20260211
+DTEND;VALUE=DATE:20260212
+SUMMARY:Working Lunch with Fedi - Focus Group
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:The Fedi team will be in town and will be hosting lunch to sh
+ are best practices and get user feedback for their community powered\, p
+ rivacy wallet with chat and mini apps\nCalendar Invite to be Sent
+URL:Calendar Invite to be Sent
+END:VEVENT
+BEGIN:VEVENT
+UID:20260211-open-house-30-privacy-is-the-new-power-how-to-protect-yourse
+ lf@bitcoinpark.com
+DTSTAMP:20260211T000000Z
+DTSTART;VALUE=DATE:20260211
+DTEND;VALUE=DATE:20260212
+SUMMARY:Open House #30: Privacy is the New Power\, How to Protect Yoursel
+ f
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Privacy is essential in a digital world and increasingly beco
+ ming threatened. Join Fedi and @econoalchemist to discuss why privacy is
+  becoming a global priority\, the real-world risks of a surveillance-dri
+ ven future\, and why accessible privacy is essential for Bitcoin to reac
+ h its full potential.\nhttps://www.meetup.com/bitcoinpark/events/3127487
+ 33/
+URL:https://www.meetup.com/bitcoinpark/events/312748733/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260212-park-102@bitcoinpark.com
+DTSTAMP:20260212T000000Z
+DTSTART;VALUE=DATE:20260212
+DTEND;VALUE=DATE:20260213
+SUMMARY:Park 102
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
+ n fundamentals in a more hands on environment\nhttps://www.meetup.com/bi
+ tcoinpark/events/pknsttyjcdbqb/
+URL:https://www.meetup.com/bitcoinpark/events/pknsttyjcdbqb/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260212-mercatus-center-alexis-de-tocqueville-fellowship-exploring-t
+ he-intersection-of-bitcoin-political-economy-and-philosophy@bitcoinpark.
+ com
+DTSTAMP:20260212T000000Z
+DTSTART;VALUE=DATE:20260212
+DTEND;VALUE=DATE:20260213
+SUMMARY:Mercatus Center -  Alexis de Tocqueville Fellowship: Exploring th
+ e Intersection of Bitcoin\, Political Economy\, and Philosophy
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:The Mercatus Center at George Mason University’s 2026 Alexi
+ s de Tocqueville Fellowship: Exploring the Intersection of Bitcoin\, Pol
+ itical Economy\, and Philosophy brings together members of the Bitcoin c
+ ommunity as well as scholars and graduate students conducting research o
+ n Bitcoin to examine the classical liberal foundations and possibilities
+  of Bitcoin\, particularly through the principles of liberty and subsidi
+ arity.\nhttps://www.meetup.com/bitcoin-park-austin/events/312369055/
+URL:https://www.meetup.com/bitcoin-park-austin/events/312369055/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260213-mercatus-center-alexis-de-tocqueville-fellowship-exploring-t
+ he-intersection-of-bitcoin-political-economy-and-philosophy@bitcoinpark.
+ com
+DTSTAMP:20260213T000000Z
+DTSTART;VALUE=DATE:20260213
+DTEND;VALUE=DATE:20260214
+SUMMARY:Mercatus Center -  Alexis de Tocqueville Fellowship: Exploring th
+ e Intersection of Bitcoin\, Political Economy\, and Philosophy
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:The Mercatus Center at George Mason University’s 2026 Alexi
+ s de Tocqueville Fellowship: Exploring the Intersection of Bitcoin\, Pol
+ itical Economy\, and Philosophy brings together members of the Bitcoin c
+ ommunity as well as scholars and graduate students conducting research o
+ n Bitcoin to examine the classical liberal foundations and possibilities
+  of Bitcoin\, particularly through the principles of liberty and subsidi
+ arity.\nhttps://www.meetup.com/bitcoin-park-austin/events/312369055/
+URL:https://www.meetup.com/bitcoin-park-austin/events/312369055/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260218-artificial-intelligencers@bitcoinpark.com
+DTSTAMP:20260218T000000Z
+DTSTART;VALUE=DATE:20260218
+DTEND;VALUE=DATE:20260219
+SUMMARY:Artificial Intelligencers
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for an insight-packed evening where local professiona
+ l\, amateur\, and student community members (including you!) share “wi
+ res-out” demos\, technical deep-dives\, and discussions of AI-related 
+ projects or research they are working on\, tools and techniques they hav
+ e tried\, or research papers/publications/presentations that they find i
+ nsightful. This event is for those just starting to explore the technica
+ l aspects of AI\, experienced AI professionals\, and everyone in between
+ . See you here!\nhttps://www.meetup.com/artificialintelligencers/events/
+ 312397786/
+URL:https://www.meetup.com/artificialintelligencers/events/312397786/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260219-austin-bitdevs-73@bitcoinpark.com
+DTSTAMP:20260219T000000Z
+DTSTART;VALUE=DATE:20260219
+DTEND;VALUE=DATE:20260220
+SUMMARY:Austin Bitdevs #73
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:A Socratic discussion on technical developments in Bitcoin.\n
+ \nAustin Bitdevs is inspired by the original BitDevs NYC and similar mee
+ tups to help grow a community in the Austin area of those interested in 
+ discussing and participating in the research and development of Bitcoin 
+ and related protocols (i.e. Lightning\, Fedimint\, Stratum\, etc.) and s
+ oftware. We focus on in-depth\, Socratic discussions on technical develo
+ pments within the ecosystem. You can be well-versed with or new to the t
+ opics\; all are welcome. Be advised: discussion will be technical.\nhttp
+ s://www.meetup.com/bitcoin-park-austin/events/306401061/?eventOrigin=gro
+ up_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401061/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260225-nashville-data-engineeering-group@bitcoinpark.com
+DTSTAMP:20260225T000000Z
+DTSTART;VALUE=DATE:20260225
+DTEND;VALUE=DATE:20260226
+SUMMARY:Nashville Data Engineeering Group
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:The Nashville Data Engineering Group is here to bring locals 
+ together in-person to learn and share current Data Engineering knowledge
+ . If you're a current\, or aspiring Data Engineer\, we encourage you to 
+ come join us during our monthly events.\nhttps://meetu.ps/e/PLz0P/VqJwr/
+ i
+URL:https://meetu.ps/e/PLz0P/VqJwr/i
+END:VEVENT
+BEGIN:VEVENT
+UID:20260310-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260310T000000Z
+DTSTART;VALUE=DATE:20260310
+DTEND;VALUE=DATE:20260311
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856715/
+URL:https://www.meetup.com/bitcoinpark/events/311856715/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260310-abdc@bitcoinpark.com
+DTSTAMP:20260310T000000Z
+DTSTART;VALUE=DATE:20260310
+DTEND;VALUE=DATE:20260311
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/306401426/?slug=bitcoin-park-austin&eventId=306401426
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401426/?slug=bit
+ coin-park-austin&eventId=306401426
+END:VEVENT
+BEGIN:VEVENT
+UID:20260312-park-101@bitcoinpark.com
+DTSTAMP:20260312T000000Z
+DTSTART;VALUE=DATE:20260312
+DTEND;VALUE=DATE:20260313
+SUMMARY:Park 101
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Who is this for: This is a beginner level discussion for peop
+ le curious or interested to learn about bitcoin. What is Money?\nDiving 
+ into the history and features of money. What is Bitcoin and why should I
+  care?\nProviding a framework to learn about Bitcoin\, how it works\, an
+ d why it has value\nhttps://www.meetup.com/bitcoinpark/events/311846885/
+URL:https://www.meetup.com/bitcoinpark/events/311846885/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260312-bitcoin-takeover-sxsw-2026-power-of-payments-summit-day-1@bi
+ tcoinpark.com
+DTSTAMP:20260312T000000Z
+DTSTART;VALUE=DATE:20260312
+DTEND;VALUE=DATE:20260314
+SUMMARY:Bitcoin Takeover SXSW 2026 - Power of Payments Summit Day 1
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:An intimate two-day summit focused on bringing together found
+ ers\, builders\, and the capital needed to scale organizations and ship 
+ products that people love. This summit is catered towards entrepreneurs\
+ , policymakers\, builders\, and capital allocators.\nhttps://www.meetup.
+ com/bitcoin-park-austin/events/312679847/
+URL:https://www.meetup.com/bitcoin-park-austin/events/312679847/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260316-austin-bitcoin-club-hrf-presents-vibe-coding-for-freedom@bit
+ coinpark.com
+DTSTAMP:20260316T000000Z
+DTSTART;VALUE=DATE:20260316
+DTEND;VALUE=DATE:20260317
+SUMMARY:Austin Bitcoin Club + HRF Presents: VIBE CODING FOR FREEDOM
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Join Bitcoin Park and the Human Rights Foundation for an even
+ ing exploring the intersection of AI and freedom technology during SXSW.
+ \nAI is reshaping how software gets built\, and that includes the tools 
+ defending human rights around the world. But the same technology powerin
+ g open-source development is also fueling surveillance states.\nSo where
+  do we go from here?\n\nWe'll hear from HRF on AI-powered surveillance i
+ n authoritarian regimes\, then dive into a panel with Justin Moon\, Mark
+  Suman\, and Lyle Pratt on how AI is accelerating development on Bitcoin
+  and NOSTR\, the privacy trade-offs builders should be aware of\, and ho
+ w "vibe coding" is lowering the barrier for anyone to contribute to free
+ dom tech.\n\nNo deep technical background required\, just curiosity abou
+ t where AI and freedom intersect.\nhttps://www.meetup.com/bitcoin-park-a
+ ustin/events/312410911/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/312410911/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260319-austin-bitdevs-74@bitcoinpark.com
+DTSTAMP:20260319T000000Z
+DTSTART;VALUE=DATE:20260319
+DTEND;VALUE=DATE:20260320
+SUMMARY:Austin Bitdevs #74
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:A Socratic discussion on technical developments in Bitcoin.\n
+ \nAustin Bitdevs is inspired by the original BitDevs NYC and similar mee
+ tups to help grow a community in the Austin area of those interested in 
+ discussing and participating in the research and development of Bitcoin 
+ and related protocols (i.e. Lightning\, Fedimint\, Stratum\, etc.) and s
+ oftware. We focus on in-depth\, Socratic discussions on technical develo
+ pments within the ecosystem. You can be well-versed with or new to the t
+ opics\; all are welcome. Be advised: discussion will be technical.\nhttp
+ s://www.meetup.com/bitcoin-park-austin/events/311890984/?eventOrigin=gro
+ up_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/311890984/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260328-claws-coffee@bitcoinpark.com
+DTSTAMP:20260328T000000Z
+DTSTART;VALUE=DATE:20260328
+DTEND;VALUE=DATE:20260329
+SUMMARY:Claws & Coffee
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Claws & Coffee is a casual community gathering focused on AI\
+ , automation\, and agent setups. This will have a focus on AI tools incl
+ uding Claude Code/Codex\, OpenClaw or alternate agents\, and open source
+  best practices. We'll be set up in the back courtyard with cold brew\, 
+ hot coffee\, and light pastries. BRING YOUR LAPTOPS\nhttps://luma.com/0o
+ pumbea
+URL:https://luma.com/0opumbea
+END:VEVENT
+BEGIN:VEVENT
+UID:20260401-grassroots-bitcoin@bitcoinpark.com
+DTSTAMP:20260401T000000Z
+DTSTART;VALUE=DATE:20260401
+DTEND;VALUE=DATE:20260403
+SUMMARY:Grassroots Bitcoin
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Invitation only
+END:VEVENT
+BEGIN:VEVENT
+UID:20260402-austin-bitcoin-club-how-ai-builds-better-bitcoin-products@bi
+ tcoinpark.com
+DTSTAMP:20260402T000000Z
+DTSTART;VALUE=DATE:20260402
+DTEND;VALUE=DATE:20260403
+SUMMARY:Austin Bitcoin Club: How AI Builds Better Bitcoin Products
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:AI is changing how software gets built\, but what does that m
+ ean for Bitcoin?\nJoin us for an evening with three builders at the inte
+ rsection of AI and Bitcoin\, as we explore how artificial intelligence i
+ s reshaping product development\, tooling\, and the future of the freedo
+ m tech ecosystem.\nThis panel will feature:\n- Paul Miller - open source
+  deisgner\n- Nake Kitzke - engineer at Zaprite\n- Sahil Chaturvedi - des
+ igner at Ark Labs\nDoors open at 5:30pm\, programming will begin at 6:00
+ pm.\nhttps://www.meetup.com/bitcoin-park-austin/events/312103456/?eventO
+ rigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/312103456/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260408-park-forum-healthcare@bitcoinpark.com
+DTSTAMP:20260408T000000Z
+DTSTART;VALUE=DATE:20260408
+DTEND;VALUE=DATE:20260409
+SUMMARY:Park Forum: Healthcare
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Ticket Required\nhttps://bitcoinpark.com/forumhealth/
+URL:https://bitcoinpark.com/forumhealth/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260414-abdc@bitcoinpark.com
+DTSTAMP:20260414T000000Z
+DTSTART;VALUE=DATE:20260414
+DTEND;VALUE=DATE:20260415
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/306401439/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401439/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260414-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260414T000000Z
+DTSTART;VALUE=DATE:20260414
+DTEND;VALUE=DATE:20260415
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856727/
+URL:https://www.meetup.com/bitcoinpark/events/311856727/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260415-artificial-intelligencers@bitcoinpark.com
+DTSTAMP:20260415T000000Z
+DTSTART;VALUE=DATE:20260415
+DTEND;VALUE=DATE:20260416
+SUMMARY:Artificial Intelligencers
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for an insight-packed evening where local professiona
+ l\, amateur\, and student community members (including you!) share “wi
+ res-out” demos\, technical deep-dives\, and discussions of AI-related 
+ projects or research they are working on\, tools and techniques they hav
+ e tried\, or research papers/publications/presentations that they find i
+ nsightful. This event is for those just starting to explore the technica
+ l aspects of AI\, experienced AI professionals\, and everyone in between
+ . See you here!\nhttps://www.meetup.com/artificialintelligencers/events/
+URL:https://www.meetup.com/artificialintelligencers/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260416-park-102@bitcoinpark.com
+DTSTAMP:20260416T000000Z
+DTSTART;VALUE=DATE:20260416
+DTEND;VALUE=DATE:20260417
+SUMMARY:Park 102
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
+ n fundamentals in a more hands on environment\nhttps://www.meetup.com/bi
+ tcoinpark/events/311846989/
+URL:https://www.meetup.com/bitcoinpark/events/311846989/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260416-austin-bitdevs-75@bitcoinpark.com
+DTSTAMP:20260416T000000Z
+DTSTART;VALUE=DATE:20260416
+DTEND;VALUE=DATE:20260417
+SUMMARY:Austin Bitdevs #75
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:A Socratic discussion on technical developments in Bitcoin.\n
+ \nAustin Bitdevs is inspired by the original BitDevs NYC and similar mee
+ tups to help grow a community in the Austin area of those interested in 
+ discussing and participating in the research and development of Bitcoin 
+ and related protocols (i.e. Lightning\, Fedimint\, Stratum\, etc.) and s
+ oftware. We focus on in-depth\, Socratic discussions on technical develo
+ pments within the ecosystem. You can be well-versed with or new to the t
+ opics\; all are welcome. Be advised: discussion will be technical.\nhttp
+ s://www.meetup.com/bitcoin-park-austin/events/307266279/?eventOrigin=gro
+ up_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/307266279/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260420-mining-monday-s-mining-workshop-powered-by-proto@bitcoinpark
+ .com
+DTSTAMP:20260420T000000Z
+DTSTART;VALUE=DATE:20260420
+DTEND;VALUE=DATE:20260421
+SUMMARY:Mining Monday's: Mining Workshop\, Powered by Proto
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup is to inspire enthusiasm\, collaboration\, and ed
+ ucation for bitcoin and mining hardware. Attendees will join in a hands-
+ on workshop-style environment to learn from peers and experts in mining.
+  This will be a creative laboratory for experimentation in bitcoin minin
+ g\, tinkering and idea sharing is encouraged.\nhttps://www.meetup.com/bi
+ tcoinpark/events/312947773/
+URL:https://www.meetup.com/bitcoinpark/events/312947773/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260425-claws-coffee@bitcoinpark.com
+DTSTAMP:20260425T000000Z
+DTSTART;VALUE=DATE:20260425
+DTEND;VALUE=DATE:20260426
+SUMMARY:Claws & Coffee
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Claws & Coffee is a casual community gathering focused on AI\
+ , automation\, and agent setups. This will have a focus on AI tools incl
+ uding Claude Code/Codex\, OpenClaw or alternate agents\, and open source
+  best practices. We'll be set up in the back courtyard with cold brew\, 
+ hot coffee\, and light pastries. BRING YOUR LAPTOPS\nhttps://luma.com/99
+ o2gr9f
+URL:https://luma.com/99o2gr9f
+END:VEVENT
+BEGIN:VEVENT
+UID:20260430-philosophy-for-freedom-in-the-age-of-ai@bitcoinpark.com
+DTSTAMP:20260430T000000Z
+DTSTART;VALUE=DATE:20260430
+DTEND;VALUE=DATE:20260501
+SUMMARY:Philosophy for Freedom In the Age of AI
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:​In the age of AI\, things are changing so quickly that it 
+ can feel as though there is no solid ground left to stand on. However\, 
+ there seem to be some deeper truths about the nature of reality which re
+ main entirely unaffected by technological progress. The purpose of this 
+ Meetup is to explore the depths of those paradoxical waters\, and to dis
+ cover what solid ground remains.\nhttps://luma.com/jk5muqv1
+URL:https://luma.com/jk5muqv1
+END:VEVENT
+BEGIN:VEVENT
+UID:20260507-imagine-if-ai-set-learning-free-ft-joe-liemandt-principal-of
+ -alpha-school-founder-of-trilogy@bitcoinpark.com
+DTSTAMP:20260507T000000Z
+DTSTART;VALUE=DATE:20260507
+DTEND;VALUE=DATE:20260508
+SUMMARY:Imagine IF AI Set Learning Free? - ft. Joe Liemandt\, Principal o
+ f Alpha School & Founder of Trilogy
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:​Joe Liemandt built one of the most successful enterprise s
+ oftware companies in history\, then turned his attention to the question
+  that matters most: how do we actually educate kids for the world that
+ ’s coming?\nhttps://luma.com/nhsz659m
+URL:https://luma.com/nhsz659m
+END:VEVENT
+BEGIN:VEVENT
+UID:20260508-ai-hack-for-freedom-ii-welcome-reception@bitcoinpark.com
+DTSTAMP:20260508T000000Z
+DTSTART;VALUE=DATE:20260508
+DTEND;VALUE=DATE:20260509
+SUMMARY:AI Hack for Freedom II - Welcome Reception
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Welcome reception for hackathon participants and invited gues
+ ts
+END:VEVENT
+BEGIN:VEVENT
+UID:20260509-ai-hack-for-freedom-ii@bitcoinpark.com
+DTSTAMP:20260509T000000Z
+DTSTART;VALUE=DATE:20260509
+DTEND;VALUE=DATE:20260511
+SUMMARY:AI Hack for Freedom II
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join developers\, activists\, and innovators for an intensive
+  weekend of building cutting-edge solutions that advance freedom\, priva
+ cy\, and decentralized technology.
+END:VEVENT
+BEGIN:VEVENT
+UID:20260510-ai-hack-for-freedom-ii-winners-announcement-celebration@bitc
+ oinpark.com
+DTSTAMP:20260510T000000Z
+DTSTART;VALUE=DATE:20260510
+DTEND;VALUE=DATE:20260511
+SUMMARY:AI Hack for Freedom II - Winners Announcement & Celebration
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us this Sunday for an exciting afternoon as we wrap up o
+ ur hackathon and celebrate the winners!\nhttps://luma.com/10vqmhod
+URL:https://luma.com/10vqmhod
+END:VEVENT
+BEGIN:VEVENT
+UID:20260511-nostr-nights-2@bitcoinpark.com
+DTSTAMP:20260511T000000Z
+DTSTART;VALUE=DATE:20260511
+DTEND;VALUE=DATE:20260512
+SUMMARY:Nostr Nights #2
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Nostr Nights is a quarterly meetup for anyone passionate abou
+ t building\, growing\, and exploring the future of decentralized social 
+ technology. Whether you're brand-new to Nostr or already building on it\
+ , this event is designed to help you learn\, connect\, and go deeper.\nh
+ ttps://www.meetup.com/bitcoinpark/events/314204108/
+URL:https://www.meetup.com/bitcoinpark/events/314204108/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260512-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260512T000000Z
+DTSTART;VALUE=DATE:20260512
+DTEND;VALUE=DATE:20260513
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:https://www.meetup.com/bitcoinpark/events/311856741/
+URL:https://www.meetup.com/bitcoinpark/events/311856741/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260512-abdc@bitcoinpark.com
+DTSTAMP:20260512T000000Z
+DTSTART;VALUE=DATE:20260512
+DTEND;VALUE=DATE:20260513
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/306401445/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401445/?eventOri
+ gin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260514-park-101@bitcoinpark.com
+DTSTAMP:20260514T000000Z
+DTSTART;VALUE=DATE:20260514
+DTEND;VALUE=DATE:20260515
+SUMMARY:Park 101
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Who is this for: This is a beginner level discussion for peop
+ le curious or interested to learn about bitcoin. What is Money?\nDiving 
+ into the history and features of money. What is Bitcoin and why should I
+  care?\nProviding a framework to learn about Bitcoin\, how it works\, an
+ d why it has value\nhttps://www.meetup.com/bitcoinpark/events/311846893/
+URL:https://www.meetup.com/bitcoinpark/events/311846893/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260519-telehash-4@bitcoinpark.com
+DTSTAMP:20260519T000000Z
+DTSTART;VALUE=DATE:20260519
+DTEND;VALUE=DATE:20260520
+SUMMARY:Telehash #4
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TELEHASH #4 hosted by @econoalchemist\, @skot9000\, Tyler Ste
+ vens\, along with a number of very special guests.\n\nLearn more about a
+ bout The 256 Foundation's mission to dismantle the proprietary mining em
+ pire and join us in Austin\, TX and online.\nhttps://www.meetup.com/bitc
+ oin-park-austin/events/313866866/
+URL:https://www.meetup.com/bitcoin-park-austin/events/313866866/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260520-texas-energy-mining-summit-2026@bitcoinpark.com
+DTSTAMP:20260520T000000Z
+DTSTART;VALUE=DATE:20260520
+DTEND;VALUE=DATE:20260522
+SUMMARY:Texas Energy & Mining Summit 2026
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:An intimate two-day summit focused on energy production and b
+ itcoin mining. This summit is catered towards investors\, policymakers\,
+  energy producers\, and full-spectrum mining operators and service provi
+ ders.\nhttps://www.meetup.com/bitcoin-park-austin/events/313820468/
+URL:https://www.meetup.com/bitcoin-park-austin/events/313820468/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260522-bitcoin-pizza-day-at-bitcoin-park-austin-the-commons@bitcoin
+ park.com
+DTSTAMP:20260522T000000Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260523
+SUMMARY:Bitcoin Pizza Day at Bitcoin Park Austin (The Commons)
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Bitcoiners and all curious about bitcoin are welcome!\nThank 
+ you to Bitwise Asset Management for supporting this celebration at Bitco
+ in Park on May 22 to honor the unsung heroes keeping the Bitcoin network
+  running strong: the developers.\nCome hungry and ready to connect with 
+ fellow Bitcoiners over a tradition that all have come to enjoy.\nhttps:/
+ /www.meetup.com/bitcoin-park-austin/events/314629304/
+URL:https://www.meetup.com/bitcoin-park-austin/events/314629304/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260522-bitcoin-pizza-day-at-the-park@bitcoinpark.com
+DTSTAMP:20260522T000000Z
+DTSTART;VALUE=DATE:20260522
+DTEND;VALUE=DATE:20260523
+SUMMARY:Bitcoin Pizza Day at The Park
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Bitcoiners and all curious about bitcoin are welcome!\nThank 
+ you to Bitwise Asset Management for supporting this celebration at Bitco
+ in Park on May 22 to honor the unsung heroes keeping the Bitcoin network
+  running strong: the developers.\nCome hungry and ready to connect with 
+ fellow Bitcoiners over a tradition that all have come to enjoy.\nhttps:/
+ /www.meetup.com/bitcoinpark/events/314625407/
+URL:https://www.meetup.com/bitcoinpark/events/314625407/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260528-philosophy-for-freedom-in-the-age-of-ai@bitcoinpark.com
+DTSTAMP:20260528T000000Z
+DTSTART;VALUE=DATE:20260528
+DTEND;VALUE=DATE:20260529
+SUMMARY:Philosophy for Freedom In the Age of AI
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:​In the age of AI\, things are changing so quickly that it 
+ can feel as though there is no solid ground left to stand on. However\, 
+ there seem to be some deeper truths about the nature of reality which re
+ main entirely unaffected by technological progress. The purpose of this 
+ Meetup is to explore the depths of those paradoxical waters\, and to dis
+ cover what solid ground remains.\nhttps://luma.com/dzqnk6lx
+URL:https://luma.com/dzqnk6lx
+END:VEVENT
+BEGIN:VEVENT
+UID:20260530-claws-coffee@bitcoinpark.com
+DTSTAMP:20260530T000000Z
+DTSTART;VALUE=DATE:20260530
+DTEND;VALUE=DATE:20260531
+SUMMARY:Claws & Coffee
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Claws & Coffee is a casual community gathering focused on AI\
+ , automation\, and agent setups. This will have a focus on AI tools incl
+ uding Claude Code/Codex\, OpenClaw or alternate agents\, and open source
+  best practices. We'll be set up in the back courtyard with cold brew\, 
+ hot coffee\, and light pastries. BRING YOUR LAPTOPS\nhttps://luma.com/ir
+ anbxr9
+URL:https://luma.com/iranbxr9
+END:VEVENT
+BEGIN:VEVENT
+UID:20260604-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20260604T000000Z
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260605
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/zsmjrt
+ yjcjbnb/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/zsmjrtyjcjbnb/?even
+ tOrigin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260609-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260609T000000Z
+DTSTART;VALUE=DATE:20260609
+DTEND;VALUE=DATE:20260610
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856749/
+URL:https://www.meetup.com/bitcoinpark/events/311856749/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260609-abdc@bitcoinpark.com
+DTSTAMP:20260609T000000Z
+DTSTART;VALUE=DATE:20260609
+DTEND;VALUE=DATE:20260610
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/306401616/?slug=bitcoin-park-austin&eventId=306401616
+URL:https://www.meetup.com/bitcoin-park-austin/events/306401616/?slug=bit
+ coin-park-austin&eventId=306401616
+END:VEVENT
+BEGIN:VEVENT
+UID:20260611-park-102@bitcoinpark.com
+DTSTAMP:20260611T000000Z
+DTSTART;VALUE=DATE:20260611
+DTEND;VALUE=DATE:20260612
+SUMMARY:Park 102
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
+ n fundamentals in a more hands on environment\nhttps://www.meetup.com/bi
+ tcoinpark/events/pknsttyjcjbpb/
+URL:https://www.meetup.com/bitcoinpark/events/pknsttyjcjbpb/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260617-artificial-intelligencers@bitcoinpark.com
+DTSTAMP:20260617T000000Z
+DTSTART;VALUE=DATE:20260617
+DTEND;VALUE=DATE:20260618
+SUMMARY:Artificial Intelligencers
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for an insight-packed evening where local professiona
+ l\, amateur\, and student community members (including you!) share “wi
+ res-out” demos\, technical deep-dives\, and discussions of AI-related 
+ projects or research they are working on\, tools and techniques they hav
+ e tried\, or research papers/publications/presentations that they find i
+ nsightful. This event is for those just starting to explore the technica
+ l aspects of AI\, experienced AI professionals\, and everyone in between
+ . See you here!\nhttps://www.meetup.com/artificialintelligencers/events/
+URL:https://www.meetup.com/artificialintelligencers/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260709-austin-bitcoin-club-presents-building-bitcoin-businesses-for
+ -the-long-term@bitcoinpark.com
+DTSTAMP:20260709T000000Z
+DTSTART;VALUE=DATE:20260709
+DTEND;VALUE=DATE:20260710
+SUMMARY:Austin Bitcoin Club Presents: Building Bitcoin Businesses for the
+  Long Term
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Building a Bitcoin Businesses for the Long Term. Bitcoin busi
+ nesses are built on principles of sound money\, sovereignty\, and decent
+ ralization. Yet\, short term optimization\, centralization\, and old fra
+ meworks for managing teams\, often influenced by prior experiences and m
+ ental models\, can get in the way of our mission to bring more sovereign
+ ty and freedom to the world through the advancement of sound money. What
+  if there was a better approach that empowered our teams to drive result
+ s consistent with the ethos and principles we hold dear?\nhttps://www.me
+ etup.com/bitcoin-park-austin/events/312757110/
+URL:https://www.meetup.com/bitcoin-park-austin/events/312757110/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260714-nashbitdevs@bitcoinpark.com
+DTSTAMP:20260714T000000Z
+DTSTART;VALUE=DATE:20260714
+DTEND;VALUE=DATE:20260715
+SUMMARY:NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856753/
+URL:https://www.meetup.com/bitcoinpark/events/311856753/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260715-abdc@bitcoinpark.com
+DTSTAMP:20260715T000000Z
+DTSTART;VALUE=DATE:20260715
+DTEND;VALUE=DATE:20260716
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.\nhttps://www.meetup.com/bitcoin-park-austin/even
+ ts/ljhnvtyjckbkb/
+URL:https://www.meetup.com/bitcoin-park-austin/events/ljhnvtyjckbkb/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260715-bitcoin-health-coffee-meetup@bitcoinpark.com
+DTSTAMP:20260715T000000Z
+DTSTART;VALUE=DATE:20260715
+DTEND;VALUE=DATE:20260716
+SUMMARY:Bitcoin & Health Coffee Meetup
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for a casual coffee meetup to learn about bitcoin\, i
+ nnovative health solutions\, and the intersection of sound money and sou
+ nd health.\nhttps://www.meetup.com/bitcoinpark/events/315275254/
+URL:https://www.meetup.com/bitcoinpark/events/315275254/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260716-park-101@bitcoinpark.com
+DTSTAMP:20260716T000000Z
+DTSTART;VALUE=DATE:20260716
+DTEND;VALUE=DATE:20260717
+SUMMARY:Park 101
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Who is this for: This is a beginner level discussion for peop
+ le curious or interested to learn about bitcoin. What is Money?\nDiving 
+ into the history and features of money. What is Bitcoin and why should I
+  care?\nProviding a framework to learn about Bitcoin\, how it works\, an
+ d why it has value\nhttps://www.meetup.com/bitcoinpark/events/311846918/
+URL:https://www.meetup.com/bitcoinpark/events/311846918/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260727-mining-monday-s-mining-workshop-powered-by-proto-5-7pm@bitco
+ inpark.com
+DTSTAMP:20260727T000000Z
+DTSTART;VALUE=DATE:20260727
+DTEND;VALUE=DATE:20260728
+SUMMARY:Mining Monday's: Mining Workshop\, Powered by Proto [5-7pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup is to inspire enthusiasm\, collaboration\, and ed
+ ucation for bitcoin and mining hardware. Attendees will join in a hands-
+ on workshop-style environment to learn from peers and experts in mining.
+  This will be a creative laboratory for experimentation in bitcoin minin
+ g\, tinkering and idea sharing is encouraged.\nhttps://www.meetup.com/bi
+ tcoinpark/events/312947777/
+URL:https://www.meetup.com/bitcoinpark/events/312947777/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260806-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20260806T000000Z
+DTSTART;VALUE=DATE:20260806
+DTEND;VALUE=DATE:20260807
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
+ yjclbjb/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/cbqgvtyjclbjb/?even
+ tOrigin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260811-nashbitdevs-5-8pm@bitcoinpark.com
+DTSTAMP:20260811T000000Z
+DTSTART;VALUE=DATE:20260811
+DTEND;VALUE=DATE:20260812
+SUMMARY:NashBitDevs [5-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856763/
+URL:https://www.meetup.com/bitcoinpark/events/311856763/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260811-abdc@bitcoinpark.com
+DTSTAMP:20260811T000000Z
+DTSTART;VALUE=DATE:20260811
+DTEND;VALUE=DATE:20260812
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.
+END:VEVENT
+BEGIN:VEVENT
+UID:20260813-park-102-5-30-8pm@bitcoinpark.com
+DTSTAMP:20260813T000000Z
+DTSTART;VALUE=DATE:20260813
+DTEND;VALUE=DATE:20260814
+SUMMARY:Park 102 [5:30-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
+ n fundamentals in a more hands on environment\nhttps://www.meetup.com/bi
+ tcoinpark/events/pknsttyjclbrb/
+URL:https://www.meetup.com/bitcoinpark/events/pknsttyjclbrb/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260819-artificial-intelligencers-6-8pm@bitcoinpark.com
+DTSTAMP:20260819T000000Z
+DTSTART;VALUE=DATE:20260819
+DTEND;VALUE=DATE:20260820
+SUMMARY:Artificial Intelligencers [6-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for an insight-packed evening where local professiona
+ l\, amateur\, and student community members (including you!) share “wi
+ res-out” demos\, technical deep-dives\, and discussions of AI-related 
+ projects or research they are working on\, tools and techniques they hav
+ e tried\, or research papers/publications/presentations that they find i
+ nsightful. This event is for those just starting to explore the technica
+ l aspects of AI\, experienced AI professionals\, and everyone in between
+ . See you here!\nhttps://www.meetup.com/artificialintelligencers/events/
+URL:https://www.meetup.com/artificialintelligencers/events/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260908-member-grillout@bitcoinpark.com
+DTSTAMP:20260908T000000Z
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
+SUMMARY:Member Grillout
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Members only. Bringing members together over food and drink f
+ or time to connect. We start at noon CT
+END:VEVENT
+BEGIN:VEVENT
+UID:20260908-nashbitdevs-5-8pm@bitcoinpark.com
+DTSTAMP:20260908T000000Z
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
+SUMMARY:NashBitDevs [5-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/311856773/
+URL:https://www.meetup.com/bitcoinpark/events/311856773/
+END:VEVENT
+BEGIN:VEVENT
+UID:20260903-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20260903
+DTEND;VALUE=DATE:20260904
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
+ yjcmbfb/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/cbqgvtyjcmbfb/?even
+ tOrigin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20260908-abdc@bitcoinpark.com
+DTSTAMP:20260908T000000Z
+DTSTART;VALUE=DATE:20260908
+DTEND;VALUE=DATE:20260909
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.
+END:VEVENT
+BEGIN:VEVENT
+UID:20260910-park-101-5-30-8pm@bitcoinpark.com
+DTSTAMP:20260910T000000Z
+DTSTART;VALUE=DATE:20260910
+DTEND;VALUE=DATE:20260911
+SUMMARY:Park 101 [5:30-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Who is this for: This is a beginner level discussion for peop
+ le curious or interested to learn about bitcoin. What is Money?\nDiving 
+ into the history and features of money. What is Bitcoin and why should I
+  care?\nProviding a framework to learn about Bitcoin\, how it works\, an
+ d why it has value\nhttps://www.meetup.com/bitcoinpark/events/311846922/
+URL:https://www.meetup.com/bitcoinpark/events/311846922/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261001-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20261001T000000Z
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
+ yjcnbcb/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/cbqgvtyjcnbcb/?even
+ tOrigin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20261003-hold-bitcoin-student-network-summit@bitcoinpark.com
+DTSTAMP:20261003T000000Z
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261005
+SUMMARY:Hold Bitcoin Student Network Summit
+LOCATION:Bitcoin Park Nashville
+END:VEVENT
+BEGIN:VEVENT
+UID:20261005-imagine-if-2026@bitcoinpark.com
+DTSTAMP:20261005T000000Z
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261007
+SUMMARY:Imagine IF 2026
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:The high-conviction summit of summits for dreamers and doers\
+ ; those shaping what's possible in Bitcoin\, AI\, energy\, and freedom t
+ ech. Join some of the most curious and capable minds for an intimate exp
+ erience that blends the narrative power of human storytelling with the s
+ erendipity of natural connection.\nhttps://www.imagineifnashville.com/
+URL:https://www.imagineifnashville.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-global-freedom-tech-summit@bitcoinpark.com
+DTSTAMP:20261006T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261010
+SUMMARY:Global Freedom Tech Summit
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:invitation only\nno link
+URL:no link
+END:VEVENT
+BEGIN:VEVENT
+UID:20261006-abdc@bitcoinpark.com
+DTSTAMP:20261006T000000Z
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.
+END:VEVENT
+BEGIN:VEVENT
+UID:20261015-park-102-5-30-8pm@bitcoinpark.com
+DTSTAMP:20261015T000000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Park 102 [5:30-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
+ n fundamentals in a more hands on environment\nhttps://www.meetup.com/bi
+ tcoinpark/events/311846964/
+URL:https://www.meetup.com/bitcoinpark/events/311846964/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261019-rust-bitcoin-summit@bitcoinpark.com
+DTSTAMP:20261019T000000Z
+DTSTART;VALUE=DATE:20261019
+DTEND;VALUE=DATE:20261022
+SUMMARY:Rust Bitcoin Summit
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:invitation only\nno link
+URL:no link
+END:VEVENT
+BEGIN:VEVENT
+UID:20261020-hold-nashbitdevs@bitcoinpark.com
+DTSTAMP:20261020T000000Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:[HOLD] NashBitDevs
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Tentative date during Rust Bitcoin Summit. TABConf in previou
+ s week
+END:VEVENT
+BEGIN:VEVENT
+UID:20261021-artificial-intelligencers-6-8pm@bitcoinpark.com
+DTSTAMP:20261021T000000Z
+DTSTART;VALUE=DATE:20261021
+DTEND;VALUE=DATE:20261022
+SUMMARY:Artificial Intelligencers [6-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for an insight-packed evening where local professiona
+ l\, amateur\, and student community members (including you!) share “wi
+ res-out” demos\, technical deep-dives\, and discussions of AI-related 
+ projects or research they are working on\, tools and techniques they hav
+ e tried\, or research papers/publications/presentations that they find i
+ nsightful. This event is for those just starting to explore the technica
+ l aspects of AI\, experienced AI professionals\, and everyone in between
+ . See you here!\nhttps://www.meetup.com/artificialintelligencers/events/
+ 312408907/
+URL:https://www.meetup.com/artificialintelligencers/events/312408907/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261027-hold-digital-wealth-summit@bitcoinpark.com
+DTSTAMP:20261027T000000Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+SUMMARY:[Hold] Digital Wealth Summit
+LOCATION:Bitcoin Park Nashville
+END:VEVENT
+BEGIN:VEVENT
+UID:20261028-custody-treasury-summit-2026@bitcoinpark.com
+DTSTAMP:20261028T000000Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261030
+SUMMARY:Custody & Treasury Summit 2026
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:[Ticket Required] Custody & Treasury Summit is a gathering of
+  capital allocators\, entrepreneurs\, policymakers\, and developers focu
+ sed on advancing the infrastructure and best practices around holding\, 
+ securing\, and managing Bitcoin.\nhttps://www.meetup.com/bitcoinpark/eve
+ nts/314966347/
+URL:https://www.meetup.com/bitcoinpark/events/314966347/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261105-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20261105T000000Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
+ yjcpbhb/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/cbqgvtyjcpbhb/?even
+ tOrigin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20261106-hold-nostrville@bitcoinpark.com
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Hold Nostrville
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:A celebration of Nostr and the re-birth of a new internet bui
+ lt by private-public keys. Join us!
+END:VEVENT
+BEGIN:VEVENT
+UID:20261109-bitcoin-veterans-summit-2026@bitcoinpark.com
+DTSTAMP:20261109T000000Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:Bitcoin Veterans Summit 2026
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Veterans Day week at Bitcoin Park in Nashville\, we’re brin
+ ging together veterans who are building with Bitcoin and freedom tech. F
+ rom the battlefield to Bitcoin\, veterans thrive under pressure. Now it
+ ’s time to apply that mindset to a new kind of fight — for privacy\,
+  sovereignty\, and real community in a broken world.
+END:VEVENT
+BEGIN:VEVENT
+UID:20261110-bitcoin-veterans-summit-range-day@bitcoinpark.com
+DTSTAMP:20261110T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:Bitcoin Veterans Summit Range Day
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Wrap up the Bitcoin Veterans Summit with an expert led\, skil
+ l-focused day at the range alongside fellow veterans and Bitcoiners. No 
+ pressure. Just solid reps and real connection.
+END:VEVENT
+BEGIN:VEVENT
+UID:20261110-abdc@bitcoinpark.com
+DTSTAMP:20261110T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.
+END:VEVENT
+BEGIN:VEVENT
+UID:20261110-nashbitdevs-5-8pm@bitcoinpark.com
+DTSTAMP:20261110T000000Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:NashBitDevs [5-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nhttps://www.mee
+ tup.com/bitcoinpark/events/312080213/
+URL:https://www.meetup.com/bitcoinpark/events/312080213/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261112-park-101-5-30-8pm@bitcoinpark.com
+DTSTAMP:20261112T000000Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:Park 101 [5:30-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Who is this for: This is a beginner level discussion for peop
+ le curious or interested to learn about bitcoin. What is Money?\nDiving 
+ into the history and features of money. What is Bitcoin and why should I
+  care?\nProviding a framework to learn about Bitcoin\, how it works\, an
+ d why it has value\nhttps://www.meetup.com/bitcoinpark/events/312080240/
+URL:https://www.meetup.com/bitcoinpark/events/312080240/
+END:VEVENT
+BEGIN:VEVENT
+UID:20261203-austin-bitcoin-club@bitcoinpark.com
+DTSTAMP:20261203T000000Z
+DTSTART;VALUE=DATE:20261203
+DTEND;VALUE=DATE:20261204
+SUMMARY:Austin Bitcoin Club
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
+ yjcqbfb/?eventOrigin=group_events_list
+URL:https://www.meetup.com/bitcoin-park-austin/events/cbqgvtyjcqbfb/?even
+ tOrigin=group_events_list
+END:VEVENT
+BEGIN:VEVENT
+UID:20261208-nashbitdevs-5-8pm@bitcoinpark.com
+DTSTAMP:20261208T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:NashBitDevs [5-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
+ ar meetups to help grow a community in the Nashville area of those inter
+ ested in discussing and participating in the research and development of
+  Bitcoin and related protocols (i.e. Lightning\, fedimint\, Stratum\, et
+ c.) and software. You can be well versed with or new to the topics\, all
+  are welcome. Be advised: discussion will be technical.\nNo link yet
+URL:No link yet
+END:VEVENT
+BEGIN:VEVENT
+UID:20261208-abdc@bitcoinpark.com
+DTSTAMP:20261208T000000Z
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+SUMMARY:ABDC
+LOCATION:Bitcoin Park Austin
+DESCRIPTION:Austin Bitcoin Design Club meets to improve bitcoin design th
+ rough education\, participation\, and good vibes.\n\nIf you can\, bring 
+ a laptop for design crit!\n\nThis meetup is a place where we dissect and
+  discuss all things UX/UI in the bitcoin and freedom tech ecosystem. We 
+ dive deep into existing interfaces\, critique new ideas\, and collaborat
+ ively explore solutions to create more intuitive and user-friendly exper
+ iences for the next generation of financial freedom tools. Whether you'r
+ e a seasoned designer or just curious about how design shapes the future
+  of money\, join us to learn\, share\, and contribute to making bitcoin 
+ accessible to everyone.
+END:VEVENT
+BEGIN:VEVENT
+UID:20261210-park-102-5-30-8pm@bitcoinpark.com
+DTSTAMP:20261210T000000Z
+DTSTART;VALUE=DATE:20261210
+DTEND;VALUE=DATE:20261211
+SUMMARY:Park 102 [5:30-8pm]
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
+ n fundamentals in a more hands on environment\nNo link yet
+URL:No link yet
+END:VEVENT
+BEGIN:VEVENT
+UID:20261216-artificial-intelligencers@bitcoinpark.com
+DTSTAMP:20261216T000000Z
+DTSTART;VALUE=DATE:20261216
+DTEND;VALUE=DATE:20261217
+SUMMARY:Artificial Intelligencers
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Join us for an insight-packed evening where local professiona
+ l\, amateur\, and student community members (including you!) share “wi
+ res-out” demos\, technical deep-dives\, and discussions of AI-related 
+ projects or research they are working on\, tools and techniques they hav
+ e tried\, or research papers/publications/presentations that they find i
+ nsightful. This event is for those just starting to explore the technica
+ l aspects of AI\, experienced AI professionals\, and everyone in between
+ . See you here!\nhttps://www.meetup.com/artificialintelligencers/events/
+ 312408910/
+URL:https://www.meetup.com/artificialintelligencers/events/312408910/
+END:VEVENT
+BEGIN:VEVENT
+UID:20270120-telehash-5@bitcoinpark.com
+DTSTAMP:20270120T000000Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:Telehash #5
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:If you heard about the legendary Telehash fundraiser last yea
+ r where the 256 Foundation made history solo mining Bitcoin block #88142
+ 3 during the live stream\, then you definitely do not want to miss this 
+ year's Telehash which is poised to bring more guests\, more hash rate\, 
+ and more surprises. Be there as the entire 256 Foundation team makes his
+ tory again while showcasing all the open-source Bitcoin mining solutions
+  they have developed over the last year.
+END:VEVENT
+BEGIN:VEVENT
+UID:20270121-nashville-energy-mining-summit-2027@bitcoinpark.com
+DTSTAMP:20270121T000000Z
+DTSTART;VALUE=DATE:20270121
+DTEND;VALUE=DATE:20270123
+SUMMARY:Nashville Energy & Mining Summit 2027
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:An intimate two-day summit focused on energy production and b
+ itcoin mining. This summit is catered towards investors\, policymakers\,
+  energy producers\, and full-spectrum mining operators and service provi
+ ders.
+END:VEVENT
+BEGIN:VEVENT
+UID:20270312-bitcoin-takeover-sxsw@bitcoinpark.com
+DTSTAMP:20270312T000000Z
+DTSTART;VALUE=DATE:20270312
+DTEND;VALUE=DATE:20270313
+SUMMARY:Bitcoin Takeover SXSW
+LOCATION:Bitcoin Park Austin
+END:VEVENT
+BEGIN:VEVENT
+UID:20270407-grassroots-bitcoin@bitcoinpark.com
+DTSTAMP:20270407T000000Z
+DTSTART;VALUE=DATE:20270407
+DTEND;VALUE=DATE:20270409
+SUMMARY:Grassroots Bitcoin
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:Invitation only
+END:VEVENT
+BEGIN:VEVENT
+UID:2070519-texas-energy-mining-summit-2027@bitcoinpark.com
+DTSTAMP:2070519T000000Z
+DTSTART;VALUE=DATE:2070519
+DTEND;VALUE=DATE:20270521
+SUMMARY:Texas Energy & Mining Summit 2027
+LOCATION:Bitcoin Park Austin
+END:VEVENT
+BEGIN:VEVENT
+UID:20270714-5-year-party-before-bitcoin-conference@bitcoinpark.com
+DTSTAMP:20270714T000000Z
+DTSTART;VALUE=DATE:20270714
+DTEND;VALUE=DATE:20270715
+SUMMARY:5 Year Party Before Bitcoin Conference
+LOCATION:Bitcoin Park Nashville
+END:VEVENT
+BEGIN:VEVENT
+UID:2070930-potential-custody-treasury-summit-2027@bitcoinpark.com
+DTSTAMP:2070930T000000Z
+DTSTART;VALUE=DATE:2070930
+DTEND;VALUE=DATE:20271002
+SUMMARY:Potential Custody & Treasury Summit 2027
+LOCATION:Nashviille
+END:VEVENT
+BEGIN:VEVENT
+UID:20271004-imagine-if-2027@bitcoinpark.com
+DTSTAMP:20271004T000000Z
+DTSTART;VALUE=DATE:20271004
+DTEND;VALUE=DATE:20271006
+SUMMARY:Imagine IF 2027
+LOCATION:Bitcoin Park Nashville
+DESCRIPTION:The high-conviction summit of summits for dreamers and doers\
+ ; those shaping what's possible in Bitcoin\, AI\, energy\, and freedom t
+ ech. Join some of the most curious and capable minds for an intimate exp
+ erience that blends the narrative power of human storytelling with the s
+ erendipity of natural connection.
+END:VEVENT
+END:VCALENDAR
