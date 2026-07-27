@@ -16,7 +16,11 @@ const MONTHS = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8,
 function parseSheetDate(value) {
     const m = /^\w{3} (\w{3}) (\d{1,2}) (\d{4})/.exec(String(value || '').trim());
     if (!m || !MONTHS[m[1]]) return null;
-    return { y: +m[3], mo: MONTHS[m[1]], d: +m[2] };
+    const parsed = { y: +m[3], mo: MONTHS[m[1]], d: +m[2] };
+    // Guard against typo years in the sheet (e.g. 0207) — one invalid date can
+    // make calendar apps reject the entire feed.
+    if (parsed.y < 2020 || parsed.y > 2040) return null;
+    return parsed;
 }
 
 function fmtDate({ y, mo, d }) {

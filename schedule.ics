@@ -1719,28 +1719,12 @@ LOCATION:Bitcoin Park Nashville
 DESCRIPTION:Invitation only
 END:VEVENT
 BEGIN:VEVENT
-UID:2070519-texas-energy-mining-summit-2027@bitcoinpark.com
-DTSTAMP:2070519T000000Z
-DTSTART;VALUE=DATE:2070519
-DTEND;VALUE=DATE:20270521
-SUMMARY:Texas Energy & Mining Summit 2027
-LOCATION:Bitcoin Park Austin
-END:VEVENT
-BEGIN:VEVENT
 UID:20270714-5-year-party-before-bitcoin-conference@bitcoinpark.com
 DTSTAMP:20270714T000000Z
 DTSTART;VALUE=DATE:20270714
 DTEND;VALUE=DATE:20270715
 SUMMARY:5 Year Party Before Bitcoin Conference
 LOCATION:Bitcoin Park Nashville
-END:VEVENT
-BEGIN:VEVENT
-UID:2070930-potential-custody-treasury-summit-2027@bitcoinpark.com
-DTSTAMP:2070930T000000Z
-DTSTART;VALUE=DATE:2070930
-DTEND;VALUE=DATE:20271002
-SUMMARY:Potential Custody & Treasury Summit 2027
-LOCATION:Nashviille
 END:VEVENT
 BEGIN:VEVENT
 UID:20271004-imagine-if-2027@bitcoinpark.com
