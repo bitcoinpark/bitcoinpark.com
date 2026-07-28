@@ -120,6 +120,11 @@ async function main() {
         ...VTIMEZONE,
     ];
 
+    // DTSTAMP/LAST-MODIFIED must be the generation time, not the event date:
+    // subscribers (notably Google) may skip merging a changed event whose
+    // DTSTAMP is identical to the copy they already hold.
+    const buildStamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+
     let count = 0;
     for (const row of events) {
         const name = String(row['event name'] || '').trim();
@@ -134,7 +139,8 @@ async function main() {
         lines.push(
             'BEGIN:VEVENT',
             `UID:${uid}`,
-            `DTSTAMP:${fmtDate(start)}T000000Z`
+            `DTSTAMP:${buildStamp}`,
+            `LAST-MODIFIED:${buildStamp}`
         );
 
         const startTime = parseSheetTime(row['start time']);
