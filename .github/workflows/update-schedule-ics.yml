@@ -26,8 +26,11 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          if git diff --quiet -- schedule.ics; then
+          # DTSTAMP/LAST-MODIFIED are the generation time and differ every run;
+          # only commit when the actual event data changed.
+          if git diff --quiet -I'^DTSTAMP:' -I'^LAST-MODIFIED:' -- schedule.ics; then
             echo "schedule.ics unchanged, nothing to do"
+            git checkout -- schedule.ics
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
