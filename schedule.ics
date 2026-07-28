@@ -1247,8 +1247,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260806-austin-bitcoin-club@bitcoinpark.com
 DTSTAMP:20260806T000000Z
-DTSTART;VALUE=DATE:20260806
-DTEND;VALUE=DATE:20260807
+DTSTART;TZID=America/Chicago:20260806T180000
+DTEND;TZID=America/Chicago:20260806T200000
 SUMMARY:Austin Bitcoin Club
 LOCATION:Bitcoin Park Austin
 DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
@@ -1259,8 +1259,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260811-nashbitdevs-5-8pm@bitcoinpark.com
 DTSTAMP:20260811T000000Z
-DTSTART;VALUE=DATE:20260811
-DTEND;VALUE=DATE:20260812
+DTSTART;TZID=America/Chicago:20260811T170000
+DTEND;TZID=America/Chicago:20260811T200000
 SUMMARY:NashBitDevs [5-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
@@ -1293,8 +1293,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260813-park-102-5-30-8pm@bitcoinpark.com
 DTSTAMP:20260813T000000Z
-DTSTART;VALUE=DATE:20260813
-DTEND;VALUE=DATE:20260814
+DTSTART;TZID=America/Chicago:20260813T170000
+DTEND;TZID=America/Chicago:20260813T190000
 SUMMARY:Park 102 [5:30-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
@@ -1305,8 +1305,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260819-artificial-intelligencers-6-8pm@bitcoinpark.com
 DTSTAMP:20260819T000000Z
-DTSTART;VALUE=DATE:20260819
-DTEND;VALUE=DATE:20260820
+DTSTART;TZID=America/Chicago:20260819T180000
+DTEND;TZID=America/Chicago:20260819T200000
 SUMMARY:Artificial Intelligencers [6-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:Join us for an insight-packed evening where local professiona
@@ -1332,8 +1332,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260908-nashbitdevs-5-8pm@bitcoinpark.com
 DTSTAMP:20260908T000000Z
-DTSTART;VALUE=DATE:20260908
-DTEND;VALUE=DATE:20260909
+DTSTART;TZID=America/Chicago:20260908T170000
+DTEND;TZID=America/Chicago:20260908T200000
 SUMMARY:NashBitDevs [5-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
@@ -1348,8 +1348,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260903-austin-bitcoin-club@bitcoinpark.com
 DTSTAMP:20260903T000000Z
-DTSTART;VALUE=DATE:20260903
-DTEND;VALUE=DATE:20260904
+DTSTART;TZID=America/Chicago:20260903T180000
+DTEND;TZID=America/Chicago:20260903T200000
 SUMMARY:Austin Bitcoin Club
 LOCATION:Bitcoin Park Austin
 DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
@@ -1378,8 +1378,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20260910-park-101-5-30-8pm@bitcoinpark.com
 DTSTAMP:20260910T000000Z
-DTSTART;VALUE=DATE:20260910
-DTEND;VALUE=DATE:20260911
+DTSTART;TZID=America/Chicago:20260910T170000
+DTEND;TZID=America/Chicago:20260910T190000
 SUMMARY:Park 101 [5:30-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:Who is this for: This is a beginner level discussion for peop
@@ -1392,8 +1392,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261001-austin-bitcoin-club@bitcoinpark.com
 DTSTAMP:20261001T000000Z
-DTSTART;VALUE=DATE:20261001
-DTEND;VALUE=DATE:20261002
+DTSTART;TZID=America/Chicago:20261001T180000
+DTEND;TZID=America/Chicago:20261001T200000
 SUMMARY:Austin Bitcoin Club
 LOCATION:Bitcoin Park Austin
 DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
@@ -1454,8 +1454,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261015-park-102-5-30-8pm@bitcoinpark.com
 DTSTAMP:20261015T000000Z
-DTSTART;VALUE=DATE:20261015
-DTEND;VALUE=DATE:20261016
+DTSTART;TZID=America/Chicago:20261015T170000
+DTEND;TZID=America/Chicago:20261015T190000
 SUMMARY:Park 102 [5:30-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:This meetup will be best for people that want to learn Bitcoi
@@ -1486,8 +1486,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261021-artificial-intelligencers-6-8pm@bitcoinpark.com
 DTSTAMP:20261021T000000Z
-DTSTART;VALUE=DATE:20261021
-DTEND;VALUE=DATE:20261022
+DTSTART;TZID=America/Chicago:20261021T180000
+DTEND;TZID=America/Chicago:20261021T200000
 SUMMARY:Artificial Intelligencers [6-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:Join us for an insight-packed evening where local professiona
@@ -1512,8 +1512,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261028-custody-treasury-summit-2026@bitcoinpark.com
 DTSTAMP:20261028T000000Z
-DTSTART;VALUE=DATE:20261028
-DTEND;VALUE=DATE:20261030
+DTSTART;TZID=America/Chicago:20261028T080000
+DTEND;TZID=America/Chicago:20261029T150000
 SUMMARY:Custody & Treasury Summit 2026
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:[Ticket Required] Custody & Treasury Summit is a gathering of
@@ -1526,8 +1526,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261105-austin-bitcoin-club@bitcoinpark.com
 DTSTAMP:20261105T000000Z
-DTSTART;VALUE=DATE:20261105
-DTEND;VALUE=DATE:20261106
+DTSTART;TZID=America/Chicago:20261105T180000
+DTEND;TZID=America/Chicago:20261105T200000
 SUMMARY:Austin Bitcoin Club
 LOCATION:Bitcoin Park Austin
 DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
@@ -1590,8 +1590,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261110-nashbitdevs-5-8pm@bitcoinpark.com
 DTSTAMP:20261110T000000Z
-DTSTART;VALUE=DATE:20261110
-DTEND;VALUE=DATE:20261111
+DTSTART;TZID=America/Chicago:20261110T170000
+DTEND;TZID=America/Chicago:20261110T200000
 SUMMARY:NashBitDevs [5-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:NashBitDevs is inspired by the original BitDevs NYC and simil
@@ -1606,8 +1606,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261112-park-101-5-30-8pm@bitcoinpark.com
 DTSTAMP:20261112T000000Z
-DTSTART;VALUE=DATE:20261112
-DTEND;VALUE=DATE:20261113
+DTSTART;TZID=America/Chicago:20261112T170000
+DTEND;TZID=America/Chicago:20261112T190000
 SUMMARY:Park 101 [5:30-8pm]
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:Who is this for: This is a beginner level discussion for peop
@@ -1620,8 +1620,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261203-austin-bitcoin-club@bitcoinpark.com
 DTSTAMP:20261203T000000Z
-DTSTART;VALUE=DATE:20261203
-DTEND;VALUE=DATE:20261204
+DTSTART;TZID=America/Chicago:20261203T180000
+DTEND;TZID=America/Chicago:20261203T200000
 SUMMARY:Austin Bitcoin Club
 LOCATION:Bitcoin Park Austin
 DESCRIPTION:TBD\nhttps://www.meetup.com/bitcoin-park-austin/events/cbqgvt
@@ -1676,8 +1676,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:20261216-artificial-intelligencers@bitcoinpark.com
 DTSTAMP:20261216T000000Z
-DTSTART;VALUE=DATE:20261216
-DTEND;VALUE=DATE:20261217
+DTSTART;TZID=America/Chicago:20261216T180000
+DTEND;TZID=America/Chicago:20261216T200000
 SUMMARY:Artificial Intelligencers
 LOCATION:Bitcoin Park Nashville
 DESCRIPTION:Join us for an insight-packed evening where local professiona
