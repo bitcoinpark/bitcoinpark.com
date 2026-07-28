@@ -2203,6 +2203,7 @@
                         if (startTimeParts) {
                             event.dateObj.setHours(startTimeParts.h, startTimeParts.mi, 0, 0);
                             event.time = formatTime12(startTimeParts) + (endTimeParts ? ` – ${formatTime12(endTimeParts)}` : '');
+                            event.shortTime = formatTimeShort(startTimeParts);
                             if (endTimeParts) {
                                 const endBase = event.isMultiDay && event.endDateObj ? event.endDateObj : event.dateObj;
                                 const endDT = new Date(endBase);
@@ -2212,6 +2213,7 @@
                             }
                         } else {
                             event.time = '';
+                            event.shortTime = '';
                         }
                         event.description = event.description || event['event description'] || '';
                         event.topics = (event.topics || event.tags || '').split(',').map(t => t.trim()).filter(t => t);
@@ -2323,6 +2325,30 @@
             const ap = h >= 12 ? 'PM' : 'AM';
             const h12 = h % 12 || 12;
             return mi ? `${h12}:${String(mi).padStart(2, '0')} ${ap}` : `${h12} ${ap}`;
+        }
+
+        // Compact form for calendar-grid chips: "6pm", "5:30pm".
+        function formatTimeShort({ h, mi }) {
+            const ap = h >= 12 ? 'pm' : 'am';
+            const h12 = h % 12 || 12;
+            return mi ? `${h12}:${String(mi).padStart(2, '0')}${ap}` : `${h12}${ap}`;
+        }
+
+        // Sheet times are Central (America/Chicago) wall-clock, but event.dateObj holds
+        // them in the viewer's local zone. Convert a wall-clock Date to the real UTC
+        // instant so calendar exports land at the right time in any viewer timezone.
+        function centralWallToUTC(d) {
+            const want = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes());
+            let utc = want;
+            for (let i = 0; i < 3; i++) {
+                const p = {};
+                new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+                    .formatToParts(new Date(utc)).forEach(x => { p[x.type] = x.value; });
+                const got = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute);
+                if (got === want) break;
+                utc += want - got;
+            }
+            return new Date(utc);
         }
 
         // Parse various date formats. All paths produce a Date at local midnight for the
@@ -2688,10 +2714,11 @@
                         const totalDays = event.allDateKeys.length;
                         eventDot.textContent = `${locationIcon} ${event.title || 'Event'} (${dayNum}/${totalDays})`;
                     } else {
-                        eventDot.textContent = `${locationIcon} ${event.title || 'Event'}`;
+                        const chipTime = event.shortTime ? `${event.shortTime} ` : '';
+                        eventDot.textContent = `${locationIcon} ${chipTime}${event.title || 'Event'}`;
                     }
-                    
-                    eventDot.title = `${event.title || 'Event'} - ${event.normalizedType}${event.isMultiDay ? ' (Multi-day)' : ''}`;
+
+                    eventDot.title = `${event.title || 'Event'}${event.time ? ` · ${event.time}` : ''} - ${event.normalizedType}${event.isMultiDay ? ' (Multi-day)' : ''}`;
                     eventDot.addEventListener('click', (e) => {
                         e.stopPropagation();
                         showEventDetail(event);
@@ -2766,8 +2793,8 @@
                     const div = document.createElement('div');
                     div.className = `week-event ${ev.normalizedType}`;
                     const locIcon = getLocationIcon(ev.normalizedLocation);
-                    div.textContent = `${locIcon} ${ev.title || 'Event'}`;
-                    div.title = `${ev.title || 'Event'} - ${formatTime(ev.dateObj)}`;
+                    div.textContent = `${locIcon} ${ev.shortTime ? `${ev.shortTime} ` : ''}${ev.title || 'Event'}`;
+                    div.title = `${ev.title || 'Event'}${ev.time ? ` · ${ev.time}` : ''}`;
                     div.addEventListener('click', () => showEventDetail(ev));
                     dayDiv.appendChild(div);
                 });
@@ -3049,32 +3076,39 @@
 
         // Add to calendar
         function addToCalendar(event) {
-            // Create ICS file
-            const startDate = event.dateObj;
-            let endDate;
-            
-            // Use actual end date for multi-day events, otherwise default 2 hour duration
-            if (event.isMultiDay && event.endDateObj) {
-                endDate = new Date(event.endDateObj);
-                endDate.setHours(23, 59, 59); // End of the last day
-            } else if (event.endDateTimeObj) {
-                endDate = new Date(event.endDateTimeObj);
-            } else {
-                endDate = new Date(startDate);
-                endDate.setHours(endDate.getHours() + 2); // Default 2 hour duration
-            }
-            
+            // Create ICS file. Events without a time export as all-day (VALUE=DATE)
+            // rather than a fake midnight slot; timed events convert Central wall
+            // clock to real UTC so they land right in any viewer timezone.
+            const isAllDay = event.isMultiDay || !event.time;
             const formatICSDate = (date) => {
                 return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
             };
-            
+            const formatICSDay = (date) => {
+                return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`;
+            };
+
+            let dtStart, dtEnd;
+            if (isAllDay) {
+                const endDay = new Date(event.isMultiDay && event.endDateObj ? event.endDateObj : event.dateObj);
+                endDay.setDate(endDay.getDate() + 1); // exclusive end date
+                dtStart = `DTSTART;VALUE=DATE:${formatICSDay(event.dateObj)}`;
+                dtEnd = `DTEND;VALUE=DATE:${formatICSDay(endDay)}`;
+            } else {
+                const startUTC = centralWallToUTC(event.dateObj);
+                const endUTC = event.endDateTimeObj
+                    ? centralWallToUTC(event.endDateTimeObj)
+                    : new Date(startUTC.getTime() + 2 * 60 * 60 * 1000); // default 2 hour duration
+                dtStart = `DTSTART:${formatICSDate(startUTC)}`;
+                dtEnd = `DTEND:${formatICSDate(endUTC)}`;
+            }
+
             const icsContent = [
                 'BEGIN:VCALENDAR',
                 'VERSION:2.0',
                 'PRODID:-//Bitcoin Park//Event Calendar//EN',
                 'BEGIN:VEVENT',
-                `DTSTART:${formatICSDate(startDate)}`,
-                `DTEND:${formatICSDate(endDate)}`,
+                dtStart,
+                dtEnd,
                 `SUMMARY:${event.title || 'Event'}`,
                 `DESCRIPTION:${event.description || ''}`,
                 `LOCATION:${event.location || ''}`,
@@ -3108,7 +3142,8 @@
                 endDate.setHours(endDate.getHours() + 2);
             }
 
-            // Format dates for Google Calendar (all-day events use YYYYMMDD, timed events use full ISO)
+            // Format dates for Google Calendar (all-day events use YYYYMMDD, timed events
+            // convert Central wall clock to real UTC)
             const formatGoogleDate = (date, isAllDay = false) => {
                 if (isAllDay || event.isMultiDay) {
                     const year = date.getFullYear();
@@ -3116,7 +3151,7 @@
                     const day = String(date.getDate()).padStart(2, '0');
                     return `${year}${month}${day}`;
                 }
-                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+                return centralWallToUTC(date).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
             };
 
             const isAllDay = event.isMultiDay || !event.time;
@@ -3158,32 +3193,39 @@
                 subject: event.title || 'Event',
                 body: event.description || '',
                 location: event.location || '',
-                startdt: startDate.toISOString(),
-                enddt: endDate.toISOString(),
+                startdt: (isAllDay ? startDate : centralWallToUTC(startDate)).toISOString(),
+                enddt: (isAllDay ? endDate : centralWallToUTC(endDate)).toISOString(),
                 allday: isAllDay ? 'true' : 'false'
             });
 
             return `${baseUrl}?${params.toString()}`;
         }
 
-        // Generate ICS file content for Apple Calendar
+        // Generate ICS file content for Apple Calendar. Same timezone rules as
+        // addToCalendar: no time → all-day; timed → Central wall clock to real UTC.
         function generateICSContent(event) {
-            const startDate = event.dateObj;
-            let endDate;
-
-            if (event.isMultiDay && event.endDateObj) {
-                endDate = new Date(event.endDateObj);
-                endDate.setHours(23, 59, 59);
-            } else if (event.endDateTimeObj) {
-                endDate = new Date(event.endDateTimeObj);
-            } else {
-                endDate = new Date(startDate);
-                endDate.setHours(endDate.getHours() + 2);
-            }
-
+            const isAllDay = event.isMultiDay || !event.time;
             const formatICSDate = (date) => {
                 return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
             };
+            const formatICSDay = (date) => {
+                return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(date.getDate()).padStart(2, '0')}`;
+            };
+
+            let dtStart, dtEnd;
+            if (isAllDay) {
+                const endDay = new Date(event.isMultiDay && event.endDateObj ? event.endDateObj : event.dateObj);
+                endDay.setDate(endDay.getDate() + 1); // exclusive end date
+                dtStart = `DTSTART;VALUE=DATE:${formatICSDay(event.dateObj)}`;
+                dtEnd = `DTEND;VALUE=DATE:${formatICSDay(endDay)}`;
+            } else {
+                const startUTC = centralWallToUTC(event.dateObj);
+                const endUTC = event.endDateTimeObj
+                    ? centralWallToUTC(event.endDateTimeObj)
+                    : new Date(startUTC.getTime() + 2 * 60 * 60 * 1000);
+                dtStart = `DTSTART:${formatICSDate(startUTC)}`;
+                dtEnd = `DTEND:${formatICSDate(endUTC)}`;
+            }
 
             // Escape special characters for ICS format
             const escapeICS = (str) => {
@@ -3203,8 +3245,8 @@
                 'BEGIN:VEVENT',
                 `UID:${Date.now()}-${Math.random().toString(36).substr(2, 9)}@bitcoinpark.com`,
                 `DTSTAMP:${formatICSDate(new Date())}`,
-                `DTSTART:${formatICSDate(startDate)}`,
-                `DTEND:${formatICSDate(endDate)}`,
+                dtStart,
+                dtEnd,
                 `SUMMARY:${escapeICS(event.title || 'Event')}`,
                 `DESCRIPTION:${escapeICS(event.description || '')}`,
                 `LOCATION:${escapeICS(event.location || '')}`,
