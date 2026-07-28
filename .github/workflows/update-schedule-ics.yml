@@ -1,0 +1,37 @@
+name: Update Schedule Calendar Feed
+
+on:
+  schedule:
+    - cron: '23 */2 * * *' # every 2 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate schedule.ics from schedule sheet
+        run: node scripts/generate-schedule-ics.js
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- schedule.ics; then
+            echo "schedule.ics unchanged, nothing to do"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add schedule.ics
+            git commit -m "Update schedule.ics from schedule sheet"
+            git push
+          fi
