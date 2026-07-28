@@ -500,6 +500,11 @@
             border-radius: 12px;
             border: 1px solid rgba(10, 43, 7, 0.1);
             box-shadow: 0 4px 20px rgba(10, 43, 7, 0.08);
+            /* backdrop-filter creates a stacking context, so the subscribe
+               dropdown's z-index can't escape this element on its own; the
+               nav must itself stack above the sticky .month-header (z-index 20). */
+            position: relative;
+            z-index: 30;
         }
 
         .nav-buttons {
