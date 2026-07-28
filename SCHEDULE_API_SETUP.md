@@ -239,8 +239,9 @@ There is also a **Subscribe** button on bitcoinpark.com/schedule with one-click 
 To regenerate manually: `node scripts/generate-schedule-ics.js`, or trigger the workflow from the GitHub Actions tab (it has a manual "Run workflow" button).
 
 ### Notes:
-- Events appear as all-day events (the sheet stores dates, not times). Anything in the description column carries over as event notes, and the meetup link is included.
-- If the Apps Script endpoint URL ever changes, update `FEED_URL` in `scripts/generate-schedule-ics.js`.
+- **Event times:** the sheet supports optional `start time` / `end time` columns (append them after the existing columns — don't insert before the meetup link column). Fill them as text ("6:30 PM", "18:30") or let Sheets time-format the cell; both work. Rows with a start time become properly timed events (US Central); blank stays all-day. An event with no end time defaults to 2 hours. Multi-day events stay all-day unless both times are filled.
+- Anything in the description column carries over as event notes, and the meetup link is included.
+- If the Apps Script endpoint URL ever changes, update `FEED_URL` in `scripts/generate-schedule-ics.js` (or set `SCHEDULE_FEED_URL` to override for testing).
 
 ---
 

@@ -2195,7 +2195,24 @@
                             event.allDateKeys = [event.dateKey];
                         }
                         
-                        event.time = event.time || event['start time'] || '';
+                        // Optional "start time"/"end time" sheet columns. Parsed so the
+                        // raw cell value (possibly an 1899 Date string from time-formatted
+                        // cells) never shows in the UI; blank or unparseable stays all-day.
+                        const startTimeParts = parseSheetTime(event['start time'] || event.time);
+                        const endTimeParts = parseSheetTime(event['end time']);
+                        if (startTimeParts) {
+                            event.dateObj.setHours(startTimeParts.h, startTimeParts.mi, 0, 0);
+                            event.time = formatTime12(startTimeParts) + (endTimeParts ? ` – ${formatTime12(endTimeParts)}` : '');
+                            if (endTimeParts) {
+                                const endBase = event.isMultiDay && event.endDateObj ? event.endDateObj : event.dateObj;
+                                const endDT = new Date(endBase);
+                                endDT.setHours(endTimeParts.h, endTimeParts.mi, 0, 0);
+                                if (endDT <= event.dateObj) endDT.setDate(endDT.getDate() + 1); // crosses midnight
+                                event.endDateTimeObj = endDT;
+                            }
+                        } else {
+                            event.time = '';
+                        }
                         event.description = event.description || event['event description'] || '';
                         event.topics = (event.topics || event.tags || '').split(',').map(t => t.trim()).filter(t => t);
                         event.audience = (event.audience || event['audience level'] || '').toLowerCase();
@@ -2282,6 +2299,30 @@
             }
             values.push(current);
             return values;
+        }
+
+        // Parse a time cell: plain text ("6:30 PM", "18:30") or a Sheets time-formatted
+        // cell, which arrives as "Sat Dec 30 1899 18:30:00 GMT-0546 (...)" — the HH:MM
+        // in that string is the wall-clock time as entered. Returns {h, mi} or null.
+        function parseSheetTime(value) {
+            const s = String(value || '').trim();
+            if (!s) return null;
+            let m = /^\w{3} \w{3} \d{1,2} \d{4} (\d{1,2}):(\d{2}):\d{2}/.exec(s);
+            if (!m) m = /^(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?$/i.exec(s);
+            if (!m) return null;
+            let h = +m[1];
+            const mi = +(m[2] || 0);
+            const ap = (m[3] || '').toLowerCase();
+            if (h > 23 || mi > 59) return null;
+            if (ap.startsWith('p') && h < 12) h += 12;
+            if (ap.startsWith('a') && h === 12) h = 0;
+            return { h, mi };
+        }
+
+        function formatTime12({ h, mi }) {
+            const ap = h >= 12 ? 'PM' : 'AM';
+            const h12 = h % 12 || 12;
+            return mi ? `${h12}:${String(mi).padStart(2, '0')} ${ap}` : `${h12} ${ap}`;
         }
 
         // Parse various date formats. All paths produce a Date at local midnight for the
@@ -2853,7 +2894,7 @@
             card.className = 'event-card';
             card.addEventListener('click', () => showEventDetail(event));
             
-            const time = event.time || event['start time'] || '';
+            const time = event.time || '';
             const location = event.location || '';
             const description = event.description || event['event description'] || '';
             
@@ -2903,7 +2944,7 @@
             const modal = document.getElementById('eventModal');
             const content = document.getElementById('eventDetailContent');
             
-            const time = event.time || event['start time'] || '';
+            const time = event.time || '';
             const location = event.location || '';
             const description = event.description || event['event description'] || '';
             
@@ -3016,6 +3057,8 @@
             if (event.isMultiDay && event.endDateObj) {
                 endDate = new Date(event.endDateObj);
                 endDate.setHours(23, 59, 59); // End of the last day
+            } else if (event.endDateTimeObj) {
+                endDate = new Date(event.endDateTimeObj);
             } else {
                 endDate = new Date(startDate);
                 endDate.setHours(endDate.getHours() + 2); // Default 2 hour duration
@@ -3058,6 +3101,8 @@
             if (event.isMultiDay && event.endDateObj) {
                 endDate = new Date(event.endDateObj);
                 endDate.setDate(endDate.getDate() + 1); // Google uses exclusive end date for all-day
+            } else if (event.endDateTimeObj) {
+                endDate = new Date(event.endDateTimeObj);
             } else {
                 endDate = new Date(startDate);
                 endDate.setHours(endDate.getHours() + 2);
@@ -3098,6 +3143,8 @@
             if (event.isMultiDay && event.endDateObj) {
                 endDate = new Date(event.endDateObj);
                 endDate.setDate(endDate.getDate() + 1);
+            } else if (event.endDateTimeObj) {
+                endDate = new Date(event.endDateTimeObj);
             } else {
                 endDate = new Date(startDate);
                 endDate.setHours(endDate.getHours() + 2);
@@ -3127,6 +3174,8 @@
             if (event.isMultiDay && event.endDateObj) {
                 endDate = new Date(event.endDateObj);
                 endDate.setHours(23, 59, 59);
+            } else if (event.endDateTimeObj) {
+                endDate = new Date(event.endDateTimeObj);
             } else {
                 endDate = new Date(startDate);
                 endDate.setHours(endDate.getHours() + 2);
