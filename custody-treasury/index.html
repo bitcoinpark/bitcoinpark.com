@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Custody &amp; Treasury Forum 2026 — Bitcoin Park</title>
-<meta name="description" content="The Bitcoin Custody &amp; Treasury Forum returns to Bitcoin Park in Nashville in October 2026. Two days advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.">
+<title>Custody &amp; Treasury 2027 — Bitcoin Park</title>
+<meta name="description" content="Custody &amp; Treasury returns in 2027 as a Summit Day experience at Frontier Days, Friday, October 22, 2027 in Nashville. Interest is open for a curated Custody &amp; Treasury Park Forum at Bitcoin Park.">
 <link rel="canonical" href="https://bitcoinpark.com/custody-treasury">
 <link rel="icon" type="image/svg+xml" href="LogoCTS.svg">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bitcoinpark.com/custody-treasury">
-<meta property="og:title" content="Custody &amp; Treasury Forum 2026 — Bitcoin Park">
-<meta property="og:description" content="An intimate gathering of capital allocators, entrepreneurs, policymakers, and developers. October 2026 · Nashville, TN · Hosted at Bitcoin Park.">
-<meta property="og:image" content="https://bitcoinpark.com/custody-treasury/assets/ctf26-og.png">
+<meta property="og:title" content="Custody &amp; Treasury 2027 — Bitcoin Park">
+<meta property="og:description" content="Summit Day at Frontier Days · Friday, October 22, 2027 · Nashville, TN. Interest now open for the Custody &amp; Treasury Park Forum.">
+<meta property="og:image" content="https://bitcoinpark.com/custody-treasury/assets/ct27-og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@bitcoinpark_">
-<meta name="twitter:image" content="https://bitcoinpark.com/custody-treasury/assets/ctf26-og.png">
+<meta name="twitter:image" content="https://bitcoinpark.com/custody-treasury/assets/ct27-og.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,6 +87,24 @@ img{max-width:100%}
 .park h2{margin:0;font-weight:500}
 .theme-desc{font-size:15px;line-height:1.55;color:var(--brown)}
 
+/* 2027 */
+.next-head{text-align:center;margin-bottom:56px}
+.next-head h2{margin:0;font-weight:500;font-size:clamp(38px,5vw,56px);margin-top:14px}
+.next-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.next-card{display:flex;flex-direction:column;align-items:flex-start;padding:44px 40px;border:1px solid var(--hairline);background:rgba(255,255,255,.28)}
+.next-card h3{margin:14px 0 0;font-size:36px;line-height:1.1;font-weight:500}
+.next-when{margin-top:10px;font-size:15px;letter-spacing:.06em;color:var(--brown)}
+.next-card p{font-size:16px;line-height:1.7;color:var(--brown);margin:22px 0 30px;max-width:52ch}
+.next-card .btn{margin-top:auto}
+.forum-head{text-align:center;max-width:720px;margin:0 auto 44px}
+.forum-head h2{margin:14px 0 0;font-weight:500;font-size:clamp(38px,5vw,56px);line-height:1.1}
+.forum-head p{font-size:16px;line-height:1.7;color:var(--brown);margin:20px auto 0;max-width:60ch}
+.forum-frame{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--hairline)}
+.forum-frame iframe{display:block;width:100%;height:2150px;border:0}
+.forum-alt{text-align:center;font-size:14px;color:var(--brown);margin-top:18px}
+.forum-alt a{text-decoration:underline;text-underline-offset:3px}
+.hero-note{margin:22px auto 0;font-size:15px;line-height:1.6;color:var(--brown);max-width:56ch}
+
 /* Archive */
 .archive-head{text-align:center;margin-bottom:56px}
 .archive-head h2{margin:0;font-weight:500;font-size:clamp(38px,5vw,56px);margin-top:14px}
@@ -104,6 +122,9 @@ img{max-width:100%}
 .vid-play svg{width:22px;height:22px;margin-left:3px}
 .vid-title{font-size:22px;font-weight:600;line-height:1.15}
 .vid-speakers{font-size:14px;line-height:1.5;color:var(--brown)}
+
+/* Mission */
+.park .mission-how{font-size:20px;line-height:1.6;margin-top:18px;color:var(--cream-on-green)}
 
 /* The Park */
 .park{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
@@ -128,7 +149,8 @@ img{max-width:100%}
 @media (max-width:1100px){
     .sec{padding:70px 40px}
     .hero{padding:60px 40px 0}
-    .purpose,.park{grid-template-columns:1fr;gap:50px}
+    .purpose,.park,.next-grid{grid-template-columns:1fr;gap:50px}
+    .next-grid{gap:24px}
     .vid-grid{grid-template-columns:1fr 1fr}
     .purpose-lede{font-size:36px}
     .hero-key{width:min(520px,90%)}
@@ -141,6 +163,9 @@ img{max-width:100%}
 }
 @media (max-width:640px){
     .vid-grid{grid-template-columns:1fr}
+    .next-card{padding:32px 24px}
+    .next-card h3{font-size:30px}
+    .forum-frame iframe{height:2500px}
     .sec{padding:60px 24px}
     .hero{padding:48px 24px 0}
     .hero-summit{letter-spacing:.4em;text-indent:.4em}
@@ -155,31 +180,70 @@ img{max-width:100%}
 <nav class="nav">
     <a href="https://bitcoinpark.com"><img class="nav-logo" src="assets/bp-logo.png" alt="Bitcoin Park"></a>
     <div class="nav-links">
+        <a href="#next">2027</a>
         <a href="#purpose">Purpose</a>
         <a href="#archive">Archive</a>
-        <a href="#park">The Park</a>
+        <a href="#park-forum">Park Forum</a>
+        <a href="#mission">Mission</a>
     </div>
-    <a class="btn" href="https://www.meetup.com/bitcoinpark/events/314966347/">Join the Waitlist</a>
+    <a class="btn" href="#park-forum">Express Interest</a>
 </nav>
 
 <header class="hero">
     <img class="hero-vault" src="assets/vault.png" alt="Vault with two keys">
     <h1>Custody &amp; Treasury</h1>
-    <div class="label hero-summit">Forum 2026</div>
-    <div class="hero-date">October 2026 · Nashville, TN · Hosted at Bitcoin Park</div>
+    <div class="label hero-summit">Summit Day 2027</div>
+    <div class="hero-date">Friday, October 22, 2027 · Nashville, TN · Part of Frontier Days</div>
+    <p class="hero-note">Custody &amp; Treasury joins Frontier Days in 2027, and interest is now open for a dedicated Custody &amp; Treasury Park Forum at Bitcoin Park.</p>
     <div class="hero-ctas">
-        <a class="btn" href="https://www.meetup.com/bitcoinpark/events/314966347/">Join the Waitlist</a>
+        <a class="btn" href="https://www.imagineifnashville.com/if27/#fp-summits">Explore Frontier Days</a>
+        <a class="btn btn-ghost" href="#park-forum">Park Forum Interest</a>
     </div>
     <img class="hero-key" src="assets/key-long.png" alt="Gold bitcoin key">
 </header>
 
 <div class="ticker">
-    <div class="ticker-inner"><span>Custody &amp; Treasury Forum 2026</span><span class="ticker-star">✦</span><span>Bitcoin Park · Nashville</span><span class="ticker-star">✦</span><span>Not your keys · Not your coins</span></div>
+    <div class="ticker-inner"><span>Custody &amp; Treasury · Summit Day 2027</span><span class="ticker-star">✦</span><span>Frontier Days · Nashville</span><span class="ticker-star">✦</span><span>Not your keys · Not your coins</span></div>
 </div>
+
+<section id="next" class="sec">
+    <div class="next-head">
+        <div class="label">01 — 2027</div>
+        <h2 class="serif">Two ways to gather in 2027</h2>
+    </div>
+    <div class="next-grid">
+        <div class="next-card">
+            <div class="label">Confirmed</div>
+            <h3 class="serif">Summit Day at Frontier Days</h3>
+            <div class="next-when">Friday, October 22, 2027 · Nashville, TN</div>
+            <p>Custody &amp; Treasury is one of the summit experiences on Frontier Days&rsquo; Summit Day, alongside Power of Payments, Global Compute, Grassroots Bitcoin, and more, at walkable venues around Vanderbilt University, Bitcoin Park, and Belmont University. Frontier Days runs October 19&ndash;22, anchored by Imagine IF on October 20&ndash;21. Summit Day is included with the Frontier Days Pass, Frontier All Access, and the Bitcoin Park Member Pass.</p>
+            <a class="btn" href="https://www.imagineifnashville.com/if27/#fp-summits">See Summit Day</a>
+        </div>
+        <div class="next-card">
+            <div class="label">Open interest</div>
+            <h3 class="serif">Custody &amp; Treasury Park Forum</h3>
+            <div class="next-when">2027 · Bitcoin Park, Nashville</div>
+            <p>A Park Forum is a highly focused, elevated gathering of entrepreneurs, builders, and leaders at the frontier of a specific expertise. This one is dedicated to custody and treasury best practices. Attendance is highly curated, with priority given to Bitcoin Park members aligned with the mission.</p>
+            <a class="btn btn-ghost" href="#park-forum">Express Interest</a>
+        </div>
+    </div>
+</section>
+
+<section id="park-forum" class="sec" style="padding-top:0">
+    <div class="forum-head">
+        <div class="label">02 — Park Forum</div>
+        <h2 class="serif">Custody &amp; Treasury Park Forum</h2>
+        <p>A highly focused, elevated gathering of entrepreneurs, builders, and leaders at the frontier of custody and treasury best practices. Highly curated, with priority given to Bitcoin Park members aligned with the mission. Tell us about yourself and we&rsquo;ll be in touch as plans take shape.</p>
+    </div>
+    <div class="forum-frame">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfe3HdhLivc-zWaMYYWx8NBUIElbOBnIVewNoxV0zNcllQfAA/viewform?embedded=true&amp;usp=pp_url&amp;entry.779644687=Custody+%26+Treasury" title="Custody &amp; Treasury Park Forum interest form" loading="lazy">Loading…</iframe>
+    </div>
+    <p class="forum-alt">Form not loading? <a href="https://docs.google.com/forms/d/e/1FAIpQLSfe3HdhLivc-zWaMYYWx8NBUIElbOBnIVewNoxV0zNcllQfAA/viewform?usp=pp_url&amp;entry.779644687=Custody+%26+Treasury">Open it in a new tab</a>.</p>
+</section>
 
 <section id="purpose" class="sec purpose">
     <div>
-        <div class="label">01 — Purpose</div>
+        <div class="label">03 — Purpose</div>
         <div class="serif purpose-lede">Advancing the infrastructure and best practices around holding, securing, and managing Bitcoin.</div>
         <p class="purpose-body">An intimate gathering of capital allocators, entrepreneurs, policymakers, and developers — cutting-edge custody solutions, working frameworks, and the networks necessary for widespread adoption.</p>
     </div>
@@ -194,8 +258,8 @@ img{max-width:100%}
 
 <section id="archive" class="sec" style="padding-top:0">
     <div class="archive-head">
-        <div class="label">02 — The Archive</div>
-        <h2 class="serif">Inside last year&rsquo;s vault</h2>
+        <div class="label">04 — The Archive</div>
+        <h2 class="serif">Inside the vault</h2>
         <p class="archive-sub">Sessions from the 2025 Custody &amp; Treasury Summit.</p>
     </div>
     <div class="vid-grid">
@@ -292,19 +356,20 @@ img{max-width:100%}
     </div>
 </section>
 
-<section id="park" class="sec sec-green park">
+<section id="mission" class="sec sec-green park">
     <div>
-        <div class="label">03 — The Park</div>
-        <h2 class="serif">A community-supported campus in Nashville, Tennessee</h2>
+        <div class="label">05 — Our Mission</div>
+        <h2 class="serif">Support and accelerate the grassroots freedom tech movement.</h2>
     </div>
     <div>
-        <p>Bitcoin Park is a place for bitcoiners from around the world to come together, work, collaborate, and build. Two days of intentional programming, collaborative dialogue, and deep connections in a Bitcoin-native environment.</p>
+        <div class="label">How</div>
+        <p class="mission-how">By creating a magical space (physically and digitally) and experiences for mission-obsessed Bitcoiners, Entrepreneurs, and Freedom Fighters to work, learn, collaborate, and build.</p>
     </div>
 </section>
 
 <footer class="footer">
     <a href="https://bitcoinpark.com"><img src="assets/bp-logo.png" style="height:26px;width:auto;display:block" alt="Bitcoin Park"></a>
-    <span>© 2026 Bitcoin Park · Custody &amp; Treasury Forum</span>
+    <span>© 2026 Bitcoin Park · Custody &amp; Treasury</span>
     <div class="footer-links">
         <a href="https://primal.net/park">Nostr</a>
         <a href="https://www.linkedin.com/company/bitcoinpark">LinkedIn</a>
