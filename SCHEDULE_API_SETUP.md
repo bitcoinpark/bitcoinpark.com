@@ -229,7 +229,7 @@ Anyone can subscribe to the Bitcoin Park schedule in their own calendar app. The
 - **Apple Calendar:** File → New Calendar Subscription → paste the feed URL
 - **Outlook:** Add calendar → Subscribe from web → paste the feed URL
 
-There is also a **Subscribe** button on bitcoinpark.com/schedule with one-click links for each app.
+There is also a **Subscribe** button on bitcoinpark.com/calendar with one-click links for each app.
 
 ### How it works:
 1. `scripts/generate-schedule-ics.js` fetches the schedule from the existing Apps Script JSON endpoint (same Google Sheet that powers schedule.html) and writes `schedule.ics` in iCalendar format.

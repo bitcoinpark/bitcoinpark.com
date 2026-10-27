@@ -114,7 +114,7 @@ async function main() {
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'X-WR-CALNAME:Bitcoin Park Events',
-        'X-WR-CALDESC:Events at Bitcoin Park in Nashville and Austin. bitcoinpark.com/schedule',
+        'X-WR-CALDESC:Events at Bitcoin Park in Nashville and Austin. bitcoinpark.com/calendar',
         'X-PUBLISHED-TTL:PT6H',
         'REFRESH-INTERVAL;VALUE=DURATION:PT6H',
         ...VTIMEZONE,
