@@ -99,8 +99,9 @@ h1 em { color: var(--accent); font-weight: 400; }
 }
 
 @media (max-width: 900px) {
-  .park-scene { height: min(76svh, 600px); -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); }
-  .park-scene img { object-position: left top; }
+  /* Fit the porch and patio into the visible band above the mobile panel. */
+  .park-scene { height: calc(clamp(148px, 25svh, 240px) + 72px); -webkit-mask-image: linear-gradient(#000 82%, transparent); mask-image: linear-gradient(#000 82%, transparent); }
+  .park-scene img { width: auto; max-width: none; object-fit: contain; object-position: left top; -webkit-mask-image: linear-gradient(to right, #000 88%, transparent); mask-image: linear-gradient(to right, #000 88%, transparent); }
   .page { align-items: flex-end; justify-content: center; padding: clamp(148px, 25svh, 240px) 16px 18px; }
   .forum-window { width: 100%; max-width: 600px; height: 100%; padding: 24px 25px 22px; border-image-width: 17px; }
   .forum-header { padding-bottom: 18px; }

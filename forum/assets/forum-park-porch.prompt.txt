@@ -1,0 +1,28 @@
+Generated with the built-in imagegen tool on October 29, 2026.
+Final web asset: forum-park-porch.jpg (1536x1024, JPEG quality 85).
+Reference 1: forum-colonnade.jpg, the existing Forum artwork (style, palette and composition).
+Reference 2: the user's Screenshot 2026-10-29 at 4.06.36 PM.png, showing Bitcoin Park's porch and patio (architecture and landscape).
+
+Exact generation prompt:
+
+Use case: style-transfer / illustration-story.
+Asset type: Park Forum full-bleed website background, landscape 1536x1024.
+
+Create one new iteration that blends the airy Greco-Roman architectural illustration in reference 1 with the actual Bitcoin Park porch and patio in reference 2.
+
+INPUT ROLES:
+Reference 1 (forum-colonnade.jpg) is the style, palette and website composition reference. Retain its luminous pale blue and white palette, precise fine blue architectural contours, lightly textured paper and generous breathing room.
+Reference 2 (the supplied photograph) is the architectural and landscape identity reference: Bitcoin Park's low cream-brick building, dark deep horizontal porch fascia with layered cornice, slender round columns, shaded front porch, dark framed glass door, broad dark steps with fine diagonal metal railings, concrete patio, mesh cafe chairs and small round tables, mature leafy trees and planted borders.
+
+COMPOSITION:
+Adapt reference 1's left-hand colonnade into a recognizable Bitcoin Park porch viewed obliquely along its side from the patio. Place the porch and facade in the LEFT 40 percent of the landscape, viewed from the opposite side of the patio from the photograph so the building belongs naturally on the left. Keep a low real porch roof with horizontal fascia, two or three simple round columns, subtly classical capitals, a light brick facade and shaded glazing behind them. The porch should feel like the photographed Nashville building interpreted through a classical illustration, never a giant Greek temple or separate unrelated buildings. Keep a little of reference 1's elegantly curved shallow foreground steps and paving arcs, integrated into the real porch stair and patio. Show the fine steel railings and porch depth clearly. Use muted slate blue for roof trim, railings and column shade without large heavy dark areas.
+Include a small grouping of patio cafe tables and mesh chairs in the middle-left distance and a restrained mature tree canopy with shrubs behind the porch/patio. Keep the vegetation secondary, airy and simplified, rendered in the same pale blue tonal palette. The recognizable porch and hints of foliage should be visible in the top-left quadrant as well, because mobile displays crop the image there.
+The RIGHT 50 percent must stay very quiet pale blue sky and open space, with only faint distant foliage or ground contours, for an overlaid website content panel. No large trees or dark buildings behind that panel. The lower foreground remains an open patio with a few graceful curved paving lines. No visual clutter.
+
+STYLE:
+Contemporary editorial architectural line illustration, fine slate-blue contours, luminous white planes, flat translucent pale powder-blue shadow shapes, barely perceptible paper grain. Match reference 1 closely. Greco-Roman proportions and rhythm blended with the specific everyday Bitcoin Park porch details from the photo. Calm, inviting, open-air intellectual gathering place.
+
+PALETTE:
+#edf7fd background, #FFFFFF, #dcecf6 and #c4d9e7 pale shapes, #729bb6 restrained contours; occasional slightly deeper muted blue for the porch railing and roof fascia. All greenery is represented by pale blue foliage in this monochromatic illustration. No saturated greens or orange.
+
+Do not generate page text, UI, typography, logo, Bitcoin symbol, border, watermark, people, statues, cars, ruins, monumental temple pediment, photorealistic textures, dense crosshatching or dramatic lighting. Return only the new landscape artwork.
