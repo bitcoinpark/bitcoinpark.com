@@ -1,0 +1,20 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Edit target: park-courtyard-blue.jpg, preserving the architecture previously corrected from user-supplied campus photographs.
+Final web asset: park-courtyard-fibonacci.jpg (JPEG compression of the generated edit).
+Fibonacci-inspired composition is an artistic treatment of paths, planting and foliage, not a measured site plan.
+
+Use case: style-transfer.
+Asset type: Bitcoin Park Forum landscape background, 1536x1024.
+Input image is the EDIT TARGET and factual architectural reference: the approved blue illustration of Bitcoin Park's two real Nashville buildings and courtyard.
+
+Make these coordinated changes:
+1. Replace the RIGHTMOST FOREGROUND RECTANGULAR table (the one seating two people to the right of center) with ONE normal ROUND black metal cafe table. Seat those two people naturally around it. Use a visibly circular/elliptical-in-perspective tabletop with slender visible legs and matching cafe chairs. Preserve the other round cafe tables. Every courtyard table must now be round: NO rectangular, square, picnic or long communal tables, no firepit, fire bowl, stone ring or built-in seating.
+2. Develop a distinctive CONTEMPORARY BLUE INK-WASH illustration style, clearly different from the dense etched/crosshatched engraving in the input. Use soft granulating watercolor washes, dry-brush edges, delicate sparse blue contour lines, gently layered transparent blue shapes, and luminous pale areas. Express shadows with broad soft tonal washes and subtle pigment pooling, NOT dense crosshatching, banknote engraving, or mechanical stippling. Architecture remains crisp and recognizable, with softer organic foliage and open breathing space. Restrained palette of pale ice blue, mist blue, slate blue, and a few deeper indigo accents. Keep the background very light blue, approximately #edf7fd. No warm orange, yellow, green, sepia or black.
+3. Introduce a subtle FIBONACCI / GOLDEN-RATIO landscape composition: let the courtyard paving seams and low curved planting beds trace a graceful expanding spiral-like sweep from the lower foreground into the gathering and toward the two buildings. Arrange foliage masses, fern fronds and successive canopy shapes with natural golden-ratio rhythms and nested curves, using balanced 0.382/0.618 focal proportions. The curved paving is still an open walkable courtyard, not a lawn maze. Keep the cafe tables on flat paving. This is a natural composition principle, NOT a mathematical diagram: no visible grid, numbered sequence, gold spiral overlay or annotation.
+Keep the two real buildings as the focal destination in the LEFT half, with quiet pale-blue negative space on the RIGHT for the website panel. Modestly adjust landscaping/compositional framing as needed for the Fibonacci flow, but preserve the buildings' factual architecture and their relative position.
+
+Architectural invariants:
+LEFT BUNGALOW: pale rough stone ground floor, broad light board-and-batten clipped gable, large rectangular three-pane dark-framed upper window, dark porch posts/brackets on stone piers and low walls, tall pale chimney at the right roof edge.
+RIGHT HOUSE: ivory masonry, hipped roof with a central dormer, solid dark balcony parapet, FOUR substantial round dark porch columns, tall dark-framed windows/doors, central stone steps with thin dark handrails.
+Retain both buildings, their recognizable proportions, the mature trees, string lights and contemporary people.
+Do not add invented temples, ruins, extra buildings, domes, text, logos, watermarks, borders, frames or website interface.

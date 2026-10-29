@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse">
+      <path d="M-1 1 1-1M0 4 4 0M3 5 5 3" stroke="#527e9a" stroke-width=".5" opacity=".32"/>
+    </pattern>
+    <path id="outer" d="M16 1H112Q114 1 116 3L125 12Q127 14 127 16V112Q127 114 125 116L116 125Q114 127 112 127H16Q14 127 12 125L3 116Q1 114 1 112V16Q1 14 3 12L12 3Q14 1 16 1Z"/>
+    <path id="inner" d="M18 7H110Q112 7 114 9L119 14Q121 16 121 18V110Q121 112 119 114L114 119Q112 121 110 121H18Q16 121 14 119L9 114Q7 112 7 110V18Q7 16 9 14L14 9Q16 7 18 7Z"/>
+    <mask id="band"><use href="#outer" fill="white"/><use href="#inner" fill="black"/></mask>
+  </defs>
+  <use href="#outer" fill="#edf7fd" fill-opacity=".91"/>
+  <use href="#outer" fill="url(#hatch)" mask="url(#band)"/>
+  <use href="#outer" stroke="#527e9a" stroke-width=".9"/>
+  <use href="#inner" stroke="#527e9a" stroke-width=".9"/>
+</svg>
