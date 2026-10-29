@@ -2,7 +2,7 @@
 
 `/forum/` is a single public page with the idea at the top, upcoming forums underneath, and membership information at the bottom. It requires no JavaScript. The first listing is Tuesday, December 15, 2026; the topic and program remain to be announced. Add confirmed future forums as additional `<li class="forum-event">` entries in `index.html`.
 
-The full-bleed campus illustration uses a warm screenprint style based on the Bitcoin Park Nashville houses. `forum.css` is isolated from the sponsor catalog styles. On mobile, the artwork introduces the page above the same continuous content panel. The public page has no sponsor or catalog button, password field, entrance screen, or scene transitions. Existing catalog URLs and authentication remain available directly.
+The full-bleed campus illustration uses a shaded blue sketch style on a light-blue background, based on the Bitcoin Park Nashville houses. The page uses the same blue palette, and the original Bitcoin Park monogram appears to the left of the Park Forum title. `forum.css` is isolated from the sponsor catalog styles. On mobile, the artwork introduces the page above the same continuous content panel. The public page has no sponsor or catalog button, password field, entrance screen, or scene transitions. Existing catalog URLs and authentication remain available directly.
 
 ## Waitlist and membership
 
@@ -45,9 +45,9 @@ The public forum and gate layouts can be previewed with `python3 -m http.server 
 
 ## Artwork and fonts
 
-The public page uses `assets/park-courtyard-v2.jpg`, revised with built-in imagegen using user-supplied photographs of both Nashville campus buildings. The left bungalow now follows its photograph's pale stone masonry, cream board-and-batten gable, large dark-framed upper window, charcoal porch posts and brackets, and tall stone chimney. The right-hand building retains its ivory brick, dark round porch columns, solid balcony parapet, hipped roof, dormer, and central stairs. The foreground remains a paved courtyard with cafe tables and chairs, without a firepit. The screenprint palette and composition are preserved. The latest edit prompt is recorded in `assets/park-courtyard-v2.prompt.txt`; prior illustrations and prompts remain in `assets/park-courtyard.*` and `assets/park-gathering.*`.
+The public page uses `assets/park-courtyard-blue.jpg`, restyled with built-in imagegen from the campus illustration corrected using user-supplied photographs of both Nashville buildings. A user-supplied screenshot guides the fine blue linework, shaded sketch treatment, and light-blue background. The left bungalow now follows its photograph's pale stone masonry, cream board-and-batten gable, large dark-framed upper window, charcoal porch posts and brackets, and tall stone chimney. The right-hand building retains its ivory brick, dark round porch columns, solid balcony parapet, hipped roof, dormer, and central stairs. The foreground remains a paved courtyard with cafe tables and chairs, without a firepit. The architecture and composition are preserved in a monochrome blue palette. The latest edit prompt is recorded in `assets/park-courtyard-blue.prompt.txt`; prior illustrations and prompts remain in `assets/park-courtyard-v2.*`, `assets/park-courtyard.*`, and `assets/park-gathering.*`.
 
-The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The Bitcoin Park wordmark and mark are retained.
+The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The Bitcoin Park wordmark is retained. `assets/bitcoin-park-brandmark-white.png` is an unchanged copy of `nems/bitcoinpark_brandmark_white_3@2x.png`, rendered as a blue CSS mask beside the Park Forum title; the logo is not generated into the illustration.
 
 The older Roman artwork and styles remain for the separate sponsor catalog and cached pages.
 

@@ -1,0 +1,19 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Edit target: park-courtyard-v2.jpg, the campus illustration corrected using photographs of both buildings.
+Style reference: user-supplied screenshot of the earlier blue shaded Park Forum illustration.
+Final web asset: park-courtyard-blue.jpg (JPEG compression of the generated edit).
+The existing Bitcoin Park logo is rendered separately in HTML/CSS from the repository's original brandmark asset.
+
+Use case: style-transfer.
+Asset type: background illustration for the Park Forum webpage, landscape 1536x1024.
+Image 1 is the EDIT TARGET and the factual subject/composition reference: the carefully corrected Bitcoin Park Nashville campus with its two real buildings and paved cafe courtyard.
+Image 2 is ONLY a DRAWING-STYLE AND COLOR REFERENCE: pale blue shaded architectural sketch on an icy light-blue paper background. Ignore its text, logo, ancient temples, ruins, statues and other subject matter.
+
+Restyle Image 1 as a delicate, finely drawn shaded architectural sketch in blue ink and blue pencil. Match Image 2's airy light-blue background, restrained blue monochrome palette, meticulous linework, stippling, fine hatching, soft blue tonal shading and lightly textured paper. Give walls, roof tiles, stonework, trees, foliage, furniture and people detailed drawn contours and gentle blue-gray shadows. This must be a true illustrated sketch treatment, not simply a blue color filter applied to the existing flat screenprint.
+Use shades from very pale powder blue through medium slate/cerulean blue, with restrained deeper blue line accents. No orange, yellow, green, beige, sepia, charcoal-black masses or warm colors. Keep generous light airy values; background paper/sky should be approximately #edf7fd, not saturated cyan. Break up the current large dark foliage silhouettes into fine shaded blue foliage drawings; do not leave huge solid navy areas.
+
+Preserve the exact two corrected buildings and all recognizable architectural details:
+LEFT: pale stone ground-floor masonry, cream-toned (now light-blue paper) board-and-batten broad clipped gable, large dark-framed rectangular three-part upper window, dark porch timber posts/brackets on stone piers and low walls, right-side stone chimney.
+RIGHT: light brick house, hipped roof and centered dormer, solid balcony parapet, four round porch columns, central entrance stairs and metal handrails.
+Preserve the composition, building sizes and placement, mature trees, string lights, contemporary people, paved courtyard, separate cafe tables/chairs and the rectangular outdoor table. Retain quiet negative space on the right for the webpage panel.
+No firepit, no round masonry seating. No Roman temples or ruins, no new buildings, no changes to the approved architecture. No lettering, title, logo, frame, border, watermark or UI; the Park Forum logo will be rendered separately in HTML.
