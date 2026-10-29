@@ -1,0 +1,32 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Final web asset: forum-park-porch-v4.jpg (1536x1024, JPEG quality 85).
+Image 1 edit target: forum-park-porch-v3.jpg.
+Image 2 construction reference: the user's Screenshot 2026-10-29 at 4.39.26 PM.png, a close-up of Bitcoin Park's real stair and porch fence.
+The full framed railing design, including parallel lower rails and diagonal X braces, is mirrored on both stair sides and joined to matching landing guardrails. Bushes remain visible behind the rear table.
+
+Exact edit prompt:
+
+Use case: precise-object-edit.
+Asset: Park Forum website background illustration, 1536x1024 landscape.
+
+INPUT ROLES:
+Image 1 is the EDIT TARGET: the existing pale blue porch illustration. Preserve its architecture, scene, style, color and composition.
+Image 2 is the AUTHORITATIVE RAILING DESIGN REFERENCE: the user's close-up photograph of the real Bitcoin Park staircase. Study the complete metal fence construction, not just the handrail.
+
+PRIMARY REQUEST:
+Replace BOTH bare stair handrails in Image 1 with the actual full framed metal fence/guardrail design shown in Image 2, mirrored on the opposite side of the stairs. The two sides must be matching counterparts of the SAME fence design, correctly foreshortened in perspective.
+
+MATCH THESE CONSTRUCTION DETAILS FROM THE PHOTO:
+- Each sloped stair side has a complete four-sided rectangular/parallelogram metal perimeter: a continuous sloping TOP handrail, a sloping LOWER rail parallel to it above the stair nosings, and vertical end posts.
+- Inside each complete framed panel, TWO slender diagonal braces connect opposite frame corners and cross to form ONE large clear X. This is the real open steel cross-braced fence design.
+- The bottom posts descend to the patio/stair base. The upper posts connect to the railing around the top porch landing.
+- At the landing, the sloped stair fence joins short level rectangular guardrail/return sections with matching simple X braces, as seen around the pillar in the reference photo.
+- Use moderately heavier slim metal perimeter members and thinner interior X braces. Translate the black steel in the photograph into the illustration's existing slate-blue linework.
+- No bare top-hand-holds, no missing lower rails, no missing diagonal braces, no decorative webbing, no dense lattice, no vertical-picket fence, no glass.
+
+SPATIAL ARRANGEMENT:
+Keep both stair fences INSIDE the two pillars, following the two edges of the open walking stairway. Both upper stair-fence posts are between the pillar bases. The far pillar stands outside the stair corridor BEHIND the far fence, as in the real construction; it must not interrupt or hide a segment of the far stair fence. The two full sloped frames and their X braces remain continuous and visibly legible. Mirror the near fence construction onto the far side across the stairway, accounting for perspective. Keep the stair entrance open; never add a gate or a railing across the walking path. Make small local adjustments to the landing junction only if needed for credible connections.
+
+PRESERVE:
+The low porch roof, classical white pillars, pale brick facade, glazing, step count and overall staircase placement, foreground cafe table and mesh chairs, rear patio table and chairs with bushes directly behind them, all greenery and tree canopy, pale blue sky and empty right half, curved patio paving, soft shadows, fine linework and paper texture. Keep the rear wall absent. No people, text, logos, interface or added furniture. Same landscape framing and 1536x1024 proportions. Only correct the staircase and landing fence construction using the photo.
+
