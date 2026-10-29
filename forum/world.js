@@ -21,7 +21,7 @@ function show(view, focus = true) {
   back.hidden = view === 'intro' || submitting;
   back.textContent = catalogMode ? '← Park Forum' : '← Back';
   if (focus) requestAnimationFrame(() => {
-    const target = view === 'password' ? password : document.querySelector(`[data-view="${view}"] h1, [data-view="${view}"] h2, [data-view="${view}"] button`);
+    const target = view === 'password' ? password : view === 'intro' ? document.querySelector('#explore') : document.querySelector(`[data-view="${view}"] h1, [data-view="${view}"] h2, [data-view="${view}"] button`);
     target?.focus({ preventScroll: true });
   });
 }
@@ -31,7 +31,7 @@ function sponsor() {
   if (savedAccess()) location.assign('/catalog/');
   else show('password');
 }
-document.querySelector('#explore').addEventListener('click', () => show('choices'));
+document.querySelector('#explore').addEventListener('click', () => { show('learn'); prepareTemple(); });
 document.querySelector('#forum-sponsor').addEventListener('click', sponsor);
 function prepareTemple() {
   if (temple.complete && temple.naturalWidth) return Promise.resolve(true);
@@ -85,7 +85,6 @@ function positionTempleCamera() {
   const y = height * (width <= 700 ? .38 : .55) - (oy + scale * (ty - oy));
   scene.style.setProperty('--temple-camera', `translate3d(${x}px,${y}px,0) scale(${scale})`);
 }
-document.querySelector('#learn-more').addEventListener('click', () => { show('learn'); prepareTemple(); });
 document.querySelector('#attend-forum').addEventListener('click', async () => {
   positionTempleCamera();
   show('journey', false);
@@ -98,7 +97,7 @@ document.querySelector('#attend-forum').addEventListener('click', async () => {
 back.addEventListener('click', () => {
   if (submitting) return;
   if (catalogMode) location.assign('/forum/');
-  else show(['attend', 'journey'].includes(current) ? 'learn' : current === 'choices' ? 'intro' : 'choices');
+  else show(current === 'learn' ? 'intro' : 'learn');
 });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !back.hidden) back.click(); });
 password.addEventListener('input', () => { password.removeAttribute('aria-invalid'); feedback.textContent = ''; });

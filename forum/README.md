@@ -1,8 +1,8 @@
 # Park Forum
 
-`/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. Explore enters the scene and offers Forum Sponsor or Learn More. Learn More is public. Forum Sponsor asks for the sponsor password.
+`/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. Explore opens the public “The idea” page directly. Under “Join the conversation,” Attend a Forum sits on the left and Forum Sponsor on the right. Forum Sponsor asks for the sponsor password. There is no intermediate choice window; Back returns from attendance or sponsor access to the idea page, then to Explore.
 
-Learn More offers Attend a Forum below “Join the conversation.” It slowly approaches the temple and changes to a matching front-facing illustration before revealing the public attendance view. The current placeholder is “Coming Soon 2027,” with membership included-ticket copy and a link to the Bitcoin Park Membership form. Reduced-motion preferences skip the camera animation; Back can cancel the transition.
+Attend a Forum slowly approaches the temple and changes to a matching front-facing illustration before revealing the public attendance view. The current placeholder is “Coming Soon 2027,” with membership included-ticket copy and a link to the Bitcoin Park Membership form. Reduced-motion preferences skip the camera animation; Back can cancel the transition.
 
 `/catalog/` is a public password shell. AWS returns the complete catalog HTML and idea/date data only after authentication. `/forum/catalog/` redirects to the same gate. No password, signing secret, or catalog encryption key is shipped in browser code. Sessions last one hour and stay in the current browser tab. Leave catalog clears access.
 

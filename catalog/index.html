@@ -11,9 +11,9 @@
   <link rel="icon" href="/forum/assets/bitcoin-park-mark.png">
   <link rel="preload" href="/forum/assets/libre-caslon-display.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/forum/assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/forum/world.css?v=arch-5">
+  <link rel="stylesheet" href="/forum/world.css?v=direct-idea-1">
   <link rel="stylesheet" href="/forum/engraved.css?v=3">
-  <script type="module" src="/forum/world.js?v=arch-5"></script>
+  <script type="module" src="/forum/world.js?v=direct-idea-1"></script>
 </head>
 <body data-page="catalog">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,23 +30,19 @@
       <h1 class="sr-only">Park Forum — A gathering of curious minds</h1>
       <button class="explore-button" id="explore" type="button"><svg class="explore-frame" viewBox="0 0 260 88" fill="none" aria-hidden="true"><defs><pattern id="engraved-hatch" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M-1 1 1-1M0 4 4 0M3 5 5 3"/></pattern></defs><path class="frame-wash" d="M20 8H240L252 20V68L240 80H20L8 68V20Z"/><path class="frame-hatch" fill-rule="evenodd" d="M20 8H240L252 20V68L240 80H20L8 68V20ZM23 14 14 23V65L23 74H237L246 65V23L237 14Z"/><path class="frame-line" d="M20 8H240L252 20V68L240 80H20L8 68V20ZM23 14H237L246 23V65L237 74H23L14 65V23Z"/><path class="frame-detail" d="M24 38 28 44 24 50 20 44ZM236 38 240 44 236 50 232 44Z"/></svg><span>Explore</span></button>
     </section>
-    <section class="world-view" data-view="choices" aria-labelledby="choices-title" hidden>
-      <div class="scene-panel choices-panel">
-        <p class="scene-eyebrow">Inside the Forum</p>
-        <h2 id="choices-title" tabindex="-1">Where would you<br>like to begin?</h2>
-        <div class="scene-choices">
-          <button class="scene-choice primary" id="forum-sponsor" type="button"><strong>Forum Sponsor</strong><span>Explore ideas and dates</span></button>
-          <button class="scene-choice" id="learn-more" type="button"><strong>Learn More</strong><span>Discover Park Forums</span></button>
-        </div>
-      </div>
-    </section>
     <section class="world-view" data-view="learn" aria-labelledby="learn-title" hidden>
       <div class="scene-panel learn-panel">
         <p class="scene-eyebrow">The idea</p>
         <h2 id="learn-title" tabindex="-1">The best ideas begin<br>with <em>an open exchange.</em></h2>
         <p>The forum was a place to meet, question, and see the world a little differently. A public square where ideas became part of everyday life.</p>
         <p>Park Forums carry that spirit forward. A Park Forum is an elevated experience bringing together Bitcoin Park members and a highly curated group of entrepreneurs, builders, and business leaders to explore the questions shaping our future, together.</p>
-        <div class="learn-invitation"><h3>Join the conversation</h3><button class="scene-button" id="attend-forum" type="button">Attend a Forum <span aria-hidden="true">↗</span></button></div>
+        <div class="learn-invitation">
+          <h3>Join the conversation</h3>
+          <div class="learn-actions">
+            <button class="scene-button" id="attend-forum" type="button"><span>Attend a Forum</span><span aria-hidden="true">↗</span></button>
+            <button class="scene-button" id="forum-sponsor" type="button"><span>Forum Sponsor</span><span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
       </div>
     </section>
     <section class="world-view journey-view" data-view="journey" aria-label="Approaching the Forum" hidden>
