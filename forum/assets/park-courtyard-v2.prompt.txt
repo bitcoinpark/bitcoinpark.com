@@ -1,0 +1,23 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Edit target: park-courtyard.jpg.
+Architectural reference: user-supplied photograph of Bitcoin Park's left-hand Nashville bungalow.
+Final web asset: park-courtyard-v2.jpg (JPEG compression of the generated edit).
+
+Use case: precise-object-edit.
+Asset type: corrected Bitcoin Park website background, landscape 1536x1024.
+Image 1 is the EDIT TARGET: the current screenprint illustration of the two Bitcoin Park buildings and courtyard.
+Image 2 is the FACTUAL ARCHITECTURAL REFERENCE: the user's photograph of the actual LEFT-HAND Bitcoin Park bungalow.
+
+Change ONLY the left-hand bungalow in Image 1, including its roof and chimney, to faithfully match Image 2's materials, colors, facade and proportions:
+- Replace the inaccurate navy-blue siding with warm off-white / very pale gray rough-cut stone masonry on the ground floor. The walls must read as pale stone, not dark blue or brick.
+- The large upper front gable is light cream/gray board-and-batten with visible restrained vertical and horizontal trim. Match the reference's broad steep gable with a small clipped/hipped peak, instead of the existing decorative layered triangular pediments.
+- A LARGE black-framed rectangular three-part picture window occupies the upper gable: a broad central pane and narrower side panes, reflecting pale blue sky. It is much larger than the original illustration's small dormer-style window.
+- Use dark charcoal/gray shingle roofs and dark fascia; subtle black curved eave brackets, not bright ivory decorative edging.
+- The covered porch is over the LEFT part of the ground floor and supported by dark charcoal timber posts and curved brackets set on substantial pale stone piers and low pale stone walls. Remove the inaccurate white rounded arcade-style arches.
+- A wide dark-framed ground-floor picture window is on the RIGHT part of the facade, set into pale stone. Warm interior reflections can remain subdued.
+- Place the entrance steps and low pale stone sidewalls as in the reference, entering the porch near its right side.
+- Include the tall narrow pale stone chimney rising along the bungalow's RIGHT roof edge, as shown in the photo. Keep it clearly part of the left bungalow.
+Adapt the reference's slight perspective to the illustration's existing frontal viewpoint and keep the bungalow in its current footprint beside the taller house.
+
+HARD INVARIANTS: Do not change the already-correct right building's ivory walls, hipped roof, dark round columns, balcony, windows or stairs. Do not change the courtyard paving, cafe tables and chairs, people, string lights, trees, foliage, sky, right-side negative space, camera composition, or 1536x1024 canvas.
+Keep the existing warm navy/ochre/ivory screenprinted illustration style and subtle grain; the left building itself must now have its true pale exterior and dark trim. No photorealism, no firepit or circular masonry seating, no text, logos, watermarks, website UI or border.
