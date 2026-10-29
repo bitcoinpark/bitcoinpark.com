@@ -10,13 +10,13 @@
   <link rel="icon" href="/forum/assets/bitcoin-park-mark.png">
   <link rel="preload" href="/forum/assets/libre-caslon-display.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/forum/assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/forum/world.css">
+  <link rel="stylesheet" href="/forum/world.css?v=engraved-2">
   <script type="module" src="/forum/world.js"></script>
 </head>
 <body data-page="entrance">
   <a class="skip-link" href="#main">Skip to content</a>
   <svg class="filter-defs" aria-hidden="true" width="0" height="0"><defs>
-    <filter id="brand-color" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="-1.2" intercept="1.24"/><feFuncG type="linear" slope="-1.05" intercept="1.24"/><feFuncB type="linear" slope="-.86" intercept="1.24"/></feComponentTransfer></filter>
+    <filter id="brand-color" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .075 0 0 0 0 .22 0 0 0 0 .36 .5 .5 .5 0 -.5"/></filter>
   </defs></svg>
   <main class="world-shell" id="main">
     <div class="world" aria-hidden="true"><img class="world-image" src="/forum/assets/roman-forum.jpg" alt="" width="1536" height="1024" fetchpriority="high"><div class="world-light"></div></div>
@@ -26,7 +26,7 @@
     </header>
     <section class="world-view intro-view" data-view="intro" aria-label="Enter Park Forum">
       <h1 class="sr-only">Park Forum — A gathering of curious minds</h1>
-      <button class="explore-button" id="explore" type="button">Explore</button>
+      <button class="explore-button" id="explore" type="button"><svg class="explore-frame" viewBox="0 0 260 88" fill="none" aria-hidden="true"><defs><pattern id="engraved-hatch" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M-1 1 1-1M0 4 4 0M3 5 5 3"/></pattern></defs><path class="frame-wash" d="M20 8H240L252 20V68L240 80H20L8 68V20Z"/><path class="frame-hatch" fill-rule="evenodd" d="M20 8H240L252 20V68L240 80H20L8 68V20ZM23 14 14 23V65L23 74H237L246 65V23L237 14Z"/><path class="frame-line" d="M20 8H240L252 20V68L240 80H20L8 68V20ZM23 14H237L246 23V65L237 74H23L14 65V23Z"/><path class="frame-detail" d="M24 38 28 44 24 50 20 44ZM236 38 240 44 236 50 232 44Z"/></svg><span>Explore</span></button>
     </section>
     <section class="world-view" data-view="choices" aria-labelledby="choices-title" hidden>
       <div class="scene-panel choices-panel">
