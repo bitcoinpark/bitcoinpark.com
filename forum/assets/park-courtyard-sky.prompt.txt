@@ -1,0 +1,19 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Edit target: park-courtyard-fibonacci.jpg.
+Final web asset: park-courtyard-sky.jpg (JPEG compression of the generated edit).
+
+Use case: precise-object-edit.
+Asset type: Bitcoin Park Forum website background, landscape 1536x1024.
+Input image: EDIT TARGET — the approved blue ink-wash illustration of Bitcoin Park's two real buildings, round cafe tables, people, and curving courtyard.
+
+Primary request: Remove ALL trees behind and beside the buildings, replacing them with a clear, very light blue sky. Keep ONLY the single large foreground tree at the far LEFT, whose thick trunk enters from the left edge and branches arch across the upper-left corner.
+
+Tree and sky edit:
+- Preserve that ONE foreground tree's existing trunk, branches, and attached canopy in the upper-left. Preserve its position, scale, and blue ink-wash style.
+- Remove all other tree trunks, crowns, canopies and silhouettes: the trees directly behind both roofs and chimneys, the background trees left and right of the houses, the distant tree line, and the separate tall tree at the far-right edge.
+- Fill these removed areas with continuous open pale blue sky, approximately #edf7fd, with a subtle watercolor paper texture. The rooflines and chimneys should read cleanly against the light blue sky. No background woodland, tree silhouettes, forest, extra trees, buildings, hills or mountains.
+- Keep low flowers, ferns and small planting beds around the courtyard in the foreground. These are ground-level garden plants, not additional trees. Beyond the courtyard on the right, keep the quiet pale ground and sky without a tree line.
+
+Preserve everything else as closely as possible: both buildings' architecture, positions and proportions; pale stone and board-and-batten bungalow at left with dark porch supports, large upper window and chimney; ivory brick house at right with four dark round columns, solid balcony parapet, hipped roof and dormer; round cafe tables and chairs, seated people, string lights, steps and railings, Fibonacci-inspired curving paving and planting beds. Keep every table round and keep the courtyard free of firepits.
+Maintain the existing monochrome blue ink-wash style, color palette, framing and image dimensions. Keep open negative space on the right for the website panel.
+No text, logos, UI, borders or watermarks.
