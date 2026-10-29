@@ -70,15 +70,16 @@ h1 em { color: var(--accent); font-weight: 400; }
 .event-details h3 { margin: 6px 0 5px; font: 400 30px/1.1 var(--serif); letter-spacing: -.35px; }
 .event-details p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
 .event-details .event-note { font-size: 10px; margin-top: 3px; }
-.button, .membership-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; max-width: 100%; min-height: 58px; padding: 15px 24px; border: 0 solid transparent; border-image: url('/forum/assets/forum-frame.svg') 24 fill / 14px / 0 stretch; border-radius: 12px; background: transparent; color: var(--ink); text-decoration: none; font: 400 22px/1.25 var(--serif); }
-.button:hover, .membership-link:hover { color: #094d79; filter: brightness(.96); }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; max-width: 100%; min-height: 58px; padding: 15px 24px; border: 0 solid transparent; border-image: url('/forum/assets/forum-frame.svg') 24 fill / 14px / 0 stretch; border-radius: 12px; background: transparent; color: var(--ink); text-decoration: none; font: 400 22px/1.25 var(--serif); }
+.button:hover { color: #094d79; filter: brightness(.96); }
 .button-arrow { flex: none; width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .waitlist-button { min-width: 230px; margin-top: 15px; }
 .future-forums { margin: 22px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
 
-.membership { padding: 22px 0 0; border-top: 1px solid var(--line); }
-.membership p { margin: 0 0 12px; color: var(--muted); font: 400 17px/1.5 var(--serif); }
-.membership-link { display: flex; width: 100%; }
+.membership { padding: 18px 0 0; border-top: 1px solid var(--line); }
+.membership p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.membership-link { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; padding-block: 10px; color: var(--muted); font-size: 11px; font-weight: 500; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.membership-link:hover { color: var(--accent); }
 
 @media (min-width: 1700px) {
   .page { padding-right: 7vw; }
@@ -94,7 +95,7 @@ h1 em { color: var(--accent); font-weight: 400; }
   .forum-mark { width: 36px; height: 36px; }
   .park-brand img { width: 88px; }
   h1 { font-size: 42px; }
-  .button, .membership-link { font-size: 21px; }
+  .button { font-size: 21px; }
 }
 
 @media (max-width: 900px) {
@@ -115,7 +116,7 @@ h1 em { color: var(--accent); font-weight: 400; }
   .waitlist-button { min-width: 0; width: 100%; padding-inline: 17px; gap: 12px; font-size: 20px; }
   .button-arrow { width: 23px; height: 23px; }
   .future-forums { font-size: 11px; }
-  .membership-link { padding-inline: 20px; gap: 14px; font-size: 21px; }
+  .membership p, .membership-link { font-size: 12px; }
 }
 
 @media (max-width: 380px) {
@@ -129,7 +130,6 @@ h1 em { color: var(--accent); font-weight: 400; }
   .forum-event { grid-template-columns: 52px 1fr; gap: 12px; }
   .event-details h3 { font-size: 26px; }
   .waitlist-button { font-size: 18px; padding-inline: 14px; gap: 8px; }
-  .membership-link { font-size: 20px; padding-inline: 16px; }
 }
 
 @media (max-height: 560px) {
