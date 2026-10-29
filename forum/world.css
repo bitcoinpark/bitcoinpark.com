@@ -59,3 +59,11 @@ html[data-scene="attend"] .world-light{background:linear-gradient(90deg,rgba(235
 }
 @media(max-width:370px){.attend-panel h2{font-size:36px}.attend-panel h2>span{font-size:57px}.attend-panel .membership-button{font-size:18px;padding-inline:19px}}
 @media(prefers-reduced-motion:reduce){html[data-scene="attend"] .world-image{transform:none}.world-temple{will-change:auto}html[data-scene="attend"][data-temple-ready="true"] .world-temple{transform:none}}
+
+/* Sponsor access approaches the arch before opening its catalog window. */
+.world-arch{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;opacity:0;transform:scale(.96);transform-origin:50% 55%;transition:opacity 1.5s ease,transform 1.5s ease;pointer-events:none}
+html[data-scene="catalog"] .world-image{object-position:70% 50%;transform:var(--arch-camera);transition:transform 4.2s cubic-bezier(.22,.61,.36,1),object-position 4.2s cubic-bezier(.22,.61,.36,1),opacity 2s ease 1s}
+html[data-scene="catalog"][data-arch-ready="true"] .world-image{opacity:0}
+html[data-scene="catalog"][data-arch-ready="true"] .world-arch{opacity:1;transform:scale(1.025);transition:opacity 2.2s ease 1s,transform 4.2s cubic-bezier(.22,.61,.36,1)}
+html[data-scene="catalog"] .world-light{background:linear-gradient(180deg,rgba(235,246,253,.22),rgba(235,246,253,.05) 55%,rgba(235,246,253,.18))}
+@media(prefers-reduced-motion:reduce){html[data-scene="catalog"] .world-image{transform:none}html[data-scene="catalog"][data-arch-ready="true"] .world-arch{transform:scale(1.025)}}

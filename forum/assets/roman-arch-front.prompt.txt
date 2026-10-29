@@ -1,0 +1,13 @@
+Asset: roman-arch-front.webp
+Created with: built-in imagegen, 2026-10-28
+Source references: roman-forum.jpg and the user's close-up of the right-hand arch.
+The generated original is retained in the local imagegen library. The web asset is a WebP encoding for page delivery.
+
+Final generation prompt:
+Use case: historical-scene / perspective edit.
+Asset type: landscape 1536 by 1024 full-screen background for the Park Forum sponsor catalog.
+Input image 1 is the existing full Roman forum illustration: preserve its world, blue engraved style, daylight, and atmosphere. Input image 2 identifies the monumental right-hand arch we are approaching.
+Primary request: move the camera forward and turn to face THIS SAME ARCH directly from the front. Create a straight-on, centered, balanced frontal view of the monumental arch, while retaining the surrounding Roman forum. Keep its large coffered central arch, two smaller side archways, attached Corinthian columns, ornamented attic/cornice, rooftop statues, and the standing statue on a plinth beneath the central vault. It must feel like a new angle inside the original illustration.
+Composition: the monument is broad and fills roughly 85–90% of the frame width; show its complete top, outer columns, and base. The upper cornice begins around 15% of the image height, rooftop statues extend higher, and the monument base is around 80% of the image height. Include a little pale open sky above, the same stone plaza in front, and glimpses of neighboring temples, arcade, umbrella pines, and distant hill at the edges. The facade is seen head-on, without converging angled side views. A broad translucent interface window will cover the middle later, so preserve architectural detail around the top and outside edges.
+Style: match the exact delicate pale sky-blue and white monochrome engraved linework, fine crosshatching, lightly textured paper, and soft atmospheric depth of image 1. Keep the same environment and period; change only camera location and perspective.
+No UI, borders, buttons, typography, logos, readable inscriptions, modern objects, photographic materials, new color palette, dramatic weather, or unrelated buildings.

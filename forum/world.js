@@ -7,14 +7,15 @@ const form = document.querySelector('#password-form');
 const password = document.querySelector('#sponsor-password');
 const feedback = document.querySelector('#password-feedback');
 const temple = document.querySelector('.world-temple');
+const arch = document.querySelector('.world-arch');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 let current = 'intro', submitting = false;
-let templeLoad, journeyTimer, journeyVersion = 0;
+let templeLoad, archLoad, journeyTimer, journeyVersion = 0;
 function show(view, focus = true) {
   clearTimeout(journeyTimer); journeyVersion++;
   current = view;
   document.documentElement.dataset.entered = String(view !== 'intro');
-  document.documentElement.dataset.scene = ['journey', 'attend'].includes(view) ? 'attend' : 'forum';
+  document.documentElement.dataset.scene = ['journey', 'attend'].includes(view) ? 'attend' : view === 'catalog-journey' ? 'catalog' : 'forum';
   for (const panel of views) panel.hidden = panel.dataset.view !== view;
   window.scrollTo(0, 0);
   back.hidden = view === 'intro' || submitting;
@@ -26,6 +27,7 @@ function show(view, focus = true) {
 }
 function sponsor() {
   feedback.textContent = ''; password.value = ''; password.removeAttribute('aria-invalid');
+  prepareArch();
   if (savedAccess()) location.assign('/catalog/');
   else show('password');
 }
@@ -45,6 +47,28 @@ function prepareTemple() {
     });
   }
   return templeLoad;
+}
+function prepareArch() {
+  if (arch.complete && arch.naturalWidth) return Promise.resolve(true);
+  if (!archLoad) {
+    arch.src = arch.dataset.src;
+    archLoad = new Promise(resolve => {
+      const timeout = setTimeout(() => resolve(false), 8000);
+      arch.decode().then(() => {
+        clearTimeout(timeout); document.documentElement.dataset.archReady = 'true'; resolve(true);
+      }, () => { clearTimeout(timeout); archLoad = undefined; resolve(false); });
+    });
+  }
+  return archLoad;
+}
+function positionArchCamera() {
+  const scene = document.querySelector('.world-image'), width = scene.clientWidth, height = scene.clientHeight;
+  const fit = Math.max(width / (scene.naturalWidth || 1536), height / (scene.naturalHeight || 1024));
+  const [ox, oy] = getComputedStyle(scene).transformOrigin.split(' ').map(parseFloat);
+  const tx = width * .7;
+  const ty = (height - (scene.naturalHeight || 1024) * fit) * .5 + (scene.naturalHeight || 1024) * .61 * fit;
+  const scale = 1.9;
+  scene.style.setProperty('--arch-camera', `translate3d(${width * .5 - (ox + scale * (tx - ox))}px,${height * .55 - (oy + scale * (ty - oy))}px,0) scale(${scale})`);
 }
 function positionTempleCamera() {
   const scene = document.querySelector('.world-image');
@@ -79,9 +103,15 @@ back.addEventListener('click', () => {
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !back.hidden) back.click(); });
 password.addEventListener('input', () => { password.removeAttribute('aria-invalid'); feedback.textContent = ''; });
 async function renderCatalog(session) {
-  show('loading');
+  positionArchCamera();
+  show('catalog-journey', false);
+  const started = performance.now();
   try {
-    const html = await catalogPage(session);
+    const htmlPromise = catalogPage(session);
+    const arrival = prepareArch().then(() => new Promise(resolve => {
+      setTimeout(resolve, reduced.matches ? 0 : Math.max(0, 4200 - (performance.now() - started)));
+    }));
+    const [html] = await Promise.all([htmlPromise, arrival]);
     document.open(); document.write(html); document.close();
   } catch (error) {
     if (error.status === 401) clearAccess();
@@ -105,12 +135,15 @@ form.addEventListener('submit', async event => {
     if (current === 'password') password.focus({ preventScroll: true });
   }
 });
-window.addEventListener('resize', () => { if (current === 'journey') positionTempleCamera(); }, { passive: true });
+window.addEventListener('resize', () => {
+  if (current === 'journey') positionTempleCamera();
+  if (current === 'catalog-journey') positionArchCamera();
+}, { passive: true });
 reduced.addEventListener('change', () => { if (reduced.matches && current === 'journey') show('attend'); });
 if (matchMedia('(pointer: fine)').matches) {
   let frame;
   document.addEventListener('pointermove', event => {
-    if (reduced.matches || ['intro', 'journey', 'attend'].includes(current) || frame) return;
+    if (reduced.matches || ['intro', 'journey', 'attend', 'catalog-journey'].includes(current) || frame) return;
     frame = requestAnimationFrame(() => {
       const scene = document.querySelector('.world-image');
       scene?.style.setProperty('--scene-x', `${(event.clientX/innerWidth-.5)*-10}px`);
@@ -120,6 +153,7 @@ if (matchMedia('(pointer: fine)').matches) {
   }, { passive: true });
 }
 if (catalogMode) {
+  prepareArch();
   const session = savedAccess();
   if (session) renderCatalog(session); else show('password', false);
 } else show('intro', false);
