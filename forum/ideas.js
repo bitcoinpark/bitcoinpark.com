@@ -1,5 +1,4 @@
-import { ideasData } from './ideas-data.js';
-import { datesData } from './dates-data.js';
+import { clearAccess, savedAccess } from './access.js';
 
 const normalize = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim();
 
@@ -23,7 +22,7 @@ function element(tag, className, text) {
   return node;
 }
 
-export function initIdeas(root, data) {
+export function initIdeas(root, data, datesData) {
   const form = root.querySelector('.ideas-controls');
   const input = root.querySelector('#idea-search');
   const select = root.querySelector('#idea-theme');
@@ -223,4 +222,17 @@ export function initIdeas(root, data) {
 }
 
 const root = document.querySelector('#ideas-explorer');
-if (root) initIdeas(root, ideasData);
+const catalog = document.querySelector('#catalog-data');
+if (root && catalog) {
+  const session = savedAccess();
+  if (!session) location.replace('/catalog/');
+  else {
+    const { ideasData, datesData } = JSON.parse(catalog.textContent);
+    catalog.remove();
+    initIdeas(root, ideasData, datesData);
+    const leave = () => { clearAccess(); location.replace('/forum/'); };
+    document.querySelector('#catalog-lock')?.addEventListener('click', leave);
+    setTimeout(() => { clearAccess(); location.replace('/catalog/'); }, Math.max(0, session.expiresAt * 1000 - Date.now()));
+    window.addEventListener('pageshow', event => { if (event.persisted && !savedAccess()) location.replace('/catalog/'); });
+  }
+}

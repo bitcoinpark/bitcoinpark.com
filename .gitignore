@@ -33,3 +33,4 @@ _site/
 # Environment files
 .env
 .env.local
+_forum-gate/.local/

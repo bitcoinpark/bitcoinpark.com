@@ -46,8 +46,8 @@ data = {
     'importedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'themes': list(themes.values()),
 }
-output = ROOT / 'forum' / 'ideas-data.js'
-output.write_text('// Imported from the linked Title Ideas tab; refresh with scripts/import-forum-ideas.py.\n'
-                  + 'export const ideasData = ' + json.dumps(data, ensure_ascii=False, indent=2) + ';\n')
+output = ROOT / '_forum-gate' / '.local' / 'ideas-data.json'
+output.parent.mkdir(parents=True, exist_ok=True)
+output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
 print(json.dumps({'ideas': sum(len(t['ideas']) for t in themes.values()),
                   'themes': {name: len(t['ideas']) for name, t in themes.items()}, 'output': str(output)}))

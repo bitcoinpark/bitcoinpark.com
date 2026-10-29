@@ -1,33 +1,38 @@
 # Park Forum
 
-- `/forum/`: the opening hero and “I. The idea,” with links to the catalog.
-- `/forum/catalog/`: the complete Park Forum page, including 14 dates and 57 searchable ideas across 10 themes.
+`/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. Explore enters the scene and offers Forum Sponsor or Learn More. Learn More is public. Forum Sponsor asks for the sponsor password.
 
-Both pages use shared, self-hosted assets and styles under `forum/`. They are plain HTML, CSS, and JavaScript served by the repository’s existing GitHub Pages deployment. No build, runtime service, database, or secrets are required.
+`/catalog/` is a public password shell. AWS returns the complete catalog HTML and idea/date data only after authentication. `/forum/catalog/` redirects to the same gate. No password, signing secret, or catalog encryption key is shipped in browser code. Sessions last one hour and stay in the current browser tab. Leave catalog clears access.
 
-Date and idea selections are browser-tab drafts for discussion. They do not hold dates or create sponsor records. The catalog includes the highlighted two-sponsor note, December 15, 2026 and July 16, 2027 dates, and Nashville-only location text.
+The catalog preserves 14 dates and 57 searchable ideas across 10 themes. Date and idea selections are drafts for discussion; they do not hold dates or create sponsor records.
 
-## Refresh the catalog
+## Hosting and access
 
-Use the existing authenticated Google Workspace CLI locally, then review and commit the generated files:
+The website uses the repository's existing GitHub Pages deployment. A Node.js 22 Lambda named `bitcoinpark-forum-access` in AWS account `155335455111`, region `us-east-2`, handles `/api/access` through its Function URL. Its execution role can write only its own CloudWatch logs; logs expire after 14 days. No DNS changes are required.
+
+Lambda environment variables hold `FORUM_PASSWORD_VERIFIER` (salted scrypt), `FORUM_SESSION_SECRET` (signed one-hour sessions), and `FORUM_CATALOG_KEY` (AES-256-GCM catalog decryption). AWS encrypts these variables at rest. Function URL invocation is public so browsers can submit the password; the application checks every catalog request. CORS permits only the two Bitcoin Park origins. Wrong passwords are limited to eight attempts per source IP per 15 minutes within each Lambda instance; this is not a global rate limit.
+
+The repository stores only the encrypted current catalog snapshot under `_forum-gate/private/`. GitHub Pages excludes underscore-prefixed directories. Earlier public revisions of the catalog remain in Git history and may exist in caches; this gate controls the current website and is not retroactive secrecy.
+
+## Refresh and deploy the catalog
+
+Use the authenticated Google Workspace CLI locally:
 
 ```sh
 python3 scripts/import-forum-ideas.py
 python3 scripts/import-forum-dates.py
+node --test _forum-gate/tests/*.test.mjs
+node scripts/deploy-forum-access.mjs
 ```
 
-The importers read the existing Title Ideas and 2027 Dates tabs. Google credentials are not included in this site. Source references and import timestamps remain in the generated data files; the webpage does not link to the sheet.
+The importers read the existing Title Ideas and 2027 Dates tabs into ignored `_forum-gate/.local/` JSON files. The deployment script encrypts these files, packages only runtime files, deploys Lambda through your authenticated AWS CLI, verifies that anonymous access is denied, and writes the actual AWS URL to `forum/gate-config.js`. Review and commit the updated ciphertext and frontend configuration, then publish through GitHub Pages. Never commit the local plaintext JSON or credentials.
+
+On first deployment, or with `node scripts/deploy-forum-access.mjs --rotate-password`, enter the password at the hidden terminal prompt. Rotation also invalidates existing sessions. Without local data files, a subsequent deploy reuses the encrypted snapshot with the existing AWS key. The script checks the AWS account and resource tags before making changes.
 
 ## Local preview
 
-From the repository root:
-
-```sh
-python3 -m http.server 4174 --bind 127.0.0.1
-```
-
-Open `http://127.0.0.1:4174/forum/` and `http://127.0.0.1:4174/forum/catalog/`.
+Static entrance and gate layouts can be previewed with `python3 -m http.server 4174 --bind 127.0.0.1`. Production AWS CORS deliberately excludes localhost. Run the Node tests for authentication and the Lambda adapter; verify the complete login flow on the Bitcoin Park origin after deployment.
 
 ## Artwork and fonts
 
-The Roman forum artwork and blue Bitcoin Park linework were prepared for this Park Forum design. The Bitcoin Park mark comes from Bitcoin Park. DM Sans and Libre Caslon Display are distributed with their included license files in `assets/`.
+The Roman forum artwork and blue Bitcoin Park linework were prepared for this design. The mark comes from Bitcoin Park. DM Sans and Libre Caslon Display include their license files in `assets/`.

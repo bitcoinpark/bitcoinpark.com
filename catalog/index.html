@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-entered="false">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f5fc">
+  <meta name="description" content="Enter Park Forum. A gathering of curious minds from Bitcoin Park.">
+  <title>Park Forum — Sponsor access</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://bitcoinpark.com/catalog/">
+  <link rel="icon" href="/forum/assets/bitcoin-park-mark.png">
+  <link rel="preload" href="/forum/assets/libre-caslon-display.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/forum/assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/forum/world.css">
+  <script type="module" src="/forum/world.js"></script>
+</head>
+<body data-page="catalog">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="filter-defs" aria-hidden="true" width="0" height="0"><defs>
+    <filter id="brand-color" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="-1.2" intercept="1.24"/><feFuncG type="linear" slope="-1.05" intercept="1.24"/><feFuncB type="linear" slope="-.86" intercept="1.24"/></feComponentTransfer></filter>
+  </defs></svg>
+  <main class="world-shell" id="main">
+    <div class="world" aria-hidden="true"><img class="world-image" src="/forum/assets/roman-forum.jpg" alt="" width="1536" height="1024" fetchpriority="high"><div class="world-light"></div></div>
+    <header class="world-header">
+      <a class="world-brand" href="/forum/" aria-label="Park Forum home"><img src="/forum/assets/bitcoin-park.webp" alt="" width="56" height="56"><span>Park Forum</span></a>
+      <button class="world-back" id="world-back" type="button" hidden>← Back</button>
+    </header>
+    <section class="world-view intro-view" data-view="intro" hidden aria-label="Enter Park Forum">
+      <h1 class="sr-only">Park Forum — A gathering of curious minds</h1>
+      <button class="explore-button" id="explore" type="button">Explore</button>
+    </section>
+    <section class="world-view" data-view="choices" aria-labelledby="choices-title" hidden>
+      <div class="scene-panel choices-panel">
+        <p class="scene-eyebrow">Inside the Forum</p>
+        <h2 id="choices-title" tabindex="-1">Where would you<br>like to begin?</h2>
+        <div class="scene-choices">
+          <button class="scene-choice primary" id="forum-sponsor" type="button"><strong>Forum Sponsor</strong><span>Explore ideas and dates</span></button>
+          <button class="scene-choice" id="learn-more" type="button"><strong>Learn More</strong><span>Discover Park Forums</span></button>
+        </div>
+      </div>
+    </section>
+    <section class="world-view" data-view="learn" aria-labelledby="learn-title" hidden>
+      <div class="scene-panel learn-panel">
+        <p class="scene-eyebrow">The idea</p>
+        <h2 id="learn-title" tabindex="-1">The best ideas begin<br>with <em>an open exchange.</em></h2>
+        <p>The forum was a place to meet, question, and see the world a little differently. A public square where ideas became part of everyday life.</p>
+        <p>Park Forums carry that spirit forward. A Park Forum is an elevated experience bringing together Bitcoin Park members and a highly curated group of entrepreneurs, builders, and business leaders to explore the questions shaping our future, together.</p>
+        <button class="scene-button" id="learn-back" type="button">Back to the Forum <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+    <section class="world-view" data-view="password" aria-labelledby="password-title">
+      <div class="scene-panel password-panel">
+        <p class="scene-eyebrow">An invitation to shape the conversation</p>
+        <h2 id="password-title" tabindex="-1">Forum Sponsor</h2>
+        <p>Enter your invitation password to explore the catalog.</p>
+        <form class="password-form" id="password-form">
+          <label for="sponsor-password">Password</label>
+          <input id="sponsor-password" name="password" type="password" autocomplete="current-password" required maxlength="128" aria-describedby="password-feedback">
+          <button class="scene-button" type="submit">Enter catalog <span aria-hidden="true">↗</span></button>
+          <p class="form-feedback" id="password-feedback" role="alert" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+    <section class="world-view" data-view="loading" aria-label="Opening catalog" hidden>
+      <div class="scene-panel loading-panel" role="status"><span class="loading-mark" aria-hidden="true"></span><h2>Opening the catalog.</h2><p>Your next conversation awaits.</p></div>
+    </section>
+    <noscript><p class="noscript-note">Enable JavaScript to explore Park Forum and enter the sponsor catalog.</p></noscript>
+  </main>
+</body>
+</html>

@@ -40,6 +40,7 @@ dates.sort(key=lambda d: d['date'])
 data = {'sourceUrl': f'https://docs.google.com/spreadsheets/d/{SHEET_ID}/edit?gid={TAB_ID}#gid={TAB_ID}',
         'sourceSheet': '2027 Dates', 'importedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
         'dates': dates}
-(ROOT / 'forum' / 'dates-data.js').write_text('// Proposed dates only; backup dates are alternatives, not separate slots.\nexport const datesData = '
-                                           + json.dumps(data, ensure_ascii=False, indent=2) + ';\n')
+output = ROOT / '_forum-gate' / '.local' / 'dates-data.json'
+output.parent.mkdir(parents=True, exist_ok=True)
+output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
 print(json.dumps({'dates': len(dates), 'first': dates[0]['label'], 'last': dates[-1]['label']}))
