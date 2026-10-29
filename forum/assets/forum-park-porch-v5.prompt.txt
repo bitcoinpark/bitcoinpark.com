@@ -1,0 +1,24 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Final web asset: forum-park-porch-v5.jpg (1536x1024, JPEG quality 85).
+Edit target: forum-park-porch-v4.jpg.
+All stair and porch railings are removed. The leftmost pillar stands on a solid porch foundation outside the stair footprint, with the staircase inset to its right between the pillars. Bushes remain visible behind the rear table.
+
+Exact edit prompt:
+
+Use case: precise-object-edit.
+Asset: Park Forum website background, 1536x1024 landscape.
+Edit the supplied illustration with two specific architectural changes.
+
+1. REMOVE THE RAILINGS COMPLETELY.
+Remove every metal stair handrail, fence panel, X brace, upper/lower rail, vertical railing post, and porch/landing guardrail from the entire building. Remove the little isolated post at the far left as well. Reconstruct the surfaces, glazing, steps and greenery naturally behind the removed metal. No replacement fence, balustrade, railing, rope or gate. Keep the metal cafe chairs and tables: those are furniture and must remain.
+
+2. LEFTMOST PILLAR OUTSIDE THE STAIRCASE; STAIRS INSIDE THE PILLARS.
+The large leftmost/near white pillar must stand on a solid flat porch foundation/plinth BESIDE the staircase, outside the stair footprint. Its round base must not sit on a stair tread, protrude into the staircase, or have steps running directly in front of or underneath it.
+Reshape and shift the staircase inward to the RIGHT of this leftmost pillar, toward the opening BETWEEN the two pillars. The upper stair opening must begin clearly to the RIGHT of the entire left pillar base with a visible strip of flat porch landing between the base and the stair edge. Continue that inset left stair edge coherently down the whole run. The left pillar stands on its own full-height solid stone porch support beside that edge; the descending steps are beside it, not under it. Adjust the pillar slightly outward to the left if needed, while keeping it aligned under the porch roof.
+Keep an open, comfortably wide stairway leading from the patio to the door, approximately the same shallow step count and direction. The two pillars frame the entrance from outside the stair opening. Show a structurally credible junction between the flat porch platform, the left pillar's supporting foundation and the inset stairs. Do not simply erase railing lines while leaving the pillar in the stair footprint.
+
+PRESERVE EVERYTHING ELSE:
+Same pale blue and white architectural illustration, fine slate-blue contours, soft texture and light. Keep the low porch roof and cornice, both white classical pillars, pale brick facade and glass doorway. Keep the foreground cafe furniture, the rear patio table and chairs, and the bushes directly behind the rear table with NO wall. Preserve tree canopy, shrubs, sky, curved paving lines, shadows and the quiet open right half reserved for the website panel. No people, lettering, logos, interface or added furniture. Same 1536x1024 landscape framing.
+
+The final scene must plainly show ZERO railings anywhere, the near/left column wholly outside the staircase, and the staircase inset to its right between the columns.
+
