@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e9f5fc">
+  <meta name="description" content="Park Forum. An open place for ideas, thoughtful conversation, and the people building a freer future. From Bitcoin Park.">
+  <title>Park Forum Catalog — Ideas &amp; Available Dates</title>
+  <link rel="canonical" href="https://bitcoinpark.com/catalog/">
+  <link rel="icon" href="/forum/assets/bitcoin-park-mark.png">
+  <link rel="preload" href="/forum/assets/libre-caslon-display.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="/forum/assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/forum/style.css">
+  <link rel="stylesheet" href="/forum/ideas.css">
+  <script type="module" src="/forum/ideas.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="filter-defs" aria-hidden="true" width="0" height="0"><defs>
+    <filter id="brand-color" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="-1.2" intercept="1.24"/><feFuncG type="linear" slope="-1.05" intercept="1.24"/><feFuncB type="linear" slope="-.86" intercept="1.24"/></feComponentTransfer></filter>
+  </defs></svg>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="wordmark" href="/forum/" aria-label="Park Forum home"><img class="park-mark" src="/forum/assets/bitcoin-park.webp" alt="" width="42" height="42"><span>Park Forum</span></a>
+      <nav aria-label="Main navigation"><a href="#about">The idea</a><a href="#conversations">Conversations</a><a class="nav-cta" href="#gather">Come together <span aria-hidden="true">↗</span></a></nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-art" src="/forum/assets/roman-forum.jpg" alt="A delicate blue engraving of a Roman forum, with Corinthian columns, arches, and an open gathering place." width="1536" height="1024" fetchpriority="high">
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">A gathering of curious minds</p>
+          <h1 id="hero-title">An open place<br>for <em>ideas.</em></h1>
+          <p class="hero-description">Good conversations build better futures.<br>Come explore what’s next for Bitcoin,<br class="desktop-break"> freedom, and the world we share.</p>
+          <a class="button" href="#conversations">Explore the conversations <span aria-hidden="true">↗</span></a>
+          <a class="presented-by" href="https://bitcoinpark.com/" target="_blank" rel="noopener noreferrer"><span class="presented-label">An invitation from</span><span>bitcoin park <span aria-hidden="true">↗</span></span></a>
+        </div>
+        <div class="hero-bottom"><a href="#about" aria-label="Discover the idea behind Park Forum">Scroll to explore <span aria-hidden="true">↓</span></a></div>
+      </div>
+    </section>
+    <section class="about section container" id="about" aria-labelledby="about-title">
+      <div class="section-label"><span class="roman">I.</span><span>The idea</span></div>
+      <div class="about-content"><h2 id="about-title">The best ideas begin<br>with <em>an open exchange.</em></h2><div class="about-text"><p>The forum was a place to meet, question, and see the world a little differently. A public square where ideas became part of everyday life.</p><p>Park Forums carry that spirit forward. A Park Forum is an elevated experience bringing together Bitcoin Park members and a highly curated group of entrepreneurs, builders, and business leaders to explore the questions shaping our future, together.</p></div></div>
+    </section>
+    <section class="conversations" id="conversations" aria-labelledby="conversations-title">
+      <div class="container section">
+        <div class="section-heading"><div><div class="section-label"><span class="roman">II.</span><span>The conversations</span></div><h2 id="conversations-title">Big questions.<br><em>Room to explore.</em></h2></div><p>Explore the Park Forum idea catalog.<br> Find the conversation you want to have.</p></div>
+        <div id="ideas-explorer">
+          <div class="date-picker" id="forum-dates">
+            <div class="date-picker-heading"><div><p class="date-step">Start with a date</p><h3>Available Forum dates</h3></div></div>
+            <p class="date-intro">Choose a date, then select an idea you’d like to explore.</p>
+            <div id="date-options" class="date-options" role="group" aria-label="Available Forum dates"></div>
+            <p class="date-note"><strong>Up to two sponsors per Forum.</strong> Selections are for discussion; dates remain open.</p>
+          </div>
+          <section id="forum-selection" class="forum-selection" aria-labelledby="selection-title" hidden>
+            <div class="selection-heading"><p id="selection-date" class="selection-date"></p><button id="selection-clear" class="selection-clear" type="button">Clear selection <span aria-hidden="true">×</span></button></div>
+            <h3 id="selection-title" tabindex="-1"></h3><p id="selection-description"></p>
+            <div id="selection-actions" class="selection-actions" hidden><button class="button" id="selection-copy" type="button">Copy selection <span aria-hidden="true">↗</span></button><button class="selection-change" id="selection-change" type="button">Choose another idea</button></div>
+            <p id="selection-status" class="selection-status" role="status" aria-live="polite"></p>
+          </section>
+          <form class="ideas-controls" role="search" aria-label="Explore conversation ideas">
+            <div class="ideas-field"><label for="idea-search">Find an idea</label><div class="ideas-search-wrap"><svg class="ideas-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input id="idea-search" type="search" placeholder="Search ideas or themes…" autocomplete="off" aria-controls="idea-results"><button class="idea-clear" id="idea-clear" type="button" aria-label="Clear search" hidden>×</button></div></div>
+            <div class="ideas-field"><label for="idea-theme">Explore a theme</label><select id="idea-theme" aria-controls="idea-results"><option value="">All themes</option></select></div>
+          </form>
+          <div class="ideas-meta"><p id="idea-status" class="ideas-status" role="status" aria-live="polite" aria-atomic="true">Loading ideas…</p></div>
+          <div id="idea-results" class="topics"></div>
+          <div id="idea-empty" class="ideas-empty" hidden><h3>A different starting point?</h3><p>No ideas match your search. Try another word or explore all themes.</p><button id="idea-reset" class="button ideas-reset" type="button">Explore all ideas <span aria-hidden="true">↗</span></button></div>
+          <noscript><p>Enable JavaScript to search the ideas and explore available dates.</p></noscript>
+          <p class="ideas-footnote">Follow a theme. Find a question. Start a conversation.</p>
+        </div>
+      </div>
+    </section>
+    <section class="gather section container" id="gather" aria-labelledby="gather-title">
+      <figure class="gather-art"><img src="/forum/assets/bitcoin-park-sketch-blue.png" alt="Blue linework of Bitcoin Park’s two buildings and surrounding trees." width="2170" height="725" loading="lazy"></figure>
+      <div class="gather-copy"><div class="section-label"><span class="roman">III.</span><span>Come together</span></div><h2 id="gather-title">Bring your curiosity.<br><em>Find your people.</em></h2><p>Continue the conversation at Bitcoin Park.<br>Discover meetups, workshops, and gatherings on the Park calendar.</p><a class="button" href="https://bitcoinpark.com/calendar" target="_blank" rel="noopener noreferrer">See what’s happening at the Park <span aria-hidden="true">↗</span></a><span class="locations">Nashville, Tennessee</span></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="wordmark" href="#" aria-label="Back to top"><img class="park-mark" src="/forum/assets/bitcoin-park.webp" alt="" width="36" height="36"><span>Park Forum</span></a><span class="footer-note">A place for people. A forum for ideas.</span><a class="footer-link" href="https://bitcoinpark.com/" target="_blank" rel="noopener noreferrer">Part of Bitcoin Park <span aria-hidden="true">↗</span></a></div><button class="catalog-lock" id="catalog-lock" type="button">Leave catalog ↗</button></footer>
+  <!-- FORUM_CATALOG_DATA -->
+</body>
+</html>

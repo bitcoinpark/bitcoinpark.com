@@ -1,0 +1,42 @@
+name: Deploy Forum Catalog Gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '_forum-gate/**'
+      - 'scripts/deploy-forum-gate.mjs'
+      - '.github/workflows/deploy-forum-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: forum-catalog-gate
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            _forum-gate
+            scripts/deploy-forum-gate.mjs
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test access controls
+        run: node --test _forum-gate/tests/access.test.mjs
+      - name: Deploy protected catalog service
+        run: node scripts/deploy-forum-gate.mjs
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          FORUM_PASSWORD_VERIFIER: ${{ secrets.FORUM_PASSWORD_VERIFIER }}
+          FORUM_SESSION_SECRET: ${{ secrets.FORUM_SESSION_SECRET }}
+          FORUM_CATALOG_KEY: ${{ secrets.FORUM_CATALOG_KEY }}
