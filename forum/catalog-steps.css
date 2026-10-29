@@ -1,0 +1,72 @@
+/* One compact window, with a date first and an idea second. */
+body[data-page="sponsor-catalog"]{overflow:hidden}
+.catalog-world{background:#e9f5fc url('/forum/assets/roman-forum.jpg') center/cover no-repeat}
+.catalog-arch{width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform:scale(1.025);transform-origin:50% 55%}
+.catalog-light{position:absolute;inset:0;background:linear-gradient(180deg,rgba(235,246,253,.22),rgba(235,246,253,.05) 55%,rgba(235,246,253,.18))}
+.catalog-stage{display:flex;align-items:center;justify-content:center;height:100vh;height:100svh;padding:120px 28px 40px}
+.catalog-window{width:min(680px,100%);max-height:min(620px,calc(100svh - 160px));min-height:0;padding:27px 31px 25px;display:flex;flex-direction:column;border-image-width:18px;animation:arrive .7s ease both}
+.catalog-heading{flex-shrink:0;margin-bottom:17px}
+.catalog-heading .scene-eyebrow{font-size:9px;margin:0 0 7px}
+.catalog-heading h1{font:400 38px/1.05 var(--serif);letter-spacing:-.5px;margin:0}
+.catalog-step{min-height:0;display:flex;flex-direction:column}
+.catalog-window .step-description{font-size:11px;line-height:1.5;margin:0 0 13px}
+.date-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;min-height:0;overflow:auto;padding:3px;scrollbar-width:thin;scrollbar-color:#9bbacb transparent}
+.catalog-window .date-option{width:100%;min-height:67px;padding:12px 14px;display:flex;flex-direction:column;gap:5px;align-items:flex-start;text-align:left;cursor:pointer;border-image-width:10px}
+.date-year{font:9px/1.3 var(--sans);color:#456b85;white-space:nowrap}
+.catalog-window .date-day{font:400 26px/1 var(--serif);white-space:nowrap}
+.catalog-window .date-option[aria-pressed="true"]:after{right:9px;bottom:9px;font-size:11px}
+.catalog-window .catalog-note{flex-shrink:0;margin:18px 0 0;padding:10px 12px;background:#d7eaf7;border-left:3px solid #527e9a;font-size:11px;line-height:1.55;color:var(--ink)}
+.catalog-note strong{display:block;font-weight:700;margin-bottom:1px}
+.catalog-window[data-step="2"]{height:min(620px,calc(100svh - 160px))}
+.idea-step{flex:1;min-height:0}
+.chosen-date{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:15px}
+.catalog-window .chosen-date p{font-size:12px;line-height:1.5;margin:0;color:#285b7c}
+.catalog-window .scene-button{min-height:40px;padding:10px 16px;font:400 17px/1.25 var(--serif);cursor:pointer;width:auto}
+#change-date{white-space:nowrap}
+.ideas-scroll{flex:1;min-height:60px;overflow:auto;padding:0 7px 7px 2px;scrollbar-width:thin;scrollbar-color:#9bbacb transparent;overscroll-behavior:contain}
+.catalog-window .theme-heading{position:sticky;top:0;z-index:1;background:rgba(237,247,253,.98);font:400 25px/1.12 var(--serif);letter-spacing:-.2px;padding:11px 0;border-bottom:1px solid #adc9da;margin:0}
+.idea-theme+.idea-theme{margin-top:14px}
+.idea-list{list-style:none;padding:0;margin:0}
+.idea-item{padding:15px 0;border-bottom:1px solid #cbdee9}
+.idea-item:last-child{border-bottom:0}
+.idea-title{font:400 23px/1.15 var(--serif);letter-spacing:-.15px;margin:0 0 8px;overflow-wrap:anywhere}
+.catalog-window .idea-text{font-size:12px;line-height:1.8;margin:0;color:#345570;white-space:pre-line;overflow-wrap:anywhere}
+.catalog-window .idea-choose{padding:10px 16px;margin-top:11px;font:400 17px/1.3 var(--serif);cursor:pointer}
+.catalog-selection{flex-shrink:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:14px;padding-top:13px;border-top:1px solid #9bbbcf}
+.selection-copy{flex:1;min-width:0}
+.catalog-window .selection-label{font-size:9px;line-height:1.4;margin:0 0 4px;color:#466780}
+.catalog-window #selection-title{font:400 23px/1.12 var(--serif);letter-spacing:-.2px;margin:0;overflow-wrap:anywhere}
+.selection-actions{display:flex;flex-wrap:wrap;gap:7px}
+.catalog-window .selection-status{flex-basis:100%;font-size:10px;line-height:1.4;margin:0}
+.selection-status:empty{display:none}
+.catalog-window :focus-visible{outline:2px solid #0963a0;outline-offset:3px}
+@media(max-width:700px){
+  .catalog-stage{padding:155px 22px 28px;align-items:center}
+  .catalog-window{padding:24px 22px 23px;max-height:calc(100svh - 183px);border-image-width:16px}
+  .catalog-window[data-step="2"]{height:min(600px,calc(100svh - 183px))}
+  .catalog-heading{margin-bottom:15px}
+  .catalog-heading h1{font-size:34px}
+  .date-options{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+  .catalog-window .date-option{min-height:64px;padding:11px 9px}
+  .catalog-window .date-day{font-size:24px}
+  .date-year{font-size:8px}
+  .chosen-date{align-items:flex-start;gap:9px}
+  .catalog-window .chosen-date p{font-size:11px}
+  .catalog-window .scene-button{padding:10px 14px;font-size:16px}
+  .catalog-window .idea-text{font-size:12px;line-height:1.75}
+  .catalog-selection{display:block;margin-top:12px;padding-top:12px}
+  .selection-actions{margin-top:10px}
+  .catalog-window #selection-title{font-size:22px}
+  .catalog-window .selection-status{margin-top:7px}
+  .catalog-window .catalog-note{font-size:10px;margin-top:14px;padding:9px 10px}
+}
+@media(max-width:370px){.catalog-stage{padding-inline:18px}.catalog-window{padding-inline:18px}.date-options{grid-template-columns:repeat(2,minmax(0,1fr))}.catalog-window .date-option{min-height:60px}.chosen-date{flex-wrap:wrap}.catalog-window .scene-button{font-size:15px;padding:9px 12px}.catalog-window .theme-heading{font-size:23px}}
+@media(max-height:640px) and (min-width:701px){.catalog-stage{padding-top:100px;padding-bottom:24px}.catalog-window{max-height:calc(100svh - 124px)}.catalog-window[data-step="2"]{height:calc(100svh - 124px)}.catalog-heading h1{font-size:33px}}
+/* Short screens keep the frame compact and let its contents scroll. */
+@media(max-height:600px){
+  .catalog-window{overflow-y:auto;scroll-padding-block:25px;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#9bbacb transparent}
+  .catalog-step{flex-shrink:0}
+  .idea-step{flex:0 0 auto}
+  .ideas-scroll{flex:none;height:clamp(160px,30svh,230px);min-height:0}
+}
+@media(prefers-reduced-motion:reduce){.catalog-window{animation:none}}

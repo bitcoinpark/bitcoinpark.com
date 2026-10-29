@@ -13,8 +13,8 @@
   <link rel="preload" href="/forum/assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="/forum/world.css?v=arch-5">
   <link rel="stylesheet" href="/forum/engraved.css?v=3">
-  <link rel="stylesheet" href="/forum/catalog.css?v=arch-1">
-  <script type="module" src="/forum/catalog.js?v=arch-1"></script>
+  <link rel="stylesheet" href="/forum/catalog-steps.css?v=1">
+  <script type="module" src="/forum/catalog-steps.js?v=1"></script>
 </head>
 <body data-page="sponsor-catalog">
   <a class="skip-link" href="#main">Skip to catalog</a>
@@ -28,38 +28,23 @@
     <main id="main" class="catalog-stage">
       <section class="scene-panel catalog-window" id="ideas-explorer" aria-labelledby="catalog-title">
         <header class="catalog-heading">
-          <div><p class="scene-eyebrow">Forum Sponsor</p><h1 id="catalog-title" tabindex="-1">Dates &amp; ideas</h1></div>
-          <p class="catalog-intro">Find a date. Start a conversation.</p>
+          <p class="scene-eyebrow" id="catalog-progress">Step 1 of 2</p>
+          <h1 id="catalog-title" tabindex="-1">Choose a date</h1>
         </header>
-        <p class="catalog-note"><strong>Up to two sponsors per Forum.</strong> Selections are for discussion; dates remain open.</p>
-        <div class="catalog-workspace">
-          <details class="catalog-dates" id="date-picker" open>
-            <summary class="date-heading"><span><span class="pane-step">01 · Choose a date</span><span id="date-selection-label">Available Forum dates</span></span><span class="date-toggle" aria-hidden="true">⌄</span></summary>
-            <div class="date-pane-body">
-              <div class="date-filter"><div class="catalog-field date-search-field"><label for="date-search">Search dates</label><div class="search-wrap"><input id="date-search" type="search" placeholder="Try July, 2027, or 7/16" autocomplete="off" aria-controls="date-options"><button class="idea-clear" id="date-clear" type="button" aria-label="Clear date search" hidden>×</button></div></div>
-              <p id="date-status" class="result-status" role="status" aria-live="polite"></p></div>
-              <div class="date-options" id="date-options" role="group" aria-label="Available Forum dates"></div>
-              <div class="date-empty" id="date-empty" hidden><p>No dates match that search.</p><button class="scene-button" id="date-reset" type="button">Show all dates</button></div>
-            </div>
-          </details>
-          <section class="catalog-ideas" aria-labelledby="ideas-title">
-            <header class="ideas-pane-heading"><p class="pane-step">02 · Find an idea</p><h2 id="ideas-title">What sparks your curiosity?</h2></header>
-            <form class="ideas-controls" role="search" aria-label="Find conversation ideas">
-              <div class="catalog-field"><label for="idea-search">Search ideas</label><div class="search-wrap"><input id="idea-search" type="search" placeholder="Search a question, topic, or keyword…" autocomplete="off" aria-controls="idea-results"><button class="idea-clear" id="idea-clear" type="button" aria-label="Clear idea search" hidden>×</button></div></div>
-              <div class="catalog-field theme-field"><label for="idea-theme">Theme</label><select id="idea-theme" aria-controls="idea-results"><option value="">All themes</option></select></div>
-            </form>
-            <p class="result-status" id="idea-status" role="status" aria-live="polite" aria-atomic="true"></p>
-            <div class="ideas-scroll">
-              <div id="idea-results" class="topics"></div>
-              <div class="ideas-empty" id="idea-empty" hidden><h3>A different starting point?</h3><p>No ideas match. Try another word or browse all themes.</p><button id="idea-reset" class="scene-button" type="button">Explore all ideas ↗</button></div>
-            </div>
-          </section>
-        </div>
-        <section class="catalog-selection" id="forum-selection" aria-labelledby="selection-title" hidden>
-          <div class="selection-copy"><p id="selection-date" class="selection-date"></p><h2 id="selection-title" tabindex="-1"></h2><p id="selection-description"></p></div>
-          <div class="selection-actions"><button class="scene-button" id="selection-copy" type="button" disabled>Copy selection ↗</button><button class="scene-button" id="selection-clear" type="button">Clear ×</button></div>
-          <p id="selection-status" class="selection-status" role="status" aria-live="polite"></p>
+        <section class="catalog-step date-step" id="date-step" aria-labelledby="catalog-title">
+          <p class="step-description" id="date-count">Available Forum dates</p>
+          <div class="date-options" id="date-options" role="group" aria-label="Available Forum dates"></div>
         </section>
+        <section class="catalog-step idea-step" id="idea-step" aria-labelledby="catalog-title" hidden>
+          <div class="chosen-date"><p id="chosen-date"></p><button class="scene-button" id="change-date" type="button">← Change date</button></div>
+          <div class="ideas-scroll" id="idea-results" aria-label="Conversation ideas by theme"></div>
+          <section class="catalog-selection" id="forum-selection" aria-labelledby="selection-title" hidden>
+            <div class="selection-copy"><p class="selection-label">Your conversation</p><h2 id="selection-title" tabindex="-1"></h2></div>
+            <div class="selection-actions"><button class="scene-button" id="selection-copy" type="button">Copy selection ↗</button><button class="scene-button" id="selection-clear" type="button">Clear idea ×</button></div>
+            <p id="selection-status" class="selection-status" role="status" aria-live="polite"></p>
+          </section>
+        </section>
+        <p class="catalog-note"><strong>Up to two sponsors per Forum.</strong> Selections are for discussion; dates remain open.</p>
       </section>
     </main>
   </div>

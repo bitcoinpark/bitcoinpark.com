@@ -6,7 +6,7 @@ Learn More offers Attend a Forum below “Join the conversation.” It slowly ap
 
 `/catalog/` is a public password shell. AWS returns the complete catalog HTML and idea/date data only after authentication. `/forum/catalog/` redirects to the same gate. No password, signing secret, or catalog encryption key is shipped in browser code. Sessions last one hour and stay in the current browser tab. Leave catalog clears access.
 
-After password access, the scene slowly approaches a straight-on view of the right-hand arch and opens one engraved catalog window. It contains 14 searchable dates and 57 searchable ideas across 10 themes, without the previous introductory and bottom sections. Dates can be searched by month, year, weekday, ISO date, or month/day. Sponsors can begin with a date or an idea and copy their pairing. On mobile, choosing a date collapses its list to make room for ideas. Date and idea selections are drafts for discussion; they do not hold dates or create sponsor records.
+After password access, the scene slowly approaches a straight-on view of the right-hand arch and opens one engraved catalog window. The compact window has two steps: choose one of 14 dates, then choose from 57 ideas grouped by 10 themes. There are no searches or dropdowns. Selecting a date opens the idea list; Change date returns to the first step. A different date clears the previous idea. Sponsors can copy their pairing directly from the second step. Internal scrolling keeps the surrounding arch visible on desktop and mobile. Date and idea selections are drafts for discussion; they do not hold dates or create sponsor records.
 
 ## Hosting and access
 
@@ -41,4 +41,4 @@ The Roman forum artwork and blue Bitcoin Park linework were prepared for this de
 
 The matching temple perspective is `assets/roman-temple-front.webp`, created with built-in imagegen. Its exact generation prompt and reference roles are recorded in `assets/roman-temple-front.prompt.txt`.
 
-The sponsor catalog uses `assets/roman-arch-front.webp`, also created with built-in imagegen; its prompt is `assets/roman-arch-front.prompt.txt`. `catalog.css`, `catalog.js`, and `catalog-filters.mjs` implement the focused dates-and-ideas workspace. The legacy `ideas.js` remains available so cached copies of the previous template continue to function during deployment.
+The sponsor catalog uses `assets/roman-arch-front.webp`, also created with built-in imagegen; its prompt is `assets/roman-arch-front.prompt.txt`. `catalog-steps.css` and `catalog-steps.js` implement the compact date-first flow. The previous `catalog.css`, `catalog.js`, `catalog-filters.mjs`, and `ideas.js` remain available so cached copies of earlier templates continue to function during deployment.
