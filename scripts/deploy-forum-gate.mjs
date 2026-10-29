@@ -6,12 +6,14 @@ const projectName='bitcoinpark-forum-gate';
 if(!token||!teamId)throw new Error('Vercel deployment credentials are missing.');
 for(const key of ['FORUM_PASSWORD_VERIFIER','FORUM_SESSION_SECRET','FORUM_CATALOG_KEY'])if(!process.env[key])throw new Error(`Missing ${key}.`);
 async function api(path,options={}){
- const url=new URL(path,'https://api.vercel.com');url.searchParams.set('teamId',teamId);
+ const url=new URL(path,'https://api.vercel.com');if(teamId.startsWith('team_'))url.searchParams.set('teamId',teamId);
  const response=await fetch(url,{...options,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',...options.headers}});
  const data=await response.json();
- if(!response.ok){const error=new Error(`Vercel request failed (${response.status}, ${data.error?.code||'unknown'}).`);error.status=response.status;throw error;}
+ if(!response.ok){let reason=String(data.error?.message||'No details supplied.');for(const value of [token,teamId,...Object.entries(process.env).filter(([k])=>k.startsWith('FORUM_')).map(([,v])=>v)])if(value)reason=reason.replaceAll(value,'[redacted]');const error=new Error(`Vercel request failed for ${url.pathname} (${response.status}, ${data.error?.code||'unknown'}): ${reason}`);error.status=response.status;throw error;}
  return data;
 }
+await api('/v2/user');
+console.log('Vercel authentication confirmed.');
 let project;
 try{project=await api(`/v9/projects/${projectName}`);}catch(error){
  if(error.status!==404)throw error;
