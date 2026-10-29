@@ -1,0 +1,17 @@
+Generated with the built-in imagegen tool on October 29, 2026.
+New artwork, with no input image. Final web asset: forum-colonnade.jpg.
+The Forum's light blue and white palette follows the user's explicit direction; the minimalist linework draws on Bitcoin Park's illustration approach.
+
+Use case: illustration-story.
+Asset type: Park Forum website background, landscape 1536x1024.
+
+Create a NEW, quiet architectural illustration for Park Forum. The theme is an open exchange of ideas, with subtle Greco-Roman influence. Take the minimalist linework and flat-shape sensibility of Bitcoin Park's visual identity, but use ONLY the Forum's light blue and white palette.
+
+Composition: a sparse architectural study, not a literal landscape or a depiction of the Bitcoin Park campus. In the LEFT 45 percent, show a single cropped corner of an open classical colonnade: TWO slender white columns with very simple Doric capitals, a clean horizontal lintel above, and a few broad shallow curved stone steps below. Leave the space between the columns open to pale blue sky. The column group should feel light, airy, elegant and partially suggested, never monumental. Keep the columns within the left 650px so they remain visible beside a website panel on the right. No large central temple or triangular temple pediment.
+At the lower left, let a handful of fine curved paving lines follow a gentle expanding, Fibonacci-inspired arc into the open square. One small restrained laurel sprig may sit near the bottom-left edge as a classical accent. The far right 50 percent should be nearly empty pale blue, with only extremely faint ground lines at the bottom.
+
+Style: contemporary editorial architectural line illustration, flat luminous white planes, a few pale blue shadow shapes, delicate precise blue contours, and barely perceptible fine paper grain. Keep very low detail and generous breathing room. Subtle sophisticated graphic design, not a realistic 3D render, not an ornate engraving, not dense crosshatching, not a busy ancient-Rome scene. White stone against a light blue sky, gently layered tonal depth.
+Palette: background approximately #edf7fd; white #FFFFFF; pale powder blue #dcecf6 and #c4d9e7; restrained slate-blue linework approximately #729bb6. Avoid large dark areas. No green, orange, purple, yellow, gold or warm tones.
+
+NO people, faces, statues, figures, cafe tables or chairs, cars, campus houses, recognizable Bitcoin Park buildings, trees, forests, dense gardens, ruins, rubble, firepits, text, logos, symbols, labels, borders, watermarks or webpage interface.
+The final image should feel calm, spacious, lightly classical and unmistakably blue-and-white.
