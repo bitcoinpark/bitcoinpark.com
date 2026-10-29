@@ -1,0 +1,32 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Final web asset: forum-park-porch-v2.jpg (1536x1024, JPEG quality 85).
+First edit target: forum-park-porch.jpg. Retain its artwork and correct only the railings and rear wall.
+Second edit target: the first edit's generated output. Correct the remaining railing overlap on the farther pillar.
+
+First edit prompt:
+
+Use case: precise-object-edit.
+Asset type: existing Park Forum website background, 1536x1024 landscape.
+
+Edit the supplied illustration with ONLY the following two corrections. Preserve the existing composition, viewpoint, building proportions, palette, delicate linework, paper texture, furniture, trees, sky, and open right-hand space.
+
+1. CORRECT THE PORCH RAILINGS RELATIVE TO THE PILLARS.
+The two white round porch pillars must stand outside/in front of the metal railing system. Recess the porch guardrails to the inward side of the pillars, toward the building, so the railings are BETWEEN and BEHIND the pillars instead of crossing in front of their white shafts. Each pillar's visible front surface must be uninterrupted white from capital to its base. Place the stair handrail origins on the inside edges of the two pillars, within the opening between them, then run the two handrails naturally down the stair edges. Maintain plausible perspective and a clear open stair entrance. There must be no metal rail drawn across the front of either pillar and no railing attached outside the pair of pillars. Keep the elegant thin blue metal rails, simple posts, the current porch roof and two column positions, and the shallow steps.
+
+2. REMOVE THE LOW WALL BEHIND THE REAR PATIO TABLE.
+The rectangular pale solid wall immediately behind the small table and chairs in the middle-left background (approximately x=480–770, y=610–690 in the 1536x1024 reference) must be completely removed, including its horizontal cap and vertical end. Reveal the existing leafy bushes directly behind the table and chairs all the way down to patio level. Keep the table and chairs in their same positions, and let softly drawn pale blue shrubs be visible through and around the chair backs. No replacement fence, planter, parapet, retaining wall or solid barrier. Leave the building's actual brick facade intact.
+
+INVARIANTS:
+Same wide crop and 1536x1024 landscape proportions. Keep the foreground cafe chairs and round table; preserve the tree canopy, porch fascia, glazing, curved paving lines and soft shadows. Same pale blue and white monochrome architectural illustration, no green or warm color. Keep the right half calm and open for the website panel. No people, added objects, text, UI, symbols, or logos. Output only the corrected artwork.
+
+Refinement prompt:
+
+Use case: precise-object-edit.
+Edit target: the supplied 1536x1024 pale blue architectural illustration.
+
+Make ONE small, surgical correction to the FARTHER / RIGHT-HAND WHITE PORCH PILLAR, the column centered near x=369 with its base near y=598. A diagonal blue stair handrail currently passes visibly across this column's white face around y=540–580. That overlap is wrong.
+
+The white pillar must be IN FRONT of the stair railing. Recess the upper end of this handrail to the inside/building side of the pillar, so it is hidden behind the column. ERASE ALL diagonal metal railing strokes and any horizontal metal strokes that currently lie on top of the white shaft and its base (approximately x=344–395, y=525–600). Restore the continuous smooth pale white cylindrical column surface and rounded white base in that area. The rail may be visible approaching the column from its inner/left side and may emerge beyond its right silhouette lower down, but the opaque white pillar must completely occlude every piece of rail that falls behind its silhouette. No line is allowed to cross over the front of this white pillar. This is a correction to occlusion, not a new architecture design.
+
+Keep the near/left white pillar and its correctly recessed railing exactly as they are. Keep both stair railings, their descending direction and bottom posts; change only how the far railing passes BEHIND the right-hand pillar. Keep the porch, stairs, table, chairs, visible bushes behind the rear table, foliage, sky, curved paving, palette, line weight, texture and framing unchanged. The rear wall has already been removed correctly: do not restore it. No other changes, no additional objects, no text. Return the same 1536x1024 landscape artwork with this one overlap fixed.
+
