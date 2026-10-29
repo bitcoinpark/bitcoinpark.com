@@ -44,10 +44,11 @@ data = {
     'sourceUrl': SOURCE_URL,
     'sourceSheet': 'Title Ideas',
     'importedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-    'themes': list(themes.values()),
+    # Keep the lead theme first; preserve sheet order for every other theme.
+    'themes': sorted(themes.values(), key=lambda theme: theme['id'] != 'grassroots-bitcoin'),
 }
 output = ROOT / '_forum-gate' / '.local' / 'ideas-data.json'
 output.parent.mkdir(parents=True, exist_ok=True)
 output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
 print(json.dumps({'ideas': sum(len(t['ideas']) for t in themes.values()),
-                  'themes': {name: len(t['ideas']) for name, t in themes.items()}, 'output': str(output)}))
+                  'themes': {theme['name']: len(theme['ideas']) for theme in data['themes']}, 'output': str(output)}))
