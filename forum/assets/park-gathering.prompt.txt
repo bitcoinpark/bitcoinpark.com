@@ -1,0 +1,13 @@
+Generated with the built-in imagegen tool on October 29, 2026.
+Reference: bitcoin-park-sketch-blue.png, architecture only.
+Final web asset: park-gathering.jpg (JPEG compression of the generated original).
+
+Use case: stylized-concept.
+Asset type: finished full-bleed background illustration for the Park Forum website, landscape 1536x1024.
+Primary request: create a distinctive Bitcoin Park visual identity grounded in its actual Nashville campus and the idea of people meeting to exchange ideas.
+Reference image role: the attached blue sketch is ONLY an architectural reference for the two familiar campus houses (low bungalow on left, taller two-story house with long porches on right). Reinterpret their recognizable shapes, not the sketch's drawing style.
+Style/medium: sophisticated mid-century screenprinted travel-poster illustration, bold flat cut-paper forms, slightly imperfect ink registration and subtle tactile grain, restrained geometric shapes and warm sunlight. NOT engraving, NOT crosshatching, NOT classical architecture.
+Scene: the campus nestled among mature trees, a small modern group gathered around a circular outdoor table in the foreground, curving paths linking the two houses and the gathering. Welcoming, thoughtful, human-scale, independent.
+Composition: website content will overlay the RIGHT 55% of the image, so concentrate the recognizable houses, circular table, and people in the LEFT 45%; leave the right half as quiet warm pale-blue sky and cream ground, with a tree cropped at the far right edge. Architecture around upper/middle left, gathering bottom left. Full bleed edge-to-edge intentional composition, no border.
+Palette: deep midnight navy, muted sky blue, warm ivory, burnt orange/ochre accents, small muted teal accents. Broad flat fields, sharp graphic silhouettes, richly composed without clutter.
+Constraints: no letters, words, logos, bitcoin coin icons, watermarks, border, website UI, Greek/Roman ruins, columns, marble philosophers, Golden Gate Bridge, or green engraved banknote style. People are contemporary, in casual clothing. This is a symbolic illustration of a gathering, not a documentary image.

@@ -1,8 +1,16 @@
 # Park Forum
 
-`/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. The header uses the same responsive logo sizing on the entrance, password gate, and catalog. Explore opens the public “The idea” page directly. The footer pairs “Join the conversation” with Attend a Forum on the left and “Shape the conversation” with Forum Sponsor on the right. Both captions use the invitation’s serif font at a larger size and align with their button text. All Forum text uses Libre Caslon Display. Forum Sponsor asks for the sponsor password. There is no intermediate choice window; Back returns from attendance or sponsor access to the idea page, then to Explore.
+`/forum/` is a single public page with the idea at the top, upcoming forums underneath, and membership information at the bottom. It requires no JavaScript. The first listing is Tuesday, December 15, 2026; the topic and program remain to be announced. Add confirmed future forums as additional `<li class="forum-event">` entries in `index.html`.
 
-Attend a Forum slowly approaches the temple and changes to a matching front-facing illustration before revealing the public attendance view. The current placeholder is “Coming Soon 2027,” with membership included-ticket copy and a link to the Bitcoin Park Membership form. Reduced-motion preferences skip the camera animation; Back can cancel the transition.
+The full-bleed campus illustration uses a warm screenprint style based on the Bitcoin Park Nashville houses. `forum.css` is isolated from the sponsor catalog styles. On mobile, the artwork introduces the page above the same continuous content panel. The public page has no sponsor or catalog button, password field, entrance screen, or scene transitions. Existing catalog URLs and authentication remain available directly.
+
+## Waitlist and membership
+
+The Join the waitlist button opens the published [Park Forum waitlist](https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform). It collects required full name, company, LinkedIn or X profile, and a brief reason for attending. Google Forms collects a required, validated email address with `RESPONDER_INPUT`; visitors do not need to sign in. The form is owned by the Bitcoin Park account used to create it. Responses can be managed privately in the [form editor](https://docs.google.com/forms/d/1bfP1QwMUqZwViGCfhbZMp3JvUY3V157ecKD9vVM_uvk/edit). Publishing the responder form does not grant editor or response access.
+
+Joining the waitlist does not confirm attendance. Forum tickets remain included with Bitcoin Park membership, and the original membership application link is retained.
+
+## Sponsor catalog
 
 `/catalog/` is a public password shell. AWS returns the complete catalog HTML and idea/date data only after authentication. `/forum/catalog/` redirects to the same gate. No password, signing secret, or catalog encryption key is shipped in browser code. Sessions last one hour and stay in the current browser tab. Leave catalog clears access.
 
@@ -33,11 +41,13 @@ On first deployment, or with `node scripts/deploy-forum-access.mjs --rotate-pass
 
 ## Local preview
 
-Static entrance and gate layouts can be previewed with `python3 -m http.server 4174 --bind 127.0.0.1`. Production AWS CORS deliberately excludes localhost. Run the Node tests for authentication and the Lambda adapter; verify the complete login flow on the Bitcoin Park origin after deployment.
+The public forum and gate layouts can be previewed with `python3 -m http.server 4174 --bind 127.0.0.1`. Production AWS CORS deliberately excludes localhost. Run the Node tests for authentication and the Lambda adapter; verify the complete login flow on the Bitcoin Park origin after deployment.
 
 ## Artwork and fonts
 
-The Roman forum artwork and blue Bitcoin Park linework were prepared for this design. The mark comes from Bitcoin Park. DM Sans and Libre Caslon Display include their license files in `assets/`.
+The public page uses `assets/park-gathering.jpg`, created with built-in imagegen using `assets/bitcoin-park-sketch-blue.png` as an architectural reference. The exact prompt is recorded in `assets/park-gathering.prompt.txt`. The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The Bitcoin Park wordmark and mark are retained.
+
+The older Roman artwork and styles remain for the separate sponsor catalog and cached pages.
 
 The matching temple perspective is `assets/roman-temple-front.webp`, created with built-in imagegen. Its exact generation prompt and reference roles are recorded in `assets/roman-temple-front.prompt.txt`.
 
