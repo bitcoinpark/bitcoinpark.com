@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <pattern id="hatch" width="4" height="4" patternUnits="userSpaceOnUse">
+      <path d="M-1 1 1-1M0 4 4 0M3 5 5 3" stroke="#527e9a" stroke-width=".5" opacity=".4"/>
+    </pattern>
+  </defs>
+  <path d="M13 1H115L127 13V115L115 127H13L1 115V13Z" fill="#edf7fd" fill-opacity=".94"/>
+  <path d="M13 1H115L127 13V115L115 127H13L1 115V13ZM15 7 7 15V113L15 121H113L121 113V15L113 7Z" fill="url(#hatch)" fill-rule="evenodd"/>
+  <path d="M13 1H115L127 13V115L115 127H13L1 115V13ZM15 7H113L121 15V113L113 121H15L7 113V15Z" stroke="#527e9a" stroke-width=".9"/>
+</svg>
