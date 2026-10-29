@@ -1,0 +1,23 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Final web asset: forum-park-porch-v3.jpg (1536x1024, JPEG quality 85).
+Edit target: forum-park-porch-v2.jpg.
+This revision corrects the stair geometry: both upper rail posts sit inside the pillar spacing, and the farther pillar stands outside the stair entrance behind the continuous far handrail. The rear wall remains absent, exposing bushes behind the table.
+
+Exact edit prompt:
+
+Use case: precise-object-edit.
+Asset: Park Forum website background illustration, 1536x1024 landscape.
+Edit target: supplied image. Make a genuine architectural geometry correction to the staircase and its two handrails. The previous image has the farther white pillar incorrectly standing in front of and blocking the far stair handrail.
+
+REQUIRED CORRECTION:
+The entire stair entrance and BOTH stair handrails must sit INSIDE the span between the two porch pillars. The pillars belong OUTSIDE the stair-rail corridor: near pillar outside the near/left stair rail, far pillar outside the far/right stair rail. There must be visible clearance between each upper rail post and the adjacent pillar base.
+
+Most importantly: the far/right staircase handrail must be a continuous, plainly visible metal handrail from its upper post on the landing down to its lower post. It must NOT disappear behind the back pillar. Do NOT "fix" this by erasing the rail where it overlaps a pillar or by painting a pillar in front of the rail again.
+
+Reposition the upper rail posts inward toward the open staircase. Move the far white pillar slightly outward and back along the porch if necessary, so it stands clearly beyond the far stair rail, with its base behind and outside the stair entrance. Rebuild the landing/stair junction coherently as needed. Keep the near pillar at the left side of the staircase. The result must read as: white pillar | open clearance | slim stair handrail | open stair width | slim stair handrail | open clearance | farther white pillar. This is a spatial arrangement in perspective, not labels to draw.
+
+At the top of the stairs both railings originate between the pillars and connect naturally down the stair sides. Keep only the two necessary stair handrails, their slim blue metal posts and a clear walking path. No floating rails, disconnected rail segments, rails vanishing into columns, a column standing within the stair path, or columns occupying the railing line. Use believable porch construction and three-dimensional perspective.
+
+PRESERVE:
+Keep the same overall low porch roof, pale brick building, glazing, classical column style, full composition and camera angle. Preserve the foreground cafe table and chairs, distant patio table and chairs, bushes directly behind the distant table with NO wall, tree canopy, pale blue sky, curved patio paving lines, gentle shadows, fine blue architectural linework and white/pale blue palette. Preserve the open right half for the website text panel. No text, symbols, page interface, people, or other added objects. Output only the corrected landscape illustration.
+
