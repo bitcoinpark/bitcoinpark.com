@@ -1,0 +1,13 @@
+Asset: roman-temple-front.webp
+Created with: built-in imagegen, 2026-10-28
+Source references: roman-forum.jpg and the user's close-up of its small temple.
+The generated original is retained in the local imagegen library. The web asset is a WebP encoding for page delivery.
+
+Final generation prompt:
+Use case: historical-scene / perspective edit.
+Asset type: full-screen Park Forum website background, landscape 1536 by 1024.
+Input image 1 is the existing complete Roman forum illustration and the exact style/environment reference. Input image 2 identifies the particular intact small temple that must be approached.
+Primary request: move the viewpoint forward through this SAME plaza and turn gently to face the selected temple directly from the front, at human eye level. This is the destination of a slow camera move inside the original image, not a new unrelated setting.
+Preserve the selected temple's triangular pediment, six front columns, deep shaded central doorway, and broad stone staircase; retain the original distant hill, umbrella pines, adjoining arcades, tower, paving stones, and tiny distant people where appropriate to this new angle. Maintain the same pale sky-blue and white monochrome engraved linework, fine crosshatching, paper texture, delicate atmospheric depth, and soft daylight.
+Composition: show the whole temple facade head-on and its staircase, with the temple centered around 66% of the frame width and occupying approximately 36% of the frame width. The roof starts around 28% of image height; the foot of the steps is around 76% of image height. Keep the left third spacious with pale sky and lightly detailed plaza so a website panel can sit there. Open sky above, paved approach below. Surrounding architecture stays part of the same forum and is visually subordinate.
+Do not add text, UI, borders, buttons, logos, readable inscriptions, modern objects, extra foreground buildings, dramatic lighting, different colors, or photographic textures. Preserve the recognizable temple identity and the exact illustration style.

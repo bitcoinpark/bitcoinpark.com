@@ -11,9 +11,9 @@
   <link rel="icon" href="/forum/assets/bitcoin-park-mark.png">
   <link rel="preload" href="/forum/assets/libre-caslon-display.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="/forum/assets/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="/forum/world.css?v=engraved-2">
+  <link rel="stylesheet" href="/forum/world.css?v=attend-4">
   <link rel="stylesheet" href="/forum/engraved.css?v=3">
-  <script type="module" src="/forum/world.js"></script>
+  <script type="module" src="/forum/world.js?v=attend-4"></script>
 </head>
 <body data-page="catalog">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -21,7 +21,7 @@
     <filter id="brand-color" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .075 0 0 0 0 .22 0 0 0 0 .36 .5 .5 .5 0 -.5"/></filter>
   </defs></svg>
   <main class="world-shell" id="main">
-    <div class="world" aria-hidden="true"><img class="world-image" src="/forum/assets/roman-forum.jpg" alt="" width="1536" height="1024" fetchpriority="high"><div class="world-light"></div></div>
+    <div class="world" aria-hidden="true"><img class="world-image" src="/forum/assets/roman-forum.jpg" alt="" width="1536" height="1024" fetchpriority="high"><img class="world-temple" data-src="/forum/assets/roman-temple-front.webp" alt="" width="1536" height="1024" decoding="async"><div class="world-light"></div></div>
     <header class="world-header">
       <a class="world-brand" href="/forum/" aria-label="Park Forum home"><img src="/forum/assets/bitcoin-park.webp" alt="" width="56" height="56"><span>Park Forum</span></a>
       <button class="world-back" id="world-back" type="button" hidden>← Back</button>
@@ -46,7 +46,18 @@
         <h2 id="learn-title" tabindex="-1">The best ideas begin<br>with <em>an open exchange.</em></h2>
         <p>The forum was a place to meet, question, and see the world a little differently. A public square where ideas became part of everyday life.</p>
         <p>Park Forums carry that spirit forward. A Park Forum is an elevated experience bringing together Bitcoin Park members and a highly curated group of entrepreneurs, builders, and business leaders to explore the questions shaping our future, together.</p>
-        <button class="scene-button" id="learn-back" type="button">Back to the Forum <span aria-hidden="true">↗</span></button>
+        <div class="learn-invitation"><h3>Join the conversation</h3><button class="scene-button" id="attend-forum" type="button">Attend a Forum <span aria-hidden="true">↗</span></button></div>
+      </div>
+    </section>
+    <section class="world-view journey-view" data-view="journey" aria-label="Approaching the Forum" hidden>
+      <p class="sr-only" role="status">Entering the Forum.</p>
+    </section>
+    <section class="world-view attend-view" data-view="attend" aria-labelledby="attend-title" hidden>
+      <div class="scene-panel attend-panel">
+        <p class="scene-eyebrow">Upcoming Park Forums</p>
+        <h2 id="attend-title" tabindex="-1">Coming Soon <span>2027</span></h2>
+        <p class="membership-note">Forum tickets included with</p>
+        <a class="scene-button membership-button" href="https://docs.google.com/forms/d/e/1FAIpQLScTSNdo55W1P6EFpOogtinl5gJnGkCDhDB097GVQkLwJeMa7A/viewform" target="_blank" rel="noopener noreferrer">Bitcoin Park Membership <span aria-hidden="true">↗</span></a>
       </div>
     </section>
     <section class="world-view" data-view="password" aria-labelledby="password-title">

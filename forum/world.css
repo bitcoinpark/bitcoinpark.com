@@ -29,3 +29,33 @@
 @media(max-width:700px){.frame-wash{fill:rgba(235,247,253,.68)}}
 @media(max-height:640px) and (min-width:701px){body{overflow:auto}.world-header{padding:20px 30px}.world-brand{font-size:37px}.world-brand img{width:42px;height:42px}.world-back{top:25px;right:30px}.world-view{padding-top:105px}.intro-view{padding-top:0}}
 @media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition:none!important;scroll-behavior:auto!important}.world-image{will-change:auto}html[data-entered="true"] .world-image{transform:scale(1.08)}}
+
+/* A second camera angle carries the visitor into the same illustrated forum. */
+.world-image{transition:transform 1.8s cubic-bezier(.22,.61,.36,1),filter 1.4s ease,opacity 1.6s ease,object-position 1.8s ease}
+.world-temple{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:66% 50%;opacity:0;transform:scale(.96);transform-origin:66% 55%;transition:opacity 1.5s ease,transform 1.5s ease;pointer-events:none}
+html[data-scene="attend"] .world-image{object-position:24% 50%;transform:var(--temple-camera);transition:transform 4.4s cubic-bezier(.22,.61,.36,1),object-position 4.4s cubic-bezier(.22,.61,.36,1),opacity 2s ease 1.2s}
+html[data-scene="attend"][data-temple-ready="true"] .world-image{opacity:0}
+html[data-scene="attend"][data-temple-ready="true"] .world-temple{opacity:1;transform:scale(1.025);transition:opacity 2.2s ease 1.2s,transform 4.4s cubic-bezier(.22,.61,.36,1)}
+html[data-scene="attend"] .world-light{background:linear-gradient(90deg,rgba(235,246,253,.26),rgba(235,246,253,0) 70%)}
+.learn-invitation{margin-top:27px;padding-top:23px;border-top:1px solid rgba(82,126,154,.3)}
+.learn-invitation h3{margin:0 0 13px;font:400 30px/1.15 var(--serif);letter-spacing:-.3px}
+.attend-view{justify-items:start;padding-left:clamp(32px,5vw,90px);padding-right:clamp(32px,5vw,90px)}
+.attend-panel{width:min(450px,100%)}
+.attend-panel h2{font-size:54px;line-height:1.03;margin-bottom:27px}
+.attend-panel h2>span{display:block;font-size:84px;line-height:1;margin-top:7px}
+.attend-panel .membership-note{margin-bottom:12px}
+.membership-button{width:100%;justify-content:space-between;gap:16px;text-align:left}
+@media(max-width:700px){
+  .learn-invitation{margin-top:22px;padding-top:20px}
+  .learn-invitation h3{font-size:28px}
+  .world-temple{height:min(88svh,180vw);object-position:66% 50%;transform:translateY(-4svh) scale(.96);mask-image:linear-gradient(#000 82%,transparent 100%)}
+  html[data-scene="attend"][data-temple-ready="true"] .world-temple{transform:translateY(-4svh) scale(1.025)}
+  .attend-view{align-items:end;justify-items:center;padding:calc(46svh + 30px) 20px 30px}
+  .attend-panel{width:min(450px,100%)}
+  .attend-panel h2{font-size:40px;margin-bottom:19px}
+  .attend-panel h2>span{font-size:64px;margin-top:4px}
+  .attend-panel .scene-eyebrow{font-size:9px}
+  .attend-panel .membership-button{font-size:20px}
+}
+@media(max-width:370px){.attend-panel h2{font-size:36px}.attend-panel h2>span{font-size:57px}.attend-panel .membership-button{font-size:18px;padding-inline:19px}}
+@media(prefers-reduced-motion:reduce){html[data-scene="attend"] .world-image{transform:none}.world-temple{will-change:auto}html[data-scene="attend"][data-temple-ready="true"] .world-temple{transform:none}}

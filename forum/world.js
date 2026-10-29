@@ -6,11 +6,17 @@ const back = document.querySelector('#world-back');
 const form = document.querySelector('#password-form');
 const password = document.querySelector('#sponsor-password');
 const feedback = document.querySelector('#password-feedback');
+const temple = document.querySelector('.world-temple');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 let current = 'intro', submitting = false;
+let templeLoad, journeyTimer, journeyVersion = 0;
 function show(view, focus = true) {
+  clearTimeout(journeyTimer); journeyVersion++;
   current = view;
   document.documentElement.dataset.entered = String(view !== 'intro');
+  document.documentElement.dataset.scene = ['journey', 'attend'].includes(view) ? 'attend' : 'forum';
   for (const panel of views) panel.hidden = panel.dataset.view !== view;
+  window.scrollTo(0, 0);
   back.hidden = view === 'intro' || submitting;
   back.textContent = catalogMode ? '← Park Forum' : '← Back';
   if (focus) requestAnimationFrame(() => {
@@ -25,12 +31,50 @@ function sponsor() {
 }
 document.querySelector('#explore').addEventListener('click', () => show('choices'));
 document.querySelector('#forum-sponsor').addEventListener('click', sponsor);
-document.querySelector('#learn-more').addEventListener('click', () => show('learn'));
-document.querySelector('#learn-back').addEventListener('click', () => show('choices'));
+function prepareTemple() {
+  if (temple.complete && temple.naturalWidth) return Promise.resolve(true);
+  if (!templeLoad) {
+    temple.src = temple.dataset.src;
+    templeLoad = new Promise(resolve => {
+      const timeout = setTimeout(() => resolve(false), 8000);
+      temple.decode().then(() => {
+        clearTimeout(timeout);
+        document.documentElement.dataset.templeReady = 'true';
+        resolve(true);
+      }, () => { clearTimeout(timeout); templeLoad = undefined; resolve(false); });
+    });
+  }
+  return templeLoad;
+}
+function positionTempleCamera() {
+  const scene = document.querySelector('.world-image');
+  const style = getComputedStyle(scene), width = scene.clientWidth, height = scene.clientHeight;
+  const sourceWidth = scene.naturalWidth || 1536, sourceHeight = scene.naturalHeight || 1024;
+  const fit = Math.max(width / sourceWidth, height / sourceHeight);
+  // Pan the image crop as well as zooming, so the temple can enter a narrow screen.
+  const px = .24, py = .5;
+  const [ox, oy] = style.transformOrigin.split(' ').map(parseFloat);
+  const tx = (width - sourceWidth * fit) * px + sourceWidth * .24 * fit;
+  const ty = (height - sourceHeight * fit) * py + sourceHeight * .735 * fit;
+  const scale = 2.6;
+  const x = width * .66 - (ox + scale * (tx - ox));
+  const y = height * (width <= 700 ? .38 : .55) - (oy + scale * (ty - oy));
+  scene.style.setProperty('--temple-camera', `translate3d(${x}px,${y}px,0) scale(${scale})`);
+}
+document.querySelector('#learn-more').addEventListener('click', () => { show('learn'); prepareTemple(); });
+document.querySelector('#attend-forum').addEventListener('click', async () => {
+  positionTempleCamera();
+  show('journey', false);
+  const version = journeyVersion, started = performance.now();
+  await prepareTemple();
+  if (version !== journeyVersion || current !== 'journey') return;
+  const delay = reduced.matches ? 0 : Math.max(0, 4400 - (performance.now() - started));
+  journeyTimer = setTimeout(() => show('attend'), delay);
+});
 back.addEventListener('click', () => {
   if (submitting) return;
   if (catalogMode) location.assign('/forum/');
-  else show(current === 'choices' ? 'intro' : 'choices');
+  else show(['attend', 'journey'].includes(current) ? 'learn' : current === 'choices' ? 'intro' : 'choices');
 });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !back.hidden) back.click(); });
 password.addEventListener('input', () => { password.removeAttribute('aria-invalid'); feedback.textContent = ''; });
@@ -61,11 +105,12 @@ form.addEventListener('submit', async event => {
     if (current === 'password') password.focus({ preventScroll: true });
   }
 });
-const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+window.addEventListener('resize', () => { if (current === 'journey') positionTempleCamera(); }, { passive: true });
+reduced.addEventListener('change', () => { if (reduced.matches && current === 'journey') show('attend'); });
 if (matchMedia('(pointer: fine)').matches) {
   let frame;
   document.addEventListener('pointermove', event => {
-    if (reduced.matches || current === 'intro' || frame) return;
+    if (reduced.matches || ['intro', 'journey', 'attend'].includes(current) || frame) return;
     frame = requestAnimationFrame(() => {
       const scene = document.querySelector('.world-image');
       scene?.style.setProperty('--scene-x', `${(event.clientX/innerWidth-.5)*-10}px`);

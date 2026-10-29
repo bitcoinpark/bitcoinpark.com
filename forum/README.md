@@ -2,6 +2,8 @@
 
 `/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. Explore enters the scene and offers Forum Sponsor or Learn More. Learn More is public. Forum Sponsor asks for the sponsor password.
 
+Learn More offers Attend a Forum below “Join the conversation.” It slowly approaches the temple and changes to a matching front-facing illustration before revealing the public attendance view. The current placeholder is “Coming Soon 2027,” with membership included-ticket copy and a link to the Bitcoin Park Membership form. Reduced-motion preferences skip the camera animation; Back can cancel the transition.
+
 `/catalog/` is a public password shell. AWS returns the complete catalog HTML and idea/date data only after authentication. `/forum/catalog/` redirects to the same gate. No password, signing secret, or catalog encryption key is shipped in browser code. Sessions last one hour and stay in the current browser tab. Leave catalog clears access.
 
 The catalog preserves 14 dates and 57 searchable ideas across 10 themes. Date and idea selections are drafts for discussion; they do not hold dates or create sponsor records.
@@ -36,3 +38,5 @@ Static entrance and gate layouts can be previewed with `python3 -m http.server 4
 ## Artwork and fonts
 
 The Roman forum artwork and blue Bitcoin Park linework were prepared for this design. The mark comes from Bitcoin Park. DM Sans and Libre Caslon Display include their license files in `assets/`.
+
+The matching temple perspective is `assets/roman-temple-front.webp`, created with built-in imagegen. Its exact generation prompt and reference roles are recorded in `assets/roman-temple-front.prompt.txt`.
