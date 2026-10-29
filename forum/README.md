@@ -1,6 +1,6 @@
 # Park Forum
 
-`/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. Explore opens the public “The idea” page directly. The footer pairs “Join the conversation” with Attend a Forum on the left and “Shape the conversation” with Forum Sponsor on the right. Both captions match “An invitation from”; all Forum text uses Libre Caslon Display. Forum Sponsor asks for the sponsor password. There is no intermediate choice window; Back returns from attendance or sponsor access to the idea page, then to Explore.
+`/forum/` opens with the full-screen Roman forum illustration, Park Forum logo, and Explore button. Explore opens the public “The idea” page directly. The footer pairs “Join the conversation” with Attend a Forum on the left and “Shape the conversation” with Forum Sponsor on the right. Both captions use the invitation’s serif font at a larger size and align with their button text. All Forum text uses Libre Caslon Display. Forum Sponsor asks for the sponsor password. There is no intermediate choice window; Back returns from attendance or sponsor access to the idea page, then to Explore.
 
 Attend a Forum slowly approaches the temple and changes to a matching front-facing illustration before revealing the public attendance view. The current placeholder is “Coming Soon 2027,” with membership included-ticket copy and a link to the Bitcoin Park Membership form. Reduced-motion preferences skip the camera animation; Back can cancel the transition.
 
