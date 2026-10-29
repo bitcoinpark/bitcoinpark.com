@@ -67,3 +67,11 @@ html[data-scene="catalog"][data-arch-ready="true"] .world-image{opacity:0}
 html[data-scene="catalog"][data-arch-ready="true"] .world-arch{opacity:1;transform:scale(1.025);transition:opacity 2.2s ease 1s,transform 4.2s cubic-bezier(.22,.61,.36,1)}
 html[data-scene="catalog"] .world-light{background:linear-gradient(180deg,rgba(235,246,253,.22),rgba(235,246,253,.05) 55%,rgba(235,246,253,.18))}
 @media(prefers-reduced-motion:reduce){html[data-scene="catalog"] .world-image{transform:none}html[data-scene="catalog"][data-arch-ready="true"] .world-arch{transform:scale(1.025)}}
+
+/* The host invitation sits just beneath the raised entrance button. */
+.intro-invitation{position:absolute;top:calc(50% - clamp(56px,10svh,112px) + 66px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;max-width:calc(100% - 40px);padding:4px 0;color:var(--ink);text-decoration:none;white-space:nowrap;text-shadow:0 1px 10px rgba(247,251,255,.9)}
+.invitation-label{font:400 clamp(12px,3vw,16px)/1.4 var(--sans);color:#50718b}
+.invitation-name{font:400 clamp(28px,6vw,36px)/1.15 var(--serif);letter-spacing:-.3px}
+.invitation-name>span{display:inline-block;margin-left:5px;font:400 20px/1 var(--sans)}
+.intro-invitation:hover .invitation-name{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+@media(max-width:700px){.intro-invitation{top:calc(50% - clamp(56px,10svh,112px) + 60px);gap:9px}.invitation-name>span{font-size:17px;margin-left:3px}}
