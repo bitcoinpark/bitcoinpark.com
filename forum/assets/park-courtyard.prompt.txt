@@ -1,0 +1,17 @@
+Edited with the built-in imagegen tool on October 29, 2026.
+Edit target: park-gathering.jpg.
+Architectural reference: user-supplied photograph of Bitcoin Park's Nashville courtyard and buildings.
+Final web asset: park-courtyard.jpg (JPEG compression of the generated edit).
+
+Use case: precise-object-edit.
+Asset type: corrected background illustration for the Park Forum website, landscape 1536x1024.
+Image 1 is the EDIT TARGET: the current navy, ivory, orange and pale-blue screenprint-style campus illustration.
+Image 2 is an ARCHITECTURAL AND COURTYARD REFERENCE: an actual photograph of Bitcoin Park in Nashville. Use its physical details to correct the target illustration; do not convert the result to photography.
+
+Make only these requested corrections:
+1. KEEP the left-hand bungalow, tree canopy, overall framing, color palette, screenprinted textures and right-side negative space from Image 1.
+2. REPLACE the inaccurate right-hand house architecture with a faithful illustrated version of the right-hand house in Image 2. It has light ivory painted brick walls, a broad dark charcoal porch roof/balcony with a SOLID dark parapet across the front (no white crisscross rails), FOUR substantial classical ROUND dark charcoal columns supporting that porch/balcony, a shallow hipped gray roof rather than a triangular front gable, a small centered boxy dormer, deep pale eaves with visible brackets, tall dark-trimmed windows and doors, broad central gray entrance stairs with simple thin dark metal handrails. Preserve its actual proportions and characteristic Roman/classical round porch columns. This is the REAL Nashville house, not an invented Roman temple. Use the photo as the factual authority.
+3. REPLACE the current circular stone gathering area and oversized Adirondack chairs with an OPEN PAVED COURTYARD in front of both houses, matching the photograph. Use clear gray stone paving, several small round black metal cafe tables with thin visible legs and simple dark metal cafe chairs, plus a simple rectangular dark outdoor table. A few contemporary people can be seated around the cafe tables in conversation, in the existing illustrated style. All tables should unmistakably be normal furniture with flat tabletops and visible legs. Remove any circular masonry feature, firepit, fire bowl, built-in circular seating, campfire or open flame.
+4. Add the subtle outdoor string lights visible in the reference around the porch/courtyard, without clutter.
+
+Invariants: preserve the successful left-hand building, the warm navy/ochre/ivory art direction, the mature trees, the landscape size and composition. Keep the RIGHT half quiet for the existing website text panel. Do not add any typography, logos, website interface, watermark, border, classical ruins, marble statuary, new architectural wings or generic temple pediments.

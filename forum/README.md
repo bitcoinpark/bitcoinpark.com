@@ -45,7 +45,9 @@ The public forum and gate layouts can be previewed with `python3 -m http.server 
 
 ## Artwork and fonts
 
-The public page uses `assets/park-gathering.jpg`, created with built-in imagegen using `assets/bitcoin-park-sketch-blue.png` as an architectural reference. The exact prompt is recorded in `assets/park-gathering.prompt.txt`. The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The Bitcoin Park wordmark and mark are retained.
+The public page uses `assets/park-courtyard.jpg`, revised with built-in imagegen using the original illustration and a user-supplied photograph of the Nashville campus. The right-hand building follows the photograph's ivory brick, dark round porch columns, solid balcony parapet, hipped roof, dormer, and central stairs. The foreground is a paved courtyard with cafe tables and chairs, without a firepit. The left bungalow and screenprint palette are preserved. The exact edit prompt is recorded in `assets/park-courtyard.prompt.txt`; the prior illustration and its original prompt remain in `assets/park-gathering.*`.
+
+The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The Bitcoin Park wordmark and mark are retained.
 
 The older Roman artwork and styles remain for the separate sponsor catalog and cached pages.
 
