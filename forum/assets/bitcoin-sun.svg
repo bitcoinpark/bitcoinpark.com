@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <defs>
+    <radialGradient id="halo">
+      <stop offset=".35" stop-color="#ffb02e" stop-opacity=".65"/>
+      <stop offset=".64" stop-color="#ffbd49" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#ffd990" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sun" cx=".35" cy=".28" r=".85">
+      <stop stop-color="#ffc34e"/>
+      <stop offset=".48" stop-color="#ffa51f"/>
+      <stop offset="1" stop-color="#f7931a"/>
+    </radialGradient>
+  </defs>
+  <circle cx="80" cy="80" r="80" fill="url(#halo)"/>
+  <g stroke="#f7a125" stroke-width="2.5" stroke-linecap="round">
+    <path d="M80 13 79 25M112 22 106 33M136 47 125 53M146 80 133 79M136 112 125 106M112 136 105 124M80 147 81 133M47 136 54 125M23 112 35 106M13 80 27 81M23 47 35 54M47 23 54 35"/>
+  </g>
+  <circle cx="80" cy="80" r="44" fill="url(#sun)" stroke="#ed8b14" stroke-width="1.3"/>
+  <g transform="translate(80 80) rotate(14) scale(.72) translate(-3 -8)" fill="#fffaf0">
+    <path fill-rule="evenodd" d="M-20-27H3C17-27 25-20 25-9C25-2 22 3 16 6C24 9 28 15 28 23C28 36 18 43 2 43H-20V-27ZM-7-15V1H1C8 1 12-2 12-7S8-15 1-15H-7ZM-7 13V31H2C11 31 15 28 15 22S11 13 2 13H-7Z"/>
+    <path d="M-12-37H-5V-25H-12ZM2-37H9V-25H2ZM-12 41H-5V53H-12ZM2 41H9V53H2Z"/>
+  </g>
+</svg>
