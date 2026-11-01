@@ -1,0 +1,18 @@
+Created with the built-in imagegen tool on November 1, 2026.
+Final web asset: forum-park-ink.jpg (1536x1024, JPEG quality 88).
+Edit target: forum-park-porch-v5.jpg.
+Style reference: user-provided black-and-white Parthenon drawing. The reference is not reproduced or included in the website.
+
+Exact generation prompt:
+
+Use case: style-transfer.
+Asset: Park Forum website background, landscape 1536x1024.
+Input image 1 is the EDIT TARGET: the CURRENT Bitcoin Park porch illustration and composition.
+Input image 2 is ONLY A DRAWING STYLE REFERENCE. Do not reproduce its temple, composition, ruins, watermark, or scene.
+
+Redraw the ENTIRE current porch scene from image 1 using the bold black-and-white hand-inked drawing style of image 2. Preserve the recognizable Bitcoin Park building, low porch roof, brick facade, glass doorway, two main porch pillars, inset shallow steps, round metal cafe tables and chairs, bushes directly behind the rear table, large tree canopy, leafy planting and curved courtyard paving. Keep the same camera angle and overall composition: architecture and furniture to the left, quiet open right half reserved for the existing website content panel. The reference's STYLE is essential: confident thick irregular black outlines, chunky solid black shadow areas, vigorous short parallel hatch marks, sketchy organic contours and pure white highlights. The leaves, bricks, chairs and paving must all use this same expressive hand-drawn ink vocabulary. No blue watercolor, soft gray shading, smooth vector look, delicate etching or photorealism.
+
+Integrate restrained Parthenon architectural details INTO the current porch: convert its existing round pillars to handsome fluted Doric columns with plain capitals; give the low porch roof a shallow classical entablature with a simple triglyph-and-metope frieze and a small low triangular pediment above the entrance. The modern Bitcoin Park porch, brickwork, glazed entry and cafe seating must remain plainly recognizable. Do not replace the building with a large ancient temple or add ruins. Keep the leftmost column supported on its own full-height porch foundation OUTSIDE the stair footprint. Keep the steps inset to its right, between the columns. No railings, fences or balustrades.
+
+Pure black ink on clean white paper. White open sky, a few sparse hand-drawn cloud contours. Preserve the quiet right half and mostly white right-side courtyard so the webpage remains legible. Do not add people, lettering, logos, watermarks, frames or interface. This is a restyling of the CURRENT scene, with a few classical architectural details.
+
