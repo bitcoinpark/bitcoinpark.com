@@ -41,7 +41,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 /* The frame and header stay still; only the content region can scroll. */
 .forum-window { display: flex; flex-direction: column; width: min(680px, 53%); min-height: 0; max-height: 100%; padding: 30px 34px 26px; border: 0 solid transparent; border-image: url('/forum/assets/forum-frame-ink.svg') 24 fill / 20px / 0 stretch; border-radius: 18px; background: transparent; }
 .forum-header { flex: none; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
-.forum-brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font: 400 37px/1 var(--serif); letter-spacing: -1px; text-decoration: none; white-space: nowrap; }
+.forum-brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--accent); font: 400 37px/1 var(--serif); letter-spacing: -1px; text-decoration: none; white-space: nowrap; }
 .forum-mark { display: block; flex: none; width: 44px; height: 44px; background: currentColor; -webkit-mask: url('/forum/assets/bitcoin-park-brandmark-white.png') center / contain no-repeat; mask: url('/forum/assets/bitcoin-park-brandmark-white.png') center / contain no-repeat; }
 .park-brand { display: flex; flex-direction: column; gap: 7px; text-decoration: none; }
 .park-brand span { font-size: 9px; letter-spacing: .09em; color: var(--muted); }
@@ -68,18 +68,18 @@ h1 em { color: var(--accent); font-weight: 400; }
 .event-date strong { font: 400 53px/1.03 var(--serif); }
 .event-status { display: flex; align-items: center; gap: 7px; color: var(--accent); font-size: 9px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; }
 .event-status > span { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
-.event-details h3 { margin: 6px 0 5px; font: 400 30px/1.1 var(--serif); letter-spacing: -.35px; }
+.event-details h3 { margin: 6px 0 5px; color: var(--accent); font: 400 30px/1.1 var(--serif); letter-spacing: -.35px; }
 .event-details p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
 .event-details .event-note { font-size: 10px; margin-top: 3px; }
-.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; max-width: 100%; min-height: 58px; padding: 15px 24px; border: 0 solid transparent; border-image: url('/forum/assets/forum-frame-ink.svg') 24 fill / 14px / 0 stretch; border-radius: 12px; background: transparent; color: var(--ink); text-decoration: none; font: 400 22px/1.25 var(--serif); }
-.button:hover { color: var(--accent); filter: brightness(.94); }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; max-width: 100%; min-height: 58px; padding: 15px 24px; border: 0 solid transparent; border-image: url('/forum/assets/forum-frame-accent.svg') 24 fill / 14px / 0 stretch; border-radius: 12px; background: transparent; color: var(--accent); text-decoration: none; font: 400 22px/1.25 var(--serif); }
+.button:hover { text-decoration: underline; text-underline-offset: 4px; }
 .button-arrow { flex: none; width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .application-button { min-width: 230px; margin-top: 15px; }
 .future-forums { margin: 22px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
 
 .membership { padding: 18px 0 0; border-top: 1px solid var(--line); }
 .membership p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.7; }
-.membership-link { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; padding-block: 10px; color: var(--muted); font-size: 11px; font-weight: 500; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.membership-link { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; padding-block: 10px; color: var(--accent); font-size: 11px; font-weight: 500; text-underline-offset: 4px; text-decoration-thickness: 1px; }
 .membership-link:hover { color: var(--accent); }
 
 @media (min-width: 1700px) {
