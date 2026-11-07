@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nashville Energy & Mining Summit 2027 — NEMS27 | Bitcoin Park</title>
+    <meta name="description" content="NEMS27 — the Nashville Energy & Mining Summit, January 21–22, 2027 at Bitcoin Park Nashville. A curated gathering of ~200 operators, engineers, policymakers, entrepreneurs and capital allocators shaping the future of energy, grids and compute. Apply to attend.">
+    <link rel="canonical" href="https://bitcoinpark.com/nems/index_2027.html">
+    <link rel="icon" href="../favicon.ico">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NEMS27 — Nashville Energy & Mining Summit · January 21–22, 2027">
+    <meta property="og:description" content="Monetizing the megawatt. Two curated days with the operators, engineers, policymakers and capital allocators building the future of energy, grids and compute. Apply to attend.">
+    <meta property="og:url" content="https://bitcoinpark.com/nems/index_2027.html">
+    <meta property="og:image" content="https://bitcoinpark.com/nems/thumbs/technical-problems.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@bitcoinpark_">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0f1620;
+            --navy-2: #1a2332;
+            --navy-3: #22304a;
+            --ink: #0b1118;
+            --orange: #ff6b35;
+            --orange-deep: #e55a2b;
+            --white: #ffffff;
+            --gray-1: #b0b8c4;
+            --gray-2: #8a94a6;
+            --line: rgba(255,255,255,0.10);
+            --max: 1280px;
+            --gutter: clamp(20px, 4vw, 48px);
+            --radius: 6px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--navy-2);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: inherit; }
+        img { display: block; max-width: 100%; }
+        .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange);
+        }
+        .eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--orange); }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 16px 32px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase;
+            text-decoration: none; border-radius: var(--radius); transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+            border: 2px solid transparent; white-space: nowrap;
+        }
+        .btn-primary { background: var(--orange); color: var(--white); box-shadow: 0 6px 24px rgba(255,107,53,0.30); }
+        .btn-primary:hover { background: var(--orange-deep); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,107,53,0.45); }
+        .btn-ghost { border-color: rgba(255,255,255,0.35); color: var(--white); background: transparent; }
+        .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+        .btn-sm { padding: 10px 18px; font-size: 0.8rem; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15,22,32,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+        .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .nav-brand img { height: 30px; width: auto; }
+        .nav-brand .divider { width: 1px; height: 22px; background: rgba(255,255,255,0.25); }
+        .nav-brand .wordmark { font-weight: 800; letter-spacing: 0.14em; font-size: 0.85rem; }
+        .nav-brand .wordmark span { color: var(--orange); }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-links a { text-decoration: none; font-size: 0.85rem; font-weight: 600; color: var(--gray-1); transition: color .2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { display: flex; align-items: center; gap: 16px; }
+        .hamburger { display: none; background: none; border: 0; cursor: pointer; width: 42px; height: 42px; flex-direction: column; justify-content: center; align-items: center; gap: 5px; }
+        .hamburger span { width: 22px; height: 2px; background: var(--white); transition: all .3s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99; background: var(--navy); border-bottom: 1px solid var(--line); padding: 16px var(--gutter) 24px; flex-direction: column; gap: 4px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { text-decoration: none; padding: 12px 0; font-weight: 600; color: var(--gray-1); border-bottom: 1px solid var(--line); }
+        .mobile-menu a:last-child { border-bottom: 0; }
+
+        /* HERO */
+        .hero {
+            position: relative; display: flex; flex-direction: column; justify-content: center;
+            padding: 150px 0 0; overflow: hidden;
+            background: radial-gradient(1200px 600px at 80% 10%, rgba(255,107,53,0.14), transparent 60%), var(--navy-2);
+        }
+        .hero-grid { position: absolute; inset: 0; z-index: 0; opacity: .35;
+            background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+            background-size: 64px 64px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), transparent 70%); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), transparent 70%); }
+        .hero .container { position: relative; z-index: 2; }
+        .hero-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-bottom: 28px; font-size: 0.85rem; font-weight: 600; color: var(--gray-1); letter-spacing: 0.06em; text-transform: uppercase; }
+        .hero-kicker .pill { padding: 6px 12px; border: 1px solid rgba(255,107,53,0.6); color: var(--orange); border-radius: 999px; font-size: 0.72rem; letter-spacing: 0.18em; font-weight: 800; }
+        .hero-title { font-size: clamp(2.6rem, 7.2vw, 6.4rem); font-weight: 900; line-height: 0.98; letter-spacing: -0.03em; max-width: 14ch; }
+        .hero-title .muted { color: var(--gray-1); }
+        .hero-title .year { color: var(--orange); }
+        .hero-sub { margin-top: 28px; max-width: 58ch; font-size: clamp(1.05rem, 1.5vw, 1.3rem); color: var(--gray-1); font-weight: 500; }
+        .hero-meta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px 40px; }
+        .hero-meta div { display: flex; flex-direction: column; gap: 2px; }
+        .hero-meta .k { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-2); font-weight: 700; }
+        .hero-meta .v { font-size: 1.15rem; font-weight: 800; }
+        .hero-actions { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+        .hero-art { position: relative; margin-top: 10px; z-index: 1; pointer-events: none; }
+        .hero-art img { width: 100%; height: 36vw; object-fit: cover; object-position: center bottom; mix-blend-mode: lighten; filter: brightness(1.1) contrast(1.15); }
+        .hero-art::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(to bottom, transparent, var(--navy-2)); }
+
+        /* STATS STRIP */
+        .stats { background: var(--navy); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+        .stat { padding: 34px var(--gutter); border-right: 1px solid var(--line); }
+        .stat:last-child { border-right: 0; }
+        .stat .n { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1; color: var(--white); }
+        .stat .n em { font-style: normal; color: var(--orange); }
+        .stat .l { margin-top: 8px; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-2); font-weight: 600; }
+
+        /* SECTIONS */
+        .section { padding: clamp(72px, 9vw, 120px) 0; }
+        .section-alt { background: var(--navy); }
+        .section-head { max-width: 760px; margin-bottom: clamp(36px, 5vw, 56px); }
+        .section-head h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin: 14px 0 16px; }
+        .section-head p { font-size: 1.1rem; color: var(--gray-1); }
+        .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+        .section-head.center .eyebrow { justify-content: center; }
+        .section-head.split { max-width: none; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+        .section-head.split > div { max-width: 760px; }
+
+        /* ABOUT */
+        .about-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(32px, 5vw, 80px); align-items: start; }
+        .about-lede { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 600; line-height: 1.45; letter-spacing: -0.01em; }
+        .about-lede strong { color: var(--orange); font-weight: 800; }
+        .about-copy { margin-top: 22px; color: var(--gray-1); font-size: 1.05rem; }
+        .about-copy p + p { margin-top: 14px; }
+        .about-aside { background: var(--navy); border: 1px solid var(--line); border-radius: 10px; padding: 32px; }
+        .about-aside h3 { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
+        .about-aside ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .about-aside li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: start; }
+        .about-aside .rom { font-weight: 800; color: var(--gray-2); font-size: 0.9rem; letter-spacing: 0.08em; padding-top: 3px; }
+        .about-aside .t { font-weight: 700; }
+        .about-aside .d { color: var(--gray-1); font-size: 0.92rem; }
+        .about-aside .btn { margin-top: 24px; width: 100%; }
+
+        /* PROOF OF WORK */
+        .recaps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .recap-card { display: flex; flex-direction: column; background: var(--navy); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; text-decoration: none; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+        .recap-card:hover { transform: translateY(-5px); border-color: rgba(255,107,53,0.55); box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
+        .recap-card.featured { grid-column: span 2; }
+        .recap-image { position: relative; aspect-ratio: 16/10; overflow: hidden; background: var(--navy-3); }
+        .recap-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+        .recap-card:hover .recap-image img { transform: scale(1.04); }
+        .recap-type { position: absolute; top: 12px; left: 12px; background: rgba(15,22,32,0.85); color: var(--orange); padding: 5px 10px; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 800; border-radius: 4px; }
+        .recap-content { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .recap-title { font-size: 1.12rem; font-weight: 800; line-height: 1.3; letter-spacing: -0.01em; }
+        .recap-card.featured .recap-title { font-size: 1.45rem; }
+        .recap-speaker { font-size: 0.86rem; color: var(--orange); font-weight: 600; }
+        .recap-description { font-size: 0.93rem; color: var(--gray-1); }
+        .recap-more { margin-top: auto; padding-top: 14px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); display: flex; align-items: center; gap: 8px; }
+        .recap-more::after { content: '→'; transition: transform .2s; }
+        .recap-card:hover .recap-more::after { transform: translateX(4px); }
+
+        /* WATCH HIGHLIGHTS */
+        .tabs { display: inline-flex; gap: 4px; background: var(--navy-2); border: 1px solid var(--line); padding: 4px; border-radius: 999px; }
+        .tab { background: none; border: 0; color: var(--gray-1); font: inherit; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: all .2s; }
+        .tab.active { background: var(--orange); color: var(--white); }
+        .tab:not(.active):hover { color: var(--white); }
+        .video-panel { display: none; }
+        .video-panel.active { display: block; }
+        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .video-tile { position: relative; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; background: var(--navy-3); border: 1px solid var(--line); cursor: pointer; }
+        .video-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, opacity .3s; }
+        .video-tile:hover img { transform: scale(1.04); }
+        .video-tile .play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(to top, rgba(11,17,24,0.85), rgba(11,17,24,0.05) 60%); }
+        .video-tile .play-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(255,107,53,0.5); transition: transform .2s; }
+        .video-tile:hover .play-btn { transform: scale(1.08); }
+        .video-tile .play-btn::after { content: ''; margin-left: 4px; border-left: 16px solid var(--white); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+        .video-tile .caption { position: absolute; left: 14px; right: 14px; bottom: 12px; font-size: 0.86rem; font-weight: 700; line-height: 1.3; text-shadow: 0 2px 8px rgba(0,0,0,.6); }
+        .video-tile iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .playlist-link { margin-top: 26px; text-align: center; }
+        .playlist-link a { color: var(--orange); font-weight: 700; text-decoration: none; font-size: 0.95rem; }
+        .playlist-link a:hover { text-decoration: underline; }
+
+        /* TRACKS */
+        .topics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+        .topic-card { position: relative; background: var(--navy-2); border: 1px solid var(--line); border-radius: 10px; padding: 30px 28px 30px; transition: transform .25s ease, border-color .25s ease; overflow: hidden; }
+        .topic-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+        .topic-card:hover { transform: translateY(-4px); border-color: rgba(255,107,53,0.5); }
+        .topic-card:hover::before { transform: scaleX(1); }
+        .topic-num { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; color: var(--orange); margin-bottom: 14px; }
+        .topic-card h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.25; }
+        .topic-card p { color: var(--gray-1); font-size: 0.95rem; }
+
+        /* AUDIENCE */
+        .audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .audience-item { background: var(--navy); border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 8px; padding: 26px 24px; font-weight: 700; font-size: 1.02rem; line-height: 1.35; }
+        .audience-item small { display: block; margin-top: 8px; font-weight: 500; color: var(--gray-1); font-size: 0.88rem; }
+
+        /* SPONSORS */
+        .sponsor-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 14px; margin-top: 8px; }
+        .sponsor-row a { text-decoration: none; padding: 12px 20px; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; letter-spacing: 0.04em; color: var(--gray-1); transition: all .2s; font-size: 0.95rem; }
+        .sponsor-row a:hover { color: var(--white); border-color: var(--orange); }
+        .sponsor-cta { text-align: center; margin-top: 34px; color: var(--gray-1); }
+        .sponsor-cta a { color: var(--orange); font-weight: 700; text-decoration: none; }
+        .sponsor-cta a:hover { text-decoration: underline; }
+
+        /* VENUE */
+        .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
+        .venue-grid .btn { margin-top: 24px; }
+        .venue-copy p { color: var(--gray-1); font-size: 1.05rem; }
+        .venue-copy p + p { margin-top: 14px; }
+        .venue-card { background: var(--navy); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+        .venue-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+        .venue-card .vc { padding: 24px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .venue-card .k { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gray-2); font-weight: 700; }
+        .venue-card .v { font-weight: 700; margin-top: 2px; }
+
+        /* APPLY CTA */
+        .apply { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--orange) 0%, #ff8657 60%, #ffa078 100%); color: var(--ink); }
+        .apply::after { content: ''; position: absolute; right: -10%; top: -40%; width: 60vw; height: 60vw; border-radius: 50%; background: rgba(255,255,255,0.12); pointer-events: none; }
+        .apply .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .apply h2 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+        .apply p { margin-top: 18px; font-size: 1.15rem; font-weight: 500; max-width: 52ch; color: rgba(11,17,24,0.85); }
+        .apply .actions { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+        .apply .btn-dark { background: var(--ink); color: var(--white); box-shadow: 0 10px 30px rgba(11,17,24,0.3); font-size: 1.05rem; padding: 20px 40px; }
+        .apply .btn-dark:hover { background: #000; transform: translateY(-2px); }
+        .apply .note { font-size: 0.85rem; color: rgba(11,17,24,0.75); font-weight: 600; }
+
+        /* FOOTER */
+        .footer { background: var(--ink); padding: 56px 0 36px; border-top: 1px solid var(--line); }
+        .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; align-items: center; }
+        .footer-brand { display: flex; align-items: center; gap: 16px; }
+        .footer-brand img { height: 34px; width: auto; opacity: .95; }
+        .footer-brand p { color: var(--gray-2); font-size: 0.85rem; max-width: 44ch; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 22px; }
+        .footer-links a { color: var(--gray-1); text-decoration: none; font-size: 0.88rem; font-weight: 600; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-bottom { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: var(--gray-2); font-size: 0.8rem; }
+        .footer-bottom a { color: var(--gray-2); text-decoration: none; }
+        .footer-bottom a:hover { color: var(--white); }
+
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+        .reveal.in { opacity: 1; transform: none; }
+
+        @media (max-width: 1024px) {
+            .recaps-grid, .topics-grid, .video-grid { grid-template-columns: repeat(2, 1fr); }
+            .recap-card.featured { grid-column: span 2; }
+            .audience-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat:nth-child(2) { border-right: 0; }
+            .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+            .about-grid, .venue-grid, .apply .container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta .btn { display: none; }
+            .hamburger { display: flex; }
+            .hero { padding: 110px 0 0; }
+            .hero-art { margin-top: 0; }
+            .hero-art { height: 52vw; overflow: hidden; }
+            .hero-art img { position: absolute; bottom: -1px; left: -40%; width: 175%; max-width: none; height: auto; object-fit: initial; }
+            .hero-title { max-width: none; }
+            .recaps-grid, .topics-grid, .video-grid { grid-template-columns: 1fr; }
+            .recap-card.featured { grid-column: span 1; }
+            .recap-card.featured .recap-title { font-size: 1.2rem; }
+            .audience-grid { grid-template-columns: 1fr; }
+            .section-head.split { flex-direction: column; align-items: flex-start; }
+            .stat { padding: 26px var(--gutter); }
+            .apply .btn-dark { width: 100%; }
+            .apply .actions { width: 100%; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="nav">
+        <div class="nav-inner">
+            <a href="#top" class="nav-brand" aria-label="NEMS27 by Bitcoin Park">
+                <img src="bitcoinpark_brandmark_white_3@2x.png" alt="Bitcoin Park">
+                <span class="divider"></span>
+                <span class="wordmark">NEMS<span>27</span></span>
+            </a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="#about">About</a>
+                <a href="#recaps">Proof of Work</a>
+                <a href="#videos">Watch</a>
+                <a href="#tracks">Tracks</a>
+                <a href="#audience">Who Attends</a>
+                <a href="#venue">Venue</a>
+            </nav>
+            <div class="nav-cta">
+                <a href="apply.html" class="btn btn-primary btn-sm">Apply to Attend</a>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">About</a>
+        <a href="#recaps">Proof of Work</a>
+        <a href="#videos">Watch Highlights</a>
+        <a href="#tracks">Programming Tracks</a>
+        <a href="#audience">Who Attends</a>
+        <a href="#venue">Venue</a>
+        <a href="apply.html" style="color: var(--orange);">Apply to Attend →</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-kicker">
+                <span class="pill">Fourth Annual</span>
+                <span>Presented by Bitcoin Park</span>
+                <span>Invite-only · Apply to attend</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="muted">Nashville</span><br>
+                Energy &amp; Mining<br>
+                <span class="muted">Summit</span> <span class="year">2027</span>
+            </h1>
+            <p class="hero-sub">Monetizing the megawatt. Two curated days with the operators, engineers, policymakers, entrepreneurs and capital allocators building the future of energy, grids and compute.</p>
+            <div class="hero-meta">
+                <div><span class="k">When</span><span class="v">January 21–22, 2027</span></div>
+                <div><span class="k">Where</span><span class="v">Bitcoin Park · Nashville, TN</span></div>
+                <div><span class="k">Format</span><span class="v">~200 curated guests</span></div>
+            </div>
+            <div class="hero-actions">
+                <a href="apply.html" class="btn btn-primary">Apply to Attend</a>
+                <a href="#recaps" class="btn btn-ghost">See the Proof of Work</a>
+            </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+            <img src="nems-skyline.png" alt="">
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stats-grid">
+            <div class="stat"><div class="n">4<em>th</em></div><div class="l">Annual summit</div></div>
+            <div class="stat"><div class="n">2</div><div class="l">Curated days</div></div>
+            <div class="stat"><div class="n">~200</div><div class="l">Operators, builders &amp; allocators</div></div>
+            <div class="stat"><div class="n">Sold <em>out</em></div><div class="l">NEMS26 · January 2026</div></div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="reveal">
+                    <span class="eyebrow">About the Summit</span>
+                    <h2 class="about-lede" style="margin-top:16px;">The Nashville Energy &amp; Mining Summit is where power is treated as an asset — and where the people <strong>generating, moving, and monetizing it</strong> get in the same room.</h2>
+                    <div class="about-copy">
+                        <p>NEMS27 is a curated gathering of approximately 200 operators, engineers, policymakers, entrepreneurs, capital allocators, and institutional leaders who are shaping the future of energy, grids, and compute. United by a shared mission, we are pioneering new models for how power is generated, distributed, and monetized in the age of Bitcoin and beyond.</p>
+                        <p>No expo hall. No sales decks. Firesides, panels, and working conversations across two days at Bitcoin Park — the community-supported campus in Nashville that has hosted NEMS since 2024 — followed by the dinners and late nights where the real deals get done.</p>
+                    </div>
+                </div>
+                <aside class="about-aside reveal">
+                    <h3>How it works</h3>
+                    <ul>
+                        <li><span class="rom">01</span><div><div class="t">Apply</div><div class="d">Tell us who you are and why NEMS27 matters to you. Two minutes, no commitment.</div></div></li>
+                        <li><span class="rom">02</span><div><div class="t">Curation</div><div class="d">We hand-select the room so every seat adds signal: operators, energy, policy, capital, builders.</div></div></li>
+                        <li><span class="rom">03</span><div><div class="t">Invitation</div><div class="d">Accepted applicants receive an invitation with ticket details as programming is announced.</div></div></li>
+                        <li><span class="rom">04</span><div><div class="t">Nashville</div><div class="d">January 21–22, 2027 at Bitcoin Park. Arrive early — the week fills up fast.</div></div></li>
+                    </ul>
+                    <a href="apply.html" class="btn btn-primary">Apply to Attend</a>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF OF WORK -->
+    <section class="section section-alt" id="recaps">
+        <div class="container">
+            <div class="section-head split">
+                <div>
+                    <span class="eyebrow">Proof of Work</span>
+                    <h2>What happened at NEMS26</h2>
+                    <p>Eleven sessions from January 2026 — keynotes, firesides, and panels from the people running the megawatts. Read the recaps, then watch the full sessions below.</p>
+                </div>
+                <a href="index_2026.html" class="btn btn-ghost btn-sm">NEMS26 Site →</a>
+            </div>
+
+            <div class="recaps-grid">
+                <a href="monetizing-the-megawatt-robert-warren-bitcoin-park.html" class="recap-card featured reveal">
+                    <div class="recap-image"><img src="thumbs/monetizing-the-megawatt.jpg" alt="Robert Warren delivering the NEMS26 opening keynote" loading="lazy"><span class="recap-type">Opening Keynote</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">Monetizing the Megawatt</h3>
+                        <div class="recap-speaker">Robert Warren · Bitcoin Park</div>
+                        <p class="recap-description">From Ford's Highland Park factory to modern mining operations monetizing stranded energy worldwide — the pursuit of the megawatt has matured from isolated experiments into a diverse global industry.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="how-smr-nuclear-turn-atoms-to-algorithms-dan-pratt-tva.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/smr-nuclear.jpg" alt="Dan Pratt of TVA in a fireside chat" loading="lazy"><span class="recap-type">Fireside</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">How SMR and Nuclear Turn Atoms to Algorithms</h3>
+                        <div class="recap-speaker">Dan Pratt (TVA) · Braden Stover (TNECD)</div>
+                        <p class="recap-description">TVA's partnership with miners shows how flexible load transforms grid operations while paving the way for small modular reactors.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="all-of-the-above-american-energy-marsha-blackburn.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/blackburn.jpg" alt="Senator Marsha Blackburn on stage at NEMS26" loading="lazy"><span class="recap-type">Fireside</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">'All-of-the-Above' for American Energy</h3>
+                        <div class="recap-speaker">Senator Marsha Blackburn · with Rod Roudi</div>
+                        <p class="recap-description">How Tennessee leverages baseload power, nuclear development, and tax incentives to compete for Bitcoin mining operations.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="state-large-scale-miners.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/large-scale-miners.jpg" alt="Mike Colyer and Rapha Zagury fireside" loading="lazy"><span class="recap-type">Fireside</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">The State of Large Scale Miners</h3>
+                        <div class="recap-speaker">Mike Colyer (Foundry) · Rapha Zagury (Elektron)</div>
+                        <p class="recap-description">From hyperinflation to hash rate — an intimate conversation between two CEOs on the changing landscape of large-scale mining.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="user-centered-design-hard-lessons-building-hardware-robert-warren-thomas-templeton.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/user-centered-design.jpg" alt="Robert Warren and Thomas Templeton fireside" loading="lazy"><span class="recap-type">Fireside</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">User-Centered Design: Hard Lessons in Building Hardware</h3>
+                        <div class="recap-speaker">Thomas Templeton (Block) · Robert Warren</div>
+                        <p class="recap-description">Block's hardware engineering veteran brings Silicon Valley design philosophy to Bitcoin mining — and early miners say it's overdue.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="future-of-managed-load-bitcoin-grid-stabilizer-panel.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/managed-load.jpg" alt="The Future of Managed Load panel" loading="lazy"><span class="recap-type">Panel</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">The Future of Managed Load</h3>
+                        <div class="recap-speaker">Nima Amir (LoD) · Joe Dillon (Adakon) · Javier Hermosa (Braiins)</div>
+                        <p class="recap-description">AI workloads bring millisecond power swings; Bitcoin mining provides the flexibility grid operators need for renewable integration.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="financialization-of-energy-assets-mining-hedging-panel.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/financialization.jpg" alt="The Financialization of Energy Assets panel" loading="lazy"><span class="recap-type">Panel</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">The Financialization of Energy Assets</h3>
+                        <div class="recap-speaker">Colin Harper (Blockspace) · Dan Lawrence (OBM) · Rory Murray (CleanSpark)</div>
+                        <p class="recap-description">Difficulty adjustments cut miner revenue every two weeks, yet hash rate derivatives remain illiquid — the hedging paradox miners can't solve.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="regulatory-advocacy-meets-energy-optimization.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/regulatory.jpg" alt="Where Regulatory Advocacy Meets Energy Optimization panel" loading="lazy"><span class="recap-type">Panel</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">Where Regulatory Advocacy Meets Energy Optimization</h3>
+                        <div class="recap-speaker">Zack Cohen (BPI) · Michael Sullivan · Will Paul (Block) · Nikki Hashemian Sizemore (Kairos)</div>
+                        <p class="recap-description">Industry leaders urge operators to engage policymakers directly as mining positions itself as critical infrastructure for the grid and the AI buildout.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="bridging-policy-academia-industry-nuclear-innovation-hash-hashemian.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/bridging-policy.jpg" alt="Hash Hashemian fireside on nuclear innovation" loading="lazy"><span class="recap-type">Fireside</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">Bridging Policy, Academia, and Industry</h3>
+                        <div class="recap-speaker">Hash Hashemian (American Nuclear Society) · Justin Maierhofer (TECA)</div>
+                        <p class="recap-description">Accelerating nuclear energy innovation — and why the industry is overreacting to workforce concerns.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="how-open-source-innovations-change-mining-panel.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/open-source.jpg" alt="Open source mining panel" loading="lazy"><span class="recap-type">Panel</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">How Do Open Source Innovations Change Mining?</h3>
+                        <div class="recap-speaker">Skot (256 Foundation) · Brett Rowan (Upstream) · Dylan Seib (Exergy) · Gio Rasetto (Tether)</div>
+                        <p class="recap-description">From home miners to enterprise, open source is challenging the proprietary stranglehold on mining hardware and software.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+                <a href="technical-problems-open-source-mining-256-foundation-panel.html" class="recap-card reveal">
+                    <div class="recap-image"><img src="thumbs/technical-problems.jpg" alt="What technical problems are left to solve panel" loading="lazy"><span class="recap-type">Panel</span></div>
+                    <div class="recap-content">
+                        <h3 class="recap-title">What (Technical) Problems Are Left to Solve?</h3>
+                        <div class="recap-speaker">Tyler Stevens (Exergy) · Michael Schmid &amp; Econoalchemist (256 Foundation) · Ryan Kuester (Mujina)</div>
+                        <p class="recap-description">Reverse-engineering mining hardware and firmware to break manufacturer control, creating open-source building blocks anyone can adapt.</p>
+                        <span class="recap-more">Read the recap</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WATCH HIGHLIGHTS -->
+    <section class="section" id="videos">
+        <div class="container">
+            <div class="section-head split">
+                <div>
+                    <span class="eyebrow">Watch Highlights</span>
+                    <h2>Full sessions from past summits</h2>
+                    <p>Every NEMS session is recorded and published. Pick a year and press play.</p>
+                </div>
+                <div class="tabs" role="tablist" aria-label="Summit year">
+                    <button class="tab active" role="tab" aria-selected="true" data-tab="nems26">NEMS26</button>
+                    <button class="tab" role="tab" aria-selected="false" data-tab="nems25">NEMS25</button>
+                </div>
+            </div>
+
+            <div class="video-panel active" id="panel-nems26" role="tabpanel">
+                <div class="video-grid">
+                    <div class="video-tile" data-id="pSatKDZ2BbM" data-title="Monetizing the Megawatt — Robert Warren"></div>
+                    <div class="video-tile" data-id="-dpA43pRhMw" data-title="How SMR and Nuclear Turn Atoms to Algorithms — Dan Pratt (TVA)"></div>
+                    <div class="video-tile" data-id="GECjPtSc6sY" data-title="'All-of-the-Above' for American Energy — Senator Marsha Blackburn"></div>
+                    <div class="video-tile" data-id="Ag3q64fMASU" data-title="The State of Large Scale Miners — Mike Colyer &amp; Rapha Zagury"></div>
+                    <div class="video-tile" data-id="bq27NslP1qQ" data-title="User-Centered Design — Thomas Templeton &amp; Robert Warren"></div>
+                    <div class="video-tile" data-id="Z2bYeRwxCCA" data-title="The Future of Managed Load"></div>
+                    <div class="video-tile" data-id="692f52aR520" data-title="The Financialization of Energy Assets"></div>
+                    <div class="video-tile" data-id="pdp1KplsAZs" data-title="Where Regulatory Advocacy Meets Energy Optimization"></div>
+                    <div class="video-tile" data-id="WNeYoX7ObTI" data-title="Bridging Policy, Academia, and Industry — Hash Hashemian"></div>
+                    <div class="video-tile" data-id="LLOtX0_0kwY" data-title="How Do Open Source Innovations Change Mining?"></div>
+                    <div class="video-tile" data-id="ZYk6ve5ibSQ" data-title="What (Technical) Problems Are Left to Solve?"></div>
+                </div>
+            </div>
+            <div class="video-panel" id="panel-nems25" role="tabpanel">
+                <div class="video-grid">
+                    <div class="video-tile" data-id="DN-zIuzMM0w" data-title="A Fireside Chat with Tennessee Governor Bill Lee: Bitcoin, The Perfect Match"></div>
+                    <div class="video-tile" data-id="ZsTWDCJUooM" data-title="The Great Hashrate Explosion"></div>
+                    <div class="video-tile" data-id="dyQ0p4j96e0" data-title="A Fireside Chat — The 2025 Investment Landscape"></div>
+                    <div class="video-tile" data-id="eDZhUtANXQ0" data-title="Securing a $20 Trillion Dollar Network"></div>
+                    <div class="video-tile" data-id="tja-5y_FvgY" data-title="Regulatory Shackles are Off"></div>
+                    <div class="video-tile" data-id="wem5YSthpzE" data-title="Open Source Bitcoin Mining"></div>
+                    <div class="video-tile" data-id="qgluU8J0R4k" data-title="Mining in the Bush"></div>
+                    <div class="video-tile" data-id="CJONixf-us4" data-title="Quantum Breakthroughs in Bitcoin Mining"></div>
+                    <div class="video-tile" data-id="sBrgflglpPM" data-title="ASICs: Wet vs. Dry"></div>
+                    <div class="video-tile" data-id="38a_fI9eqwQ" data-title="Citadel Mining Continued"></div>
+                    <div class="video-tile" data-id="YY9NP1OwL4Y" data-title="Public Market Bitcoin: ETFs, MSTR, Miners and More"></div>
+                    <div class="video-tile" data-id="XGRIP285Gzw" data-title="Day One in Review: Hitting a Block"></div>
+                </div>
+                <div class="playlist-link">
+                    <a href="https://youtube.com/playlist?list=PL2L0KLglmktmEwWpbbKSgRQKJc00hmS67" target="_blank" rel="noopener noreferrer">View the full NEMS25 playlist on YouTube →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRACKS -->
+    <section class="section section-alt" id="tracks">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Programming Tracks</span>
+                <h2>Generation to load, and everything in between</h2>
+                <p>Six lenses on the same question: how does a megawatt become money — and who gets to decide?</p>
+            </div>
+            <div class="topics-grid">
+                <div class="topic-card reveal">
+                    <div class="topic-num">01 — Generation</div>
+                    <h3>Powering the Future</h3>
+                    <p>Innovations in energy production, from natural gas and renewables to nuclear and SMRs. How diverse sources of generation can be harnessed, monetized, and integrated into a more resilient energy landscape that supports both local communities and global markets.</p>
+                </div>
+                <div class="topic-card reveal">
+                    <div class="topic-num">02 — Transmission</div>
+                    <h3>Building the Modern Grid</h3>
+                    <p>The evolving role of transmission operators, utilities, and engineers in optimizing grid dynamics. Grid flexibility, stability, and the new business models that emerge when power is treated not only as a utility but also as an asset.</p>
+                </div>
+                <div class="topic-card reveal">
+                    <div class="topic-num">03 — Load</div>
+                    <h3>Bitcoin, AI, and Beyond</h3>
+                    <p>Demand-side innovation: Bitcoin mining, AI, HPC, and other compute-intensive industries as flexible loads that stabilize grids, create economic opportunity, and open new pathways for monetizing the megawatt.</p>
+                </div>
+                <div class="topic-card reveal">
+                    <div class="topic-num">04 — Markets</div>
+                    <h3>Markets &amp; Monetization</h3>
+                    <p>The economics of energy and compute: energy trading, capital allocation, treasury strategy, and the mechanisms by which megawatts become monetized — from local power purchase agreements to global-scale markets.</p>
+                </div>
+                <div class="topic-card reveal">
+                    <div class="topic-num">05 — Policy</div>
+                    <h3>Policy, Security &amp; Governance</h3>
+                    <p>The governmental frameworks that shape the industry. Policymakers, regulators, legal experts, and security specialists on enabling policy, grid sovereignty, energy independence, and governance models that unlock domestic and international flourishing.</p>
+                </div>
+                <div class="topic-card reveal">
+                    <div class="topic-num">06 — Technology</div>
+                    <h3>The State of the Art</h3>
+                    <p>The technological innovations that let Bitcoin mining and AI superclusters happen all over the world — connecting technical expertise with the operators experimenting and proving out these technologies in the field.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIENCE -->
+    <section class="section" id="audience">
+        <div class="container">
+            <div class="section-head">
+                <span class="eyebrow">Who Attends</span>
+                <h2>A room built for signal</h2>
+                <p>NEMS is deliberately small. Every seat is curated so the conversations in the hallway are as valuable as the ones on stage.</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-item reveal">Bitcoin Mining Entrepreneurs &amp; Operators<small>Public and private miners, hosting providers, and the teams running them.</small></div>
+                <div class="audience-item reveal">Energy Experts, Traders &amp; Builders<small>Utilities, co-ops, IPPs, developers, and the engineers behind the grid.</small></div>
+                <div class="audience-item reveal">Policymakers, Legal &amp; Security Experts<small>State and federal leaders, regulators, counsel, and advocacy organizations.</small></div>
+                <div class="audience-item reveal">Capital Allocators &amp; Institutional Leaders<small>Investors, treasuries, and the firms financing generation and load.</small></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section class="section section-alt" id="sponsors">
+        <div class="container">
+            <div class="section-head center">
+                <span class="eyebrow">Partners</span>
+                <h2>Thank you to our NEMS26 sponsors</h2>
+                <p>The companies that made the sold-out 2026 summit possible.</p>
+            </div>
+            <div class="sponsor-row">
+                <a href="https://foundrydigital.com/" target="_blank" rel="noopener">Foundry</a>
+                <a href="https://www.cleanspark.com/" target="_blank" rel="noopener">CleanSpark</a>
+                <a href="https://proto.xyz/" target="_blank" rel="noopener">Proto</a>
+                <a href="https://braiins.com/" target="_blank" rel="noopener">Braiins</a>
+                <a href="https://chollainc.com/" target="_blank" rel="noopener">Cholla</a>
+                <a href="https://upstreamdata.ca/" target="_blank" rel="noopener">Upstream Data</a>
+                <a href="https://obm.io/" target="_blank" rel="noopener">OBM</a>
+                <a href="https://www.adakonenergy.com/" target="_blank" rel="noopener">Adakon Energy</a>
+                <a href="https://unchained.com/" target="_blank" rel="noopener">Unchained</a>
+                <a href="https://www.cathedra.com/" target="_blank" rel="noopener">Cathedra</a>
+            </div>
+            <p class="sponsor-cta">Interested in partnering on NEMS27? <a href="mailto:rod@bitcoinpark.com?subject=NEMS27%20Sponsorship">Get in touch →</a></p>
+        </div>
+    </section>
+
+    <!-- VENUE -->
+    <section class="section" id="venue">
+        <div class="container">
+            <div class="venue-grid">
+                <div class="venue-copy reveal">
+                    <span class="eyebrow">The Venue</span>
+                    <h2 style="font-size: clamp(2rem, 4.2vw, 3.2rem); font-weight: 900; letter-spacing: -0.03em; line-height: 1.05; margin: 14px 0 18px;">Bitcoin Park Nashville</h2>
+                    <p>A community-supported campus in Nashville, Tennessee, and a home for Bitcoiners to work, learn, collaborate, and build. NEMS has been hosted here every January since 2024.</p>
+                    <p>Two days of programming on the main stage, with breakfast and lunch at the Park, a networking and cocktail reception, dinner, and the after-parties that have become a NEMS tradition.</p>
+                    <a href="https://bitcoinpark.com/nashville" class="btn btn-ghost" target="_blank" rel="noopener">About Bitcoin Park</a>
+                </div>
+                <div class="venue-card reveal">
+                    <img src="thumbs/technical-problems.jpg" alt="Panel on the main stage at Bitcoin Park Nashville during NEMS26" loading="lazy">
+                    <div class="vc">
+                        <div><div class="k">Address</div><div class="v">1910 21st Ave S<br>Nashville, TN 37212</div></div>
+                        <div><div class="k">Dates</div><div class="v">Thu Jan 21 –<br>Fri Jan 22, 2027</div></div>
+                        <div><div class="k">Doors</div><div class="v">8:00 AM CT</div></div>
+                        <div><div class="k">Map</div><div class="v"><a href="https://www.google.com/maps/search/1910+21st+Ave+S,+Nashville,+TN+37212" target="_blank" rel="noopener" style="color: var(--orange); text-decoration: none;">Open in Maps →</a></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLY CTA -->
+    <section class="section apply" id="apply">
+        <div class="container">
+            <div>
+                <h2>Experience NEMS27.</h2>
+                <p>Seats are limited and curated. Tell us who you are and why you want to be in the room — we'll be in touch as programming and invitations go out.</p>
+            </div>
+            <div class="actions">
+                <a href="apply.html" class="btn btn-dark">Apply to Attend</a>
+                <span class="note">Takes about two minutes · No commitment</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="https://bitcoinpark.com"><img src="bitcoinpark_secondarylogo_white_4@2x.png" alt="Bitcoin Park"></a>
+                    <p>The Nashville Energy &amp; Mining Summit is produced by Bitcoin Park, a community-supported campus in Nashville, TN and Austin, TX.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="apply.html">Apply</a>
+                    <a href="index_2026.html">NEMS26</a>
+                    <a href="https://bitcoinpark.com/tems" target="_blank" rel="noopener">TEMS · Austin</a>
+                    <a href="https://bitcoinpark.com/email" target="_blank" rel="noopener">Tangents Daily</a>
+                    <a href="https://primal.net/park" target="_blank" rel="noopener">Nostr</a>
+                    <a href="https://twitter.com/bitcoinpark_" target="_blank" rel="noopener">X</a>
+                    <a href="https://www.linkedin.com/company/bitcoinpark" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Bitcoin Park. All rights reserved.</span>
+                <span><a href="https://bitcoinpark.com">bitcoinpark.com</a> · <a href="https://bitcoinpark.com/members">Membership</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger.addEventListener('click', () => {
+            const open = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('active', open);
+            hamburger.setAttribute('aria-expanded', open);
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileMenu.classList.remove('open'); hamburger.classList.remove('active'); hamburger.setAttribute('aria-expanded', 'false');
+        }));
+
+        // Reveal on scroll
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Video tiles (lazy YouTube embeds)
+        document.querySelectorAll('.video-tile').forEach(tile => {
+            const id = tile.dataset.id, title = tile.dataset.title;
+            tile.setAttribute('role', 'button'); tile.setAttribute('tabindex', '0'); tile.setAttribute('aria-label', 'Play: ' + title);
+            tile.innerHTML = `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><div class="play"><div class="play-btn"></div></div><div class="caption">${title}</div>`;
+            const play = () => {
+                tile.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${title.replace(/"/g,'&quot;')}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+            };
+            tile.addEventListener('click', play);
+            tile.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+        });
+
+        // Tabs
+        document.querySelectorAll('.tab').forEach(btn => btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+            btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+            document.querySelectorAll('.video-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+        }));
+    </script>
+</body>
+</html>
