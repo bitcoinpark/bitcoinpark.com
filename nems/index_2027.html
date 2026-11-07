@@ -246,11 +246,29 @@
         .footer-bottom a { color: var(--gray-2); text-decoration: none; }
         .footer-bottom a:hover { color: var(--white); }
 
+        /* PAST SPEAKERS */
+        .speakers-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px 18px; }
+        .speaker-card { display: flex; flex-direction: column; align-items: center; text-align: center; text-decoration: none; padding: 18px 12px 20px; border-radius: 12px; border: 1px solid transparent; transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+        .speaker-card:hover { transform: translateY(-4px); border-color: rgba(255,107,53,0.45); background: rgba(255,255,255,0.03); }
+        .speaker-photo { position: relative; width: 120px; height: 120px; margin-bottom: 14px; }
+        .speaker-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 50%; border: 3px solid var(--navy-3); background: var(--navy-3); transition: border-color .25s ease; }
+        .speaker-card:hover .speaker-photo img { border-color: var(--orange); }
+        .speaker-social { position: absolute; right: 2px; bottom: 2px; width: 30px; height: 30px; border-radius: 50%; background: var(--navy); border: 2px solid var(--navy-2); display: flex; align-items: center; justify-content: center; color: var(--white); }
+        .speaker-social svg { width: 14px; height: 14px; }
+        .speaker-social.in { background: #0a66c2; }
+        .speaker-social.x { background: #000; }
+        .speaker-social.web { background: var(--orange); }
+        .speaker-name { font-weight: 800; font-size: 0.98rem; line-height: 1.25; letter-spacing: -0.01em; }
+        .speaker-role { margin-top: 5px; font-size: 0.8rem; color: var(--gray-1); line-height: 1.35; }
+        .speaker-years { margin-top: 8px; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+        .speakers-note { margin-top: 34px; text-align: center; color: var(--gray-2); font-size: 0.95rem; }
+
         .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
         .reveal.in { opacity: 1; transform: none; }
 
         @media (max-width: 1024px) {
             .recaps-grid, .topics-grid, .video-grid { grid-template-columns: repeat(2, 1fr); }
+            .speakers-grid { grid-template-columns: repeat(4, 1fr); }
             .recap-card.featured { grid-column: span 2; }
             .audience-grid { grid-template-columns: repeat(2, 1fr); }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -267,6 +285,8 @@
             .hero-art img { position: absolute; bottom: -1px; left: -40%; width: 175%; max-width: none; height: auto; object-fit: initial; }
             .hero-title { max-width: none; }
             .recaps-grid, .topics-grid, .video-grid { grid-template-columns: 1fr; }
+            .speakers-grid { grid-template-columns: repeat(2, 1fr); gap: 14px 8px; }
+            .speaker-photo { width: 104px; height: 104px; }
             .recap-card.featured { grid-column: span 1; }
             .recap-card.featured .recap-title { font-size: 1.2rem; }
             .audience-grid { grid-template-columns: 1fr; }
@@ -293,6 +313,7 @@
                 <a href="#about">About</a>
                 <a href="#recaps">Proof of Work</a>
                 <a href="#videos">Watch</a>
+                <a href="#speakers">Speakers</a>
                 <a href="#tracks">Tracks</a>
                 <a href="#audience">Who Attends</a>
                 <a href="#venue">Venue</a>
@@ -307,6 +328,7 @@
         <a href="#about">About</a>
         <a href="#recaps">Proof of Work</a>
         <a href="#videos">Watch Highlights</a>
+        <a href="#speakers">Past Speakers</a>
         <a href="#tracks">Programming Tracks</a>
         <a href="#audience">Who Attends</a>
         <a href="#venue">Venue</a>
@@ -544,6 +566,244 @@
                     <a href="https://youtube.com/playlist?list=PL2L0KLglmktmEwWpbbKSgRQKJc00hmS67" target="_blank" rel="noopener noreferrer">View the full NEMS25 playlist on YouTube →</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- PAST SPEAKERS -->
+    <section class="section section-alt" id="speakers">
+        <div class="container">
+            <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+                <symbol id="ic-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 2H22l-7.2 8.3L23 22h-6.6l-5.2-6.8L5.3 22H2.1l7.7-8.8L1.5 2h6.8l4.7 6.2L18.9 2zm-1.1 18h1.8L7.3 3.9H5.4L17.8 20z"/></symbol>
+                <symbol id="ic-in" viewBox="0 0 24 24"><path fill="currentColor" d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5v-9h3v9zM6.5 8.7a1.8 1.8 0 1 1 0-3.5 1.8 1.8 0 0 1 0 3.5zM19 19h-3v-4.4c0-1.1 0-2.4-1.5-2.4S12.8 13.3 12.8 14.5V19h-3v-9h2.9v1.2a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.6 2 3.6 4.6V19z"/></symbol>
+                <symbol id="ic-web" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 9h-3a15 15 0 0 0-1.2-5.1A8 8 0 0 1 18.9 11zM12 4c.9 1.2 1.7 3.4 1.9 7h-3.8c.2-3.6 1-5.8 1.9-7zM4.3 13h3a15 15 0 0 0 1.2 5.1A8 8 0 0 1 4.3 13zm3-2h-3a8 8 0 0 1 4.2-5.1A15 15 0 0 0 7.3 11zM12 20c-.9-1.2-1.7-3.4-1.9-7h3.8c-.2 3.6-1 5.8-1.9 7zm2.7-1.9a15 15 0 0 0 1.2-5.1h3a8 8 0 0 1-4.2 5.1z"/></symbol>
+            </defs></svg>
+            <div class="section-head split">
+                <div>
+                    <span class="eyebrow">Past Speakers</span>
+                    <h2>The people who have taken the NEMS stage</h2>
+                    <p>Governors, senators, utility CEOs, public miners, builders and capital allocators. A sample of who has spoken since the first summit in 2023 — follow them, then come meet them.</p>
+                </div>
+                <a href="apply.html" class="btn btn-primary btn-sm">Join them at NEMS27</a>
+            </div>
+            <div class="speakers-grid">
+                <a href="https://x.com/MarshaBlackburn" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Senator Marsha Blackburn on X">
+                    <div class="speaker-photo"><img src="speakers/marsha-blackburn.jpg" alt="Senator Marsha Blackburn" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Senator Marsha Blackburn</div>
+                    <div class="speaker-role">U.S. Senator · Tennessee</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://x.com/SenatorHagerty" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Senator Bill Hagerty on X">
+                    <div class="speaker-photo"><img src="speakers/bill-hagerty.jpg" alt="Senator Bill Hagerty" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Senator Bill Hagerty</div>
+                    <div class="speaker-role">U.S. Senator · Tennessee</div>
+                    <div class="speaker-years">NEMS24</div>
+                </a>
+                <a href="https://x.com/GovBillLee" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Governor Bill Lee on X">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/KJXLRD_SLez99F.webp" alt="Governor Bill Lee" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Governor Bill Lee</div>
+                    <div class="speaker-role">50th Governor · State of Tennessee</div>
+                    <div class="speaker-years">NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/jeff-lyash-18b48961" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Jeff Lyash on LinkedIn">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/SACJS3_FFDUcE7.webp" alt="Jeff Lyash" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Jeff Lyash</div>
+                    <div class="speaker-role">Former President &amp; CEO · Tennessee Valley Authority</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/dan-r-brouillette-27909813" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Dan Brouillette on LinkedIn">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/KJZCFJ_0FkZZVL.webp" alt="Dan Brouillette" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Dan Brouillette</div>
+                    <div class="speaker-role">15th U.S. Secretary of Energy</div>
+                    <div class="speaker-years">NEMS25</div>
+                </a>
+                <a href="https://x.com/TempletonThomas" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Thomas Templeton on X">
+                    <div class="speaker-photo"><img src="speakers/thomas-templeton.jpg" alt="Thomas Templeton" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Thomas Templeton</div>
+                    <div class="speaker-role">Head of Hardware · Block · Proto &amp; Bitkey</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://www.linkedin.com/in/dan-pratt-b2931610" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Dan Pratt on LinkedIn">
+                    <div class="speaker-photo"><img src="speakers/dan-pratt.jpg" alt="Dan Pratt" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Dan Pratt</div>
+                    <div class="speaker-role">Tennessee Valley Authority</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://www.ams-corp.com/hmhashemian/" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Hash Hashemian on website">
+                    <div class="speaker-photo"><img src="speakers/hash-hashemian.jpg" alt="Hash Hashemian" loading="lazy"><span class="speaker-social web"><svg><use href="#ic-web"/></svg></span></div>
+                    <div class="speaker-name">Hash Hashemian</div>
+                    <div class="speaker-role">President, American Nuclear Society · CEO, AMS Corporation</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://x.com/colyermike" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Mike Colyer on X">
+                    <div class="speaker-photo"><img src="speakers/mike-colyer.jpg" alt="Mike Colyer" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Mike Colyer</div>
+                    <div class="speaker-role">Founder &amp; CEO · Foundry</div>
+                    <div class="speaker-years">NEMS25 · NEMS26</div>
+                </a>
+                <a href="https://x.com/alphazeta" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Rapha Zagury on X">
+                    <div class="speaker-photo"><img src="speakers/rapha-zagury.jpg" alt="Rapha Zagury" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Rapha Zagury</div>
+                    <div class="speaker-role">CEO · Elektron Energy</div>
+                    <div class="speaker-years">NEMS25 · NEMS26</div>
+                </a>
+                <a href="https://x.com/harry_sudock" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Harry Sudock on X">
+                    <div class="speaker-photo"><img src="speakers/harry-sudock.jpg" alt="Harry Sudock" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Harry Sudock</div>
+                    <div class="speaker-role">Senior Vice President · CleanSpark</div>
+                    <div class="speaker-years">NEMS24 · 25 · 26</div>
+                </a>
+                <a href="https://www.linkedin.com/in/r-c-murray" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Rory Murray on LinkedIn">
+                    <div class="speaker-photo"><img src="speakers/rory-murray.jpg" alt="Rory Murray" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Rory Murray</div>
+                    <div class="speaker-role">VP, Digital Asset Management · CleanSpark</div>
+                    <div class="speaker-years">NEMS24 · 25 · 26</div>
+                </a>
+                <a href="https://x.com/MartyBent" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Marty Bent on X">
+                    <div class="speaker-photo"><img src="speakers/marty-bent.jpg" alt="Marty Bent" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Marty Bent</div>
+                    <div class="speaker-role">Founder · TFTC</div>
+                    <div class="speaker-years">NEMS24 · 25 · 26</div>
+                </a>
+                <a href="https://x.com/ODELL" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Matt Odell on X">
+                    <div class="speaker-photo"><img src="speakers/matt-odell.jpg" alt="Matt Odell" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Matt Odell</div>
+                    <div class="speaker-role">Managing Partner, Ten31 · Co-founder, Bitcoin Park</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://x.com/PrestonPysh" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Preston Pysh on X">
+                    <div class="speaker-photo"><img src="speakers/preston-pysh.jpg" alt="Preston Pysh" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Preston Pysh</div>
+                    <div class="speaker-role">Co-founder · The Investor’s Podcast Network</div>
+                    <div class="speaker-years">NEMS24</div>
+                </a>
+                <a href="https://x.com/parkeralewis" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Parker Lewis on X">
+                    <div class="speaker-photo"><img src="speakers/parker-lewis.jpg" alt="Parker Lewis" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Parker Lewis</div>
+                    <div class="speaker-role">Author, Gradually, Then Suddenly · Zaprite</div>
+                    <div class="speaker-years">NEMS24</div>
+                </a>
+                <a href="https://x.com/LukeDashjr" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Luke Dashjr on X">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/WQ79EP_9qpbTFZ.webp" alt="Luke Dashjr" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Luke Dashjr</div>
+                    <div class="speaker-role">Bitcoin Core Developer · CTO, OCEAN</div>
+                    <div class="speaker-years">NEMS24</div>
+                </a>
+                <a href="https://x.com/whiteafrican" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Erik Hersman on X">
+                    <div class="speaker-photo"><img src="speakers/erik-hersman.jpg" alt="Erik Hersman" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Erik Hersman</div>
+                    <div class="speaker-role">Co-founder &amp; CEO · Gridless</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://x.com/SGBarbour" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Steve Barbour on X">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/S9Z7GG_6wpePs6.webp" alt="Steve Barbour" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Steve Barbour</div>
+                    <div class="speaker-role">Founder &amp; CEO · Upstream Data</div>
+                    <div class="speaker-years">NEMS25 · NEMS26</div>
+                </a>
+                <a href="https://x.com/JBeddict" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Jay Beddict on X">
+                    <div class="speaker-photo"><img src="speakers/jay-beddict.jpg" alt="Jay Beddict" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Jay Beddict</div>
+                    <div class="speaker-role">VP of Research · Foundry</div>
+                    <div class="speaker-years">NEMS24 · 25 · 26</div>
+                </a>
+                <a href="https://x.com/_drewarmstrong_" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Drew Armstrong on X">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/ZGRKFF_fnj9cDd.webp" alt="Drew Armstrong" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Drew Armstrong</div>
+                    <div class="speaker-role">President &amp; COO · Cathedra Bitcoin</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://x.com/intangiblecoins" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Alex Thorn on X">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/JHKJSS_SQ4B7QS.webp" alt="Alex Thorn" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Alex Thorn</div>
+                    <div class="speaker-role">Head of Research · Galaxy</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/max-guise-284305108" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Max Guise on LinkedIn">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/GAH8F8_UcPo0g0.webp" alt="Max Guise" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Max Guise</div>
+                    <div class="speaker-role">Product &amp; ASICs Lead · Block · Proto &amp; Bitkey</div>
+                    <div class="speaker-years">NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/carolhaines1" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Carol Haines on LinkedIn">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/KQDNYY_YUe93jl.webp" alt="Carol Haines" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Carol Haines</div>
+                    <div class="speaker-role">SVP, Head of Power &amp; Policy · Core Scientific</div>
+                    <div class="speaker-years">NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/kevinzhang56" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Kevin Zhang on LinkedIn">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/JK8NHC_6cz3k2W.webp" alt="Kevin Zhang" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Kevin Zhang</div>
+                    <div class="speaker-role">SVP of Mining Strategy · Foundry</div>
+                    <div class="speaker-years">NEMS25</div>
+                </a>
+                <a href="https://x.com/tylerkstevens" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Tyler Stevens on X">
+                    <div class="speaker-photo"><img src="speakers/tyler-stevens.jpg" alt="Tyler Stevens" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Tyler Stevens</div>
+                    <div class="speaker-role">Co-founder · Exergy</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://x.com/skot9000" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Skot on X">
+                    <div class="speaker-photo"><img src="speakers/skot.jpg" alt="Skot" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Skot</div>
+                    <div class="speaker-role">Creator of the Bitaxe · 256 Foundation</div>
+                    <div class="speaker-years">NEMS24 · 25 · 26</div>
+                </a>
+                <a href="https://x.com/econoalchemist" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Econoalchemist on X">
+                    <div class="speaker-photo"><img src="https://pretalx.com/media/avatars/F7QKCC_rjcUrXF.webp" alt="Econoalchemist" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Econoalchemist</div>
+                    <div class="speaker-role">Open-source mining &amp; privacy · 256 Foundation</div>
+                    <div class="speaker-years">NEMS24 · 25 · 26</div>
+                </a>
+                <a href="https://www.linkedin.com/in/braden-stover-581a4996" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Braden Stover on LinkedIn">
+                    <div class="speaker-photo"><img src="speakers/braden-stover.jpg" alt="Braden Stover" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Braden Stover</div>
+                    <div class="speaker-role">Tennessee Dept. of Economic &amp; Community Development</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://x.com/Sully21" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Michael Sullivan on X">
+                    <div class="speaker-photo"><img src="speakers/michael-sullivan.jpg" alt="Michael Sullivan" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Michael Sullivan</div>
+                    <div class="speaker-role">Founder · White Oak Strategies</div>
+                    <div class="speaker-years">NEMS26</div>
+                </a>
+                <a href="https://x.com/thetrocro" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Troy Cross on X">
+                    <div class="speaker-photo"><img src="speakers/troy-cross.jpg" alt="Troy Cross" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Troy Cross</div>
+                    <div class="speaker-role">Professor, Reed College · Fellow, Bitcoin Policy Institute</div>
+                    <div class="speaker-years">NEMS23</div>
+                </a>
+                <a href="https://x.com/willcole" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Will Cole on X">
+                    <div class="speaker-photo"><img src="speakers/will-cole.jpg" alt="Will Cole" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Will Cole</div>
+                    <div class="speaker-role">Former Chief Product Officer · Unchained</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/grant-gilliam-84029b91" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Grant Gilliam on LinkedIn">
+                    <div class="speaker-photo"><img src="speakers/grant-gilliam.jpg" alt="Grant Gilliam" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Grant Gilliam</div>
+                    <div class="speaker-role">Co-founder &amp; Managing Partner · Ten31</div>
+                    <div class="speaker-years">NEMS25</div>
+                </a>
+                <a href="https://www.linkedin.com/in/foreman-dan" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Dan Lawrence on LinkedIn">
+                    <div class="speaker-photo"><img src="speakers/dan-lawrence.jpg" alt="Dan Lawrence" loading="lazy"><span class="speaker-social in"><svg><use href="#ic-in"/></svg></span></div>
+                    <div class="speaker-name">Dan Lawrence</div>
+                    <div class="speaker-role">CEO · OBM</div>
+                    <div class="speaker-years">NEMS24 · NEMS25</div>
+                </a>
+                <a href="https://x.com/robertwarren" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Robert Warren on X">
+                    <div class="speaker-photo"><img src="speakers/robert-warren.jpg" alt="Robert Warren" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Robert Warren</div>
+                    <div class="speaker-role">Bitcoin Park · Upstream Data</div>
+                    <div class="speaker-years">Every NEMS</div>
+                </a>
+                <a href="https://x.com/bitkite" target="_blank" rel="noopener" class="speaker-card reveal" aria-label="Rod Roudi on X">
+                    <div class="speaker-photo"><img src="speakers/rod-roudi.jpg" alt="Rod Roudi" loading="lazy"><span class="speaker-social x"><svg><use href="#ic-x"/></svg></span></div>
+                    <div class="speaker-name">Rod Roudi</div>
+                    <div class="speaker-role">Founder &amp; CEO · Bitcoin Park</div>
+                    <div class="speaker-years">Every NEMS</div>
+                </a>
+            </div>
+            <p class="speakers-note">Plus 100+ more operators, engineers, policymakers and investors across NEMS23, NEMS24, NEMS25 and NEMS26.</p>
         </div>
     </section>
 
