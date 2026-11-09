@@ -129,6 +129,14 @@
                     <form id="apply-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeLbMAGn0K1FljpDZAGEmxJs7QYuBIfo5WusL0AIGrOZfknWw/formResponse" method="post" target="nems-submit" autocomplete="on">
                         <h2>Apply to Attend</h2>
                         <p class="sub">All fields marked <span style="color:var(--orange)">*</span> are required.</p>
+                        <!-- Google Form plumbing: entry.* alone is accepted (verified). These hidden fields match the official viewform. -->
+                        <input type="hidden" name="fvv" value="1">
+                        <input type="hidden" name="pageHistory" value="0">
+                        <input type="hidden" name="submissionTimestamp" value="-1">
+                        <input type="hidden" name="fbzx" id="fbzx" value="">
+                        <input type="hidden" name="partialResponse" id="partialResponse" value="">
+                        <input type="hidden" name="entry.2082782212_sentinel" value="">
+                        <input type="hidden" name="entry.1088194814_sentinel" value="">
                         <div class="honeypot" aria-hidden="true"><label>Leave this empty<input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
                         <fieldset>
                             <legend>About you</legend>
@@ -172,22 +180,42 @@
         © 2026 <a href="https://bitcoinpark.com">Bitcoin Park</a>. All rights reserved. · <a href="index_2027.html">NEMS27</a> · <a href="index_2026.html">NEMS26</a>
     </footer>
     <script>
+    /* Submit trade-off: Google's formResponse is cross-origin, so we cannot read
+       confirmation HTML. Showing thanks on any iframe load falsely accepted Google's
+       HTTP 400 error pages. We POST application/x-www-form-urlencoded via fetch(mode:"no-cors")
+       with the verified entry.* payload (plus viewform hidden fields). The response is opaque, so a
+       400 would still look like success — correctness of the payload is the real
+       guarantee. Network failure or a 30s timeout shows the rod@bitcoinpark.com
+       fallback. The hidden iframe stays for markup compatibility but is unused. */
     (() => {
         const form = document.getElementById('apply-form'), btn = document.getElementById('submit-btn');
-        const status = document.getElementById('status'), frame = document.getElementById('nems-submit');
+        const status = document.getElementById('status');
         const original = btn.innerHTML; let pending = false, timer;
+        const fbzx = String(Math.floor(Math.random() * 9e18) + 1e18);
+        document.getElementById('fbzx').value = fbzx;
+        document.getElementById('partialResponse').value = JSON.stringify([null, null, fbzx]);
         function show(msg, err) { status.textContent = msg; status.hidden = false; status.classList.toggle('error', !!err); status.focus(); }
-        form.addEventListener('submit', e => {
-            if (document.getElementById('hp').value) { e.preventDefault(); return; }
-            if (pending) { e.preventDefault(); return; }
-            pending = true; btn.disabled = true; btn.textContent = 'Sending…'; status.hidden = true;
-            timer = setTimeout(() => { pending = false; btn.disabled = false; btn.innerHTML = original; show('We couldn’t confirm your submission. Your answers are still here — please try again, or email rod@bitcoinpark.com.', true); }, 30000);
-        });
-        frame.addEventListener('load', () => {
-            if (!pending) return;
-            clearTimeout(timer); pending = false;
+        function showThanks() {
             form.hidden = true; const t = document.getElementById('thanks'); t.hidden = false; t.focus();
             window.scrollTo({ top: document.getElementById('form-card').getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        }
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            if (document.getElementById('hp').value) return;
+            if (pending) return;
+            if (!form.reportValidity()) return;
+            pending = true; btn.disabled = true; btn.textContent = 'Sending…'; status.hidden = true;
+            timer = setTimeout(() => {
+                pending = false; btn.disabled = false; btn.innerHTML = original;
+                show('We couldn’t confirm your submission. Your answers are still here — please try again, or email rod@bitcoinpark.com.', true);
+            }, 30000);
+            fetch(form.action, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)), credentials: 'omit' })
+                .then(() => { if (!pending) return; clearTimeout(timer); pending = false; showThanks(); })
+                .catch(() => {
+                    if (!pending) return; clearTimeout(timer); pending = false;
+                    btn.disabled = false; btn.innerHTML = original;
+                    show('We couldn’t confirm your submission. Your answers are still here — please try again, or email rod@bitcoinpark.com.', true);
+                });
         });
     })();
     </script>
