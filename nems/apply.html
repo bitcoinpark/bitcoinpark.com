@@ -48,18 +48,45 @@
         .steps li b { color: var(--white); }
         .steps .n { font-weight: 800; color: var(--gray-2); font-size: 0.8rem; letter-spacing: 0.08em; padding-top: 3px; }
         .sticky { position: sticky; top: 92px; }
-        .form-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.45); border-top: 6px solid var(--orange); }
-        .form-card iframe { display: block; width: 100%; height: 2260px; border: 0; background: #fff; }
-        .form-alt { margin-top: 16px; font-size: 0.88rem; color: var(--gray-2); text-align: center; }
-        .form-alt a { color: var(--orange); font-weight: 700; text-decoration: none; }
-        .form-alt a:hover { text-decoration: underline; }
+        .form-card { background: var(--navy); border: 1px solid var(--line); border-top: 4px solid var(--orange); border-radius: 12px; padding: clamp(24px, 4vw, 40px); box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+        .form-card h2 { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.02em; }
+        .form-card .sub { color: var(--gray-2); font-size: 0.9rem; margin: 4px 0 8px; }
+        fieldset { border: 0; border-top: 1px solid var(--line); padding: 22px 0 4px; margin-top: 18px; }
+        legend { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); padding-right: 12px; }
+        .field { display: block; margin-bottom: 18px; font-weight: 700; font-size: 0.92rem; }
+        .field .req { color: var(--orange); }
+        .field .opt { color: var(--gray-2); font-weight: 500; font-size: 0.78rem; margin-left: 6px; }
+        .field .hint { display: block; color: var(--gray-2); font-weight: 500; font-size: 0.82rem; margin-top: 2px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+        input[type=text], input[type=email], input[type=url], textarea { display: block; width: 100%; margin-top: 8px; font: inherit; font-weight: 500; font-size: 0.95rem; color: var(--white); background: var(--navy-2); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; padding: 12px 14px; transition: border-color .15s, box-shadow .15s; }
+        textarea { resize: vertical; min-height: 110px; }
+        input::placeholder, textarea::placeholder { color: #5f6b7d; }
+        input:focus, textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,53,0.22); }
+        .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; font-weight: 500; }
+        .choice { position: relative; display: flex; align-items: center; gap: 10px; padding: 11px 14px; background: var(--navy-2); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; cursor: pointer; font-size: 0.9rem; color: var(--gray-1); transition: border-color .15s, color .15s, background .15s; }
+        .choice input { accent-color: var(--orange); width: 16px; height: 16px; flex: none; margin: 0; }
+        .choice:hover { border-color: rgba(255,107,53,0.6); }
+        .choice:has(input:checked) { border-color: var(--orange); color: var(--white); background: rgba(255,107,53,0.10); }
+        .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        .submit-area { border-top: 1px solid var(--line); padding-top: 22px; margin-top: 8px; }
+        .submit-area p { color: var(--gray-2); font-size: 0.85rem; margin-bottom: 16px; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; background: var(--orange); color: var(--white); border: 0; border-radius: 8px; padding: 15px 28px; font: inherit; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; cursor: pointer; transition: background .15s, transform .15s; }
+        .btn:hover { background: var(--orange-deep); transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+        .status { margin-top: 16px; padding: 14px 16px; border-radius: 8px; font-size: 0.92rem; font-weight: 600; background: rgba(255,107,53,0.12); border: 1px solid rgba(255,107,53,0.5); }
+        .status.error { background: rgba(255,80,80,0.10); border-color: rgba(255,80,80,0.5); }
+        .thanks { text-align: center; padding: 30px 6px; }
+        .thanks .check { width: 64px; height: 64px; border-radius: 50%; background: var(--orange); display: grid; place-items: center; margin: 0 auto 18px; font-size: 1.8rem; font-weight: 900; }
+        .thanks h2 { margin-bottom: 10px; }
+        .thanks p { color: var(--gray-1); max-width: 44ch; margin: 0 auto 22px; }
+        .thanks a { color: var(--orange); font-weight: 700; text-decoration: none; }
         .footer { background: var(--ink); border-top: 1px solid var(--line); padding: 28px var(--gutter); color: var(--gray-2); font-size: 0.8rem; text-align: center; }
         .footer a { color: var(--gray-2); text-decoration: none; }
         .footer a:hover { color: var(--white); }
         @media (max-width: 900px) {
             .wrap { grid-template-columns: 1fr; }
             .sticky { position: static; }
-            .form-card iframe { height: 2420px; }
+            .two-col, .choices { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -98,10 +125,45 @@
             </div>
 
             <div>
-                <div class="form-card">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLbMAGn0K1FljpDZAGEmxJs7QYuBIfo5WusL0AIGrOZfknWw/viewform?embedded=true" title="NEMS27 — Apply to Attend" loading="lazy">Loading…</iframe>
+                <div class="form-card" id="form-card">
+                    <form id="apply-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeLbMAGn0K1FljpDZAGEmxJs7QYuBIfo5WusL0AIGrOZfknWw/formResponse" method="post" target="nems-submit" autocomplete="on">
+                        <h2>Apply to Attend</h2>
+                        <p class="sub">All fields marked <span style="color:var(--orange)">*</span> are required.</p>
+                        <div class="honeypot" aria-hidden="true"><label>Leave this empty<input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
+                        <fieldset>
+                            <legend>About you</legend>
+                            <div class="two-col">
+                                <label class="field">Full name <span class="req">*</span><input type="text" name="entry.3991609" autocomplete="name" maxlength="150" required placeholder="First and last name"></label>
+                                <label class="field">Email <span class="req">*</span><input type="email" name="entry.1486198940" autocomplete="email" maxlength="254" required placeholder="you@company.com"></label>
+                                <label class="field">Company / organization <span class="req">*</span><input type="text" name="entry.737958896" autocomplete="organization" maxlength="250" required placeholder="Company or organization"></label>
+                                <label class="field">Role / title <span class="req">*</span><input type="text" name="entry.18696466" autocomplete="organization-title" maxlength="200" required placeholder="Your role"></label>
+                            </div>
+                            <label class="field">LinkedIn or X profile link <span class="req">*</span><input type="text" name="entry.173959750" inputmode="url" maxlength="500" required placeholder="https://x.com/… or https://linkedin.com/in/…"></label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Why NEMS27</legend>
+                            <div class="field">Which best describes you? <span class="req">*</span><div class="choices"><label class="choice"><input type="radio" name="entry.2082782212" value="Bitcoin miner / operator" required><span>Bitcoin miner / operator</span></label><label class="choice"><input type="radio" name="entry.2082782212" value="Energy, utility or grid"><span>Energy, utility or grid</span></label><label class="choice"><input type="radio" name="entry.2082782212" value="Policy, legal or security"><span>Policy, legal or security</span></label><label class="choice"><input type="radio" name="entry.2082782212" value="Capital allocator / investor"><span>Capital allocator / investor</span></label><label class="choice"><input type="radio" name="entry.2082782212" value="Builder / engineer"><span>Builder / engineer</span></label><label class="choice"><input type="radio" name="entry.2082782212" value="Media"><span>Media</span></label><label class="choice"><input type="radio" name="entry.2082782212" value="Other"><span>Other</span></label></div></div>
+                            <label class="field">Why do you want to experience NEMS27? <span class="req">*</span><span class="hint">What you're working on and what you hope to get out of two days in the room.</span><textarea name="entry.250281674" maxlength="4000" required rows="5" placeholder="I'm building / operating / investing in…"></textarea></label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Background</legend>
+                            <div class="field">Have you attended a Bitcoin Park summit before? <span class="opt">Optional · select all that apply</span><div class="choices"><label class="choice"><input type="checkbox" name="entry.1088194814" value="NEMS24"><span>NEMS24</span></label><label class="choice"><input type="checkbox" name="entry.1088194814" value="NEMS25"><span>NEMS25</span></label><label class="choice"><input type="checkbox" name="entry.1088194814" value="NEMS26"><span>NEMS26</span></label><label class="choice"><input type="checkbox" name="entry.1088194814" value="TEMS (Austin)"><span>TEMS (Austin)</span></label><label class="choice"><input type="checkbox" name="entry.1088194814" value="Imagine IF"><span>Imagine IF</span></label><label class="choice"><input type="checkbox" name="entry.1088194814" value="First time"><span>First time</span></label></div></div>
+                            <label class="field">Anything else we should know? <span class="opt">Optional</span><textarea name="entry.1027673445" maxlength="4000" rows="3" placeholder="Referrals, sponsorship interest, accessibility needs…"></textarea></label>
+                        </fieldset>
+                        <div class="submit-area">
+                            <p>NEMS27 is invite-only. Every application is reviewed by the Bitcoin Park team; submitting does not guarantee a seat. Accepted guests receive ticket details by email.</p>
+                            <button type="submit" class="btn" id="submit-btn">Submit application <span aria-hidden="true">→</span></button>
+                            <div id="status" class="status" role="status" tabindex="-1" hidden></div>
+                        </div>
+                    </form>
+                    <div class="thanks" id="thanks" hidden tabindex="-1">
+                        <div class="check" aria-hidden="true">✓</div>
+                        <h2>Application received.</h2>
+                        <p>Thanks for applying to NEMS27. The Bitcoin Park team reviews every application and will follow up by email as programming takes shape.</p>
+                        <a href="index_2027.html">← Back to NEMS27</a>
+                    </div>
                 </div>
-                <p class="form-alt">Form not loading? <a href="https://docs.google.com/forms/d/e/1FAIpQLSeLbMAGn0K1FljpDZAGEmxJs7QYuBIfo5WusL0AIGrOZfknWw/viewform" target="_blank" rel="noopener">Open it in a new tab →</a></p>
+                <iframe name="nems-submit" id="nems-submit" title="Submission receipt" hidden></iframe>
             </div>
         </div>
     </main>
@@ -109,5 +171,25 @@
     <footer class="footer">
         © 2026 <a href="https://bitcoinpark.com">Bitcoin Park</a>. All rights reserved. · <a href="index_2027.html">NEMS27</a> · <a href="index_2026.html">NEMS26</a>
     </footer>
+    <script>
+    (() => {
+        const form = document.getElementById('apply-form'), btn = document.getElementById('submit-btn');
+        const status = document.getElementById('status'), frame = document.getElementById('nems-submit');
+        const original = btn.innerHTML; let pending = false, timer;
+        function show(msg, err) { status.textContent = msg; status.hidden = false; status.classList.toggle('error', !!err); status.focus(); }
+        form.addEventListener('submit', e => {
+            if (document.getElementById('hp').value) { e.preventDefault(); return; }
+            if (pending) { e.preventDefault(); return; }
+            pending = true; btn.disabled = true; btn.textContent = 'Sending…'; status.hidden = true;
+            timer = setTimeout(() => { pending = false; btn.disabled = false; btn.innerHTML = original; show('We couldn’t confirm your submission. Your answers are still here — please try again, or email rod@bitcoinpark.com.', true); }, 30000);
+        });
+        frame.addEventListener('load', () => {
+            if (!pending) return;
+            clearTimeout(timer); pending = false;
+            form.hidden = true; const t = document.getElementById('thanks'); t.hidden = false; t.focus();
+            window.scrollTo({ top: document.getElementById('form-card').getBoundingClientRect().top + window.scrollY - 100, behavior: 'smooth' });
+        });
+    })();
+    </script>
 </body>
 </html>
