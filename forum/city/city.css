@@ -1,0 +1,37 @@
+/* Host-page additions only; inherit Forum typography, colors, and compact spacing. */
+.host-intro h1 { margin-block: 20px 24px; }
+.host-intro .button { margin-top: 4px; }
+.host-plan, .host-request { padding-block: 24px 32px; border-top: 1px solid var(--line); }
+.host-roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 20px; }
+.host-roles h3 { margin: 0 0 12px; color: var(--accent); font: 700 28px/1.2 var(--font); }
+.host-roles p, .host-request > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.host-page .host-note { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.host-request { scroll-margin-top: 20px; }
+.host-request h2 { margin: 0 0 16px; color: var(--accent); font: 400 clamp(30px, 4vw, 40px)/1.15 var(--font); }
+.host-request .form-link { margin-top: 12px; }
+.form-link a { display: inline-block; padding-block: 10px; color: var(--accent); text-underline-offset: 4px; }
+@media (max-width: 700px) {
+  .host-roles { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .host-plan, .host-request { padding-block: 20px 24px; }
+}
+@media (max-width: 380px) {
+  .host-page .forum-header { grid-template-columns: minmax(0, 1fr); }
+  .host-page .forum-header > .membership-link { padding-block: 0; }
+}
+
+/* Real form controls inherit the Forum brand, with native validation and submission. */
+.city-form { margin-top: 24px; padding: clamp(16px, 3vw, 32px); border: 1px solid var(--line); border-radius: 4px; }
+.city-form > .host-note:first-child { margin: 0 0 24px; }
+.city-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.city-field-wide { grid-column: 1 / -1; }
+.city-field label, .city-form legend { display: block; margin-bottom: 8px; color: var(--accent); font-size: 18px; font-weight: 700; }
+.city-field p { margin: 0 0 8px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.city-field input, .city-field textarea { box-sizing: border-box; display: block; width: 100%; padding: 12px; border: 1px solid var(--muted); border-radius: 3px; background: var(--paper, #faf9f6); color: var(--ink, #17395c); font: 400 18px/1.5 var(--font); }
+.city-field textarea { resize: vertical; min-height: 120px; }
+.city-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.city-choice { display: flex; align-items: flex-start; gap: 12px; min-height: 44px; padding-block: 10px; color: var(--ink, #17395c); font-size: 17px; line-height: 1.5; cursor: pointer; }
+.city-choice input { flex: 0 0 auto; width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--accent); }
+.city-form .optional { font-size: 14px; font-weight: 400; color: var(--muted); }
+.city-form .button { margin-top: 20px; cursor: pointer; font-family: var(--font); }
+.city-form :is(input, textarea, button):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 700px) { .city-fields { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
