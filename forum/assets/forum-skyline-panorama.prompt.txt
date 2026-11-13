@@ -1,0 +1,10 @@
+Created with the built-in imagegen tool on 2026-11-13.
+Edit target: forum/assets/forum-skyline-blue-v2.jpg.
+Output: forum-skyline-panorama.jpg (JPEG export, 2172 x 724).
+The generated 3:1 panorama is displayed at its natural aspect ratio without cropping.
+
+Final prompt:
+Use case: precise-object-edit / layout adaptation.
+Asset type: very wide, shallow website hero panorama for Park Forum.
+Input image 1 is the existing hero artwork to adapt. Preserve its refined thin blue line drawing, muted blue-gray Nashville skyline, deep blue foreground Bitcoin Park campus houses, trees, and warm off-white #FAF9F6 subtly textured paper background.
+Recompose this same scene into a much wider, shorter panoramic banner, approximately 4:1 landscape (for example 2048 x 512). The important correction is that EVERY building is shown in full from its base through its complete rooftop and antenna tips. In particular include the entire tall twin-spired Nashville tower on the left; leave a clear paper margin above its antennas. No building, tree, house, rooftop, or antenna may be cut off by any canvas edge. The two campus houses stay together centered horizontally in the foreground, with their original architectural details and natural proportions, not stretched or squashed. The complete distant skyline extends across the width behind them. Scale and space the skyline layer to fit this shallow composition; reduce the large unused sky instead of cropping any building. A few tall buildings can rise above the main skyline, naturally and completely. Keep a small clean margin around all of the artwork, including beneath the house steps. Preserve the recognizable buildings and original overall subject. No logo, no wordmark, no Bitcoin sun, no text, no new symbols, no border. Output the complete composition as an opaque wide banner ready to display without any crop.
