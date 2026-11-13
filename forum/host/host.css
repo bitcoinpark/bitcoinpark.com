@@ -1,0 +1,24 @@
+/* Host-page additions only; inherit Forum typography, colors, and compact spacing. */
+.host-intro h1 { margin-block: 20px 24px; }
+.host-intro .button { margin-top: 4px; }
+.host-plan, .host-request { padding-block: 24px 32px; border-top: 1px solid var(--line); }
+.host-roles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 20px; }
+.host-roles h3 { margin: 0 0 12px; color: var(--accent); font: 700 28px/1.2 var(--font); }
+.host-roles p, .host-request > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.host-page .host-note { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.host-request { scroll-margin-top: 20px; }
+.host-request h2 { margin: 0 0 16px; color: var(--accent); font: 400 clamp(30px, 4vw, 40px)/1.15 var(--font); }
+.host-request .form-link { margin-top: 12px; }
+.form-link a { display: inline-block; padding-block: 10px; color: var(--accent); text-underline-offset: 4px; }
+.host-form { display: block; width: 100%; height: 2020px; margin-top: 12px; border: 0; }
+@media (max-width: 700px) {
+  .host-roles { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .host-plan, .host-request { padding-block: 20px 24px; }
+  .host-form { height: 2370px; width: calc(100% + 32px); margin-inline: -16px; }
+}
+@media (max-width: 380px) {
+  .host-page .forum-header { grid-template-columns: minmax(0, 1fr); }
+  .host-page .forum-header > .membership-link { padding-block: 0; }
+  .host-form { height: 2570px; }
+}
+@media print { .host-form { display: none; } }
