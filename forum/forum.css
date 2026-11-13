@@ -43,7 +43,9 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .park-brand span { font-size: 10px; letter-spacing: .09em; color: var(--muted); }
 .park-brand img { display: block; width: 116px; height: auto; }
 
-.idea { padding-block: 88px 80px; }
+.forum-hero { margin-top: 32px; }
+.forum-hero img { display: block; width: 100%; height: auto; }
+.idea { padding-block: 56px 80px; }
 .eyebrow { display: flex; align-items: center; gap: 14px; margin: 0; font: 600 12px/1.5 var(--sans); letter-spacing: .14em; text-transform: uppercase; }
 .section-number { color: var(--accent); font-weight: 500; }
 h1 { margin: 28px 0 36px; font: 400 clamp(44px, 6.5vw, 84px)/1.06 var(--serif); letter-spacing: -.025em; }
@@ -84,6 +86,7 @@ h1 em { color: var(--accent); font-weight: 400; }
   .forum-mark { width: 36px; height: 36px; }
   .park-brand img { width: 96px; }
   .park-brand span { font-size: 9px; }
+  .forum-hero { margin-top: 24px; }
   .idea { padding-block: 56px; }
   h1 { margin-block: 24px 28px; font-size: clamp(40px, 7.3vw, 52px); }
   .idea > p:not(.eyebrow) { font-size: 16px; }
@@ -108,6 +111,7 @@ h1 em { color: var(--accent); font-weight: 400; }
   :root { background: white; }
   .page { width: 100%; }
   .forum-header { padding-top: 0; }
+  .forum-hero { max-width: 600px; margin-inline: auto; break-inside: avoid; }
   .idea { padding-block: 32px; }
   h1 { font-size: 48px; }
   .forums { padding-block: 24px; }

@@ -1,0 +1,10 @@
+Created with the built-in imagegen tool on 2026-11-13.
+Edit target: user-supplied Bitcoin Park skyline screenshot (2026-11-13 at 9.42.34 AM).
+Output: forum-skyline-blue.jpg (JPEG export of the generated image, 1677 x 938).
+
+Final prompt:
+Use case: style-transfer (color palette edit only).
+Asset type: wide 16:9 website hero for Park Forum.
+Input image 1 is the exact edit target. Recolor this existing artwork to the Park Forum blue and white palette, preserving its composition and all drawn content as closely as possible. Change only colors and tonal contrast; do not redesign or rearrange anything.
+Replace the dark forest background with warm off-white paper #FAF9F6. Replace orange and gold lettering, the Bitcoin Park monogram, foreground building and tree outlines, and circuit sun rays with muted deep blue #285775. Use softer blue-gray lines for the distant Nashville skyline and cooling towers so the foreground remains distinct and readable. Recolor the Bitcoin sun disk to #285775 and retain a crisp white Bitcoin symbol. Convert the existing grain to very subtle pale blue-gray paper texture; keep the result bright, light, refined and predominantly off-white, matching a simple blue-and-white webpage.
+Keep the exact lowercase text "bitcoin park", its original font and monogram design, centered near the top with the same scale and placement. Preserve the skyline silhouettes including the tall left skyscraper, both foreground campus houses, tree silhouettes, circuit sun at upper right, and original wide landscape crop. No extra words, no "Park Forum" added, no new objects, no gradients, no borders, no orange, gold, green or black background. Full rectangular opaque image.

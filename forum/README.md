@@ -1,6 +1,6 @@
 # Park Forum
 
-`/forum/` is a single public page with the idea at the top, upcoming forums underneath, and membership information at the bottom. It requires no JavaScript. The upcoming listing reads “Coming Soon 2027,” with no specific date, and explains that attendance is by invitation only. The Open Interest button lets visitors express interest without guaranteeing an invitation. The `forum-event--upcoming` modifier omits the date column; confirmed future forums can use dated `<li class="forum-event">` entries in `index.html`.
+`/forum/` is a single public page with a skyline hero above the idea, upcoming forums underneath, and membership information at the bottom. It requires no JavaScript. The upcoming listing reads “Coming Soon 2027,” with no specific date, and explains that attendance is by invitation only. The Open Interest button lets visitors express interest without guaranteeing an invitation. The `forum-event--upcoming` modifier omits the date column; confirmed future forums can use dated `<li class="forum-event">` entries in `index.html`.
 
 The public page uses a simple, centered document layout with a header, introduction, upcoming forums, and membership footer. All sections scroll with the page on desktop and mobile; there is no fixed panel or nested scrolling region. The existing copy, Libre Caslon Display and DM Sans fonts, off-white background, blue accent, and Bitcoin Park branding are retained. Thin rules separate the sections, and the Open Interest link uses a plain blue button. Content and links stack on small screens. The public page requires no JavaScript. Its styles in `forum.css` are isolated from the sponsor catalog. Existing catalog URLs and authentication remain available directly.
 
@@ -45,11 +45,11 @@ The public forum and gate layouts can be previewed with `python3 -m http.server 
 
 ## Artwork and fonts
 
-The public page is text-led and does not display a background illustration. `assets/forum-park-ink.jpg` remains the social sharing image. The previous porch artwork and frame assets remain available for older cached pages.
+The public hero and social sharing image is `assets/forum-skyline-blue.jpg`. Built-in imagegen recolored the supplied Bitcoin Park skyline artwork to the Forum's off-white and blue palette, retaining the logo, Nashville skyline, foreground campus buildings, trees, and Bitcoin sun. The hero sits above the introduction in normal page flow and scales proportionally without cropping on desktop and mobile. Its edit prompt is recorded in `assets/forum-skyline-blue.prompt.txt`. The previous porch artwork and frame assets remain available for older cached pages.
 
-The current edit prompt and reference roles are recorded in `assets/forum-park-ink.prompt.txt`. The original porch generation prompt and photographic reference roles are in `assets/forum-park-porch.prompt.txt`. Earlier porch, colonnade and campus illustrations and their prompts remain in `assets/`.
+The previous ink artwork's edit prompt and reference roles are recorded in `assets/forum-park-ink.prompt.txt`. The original porch generation prompt and photographic reference roles are in `assets/forum-park-porch.prompt.txt`. Earlier porch, colonnade and campus illustrations and their prompts remain in `assets/`.
 
-The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The Bitcoin Park wordmark is retained. `assets/bitcoin-park-brandmark-white.png` is an unchanged copy of `nems/bitcoinpark_brandmark_white_3@2x.png`, rendered as a blue CSS mask beside the Park Forum title; the logo is not generated into the illustration.
+The optimized JPEG is self-hosted, as are DM Sans and Libre Caslon Display (license files included in `assets/`). The separate header wordmark is retained. `assets/bitcoin-park-brandmark-white.png` is an unchanged copy of `nems/bitcoinpark_brandmark_white_3@2x.png`, rendered as a blue CSS mask beside the Park Forum title.
 
 The older Roman artwork and styles remain for the separate sponsor catalog and cached pages.
 
