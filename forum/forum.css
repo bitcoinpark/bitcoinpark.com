@@ -43,7 +43,7 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .park-brand span { font-size: 10px; letter-spacing: .09em; color: var(--muted); }
 .park-brand img { display: block; width: 116px; height: auto; }
 
-.forum-hero { margin-top: 32px; }
+.forum-hero { width: 40%; margin: 32px auto 0; }
 .forum-hero img { display: block; width: 100%; height: auto; }
 .idea { padding-block: 56px 80px; }
 .eyebrow { display: flex; align-items: center; gap: 14px; margin: 0; font: 600 12px/1.5 var(--sans); letter-spacing: .14em; text-transform: uppercase; }

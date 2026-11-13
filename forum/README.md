@@ -45,7 +45,7 @@ The public forum and gate layouts can be previewed with `python3 -m http.server 
 
 ## Artwork and fonts
 
-The public hero and social sharing image is `assets/forum-skyline-blue.jpg`. Built-in imagegen recolored the supplied Bitcoin Park skyline artwork to the Forum's off-white and blue palette, retaining the logo, Nashville skyline, foreground campus buildings, trees, and Bitcoin sun. The hero sits above the introduction in normal page flow and scales proportionally without cropping on desktop and mobile. Its edit prompt is recorded in `assets/forum-skyline-blue.prompt.txt`. The previous porch artwork and frame assets remain available for older cached pages.
+The public hero and social sharing image is `assets/forum-skyline-blue-v2.jpg`. Built-in imagegen removed the logo and Bitcoin sun from the previous blue-and-white artwork while preserving the Nashville skyline, foreground campus buildings, trees, and paper background. The hero is centered above the introduction at 40% of its previous width, a three-fifths reduction, and scales proportionally without cropping on desktop and mobile. Its edit prompt is recorded in `assets/forum-skyline-blue-v2.prompt.txt`; the first recoloring prompt remains in `assets/forum-skyline-blue.prompt.txt`. Previous artwork and frame assets remain available for older cached pages.
 
 The previous ink artwork's edit prompt and reference roles are recorded in `assets/forum-park-ink.prompt.txt`. The original porch generation prompt and photographic reference roles are in `assets/forum-park-porch.prompt.txt`. Earlier porch, colonnade and campus illustrations and their prompts remain in `assets/`.
 

@@ -1,0 +1,10 @@
+Created with the built-in imagegen tool on 2026-11-13.
+Edit target: forum/assets/forum-skyline-blue.jpg.
+Output: forum-skyline-blue-v2.jpg (JPEG export, 1677 x 938).
+Display size: reduced by three-fifths through CSS, to 40% of the previous width.
+
+Final prompt:
+Use case: precise-object-edit.
+Asset type: Park Forum website hero illustration.
+Input image 1 is the edit target. Remove the entire Bitcoin Park logo at the top: both the circular monogram and the lowercase words "bitcoin park". Also remove the entire Bitcoin sun in the upper right, including its circular disk, Bitcoin symbol, every circuit ray, dots and traces. Fill both cleared areas with the same seamless warm off-white, subtly textured paper background as the surrounding sky.
+Change nothing else. Preserve the blue-and-white color palette, exact wide composition, dimensions/aspect ratio, Nashville skyline, buildings, cooling towers, trees and both foreground campus houses, their scale and placements, and all of their existing fine linework. Do not crop, enlarge, reposition or add anything. The sky should be empty in the removed logo and sun locations. No text, no logos, no symbols, no new objects. Output an opaque landscape image.
