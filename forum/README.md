@@ -8,6 +8,8 @@ The public page uses a simple, centered document layout with a header, introduct
 
 The Apply to Attend button opens the published [Park Forum interest form](https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform). The form is titled “Park Forum — Open Interest” and describes the invitation-only 2027 gatherings. It collects required full name, company, LinkedIn or X profile, and a brief reason for attending. Google Forms collects a required, validated email address with `RESPONDER_INPUT`; visitors do not need to sign in. The form is owned by the Bitcoin Park account used to create it. Responses can be managed privately in the [form editor](https://docs.google.com/forms/d/1bfP1QwMUqZwViGCfhbZMp3JvUY3V157ecKD9vVM_uvk/edit). Publishing the responder form does not grant editor or response access.
 
+The upcoming event lists Sponsors, Description, and Speakers beneath the date, each marked “To Be Announced.” The invitation disclaimer sits directly beneath the event's Apply to Attend button and is linked to it with `aria-describedby`.
+
 Submitting interest does not guarantee an invitation. Attendance is by invitation only. Forum tickets remain included with Bitcoin Park membership, and the original membership application link is retained.
 
 ## Sponsor catalog
