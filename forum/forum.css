@@ -67,8 +67,10 @@ h1 em { color: var(--accent); font-weight: 400; }
 .event-status > span { flex: none; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
 .forum-event h3 { margin: 12px 0 14px; color: var(--accent); font: 400 clamp(36px, 4vw, 48px)/1.1 var(--serif); letter-spacing: -.02em; }
 .forum-event p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
-.event-information { grid-area: information; display: grid; grid-template-columns: minmax(0, 2.6fr) repeat(2, minmax(0, 1fr)); gap: 28px; }
-.event-information h4 { margin: 0 0 6px; color: var(--accent); font: 400 23px/1.2 var(--serif); }
+.event-meta { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 16px 28px; }
+.event-support h4, .event-information h4 { margin: 0 0 6px; color: var(--accent); font: 400 23px/1.2 var(--serif); }
+.event-support p { font-size: 13px; line-height: 1.6; }
+.event-information { grid-area: information; display: grid; grid-template-columns: minmax(0, 2.6fr) minmax(0, 1fr); gap: 28px; }
 .event-information p { font-size: 15px; line-height: 1.65; }
 .event-application { grid-area: application; width: 280px; max-width: 100%; margin-top: 30px; }
 .event-application .button { width: 100%; }
