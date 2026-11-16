@@ -16,6 +16,8 @@
   <meta property="og:image:alt" content="Blue-and-white illustration of Bitcoin Park's campus, trees, and the Nashville skyline.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="/forum/forum.css?v=optima-spacing-2">
+  <link rel="stylesheet" href="/forum/application.css?v=1">
+  <script src="/forum/application.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -28,7 +30,7 @@
           <img src="/forum/assets/bitcoin-park-wordmark.svg?v=park-accent-1" alt="Bitcoin Park" width="643" height="132">
         </a>
       </div>
-      <a class="button header-application" href="https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform" target="_blank" rel="noopener noreferrer">Apply to Attend <svg class="button-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26 26 6M8 6h18v18"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+      <a class="button header-application" data-application-link href="https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform">Apply to Attend <svg class="button-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26 26 6M8 6h18v18"/></svg></a>
     </header>
     <main id="main" tabindex="-1">
       <div class="forum-hero">
@@ -69,13 +71,61 @@
               </section>
             </div>
             <div class="event-application">
-              <a class="button application-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform" target="_blank" rel="noopener noreferrer" aria-describedby="application-note">Apply to Attend <svg class="button-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26 26 6M8 6h18v18"/></svg><span class="sr-only"> (opens in a new tab)</span></a>
+              <a class="button application-button" data-application-link href="https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform" aria-describedby="application-note">Apply to Attend <svg class="button-arrow" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26 26 6M8 6h18v18"/></svg></a>
               <p class="event-note" id="application-note">Applying does not guarantee an invitation.</p>
             </div>
           </section>
         </div>
         <p class="future-forums">Next forum coming soon.</p>
         <p class="future-inquiry">Co-create the next forum with us. Sponsor a forum or bring a sponsor. <a href="/forum/city/">Request a Park Forum in your city</a>. Inquiries: <a href="mailto:community@bitcoinpark.com">community@bitcoinpark.com</a>.</p>
+      </section>
+      <section class="attendance" id="apply" aria-labelledby="apply-title" hidden>
+        <h2 id="apply-title" tabindex="-1">Apply to Attend</h2>
+        <p>State of The Network · <time datetime="2027-01-20">January 20, 2027</time> · Bitcoin Park</p>
+        <p class="application-note">Your details go to Bitcoin Park to review and respond to your application. No Google sign-in is required.</p>
+        <form class="attendance-form" id="attendance-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/formResponse" method="post" aria-labelledby="apply-title">
+          <input type="hidden" name="fvv" value="1">
+          <input type="hidden" name="pageHistory" id="application-pages" value="0,2">
+          <p class="application-note">Fields marked <span aria-hidden="true">*</span> are required.</p>
+          <div class="application-fields">
+            <fieldset class="application-field-wide">
+              <legend>Bitcoin Park membership <span aria-hidden="true">*</span></legend>
+              <label class="application-choice"><input type="radio" name="entry.981893602" value="I am a Bitcoin Park Member" required><span>I am a Bitcoin Park Member</span></label>
+              <label class="application-choice"><input type="radio" name="entry.981893602" value="I am not a Bitcoin Park Member" required><span>I am not a Bitcoin Park Member</span></label>
+            </fieldset>
+            <div class="application-field application-field-wide">
+              <label for="application-name">Full name <span aria-hidden="true">*</span></label>
+              <input id="application-name" name="entry.1326158752" autocomplete="name" required>
+            </div>
+          </div>
+          <p class="member-message" id="member-message" hidden>Forum tickets are included with your membership. The Park team will reach out with your ticket shortly.</p>
+          <fieldset class="application-fields applicant-details" id="applicant-details" hidden disabled>
+            <legend class="sr-only">Application details</legend>
+            <div class="application-field">
+              <label for="application-email">Email address <span aria-hidden="true">*</span></label>
+              <input id="application-email" name="entry.1501444144" type="email" autocomplete="email" required>
+            </div>
+            <div class="application-field">
+              <label for="application-company">Company <span aria-hidden="true">*</span></label>
+              <p id="company-hint">If independent, write Independent.</p>
+              <input id="application-company" name="entry.2141393682" autocomplete="organization" aria-describedby="company-hint" required>
+            </div>
+            <div class="application-field application-field-wide">
+              <label for="application-profile">LinkedIn or X profile <span aria-hidden="true">*</span></label>
+              <p id="profile-hint">Share a link to your profile.</p>
+              <input id="application-profile" name="entry.9667066" inputmode="url" autocapitalize="none" spellcheck="false" aria-describedby="profile-hint" required>
+            </div>
+            <div class="application-field application-field-wide">
+              <label for="application-reason">Why are you interested in attending? <span aria-hidden="true">*</span></label>
+              <p id="reason-hint">What draws you to the forum, and what do you hope to contribute or learn?</p>
+              <textarea id="application-reason" name="entry.1280040378" rows="4" aria-describedby="reason-hint" required></textarea>
+            </div>
+          </fieldset>
+          <p class="application-note" id="attendance-note">Attendance is by invitation only. Applying does not guarantee an invitation.</p>
+          <p class="application-note" id="application-submit-help">Submit to send your application to Bitcoin Park. Google Forms will open with confirmation when your response is recorded.</p>
+          <button class="button" id="application-submit" type="submit" aria-describedby="application-submit-help">Submit application <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="application-form-link"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdCAzjdUlGBXuTTsU0Vs8DHZ4lMHYtS9x4o_rNn2LGKZveaTA/viewform" target="_blank" rel="noopener noreferrer">Prefer the standalone form? Open it in a new tab <span aria-hidden="true">↗</span></a></p>
       </section>
     </main>
     <footer class="membership">

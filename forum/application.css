@@ -1,0 +1,28 @@
+/* Match the City page's native form presentation without changing the Forum layout. */
+.attendance { padding-block: 24px 32px; border-top: 1px solid var(--line); scroll-margin-top: 20px; }
+.attendance[hidden], .attendance [hidden] { display: none !important; }
+.attendance h2 { margin: 0 0 16px; color: var(--accent); font: 400 clamp(30px, 4vw, 40px)/1.15 var(--font); }
+.attendance > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.attendance .application-note { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.attendance-form { margin-top: 24px; padding: clamp(16px, 3vw, 32px); border: 1px solid var(--line); border-radius: 4px; }
+.attendance-form > .application-note:first-of-type { margin: 0 0 24px; }
+.application-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.application-field-wide { grid-column: 1 / -1; }
+.application-field label, .attendance-form legend { display: block; margin-bottom: 8px; color: var(--accent); font-size: 18px; font-weight: 700; }
+.application-field p { margin: 0 0 8px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.application-field input, .application-field textarea { box-sizing: border-box; display: block; width: 100%; padding: 12px; border: 1px solid var(--muted); border-radius: 3px; background: var(--paper, #faf9f6); color: var(--ink, #17395c); font: 400 18px/1.5 var(--font); }
+.application-field textarea { resize: vertical; min-height: 120px; }
+.attendance-form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.attendance-form .applicant-details { margin-top: 24px; }
+.application-choice { display: flex; align-items: flex-start; gap: 12px; min-height: 44px; padding-block: 10px; color: var(--ink, #17395c); font-size: 17px; line-height: 1.5; cursor: pointer; }
+.application-choice input { flex: 0 0 auto; width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--accent); }
+.attendance-form .button { margin-top: 20px; cursor: pointer; font-family: var(--font); }
+.attendance-form .button:disabled { opacity: .65; cursor: wait; }
+.attendance-form :is(input, textarea, button):focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.member-message { margin: 24px 0 0; color: var(--accent); font-size: 16px; line-height: 1.7; }
+.attendance .application-form-link { margin-top: 12px; }
+.application-form-link a { display: inline-block; padding-block: 10px; color: var(--accent); text-underline-offset: 4px; }
+@media (max-width: 700px) {
+  .attendance { padding-block: 20px 24px; }
+  .application-fields { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
